@@ -15,7 +15,7 @@ public final class Tazpvp extends JavaPlugin {
     public void onEnable() {
         instance = this;
         // Plugin startup logic
-        Bukkit.getLogger().info(" Tazpvp has been enabled!");
+        Bukkit.getLogger().info(" Tazspree has been enabled!");
 
         configFile = this.getConfig();
         initConfig();
@@ -41,7 +41,7 @@ public final class Tazpvp extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
 
-        Bukkit.getLogger().info(" Tazpvp has been disabled!");
+        Bukkit.getLogger().info(" Tazspree has been disabled!");
     }
 
     public static Tazpvp getInstance(){
