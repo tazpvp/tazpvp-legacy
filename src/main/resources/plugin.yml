@@ -30,3 +30,9 @@ commands:
     description: report a player
     aliases:
       - wdr
+  apply:
+    usage: /apply
+    description: apply to the server staff
+    aliases:
+      - apply
+      - applyp
