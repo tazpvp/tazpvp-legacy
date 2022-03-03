@@ -1,7 +1,9 @@
 package net.tazpvp.tazpvp;
 
+import net.tazpvp.tazpvp.Commands.Player.AppealCMD;
 import net.tazpvp.tazpvp.Commands.Player.HelpCMD;
-import net.tazpvp.tazpvp.Commands.Player.RulesCmd;
+import net.tazpvp.tazpvp.Commands.Player.ReportCMD;
+import net.tazpvp.tazpvp.Commands.Player.RulesCMD;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
 import org.bukkit.Bukkit;
@@ -30,7 +32,9 @@ public final class Tazpvp extends JavaPlugin {
 
     public void registerCommands(){
         getCommand("help").setExecutor(new HelpCMD());
-        getCommand("rules").setExecutor(new RulesCmd());
+        getCommand("rules").setExecutor(new RulesCMD());
+        getCommand("appeal").setExecutor(new AppealCMD());
+        getCommand("report").setExecutor(new ReportCMD());
     }
 
     public void registerEvents(){

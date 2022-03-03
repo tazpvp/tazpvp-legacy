@@ -19,3 +19,14 @@ commands:
     description: shows the rules
     aliases:
       - rule
+  appeal:
+    usage: /appeal
+    description: appeal to the server staff
+    aliases:
+      - appeal
+      - appealp
+  report:
+    usage: /report <player> <reason>
+    description: report a player
+    aliases:
+      - wdr
