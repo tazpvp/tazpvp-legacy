@@ -6,3 +6,16 @@ prefix: tazpvp
 authors: [ rownox, Ntdi, BubbleGum ]
 description: Tazpvp main logic
 website: tazpvp.net
+commands:
+  help:
+    usage: /help
+    description: shows a help message
+    aliases:
+      - help
+      - helpp
+    usage-message: /help [1-2]
+  rules:
+    usage: /rules
+    description: shows the rules
+    aliases:
+      - rule
