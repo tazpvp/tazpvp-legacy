@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
+import net.tazpvp.tazpvp.Commands.Admin.RegionCMD;
 import net.tazpvp.tazpvp.Commands.Admin.initCMD;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
@@ -68,6 +69,7 @@ public final class Tazpvp extends JavaPlugin {
         getCommand("report").setExecutor(new ReportCMD());
         getCommand("apply").setExecutor(new ApplyCMD());
         getCommand("init").setExecutor(new initCMD());
+        getCommand("region").setExecutor(new RegionCMD());
     }
 
     public void registerEvents(){

@@ -6,6 +6,7 @@ prefix: tazpvp
 authors: [ rownox, Ntdi, BubbleGum ]
 description: Tazpvp main logic
 website: tazpvp.net
+depend: [WorldGuard]
 commands:
   help:
     usage: /help
@@ -36,3 +37,7 @@ commands:
     aliases:
       - apply
       - applyp
+  region:
+    usage: /region
+  init:
+    usage: /init
