@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
+import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +26,8 @@ public final class Tazpvp extends JavaPlugin {
 
         registerCommands();
         registerEvents();
+
+        new TipsUtils().Text(this);
     }
 
     public void registerCommands(){
