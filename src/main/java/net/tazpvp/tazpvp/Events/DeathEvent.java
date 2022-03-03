@@ -24,7 +24,8 @@ public class DeathEvent implements Listener {
 
                 Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
 
-                //TODO: Add stats and stuff
+                Tazpvp.statsManager.addDeaths(p, 1);
+                Tazpvp.statsManager.addKills(d, 1);
 
                 p.setGameMode(GameMode.SPECTATOR);
                 new BukkitRunnable() {
