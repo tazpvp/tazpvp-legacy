@@ -1,9 +1,13 @@
 package net.tazpvp.tazpvp;
 
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Tazpvp extends JavaPlugin {
+
+    public static FileConfiguration configFile;
+
 
     public static Tazpvp instance;
 
@@ -12,6 +16,9 @@ public final class Tazpvp extends JavaPlugin {
         instance = this;
         // Plugin startup logic
         Bukkit.getLogger().info(" Tazpvp has been enabled!");
+
+        configFile = this.getConfig();
+        initConfig();
 
         registerCommands();
         registerEvents();
@@ -23,6 +30,11 @@ public final class Tazpvp extends JavaPlugin {
 
     public void registerEvents(){
 
+    }
+
+    public void initConfig(){
+        configFile.options().copyDefaults(true);
+        this.saveConfig();
     }
 
     @Override
