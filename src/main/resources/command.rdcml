@@ -1,0 +1,148 @@
+stats {
+    permission tazpvp.admin
+    help /stats <points|exp|expleft|level|money|deaths|kills|streak>
+    points {
+        help /stats points <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook point_add
+        }
+        remove player:target int:amount {
+            hook point_remove
+        }
+        set player:target int:amount {
+            hook point_set
+        }
+        reset player:target {
+            hook point_reset
+        }
+        get player:target {
+            hook point_get
+        }
+    }
+    exp {
+        help /stats exp <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook exp_add
+        }
+        remove player:target int:amount {
+            hook exp_remove
+        }
+        set player:target int:amount {
+            hook exp_set
+        }
+        reset player:target {
+            hook exp_reset
+        }
+        get player:target {
+            hook exp_get
+        }
+    }
+    expleft {
+        help /stats expleft <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook expleft_add
+        }
+        remove player:target int:amount {
+            hook expleft_remove
+        }
+        set player:target int:amount {
+            hook expleft_set
+        }
+        reset player:target {
+            hook expleft_reset
+        }
+        get player:target {
+            hook expleft_get
+        }
+    }
+    level {
+        help /stats level <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook level_add
+        }
+        remove player:target int:amount {
+            hook level_remove
+        }
+        set player:target int:amount {
+            hook level_set
+        }
+        reset player:target {
+            hook level_reset
+        }
+        get player:target {
+            hook level_get
+        }
+    }
+    money {
+        help /stats money <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook money_add
+        }
+        remove player:target int:amount {
+            hook money_remove
+        }
+        set player:target int:amount {
+            hook money_set
+        }
+        reset player:target {
+            hook money_reset
+        }
+        get player:target {
+            hook money_get
+        }
+    }
+    deaths {
+        help /stats deaths <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook deaths_add
+        }
+        remove player:target int:amount {
+            hook deaths_remove
+        }
+        set player:target int:amount {
+            hook deaths_set
+        }
+        reset player:target {
+            hook deaths_reset
+        }
+        get player:target {
+            hook deaths_get
+        }
+    }
+    kills {
+        help /stats kills <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook kills_add
+        }
+        remove player:target int:amount {
+            hook kills_remove
+        }
+        set player:target int:amount {
+            hook kills_set
+        }
+        reset player:target {
+            hook kills_reset
+        }
+        get player:target {
+            hook kills_get
+        }
+    }
+    streak {
+        help /stats streak <add|remove|set|reset|get> <player> [amount]
+        add player:target int:amount {
+            hook streak_add
+        }
+        remove player:target int:amount {
+            hook streak_remove
+        }
+        set player:target int:amount {
+            hook streak_set
+        }
+        reset player:target {
+            hook streak_reset
+        }
+        get player:target {
+            hook streak_get
+        }
+    }
+}

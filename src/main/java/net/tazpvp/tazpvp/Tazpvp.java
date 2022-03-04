@@ -2,8 +2,10 @@ package net.tazpvp.tazpvp;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
+import net.tazpvp.tazpvp.Commands.Admin.BanCMD;
 import net.tazpvp.tazpvp.Commands.Admin.RegionCMD;
 import net.tazpvp.tazpvp.Commands.Admin.initCMD;
+import net.tazpvp.tazpvp.Commands.Commands;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
@@ -19,6 +21,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
+import redempt.redlib.commandmanager.CommandParser;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
@@ -65,6 +68,10 @@ public final class Tazpvp extends JavaPlugin {
         } else {
             System.out.println("Vault not found!");
         }
+    }
+
+    public void registeRedLib(){
+        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this, new Commands());
     }
 
     public void registerCommands(){
