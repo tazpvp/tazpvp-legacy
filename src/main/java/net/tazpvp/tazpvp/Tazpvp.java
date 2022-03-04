@@ -2,10 +2,9 @@ package net.tazpvp.tazpvp;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
-import net.tazpvp.tazpvp.Commands.Admin.BanCMD;
 import net.tazpvp.tazpvp.Commands.Admin.RegionCMD;
 import net.tazpvp.tazpvp.Commands.Admin.initCMD;
-import net.tazpvp.tazpvp.Commands.Commands;
+import net.tazpvp.tazpvp.Commands.Admin.StatsCMD;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
@@ -23,7 +22,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
 import redempt.redlib.commandmanager.CommandParser;
 
-import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -71,7 +69,7 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public void registeRedLib(){
-        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this, new Commands());
+        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this, new StatsCMD());
     }
 
     public void registerCommands(){
