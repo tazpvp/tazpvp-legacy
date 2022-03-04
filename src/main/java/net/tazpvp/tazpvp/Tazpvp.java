@@ -8,6 +8,7 @@ import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Managers.StatsManager;
+import net.tazpvp.tazpvp.NPC.NPC;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
 import net.tazpvp.tazpvp.launchpad.LaunchPad;
@@ -22,9 +23,12 @@ import org.bukkit.scoreboard.*;
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
+
+    public static ArrayList<NPC> npcs = new ArrayList<>();
 
     public static Permission permissions;
     public static Chat chat;

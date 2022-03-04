@@ -1,9 +1,13 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.NPC.NPC;
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 public class npcCommand implements CommandExecutor {
     /**
@@ -21,7 +25,15 @@ public class npcCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p){
-
+            if (p.hasPermission("tazpvp.*")){
+                if (args.length == 1){
+                    if (args[0].equalsIgnoreCase("spawn")){
+                        NPC npc = new NPC(p.getName(), p.getLocation(), UUID.randomUUID().toString());
+                        Tazpvp.npcs.add(npc);
+                        p.sendMessage("NPC Spawned!");
+                    }
+                }
+            }
         }
         return true;
     }
