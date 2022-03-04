@@ -10,6 +10,7 @@ import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
+import net.tazpvp.tazpvp.launchpad.LaunchPad;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -75,6 +76,7 @@ public final class Tazpvp extends JavaPlugin {
     public void registerEvents(){
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
+        getServer().getPluginManager().registerEvents(new LaunchPad(), this);
     }
 
     public void initConfig(){
