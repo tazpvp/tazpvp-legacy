@@ -169,7 +169,7 @@ public final class Tazpvp extends JavaPlugin {
             objective.unregister();
             objective = sb.registerNewObjective("sb", "dummy");
             objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-            objective.setDisplayName(ChatColor.translateAlternateColorCodes('&', configFile.getString("TazSpree")));
+            objective.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&6&lTazSpree"));
             if (sb.getObjective("showhealth") == null) {
                 Objective h = sb.registerNewObjective("showhealth", Criterias.HEALTH);
                 h.setDisplaySlot(DisplaySlot.BELOW_NAME);
