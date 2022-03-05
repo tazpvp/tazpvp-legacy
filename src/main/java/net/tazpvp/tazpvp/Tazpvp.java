@@ -15,6 +15,7 @@ import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentWrapper;
@@ -80,8 +81,10 @@ public final class Tazpvp extends JavaPlugin {
 
 
     public void registeRedLib(){
+        ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
+
         new EnchantRegistry(this).registerAll(this);
-        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this,
+        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
                 new StatsCMD(),
                 new GuiCMD(),
                 new HelpCMD(),
@@ -98,7 +101,9 @@ public final class Tazpvp extends JavaPlugin {
                 new MutechatCMD(),
                 new MuteAndUnmuteCMD(),
                 new HealCMD(),
-                new enchCMD());
+                new enchCMD(),
+                new WorldCMD(),
+                new ADCMD());
     }
 
     public void registerEvents(){

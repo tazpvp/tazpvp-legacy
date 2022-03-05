@@ -232,3 +232,19 @@ ench string:enchantment int:level?(1) {
     help /ench <enchantment> [level]
     hook enchant
 }
+world {
+    user player
+    permission tazpvp.world
+    help /world <list|tp> <world>
+    list {
+        hook world_list
+    }
+    tp world:world {
+        hook world_tp
+    }
+}
+ad{
+    help /ad
+    user player
+    hook ad
+}
