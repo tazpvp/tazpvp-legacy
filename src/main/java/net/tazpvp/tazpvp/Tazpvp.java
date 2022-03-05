@@ -2,10 +2,7 @@ package net.tazpvp.tazpvp;
 
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
-import net.tazpvp.tazpvp.Commands.Admin.GuiCMD;
-import net.tazpvp.tazpvp.Commands.Admin.RegionCMD;
-import net.tazpvp.tazpvp.Commands.Admin.initCMD;
-import net.tazpvp.tazpvp.Commands.Admin.StatsCMD;
+import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
@@ -84,7 +81,8 @@ public final class Tazpvp extends JavaPlugin {
                 new ApplyCMD(),
                 new initCMD(),
                 new RegionCMD(),
-                new SpawnCMD());
+                new SpawnCMD(),
+                new AnnounceCMD());
     }
 
     public void registerEvents(){
@@ -173,7 +171,7 @@ public final class Tazpvp extends JavaPlugin {
             level.setScore(12);
             Score money = objective.getScore(ChatColor.DARK_AQUA + "〡 Money  " + ChatColor.GRAY +  "$"+ Tazpvp.statsManager.getMoney(player));
             money.setScore(11);
-            Score points = objective.getScore(ChatColor.DARK_AQUA + "〡 Points  " + ChatColor.GRAY + Tazpvp.statsManager.getPoints(player));
+            Score points = objective.getScore(ChatColor.DARK_AQUA + "〡 Points  " + ChatColor.GRAY + Tazpvp.statsManager.getShards(player));
             points.setScore(10);
             Score exp = objective.getScore(ChatColor.DARK_AQUA + "〡 EXP  " + ChatColor.GRAY + "" + Tazpvp.statsManager.getExp(player) + ChatColor.DARK_GRAY + "/" + df.format(d));
             //Score credits = objective.getScore(ChatColor.AQUA + "▷ Credits  " + ChatColor.GRAY + TazPvP.statsManager.getCredits(player));

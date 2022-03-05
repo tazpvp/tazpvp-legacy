@@ -184,3 +184,9 @@ spawn {
     user player
     hook spawn
 }
+
+announce string...:message {
+    permission tazpvp.announce
+    help /announce <message>
+    hook announce
+}
