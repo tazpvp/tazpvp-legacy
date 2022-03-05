@@ -198,7 +198,7 @@ public class StatsCMD {
 
     // Death commands
 
-    @CommandHook("death_add")
+    @CommandHook("deaths_add")
     public void deathAdd(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addDeaths(target, amount);
         if (sender instanceof Player p) {
@@ -207,7 +207,7 @@ public class StatsCMD {
             sender.sendMessage("Console has added " + amount + " deaths to " + target.getName());
         }
     }
-    @CommandHook("death_remove")
+    @CommandHook("deaths_remove")
     public void deathRemove(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addDeaths(target, -amount);
         if (sender instanceof Player p) {
@@ -216,7 +216,7 @@ public class StatsCMD {
             sender.sendMessage("Console has removed " + amount + " deaths from " + target.getName());
         }
     }
-    @CommandHook("death_set")
+    @CommandHook("deaths_set")
     public void deathSet(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.setDeaths(target, amount);
         if (sender instanceof Player p) {
@@ -225,7 +225,7 @@ public class StatsCMD {
             sender.sendMessage("Console has set " + amount + " deaths to " + target.getName());
         }
     }
-    @CommandHook("death_reset")
+    @CommandHook("deaths_reset")
     public void deathReset(CommandSender sender, Player target) {
         Tazpvp.statsManager.setDeaths(target, 0);
         if (sender instanceof Player p) {
@@ -234,7 +234,7 @@ public class StatsCMD {
             sender.sendMessage("Console has reset " + target.getName() + "'s deaths");
         }
     }
-    @CommandHook("death_get")
+    @CommandHook("deaths_get")
     public void deathGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getDeaths(target) + ChatColor.GOLD + "'s deaths");
@@ -245,7 +245,7 @@ public class StatsCMD {
 
     // Kill commands
 
-    @CommandHook("kill_add")
+    @CommandHook("kills_add")
     public void killAdd(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addKills(target, amount);
         if (sender instanceof Player p) {
@@ -254,7 +254,7 @@ public class StatsCMD {
             sender.sendMessage("Console has added " + amount + " kills to " + target.getName());
         }
     }
-    @CommandHook("kill_remove")
+    @CommandHook("kills_remove")
     public void killRemove(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addKills(target, -amount);
         if (sender instanceof Player p) {
@@ -263,7 +263,7 @@ public class StatsCMD {
             sender.sendMessage("Console has removed " + amount + " kills from " + target.getName());
         }
     }
-    @CommandHook("kill_set")
+    @CommandHook("kills_set")
     public void killSet(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.setKills(target, amount);
         if (sender instanceof Player p) {
@@ -272,7 +272,7 @@ public class StatsCMD {
             sender.sendMessage("Console has set " + amount + " kills to " + target.getName());
         }
     }
-    @CommandHook("kill_reset")
+    @CommandHook("kills_reset")
     public void killReset(CommandSender sender, Player target) {
         Tazpvp.statsManager.setKills(target, 0);
         if (sender instanceof Player p) {
@@ -281,7 +281,7 @@ public class StatsCMD {
             sender.sendMessage("Console has reset " + target.getName() + "'s kills");
         }
     }
-    @CommandHook("kill_get")
+    @CommandHook("kills_get")
     public void killGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getKills(target) + ChatColor.GOLD + "'s kills");
@@ -292,7 +292,7 @@ public class StatsCMD {
 
     // Killstreak commands
 
-    @CommandHook("killstreak_add")
+    @CommandHook("streak_add")
     public void killstreakAdd(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addStreak(target, amount);
         if (sender instanceof Player p) {
@@ -301,7 +301,7 @@ public class StatsCMD {
             sender.sendMessage("Console has added " + amount + " killstreaks to " + target.getName());
         }
     }
-    @CommandHook("killstreak_remove")
+    @CommandHook("streak_remove")
     public void killstreakRemove(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addStreak(target, -amount);
         if (sender instanceof Player p) {
@@ -310,7 +310,7 @@ public class StatsCMD {
             sender.sendMessage("Console has removed " + amount + " killstreaks from " + target.getName());
         }
     }
-    @CommandHook("killstreak_set")
+    @CommandHook("streak_set")
     public void killstreakSet(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.setStreak(target, amount);
         if (sender instanceof Player p) {
@@ -319,7 +319,7 @@ public class StatsCMD {
             sender.sendMessage("Console has set " + amount + " killstreaks to " + target.getName());
         }
     }
-    @CommandHook("killstreak_reset")
+    @CommandHook("streak_reset")
     public void killstreakReset(CommandSender sender, Player target) {
         Tazpvp.statsManager.setStreak(target, 0);
         if (sender instanceof Player p) {
@@ -328,7 +328,7 @@ public class StatsCMD {
             sender.sendMessage("Console has reset " + target.getName() + "'s killstreaks");
         }
     }
-    @CommandHook("killstreak_get")
+    @CommandHook("streak_get")
     public void killstreakGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getStreak(target) + ChatColor.GOLD + "'s killstreaks");
