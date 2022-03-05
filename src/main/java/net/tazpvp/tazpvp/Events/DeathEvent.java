@@ -15,39 +15,48 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.annotation.Nullable;
+
 public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
             if (p.getHealth() - e.getFinalDamage() <= 0) {
                 e.setCancelled(true);
-                Location deadLoc = p.getLocation();
-
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
-                        Player d = ((Player) ((EntityDamageByEntityEvent) e).getDamager());
-
-                        Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
-
-                        Tazpvp.statsManager.addKills(d, 1);
+                        DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager());
                     } else { //this will run if a mob kills a player, etc. creeper boom
-                        Bukkit.broadcastMessage(ChatColor.RED + p.getName() + ChatColor.GOLD + " has died to a " + e.getCause().toString().toLowerCase());
+                        DeathFunction(p, null);
                     }
                 }
-
-                Tazpvp.statsManager.addDeaths(p, 1);
-
-                p.setGameMode(GameMode.SPECTATOR);
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        PlayerUtils.healPlayer(p);
-
-                        p.teleport(configUtils.spawn);
-                        p.setGameMode(GameMode.SURVIVAL);
-                    }
-                }.runTaskLater(Tazpvp.getInstance(), 60L);
             }
         }
+    }
+
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        DeathFunction(e.getEntity(), null);
+    }
+
+    public void DeathFunction(Player p, @Nullable Player d) {
+        if (d != null) { //code will run if a player kills another player
+            Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
+
+            Tazpvp.statsManager.addKills(d, 1);
+        }
+
+        Tazpvp.statsManager.addDeaths(p, 1);
+
+        p.setGameMode(GameMode.SPECTATOR);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                PlayerUtils.healPlayer(p);
+
+                p.teleport(configUtils.spawn);
+                p.setGameMode(GameMode.SURVIVAL);
+            }
+        }.runTaskLater(Tazpvp.getInstance(), 60L);
     }
 }
