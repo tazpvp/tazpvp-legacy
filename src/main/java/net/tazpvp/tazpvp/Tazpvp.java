@@ -51,6 +51,7 @@ public final class Tazpvp extends JavaPlugin {
 
         registerCommands();
         registerEvents();
+        registeRedLib();
 
         new TipsUtils().Text(this);
 
