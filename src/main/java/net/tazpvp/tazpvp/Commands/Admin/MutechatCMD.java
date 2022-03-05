@@ -9,22 +9,12 @@ import redempt.redlib.commandmanager.CommandHook;
 public class MutechatCMD {
     @CommandHook("mutechat")
     public void muteChat(CommandSender sender) {
-        if (sender instanceof Player p) {
-            if (Tazpvp.chatMuted) {
-                Tazpvp.chatMuted = false;
-                p.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " unmuted " + ChatColor.GOLD + "chat!");
-            } else {
-                Tazpvp.chatMuted = true;
-                p.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " muted " + ChatColor.GOLD + "chat!");
-            }
+        if (Tazpvp.chatMuted) {
+            Tazpvp.chatMuted = false;
+            sender.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " unmuted " + ChatColor.GOLD + "chat!");
         } else {
-            if (Tazpvp.chatMuted) {
-                Tazpvp.chatMuted = false;
-                sender.sendMessage("Successfully unmuted chat!");
-            } else {
-                Tazpvp.chatMuted = true;
-                sender.sendMessage("Successfully muted chat!");
-            }
+            Tazpvp.chatMuted = true;
+            sender.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " muted " + ChatColor.GOLD + "chat!");
         }
     }
 }

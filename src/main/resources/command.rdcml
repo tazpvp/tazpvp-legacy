@@ -210,8 +210,13 @@ mutechat, unmutechat {
     hook mutechat
 }
 
-mute {
+mute Player:target {
     permission tazpvp.mute
-    help /mute
+    help /mute <player>
     hook mute
+}
+unmute Player:target {
+    permission tazpvp.mute
+    help /unmute <player>
+    hook unmute
 }
