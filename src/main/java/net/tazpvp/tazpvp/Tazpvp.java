@@ -76,12 +76,11 @@ public final class Tazpvp extends JavaPlugin {
 
 
     public void registeRedLib(){
-        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this, new StatsCMD(), new GuiCMD());
+        new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this, new StatsCMD(), new GuiCMD(), new HelpCMD());
         ConfigManager config = ConfigManager.create(this).target(ConfigUtil.class).saveDefaults().load();
     }
 
     public void registerCommands(){
-        getCommand("help").setExecutor(new HelpCMD());
         getCommand("rules").setExecutor(new RulesCMD());
         getCommand("appeal").setExecutor(new AppealCMD());
         getCommand("report").setExecutor(new ReportCMD());

@@ -8,13 +8,6 @@ description: Tazpvp main logic
 website: tazpvp.net
 depend: [WorldGuard]
 commands:
-  help:
-    usage: /help
-    description: shows a help message
-    aliases:
-      - help
-      - helpp
-    usage-message: /help [1-2]
   rules:
     usage: /rules
     description: shows the rules
