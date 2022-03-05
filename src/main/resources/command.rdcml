@@ -220,3 +220,9 @@ unmute Player:target {
     help /unmute <player>
     hook unmute
 }
+heal Player:target? {
+    user player
+    permission tazpvp.heal
+    help /heal [player]
+    hook heal
+}

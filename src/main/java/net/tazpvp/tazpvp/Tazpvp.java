@@ -92,7 +92,8 @@ public final class Tazpvp extends JavaPlugin {
                 new DiscordCMD(),
                 new WarnCMD(),
                 new MutechatCMD(),
-                new MuteAndUnmuteCMD());
+                new MuteAndUnmuteCMD(),
+                new HealCMD());
     }
 
     public void registerEvents(){
