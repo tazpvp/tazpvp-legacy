@@ -147,7 +147,7 @@ appeal {
     hook appeal
 }
 
-report Player:target string...:reason{
+report player:target string...:reason{
     help /report <player> <reason>
     user player
     hook report
@@ -197,7 +197,7 @@ discord {
     hook discord
 }
 
-warn Player:target string...:reason {
+warn player:target string...:reason {
     permission tazpvp.warn
     help /warn <player> <reason>
     user player
@@ -210,17 +210,17 @@ mutechat, unmutechat {
     hook mutechat
 }
 
-mute Player:target {
+mute player:target {
     permission tazpvp.mute
     help /mute <player>
     hook mute
 }
-unmute Player:target {
+unmute player:target {
     permission tazpvp.mute
     help /unmute <player>
     hook unmute
 }
-heal Player:target? {
+heal player:target? {
     user player
     permission tazpvp.heal
     help /heal [player]
