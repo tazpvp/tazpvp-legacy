@@ -7,7 +7,6 @@ import net.tazpvp.tazpvp.Commands.Admin.RegionCMD;
 import net.tazpvp.tazpvp.Commands.Admin.initCMD;
 import net.tazpvp.tazpvp.Commands.Admin.StatsCMD;
 import net.tazpvp.tazpvp.Commands.Player.*;
-import net.tazpvp.tazpvp.Config.ConfigUtil;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Managers.StatsManager;
@@ -54,7 +53,6 @@ public final class Tazpvp extends JavaPlugin {
         configFile = this.getConfig();
         initConfig();
 
-        registerCommands();
         registerEvents();
         registeRedLib();
 
@@ -82,20 +80,18 @@ public final class Tazpvp extends JavaPlugin {
                 new HelpCMD(),
                 new AppealCMD(),
                 new ReportCMD(),
-                new RulesCMD());
-        ConfigManager config = ConfigManager.create(this).target(ConfigUtil.class).saveDefaults().load();
-    }
-
-    public void registerCommands(){
-        getCommand("apply").setExecutor(new ApplyCMD());
-        getCommand("init").setExecutor(new initCMD());
-        getCommand("region").setExecutor(new RegionCMD());
+                new RulesCMD(),
+                new ApplyCMD(),
+                new initCMD(),
+                new RegionCMD(),
+                new SpawnCMD());
     }
 
     public void registerEvents(){
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
         getServer().getPluginManager().registerEvents(new LaunchPad(), this);
+        getServer().getPluginManager().registerEvents(new SpawnCMD(), this);
     }
 
     public void initConfig(){

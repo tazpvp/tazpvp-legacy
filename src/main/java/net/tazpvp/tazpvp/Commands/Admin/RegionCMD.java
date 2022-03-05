@@ -6,14 +6,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import redempt.redlib.commandmanager.CommandHook;
 
-public class RegionCMD implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (commandSender instanceof Player p && commandSender.hasPermission("tazspree.*")) {
-            World w = p.getWorld();
-            p.sendMessage(WorldGuard.getInstance().getPlatform().getRegionContainer().get((com.sk89q.worldedit.world.World) w).getRegions().toString() + "");
-        }
-        return true;
+public class RegionCMD {
+    @CommandHook("region")
+    public void region(Player p){
+        World w = p.getWorld();
+        p.sendMessage(WorldGuard.getInstance().getPlatform().getRegionContainer().get((com.sk89q.worldedit.world.World) w).getRegions().toString() + "");
     }
 }

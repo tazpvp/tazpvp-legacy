@@ -5,14 +5,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import redempt.redlib.commandmanager.CommandHook;
 
-public class initCMD implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (commandSender instanceof Player p && commandSender.hasPermission("tazpvp.*")) {
-            Tazpvp.statsManager.initPlayer(p);
-            p.sendMessage("Stats wurden erfolgreich initialisiert!");
-        }
-        return true;
+public class initCMD  {
+
+    @CommandHook("init")
+    public void hook(Player p){
+        Tazpvp.statsManager.initPlayer(p);
+        p.sendMessage("Stats wurden erfolgreich initialisiert!");
     }
 }
