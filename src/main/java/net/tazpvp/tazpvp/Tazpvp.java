@@ -81,12 +81,12 @@ public final class Tazpvp extends JavaPlugin {
                 new GuiCMD(),
                 new HelpCMD(),
                 new AppealCMD(),
-                new ReportCMD());
+                new ReportCMD(),
+                new RulesCMD());
         ConfigManager config = ConfigManager.create(this).target(ConfigUtil.class).saveDefaults().load();
     }
 
     public void registerCommands(){
-        getCommand("rules").setExecutor(new RulesCMD());
         getCommand("apply").setExecutor(new ApplyCMD());
         getCommand("init").setExecutor(new initCMD());
         getCommand("region").setExecutor(new RegionCMD());

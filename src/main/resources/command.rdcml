@@ -152,3 +152,9 @@ report Player:target string...:reason{
     user player
     hook report
 }
+
+rules, rule {
+    help /rules
+    user player
+    hook rules
+}
