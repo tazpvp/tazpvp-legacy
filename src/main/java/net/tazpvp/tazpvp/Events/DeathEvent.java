@@ -11,21 +11,31 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class DeathEvent implements Listener {
     @EventHandler
-    public void onEntityDamage(EntityDamageByEntityEvent e) {
-        if (e.getEntity() instanceof Player p && e.getDamager() instanceof Player d) {
+    public void onEntityDamage(EntityDamageEvent e) {
+        if (e.getEntity() instanceof Player p) {
             if (p.getHealth() - e.getFinalDamage() <= 0) {
                 e.setCancelled(true);
                 Location deadLoc = p.getLocation();
 
-                Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
+                if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should go here
+                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
+                        Player d = ((Player) ((EntityDamageByEntityEvent) e).getDamager());
+
+                        Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
+
+                        Tazpvp.statsManager.addKills(d, 1);
+                    } else { //this will run if a mob kills a player, etc. creeper boom
+                        Bukkit.broadcastMessage(ChatColor.RED + p.getName() + ChatColor.GOLD + " has died to a " + e.getCause().toString().toLowerCase());
+                    }
+                }
 
                 Tazpvp.statsManager.addDeaths(p, 1);
-                Tazpvp.statsManager.addKills(d, 1);
 
                 p.setGameMode(GameMode.SPECTATOR);
                 new BukkitRunnable() {
