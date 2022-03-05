@@ -59,7 +59,7 @@ public class StatsManager {
         }
     }
     public void initPlayer(OfflinePlayer player){
-        statsFile.set(player.getUniqueId().toString()+".points", 0);
+        statsFile.set(player.getUniqueId().toString()+".shards", 0);
         statsFile.set(player.getUniqueId().toString()+".exp", 0);
         statsFile.set(player.getUniqueId().toString()+".expLeft", 45);
         statsFile.set(player.getUniqueId().toString()+".level", 0);
@@ -80,15 +80,15 @@ public class StatsManager {
     public void addMoney(OfflinePlayer player, int money) {
         setMoney(player, (money+getMoney(player)));
     }
-    public int getPoints(OfflinePlayer player) {
-        return statsFile.getInt(player.getUniqueId().toString()+".points");
+    public int getShards(OfflinePlayer player) {
+        return statsFile.getInt(player.getUniqueId().toString()+".shards");
     }
-    public void setPoints(OfflinePlayer player, int points) {
-        statsFile.set(player.getUniqueId().toString()+".points", points);
+    public void setShards(OfflinePlayer player, int points) {
+        statsFile.set(player.getUniqueId().toString()+".shards", points);
         Tazpvp.getInstance().initScoreboard((Player) player);
     }
-    public void addPoints(OfflinePlayer player, int points) {
-        setPoints(player, points+getPoints(player));
+    public void addShards(OfflinePlayer player, int points) {
+        setShards(player, points+getShards(player));
     }
     public int getLevel(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".level");
@@ -110,7 +110,7 @@ public class StatsManager {
     public void checkLevelUp(OfflinePlayer player){
         if (Tazpvp.statsManager.getExp(player) >= Tazpvp.statsManager.getExpLeft(player)){
             Tazpvp.statsManager.setLevel(player, Tazpvp.statsManager.getLevel(player)+1);
-            Tazpvp.statsManager.addPoints(player, 1);
+            Tazpvp.statsManager.addShards(player, 1);
             Tazpvp.statsManager.addMoney(player, 60);
             Tazpvp.statsManager.setExpLeft(player, Tazpvp.statsManager.getExpLeft(player)*1.05);
             Tazpvp.statsManager.setExp(player, 0);

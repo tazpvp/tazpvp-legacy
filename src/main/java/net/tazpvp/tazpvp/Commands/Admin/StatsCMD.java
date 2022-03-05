@@ -12,7 +12,7 @@ public class StatsCMD {
 
     @CommandHook("point_add")
     public void pointAdd(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addPoints(target, amount);
+        Tazpvp.statsManager.addShards(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " points to " + ChatColor.RED + target.getName());
         } else {
@@ -21,7 +21,7 @@ public class StatsCMD {
     }
     @CommandHook("point_remove")
     public void pointRemove(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addPoints(target, -amount);
+        Tazpvp.statsManager.addShards(target, -amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " points from " + ChatColor.RED + target.getName());
         } else {
@@ -30,7 +30,7 @@ public class StatsCMD {
     }
     @CommandHook("point_set")
     public void pointSet(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.setPoints(target, amount);
+        Tazpvp.statsManager.setShards(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " points to " + ChatColor.RED + target.getName());
         } else {
@@ -39,7 +39,7 @@ public class StatsCMD {
     }
     @CommandHook("point_reset")
     public void pointReset(CommandSender sender, Player target) {
-        Tazpvp.statsManager.setPoints(target, 0);
+        Tazpvp.statsManager.setShards(target, 0);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s points");
         } else {
@@ -49,9 +49,9 @@ public class StatsCMD {
     @CommandHook("point_get")
     public void pointGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getPoints(target) + ChatColor.GOLD + "'s points");
+            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getShards(target) + ChatColor.GOLD + "'s points");
         } else {
-            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getPoints(target) + "'s points");
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getShards(target) + "'s points");
         }
     }
 

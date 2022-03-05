@@ -134,6 +134,7 @@ gui string:gui {
     user player
     hook gui
 }
+
 help int:page?(1) {
     help /help [page]
     user player
