@@ -15,15 +15,7 @@ public class MoveEvent implements Listener {
     public void onMove(PlayerMoveEvent e) {
         Block b = new Location(e.getPlayer().getWorld(), e.getPlayer().getLocation().getX(), e.getPlayer().getLocation().getY() - 1, e.getPlayer().getLocation().getZ()).getBlock();
         if (b.getType() == Material.WATER) {
-            for (int i = 0; i < e.getPlayer().getHealth(); i++) {
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        e.getPlayer().setHealth(e.getPlayer().getHealth() - 1);
-                    }
-                }.runTaskLater(Tazpvp.getInstance(), 1);
-            }
-            e.getPlayer().setHealth(0);
+            new DeathEvent().DeathFunction(e.getPlayer(), null);
         }
     }
 }
