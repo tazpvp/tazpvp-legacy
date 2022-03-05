@@ -37,24 +37,6 @@ stats {
             hook exp_get
         }
     }
-    expleft {
-        help /stats expleft <add|remove|set|reset|get> <player> [amount]
-        add player:target int:amount {
-            hook expleft_add
-        }
-        remove player:target int:amount {
-            hook expleft_remove
-        }
-        set player:target int:amount {
-            hook expleft_set
-        }
-        reset player:target {
-            hook expleft_reset
-        }
-        get player:target {
-            hook expleft_get
-        }
-    }
     level {
         help /stats level <add|remove|set|reset|get> <player> [amount]
         add player:target int:amount {
