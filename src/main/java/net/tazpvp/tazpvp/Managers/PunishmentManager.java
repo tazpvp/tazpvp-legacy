@@ -40,11 +40,9 @@ public class PunishmentManager {
 
     public void removeBan(OfflinePlayer player){
         punishmentFile.set("bans." + player.getUniqueId().toString(), null);
-
     }
     public void removeMute(OfflinePlayer player) {
         punishmentFile.set("mutes." + player.getUniqueId().toString(), null);
-
     }
 
     public boolean isBanned(OfflinePlayer player) {

@@ -17,6 +17,14 @@ public class MutechatCMD {
                 Tazpvp.chatMuted = true;
                 p.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " muted " + ChatColor.GOLD + "chat!");
             }
+        } else {
+            if (Tazpvp.chatMuted) {
+                Tazpvp.chatMuted = false;
+                sender.sendMessage("Successfully unmuted chat!");
+            } else {
+                Tazpvp.chatMuted = true;
+                sender.sendMessage("Successfully muted chat!");
+            }
         }
     }
 }
