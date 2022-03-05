@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.ChatEvent;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
+import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.NPC.NPC;
 import net.tazpvp.tazpvp.Utils.MathUtils;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
+    public static PunishmentManager punishmentManager;
 
     public static ArrayList<NPC> npcs = new ArrayList<>();
 
@@ -47,6 +49,7 @@ public final class Tazpvp extends JavaPlugin {
         Bukkit.getLogger().info(" Tazspree has been enabled!");
 
         statsManager = new StatsManager();
+        punishmentManager = new PunishmentManager();
 
         configFile = this.getConfig();
         initConfig();
@@ -84,7 +87,8 @@ public final class Tazpvp extends JavaPlugin {
                 new RegionCMD(),
                 new SpawnCMD(),
                 new AnnounceCMD(),
-                new DiscordCMD());
+                new DiscordCMD(),
+                new WarnCMD());
     }
 
     public void registerEvents(){
