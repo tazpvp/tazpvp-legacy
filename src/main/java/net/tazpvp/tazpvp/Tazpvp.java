@@ -4,26 +4,27 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
+import net.tazpvp.tazpvp.Enchantments.TelekinesisENCH;
 import net.tazpvp.tazpvp.Events.ChatEvent;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
-import net.tazpvp.tazpvp.NPC.NPC;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
-import net.tazpvp.tazpvp.launchpad.LaunchPad;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentWrapper;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
 import redempt.redlib.commandmanager.ArgType;
 import redempt.redlib.commandmanager.CommandParser;
-import redempt.redlib.config.ConfigManager;
-import redempt.redlib.inventorygui.InventoryGUI;
+import redempt.redlib.enchants.CustomEnchant;
+import redempt.redlib.enchants.EnchantRegistry;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -33,7 +34,6 @@ public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static PunishmentManager punishmentManager;
 
-    public static ArrayList<NPC> npcs = new ArrayList<>();
 
     public static Permission permissions;
     public static Chat chat;
@@ -73,10 +73,13 @@ public final class Tazpvp extends JavaPlugin {
         } else {
             System.out.println("Vault not found!");
         }
+
+
     }
 
 
     public void registeRedLib(){
+        new EnchantRegistry(this).registerAll(this);
         new CommandParser(this.getResource("command.rdcml")).parse().register("tazpvp", this,
                 new StatsCMD(),
                 new GuiCMD(),
@@ -93,13 +96,13 @@ public final class Tazpvp extends JavaPlugin {
                 new WarnCMD(),
                 new MutechatCMD(),
                 new MuteAndUnmuteCMD(),
-                new HealCMD());
+                new HealCMD(),
+                new enchCMD());
     }
 
     public void registerEvents(){
         getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
-        getServer().getPluginManager().registerEvents(new LaunchPad(), this);
         getServer().getPluginManager().registerEvents(new SpawnCMD(), this);
         getServer().getPluginManager().registerEvents(new ChatEvent(), this);
     }

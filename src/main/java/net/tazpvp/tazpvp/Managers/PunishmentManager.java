@@ -29,9 +29,7 @@ public class PunishmentManager {
 
     public void initBan(OfflinePlayer player, boolean permanent, long duration){
         punishmentFile.set("bans." + player.getUniqueId().toString()+".time", new Date().getTime());
-        punishmentFile.set("bans." + player.getUniqueId().toString()+".duration", duration);
         punishmentFile.set("bans." + player.getUniqueId().toString()+".perm", permanent);
-
     }
     public void initMute(OfflinePlayer player, boolean permanent){
         punishmentFile.set("mutes." + player.getUniqueId().toString()+".time", new Date().getTime());
@@ -54,9 +52,6 @@ public class PunishmentManager {
 
     public long getBanTime(OfflinePlayer player) {
         return punishmentFile.getLong("bans." + player.getUniqueId().toString() + ".time");
-    }
-    public long getBanDuration(OfflinePlayer player) {
-        return punishmentFile.getLong("bans." + player.getUniqueId().toString() + ".duration");
     }
     public boolean isPermanentBan(OfflinePlayer player) {
         return punishmentFile.getBoolean("bans." + player.getUniqueId().toString() + ".perm");

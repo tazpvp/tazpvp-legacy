@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.launchpad;
+package net.tazpvp.tazpvp.unused.launchpad;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

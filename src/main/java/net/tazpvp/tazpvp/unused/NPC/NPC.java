@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.NPC;
+package net.tazpvp.tazpvp.unused.NPC;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;

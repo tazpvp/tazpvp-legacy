@@ -226,3 +226,9 @@ heal player:target? {
     help /heal [player]
     hook heal
 }
+ench string:enchantment int:level?(1) {
+    user player
+    permission tazpvp.enchant
+    help /ench <enchantment> [level]
+    hook enchant
+}

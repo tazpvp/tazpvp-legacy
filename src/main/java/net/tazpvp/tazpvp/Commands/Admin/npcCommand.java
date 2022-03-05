@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
-import net.tazpvp.tazpvp.NPC.NPC;
+import net.tazpvp.tazpvp.unused.NPC.NPC;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
