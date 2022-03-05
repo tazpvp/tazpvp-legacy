@@ -100,7 +100,6 @@ public final class Tazpvp extends JavaPlugin {
                 new WarnCMD(),
                 new MutechatCMD(),
                 new MuteAndUnmuteCMD(),
-                new HealCMD(),
                 new enchCMD(),
                 new WorldCMD(),
                 new ADCMD());
