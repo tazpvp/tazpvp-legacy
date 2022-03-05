@@ -114,6 +114,11 @@ public final class Tazpvp extends JavaPlugin {
         // Plugin shutdown logic
 
         Bukkit.getLogger().info(" Tazspree has been disabled!");
+
+        this.saveConfig();
+
+        statsManager.saveStats();
+        punishmentManager.savePunishments();
     }
 
     public void initScoreboard(Player player) {
