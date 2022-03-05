@@ -42,6 +42,8 @@ public final class Tazpvp extends JavaPlugin {
 
     public static Tazpvp instance;
 
+    public static boolean chatMuted = false;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -88,7 +90,8 @@ public final class Tazpvp extends JavaPlugin {
                 new SpawnCMD(),
                 new AnnounceCMD(),
                 new DiscordCMD(),
-                new WarnCMD());
+                new WarnCMD(),
+                new MutechatCMD());
     }
 
     public void registerEvents(){

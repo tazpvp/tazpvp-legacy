@@ -20,6 +20,13 @@ public class ChatEvent implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
         if (e.getPlayer().isOp()) return;
+        Player p = e.getPlayer();
+
+        if (Tazpvp.chatMuted){
+            e.setCancelled(true);
+            p.sendMessage(ChatColor.RED + "Chat is currently muted.");
+            return;
+        }
         List<String> badWord = new ArrayList<>();
         badWord.add("fuck");
         badWord.add("shit");
@@ -47,25 +54,19 @@ public class ChatEvent implements Listener {
                 e.getPlayer().sendMessage(ChatColor.GOLD + "You cannot say: " + ChatColor.RED + badWord.get(i));
             }
         }
-    }
 
-    @EventHandler
-    public void onChatSend(AsyncPlayerChatEvent e) {
-        if (e.getPlayer().isOp()) return;
-        Player p = e.getPlayer();
-        String message = e.getMessage();
         if (cooldown.contains(p)) {
             e.setCancelled(true);
             p.sendMessage(ChatColor.RED + "Please don't spam the chat!");
         }
 
         if (previousMessages.containsKey(p)){
-            if (message.equalsIgnoreCase(previousMessages.get(p))) {
+            if (msg.equalsIgnoreCase(previousMessages.get(p))) {
                 e.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "You cannot repeat the same message!");
             }
         }
-        previousMessages.put(p, message);
+        previousMessages.put(p, msg);
         cooldown.add(p);
         new BukkitRunnable() {
             @Override
@@ -73,5 +74,6 @@ public class ChatEvent implements Listener {
                 cooldown.remove(p);
             }
         }.runTaskLater(Tazpvp.getInstance(), 10);
+
     }
 }

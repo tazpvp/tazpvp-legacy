@@ -203,3 +203,9 @@ warn Player:target string...:reason {
     user player
     hook warn
 }
+
+mutechat {
+    permission tazpvp.mutechat
+    help /mutechat
+    hook mutechat
+}
