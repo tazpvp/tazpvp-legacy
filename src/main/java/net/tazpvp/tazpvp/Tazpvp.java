@@ -8,6 +8,7 @@ import net.tazpvp.tazpvp.Enchantments.TelekinesisENCH;
 import net.tazpvp.tazpvp.Events.ChatEvent;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
+import net.tazpvp.tazpvp.Events.MoveEvent;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.Utils.MathUtils;
@@ -105,6 +106,7 @@ public final class Tazpvp extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
         getServer().getPluginManager().registerEvents(new SpawnCMD(), this);
         getServer().getPluginManager().registerEvents(new ChatEvent(), this);
+        getServer().getPluginManager().registerEvents(new MoveEvent(), this);
     }
 
     public void initConfig(){
