@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 
 import net.tazpvp.tazpvp.Tazpvp;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -16,7 +17,7 @@ public class MoveEvent implements Listener {
     public void onMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         Block b = new Location(e.getPlayer().getWorld(), e.getPlayer().getLocation().getX(), e.getPlayer().getLocation().getY() - 1, e.getPlayer().getLocation().getZ()).getBlock();
-        if (b.getType() == Material.WATER) {
+        if (b.getType() == Material.WATER && p.getGameMode() == GameMode.SURVIVAL) {
             new DeathEvent().DeathFunction(e.getPlayer(), null);
         }
     }
