@@ -153,7 +153,7 @@ report player:target string...:reason{
     hook report
 }
 
-rules, rule {
+rules,rule {
     help /rules
     user player
     hook rules
@@ -204,7 +204,7 @@ warn player:target string...:reason {
     hook warn
 }
 
-mutechat, unmutechat {
+mutechat,unmutechat {
     permission tazpvp.mutechat
     help /mutechat
     hook mutechat
