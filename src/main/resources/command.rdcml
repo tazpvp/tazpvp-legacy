@@ -128,3 +128,9 @@ stats {
         }
     }
 }
+gui String:gui {
+    permission tazpvp.admin
+    help /gui [guiname]
+    user player
+    hook gui
+}
