@@ -128,7 +128,7 @@ stats {
         }
     }
 }
-gui String:gui {
+gui string:gui {
     permission tazpvp.admin
     help /gui [guiname]
     user player
@@ -139,4 +139,16 @@ help int:page?(1) {
     help /help [page]
     user player
     hook help
+}
+
+appeal {
+    help /appeal
+    user player
+    hook appeal
+}
+
+report Player:target string...:reason{
+    help /report <player> <reason>
+    user player
+    hook report
 }
