@@ -4,6 +4,7 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
+import net.tazpvp.tazpvp.Events.ChatEvent;
 import net.tazpvp.tazpvp.Events.DeathEvent;
 import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Managers.StatsManager;
@@ -82,7 +83,8 @@ public final class Tazpvp extends JavaPlugin {
                 new initCMD(),
                 new RegionCMD(),
                 new SpawnCMD(),
-                new AnnounceCMD());
+                new AnnounceCMD(),
+                new DiscordCMD());
     }
 
     public void registerEvents(){
@@ -90,6 +92,7 @@ public final class Tazpvp extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinEvent(), this);
         getServer().getPluginManager().registerEvents(new LaunchPad(), this);
         getServer().getPluginManager().registerEvents(new SpawnCMD(), this);
+        getServer().getPluginManager().registerEvents(new ChatEvent(), this);
     }
 
     public void initConfig(){

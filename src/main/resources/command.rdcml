@@ -190,3 +190,16 @@ announce string...:message {
     help /announce <message>
     hook announce
 }
+
+discord {
+    help /discord
+    user player
+    hook discord
+}
+
+warn Player:target string...:reason {
+    permission tazpvp.warn
+    help /warn <player> <reason>
+    user player
+    hook warn
+}
