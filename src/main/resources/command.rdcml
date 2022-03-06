@@ -220,12 +220,6 @@ unmute player:target {
     help /unmute <player>
     hook unmute
 }
-heal player:target? {
-    user player
-    permission tazpvp.heal
-    help /heal [player]
-    hook heal
-}
 ench string:enchantment int:level?(1) {
     user player
     permission tazpvp.enchant
