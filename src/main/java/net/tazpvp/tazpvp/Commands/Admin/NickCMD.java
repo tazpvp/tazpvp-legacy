@@ -12,8 +12,14 @@ public class NickCMD {
 
     @CommandHook("nick")
     public void nick(Player p, Player target, String nickname) {
-        target.setDisplayName(nickname);
-        target.setPlayerListName(nickname);
-        target.sendMessage(ChatColor.GOLD + "Your nickname has been set to " + ChatColor.RED + nickname);
+        if (nickname.equalsIgnoreCase("reset")) {
+            target.setDisplayName(target.getName());
+            target.setPlayerListName(target.getName());
+            p.sendMessage(ChatColor.GOLD + "Nickname " + ChatColor.RED + "reset.");
+        } else {
+            target.setDisplayName(nickname);
+            target.setPlayerListName(nickname);
+            target.sendMessage(ChatColor.GOLD + "Your nickname has been set to " + ChatColor.RED + nickname);
+        }
     }
 }
