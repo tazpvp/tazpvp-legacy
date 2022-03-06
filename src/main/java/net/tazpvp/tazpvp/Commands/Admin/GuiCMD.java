@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.GUI.TestGUI;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -10,6 +11,8 @@ public class GuiCMD {
     public void gui(Player p, String gui) {
         if (gui.equalsIgnoreCase("test")) {
             new TestGUI(p);
+        } else if (gui.equalsIgnoreCase("shop")) {
+            new ShopGUI(p);
         }
     }
 }
