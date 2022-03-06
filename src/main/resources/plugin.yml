@@ -34,9 +34,3 @@ commands:
     usage: /region
   init:
     usage: /init
-  nick:
-    usage: /nick <nickname|player> [nickname]
-    description: cnickanme
-    permission: tazpvp.nick
-    aliases:
-      - nickname
