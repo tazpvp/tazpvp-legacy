@@ -25,7 +25,7 @@ public class MoveEvent implements Listener {
 
         Location raidus = new Location(Bukkit.getWorld("arena"), -168, 48, -18);
         if (p.getLocation().distance(raidus) < 4) {
-            p.setVelocity(new Vector(0, 2, 2));
+            p.setVelocity(new Vector(0, 1.5, 3));
         }
     }
 }
