@@ -102,7 +102,8 @@ public final class Tazpvp extends JavaPlugin {
                 new MuteAndUnmuteCMD(),
                 new enchCMD(),
                 new WorldCMD(),
-                new ADCMD());
+                new ADCMD(),
+                new NickCMD());
     }
 
     public void registerEvents(){

@@ -248,3 +248,8 @@ ad{
     user player
     hook ad
 }
+nick,nickname player:target?(context self) string:nickname {
+    help /nick [player] <nickname>
+    user player
+    hook nick
+}
