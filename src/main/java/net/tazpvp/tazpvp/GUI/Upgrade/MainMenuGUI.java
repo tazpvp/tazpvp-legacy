@@ -23,7 +23,16 @@ public class MainMenuGUI {
             //sword menu gui
         });
         gui.addButton(10, sword);
-        //other buttons will go here. I'll add more later im tired.
+        ItemButton armor = ItemButton.create(new ItemStack(Material.DIAMOND_CHESTPLATE), e -> {
+            Player p = (Player) e.getWhoClicked();
+            p.closeInventory();
+            //armor menu gui
+        });
+        gui.addButton(12, armor);
+        //other buttons will go here. I'll add more later im tired. -ntdi
+        // lol whoever commented this is a fucking dumbass ^
+        // oh crap that was me
+        // well this is awkward
 
         gui.update();
     }
