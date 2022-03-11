@@ -14,7 +14,7 @@ public class GenerateEvent {
         new BukkitRunnable(){
             @Override
             public void run() {
-                world.dropItem(new Location(Bukkit.getWorld("arena"), 0, 0, 0, 0, 0))
+                //world.dropItem(new Location(Bukkit.getWorld("arena"), 0, 0, 0, 0, 0));
             }
         }.runTaskTimer(plugin, 20*60, 20*30);
 
