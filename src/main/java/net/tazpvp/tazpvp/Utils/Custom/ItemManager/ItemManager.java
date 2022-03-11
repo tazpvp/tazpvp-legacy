@@ -14,15 +14,15 @@ public class ItemManager {
         items.add(new TempItem());
     }
 
-    public static void givePlayerItem(Player player, Items item, int count) {
-        player.getInventory().addItem(createItem(item.getItem().getType(), count, item.getName()));
-    }
-
-    public static ItemStack createItem(Material item, int count, String name) {
-        ItemStack itemStack = new ItemStack(item, count);
-        ItemMeta meta = itemStack.getItemMeta();
-        meta.setDisplayName(name);
-        itemStack.setItemMeta(meta);
-        return itemStack;
-    }
+//    public static void givePlayerItem(Player player, Items item, int count) {
+//        player.getInventory().addItem(createItem(item.getItem().getType(), count, item.getName()));
+//    }
+//
+//    public static ItemStack createItem(Material item, int count, String name) {
+//        ItemStack itemStack = new ItemStack(item, count);
+//        ItemMeta meta = itemStack.getItemMeta();
+//        meta.setDisplayName(name);
+//        itemStack.setItemMeta(meta);
+//        return itemStack;
+//    }
 }

@@ -6,17 +6,19 @@ import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 import javax.annotation.Nullable;
 
@@ -35,16 +37,31 @@ public class DeathEvent implements Listener {
                 }
             } else {
                 if (e instanceof EntityDamageByEntityEvent) {
+                    NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
+                    ItemStack is = p.getInventory().getItemInMainHand();
+                    ItemMeta itemMeta = is.hasItemMeta() ? is.getItemMeta() : Bukkit.getItemFactory().getItemMeta(is.getType());
+                    PersistentDataContainer container = itemMeta.getPersistentDataContainer();
+                    int value = 0;
+                    if (container.has(key, PersistentDataType.INTEGER)) {
+                        value = container.get(key, PersistentDataType.INTEGER);
+                    }
                     for (Items item : Items.values()) {
-                        if (item.getName().equals(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName())) {
+                        if (value == 1) {
                             for(Item i : ItemManager.items) {
                                 if (i.enumeration.equals(item)) {
                                     i.execute(p, p.getInventory().getItemInMainHand(), (EntityDamageByEntityEvent) e);
+                                    Bukkit.getLogger().info("Executed " + i.enumeration.getName());
                                     return;
+                                } else {
+                                    Bukkit.getLogger().info("3 " + i.enumeration.getName());
                                 }
                             }
+                        } else {
+                            Bukkit.getLogger().info("2 " + item.getName());
                         }
                     }
+                } else {
+                    Bukkit.getLogger().info("1");
                 }
             }
         }

@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemBuilder;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.temp;
@@ -22,7 +23,7 @@ public class ItemsCMD {
     @CommandHook("items_give")
     public void itemsGive(Player p){
         for (Items item : Items.values()){
-            ItemManager.givePlayerItem(p, item, 1);
+            ItemBuilder.giveItem(p, Items.TEMAPLTE, 1);
         }
     }
 }
