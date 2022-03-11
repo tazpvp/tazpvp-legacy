@@ -11,6 +11,7 @@ import net.tazpvp.tazpvp.Events.JoinEvent;
 import net.tazpvp.tazpvp.Events.MoveEvent;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
+import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
@@ -25,6 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
 import redempt.redlib.commandmanager.ArgType;
 import redempt.redlib.commandmanager.CommandParser;
+import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.CustomEnchant;
 import redempt.redlib.enchants.EnchantRegistry;
 
@@ -104,6 +106,8 @@ public final class Tazpvp extends JavaPlugin {
                 new WorldCMD(),
                 new ADCMD(),
                 new NickCMD());
+
+        ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
 
     public void registerEvents(){
