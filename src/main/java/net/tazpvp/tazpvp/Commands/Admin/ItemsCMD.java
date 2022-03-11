@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.temp;
 import org.bukkit.entity.Player;
@@ -17,5 +18,11 @@ public class ItemsCMD {
     @CommandHook("items_remove")
     public void itemsRemove(Player p){
         temp.lock(p, Items.TEMAPLTE);
+    }
+    @CommandHook("items_give")
+    public void itemsGive(Player p){
+        for (Items item : Items.values()){
+            ItemManager.givePlayerItem(p, item, 1);
+        }
     }
 }
