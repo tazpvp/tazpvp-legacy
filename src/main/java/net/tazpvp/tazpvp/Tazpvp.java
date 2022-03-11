@@ -12,6 +12,7 @@ import net.tazpvp.tazpvp.Events.MoveEvent;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
@@ -62,6 +63,7 @@ public final class Tazpvp extends JavaPlugin {
 
         registerEvents();
         registeRedLib();
+        ItemManager.init();
 
         new TipsUtils().Text(this);
 

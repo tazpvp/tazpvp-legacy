@@ -1,6 +1,9 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Item;
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.Bukkit;
@@ -28,6 +31,19 @@ public class DeathEvent implements Listener {
                         DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager());
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null);
+                    }
+                }
+            } else {
+                if (e instanceof EntityDamageByEntityEvent) {
+                    for (Items item : Items.values()) {
+                        if (item.getName().equals(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName())) {
+                            for(Item i : ItemManager.items) {
+                                if (i.enumeration.equals(item)) {
+                                    i.execute(p, p.getInventory().getItemInMainHand(), (EntityDamageByEntityEvent) e);
+                                    return;
+                                }
+                            }
+                        }
                     }
                 }
             }
