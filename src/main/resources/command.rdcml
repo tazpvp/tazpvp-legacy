@@ -248,3 +248,19 @@ nick,nickname player:target?(context self) string:nickname? {
     hook nick
     permission tazpvp.nick
 }
+items {
+    help items command yes
+    user player
+    list {
+        hook items_list
+        help list items
+    }
+    add {
+        help adds the item
+        hook items_add
+    }
+    remove {
+        help removes the item
+        hook items_remove
+    }
+}

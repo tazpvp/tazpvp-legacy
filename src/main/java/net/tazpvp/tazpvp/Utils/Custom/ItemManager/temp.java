@@ -24,4 +24,9 @@ public class temp {
         items.add(item);
         hashas.put(p.getUniqueId(), items);
     }
+    public static void lock(Player p, Items item) {
+        ArrayList<Items> items = hashas.get(p.getUniqueId());
+        items.remove(item);
+        hashas.put(p.getUniqueId(), items);
+    }
 }
