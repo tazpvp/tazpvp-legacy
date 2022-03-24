@@ -269,3 +269,23 @@ items {
         hook items_give
     }
 }
+bounty {
+    help set a bounty on a player
+    user player
+    put player:target int:amount {
+        hook bounty_put
+    }
+    get player:target {
+        hook bounty_get
+    }
+    remove player:target {
+        hook bounty_remove
+    }
+    forceremove player:target {
+        hook bounty_forceremove
+        permission tazpvp.staff.bounty
+    }
+    list {
+        hook bounty_list
+    }
+}

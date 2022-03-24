@@ -34,6 +34,9 @@ import redempt.redlib.enchants.EnchantRegistry;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.WeakHashMap;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
@@ -48,6 +51,8 @@ public final class Tazpvp extends JavaPlugin {
     public static Tazpvp instance;
 
     public static boolean chatMuted = false;
+
+    public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
 
     @Override
     public void onEnable() {
@@ -108,7 +113,8 @@ public final class Tazpvp extends JavaPlugin {
                 new WorldCMD(),
                 new ADCMD(),
                 new NickCMD(),
-                new ItemsCMD());
+                new ItemsCMD(),
+                new BountyCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
