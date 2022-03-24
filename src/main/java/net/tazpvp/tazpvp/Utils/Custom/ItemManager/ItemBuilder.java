@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Utils.Custom.ItemManager;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -16,13 +17,16 @@ public class ItemBuilder {
         String name = item.getName();
         String lore = item.getLore();
         List<String> loree = new ArrayList<>();
-        ItemStack itemStack = item.getItem();
+        Material material = item.getMaterial();
         NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
+
+        ItemStack itemStack = new ItemStack(material);
 
         itemStack.setAmount(amount);
 
         ItemMeta meta = itemStack.hasItemMeta() ? itemStack.getItemMeta() : Bukkit.getItemFactory().getItemMeta(itemStack.getType());
 
+        assert meta != null;
         meta.setDisplayName(name);
         loree.add(lore);
         meta.setLore(loree);
