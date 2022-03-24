@@ -13,16 +13,16 @@ public class ItemsCMD {
     }
     @CommandHook("items_add")
     public void itemsAdd(Player p){
-        temp.unlock(p, Items.TEMAPLTE);
+        temp.unlock(p, Items.TEMPLATE);
     }
     @CommandHook("items_remove")
     public void itemsRemove(Player p){
-        temp.lock(p, Items.TEMAPLTE);
+        temp.lock(p, Items.TEMPLATE);
     }
     @CommandHook("items_give")
     public void itemsGive(Player p){
         for (Items item : Items.values()){
-            ItemBuilder.giveItem(p, Items.TEMAPLTE, 1);
+            ItemBuilder.giveItem(p, Items.TEMPLATE, 1);
         }
     }
 }

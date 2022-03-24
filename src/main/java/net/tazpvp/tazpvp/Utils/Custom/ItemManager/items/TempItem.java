@@ -8,13 +8,13 @@ import org.bukkit.inventory.ItemStack;
 
 public class TempItem extends SwordItem {
     public TempItem() {
-        super(Items.TEMAPLTE);
+        super(Items.TEMPLATE);
     }
 
     @Override
     public boolean execute(Player p, String name, EntityDamageByEntityEvent e) {
         if (super.execute(p, name, e)) {
-            e.setDamage(Items.TEMAPLTE.getDamage());
+            e.setDamage(Items.TEMPLATE.getDamage());
             return true;
         }
         return false;
