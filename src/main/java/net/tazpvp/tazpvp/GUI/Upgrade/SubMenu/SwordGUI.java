@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.Upgrade.SubMenu;
 
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,6 +17,16 @@ public class SwordGUI {
 
     public void setitems(){
         gui.fill(1, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        for (Items item : Items.values()) {
+            String name = item.getName();
+            String lore = item.getLore();
+            Material material = item.getMaterial();
+
+
+
+        }
+
+
 
         gui.update();
     }
