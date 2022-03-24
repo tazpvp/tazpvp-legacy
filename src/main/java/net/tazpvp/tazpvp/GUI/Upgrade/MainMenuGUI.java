@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.Upgrade;
 
+import net.tazpvp.tazpvp.GUI.Upgrade.SubMenu.SwordGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,7 +21,8 @@ public class MainMenuGUI {
         ItemButton sword = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
-            //sword menu gui
+
+            new SwordGUI(p);
         });
         gui.addButton(10, sword);
         ItemButton armor = ItemButton.create(new ItemStack(Material.DIAMOND_CHESTPLATE), e -> {

@@ -8,7 +8,7 @@ import redempt.redlib.commandmanager.CommandHook;
 import redempt.redlib.enchants.CustomEnchant;
 import redempt.redlib.enchants.EnchantRegistry;
 
-public class enchCMD {
+public class EnchantCMD {
     @CommandHook("enchant")
     public void ench(Player p, String enchantName, int level) {
         ItemStack item = p.getInventory().getItemInMainHand();
