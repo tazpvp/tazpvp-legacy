@@ -185,12 +185,6 @@ spawn {
     hook spawn
 }
 
-announce string...:message {
-    permission tazpvp.announce
-    help /announce <message>
-    hook announce
-}
-
 discord {
     help /discord
     user player
