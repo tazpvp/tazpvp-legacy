@@ -9,7 +9,7 @@ import redempt.redlib.enchants.CustomEnchant;
 import redempt.redlib.enchants.EnchantRegistry;
 
 public class EnchantCMD {
-    @CommandHook("ench")
+    @CommandHook("enchant")
     public void ench(Player p, String enchantName, int level) {
         ItemStack item = p.getInventory().getItemInMainHand();
         if (item.getType() != Material.AIR) {
