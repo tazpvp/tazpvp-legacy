@@ -14,7 +14,7 @@ public class temp {
         ArrayList<Items> items = hashas.get(uuid);
         for (Items item : items) {
             p.sendMessage(item.getName());
-            p.sendMessage(item.getItem().toString());
+            p.sendMessage(item.getMaterial().toString());
         }
     }
 
