@@ -24,6 +24,6 @@ public abstract class Item implements Listener {
         this.enumeration = item;
     }
 
-    public abstract boolean execute(Player p, Material material, EntityDamageByEntityEvent e);
+    public abstract boolean execute(Player p, String name, EntityDamageByEntityEvent e);
 
 }

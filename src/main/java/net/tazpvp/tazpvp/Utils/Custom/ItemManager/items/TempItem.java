@@ -12,8 +12,8 @@ public class TempItem extends SwordItem {
     }
 
     @Override
-    public boolean execute(Player p, ItemStack itemstack, EntityDamageByEntityEvent e) {
-        if (super.execute(p, itemstack, e)) {
+    public boolean execute(Player p, String name, EntityDamageByEntityEvent e) {
+        if (super.execute(p, name, e)) {
             e.setDamage(Items.TEMAPLTE.getDamage());
             return true;
         }

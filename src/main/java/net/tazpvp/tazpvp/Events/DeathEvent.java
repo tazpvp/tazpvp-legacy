@@ -51,7 +51,7 @@ public class DeathEvent implements Listener {
                         if (value == 1) {
                             for(Item i : ItemManager.items) {
                                 if (i.enumeration.equals(item)) {
-                                    i.execute(p, p.getInventory().getItemInMainHand().getType(), (EntityDamageByEntityEvent) e);
+                                    i.execute(p, p.getInventory().getItemInMainHand().getItemMeta().getDisplayName(), (EntityDamageByEntityEvent) e);
                                     Bukkit.getLogger().info("Executed " + i.enumeration.getName());
                                     return;
                                 } else {

@@ -9,7 +9,7 @@ public class SwordItem extends Item {
         super(item);
     }
     @Override
-    public boolean execute(Player p, ItemStack itemStack, EntityDamageByEntityEvent e) {
+    public boolean execute(Player p, String name, EntityDamageByEntityEvent e) {
         return true;
     }
 }
