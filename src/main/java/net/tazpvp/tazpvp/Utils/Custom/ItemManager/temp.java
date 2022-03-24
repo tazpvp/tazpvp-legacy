@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Custom.ItemManager;
 
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;

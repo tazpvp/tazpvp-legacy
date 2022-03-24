@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Custom.ItemManager.items;
 
-import net.minecraft.network.chat.ChatClickable;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.SwordItem;
 import org.bukkit.entity.Player;

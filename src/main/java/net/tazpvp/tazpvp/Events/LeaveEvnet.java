@@ -1,11 +1,8 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.net.http.WebSocket;
 
 public class LeaveEvnet implements Listener {
     @EventHandler

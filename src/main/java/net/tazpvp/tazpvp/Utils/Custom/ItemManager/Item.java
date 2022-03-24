@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Custom.ItemManager;
 
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;

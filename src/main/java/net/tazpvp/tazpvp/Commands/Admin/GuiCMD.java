@@ -2,7 +2,6 @@ package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.GUI.TestGUI;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
