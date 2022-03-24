@@ -176,7 +176,7 @@ region {
     permission tazpvp.admin
     help /init
     user player
-    hook init
+    hook region
 }
 
 spawn {
