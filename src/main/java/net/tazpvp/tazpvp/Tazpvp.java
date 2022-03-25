@@ -118,6 +118,7 @@ public final class Tazpvp extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         getServer().getPluginManager().registerEvents(new MoveEvent(), this);
         getServer().getPluginManager().registerEvents(new LeaveEvnet(), this);
+        getServer().getPluginManager().registerEvents(new PlaceBlockEvent(), this);
     }
 
     public void initConfig(){

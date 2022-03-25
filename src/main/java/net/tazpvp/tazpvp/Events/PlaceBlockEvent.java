@@ -12,7 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BlockPlaceEvent implements Listener {
+public class PlaceBlockEvent implements Listener {
     private final Random rand = new Random();
 
     @EventHandler
