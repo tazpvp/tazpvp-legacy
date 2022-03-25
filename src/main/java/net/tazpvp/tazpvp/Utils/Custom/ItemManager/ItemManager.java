@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Utils.Custom.ItemManager;
 
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.items.Temp2Item;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.items.TempItem;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ public class ItemManager {
     public static final ArrayList<Item> items = new ArrayList<>();
     public static void init() {
         items.add(new TempItem());
-
+        items.add(new Temp2Item());
     }
 
 //    public static void givePlayerItem(Player player, Items item, int count) {
