@@ -17,7 +17,7 @@ public class MainMenuGUI {
     }
 
     public void setitems(){
-        gui.fill(1, 27, new ItemStack(Material.BLUE_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemStack(Material.BLUE_STAINED_GLASS_PANE));
         ItemButton sword = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
