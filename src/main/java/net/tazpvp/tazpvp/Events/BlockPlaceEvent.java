@@ -45,7 +45,7 @@ public class BlockPlaceEvent implements Listener {
                             public void run() {
                                 event.getBlockPlaced().setType(Material.AIR);
                             }
-                        }.runTaskLater(Tazpvp.getInstance(), 200L);
+                        }.runTaskLater(Tazpvp.getInstance(), timer);
                     } else {
                         event.setCancelled(true);
                     }
