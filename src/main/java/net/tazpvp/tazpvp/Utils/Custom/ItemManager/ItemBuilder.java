@@ -18,21 +18,13 @@ public class ItemBuilder {
         String lore = item.getLore();
         List<String> loree = new ArrayList<>();
         Material material = item.getMaterial();
-        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
 
-        ItemStack itemStack = new ItemStack(material);
+        //NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
 
-        itemStack.setAmount(amount);
+        //meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, 1);
 
-        ItemMeta meta = itemStack.hasItemMeta() ? itemStack.getItemMeta() : Bukkit.getItemFactory().getItemMeta(itemStack.getType());
+        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(lore);
 
-        assert meta != null;
-        meta.setDisplayName(name);
-        loree.add(lore);
-        meta.setLore(loree);
-        meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, 1);
-
-        itemStack.setItemMeta(meta);
-        p.getInventory().addItem(itemStack);
+        p.getInventory().addItem(itemz);
     }
 }
