@@ -1,5 +1,7 @@
 package net.tazpvp.tazpvp.Events;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -11,7 +13,7 @@ public class GenerateEvent {
         new BukkitRunnable(){
             @Override
             public void run() {
-                //world.dropItem(new Location(Bukkit.getWorld("arena"), 0, 0, 0, 0, 0));
+                Bukkit.getWorld("arena").dropItemNaturally(new Location(Bukkit.getWorld("arena"), 0, 0,0), shard);
             }
         }.runTaskTimer(plugin, 20*60, 20*30);
 

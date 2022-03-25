@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scoreboard.Scoreboard;
 
 public class JoinEvent implements Listener {
     @EventHandler
@@ -23,5 +24,10 @@ public class JoinEvent implements Listener {
             p.sendTitle(ChatColor.GOLD + "Welcome to " + ChatColor.YELLOW + "TazSpree", ChatColor.GOLD + "Type /help to get started", 10, 100, 10);
         }
         p.teleport(spawn);
+
+        for(Scoreboard sb : Tazpvp.statsManager.scoreboards.values()) {
+            Tazpvp.statsManager.getTeam(p, sb).addEntry(p.getName());
+        }
+        Tazpvp.statsManager.initScoreboard(p);
     }
 }

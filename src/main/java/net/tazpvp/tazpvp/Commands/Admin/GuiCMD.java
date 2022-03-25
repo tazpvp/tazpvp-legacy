@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.GUI.TestGUI;
+import net.tazpvp.tazpvp.GUI.Upgrade.MainMenuGUI;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
@@ -12,6 +13,8 @@ public class GuiCMD {
             new TestGUI(p);
         } else if (gui.equalsIgnoreCase("shop")) {
             new ShopGUI(p);
+        } else if (gui.equalsIgnoreCase("upgrade")) {
+            new MainMenuGUI(p);
         }
     }
 }
