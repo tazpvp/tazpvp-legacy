@@ -48,18 +48,8 @@ public class DeathEvent implements Listener {
                         value = container.get(key, PersistentDataType.INTEGER);
                     }
                     for (Items item : Items.values()) {
-                        if (value == 1) {
-                            for(Item i : ItemManager.items) {
-                                if (i.enumeration.equals(item)) {
-                                    i.execute(p, p.getInventory().getItemInMainHand().getItemMeta().getDisplayName(), (EntityDamageByEntityEvent) e);
-                                    Bukkit.getLogger().info("Executed " + i.enumeration.getName());
-                                    return;
-                                } else {
-                                    Bukkit.getLogger().info("3 " + i.enumeration.getName());
-                                }
-                            }
-                        } else {
-                            Bukkit.getLogger().info("2 " + item.getName());
+                        if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(item.getName())) {
+                            e.setDamage(item.getDamage());
                         }
                     }
                 } else {

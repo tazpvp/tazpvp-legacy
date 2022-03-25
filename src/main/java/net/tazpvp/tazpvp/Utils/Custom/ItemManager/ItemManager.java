@@ -8,6 +8,7 @@ public class ItemManager {
     public static final ArrayList<Item> items = new ArrayList<>();
     public static void init() {
         items.add(new TempItem());
+
     }
 
 //    public static void givePlayerItem(Player player, Items item, int count) {
