@@ -18,7 +18,7 @@ public class SwordGUI {
     }
 
     public void setitems(){
-        gui.fill(1, 5*9, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 5*9, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
         int i = 10;
         for (Items item : Items.values()) {
             String name = item.getName();
