@@ -49,10 +49,8 @@ public class PlaceBlockEvent implements Listener {
                 }.runTaskLater(Tazpvp.getInstance(), timer);
             } else {
                 event.setCancelled(true);
+                event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks right now.");
             }
-        } else {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks right now.");
         }
     }
 }
