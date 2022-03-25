@@ -33,6 +33,7 @@ public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static PunishmentManager punishmentManager;
 
+    public static boolean isRestarting = false;
 
     public static Permission permissions;
     public static Chat chat;

@@ -19,7 +19,7 @@ public class PlaceBlockEvent implements Listener {
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {
         if (event.getPlayer().getGameMode() == GameMode.SURVIVAL) {
-            if (Tazpvp.AllowBlocks) {
+            if (!Tazpvp.isRestarting) {
                 Material blockType = event.getBlockPlaced().getType();
                 ArrayList<Material> unreq = new ArrayList<>();
                 unreq.add(Material.COAL_ORE);
