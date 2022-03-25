@@ -10,7 +10,7 @@ import redempt.redlib.enchants.EnchantRegistry;
 
 public class EnchantCMD {
     @CommandHook("enchant")
-    public void ench(Player p, String enchantName, int level) {
+    public void enchant(Player p, String enchantName, int level) {
         ItemStack item = p.getInventory().getItemInMainHand();
         if (item.getType() != Material.AIR) {
             CustomEnchant ench = EnchantRegistry.get(Tazpvp.getInstance()).getByName(enchantName);
