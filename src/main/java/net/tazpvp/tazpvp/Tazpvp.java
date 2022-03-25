@@ -41,6 +41,8 @@ public final class Tazpvp extends JavaPlugin {
 
     public static Tazpvp instance;
 
+    public static Boolean AllowBlocks = true;
+
     public static boolean chatMuted = false;
 
     public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
