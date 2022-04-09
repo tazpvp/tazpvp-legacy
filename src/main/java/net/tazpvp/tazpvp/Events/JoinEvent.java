@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -22,6 +23,7 @@ public class JoinEvent implements Listener {
             Tazpvp.statsManager.initPlayer(p);
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "+" + ChatColor.GRAY + "] " + p.getName());
             p.sendTitle(ChatColor.GOLD + "Welcome to " + ChatColor.YELLOW + "TazSpree", ChatColor.GOLD + "Type /help to get started", 10, 100, 10);
+            PlayerUtils.kitPlayer(p);
         }
         p.teleport(spawn);
 
