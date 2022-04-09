@@ -126,9 +126,9 @@ public class StatsManager {
             }
         }
     }
-    public void addDeaths(OfflinePlayer player, int deaths) {
+    public void addDeaths(OfflinePlayer player, int deaths, boolean deathByWater) {
         setDeaths(player, deaths+getDeaths(player));
-        if (player.isOnline()){
+        if (deathByWater){
             Player p = (Player) player;
             for (int i = 0; i < 100; i++) {
                 p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);

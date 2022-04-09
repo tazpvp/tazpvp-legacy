@@ -80,7 +80,7 @@ public class DeathEvent implements Listener {
             Tazpvp.statsManager.addKills(d, 1);
         }
 
-        Tazpvp.statsManager.addDeaths(p, 1);
+        Tazpvp.statsManager.addDeaths(p, 1, true);
 
         if (p.hasMetadata("LastDamager")) {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());
