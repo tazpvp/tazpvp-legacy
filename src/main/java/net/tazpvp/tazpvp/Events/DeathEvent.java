@@ -42,23 +42,21 @@ public class DeathEvent implements Listener {
                         Player d = (Player) ((EntityDamageByEntityEvent) e).getDamager();
                         p.setMetadata("LastDamager", new FixedMetadataValue(Tazpvp.getInstance(), d.getUniqueId()));
                     }
-                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
-                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
-                        ItemStack is = p.getInventory().getItemInMainHand();
-                        ItemMeta itemMeta = is.hasItemMeta() ? is.getItemMeta() : Bukkit.getItemFactory().getItemMeta(is.getType());
-                        PersistentDataContainer container = itemMeta.getPersistentDataContainer();
-                        int value = 0;
-                        if (container.has(key, PersistentDataType.INTEGER)) {
-                            value = container.get(key, PersistentDataType.INTEGER);
-                        }
-                        for (Items item : Items.values()) {
-                            if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(item.getName())) {
-                                e.setDamage(item.getDamage());
-                            }
-                        }
-                    }
-                } else {
-                    Logger.getLogger("Tazpvp").info("EntityDamageEvent is not an EntityDamageByEntityEvent");
+//                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
+//                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
+//                        ItemStack is = p.getInventory().getItemInMainHand();
+//                        ItemMeta itemMeta = is.hasItemMeta() ? is.getItemMeta() : Bukkit.getItemFactory().getItemMeta(is.getType());
+//                        PersistentDataContainer container = itemMeta.getPersistentDataContainer();
+//                        int value = 0;
+//                        if (container.has(key, PersistentDataType.INTEGER)) {
+//                            value = container.get(key, PersistentDataType.INTEGER);
+//                        }
+//                        for (Items item : Items.values()) {
+//                            if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(item.getName())) {
+//                                e.setDamage(item.getDamage());
+//                            }
+//                        }
+//                    }
                 }
             }
         }
@@ -81,8 +79,8 @@ public class DeathEvent implements Listener {
 
         Tazpvp.statsManager.addDeaths(p, 1);
 
-        for (int i = 0; i < 10; i++) {
-            p.getWorld().playEffect(p.getLocation(), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+        for (int i = 0; i < 50; i++) {
+            p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
         }
 
         p.setGameMode(GameMode.SPECTATOR);
