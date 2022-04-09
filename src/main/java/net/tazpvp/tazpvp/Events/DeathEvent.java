@@ -81,6 +81,10 @@ public class DeathEvent implements Listener {
 
         Tazpvp.statsManager.addDeaths(p, 1);
 
+        for (int i = 0; i < 10; i++) {
+            p.getWorld().playEffect(p.getLocation(), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+        }
+
         p.setGameMode(GameMode.SPECTATOR);
         new BukkitRunnable() {
             @Override
