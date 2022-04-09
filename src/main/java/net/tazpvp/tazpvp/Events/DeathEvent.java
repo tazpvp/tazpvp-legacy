@@ -6,6 +6,7 @@ import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
+import net.tazpvp.tazpvp.unused.launchpad.ekisBokisSerisEkis;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -23,7 +24,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.logging.Logger;
 
-public class DeathEvent implements Listener {
+public class DeathEvent extends ekisBokisSerisEkis implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
@@ -80,13 +81,14 @@ public class DeathEvent implements Listener {
             Tazpvp.statsManager.addKills(d, 1);
         }
 
+
         Tazpvp.statsManager.addDeaths(p, 1, true);
 
         if (p.hasMetadata("LastDamager")) {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());
         }
 
-        p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+        p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK); sixtyNine(p);
 
         p.setGameMode(GameMode.SPECTATOR);
         new BukkitRunnable() {
