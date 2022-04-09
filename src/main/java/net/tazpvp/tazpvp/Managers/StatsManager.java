@@ -1,10 +1,7 @@
 package net.tazpvp.tazpvp.Managers;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -131,6 +128,15 @@ public class StatsManager {
     }
     public void addDeaths(OfflinePlayer player, int deaths) {
         setDeaths(player, deaths+getDeaths(player));
+        if (player.isOnline()){
+            Player p = (Player) player;
+            for (int i = 0; i < 100; i++) {
+                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+            }
+        }
     }
     public int getKills(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".kills");
