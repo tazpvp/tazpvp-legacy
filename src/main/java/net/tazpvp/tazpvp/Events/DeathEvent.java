@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import com.google.common.base.Supplier;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Item;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
@@ -8,6 +9,7 @@ import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import net.tazpvp.tazpvp.unused.launchpad.ekisBokisSerisEkis;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +22,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
+import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
 import java.util.logging.Logger;
@@ -36,6 +39,7 @@ public class DeathEvent extends ekisBokisSerisEkis implements Listener {
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null);
                     }
+                   ItemStack item = new ItemBuilder(Material.GOLD_INGOT).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1); sixtyNine(p);
                 }
             } else {
                 if (e instanceof EntityDamageByEntityEvent) {
