@@ -283,3 +283,8 @@ bounty {
         hook bounty_list
     }
 }
+kit player:target?(context self){
+    help /kit <user>
+    user player
+    hook kit
+}
