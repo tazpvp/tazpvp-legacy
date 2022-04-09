@@ -40,8 +40,7 @@ public class DeathEvent implements Listener {
                 if (e instanceof EntityDamageByEntityEvent) {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
                         Player d = (Player) ((EntityDamageByEntityEvent) e).getDamager();
-                        p.setMetadata("LastDamager", new FixedMetadataValue(Tazpvp.getInstance(), d.getUniqueId()));
-                        Bukkit.broadcastMessage(p.getMetadata("LastDamager").get(0).asString());
+                        Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
                     }
 //                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
 //                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
@@ -79,22 +78,13 @@ public class DeathEvent implements Listener {
             }
 
             Tazpvp.statsManager.addKills(d, 1);
-        } else if (p.hasMetadata("LastDamager")) {
-            Bukkit.broadcastMessage(p.getMetadata("LastDamager").get(0).asString());
-            Player d2 = Bukkit.getPlayer(p.getMetadata("LastDamager").get(0).asString());
-            Bukkit.broadcastMessage("3");
-            Bukkit.broadcastMessage(ChatColor.RED + d2.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
-
-            if (Tazpvp.bounty.containsKey(d2.getUniqueId())) {
-                Tazpvp.statsManager.addMoney(p, Tazpvp.bounty.get(d2.getUniqueId()));
-                Tazpvp.bounty.remove(d2.getUniqueId());
-                d2.sendMessage(ChatColor.GOLD + "You have received " + ChatColor.RED + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.GOLD + " for killing " + ChatColor.RED + p.getName());
-            }
-
-            Tazpvp.statsManager.addKills(d2, 1);
         }
 
         Tazpvp.statsManager.addDeaths(p, 1);
+
+        if (p.hasMetadata("LastDamager")) {
+            p.removeMetadata("LastDamager", Tazpvp.getInstance());
+        }
 
         for (int i = 0; i < 50; i++) {
             p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
