@@ -22,7 +22,9 @@ public class MoveEvent implements Listener {
         Player p = e.getPlayer();
         Block b = new Location(e.getPlayer().getWorld(), e.getPlayer().getLocation().getX(), e.getPlayer().getLocation().getY() - 1, e.getPlayer().getLocation().getZ()).getBlock();
         if (b.getType() == Material.WATER && p.getGameMode() == GameMode.SURVIVAL) {
-            new DeathEvent().DeathFunction(e.getPlayer(), null);
+            if (Tazpvp.lastDamage.containsKey(p.getUniqueId())) {
+                new DeathEvent().DeathFunction(p, Bukkit.getPlayer(Tazpvp.lastDamage.get(p.getUniqueId())));
+            }
         }
 
         Location raidus = new Location(Bukkit.getWorld("arena"), -168, 48, -18);

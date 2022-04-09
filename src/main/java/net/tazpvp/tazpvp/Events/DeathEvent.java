@@ -40,7 +40,7 @@ public class DeathEvent implements Listener {
                 if (e instanceof EntityDamageByEntityEvent) {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
                         Player d = (Player) ((EntityDamageByEntityEvent) e).getDamager();
-                        p.setMetadata("LastDamager", new FixedMetadataValue(Tazpvp.getInstance(), d.getUniqueId()));
+                        Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
                     }
 //                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
 //                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
@@ -69,15 +69,22 @@ public class DeathEvent implements Listener {
 
     public void DeathFunction(Player p, @Nullable Player d) {
         if (d != null) { //code will run if a player kills another player
-            announceDeath(p, d);
-        } else if (p.hasMetadata("LastDamager")) {
-            Player d2 = Bukkit.getPlayer(p.getMetadata("LastDamager").get(0).asString());
-            if (d2 != null) {
-                announceDeath(p, d2);
+            Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
+
+            if (Tazpvp.bounty.containsKey(d.getUniqueId())) {
+                Tazpvp.statsManager.addMoney(p, Tazpvp.bounty.get(d.getUniqueId()));
+                Tazpvp.bounty.remove(d.getUniqueId());
+                p.sendMessage(ChatColor.GOLD + "You have received " + ChatColor.RED + Tazpvp.bounty.get(d.getUniqueId()) + ChatColor.GOLD + " for killing " + ChatColor.RED + d.getName());
             }
+
+            Tazpvp.statsManager.addKills(d, 1);
         }
 
         Tazpvp.statsManager.addDeaths(p, 1);
+
+        if (p.hasMetadata("LastDamager")) {
+            p.removeMetadata("LastDamager", Tazpvp.getInstance());
+        }
 
         for (int i = 0; i < 50; i++) {
             p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
@@ -94,17 +101,5 @@ public class DeathEvent implements Listener {
                 PlayerUtils.kitPlayer(p);
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
-    }
-
-    public void announceDeath(Player p, Player d) {
-        Bukkit.broadcastMessage(ChatColor.RED + d.getName() + ChatColor.GOLD + " has killed " + ChatColor.RED + p.getName());
-
-        if (Tazpvp.bounty.containsKey(d.getUniqueId())) {
-            Tazpvp.statsManager.addMoney(p, Tazpvp.bounty.get(d.getUniqueId()));
-            Tazpvp.bounty.remove(d.getUniqueId());
-            p.sendMessage(ChatColor.GOLD + "You have received " + ChatColor.RED + Tazpvp.bounty.get(d.getUniqueId()) + ChatColor.GOLD + " for killing " + ChatColor.RED + d.getName());
-        }
-
-        Tazpvp.statsManager.addKills(d, 1);
     }
 }

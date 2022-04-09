@@ -47,6 +47,7 @@ public final class Tazpvp extends JavaPlugin {
     public static boolean chatMuted = false;
 
     public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
+    public static WeakHashMap<UUID, UUID> lastDamage = new WeakHashMap<>();
 
     @Override
     public void onEnable() {
