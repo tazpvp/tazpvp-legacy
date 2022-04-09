@@ -41,7 +41,7 @@ public class MoveEvent implements Listener {
             public void run() {
                 p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), false));
             }
-        }.runTaskLater(Tazpvp.getInstance(), 20 * 8);
+        }.runTaskLater(Tazpvp.getInstance(), 20 * 4);
     }
 
     @EventHandler

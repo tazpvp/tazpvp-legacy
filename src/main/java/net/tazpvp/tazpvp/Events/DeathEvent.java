@@ -86,8 +86,12 @@ public class DeathEvent implements Listener {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());
         }
 
-        for (int i = 0; i < 50; i++) {
-            p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+        for (int i = 0; i < 100; i++) {
+            p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+            p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+            p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+            p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
+
         }
 
         p.setGameMode(GameMode.SPECTATOR);
