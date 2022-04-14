@@ -86,7 +86,7 @@ public class DeathEvent extends ekisBokisSerisEkis implements Listener {
         }
 
 
-        Tazpvp.statsManager.addDeaths(p, 1, true);
+        Tazpvp.statsManager.addDeaths(p, 1);
 
         if (p.hasMetadata("LastDamager")) {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());

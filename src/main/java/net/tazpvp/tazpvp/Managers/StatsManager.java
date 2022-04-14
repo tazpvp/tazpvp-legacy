@@ -94,6 +94,9 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".level", level);
         Tazpvp.getInstance().initScoreboard((Player) player);
     }
+    public void addLevel(OfflinePlayer player, int level) {
+        setLevel(player, level+getLevel(player));
+    }
     public void addLevels(OfflinePlayer player, int level) {
         setLevel(player, level+getLevel(player));
     }
@@ -126,17 +129,8 @@ public class StatsManager {
             }
         }
     }
-    public void addDeaths(OfflinePlayer player, int deaths, boolean deathByWater) {
+    public void addDeaths(OfflinePlayer player, int deaths) {
         setDeaths(player, deaths+getDeaths(player));
-        if (deathByWater){
-            Player p = (Player) player;
-            for (int i = 0; i < 100; i++) {
-                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-                p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-            }
-        }
     }
     public int getKills(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".kills");
