@@ -79,8 +79,6 @@ public final class Tazpvp extends JavaPlugin {
         } else {
             System.out.println("Vault not found!");
         }
-
-
     }
 
 
