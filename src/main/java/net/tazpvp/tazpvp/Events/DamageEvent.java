@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -23,6 +24,7 @@ public class DamageEvent implements Listener {
             new ItemStack(Material.DIAMOND_SWORD),
             new ItemStack(Material.NETHERITE_SWORD)
     );
+    @EventHandler
     public void onDamage(EntityDamageEvent e) {
         if (e instanceof EntityDamageByEntityEvent pe) {    
             Entity enemy = pe.getDamager();
