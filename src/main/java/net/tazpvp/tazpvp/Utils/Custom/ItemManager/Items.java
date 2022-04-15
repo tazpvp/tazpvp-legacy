@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public enum Items {
-    WOOGSWORD("oak sworden", ChatColor.GREEN + "3", Material.WOODEN_SWORD, 100, 10, 1, 'c');
+    WOOGSWORD("oak sworden", ChatColor.GREEN + "3", Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.5);
 
     private String name;
     private String lore;
@@ -14,8 +14,9 @@ public enum Items {
     private int damage;
     private int exp;
     private char rarity; //c = common, u = uncommon, r = rare, e = epic, l = legendary
+    private double cooldown;
 
-    Items(String name, String lore, Material material, int cost, int damage, int exp, char rarity) {
+    Items(String name, String lore, Material material, int cost, int damage, int exp, char rarity, double cooldown) {
         this.name = name;
         this.lore = lore;
         this.material = material;
@@ -23,6 +24,7 @@ public enum Items {
         this.damage = damage;
         this.exp = exp;
         this.rarity = rarity;
+        this.cooldown = cooldown;
     }
 
     public String getName() {
@@ -51,5 +53,9 @@ public enum Items {
 
     public int getExp() {
         return this.exp;
+    }
+
+    public double getCooldown() {
+    	return this.cooldown;
     }
 }
