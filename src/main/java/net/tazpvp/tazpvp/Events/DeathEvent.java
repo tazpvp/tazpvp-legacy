@@ -42,26 +42,28 @@ public class DeathEvent implements Listener {
                 }
             } else {
                 if (e instanceof EntityDamageByEntityEvent) {
-                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
-                        Player d = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+
+                        ItemStack item = d.getInventory().getItemInMainHand();
+                        if (item.hasItemMeta()) {
+                            if (item.getItemMeta().hasDisplayName()) {
+                                String displayName = item.getItemMeta().getDisplayName();
+                                itemDamage(displayName, (EntityDamageByEntityEvent) e);
+                            }
+                        }
                     }
-//                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
-//                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
-//                        ItemStack is = p.getInventory().getItemInMainHand();
-//                        ItemMeta itemMeta = is.hasItemMeta() ? is.getItemMeta() : Bukkit.getItemFactory().getItemMeta(is.getType());
-//                        PersistentDataContainer container = itemMeta.getPersistentDataContainer();
-//                        int value = 0;
-//                        if (container.has(key, PersistentDataType.INTEGER)) {
-//                            value = container.get(key, PersistentDataType.INTEGER);
-//                        }
-//                        for (Items item : Items.values()) {
-//                            if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(item.getName())) {
-//                                e.setDamage(item.getDamage());
-//                            }
-//                        }
-//                    }
                 }
+            }
+        }
+    }
+
+    public void itemDamage(String name, EntityDamageByEntityEvent e) {
+        Bukkit.getLogger().info("Item name: " + name);
+        for (Items item : Items.values()) {
+            Bukkit.getLogger().info("Item name: " + item.getName());
+            if (item.getName().equals(name)) {
+                e.setDamage(item.getDamage());
             }
         }
     }
