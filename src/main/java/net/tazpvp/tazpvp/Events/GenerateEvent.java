@@ -14,6 +14,7 @@ public class GenerateEvent {
             @Override
             public void run() {
                 Bukkit.getWorld("arena").dropItemNaturally(new Location(Bukkit.getWorld("arena"), 0, 0,0), shard);
+                Bukkit.broadcastMessage("Generated");
             }
         }.runTaskTimer(plugin, 20*60, 20*30);
 
