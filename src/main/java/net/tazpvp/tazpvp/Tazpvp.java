@@ -16,6 +16,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
@@ -114,14 +115,18 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public void registerEvents(){
-        getServer().getPluginManager().registerEvents(new DeathEvent(), this);
-        getServer().getPluginManager().registerEvents(new JoinEvent(), this);
-        getServer().getPluginManager().registerEvents(new SpawnCMD(), this);
-        getServer().getPluginManager().registerEvents(new ChatEvent(), this);
-        getServer().getPluginManager().registerEvents(new MoveEvent(), this);
-        getServer().getPluginManager().registerEvents(new LeaveEvnet(), this);
-        getServer().getPluginManager().registerEvents(new PlaceBlockEvent(), this);
-        getServer().getPluginManager().registerEvents(new DamageEvent(), this);
+        regList(new DeathEvent());
+        regList(new JoinEvent());
+        regList(new SpawnCMD());
+        regList(new ChatEvent());
+        regList(new MoveEvent());
+        regList(new LeaveEvnet());
+        regList(new PlaceBlockEvent());
+        regList(new DamageEvent());
+    }
+
+    public void regList(Listener listener){
+        getServer().getPluginManager().registerEvents(listener, this);
     }
 
     public void initConfig(){

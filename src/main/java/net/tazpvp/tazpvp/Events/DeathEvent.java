@@ -27,7 +27,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 import javax.annotation.Nullable;
 import java.util.logging.Logger;
 
-public class DeathEvent extends ekisBokisSerisEkis implements Listener {
+public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
@@ -39,30 +39,33 @@ public class DeathEvent extends ekisBokisSerisEkis implements Listener {
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null);
                     }
-                   ItemStack item = new ItemBuilder(Material.GOLD_INGOT).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1).setName(ChatColor.RED + "pe").setLore(ChatColor.RED + "pe").setDurability(3).addEnchant(Enchantment.DURABILITY, 1); sixtyNine(p);
                 }
             } else {
                 if (e instanceof EntityDamageByEntityEvent) {
-                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
-                        Player d = (Player) ((EntityDamageByEntityEvent) e).getDamager();
+                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+
+                        ItemStack item = d.getInventory().getItemInMainHand();
+                        if (item.hasItemMeta()) {
+                            if (item.getItemMeta().hasDisplayName()) {
+                                String displayName = item.getItemMeta().getDisplayName();
+                                itemDamage(displayName, (EntityDamageByEntityEvent) e);
+                            }
+                        }
                     }
-//                    if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
-//                        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
-//                        ItemStack is = p.getInventory().getItemInMainHand();
-//                        ItemMeta itemMeta = is.hasItemMeta() ? is.getItemMeta() : Bukkit.getItemFactory().getItemMeta(is.getType());
-//                        PersistentDataContainer container = itemMeta.getPersistentDataContainer();
-//                        int value = 0;
-//                        if (container.has(key, PersistentDataType.INTEGER)) {
-//                            value = container.get(key, PersistentDataType.INTEGER);
-//                        }
-//                        for (Items item : Items.values()) {
-//                            if (p.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(item.getName())) {
-//                                e.setDamage(item.getDamage());
-//                            }
-//                        }
-//                    }
                 }
+            }
+        }
+    }
+
+    public void itemDamage(String name, EntityDamageByEntityEvent e) {
+        Bukkit.getLogger().info("in hand item name: " + name);
+        for (Items item : Items.values()) {
+            Bukkit.getLogger().info("Enum Item name: " + item.getName());
+            if (item.getName().equals(name)) {
+                Bukkit.getLogger().info("made it");
+                Bukkit.getLogger().info("item damage: " + item.getDamage());
+                e.setDamage(item.getDamage());
             }
         }
     }
@@ -79,7 +82,7 @@ public class DeathEvent extends ekisBokisSerisEkis implements Listener {
             if (Tazpvp.bounty.containsKey(d.getUniqueId())) {
                 Tazpvp.statsManager.addMoney(p, Tazpvp.bounty.get(d.getUniqueId()));
                 Tazpvp.bounty.remove(d.getUniqueId());
-                p.sendMessage(ChatColor.GOLD + "You have received " + ChatColor.RED + Tazpvp.bounty.get(d.getUniqueId()) + ChatColor.GOLD + " for killing " + ChatColor.RED + d.getName()); /* The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start */ for (int i = 0; i < 100; i++) {p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);p.getWorld().playEffect(p.getLocation().add(0, i, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);}
+                p.sendMessage(ChatColor.GOLD + "You have received " + ChatColor.RED + Tazpvp.bounty.get(d.getUniqueId()) + ChatColor.GOLD + " for killing " + ChatColor.RED + d.getName());
             }
 
             Tazpvp.statsManager.addKills(d, 1);
@@ -92,7 +95,7 @@ public class DeathEvent extends ekisBokisSerisEkis implements Listener {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());
         }
 
-        p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK); sixtyNine(p);
+        p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
 
         p.setGameMode(GameMode.SPECTATOR);
         new BukkitRunnable() {
