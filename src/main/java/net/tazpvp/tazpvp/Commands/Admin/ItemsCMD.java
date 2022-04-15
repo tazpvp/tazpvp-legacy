@@ -22,7 +22,7 @@ public class ItemsCMD {
     @CommandHook("items_give")
     public void itemsGive(Player p){
         for (Items item : Items.values()){
-            ItemBuilder.giveItem(p, Items.TEMPLATE, 1);
+            ItemBuilder.giveItem(p, item, 1);
         }
     }
 }

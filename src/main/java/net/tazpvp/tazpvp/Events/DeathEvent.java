@@ -64,6 +64,7 @@ public class DeathEvent implements Listener {
             Bukkit.getLogger().info("Enum Item name: " + item.getName());
             if (item.getName().equals(name)) {
                 Bukkit.getLogger().info("made it");
+                Bukkit.getLogger().info("item damage: " + item.getDamage());
                 e.setDamage(item.getDamage());
             }
         }

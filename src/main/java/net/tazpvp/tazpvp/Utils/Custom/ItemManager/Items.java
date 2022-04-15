@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public enum Items {
-    TEMPLATE("temp", ChatColor.GREEN + "h", Material.DIRT, 100, 5, 'c'),
+    TEMPLATE("temp", ChatColor.GREEN + "h", Material.DIRT, 100, 10, 'c'),
     TEMPLATE2("g", "v", Material.GLASS, 50, 2, 's');
 
     private String name;
