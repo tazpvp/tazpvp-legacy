@@ -12,6 +12,7 @@ public abstract class Item implements Listener {
     private Material material;
     private int cost;
     private int damage;
+    private int exp;
     private char rarity;
     public final Items enumeration;
     public Item(Items item) {
@@ -20,6 +21,7 @@ public abstract class Item implements Listener {
         this.material = item.getMaterial();
         this.cost = item.getCost();
         this.damage = item.getDamage();
+        this.exp = item.getExp();
         this.rarity = item.getRarity();
         this.enumeration = item;
     }
