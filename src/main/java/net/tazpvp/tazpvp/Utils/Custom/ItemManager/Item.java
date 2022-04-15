@@ -14,6 +14,7 @@ public abstract class Item implements Listener {
     private int damage;
     private int exp;
     private char rarity;
+    private double cooldownTicks;
     public final Items enumeration;
     public Item(Items item) {
         this.name = item.getName();
@@ -23,6 +24,7 @@ public abstract class Item implements Listener {
         this.damage = item.getDamage();
         this.exp = item.getExp();
         this.rarity = item.getRarity();
+        this.cooldownTicks = item.getCooldown();
         this.enumeration = item;
     }
 

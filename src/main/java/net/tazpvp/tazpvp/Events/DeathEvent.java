@@ -25,9 +25,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
+import java.util.WeakHashMap;
 import java.util.logging.Logger;
 
 public class DeathEvent implements Listener {
+    public WeakHashMap<Player, Long> cooldowns = new WeakHashMap<Player, Long>();
+
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
@@ -61,6 +64,20 @@ public class DeathEvent implements Listener {
     public void itemDamage(String name, EntityDamageByEntityEvent e) {
         for (Items item : Items.values()) {
             if (item.getName().equals(name)) {
+                Player d = (Player) e.getDamager();
+                double cooldownTime = item.getCooldown(); // Get number of seconds from wherever you want
+                if(cooldowns.containsKey(d)) {
+                    double secondsLeft = (((double)cooldowns.get(d)/1000)+cooldownTime) - ((double)System.currentTimeMillis()/1000);
+                    if(secondsLeft>0) {
+                        // Still cooling down
+                        e.setDamage((double) item.getDamage()/4);
+                        d.sendTitle(ChatColor.RED + "", ChatColor.RED + "Your weapon is recharging", 10, 20, 10);
+                        return;
+                    }
+                }
+                // No cooldown found or cooldown has expired, save new cooldown
+                cooldowns.put(d, System.currentTimeMillis());
+                // Do Command Here
                 e.setDamage(item.getDamage());
             }
         }
