@@ -5,22 +5,23 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public enum Items {
-    TEMPLATE("temp", ChatColor.GREEN + "h", Material.DIRT, 100, 10, 'c'),
-    TEMPLATE2("g", "v", Material.GLASS, 50, 2, 's');
+    WOOGSWORD("oak sworden", ChatColor.GREEN + "3", Material.WOODEN_SWORD, 100, 10, 1, 'c');
 
     private String name;
     private String lore;
     private Material material;
     private int cost;
     private int damage;
+    private int exp;
     private char rarity; //c = common, u = uncommon, r = rare, e = epic, l = legendary
 
-    Items(String name, String lore, Material material, int cost, int damage, char rarity) {
+    Items(String name, String lore, Material material, int cost, int damage, int exp, char rarity) {
         this.name = name;
         this.lore = lore;
         this.material = material;
         this.cost = cost;
         this.damage = damage;
+        this.exp = exp;
         this.rarity = rarity;
     }
 
@@ -46,5 +47,9 @@ public enum Items {
 
     public char getRarity() {
         return this.rarity;
+    }
+
+    public int getExp() {
+        return this.exp;
     }
 }

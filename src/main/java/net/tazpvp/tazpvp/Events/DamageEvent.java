@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -30,12 +31,30 @@ public class DamageEvent implements Listener {
             Entity enemy = pe.getDamager();
             Player p = (Player) pe.getEntity();
             if (!(enemy instanceof Player attacker)) {
-            } else if (p.hasMetadata("NPC") && attacker.hasMetadata("NPC")) {
+                return;
+            } else if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
+                return;
             } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
+                return;
             } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
                 Tazpvp.statsManager.addExp(attacker, 1);
                 if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
-                    LevelUp(attacker, 1);
+                    if (Tazpvp.statsManager.checkLevelUp(attacker)) {
+                        Tazpvp.statsManager.levelUp(attacker);
+                    } else {
+                        ItemStack item = attacker.getInventory().getItemInMainHand();
+                        if (item.hasItemMeta()) {
+                            if (item.getItemMeta().hasDisplayName()) {
+                                for (Items i : Items.values()) {
+                                    if (i.getName().equals(item.getItemMeta().getDisplayName())) {
+                                        Tazpvp.statsManager.addExp(attacker, i.getExp());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        Tazpvp.statsManager.addExp(attacker, 1);
+                    }
                 }
             }
         }

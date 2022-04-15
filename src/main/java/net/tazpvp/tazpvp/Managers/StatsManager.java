@@ -107,26 +107,31 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".deaths", deaths);
         Tazpvp.getInstance().initScoreboard((Player) player);
     }
-    public void checkLevelUp(OfflinePlayer player){
+    public boolean checkLevelUp(OfflinePlayer player){
         if (Tazpvp.statsManager.getExp(player) >= Tazpvp.statsManager.getExpLeft(player)){
-            Tazpvp.statsManager.setLevel(player, Tazpvp.statsManager.getLevel(player)+1);
-            Tazpvp.statsManager.addShards(player, 1);
-            Tazpvp.statsManager.addMoney(player, 60);
-            Tazpvp.statsManager.setExpLeft(player, Tazpvp.statsManager.getExpLeft(player)*1.05);
-            Tazpvp.statsManager.setExp(player, 0);
-            //Tazpvp.statsManager.addMulti(player, 1);
-            if (player.isOnline()){
-                Player p = (Player) player;
-                p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-                p.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "  LEVEL UP " + ChatColor.DARK_AQUA + "Combat Lvl. " + ChatColor.AQUA + Tazpvp.statsManager.getLevel(player));
-                p.sendMessage("");
-                p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "  REWARDS");
-                p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.BLUE + "1 Point");
-                p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.GOLD + "60 Coins");
-                p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
-                p.setLevel(Tazpvp.statsManager.getLevel(player));
-                p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1 );
-            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public void levelUp(OfflinePlayer player){
+        Tazpvp.statsManager.setLevel(player, Tazpvp.statsManager.getLevel(player)+1);
+        Tazpvp.statsManager.addShards(player, 1);
+        Tazpvp.statsManager.addMoney(player, 60);
+        Tazpvp.statsManager.setExpLeft(player, Tazpvp.statsManager.getExpLeft(player)*1.05);
+        Tazpvp.statsManager.setExp(player, 0);
+        //Tazpvp.statsManager.addMulti(player, 1);
+        if (player.isOnline()){
+            Player p = (Player) player;
+            p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            p.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "  LEVEL UP " + ChatColor.DARK_AQUA + "Combat Lvl. " + ChatColor.AQUA + Tazpvp.statsManager.getLevel(player));
+            p.sendMessage("");
+            p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "  REWARDS");
+            p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.BLUE + "1 Point");
+            p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.GOLD + "60 Coins");
+            p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            p.setLevel(Tazpvp.statsManager.getLevel(player));
+            p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1 );
         }
     }
     public void addDeaths(OfflinePlayer player, int deaths) {
