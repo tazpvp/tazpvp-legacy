@@ -275,3 +275,13 @@ kit player:target?(context self){
     user player
     hook kit
 }
+
+troll player:target?(context self){
+    help /troll <user>
+    user player
+    permission tazpvp.troll
+    demo {
+        postarg
+        hook demo
+    }
+}

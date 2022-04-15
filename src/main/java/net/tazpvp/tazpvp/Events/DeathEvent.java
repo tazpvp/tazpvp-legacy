@@ -71,7 +71,8 @@ public class DeathEvent implements Listener {
                     if(secondsLeft>0) {
                         // Still cooling down
                         e.setDamage((double) item.getDamage()/4);
-                        d.sendTitle(ChatColor.RED + "", ChatColor.RED + "Your weapon is recharging", 10, 20, 10);
+                        d.sendTitle(ChatColor.RED + "Your weapon is recharging", null, 10, 20, 10);
+                        cooldowns.put(d, System.currentTimeMillis());
                         return;
                     }
                 }

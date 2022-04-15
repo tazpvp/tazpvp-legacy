@@ -110,7 +110,8 @@ public final class Tazpvp extends JavaPlugin {
                 new NickCMD(),
                 new ItemsCMD(),
                 new KitCMD(),
-                new BountyCMD());
+                new BountyCMD(),
+                new TrollCMD());
 
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
