@@ -41,6 +41,7 @@ public class DamageEvent implements Listener {
                 if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
                     if (Tazpvp.statsManager.checkLevelUp(attacker)) {
                         Tazpvp.statsManager.levelUp(attacker);
+                        Tazpvp.statsManager.initScoreboard(attacker);
                     } else {
                         ItemStack item = attacker.getInventory().getItemInMainHand();
                         if (item.hasItemMeta()) {
