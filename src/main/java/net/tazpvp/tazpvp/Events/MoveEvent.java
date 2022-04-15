@@ -47,8 +47,10 @@ public class MoveEvent implements Listener {
     @EventHandler
     public void dmg(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
-                e.setCancelled(true);
+            if (p.hasMetadata("Invulnerable")) {
+                if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
+                    e.setCancelled(true);
+                }
             }
         }
     }
