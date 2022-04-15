@@ -27,16 +27,17 @@ public class PlayerUtils {
     public static void kitPlayer(Player p) {
         p.getInventory().clear();
 
-        ItemStack helmet = new ItemStack(Material.NETHERITE_HELMET);
-        ItemStack chestplate = new ItemStack(Material.NETHERITE_CHESTPLATE);
-        ItemStack leggings = new ItemStack(Material.NETHERITE_LEGGINGS);
-        ItemStack boots = new ItemStack(Material.NETHERITE_BOOTS);
-        ItemStack sword = new ItemStack(Material.NETHERITE_SWORD);
+        ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack chestplate = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
         ItemStack bow = new ItemStack(Material.BOW);
-        ItemStack pickaxe = new ItemStack(Material.NETHERITE_PICKAXE);
-        ItemStack steak = new ItemStack(Material.COOKED_BEEF, 32);
+        ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
+        ItemStack steak = new ItemStack(Material.COOKED_BEEF, 16);
+        ItemStack gapple = new ItemStack(Material.GOLDEN_APPLE, 5);
         ItemStack block = new ItemStack(Material.OAK_PLANKS, 64);
-        ItemStack arrow = new ItemStack(Material.ARROW);
+        ItemStack arrow = new ItemStack(Material.ARROW, 32);
 
         PlayerInventory inv = p.getInventory();
         inv.setHelmet(helmet);
@@ -46,8 +47,9 @@ public class PlayerUtils {
         inv.setItem(0, sword);
         inv.setItem(1, bow);
         inv.setItem(2, pickaxe);
-        inv.setItem(3, steak);
-        inv.setItem(4, block);
+        inv.setItem(3, gapple);
+        inv.setItem(4, steak);
+        inv.setItem(5, block);
         inv.setItem(8, arrow);
     }
 }
