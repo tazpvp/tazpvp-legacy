@@ -66,6 +66,8 @@ public final class Tazpvp extends JavaPlugin {
         registeRedLib();
         ItemManager.init();
 
+
+        new GenerateEvent().generator(this);
         new TipsUtils().Text(this);
 
         if(getServer().getPluginManager().getPlugin("Vault") != null) {
