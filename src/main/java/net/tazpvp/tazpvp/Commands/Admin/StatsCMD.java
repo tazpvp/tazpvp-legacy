@@ -200,7 +200,7 @@ public class StatsCMD {
 
     @CommandHook("deaths_add")
     public void deathAdd(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addDeaths(target, amount, false);
+        Tazpvp.statsManager.addDeaths(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " deaths to " + ChatColor.RED + target.getName());
         } else {
@@ -209,7 +209,7 @@ public class StatsCMD {
     }
     @CommandHook("deaths_remove")
     public void deathRemove(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addDeaths(target, -amount, false);
+        Tazpvp.statsManager.addDeaths(target, -amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " deaths from " + ChatColor.RED + target.getName());
         } else {
