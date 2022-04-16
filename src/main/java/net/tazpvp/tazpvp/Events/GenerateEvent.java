@@ -13,7 +13,7 @@ public class GenerateEvent {
         new BukkitRunnable(){
             @Override
             public void run() {
-                Bukkit.getWorld("arena").dropItemNaturally(new Location(Bukkit.getWorld("arena"), 0, 0,0), shard);
+                Bukkit.getWorld("arena").dropItemNaturally(new Location(Bukkit.getWorld("arena"), 0, 85,94), shard);
             }
         }.runTaskTimer(plugin, 20*60, 20*60);
 
