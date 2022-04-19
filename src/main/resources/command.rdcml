@@ -285,3 +285,13 @@ troll player:target{
         hook demo
     }
 }
+
+npc {
+    help /npc
+    user player
+    permission tazpvp.npc
+    create string:name{
+        help create a npc
+        hook npc_create
+    }
+}
