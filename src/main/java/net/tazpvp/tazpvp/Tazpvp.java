@@ -115,6 +115,8 @@ public final class Tazpvp extends JavaPlugin {
                 new NpcCMD());
 
 
+
+
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
 

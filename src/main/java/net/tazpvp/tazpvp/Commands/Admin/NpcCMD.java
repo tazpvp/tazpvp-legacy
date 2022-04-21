@@ -17,10 +17,10 @@ public class NpcCMD {
         p.sendMessage("Villager created!");
     }
     @CommandHook("npc_remove")
-    public void npcRemoveCMD(Player p) {
+    public void npcRemoveCMD(Player p, String name) {
         p.getWorld().getEntities().stream().filter(e -> e instanceof Villager).forEach(e -> {
             if (e.getCustomName() != null) {
-                if (e.getCustomName().equalsIgnoreCase(p.getName())) {
+                if (e.getCustomName().equalsIgnoreCase(name)) {
                     e.remove();
                 }
             }
