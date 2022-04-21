@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class npcCMD {
+public class NpcCMD {
     @CommandHook("npc_create")
     public void npcCMD(Player p, String name) {
         Villager v = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
