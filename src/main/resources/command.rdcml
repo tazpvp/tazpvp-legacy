@@ -293,5 +293,6 @@ npc {
     create string:name{
         help create a npc
         hook npc_create
+        postarg
     }
 }
