@@ -290,9 +290,14 @@ npc {
     help /npc
     user player
     permission tazpvp.npc
-    create string:name{
+    create string:name string:profession string:type{
         help create a npc
         hook npc_create
+        postarg
+    }
+    remove string:name{
+        help remove a npc
+        hook npc_remove
         postarg
     }
 }
