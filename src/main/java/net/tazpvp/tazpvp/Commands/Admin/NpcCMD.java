@@ -10,10 +10,10 @@ public class NpcCMD {
     @CommandHook("npc_create")
     public void npcCMD(Player p, String name, String profession, String type) {
         Villager v = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
-        v.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
-        v.setProfession(Villager.Profession.valueOf(profession));
-        v.setVillagerType(Villager.Type.valueOf(type));
         v.setAI(false);
+        v.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
+        v.setProfession(Villager.Profession.valueOf(profession.toUpperCase()));
+        v.setVillagerType(Villager.Type.valueOf(type.toUpperCase()));
         p.sendMessage("Villager created!");
     }
     @CommandHook("npc_remove")
