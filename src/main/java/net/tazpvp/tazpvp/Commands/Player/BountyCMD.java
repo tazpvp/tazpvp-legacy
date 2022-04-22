@@ -9,8 +9,8 @@ import redempt.redlib.commandmanager.CommandHook;
 import java.util.UUID;
 
 public class BountyCMD {
-    @CommandHook("bounty_put")
-    public void bounty_put(Player p, Player target, int amount) {
+    @CommandHook("bounty_set")
+    public void bounty_set(Player p, Player target, int amount) {
         if (Tazpvp.statsManager.getMoney(p) > amount) {
             Tazpvp.statsManager.setMoney(p, Tazpvp.statsManager.getMoney(p) - amount);
             //actually putting the bounty
@@ -19,7 +19,7 @@ public class BountyCMD {
             } else {
                 Tazpvp.bounty.put(target.getUniqueId(), amount);
             }
-            Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + "set a bounty of " + ChatColor.AQUA + amount + "$" + ChatColor.DARK_AQUA + " on " + ChatColor.RED + target.getName());
+            Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + "set a bounty of " + ChatColor.AQUA + amount + "$" + ChatColor.DARK_AQUA + " on " + ChatColor.AQUA + target.getName());
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money");
         }

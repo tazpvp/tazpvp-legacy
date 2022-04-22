@@ -95,8 +95,8 @@ public class DeathEvent implements Listener {
 
             if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
                 Tazpvp.statsManager.addMoney(d, Tazpvp.bounty.get(p.getUniqueId()));
+                d.sendMessage(ChatColor.DARK_AQUA + "You have received " + ChatColor.AQUA + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.DARK_AQUA + " for killing " + ChatColor.AQUA + p.getName());
                 Tazpvp.bounty.remove(p.getUniqueId());
-                d.sendMessage(ChatColor.AQUA + "You have received " + ChatColor.AQUA + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.AQUA + " for killing " + ChatColor.RED + p.getName());
             }
 
             Tazpvp.statsManager.addKills(d, 1);

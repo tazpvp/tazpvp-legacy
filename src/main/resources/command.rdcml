@@ -253,7 +253,7 @@ items {
 bounty {
     help set a bounty on a player
     user player
-    put player:target int:amount {
+    set player:target int:amount {
         hook bounty_put
     }
     get player:target {
