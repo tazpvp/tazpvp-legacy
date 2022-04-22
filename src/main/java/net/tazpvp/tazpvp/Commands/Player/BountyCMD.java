@@ -19,7 +19,7 @@ public class BountyCMD {
             } else {
                 Tazpvp.bounty.put(target.getUniqueId(), amount);
             }
-            p.sendMessage(ChatColor.GOLD + "Put a bounty of " + ChatColor.RED + amount + "$" + ChatColor.GOLD + " on " + ChatColor.RED + target.getName());
+            Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + "set a bounty of " + ChatColor.AQUA + amount + "$" + ChatColor.DARK_AQUA + " on " + ChatColor.RED + target.getName());
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money");
         }
