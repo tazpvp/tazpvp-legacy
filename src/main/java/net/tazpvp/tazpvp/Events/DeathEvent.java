@@ -101,17 +101,12 @@ public class DeathEvent implements Listener {
 
             Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), pSkull);
 
-            if (Tazpvp.statsManager.checkLevelUp(d)) {
-                Tazpvp.statsManager.levelUp(d, 1);
-                Tazpvp.statsManager.initScoreboard(d);
-            }
-
             if (Bukkit.getOnlinePlayers().size() < 20) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
                     if (Objects.equals(online.getName(), d.getName())) {
                         d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
                     } else {
-                        Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
+                        online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
                     }
                 }
             } else {
@@ -127,6 +122,12 @@ public class DeathEvent implements Listener {
             Tazpvp.statsManager.addKills(d, 1);
             Tazpvp.statsManager.addExp(d, 15);
             Tazpvp.statsManager.addMoney(d, 7);
+
+            if (Tazpvp.statsManager.checkLevelUp(d)) {
+                Tazpvp.statsManager.levelUp(d, 1);
+                Tazpvp.statsManager.initScoreboard(d);
+            }
+
             Tazpvp.statsManager.initScoreboard(d);
         }
 
