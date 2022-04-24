@@ -18,6 +18,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -25,6 +26,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 import java.util.WeakHashMap;
 import java.util.logging.Logger;
 
@@ -91,7 +93,30 @@ public class DeathEvent implements Listener {
 
     public void DeathFunction(Player p, @Nullable Player d) {
         if (d != null) { //code will run if a player kills another player
-            Bukkit.broadcastMessage(ChatColor.GRAY + "[☠] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
+
+            ItemStack pSkull = new ItemStack(Material.PLAYER_HEAD);
+            SkullMeta sm = (SkullMeta) pSkull.getItemMeta();
+            sm.setOwner(p.getName());
+            pSkull.setItemMeta(sm);
+
+            Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), pSkull);
+
+            if (Tazpvp.statsManager.checkLevelUp(d)) {
+                Tazpvp.statsManager.levelUp(d, 1);
+                Tazpvp.statsManager.initScoreboard(d);
+            }
+
+            if (Bukkit.getOnlinePlayers().size() < 20) {
+                for (Player online : Bukkit.getOnlinePlayers()) {
+                    if (Objects.equals(online.getName(), d.getName())) {
+                        d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
+                    } else {
+                        Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
+                    }
+                }
+            } else {
+                p.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You were killed by " + ChatColor.GRAY + d.getName());
+            }
 
             if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
                 Tazpvp.statsManager.addMoney(d, Tazpvp.bounty.get(p.getUniqueId()));
@@ -100,10 +125,14 @@ public class DeathEvent implements Listener {
             }
 
             Tazpvp.statsManager.addKills(d, 1);
+            Tazpvp.statsManager.addExp(d, 15);
+            Tazpvp.statsManager.addMoney(d, 7);
+            Tazpvp.statsManager.initScoreboard(d);
         }
 
 
         Tazpvp.statsManager.addDeaths(p, 1);
+        Tazpvp.statsManager.initScoreboard(p);
 
         if (p.hasMetadata("LastDamager")) {
             p.removeMetadata("LastDamager", Tazpvp.getInstance());

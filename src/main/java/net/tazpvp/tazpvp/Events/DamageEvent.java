@@ -26,54 +26,37 @@ public class DamageEvent implements Listener {
             new ItemStack(Material.DIAMOND_SWORD),
             new ItemStack(Material.NETHERITE_SWORD)
     );
-    @EventHandler
-    public void onDamage(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Player attacker && e.getEntity() instanceof Player p) {
-            Entity enemy = e.getDamager();
-            Material item = attacker.getInventory().getItemInMainHand().getType();
-            if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
-                return;
-            } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
-                return;
-            } else if (item == Material.WOODEN_SWORD || item == Material.STONE_SWORD || item == Material.GOLDEN_SWORD || item == Material.IRON_SWORD || item == Material.DIAMOND_SWORD || item == Material.NETHERITE_SWORD) {
-                Tazpvp.statsManager.addExp(attacker, 1);
-                if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
-                    if (Tazpvp.statsManager.checkLevelUp(attacker)) {
-                        Tazpvp.statsManager.levelUp(attacker);
-                        Tazpvp.statsManager.initScoreboard(attacker);
-                    } else {
-                        ItemStack item1 = attacker.getInventory().getItemInMainHand();
-                        if (item1.hasItemMeta()) {
-                            if (item1.getItemMeta().hasDisplayName()) {
-                                for (Items i : Items.values()) {
-                                    if (i.getName().equals(item1.getItemMeta().getDisplayName())) {
-                                        Tazpvp.statsManager.addExp(attacker, i.getExp());
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        Tazpvp.statsManager.addExp(attacker, 1);
-                    }
-                }
-            }
-        }
-    }
+//    @EventHandler
+//    public void onDamage(EntityDamageByEntityEvent e) {
+//        if (e.getDamager() instanceof Player attacker && e.getEntity() instanceof Player p) {
+//            Entity enemy = e.getDamager();
+//            Material item = attacker.getInventory().getItemInMainHand().getType();
+//            if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
+//                return;
+//            } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
+//                return;
+//            } else if (item == Material.WOODEN_SWORD || item == Material.STONE_SWORD || item == Material.GOLDEN_SWORD || item == Material.IRON_SWORD || item == Material.DIAMOND_SWORD || item == Material.NETHERITE_SWORD) {
+//                if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
+//                    if (Tazpvp.statsManager.checkLevelUp(attacker)) {
+//                        Tazpvp.statsManager.levelUp(attacker);
+//                        Tazpvp.statsManager.initScoreboard(attacker);
+//                    } else {
+//                        ItemStack item1 = attacker.getInventory().getItemInMainHand();
+//                        if (item1.hasItemMeta()) {
+//                            if (item1.getItemMeta().hasDisplayName()) {
+//                                for (Items i : Items.values()) {
+//                                    if (i.getName().equals(item1.getItemMeta().getDisplayName())) {
+//                                        Tazpvp.statsManager.addExp(attacker, i.getExp());
+//                                        break;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
-    public static void LevelUp(Player p, int number) {
-        Tazpvp.statsManager.addLevel(p, 1*number);
-        p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n" +
-            ChatColor.AQUA + "" + ChatColor.BOLD + "  LEVEL UP " + ChatColor.DARK_AQUA + "Combat Lvl. " + ChatColor.AQUA + Tazpvp.statsManager.getLevel(p) + ChatColor.DARK_AQUA + "\n" + "\n" +
-            ChatColor.GREEN + "" + ChatColor.BOLD + "  REWARDS\n" +
-            ChatColor.DARK_GRAY + "  +" + ChatColor.BLUE + "1 Point\n" +
-            ChatColor.DARK_GRAY + "  +" + ChatColor.GOLD + "60 Coins\n" +
-            ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
-        );
-        Tazpvp.statsManager.addMoney(p, 60*number);
-        Tazpvp.statsManager.setExp(p, 0);
-        Tazpvp.statsManager.setExpLeft(p, (Tazpvp.statsManager.getExpLeft(p)*1.05)*number);
-        Tazpvp.statsManager.addShards(p, 1*number);
-        p.setLevel(Tazpvp.statsManager.getLevel(p));
-        p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1 );
-    }
+
 }
