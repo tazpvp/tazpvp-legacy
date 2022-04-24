@@ -5,6 +5,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
 public class PlayerUtils {
@@ -38,6 +39,30 @@ public class PlayerUtils {
         ItemStack gapple = new ItemStack(Material.GOLDEN_APPLE, 5);
         ItemStack block = new ItemStack(Material.OAK_PLANKS, 64);
         ItemStack arrow = new ItemStack(Material.ARROW, 32);
+        
+        ItemMeta helmetMeta = helmet.getItemMeta();
+        helmetMeta.setUnbreakable(true);
+        helmet.setItemMeta(helmetMeta);
+        ItemMeta chestplateMeta = chestplate.getItemMeta();
+        chestplateMeta.setUnbreakable(true);
+        chestplate.setItemMeta(chestplateMeta);
+        ItemMeta leggingsMeta = leggings.getItemMeta();
+        leggingsMeta.setUnbreakable(true);
+        leggings.setItemMeta(leggingsMeta);
+        ItemMeta bootsMeta = boots.getItemMeta();
+        bootsMeta.setUnbreakable(true);
+        boots.setItemMeta(bootsMeta);
+        ItemMeta swordMeta = sword.getItemMeta();
+        swordMeta.setUnbreakable(true);
+        sword.setItemMeta(swordMeta);
+        ItemMeta bowMeta = bow.getItemMeta();
+        bowMeta.setUnbreakable(true);
+        bow.setItemMeta(bowMeta);
+        ItemMeta pickaxeMeta = pickaxe.getItemMeta();
+        pickaxeMeta.setUnbreakable(true);
+        pickaxe.setItemMeta(pickaxeMeta);
+
+        
 
         PlayerInventory inv = p.getInventory();
         inv.setHelmet(helmet);

@@ -91,7 +91,7 @@ public class DeathEvent implements Listener {
 
     public void DeathFunction(Player p, @Nullable Player d) {
         if (d != null) { //code will run if a player kills another player
-            Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.WHITE + "☠" + ChatColor.GRAY + ChatColor.WHITE + d.getName() + ChatColor.GRAY + " killed " + ChatColor.WHITE + p.getName());
+            Bukkit.broadcastMessage(ChatColor.GRAY + "[☠] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
 
             if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
                 Tazpvp.statsManager.addMoney(d, Tazpvp.bounty.get(p.getUniqueId()));
