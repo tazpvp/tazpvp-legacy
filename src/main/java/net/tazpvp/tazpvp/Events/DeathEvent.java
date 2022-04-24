@@ -90,8 +90,10 @@ public class DeathEvent implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         if (e.getEntity().getKiller() != null) {
             DeathFunction(e.getEntity(), e.getEntity().getKiller());
+            e.setDeathMessage(null);
         } else {
             DeathFunction(e.getEntity(), null);
+            e.setDeathMessage(null);
         }
     }
 
