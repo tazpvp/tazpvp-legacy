@@ -27,7 +27,7 @@ public class MoveEvent implements Listener {
             }
         }
 
-        Location raidus = new Location(Bukkit.getWorld("arena"), -168, 48, -18);
+        Location raidus = new Location(Bukkit.getWorld("arena"), 0, 100, 22);
         if (p.getLocation().distance(raidus) < 4) {
             Launchpad(p);
         }
