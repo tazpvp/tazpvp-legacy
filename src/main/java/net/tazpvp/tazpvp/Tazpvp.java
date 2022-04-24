@@ -108,7 +108,6 @@ public final class Tazpvp extends JavaPlugin {
                 new EnchantCMD(),
                 new WorldCMD(),
                 new ADCMD(),
-                new NickCMD(),
                 new ItemsCMD(),
                 new KitCMD(),
                 new BountyCMD(),
