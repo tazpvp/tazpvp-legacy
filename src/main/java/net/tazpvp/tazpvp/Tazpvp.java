@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
+import net.tazpvp.tazpvp.Passive.Lag;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.MathUtils;
@@ -25,6 +26,7 @@ import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
 
+import javax.security.auth.kerberos.KerberosTicket;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
@@ -63,6 +65,8 @@ public final class Tazpvp extends JavaPlugin {
 
         configFile = this.getConfig();
         initConfig();
+
+        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
 
         registerEvents();
         registeRedLib();
@@ -255,9 +259,11 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public static void sendBaseTablist(Player p) {
+        double tps = Lag.getTPS();
+        double lag = Math.round((1.0D - tps / 20.0D) * 100.0D);
         p.setPlayerListHeaderFooter(
-                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP\n",
-                ChatColor.GOLD + "\nIP: " + ChatColor.YELLOW + "tazpvp.net\n" + "                                " +  ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP.NET\n",
+                ChatColor.GOLD + "                               \nTPS: " + ChatColor.YELLOW + lag + "\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
         );
     }
 
