@@ -21,7 +21,7 @@ public class ShopGUI {
     }
 
     public void createShopButton(ItemStack item, int slot, int price, String name, String description, boolean rankRequired){
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description);
+        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description + ChatColor.GOLD + "\nCost: " + ChatColor.GRAY + "$" + price);
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
@@ -41,26 +41,24 @@ public class ShopGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 54, new ItemStack(Material.BLUE_STAINED_GLASS_PANE, 1));
+        gui.fill(0, 54, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
         //starting at 10
-        createShopButton(new ItemStack(Material.GOLD_INGOT, 1), 10, 45, ChatColor.WHITE + "Butter", ChatColor.BLUE + "Health Boost\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$45", false);
-        createShopButton(new ItemStack(Material.ENDER_EYE, 1), 11, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$45", false);
-        createShopButton(new ItemStack(Material.PRISMARINE_SHARD, 1), 12, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$45", false);
-        createShopButton( new ItemStack(Material.SNOWBALL, 16), 13, 30, ChatColor.WHITE + "Balls", ChatColor.BLUE + "Brrrr\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$30", false);
-        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 14, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$40", false);
-        createShopButton(new ItemStack(Material.GOLDEN_HOE, 1), 15, 1500, ChatColor.WHITE + "Tactical Squid Launcher", ChatColor.BLUE + "Explosive Squids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$1500", false);
-        createShopButton(new ItemStack(Material.ARROW, 5), 16, 25, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false);
-        createShopButton( new ItemStack(Material.FEATHER, 1), 19, 150, ChatColor.WHITE + "Lethal Injection", ChatColor.BLUE + "Yikes\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$150", false);
-        createShopButton( new ItemStack(Material.COOKIE, 5), 20, 10, ChatColor.WHITE + "Cookie", ChatColor.BLUE + "Yummy\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
-        createShopButton( new ItemStack(Material.BREAD, 5), 21, 10, ChatColor.WHITE + "Bread", ChatColor.BLUE + "Hot n' Fresh\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
-        createShopButton( new ItemStack(Material.BAKED_POTATO, 5), 22, 10, ChatColor.WHITE + "Baked Potato", ChatColor.BLUE + "What's that smell?\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
-        createShopButton( new ItemStack(Material.COOKED_BEEF, 5), 23, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false);
-        createShopButton( new ItemStack(Material.GOLDEN_CARROT, 1), 24, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false);
-        createShopButton( new ItemStack(Material.GOLDEN_APPLE, 1), 25, 250, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$225", false);
-        createShopButton( new ItemStack(Material.GOLDEN_AXE, 1), 28, 20, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$20", false);
-        createShopButton( new ItemStack(Material.SHEARS, 1), 29, 25, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false);
-        createShopButton( new ItemStack(Material.WOODEN_PICKAXE, 1), 30, 80, ChatColor.WHITE + "Pickaxe", ChatColor.BLUE + "Mine Ores\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$80", false);
-        createShopButton( new ItemStack(Material.WOODEN_SWORD, 1), 31, 20, ChatColor.WHITE + "Sword", ChatColor.BLUE + "Lost it already?\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$20", false);
+        createShopButton(new ItemStack(Material.GOLD_INGOT, 1), 10, 45, ChatColor.WHITE + "Butter", ChatColor.BLUE + "Health Boost\n", false);
+        createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$45", false);
+        createShopButton(new ItemStack(Material.PRISMARINE_SHARD, 1), 11, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$45", false);
+        createShopButton(new ItemStack(Material.SNOWBALL, 16), 12, 30, ChatColor.WHITE + "Balls", ChatColor.BLUE + "Brrrr\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$30", false);
+        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 13, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$40", false);
+        createShopButton(new ItemStack(Material.GOLDEN_HOE, 1), 14, 1500, ChatColor.WHITE + "Tactical Squid Launcher", ChatColor.BLUE + "Explosive Squids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$1500", false);
+        createShopButton(new ItemStack(Material.ARROW, 5), 15, 25, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false);
+        createShopButton(new ItemStack(Material.FEATHER, 1), 16, 150, ChatColor.WHITE + "Lethal Injection", ChatColor.BLUE + "Yikes\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$150", false);
+        createShopButton(new ItemStack(Material.COOKIE, 5), 19, 10, ChatColor.WHITE + "Cookie", ChatColor.BLUE + "Yummy\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
+        createShopButton(new ItemStack(Material.BREAD, 5), 20, 10, ChatColor.WHITE + "Bread", ChatColor.BLUE + "Hot n' Fresh\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
+        createShopButton(new ItemStack(Material.BAKED_POTATO, 5), 21, 10, ChatColor.WHITE + "Baked Potato", ChatColor.BLUE + "What's that smell?\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$10", false);
+        createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 22, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false);
+        createShopButton(new ItemStack(Material.GOLDEN_CARROT, 1), 23, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false);
+        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 250, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$225", false);
+        createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 28, 20, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$20", false);
+        createShopButton(new ItemStack(Material.SHEARS, 1), 29, 25, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false);
         createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 37, 50, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$60\n" + "\n" + ChatColor.GREEN + "Rank Required", true);
         createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 38, 50, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$60\n" + "\n" + ChatColor.GREEN + "Rank Required", true);
         createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 39, 50, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$60\n" + "\n" + ChatColor.GREEN + "Rank Required", true);
