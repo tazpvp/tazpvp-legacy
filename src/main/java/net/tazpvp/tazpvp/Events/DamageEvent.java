@@ -30,23 +30,23 @@ public class DamageEvent implements Listener {
     public void onDamage(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player attacker && e.getEntity() instanceof Player p) {
             Entity enemy = e.getDamager();
+            Material item = attacker.getInventory().getItemInMainHand().getType();
             if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
-                Bukkit.broadcastMessage("1");
+                return;
             } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
-                Bukkit.broadcastMessage("2");
-            } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
+                return;
+            } else if (item == Material.WOODEN_SWORD || item == Material.STONE_SWORD || item == Material.GOLDEN_SWORD || item == Material.IRON_SWORD || item == Material.DIAMOND_SWORD || item == Material.NETHERITE_SWORD) {
                 Tazpvp.statsManager.addExp(attacker, 1);
-                Bukkit.broadcastMessage("3");
                 if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
                     if (Tazpvp.statsManager.checkLevelUp(attacker)) {
                         Tazpvp.statsManager.levelUp(attacker);
                         Tazpvp.statsManager.initScoreboard(attacker);
                     } else {
-                        ItemStack item = attacker.getInventory().getItemInMainHand();
-                        if (item.hasItemMeta()) {
-                            if (item.getItemMeta().hasDisplayName()) {
+                        ItemStack item1 = attacker.getInventory().getItemInMainHand();
+                        if (item1.hasItemMeta()) {
+                            if (item1.getItemMeta().hasDisplayName()) {
                                 for (Items i : Items.values()) {
-                                    if (i.getName().equals(item.getItemMeta().getDisplayName())) {
+                                    if (i.getName().equals(item1.getItemMeta().getDisplayName())) {
                                         Tazpvp.statsManager.addExp(attacker, i.getExp());
                                         break;
                                     }
