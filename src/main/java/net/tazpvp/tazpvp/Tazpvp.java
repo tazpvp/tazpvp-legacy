@@ -107,7 +107,7 @@ public final class Tazpvp extends JavaPlugin {
                 new MuteCMD(),
                 new EnchantCMD(),
                 new WorldCMD(),
-                new ADCMD(),
+                new AdCMD(),
                 new ItemsCMD(),
                 new KitCMD(),
                 new BountyCMD(),
@@ -207,40 +207,40 @@ public final class Tazpvp extends JavaPlugin {
             objective.unregister();
             objective = sb.registerNewObjective("sb", "dummy");
             objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-            objective.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&b&lTazPvP"));
+            objective.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&3&lTAZPVP"));
             if (sb.getObjective("showhealth") == null) {
                 Objective h = sb.registerNewObjective("showhealth", Criterias.HEALTH);
                 h.setDisplaySlot(DisplaySlot.BELOW_NAME);
                 h.setDisplayName(ChatColor.RED + "❤");
             }
-            Score blank = objective.getScore(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "--------------- ");
+            Score blank = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "--------------- ");
             blank.setScore(14);
-            Score blank1 = objective.getScore(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "PLAYER");
+            Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "PLAYER");
             blank1.setScore(13);
-            Score level = objective.getScore(ChatColor.DARK_AQUA + "〡 Level  " + ChatColor.GRAY + Tazpvp.statsManager.getLevel(player));
+            Score level = objective.getScore(ChatColor.AQUA + "〡 Level  " + ChatColor.GOLD + Tazpvp.statsManager.getLevel(player));
             level.setScore(12);
-            Score money = objective.getScore(ChatColor.DARK_AQUA + "〡 Money  " + ChatColor.GRAY +  "$"+ Tazpvp.statsManager.getMoney(player));
+            Score money = objective.getScore(ChatColor.AQUA + "〡 Money  " + ChatColor.GOLD +  "$"+ Tazpvp.statsManager.getMoney(player));
             money.setScore(11);
-            Score points = objective.getScore(ChatColor.DARK_AQUA + "〡 Points  " + ChatColor.GRAY + Tazpvp.statsManager.getShards(player));
+            Score points = objective.getScore(ChatColor.AQUA + "〡 Points  " + ChatColor.GOLD + Tazpvp.statsManager.getShards(player));
             points.setScore(10);
-            Score exp = objective.getScore(ChatColor.DARK_AQUA + "〡 EXP  " + ChatColor.GRAY + "" + Tazpvp.statsManager.getExp(player) + ChatColor.DARK_GRAY + "/" + df.format(d));
+            Score exp = objective.getScore(ChatColor.AQUA + "〡 EXP  " + ChatColor.GOLD + "" + Tazpvp.statsManager.getExp(player) + ChatColor.DARK_GRAY + "/" + df.format(d));
             //Score credits = objective.getScore(ChatColor.AQUA + "▷ Credits  " + ChatColor.GRAY + TazPvP.statsManager.getCredits(player));
             exp.setScore(9);
             Score blank2 = objective.getScore("");
             blank2.setScore(8);
-            Score blank3 = objective.getScore(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "STATS");
+            Score blank3 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "STATS");
             blank3.setScore(7);
-            Score streak = objective.getScore(ChatColor.RED + "〡 Streak  " + ChatColor.GRAY + Tazpvp.statsManager.getStreak(player));
+            Score streak = objective.getScore(ChatColor.AQUA + "〡 Streak  " + ChatColor.GOLD + Tazpvp.statsManager.getStreak(player));
             streak.setScore(6);
-            Score kills = objective.getScore(ChatColor.RED + "〡 Kills  " + ChatColor.GRAY + Tazpvp.statsManager.getKills(player));
+            Score kills = objective.getScore(ChatColor.AQUA + "〡 Kills  " + ChatColor.GOLD + Tazpvp.statsManager.getKills(player));
             kills.setScore(5);
-            Score deaths = objective.getScore(ChatColor.RED + "〡 Deaths  " + ChatColor.GRAY + Tazpvp.statsManager.getDeaths(player));
+            Score deaths = objective.getScore(ChatColor.AQUA + "〡 Deaths  " + ChatColor.GOLD + Tazpvp.statsManager.getDeaths(player));
             deaths.setScore(4);
-            Score kdr = objective.getScore(ChatColor.RED + "〡 KDR  " + ChatColor.GRAY + ((Tazpvp.statsManager.getDeaths(player) > 0) ?  MathUtils.round((float) Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player), 2) : Tazpvp.statsManager.getKills(player)));
+            Score kdr = objective.getScore(ChatColor.AQUA + "〡 KDR  " + ChatColor.GOLD + ((Tazpvp.statsManager.getDeaths(player) > 0) ?  MathUtils.round((float) Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player), 2) : Tazpvp.statsManager.getKills(player)));
             kdr.setScore(3);
-            Score blank4 = objective.getScore(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "---------------");
+            Score blank4 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "---------------");
             blank4.setScore(2);
-            Score blank5 = objective.getScore(ChatColor.GRAY + "〡 tazpvp.net");
+            Score blank5 = objective.getScore(ChatColor.YELLOW + "〡 tazpvp.net");
             blank5.setScore(1);
             for(Player player1 : Bukkit.getOnlinePlayers()) {
                 statsManager.getTeam(player1, sb).addEntry(player1.getName());

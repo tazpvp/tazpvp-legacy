@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class ADCMD {
+public class AdCMD {
     final String ad = "/ad Tazpvp &f/ &c1.8 &f/ &cDuels &f/ &cGrind &f/ &cFFA";
 
     @CommandHook("ad")
