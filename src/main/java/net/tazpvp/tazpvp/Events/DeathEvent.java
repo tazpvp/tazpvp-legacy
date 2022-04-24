@@ -24,6 +24,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
+import redempt.redlib.itemutils.ItemUtils;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -40,9 +41,9 @@ public class DeathEvent implements Listener {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
-                        DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager());
+                        DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager(), true);
                     } else { //this will run if a mob kills a player, etc. creeper boom
-                        DeathFunction(p, null);
+                        DeathFunction(p, null, false);
                     }
                 }
             } else {
@@ -89,23 +90,21 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         if (e.getEntity().getKiller() != null) {
-            DeathFunction(e.getEntity(), e.getEntity().getKiller());
+            DeathFunction(e.getEntity(), e.getEntity().getKiller(), true);
             e.setDeathMessage(null);
         } else {
-            DeathFunction(e.getEntity(), null);
+            DeathFunction(e.getEntity(), null, true);
             e.setDeathMessage(null);
         }
     }
 
-    public void DeathFunction(Player p, @Nullable Player d) {
+    public void DeathFunction(Player p, @Nullable Player d, boolean dropHead) {
         if (d != null) { //code will run if a player kills another player
 
-            ItemStack pSkull = new ItemStack(Material.PLAYER_HEAD);
-            SkullMeta sm = (SkullMeta) pSkull.getItemMeta();
-            sm.setOwner(p.getName());
-            pSkull.setItemMeta(sm);
-
-            Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), pSkull);
+            if (dropHead) {
+                ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
+                Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), head);
+            }
 
             if (Bukkit.getOnlinePlayers().size() < 20) {
                 for (Player online : Bukkit.getOnlinePlayers()) {

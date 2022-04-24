@@ -23,7 +23,7 @@ public class MoveEvent implements Listener {
         Block b = new Location(e.getPlayer().getWorld(), e.getPlayer().getLocation().getX(), e.getPlayer().getLocation().getY() - 1, e.getPlayer().getLocation().getZ()).getBlock();
         if (b.getType() == Material.WATER && p.getGameMode() == GameMode.SURVIVAL) {
             if (Tazpvp.lastDamage.containsKey(p.getUniqueId())) {
-                new DeathEvent().DeathFunction(p, Bukkit.getPlayer(Tazpvp.lastDamage.get(p.getUniqueId())));
+                new DeathEvent().DeathFunction(p, Bukkit.getPlayer(Tazpvp.lastDamage.get(p.getUniqueId())), false);
             }
         }
 

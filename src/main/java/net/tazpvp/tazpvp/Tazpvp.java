@@ -224,7 +224,7 @@ public final class Tazpvp extends JavaPlugin {
             level.setScore(12);
             Score money = objective.getScore(ChatColor.AQUA + "〡 Money  " + ChatColor.GOLD +  "$"+ Tazpvp.statsManager.getMoney(player));
             money.setScore(11);
-            Score points = objective.getScore(ChatColor.AQUA + "〡 Points  " + ChatColor.GOLD + Tazpvp.statsManager.getShards(player));
+            Score points = objective.getScore(ChatColor.AQUA + "〡 Shards  " + ChatColor.GOLD + Tazpvp.statsManager.getShards(player));
             points.setScore(10);
             Score exp = objective.getScore(ChatColor.AQUA + "〡 EXP  " + ChatColor.GOLD + "" + Tazpvp.statsManager.getExp(player) + ChatColor.GRAY + "/" + df.format(d));
             //Score credits = objective.getScore(ChatColor.AQUA + "▷ Credits  " + ChatColor.GRAY + TazPvP.statsManager.getCredits(player));
