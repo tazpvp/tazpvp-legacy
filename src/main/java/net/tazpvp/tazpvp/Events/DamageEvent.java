@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -26,34 +27,33 @@ public class DamageEvent implements Listener {
             new ItemStack(Material.NETHERITE_SWORD)
     );
     @EventHandler
-    public void onDamage(EntityDamageEvent e) {
-        if (e instanceof EntityDamageByEntityEvent pe) {
-            if (pe.getDamager() instanceof Player attacker && pe.getEntity() instanceof Player p) {
-                Entity enemy = pe.getDamager();
-                if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
-                    return;
-                } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
-                    return;
-                } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
-                    Tazpvp.statsManager.addExp(attacker, 1);
-                    if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
-                        if (Tazpvp.statsManager.checkLevelUp(attacker)) {
-                            Tazpvp.statsManager.levelUp(attacker);
-                            Tazpvp.statsManager.initScoreboard(attacker);
-                        } else {
-                            ItemStack item = attacker.getInventory().getItemInMainHand();
-                            if (item.hasItemMeta()) {
-                                if (item.getItemMeta().hasDisplayName()) {
-                                    for (Items i : Items.values()) {
-                                        if (i.getName().equals(item.getItemMeta().getDisplayName())) {
-                                            Tazpvp.statsManager.addExp(attacker, i.getExp());
-                                            break;
-                                        }
+    public void onDamage(EntityDamageByEntityEvent e) {
+        if (e.getDamager() instanceof Player attacker && e.getEntity() instanceof Player p) {
+            Entity enemy = e.getDamager();
+            if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
+                Bukkit.broadcastMessage("1");
+            } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
+                Bukkit.broadcastMessage("2");
+            } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
+                Tazpvp.statsManager.addExp(attacker, 1);
+                Bukkit.broadcastMessage("3");
+                if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
+                    if (Tazpvp.statsManager.checkLevelUp(attacker)) {
+                        Tazpvp.statsManager.levelUp(attacker);
+                        Tazpvp.statsManager.initScoreboard(attacker);
+                    } else {
+                        ItemStack item = attacker.getInventory().getItemInMainHand();
+                        if (item.hasItemMeta()) {
+                            if (item.getItemMeta().hasDisplayName()) {
+                                for (Items i : Items.values()) {
+                                    if (i.getName().equals(item.getItemMeta().getDisplayName())) {
+                                        Tazpvp.statsManager.addExp(attacker, i.getExp());
+                                        break;
                                     }
                                 }
                             }
-                            Tazpvp.statsManager.addExp(attacker, 1);
                         }
+                        Tazpvp.statsManager.addExp(attacker, 1);
                     }
                 }
             }
