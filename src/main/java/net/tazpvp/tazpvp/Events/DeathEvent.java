@@ -149,7 +149,6 @@ public class DeathEvent implements Listener {
 
                 p.teleport(configUtils.spawn);
                 p.setGameMode(GameMode.SURVIVAL);
-                PlayerUtils.kitPlayer(p);
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
     }

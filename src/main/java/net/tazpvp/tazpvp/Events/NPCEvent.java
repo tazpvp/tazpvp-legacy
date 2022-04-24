@@ -15,6 +15,7 @@ public class NPCEvent implements Listener {
     @EventHandler
     public void onNpcClick(PlayerInteractAtEntityEvent e) {
         if (e.getRightClicked().getType() == EntityType.VILLAGER) {
+            e.setCancelled(true);
             Villager v = (Villager) e.getRightClicked();
             if (v.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
                 int id = v.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER);
