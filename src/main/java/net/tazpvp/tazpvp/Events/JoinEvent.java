@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Events;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -31,5 +32,9 @@ public class JoinEvent implements Listener {
             Tazpvp.statsManager.getTeam(p, sb).addEntry(p.getName());
         }
         Tazpvp.statsManager.initScoreboard(p);
+
+        for (Player plr : Bukkit.getOnlinePlayers()) {
+            Tazpvp.sendBaseTablist(plr);
+        }
     }
 }

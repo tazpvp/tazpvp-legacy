@@ -1,7 +1,14 @@
 package net.tazpvp.tazpvp;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
+import net.minecraft.network.chat.IChatBaseComponent;
+import net.minecraft.network.protocol.game.PacketPlayOutPlayerListHeaderFooter;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
@@ -15,6 +22,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -25,6 +33,8 @@ import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.UUID;
@@ -40,6 +50,7 @@ public final class Tazpvp extends JavaPlugin {
     public static Chat chat;
 
     public static FileConfiguration configFile;
+    static ProtocolManager protocolManager;
 
     public static Tazpvp instance;
 
@@ -66,6 +77,7 @@ public final class Tazpvp extends JavaPlugin {
         registeRedLib();
         ItemManager.init();
 
+        protocolManager = ProtocolLibrary.getProtocolManager();
 
         new GenerateEvent().generator(this);
         new TipsUtils().Text(this);
@@ -140,6 +152,10 @@ public final class Tazpvp extends JavaPlugin {
     public void initConfig(){
         configFile.options().copyDefaults(true);
         this.saveConfig();
+    }
+
+    public static ProtocolManager getProtocolManager() {
+        return protocolManager;
     }
 
     @Override
@@ -252,6 +268,25 @@ public final class Tazpvp extends JavaPlugin {
             }
             player.setScoreboard(sb);
 
+    }
+
+    public static void sendBaseTablist(Player p) {
+        sendTablistHeaderAndFooter(p,
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP",
+                ChatColor.GOLD + "IP: " + ChatColor.YELLOW + "tazpvp.net\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
+        );
+    }
+
+    public static void sendTablistHeaderAndFooter(Player player, String header, String footer) {
+        PacketContainer container = new PacketContainer(PacketType.Play.Server.PLAYER_LIST_HEADER_FOOTER);
+        container.getChatComponents()
+                .write(0, WrappedChatComponent.fromText(header))
+                .write(1, WrappedChatComponent.fromText(footer));
+        try{
+            protocolManager.sendServerPacket(player, container);
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
     public static Tazpvp getInstance(){
