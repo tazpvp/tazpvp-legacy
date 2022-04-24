@@ -28,39 +28,35 @@ public class DamageEvent implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
         if (e instanceof EntityDamageByEntityEvent pe) {
-            Entity enemy = null;
 
-            Player p = null;
-            if (pe.getDamager() instanceof Player && pe.getEntity() instanceof Player) {
-                enemy = pe.getDamager();
-
-                p = (Player) pe.getEntity();
-            }
-            if (!(enemy instanceof Player attacker)) {
-                return;
-            } else if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
-                return;
-            } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
-                return;
-            } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
-                Tazpvp.statsManager.addExp(attacker, 1);
-                if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
-                    if (Tazpvp.statsManager.checkLevelUp(attacker)) {
-                        Tazpvp.statsManager.levelUp(attacker);
-                        Tazpvp.statsManager.initScoreboard(attacker);
-                    } else {
-                        ItemStack item = attacker.getInventory().getItemInMainHand();
-                        if (item.hasItemMeta()) {
-                            if (item.getItemMeta().hasDisplayName()) {
-                                for (Items i : Items.values()) {
-                                    if (i.getName().equals(item.getItemMeta().getDisplayName())) {
-                                        Tazpvp.statsManager.addExp(attacker, i.getExp());
-                                        break;
+            if (pe.getDamager() instanceof Player && pe.getEntity() instanceof Player p) {
+                Entity enemy = pe.getDamager();
+                if (!(enemy instanceof Player attacker)) {
+                    return;
+                } else if (p.hasMetadata("NPC") || attacker.hasMetadata("NPC")) {
+                    return;
+                } else if (!p.getWorld().getName().equalsIgnoreCase("arena")) {
+                    return;
+                } else if (items.contains(attacker.getInventory().getItemInMainHand())) {
+                    Tazpvp.statsManager.addExp(attacker, 1);
+                    if (Tazpvp.statsManager.getExp(attacker) >= Tazpvp.statsManager.getExpLeft(attacker)) {
+                        if (Tazpvp.statsManager.checkLevelUp(attacker)) {
+                            Tazpvp.statsManager.levelUp(attacker);
+                            Tazpvp.statsManager.initScoreboard(attacker);
+                        } else {
+                            ItemStack item = attacker.getInventory().getItemInMainHand();
+                            if (item.hasItemMeta()) {
+                                if (item.getItemMeta().hasDisplayName()) {
+                                    for (Items i : Items.values()) {
+                                        if (i.getName().equals(item.getItemMeta().getDisplayName())) {
+                                            Tazpvp.statsManager.addExp(attacker, i.getExp());
+                                            break;
+                                        }
                                     }
                                 }
                             }
+                            Tazpvp.statsManager.addExp(attacker, 1);
                         }
-                        Tazpvp.statsManager.addExp(attacker, 1);
                     }
                 }
             }
