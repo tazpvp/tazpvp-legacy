@@ -1,8 +1,7 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemBuilder;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.temp;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 

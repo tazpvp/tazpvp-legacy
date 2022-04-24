@@ -1,15 +1,10 @@
 package net.tazpvp.tazpvp.Events;
 
-import com.google.common.base.Supplier;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Item;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
-import net.tazpvp.tazpvp.unused.launchpad.ekisBokisSerisEkis;
 import org.bukkit.*;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,11 +12,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
@@ -29,7 +19,6 @@ import redempt.redlib.itemutils.ItemUtils;
 import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.WeakHashMap;
-import java.util.logging.Logger;
 
 public class DeathEvent implements Listener {
     public WeakHashMap<Player, Long> cooldowns = new WeakHashMap<Player, Long>();

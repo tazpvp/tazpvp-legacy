@@ -1,14 +1,13 @@
-package net.tazpvp.tazpvp.Utils.Custom.ItemManager;
+package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
 
 public enum Items {
-    WOOGSWORD("oak sworden", ChatColor.GREEN + "3", Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.7);
+    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.7, ChatColor.GREEN + "3");
 
     private String name;
-    private String lore;
+    private String[] lore;
     private Material material;
     private int cost;
     private int damage;
@@ -16,7 +15,7 @@ public enum Items {
     private char rarity; //c = common, u = uncommon, r = rare, e = epic, l = legendary
     private double cooldown;
 
-    Items(String name, String lore, Material material, int cost, int damage, int exp, char rarity, double cooldown) {
+    Items(String name, Material material, int cost, int damage, int exp, char rarity, double cooldown, String... lore) {
         this.name = name;
         this.lore = lore;
         this.material = material;
@@ -31,7 +30,7 @@ public enum Items {
         return this.name;
     }
 
-    public String getLore() {
+    public String[] getLore() {
         return this.lore;
     }
 

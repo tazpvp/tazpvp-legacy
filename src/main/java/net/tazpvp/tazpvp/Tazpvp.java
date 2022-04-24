@@ -9,7 +9,6 @@ import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.Passive.Lag;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.ItemManager;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
@@ -26,9 +25,6 @@ import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
 
-import javax.security.auth.kerberos.KerberosTicket;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.UUID;
@@ -70,7 +66,6 @@ public final class Tazpvp extends JavaPlugin {
 
         registerEvents();
         registeRedLib();
-        ItemManager.init();
 
         new GenerateEvent().generator(this);
         new TipsUtils().Text(this);

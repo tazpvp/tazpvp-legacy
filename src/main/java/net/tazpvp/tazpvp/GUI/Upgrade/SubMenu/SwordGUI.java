@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.GUI.Upgrade.SubMenu;
 
-import net.tazpvp.tazpvp.Utils.Custom.ItemManager.Items;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,7 +22,7 @@ public class SwordGUI {
         int i = 10;
         for (Items item : Items.values()) {
             String name = item.getName();
-            String lore = item.getLore();
+            String lore[] = item.getLore();
             Material material = item.getMaterial();
             int cost = item.getCost();
             int damage = item.getDamage();
