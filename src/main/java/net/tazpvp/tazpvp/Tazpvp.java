@@ -257,8 +257,8 @@ public final class Tazpvp extends JavaPlugin {
 
     public static void sendBaseTablist(Player p) {
         p.setPlayerListHeaderFooter(
-                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP",
-                ChatColor.GOLD + "IP: " + ChatColor.YELLOW + "tazpvp.net\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP\n",
+                ChatColor.GOLD + "\nIP: " + ChatColor.YELLOW + "tazpvp.net\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
         );
     }
 
