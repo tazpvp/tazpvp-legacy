@@ -30,7 +30,7 @@ public class ShopGUI {
             }
             if (Tazpvp.statsManager.getMoney(p) >= price){
                 Tazpvp.statsManager.addMoney(p, -price);
-                p.getInventory().addItem(item);
+                p.getInventory().addItem(new ItemBuilder(item).setName(name));
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
                 p.sendMessage(ChatColor.RED + "You don't have enough money!");
