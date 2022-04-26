@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
@@ -30,7 +31,7 @@ public class NPCEvent implements Listener {
                 if (id == 1) {
                     new ShopGUI(e.getPlayer());
                 } else if (id == 2) {
-                    e.getPlayer().sendMessage("coming soon");
+                    new MineGUI(e.getPlayer());
                 } else if (id == 3) {
                     e.getPlayer().sendMessage("coming soon");
                 } else if (id == 4) {
