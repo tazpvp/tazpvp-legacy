@@ -17,22 +17,23 @@ public class MineGUI {
 
     public MineGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.RED + "Miner"));
-        addItems();
+        createButton();
         gui.open(p);
     }
 
-    public void createButton(ItemStack item, int slot, String name, String description) {
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description);
-        ItemButton button = ItemButton.create(b, e -> {
+    public void createButton() {
+        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+
+        ItemStack pickaxe = new ItemBuilder(Material.GOLDEN_PICKAXE).setName(ChatColor.DARK_AQUA + "Upgrades").setLore(ChatColor.GRAY + "Pickaxe upgrades.");
+        ItemStack upgrade = new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.DARK_AQUA + "Trade").setLore(ChatColor.GRAY + "Click to sell your ores.");
+
+        ItemButton button = ItemButton.create(pickaxe, e -> {
             e.getWhoClicked().closeInventory();
             //open sword gui ex: new SwordGUI(p);
         });
-        gui.addButton(slot, button);
-    }
-    public void addItems () {
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        createButton(new ItemStack(Material.GOLDEN_PICKAXE), 11, ChatColor.DARK_AQUA + "Upgrades", ChatColor.GRAY + "Pickaxe upgrades.");
-        createButton(new ItemStack(Material.CHEST_MINECART), 15, ChatColor.DARK_AQUA + "Trade Ores", ChatColor.GRAY + "Click to sell your ores.");
+
+        gui.addButton(11, button);
+        gui.addButton(15, button);
         gui.update();
     }
 }
