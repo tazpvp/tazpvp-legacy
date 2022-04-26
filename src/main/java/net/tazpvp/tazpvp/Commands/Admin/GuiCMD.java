@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.GUI.Bow.FlameVilGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.GUI.TestGUI;
 import net.tazpvp.tazpvp.GUI.Upgrade.MainMenuGUI;
@@ -15,6 +16,8 @@ public class GuiCMD {
             new ShopGUI(p);
         } else if (gui.equalsIgnoreCase("upgrade")) {
             new MainMenuGUI(p);
+        } else if (gui.equalsIgnoreCase("flame")) {
+            new FlameVilGUI(p);
         }
     }
 }

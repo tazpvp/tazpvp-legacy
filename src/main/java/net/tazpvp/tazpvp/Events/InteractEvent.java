@@ -17,10 +17,10 @@ public class InteractEvent implements Listener {
             p.getInventory().getItemInMainHand();
             if (p.getInventory().getItemInMainHand().getType() != Material.FISHING_ROD) {
                 for (Items items : Items.values()) {
-                    if (items.display.equals(p.getItemInHand().getItemMeta().getDisplayName())) {
+                    if (items.display.equals(p.getInventory().getItemInMainHand().getItemMeta().getDisplayName())) {
                         for (Item i : ItemManager.items) {
                             if (i.enumeration.equals(items)) {
-                                i.execute(p, p.getItemInHand());
+                                i.execute(p, p.getInventory().getItemInMainHand());
                                 return;
                             }
                         }
