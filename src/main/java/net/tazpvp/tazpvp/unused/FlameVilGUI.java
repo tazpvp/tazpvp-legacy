@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI.Bow;
+package net.tazpvp.tazpvp.unused;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
