@@ -27,6 +27,7 @@ import redempt.redlib.enchants.EnchantRegistry;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.WeakHashMap;
 

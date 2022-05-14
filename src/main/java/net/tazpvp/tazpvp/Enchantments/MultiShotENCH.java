@@ -15,10 +15,9 @@ public class MultiShotENCH extends CustomEnchant {
         addTrigger(EnchantTrigger.SHOOT_ARROW, (event, level) -> {
             Player p = event.getEntity().getShooter() instanceof Player ? (Player) event.getEntity().getShooter() : null;
             if (p == null) return;
-            Arrow a = (Arrow) event.getEntity();
-            for (int i = 0; i < 3; i++) {
-                p.launchProjectile(a.getClass());
-            }
+            p.launchProjectile(Arrow.class);
+            
+
         });
     }
 }
