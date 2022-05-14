@@ -7,7 +7,6 @@ import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
-import net.tazpvp.tazpvp.Passive.Lag;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.TipsUtils;
@@ -27,7 +26,6 @@ import redempt.redlib.enchants.EnchantRegistry;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
