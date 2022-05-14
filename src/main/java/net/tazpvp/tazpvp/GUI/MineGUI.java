@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI;
 
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,6 +11,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
+
+import java.util.Objects;
 
 public class MineGUI {
     private InventoryGUI gui;
@@ -38,7 +41,16 @@ public class MineGUI {
         });
 
         gui.addButton(11, button);
-        gui.addButton(15, button);
+        gui.addButton(15, button2);
         gui.update();
+    }
+
+    public void sellOre(Player p, Material ore, int amount, int price) {
+        if (Objects.equals(p.getItemOnCursor(), new ItemStack(ore, amount))) {
+            p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            Tazpvp.statsManager.addMoney(p, amount * price);
+            p.sendMessage(ChatColor.GOLD + "[NPC] Miner: " + "Great doing business! Here, take " + ChatColor.AQUA + "" );
+        }
+
     }
 }
