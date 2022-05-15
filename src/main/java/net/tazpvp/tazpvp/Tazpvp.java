@@ -61,8 +61,6 @@ public final class Tazpvp extends JavaPlugin {
         configFile = this.getConfig();
         initConfig();
 
-        Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
-
         registerEvents();
         registeRedLib();
 
@@ -82,8 +80,6 @@ public final class Tazpvp extends JavaPlugin {
             System.out.println("Vault not found!");
         }
     }
-
-
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
@@ -253,8 +249,6 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public static void sendBaseTablist(Player p) {
-        double tps = Lag.getTPS();
-        double lag = Math.round((1.0D - tps / 20.0D) * 100.0D);
         p.setPlayerListHeaderFooter(
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP.NET\n",
                 ChatColor.GOLD + "                                 \nTPS: " + ChatColor.YELLOW + "20" + "\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
