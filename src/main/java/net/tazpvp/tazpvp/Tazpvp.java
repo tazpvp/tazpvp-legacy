@@ -261,6 +261,7 @@ public final class Tazpvp extends JavaPlugin {
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP.NET\n",
                 ChatColor.GOLD + "                                 \nTPS: " + ChatColor.YELLOW + "20" + "\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
         );
+
     }
 
     public static Tazpvp getInstance(){
