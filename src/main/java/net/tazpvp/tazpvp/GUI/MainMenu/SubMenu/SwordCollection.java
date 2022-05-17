@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI.Upgrade.SubMenu;
+package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
@@ -9,9 +9,9 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-public class SwordGUI {
-    private InventoryGUI gui;
-    public SwordGUI(Player p){
+public class SwordCollection {
+    private final InventoryGUI gui;
+    public SwordCollection(Player p){
         gui = new InventoryGUI(Bukkit.createInventory(null, 5*9, "upgrade"));
         setitems();
         gui.open(p);
@@ -22,7 +22,7 @@ public class SwordGUI {
         int i = 10;
         for (Items item : Items.values()) {
             String name = item.getName();
-            String lore[] = item.getLore();
+            String[] lore = item.getLore();
             Material material = item.getMaterial();
             int cost = item.getCost();
             int damage = item.getDamage();
