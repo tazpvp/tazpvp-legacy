@@ -295,3 +295,20 @@ npc {
         postarg
     }
 }
+
+swordscolat {
+    user player
+    permission tazpvp.swordscolat
+    unlock {
+        hook swordscolat_unlock
+    }
+    lock {
+        hook swordscolat_lock
+    }
+    wipe {
+        hook swordscolat_wipe
+    }
+    get {
+        hook swordscolat_get
+    }
+}
