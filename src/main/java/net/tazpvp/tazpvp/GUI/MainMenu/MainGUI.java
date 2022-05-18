@@ -11,7 +11,7 @@ import redempt.redlib.inventorygui.ItemButton;
 public class MainGUI {
     private final InventoryGUI gui;
     public MainGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "main"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 28, "main"));
         setitems();
         gui.open(p);
     }

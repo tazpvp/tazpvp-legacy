@@ -11,6 +11,7 @@ public class SwordsColat {
     public void unlockSword(Player p) {
         Tazpvp.swordManager.addSword(p, Items.WOOGSWORD);
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSword wurde erfolgreich freigeschaltet!"));
+        getSword(p);
     }
 
     @CommandHook("swordscolat_lock")
