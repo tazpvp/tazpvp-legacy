@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
 public class HelpCMD {
-    String s1 = ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----" + ChatColor.RED + ChatColor.BOLD + "" + "TAZSPREE " + ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----\n" +
+    String s1 = ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----" + ChatColor.RED + ChatColor.BOLD + "" + "TAZPVP " + ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----\n" +
             ChatColor.YELLOW + "Gain EXP from daily rewards, dealing damage,\n" +
             ChatColor.YELLOW + "achievements, and killing mobs or players.\n" +
             ChatColor.YELLOW + "\n" +
@@ -23,7 +23,7 @@ public class HelpCMD {
         if (page == 1) {
             p.sendMessage(s1);
         } else if (page == 2) {
-            p.sendMessage(ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----" + ChatColor.RED + ChatColor.BOLD + "" + "TAZSPREE " + ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----\n" +
+            p.sendMessage(ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----" + ChatColor.RED + ChatColor.BOLD + "" + "TAZPVP " + ChatColor.AQUA + "-----" + ChatColor.DARK_AQUA + "-----" + ChatColor.AQUA + "-----\n" +
                     ChatColor.WHITE + "/report " + ChatColor.GRAY + "Report rule breakers.\n" +
                     ChatColor.WHITE + "/apply " + ChatColor.GRAY + "Apply for a staff position.\n" +
                     ChatColor.WHITE + "/spawn " + ChatColor.GRAY + "Teleport back to the spawn.\n" +
