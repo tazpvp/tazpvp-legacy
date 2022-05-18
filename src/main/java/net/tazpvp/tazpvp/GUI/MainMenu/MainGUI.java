@@ -39,10 +39,6 @@ public class MainGUI {
             new SwordCollection(p);
         });
         gui.addButton(15, store);
-        //other buttons will go here. I'll add more later im tired. -ntdi
-        // lol whoever commented this is a fucking dumbass ^
-        // oh crap that was me
-        // well this is awkward
 
         gui.update();
     }
