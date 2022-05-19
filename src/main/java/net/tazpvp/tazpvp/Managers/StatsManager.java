@@ -66,6 +66,7 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".streak", 0);
         statsFile.set(player.getUniqueId().toString()+".rank", Tazpvp.permissions.getPrimaryGroup((Player) player));
         statsFile.set(player.getUniqueId().toString()+".bowType", 0);
+        statsFile.set(player.getUniqueId().toString()+".rebirth", 0);
     }
 
     public int getMoney(OfflinePlayer player) {
@@ -88,6 +89,11 @@ public class StatsManager {
     public void addShards(OfflinePlayer player, int points) {
         setShards(player, points+getShards(player));
     }
+
+    public int getRebirth(OfflinePlayer player){return statsFile.getInt(player.getUniqueId().toString()+".rebirth");}
+    public void setRebirth(OfflinePlayer player, int rebirth){statsFile.set(player.getUniqueId().toString()+".rebirth", rebirth);}
+    public void addRebirth(OfflinePlayer player, int rebirth){setRebirth(player, rebirth+getRebirth(player));}
+
     public int getLevel(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".level");
     }
