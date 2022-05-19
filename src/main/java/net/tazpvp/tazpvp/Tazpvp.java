@@ -91,7 +91,6 @@ public final class Tazpvp extends JavaPlugin {
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
                 new StatsCMD(),
                 new GuiCMD(),
-                new HelpCMD(),
                 new AppealCMD(),
                 new ReportCMD(),
                 new RulesCMD(),
