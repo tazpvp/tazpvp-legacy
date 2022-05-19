@@ -1,11 +1,11 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Passive;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class TipsUtils{
+public class Tips {
     int num = 1;
     public void Text(Plugin plugin){
         new BukkitRunnable(){

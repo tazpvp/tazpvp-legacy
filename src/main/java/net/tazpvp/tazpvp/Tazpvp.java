@@ -8,9 +8,10 @@ import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.SavingSwords.SwordManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
+import net.tazpvp.tazpvp.Passive.Generator;
+import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
-import net.tazpvp.tazpvp.Utils.TipsUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -67,8 +68,8 @@ public final class Tazpvp extends JavaPlugin {
         registerEvents();
         registeRedLib();
 
-        new GenerateEvent().generator(this);
-        new TipsUtils().Text(this);
+        new Generator().generator(this);
+        new Tips().Text(this);
 
         if(getServer().getPluginManager().getPlugin("Vault") != null) {
             RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
