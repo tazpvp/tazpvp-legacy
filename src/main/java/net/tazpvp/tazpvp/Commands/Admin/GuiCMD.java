@@ -15,7 +15,6 @@ public class GuiCMD {
         } else if (gui.equalsIgnoreCase("shop")) {
             new ShopGUI(p);
         } else if (gui.equalsIgnoreCase("main")) {
-            p.sendMessage("h");
             new MainGUI(p);
         } else if (gui.equalsIgnoreCase("flame")) {
             new FlameVilGUI(p);

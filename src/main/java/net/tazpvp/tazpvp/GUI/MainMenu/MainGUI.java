@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.MainMenu;
 
+import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.SwordCollection;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -11,13 +12,13 @@ import redempt.redlib.inventorygui.ItemButton;
 public class MainGUI {
     private final InventoryGUI gui;
     public MainGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 28, "main"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "main"));
         setitems();
         gui.open(p);
     }
 
     public void setitems(){
-        gui.fill(0, 26, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
         ItemButton achievements = ItemButton.create(new ItemStack(Material.WRITABLE_BOOK), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
@@ -36,7 +37,7 @@ public class MainGUI {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
-            new SwordCollection(p);
+            new ServerStore(p);
         });
         gui.addButton(15, store);
 
