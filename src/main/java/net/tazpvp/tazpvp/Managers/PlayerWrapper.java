@@ -2,7 +2,9 @@ package net.tazpvp.tazpvp.Managers;
 
 import org.bukkit.entity.Player;
 
-public class PlayerWrapper {
+import java.io.Serializable;
+
+public class PlayerWrapper implements Serializable {
     private Player p;
     private int mothers;
 
