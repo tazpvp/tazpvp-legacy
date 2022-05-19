@@ -110,7 +110,8 @@ public final class Tazpvp extends JavaPlugin {
                 new KitCMD(),
                 new BountyCMD(),
                 new TrollCMD(),
-                new NpcCMD());
+                new NpcCMD(),
+                new PWCMD());
 
 
 
