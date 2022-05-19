@@ -18,9 +18,10 @@ public class JoinEvent implements Listener {
         Player p = e.getPlayer();
         Location spawn = configUtils.spawn;
 
-        p.sendMessage("▍  " + ChatColor.RED + "TAZPVP");
-        p.sendMessage("▍  " + ChatColor.GRAY + "Type /discord");
-        p.sendMessage("▍  " + ChatColor.GRAY + "IP: tazpvp.net");
+        p.sendMessage("");
+        p.sendMessage(ChatColor.BOLD + "" + ChatColor.GRAY + "  ▍  " + ChatColor.BOLD + "" + ChatColor.RED + "TAZPVP");
+        p.sendMessage(ChatColor.BOLD + "" + ChatColor.GRAY + "  ▍  " + ChatColor.GRAY + "Type /discord");
+        p.sendMessage(ChatColor.BOLD + "" + ChatColor.GRAY + "  ▍  " + ChatColor.GRAY + "IP: tazpvp.net");
         p.sendMessage("");
 
         if (p.hasPlayedBefore()) {

@@ -12,7 +12,7 @@ public class TipsUtils{
             @Override
             public void run() {
                 num = (num + 1) % 5;
-                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+                Bukkit.broadcastMessage(ChatColor.UNDERLINE + "" + ChatColor.DARK_GRAY + "-------------------------------------------------------------------");
                 switch(num){
                     case 0:
                         Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "You can join our community by typing " + ChatColor.DARK_AQUA + "/discord");

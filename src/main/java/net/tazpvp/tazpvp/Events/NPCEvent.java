@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
@@ -37,7 +38,7 @@ public class NPCEvent implements Listener {
                         } else if (id == 2) {
                             new MineGUI(e.getPlayer());
                         } else if (id == 3) {
-                            e.getPlayer().sendMessage("coming soon");
+                            new MainGUI(e.getPlayer());
                         } else if (id == 4) {
                             e.getPlayer().sendMessage("coming soon");
                         } else {
