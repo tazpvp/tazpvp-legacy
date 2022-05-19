@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Managers.SavingSwords;
+package net.tazpvp.tazpvp.Managers;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.util.io.BukkitObjectInputStream;
@@ -9,12 +9,12 @@ import java.io.ByteArrayOutputStream;
 import java.util.Base64;
 import java.util.List;
 
-public class SerializeSwords {
-    public static String listToString(List<Items> swords) {
+public class SerializePlayerWrapper {
+    public static String PlayerWrapperToString(PlayerWrapper pw) {
         try {
             ByteArrayOutputStream str = new ByteArrayOutputStream();
             BukkitObjectOutputStream data = new BukkitObjectOutputStream(str);
-            data.writeObject(swords);
+            data.writeObject(pw);
             data.close();
             return Base64.getEncoder().encodeToString(str.toByteArray());
         } catch (Exception e) {
@@ -23,13 +23,13 @@ public class SerializeSwords {
         return "";
     }
 
-    public static List<Items> stringToList(String listData) {
+    public static PlayerWrapper stringToPlayerWrapper(String pwData) {
         try {
-            ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(listData));
+            ByteArrayInputStream stream = new ByteArrayInputStream(Base64.getDecoder().decode(pwData));
             BukkitObjectInputStream data = new BukkitObjectInputStream(stream);
-            List<Items> itemList = (List<Items>) data.readObject();
+            PlayerWrapper pw = (PlayerWrapper) data.readObject();
             data.close();
-            return itemList;
+            return pw;
         } catch (Exception e) {
             e.printStackTrace();
         }

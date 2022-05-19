@@ -6,7 +6,7 @@ import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
-import net.tazpvp.tazpvp.Managers.SavingSwords.SwordManager;
+import net.tazpvp.tazpvp.Managers.PlayerWrapperStatsManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
@@ -34,7 +34,7 @@ import java.util.WeakHashMap;
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static PunishmentManager punishmentManager;
-    public static SwordManager swordManager;
+    public static PlayerWrapperStatsManager playerWrapperStatsManager;
 
     public static boolean isRestarting = false;
 
@@ -60,7 +60,7 @@ public final class Tazpvp extends JavaPlugin {
 
         statsManager = new StatsManager();
         punishmentManager = new PunishmentManager();
-        swordManager = new SwordManager();
+        playerWrapperStatsManager = new PlayerWrapperStatsManager();
 
         configFile = this.getConfig();
         initConfig();
@@ -110,8 +110,7 @@ public final class Tazpvp extends JavaPlugin {
                 new KitCMD(),
                 new BountyCMD(),
                 new TrollCMD(),
-                new NpcCMD(),
-                new SwordsColat());
+                new NpcCMD());
 
 
 
@@ -151,7 +150,7 @@ public final class Tazpvp extends JavaPlugin {
 
         statsManager.saveStats();
         punishmentManager.savePunishments();
-        swordManager.saveStats();
+        playerWrapperStatsManager.saveStats();
     }
 
     public void initScoreboard(Player player) {

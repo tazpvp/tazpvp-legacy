@@ -296,19 +296,11 @@ npc {
     }
 }
 
-swordscolat {
+pw {
+    help /pw
     user player
-    permission tazpvp.swordscolat
-    unlock {
-        hook swordscolat_unlock
-    }
-    lock {
-        hook swordscolat_lock
-    }
-    wipe {
-        hook swordscolat_wipe
-    }
-    get {
-        hook swordscolat_get
+    permission tazpvp.pw
+    test {
+        hook pw_test
     }
 }
