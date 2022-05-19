@@ -17,7 +17,7 @@ public class HelpCMD {
             ChatColor.YELLOW + "\n" +
             ChatColor.DARK_AQUA + "All inventory items are lost on death.\n" +
             "" +
-            ChatColor.GREEN + "PAGE [1/2]" + ChatColor.GRAY + " type '/help 2' for next page.";
+            ChatColor.GREEN + "[1/2]" + ChatColor.GRAY + " type '/help 2' for the next page.";
 
     @CommandHook("help")
     public void help(Player p, int page) {
@@ -32,7 +32,7 @@ public class HelpCMD {
                     ChatColor.WHITE + "/duel " + ChatColor.GRAY + "Battle versus another player.\n" +
                     ChatColor.WHITE + "/ad " + ChatColor.GRAY + "Receive the server advertisement to copy.\n" +
                     ChatColor.GRAY + "\n" +
-                    ChatColor.GREEN + "PAGE [2/2] " + ChatColor.GRAY + "type '/help' to go back"
+                    ChatColor.GREEN + "[2/2] " + ChatColor.GRAY + "type '/help' to go back"
             );
         } else {
             p.sendMessage(ChatColor.RED + "Invalid page.");
