@@ -15,7 +15,7 @@ public class PlayerWrapper {
     }
 
     public void sendMother() {
-        p.sendMessage("Mother");
+        p.sendMessage("Mother" + mothers);
         mothers++;
     }
 }
