@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 
 public class PlayerWrapper {
     private Player p;
+    private int mothers;
 
     public PlayerWrapper(Player p) {
         this.p = p;
@@ -15,5 +16,6 @@ public class PlayerWrapper {
 
     public void sendMother() {
         p.sendMessage("Mother");
+        mothers++;
     }
 }
