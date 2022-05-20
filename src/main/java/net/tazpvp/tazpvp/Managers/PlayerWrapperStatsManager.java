@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class PlayerWrapperStatsManager {
     public final FileConfiguration statsFile;
@@ -31,11 +32,20 @@ public class PlayerWrapperStatsManager {
     public PlayerWrapper getPlayerWrapper(OfflinePlayer p) {
         return SerializePlayerWrapper.stringToPlayerWrapper(statsFile.getString(p.getUniqueId().toString()+".pw"));
     }
+    public PlayerWrapper getPlayerWrapper(UUID uuid) {
+        return SerializePlayerWrapper.stringToPlayerWrapper(statsFile.getString(uuid.toString()+".pw"));
+    }
     public void setPlayerWrapper(OfflinePlayer p, PlayerWrapper pw) {
         statsFile.set(p.getUniqueId().toString()+".pw", SerializePlayerWrapper.PlayerWrapperToString(pw));
     }
+    public void setPlayerWrapper(UUID uuid, PlayerWrapper pw) {
+        statsFile.set(uuid.toString()+".pw", SerializePlayerWrapper.PlayerWrapperToString(pw));
+    }
     public void wipeSwords(OfflinePlayer p) {
         statsFile.set(p.getUniqueId().toString()+".pw", null);
+    }
+    public void wipeSwords(UUID uuid) {
+        statsFile.set(uuid.toString()+".pw", null);
     }
 
     public static <T> T getOrDefault(FileConfiguration file, String path, T defaultReturn) {

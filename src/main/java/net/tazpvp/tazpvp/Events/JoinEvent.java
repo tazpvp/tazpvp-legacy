@@ -37,6 +37,7 @@ public class JoinEvent implements Listener {
         if (Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p) == null) {
             Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
         }
+        Tazpvp.playerWrapperMap.put(p.getUniqueId(), Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p));
 
         p.teleport(spawn);
 

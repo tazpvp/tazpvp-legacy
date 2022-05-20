@@ -8,10 +8,7 @@ import redempt.redlib.commandmanager.CommandHook;
 public class PWCMD {
     @CommandHook("pw_test")
     public void pwTest(Player p) {
-        PlayerWrapper pw = Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p);
-
+        PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());
         pw.sendMother();
-
-        Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, pw);
     }
 }
