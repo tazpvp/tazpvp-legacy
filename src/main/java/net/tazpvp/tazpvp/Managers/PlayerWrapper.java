@@ -1,12 +1,16 @@
 package net.tazpvp.tazpvp.Managers;
 
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.entity.Player;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerWrapper implements Serializable {
-    private Player p;
+    private final Player p;
     private int mothers;
+    private List<Items> swords = new ArrayList<>();
 
     public PlayerWrapper(Player p) {
         this.p = p;
@@ -19,5 +23,23 @@ public class PlayerWrapper implements Serializable {
     public void sendMother() {
         p.sendMessage("Mother" + mothers);
         mothers++;
+    }
+
+    public void setSwords(List<Items> swords) {
+        this.swords = swords;
+    }
+
+    public List<Items> swords() {
+        return swords;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Swords: ");
+        for (Items i : swords) {
+            sb.append(i.toString()).append(" ");
+        }
+        return sb.toString();
     }
 }
