@@ -12,7 +12,7 @@ public class Tips {
             @Override
             public void run() {
                 num = (num + 1) % 5;
-                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Bukkit.broadcastMessage("");
                 switch(num){
                     case 0:
                         Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "You can join our community by typing " + ChatColor.DARK_AQUA + "/discord");
@@ -30,7 +30,7 @@ public class Tips {
                         Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Think they're hacking? Report them with " + ChatColor.DARK_AQUA + "/report");
                         break;
                 }
-                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+                Bukkit.broadcastMessage("");
             }
         }.runTaskTimer(plugin, 20*4*60, 20*4*60);
     }
