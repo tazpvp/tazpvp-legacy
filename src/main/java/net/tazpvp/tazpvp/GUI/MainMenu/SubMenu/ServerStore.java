@@ -60,8 +60,8 @@ public class ServerStore {
         new BukkitRunnable() {
             @Override
             public void run(){
-                if (!buying) {
-                    buying = true;
+                if (buying) {
+                    buying = false;
                     p.sendMessage("no msg");
                 }
             }
