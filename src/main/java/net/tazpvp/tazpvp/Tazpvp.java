@@ -5,6 +5,7 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
+import net.tazpvp.tazpvp.Managers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.PunishmentManager;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperStatsManager;
 import net.tazpvp.tazpvp.Managers.StatsManager;
@@ -35,6 +36,7 @@ public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
+    public static WeakHashMap<UUID, PlayerWrapper> playerWrapperMap = new WeakHashMap<>();
 
     public static boolean isRestarting = false;
 
@@ -147,6 +149,9 @@ public final class Tazpvp extends JavaPlugin {
         Bukkit.getLogger().info(" Tazspree has been disabled!");
 
         this.saveConfig();
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            playerWrapperStatsManager.setPlayerWrapper(player, playerWrapperMap.get(player.getUniqueId()));
+        }
 
         statsManager.saveStats();
         punishmentManager.savePunishments();
