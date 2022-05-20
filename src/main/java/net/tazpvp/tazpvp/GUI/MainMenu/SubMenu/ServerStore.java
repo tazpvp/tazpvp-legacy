@@ -24,14 +24,14 @@ public class ServerStore {
             RankPurchase(p, p, "vip");
         });
         gui.addButton(11, VIP);
-        ItemButton MVP = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD), e -> {
+        ItemButton MVP = ItemButton.create(new ItemStack(Material.MUSIC_DISC_WAIT), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
             RankPurchase(p, p, ChatColor.YELLOW + "mvp");
         });
         gui.addButton(12, MVP);
-        ItemButton MVP2 = ItemButton.create(new ItemStack(Material.TNT_MINECART), e -> {
+        ItemButton MVP2 = ItemButton.create(new ItemStack(Material.MUSIC_DISC_PIGSTEP), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
