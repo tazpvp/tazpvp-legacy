@@ -1,6 +1,8 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.Tazpvp;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,6 +18,7 @@ public class ChatEvent implements Listener {
 
     final HashMap<Player, String> previousMessages = new HashMap<>();
     final ArrayList<Player> cooldown = new ArrayList<>();
+    boolean gifting = false;
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
@@ -69,22 +72,20 @@ public class ChatEvent implements Listener {
 
         //yes
 
-        if (ServerStore.buying == true){
-            String msg = e.getMessage();
+        if (ServerStore.buying){
             if (msg.contains("buy")){
                 ServerStore.type = 1;
             } else if (msg.contains("gift")){
                 ServerStore.type = 2;
                 p.sendMessage("who to gift?");
-                public boolean gifting = true;
+                boolean gifting = true;
             } else {
                 p.sendMessage("That is not a choice.");
             }
             e.setCancelled(true);
         }
-        if (gifting == true && buying == true){
-            String msg = e.getMessage();
-            ServerStore.recipient = msg;
+        if (gifting && ServerStore.buying){
+            ServerStore.recipient = Bukkit.getOfflinePlayer(msg);
             e.setCancelled(true);
         }
 

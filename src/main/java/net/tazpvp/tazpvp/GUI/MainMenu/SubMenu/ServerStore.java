@@ -1,14 +1,18 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 
 public class ServerStore {
-    public String recipient = null;
+    public static boolean buying;
+    public static int type;
+    public static OfflinePlayer recipient = null;
     private final InventoryGUI gui;
     public ServerStore(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, "main"));
@@ -45,21 +49,24 @@ public class ServerStore {
 
     //yes
 
-    public void RankPurchase(OfflinePlayer buyer, OfflinePlayer recipient, String rank) {
-        p.sendMessage("Gift or buy?");
-        public boolean buying = true;
-        Bukkit.getScheduler().runTaskLater(this, new Runnable() {
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
-            if (type == 1) { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " just purchased " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " in the store!");
-            } else { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + recipient.getName());}
-            Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
-            for (Player pl : Bukkit.getOnlinePlayers()) {
-                pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
+    public void RankPurchase(Player buyer, OfflinePlayer recipient, String rank) {
+        buyer.sendMessage("Gift or buy?");
+        boolean buying = true;
+        new BukkitRunnable() {
+            @Override
+            public void run(){
+                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
+                if (type == 1) { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " just purchased " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " in the store!");
+                } else { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + recipient.getName());}
+                Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
+                for (Player pl : Bukkit.getOnlinePlayers()) {
+                    pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
+                }
+                ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+                String command = "luckperms user" + recipient.getName() + " group add " + rank;
+                Bukkit.dispatchCommand(console, command);
+                boolean buying = false;
             }
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            String command = "luckperms user" + recipient.getName() + " group add " + rank;
-            Bukkit.dispatchCommand(console, command);
-            public boolean buying = false;
-        }, 100L );
+        }.runTaskLater(Tazpvp.getInstance(), 100L);
     }
 }
