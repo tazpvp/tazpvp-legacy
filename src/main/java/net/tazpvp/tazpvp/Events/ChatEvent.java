@@ -75,6 +75,7 @@ public class ChatEvent implements Listener {
         if (ServerStore.buying){
             if (msg.contains("buy")){
                 ServerStore.type = 1;
+                ServerStore.buying = false;
             } else if (msg.contains("gift")){
                 ServerStore.type = 2;
                 p.sendMessage("who to gift?");
@@ -85,8 +86,9 @@ public class ChatEvent implements Listener {
             e.setCancelled(true);
         }
         if (gifting && ServerStore.buying){
-            ServerStore.recipient = Bukkit.getOfflinePlayer(msg);
+            ServerStore.recipient = Bukkit.getPlayer(msg);
             e.setCancelled(true);
+            ServerStore.buying = false;
         }
 
         if (!p.hasPermission("tazpvp.staff.level")){

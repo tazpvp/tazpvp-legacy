@@ -60,13 +60,15 @@ public class ServerStore {
                 } else { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + recipient.getName());}
                 Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
                 for (Player pl : Bukkit.getOnlinePlayers()) {
-                    pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
-                }
+                    pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);}
                 ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
                 String command = "luckperms user" + recipient.getName() + " group add " + rank;
                 Bukkit.dispatchCommand(console, command);
-                boolean buying = false;
             }
-        }.runTaskLater(Tazpvp.getInstance(), 100L);
+        }.runTaskLater(Tazpvp.getInstance(), 20*10L);
+        if (!buying) {
+            buying = true;
+            buyer.sendMessage("no msg");
+        }
     }
 }
