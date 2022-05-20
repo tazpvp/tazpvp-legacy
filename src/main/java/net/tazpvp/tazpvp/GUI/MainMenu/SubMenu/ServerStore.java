@@ -51,7 +51,7 @@ public class ServerStore {
 
     public void RankPurchase(Player buyer, OfflinePlayer recipient, String rank) {
         buyer.sendMessage("Gift or buy?");
-        boolean buying = true;
+        buying = true;
         new BukkitRunnable() {
             @Override
             public void run(){
