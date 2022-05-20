@@ -67,6 +67,8 @@ public class ChatEvent implements Listener {
             }
         }
 
+        //yes
+
         if (ServerStore.buying == true){
             String msg = e.getMessage();
             if (msg.contains("buy")){
