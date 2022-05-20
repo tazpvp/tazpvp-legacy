@@ -67,6 +67,25 @@ public class ChatEvent implements Listener {
             }
         }
 
+        if (ServerStore.buying == true){
+            String msg = e.getMessage();
+            if (msg.contains("buy")){
+                ServerStore.type = 1;
+            } else if (msg.contains("gift")){
+                ServerStore.type = 2;
+                p.sendMessage("who to gift?");
+                public boolean gifting = true;
+            } else {
+                p.sendMessage("That is not a choice.");
+            }
+            e.setCancelled(true);
+        }
+        if (gifting == true && buying == true){
+            String msg = e.getMessage();
+            ServerStore.recipient = msg;
+            e.setCancelled(true);
+        }
+
         if (!p.hasPermission("tazpvp.staff.level")){
             if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
                 String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + p.getDisplayName() + ": " + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + p.getDisplayName() + ": " + "%2$s";

@@ -21,31 +21,31 @@ public class ServerStore {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
-            RankPurchase(p, p, "vip", 1);
+            RankPurchase(p, p, "vip");
         });
         gui.addButton(11, VIP);
         ItemButton MVP = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
-            RankPurchase(p, p, ChatColor.YELLOW + "mvp", 1);
+            RankPurchase(p, p, ChatColor.YELLOW + "mvp");
         });
         gui.addButton(12, MVP);
         ItemButton MVP2 = ItemButton.create(new ItemStack(Material.TNT_MINECART), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
-            RankPurchase(p, p, ChatColor.YELLOW + "mvp+", 1);
+            RankPurchase(p, p, ChatColor.YELLOW + "mvp+");
         });
         gui.addButton(13, MVP2);
 
         gui.update();
     }
 
-    public void RankPurchase(OfflinePlayer buyer, OfflinePlayer recipient, String rank, int type) {
-        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-        String command = "luckperms user" + recipient.getName() + " group add " + rank;
-        Bukkit.dispatchCommand(console, command);
+    public void RankPurchase(OfflinePlayer buyer, OfflinePlayer recipient, String rank) {
+        p.sendMessage("Gift or buy?");
+        public boolean buying = true;
+        BukkitRunnable
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
         if (type == 1) { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " just purchased " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " in the store!");
         } else { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + recipient.getName());}
@@ -53,5 +53,9 @@ public class ServerStore {
         for (Player pl : Bukkit.getOnlinePlayers()) {
             pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
         }
+        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+        String command = "luckperms user" + recipient.getName() + " group add " + rank;
+        Bukkit.dispatchCommand(console, command);
+        public boolean buying = false;
     }
 }
