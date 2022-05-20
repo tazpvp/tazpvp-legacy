@@ -76,6 +76,7 @@ public class ChatEvent implements Listener {
             if (msg.contains("buy")){
                 ServerStore.type = 1;
                 ServerStore.buying = false;
+                ServerStore.RankGive(p, p);
             } else if (msg.contains("gift")){
                 ServerStore.type = 2;
                 p.sendMessage("who to gift?");
@@ -87,6 +88,7 @@ public class ChatEvent implements Listener {
         }
         if (gifting && ServerStore.buying){
             ServerStore.recipient = Bukkit.getPlayer(msg);
+            ServerStore.RankGive(p, ServerStore.recipient);
             e.setCancelled(true);
             ServerStore.buying = false;
         }
