@@ -129,12 +129,12 @@ public class StatsManager {
         //Tazpvp.statsManager.addMulti(player, 1);
         if (player.isOnline()){
             Player p = (Player) player;
-            p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            p.sendMessage("");
             p.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "  LEVEL UP " + ChatColor.DARK_AQUA + "Combat Lvl. " + ChatColor.AQUA + Tazpvp.statsManager.getLevel(player));
             p.sendMessage("");
             p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "  REWARDS");
             p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.GOLD + "60 Coins");
-            p.sendMessage(ChatColor.DARK_AQUA + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            p.sendMessage("");
             p.setLevel(Tazpvp.statsManager.getLevel(player));
             p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1 );
         }
