@@ -237,6 +237,9 @@ items {
         help gives the item
         hook items_give
     }
+    pdc {
+        hook items_pdc
+    }
 }
 bounty {
     help set a bounty on a player
