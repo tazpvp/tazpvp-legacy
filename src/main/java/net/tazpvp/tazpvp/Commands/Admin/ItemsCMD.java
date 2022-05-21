@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import net.tazpvp.tazpvp.Utils.GetRandomSword;
 import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -30,5 +31,9 @@ public class ItemsCMD {
             double foundValue = container.get(key, PersistentDataType.DOUBLE);
             p.sendMessage("Found value: " + foundValue);
         }
+    }
+    @CommandHook("items_getRandom")
+    public void itemsGetRandom(Player p) {
+        p.sendMessage(new GetRandomSword().getRandomSword().getName());
     }
 }

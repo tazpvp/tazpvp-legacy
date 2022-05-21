@@ -240,6 +240,9 @@ items {
     pdc {
         hook items_pdc
     }
+    getRandom {
+        hook items_getRandom
+    }
 }
 bounty {
     help set a bounty on a player

@@ -26,7 +26,7 @@ public class SwordCollection {
             Material material = item.getMaterial();
             int cost = item.getCost();
             int damage = item.getDamage();
-            char rarity = item.getRarity();
+            String rarity = item.getRarity();
 
             ItemButton tool = ItemButton.create(new ItemBuilder(material).setName(name).setLore(lore), e -> {
                 e.setCancelled(true);

@@ -19,10 +19,6 @@ public class ItemBuilder {
         ItemMeta meta = itemz.getItemMeta();
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
 
-        if (item.getRarity() == 'L') {
-
-        }
-
         itemz.setItemMeta(meta);
 
         for (int i = 0; i < amount; i++) {

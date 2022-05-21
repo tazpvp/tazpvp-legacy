@@ -1,5 +1,9 @@
 package net.tazpvp.tazpvp.Utils;
 
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GetRandomSword {
@@ -16,5 +20,16 @@ public class GetRandomSword {
         } else {
             return "C";
         }
+    }
+
+    public Items getRandomSword() {
+        String rarity = whichRarity();
+        List<Items> swords = new ArrayList<>();
+        for (Items i : Items.values()) {
+            if (i.getRarity().equals(rarity)) {
+                swords.add(i);
+            }
+        }
+        return swords.get(new Random().nextInt(swords.size()));
     }
 }
