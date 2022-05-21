@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.*;
@@ -12,6 +13,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
@@ -42,9 +46,13 @@ public class DeathEvent implements Listener {
 
                         ItemStack item = d.getInventory().getItemInMainHand();
                         if (item.hasItemMeta()) {
-                            if (item.getItemMeta().hasDisplayName()) {
-                                String displayName = item.getItemMeta().getDisplayName();
-                                itemDamage(displayName, (EntityDamageByEntityEvent) e);
+                            NamespacedKey key = PdcUtils.key;
+                            ItemMeta meta = item.getItemMeta();
+                            PersistentDataContainer container = meta.getPersistentDataContainer();
+
+                            if (container.has(key, PersistentDataType.DOUBLE)){
+                                double foundValue = container.get(key, PersistentDataType.DOUBLE);
+                                itemDamage(foundValue, (EntityDamageByEntityEvent) e);
                             }
                         }
                     }
@@ -53,9 +61,9 @@ public class DeathEvent implements Listener {
         }
     }
 
-    public void itemDamage(String name, EntityDamageByEntityEvent e) {
+    public void itemDamage(Double id, EntityDamageByEntityEvent e) {
         for (Items item : Items.values()) {
-            if (item.getName().equals(name)) {
+            if (item.getStoredID() == id) {
                 Player d = (Player) e.getDamager();
                 double cooldownTime = item.getCooldown(); // Get number of seconds from wherever you want
                 if(cooldowns.containsKey(d)) {
