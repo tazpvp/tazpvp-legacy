@@ -29,6 +29,7 @@ import redempt.redlib.enchants.EnchantRegistry;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
@@ -53,6 +54,9 @@ public final class Tazpvp extends JavaPlugin {
 
     public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
     public static WeakHashMap<UUID, UUID> lastDamage = new WeakHashMap<>();
+
+    public static final ArrayList<Player> Buying = new ArrayList<>();
+    public static final ArrayList<Player> Gifting = new ArrayList<>();
 
     @Override
     public void onEnable() {

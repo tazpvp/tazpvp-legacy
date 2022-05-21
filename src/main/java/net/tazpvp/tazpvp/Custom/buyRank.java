@@ -12,47 +12,45 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class buyRank implements Listener {
-    public static boolean buying;
     public static int type;
     public static String rank;
     public static Player recipient = null;
-    boolean gifting = false;
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
         String msg = e.getMessage();
         Player p = e.getPlayer();
-        if (buying){
+        if (Tazpvp.Buying.contains(p)){
             Bukkit.broadcastMessage("g");
             if (msg.contains("buy")){
                 type = 1;
-                buying = false;
+                Tazpvp.Buying.remove(p);
                 RankGive(p, p);
             } else if (msg.contains("gift")){
                 type = 2;
                 p.sendMessage("who to gift?");
-                boolean gifting = true;
+                Tazpvp.Gifting.add(p);
+                Tazpvp.Buying.remove(p);
             } else {
                 p.sendMessage("That is not a choice.");
             }
             e.setCancelled(true);
-        }
-        if (gifting && buying){
+        } else if (Tazpvp.Gifting.contains(p)){
             recipient = Bukkit.getPlayer(msg);
             RankGive(p, recipient);
+            Tazpvp.Gifting.remove(p);
             e.setCancelled(true);
-            buying = false;
         }
     }
 
     public static void RankBuying(Player p) {
         p.sendMessage("Gift or buy?");
-        buying = true;
+        Tazpvp.Buying.add(p);
         new BukkitRunnable() {
             @Override
             public void run(){
-                if (buying) {
-                    buying = false;
+                if (Tazpvp.Buying.contains(p)) {
+                    Tazpvp.Buying.remove(p);
                     p.sendMessage("no msg");
                 }
             }
