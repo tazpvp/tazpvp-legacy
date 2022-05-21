@@ -18,7 +18,6 @@ public class ChatEvent implements Listener {
 
     final HashMap<Player, String> previousMessages = new HashMap<>();
     final ArrayList<Player> cooldown = new ArrayList<>();
-    boolean gifting = false;
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
@@ -68,29 +67,6 @@ public class ChatEvent implements Listener {
                 e.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "You cannot repeat the same message!");
             }
-        }
-
-        //yes
-
-        if (ServerStore.buying){
-            if (msg.contains("buy")){
-                ServerStore.type = 1;
-                ServerStore.buying = false;
-                ServerStore.RankGive(p, p);
-            } else if (msg.contains("gift")){
-                ServerStore.type = 2;
-                p.sendMessage("who to gift?");
-                boolean gifting = true;
-            } else {
-                p.sendMessage("That is not a choice.");
-            }
-            e.setCancelled(true);
-        }
-        if (gifting && ServerStore.buying){
-            ServerStore.recipient = Bukkit.getPlayer(msg);
-            ServerStore.RankGive(p, ServerStore.recipient);
-            e.setCancelled(true);
-            ServerStore.buying = false;
         }
 
         if (!p.hasPermission("tazpvp.staff.level")){
