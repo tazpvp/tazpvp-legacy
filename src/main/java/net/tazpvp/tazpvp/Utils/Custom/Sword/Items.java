@@ -8,7 +8,12 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
 
 public enum Items {
-    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.7, PdcUtils.key, PersistentDataType.DOUBLE, 0, ChatColor.GREEN + "3");
+    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 1, 1, 'C', 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, ChatColor.GREEN + "3"),
+    UNCLESWORD(ChatColor.GREEN + "Uncle Sworden", Material.STONE_SWORD, 100, 2, 1, 'U', 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, ChatColor.GREEN + "very uncle"),
+    GULKSWORD(ChatColor.YELLOW + "Gulk Sworden", Material.GOLDEN_SWORD, 100, 3, 1, 'R', 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, ChatColor.YELLOW + "gulk"),
+    FILLETSWORD(ChatColor.LIGHT_PURPLE + "Fillet Sworden", Material.IRON_SWORD, 100, 4, 1, 'E', 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, ChatColor.LIGHT_PURPLE + "fillet deez nuts"),
+    EXCALIBUR(ChatColor.GOLD + "Excalibur", Material.DIAMOND_SWORD, 100, 5, 1, 'L', 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, ChatColor.GOLD + "famoos sword");
+
 
     private String name;
     private String[] lore;

@@ -1,16 +1,13 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
-import net.tazpvp.tazpvp.Custom.buyRank;
-import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.buyRank;
 import org.bukkit.*;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 
-import static net.tazpvp.tazpvp.Custom.buyRank.RankBuying;
+import static net.tazpvp.tazpvp.Utils.buyRank.RankBuying;
 
 public class ServerStore {
     private final InventoryGUI gui;
