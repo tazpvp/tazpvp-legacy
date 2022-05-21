@@ -1,13 +1,14 @@
 package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
 
 public enum Items {
-    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.7, new NamespacedKey(Tazpvp.getInstance(), "custom-sword"), PersistentDataType.DOUBLE, 0, ChatColor.GREEN + "3");
+    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 10, 1, 'c', 0.7, PdcUtils.key, PersistentDataType.DOUBLE, 0, ChatColor.GREEN + "3");
 
     private String name;
     private String[] lore;

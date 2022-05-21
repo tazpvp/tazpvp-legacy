@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,7 +22,7 @@ public class ItemsCMD {
     @CommandHook("items_pdc")
     public void itemsPdc(Player p){
         ItemStack item = p.getInventory().getItemInMainHand();
-        NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom-sword");
+        NamespacedKey key = PdcUtils.key;
         ItemMeta meta = item.getItemMeta();
         PersistentDataContainer container = meta.getPersistentDataContainer();
 

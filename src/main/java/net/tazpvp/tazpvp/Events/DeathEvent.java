@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.*;
@@ -45,7 +46,7 @@ public class DeathEvent implements Listener {
 
                         ItemStack item = d.getInventory().getItemInMainHand();
                         if (item.hasItemMeta()) {
-                            NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom-sword");
+                            NamespacedKey key = PdcUtils.key;
                             ItemMeta meta = item.getItemMeta();
                             PersistentDataContainer container = meta.getPersistentDataContainer();
 
