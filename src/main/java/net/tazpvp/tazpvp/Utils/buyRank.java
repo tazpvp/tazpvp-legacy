@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Custom;
+package net.tazpvp.tazpvp.Utils;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
