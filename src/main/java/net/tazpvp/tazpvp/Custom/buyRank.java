@@ -45,7 +45,7 @@ public class buyRank implements Listener {
 
     public static void RankBuying(Player p) {
         p.sendMessage("Gift or buy?");
-        Bukkit.broadcastMessage("g");
+        Bukkit.broadcastMessage(p.getName());
         Tazpvp.Buying.add(p.getName());
         Bukkit.broadcastMessage(Tazpvp.Buying.get(1));
         new BukkitRunnable() {
