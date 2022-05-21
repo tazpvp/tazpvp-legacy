@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Utils.Custom.Sword;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,13 @@ public class ItemBuilder {
         List<String> loree = new ArrayList<>();
         Material material = item.getMaterial();
 
-        //NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom");
-
-        //meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, 1);
-
         ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(lore);
+        ItemMeta meta = itemz.getItemMeta();
+        meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
+        itemz.setItemMeta(meta);
 
-        p.getInventory().addItem(itemz);
+        for (int i = 0; i < amount; i++) {
+            p.getInventory().addItem(itemz);
+        }
     }
 }
