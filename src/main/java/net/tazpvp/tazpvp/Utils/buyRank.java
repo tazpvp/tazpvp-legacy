@@ -20,17 +20,17 @@ public class buyRank implements Listener {
     public void onChat(AsyncPlayerChatEvent e){
         String msg = e.getMessage();
         Player p = e.getPlayer();
-        if (Tazpvp.Buying.contains(p.getName())){
+        if (Tazpvp.Buying.contains(p.getUniqueId())){
             Bukkit.broadcastMessage("g");
             if (msg.contains("buy")){
                 type = 1;
-                Tazpvp.Buying.remove(p.getName());
+                Tazpvp.Buying.remove(p.getUniqueId());
                 RankGive(p, p);
             } else if (msg.contains("gift")){
                 type = 2;
                 p.sendMessage("who to gift?");
-                Tazpvp.Gifting.add(p.getName());
-                Tazpvp.Buying.remove(p.getName());
+                Tazpvp.Gifting.add(p.getUniqueId());
+                Tazpvp.Buying.remove(p.getUniqueId());
             } else {
                 p.sendMessage("That is not a choice.");
             }
@@ -45,12 +45,12 @@ public class buyRank implements Listener {
 
     public static void RankBuying(Player p) {
         p.sendMessage("Gift or buy?");
-        Tazpvp.Buying.add(p.getName());
+        Tazpvp.Buying.add(p.getUniqueId());
         new BukkitRunnable() {
             @Override
             public void run(){
-                if (Tazpvp.Buying.contains(p.getName())) {
-                    Tazpvp.Buying.remove(p.getName());
+                if (Tazpvp.Buying.contains(p.getUniqueId())) {
+                    Tazpvp.Buying.remove(p.getUniqueId());
                     p.sendMessage("no msg");
                 }
             }
