@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.MainMenu;
 
+import net.tazpvp.tazpvp.GUI.AchievementsGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.SwordCollection;
 import org.bukkit.Bukkit;
@@ -30,7 +31,7 @@ public class MainGUI {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
-            new SwordCollection(p);
+            new AchievementsGUI(p);
         });
         gui.addButton(13, collection);
         ItemButton store = ItemButton.create(new ItemStack(Material.TNT_MINECART), e -> {

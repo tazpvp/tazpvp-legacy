@@ -1,15 +1,19 @@
 package net.tazpvp.tazpvp.Achievements;
 
-import org.bukkit.Material;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public enum Achievements {
-    SENDCHATMESSAGE("Send a chat message!", "send achat mesage");
+    SENDCHATMESSAGE("Send a chat message!", ".sendchatmessage", new ArrayList<>(Arrays.asList("Become Cool and send a chat messG!")));
 
     private final String name;
-    private final String[] lore;
+    private final List<String> lore;
+    private final String statsFileName;
 
-    Achievements(String name, String... lore) {
+    Achievements(String name, String statsFileName, List<String> lore) {
         this.name = name;
+        this.statsFileName = statsFileName;
         this.lore = lore;
     }
 
@@ -17,7 +21,11 @@ public enum Achievements {
         return this.name;
     }
 
-    public String[] getLore() {
+    public List<String> getLore() {
         return this.lore;
+    }
+
+    public String getStatsFileName() {
+        return this.statsFileName;
     }
 }

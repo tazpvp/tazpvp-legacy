@@ -4,12 +4,15 @@ import net.tazpvp.tazpvp.Achievements.Achievements;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
+
+import java.util.List;
 
 public class AchievementsGUI {
     private InventoryGUI gui;
@@ -26,10 +29,17 @@ public class AchievementsGUI {
         int i = 10;
         for (Achievements ach : Achievements.values()) {
             String name = ach.getName();
-            String[] lore = ach.getLore();
-            Material material = Material.BUCKET;
+            List<String> lore = ach.getLore();
+            Material material = Material.MINECART;
 
-            ItemButton tool = ItemButton.create(new ItemBuilder(material).setName(name).setLore(lore), e -> {
+            if (Tazpvp.achievementManager.statsFile.getBoolean((p.getUniqueId().toString() + ach.getStatsFileName()))) {
+                material = Material.CHEST_MINECART;
+                lore.add(ChatColor.GREEN + "Completed!");
+            } else {
+                lore.add(ChatColor.RED + "Incomplete!");
+            }
+
+            ItemButton tool = ItemButton.create(new ItemBuilder(material).setName(name).setLore(String.valueOf(lore)), e -> {
                 e.setCancelled(true);
             });
             gui.addButton(i, tool);
