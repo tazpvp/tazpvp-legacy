@@ -24,6 +24,8 @@ public class MoveEvent implements Listener {
         if (b.getType() == Material.WATER && p.getGameMode() == GameMode.SURVIVAL) {
             if (Tazpvp.lastDamage.containsKey(p.getUniqueId())) {
                 new DeathEvent().DeathFunction(p, Bukkit.getPlayer(Tazpvp.lastDamage.get(p.getUniqueId())), false);
+            } else {
+                new DeathEvent().DeathFunction(p, null, false);
             }
         }
 
