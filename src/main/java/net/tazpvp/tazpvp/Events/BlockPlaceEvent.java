@@ -4,6 +4,8 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -12,22 +14,25 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PlaceBlockEvent implements Listener {
+public class BlockPlaceEvent implements Listener {
     private final Random rand = new Random();
 
     @EventHandler
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {
-        if (event.getPlayer().getGameMode() == GameMode.SURVIVAL) {
+        Player p = event.getPlayer();
+
+        if (p.getGameMode() == GameMode.SURVIVAL) {
+            Block b = event.getBlock();
+            b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
             if (!Tazpvp.isRestarting) {
                 Material blockType = event.getBlockPlaced().getType();
                 ArrayList<Material> unreq = new ArrayList<>();
-                unreq.add(Material.COAL_ORE);
-                unreq.add(Material.IRON_ORE);
-                unreq.add(Material.GOLD_ORE);
-                unreq.add(Material.LAPIS_ORE);
-                unreq.add(Material.DIAMOND_ORE);
-                unreq.add(Material.EMERALD_ORE);
+                unreq.add(Material.DEEPSLATE_GOLD_ORE);
+                unreq.add(Material.DEEPSLATE_REDSTONE_ORE);
+                unreq.add(Material.DEEPSLATE_LAPIS_ORE);
+                unreq.add(Material.DEEPSLATE_EMERALD_ORE);
+                unreq.add(Material.DEEPSLATE_IRON_ORE);
 
                 if (!unreq.contains(blockType)) {
                 }

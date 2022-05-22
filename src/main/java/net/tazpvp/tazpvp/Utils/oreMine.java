@@ -17,10 +17,10 @@ public class oreMine implements Listener {
     public void onBlockBreak(org.bukkit.event.block.BlockBreakEvent e) {
         Player p = e.getPlayer();
         if (p.getGameMode() == GameMode.SURVIVAL) {
-            e.setCancelled(true);
             Block b = e.getBlock();
             Material block = b.getType();
             if (Tazpvp.blocks.contains(block)) {
+                e.setCancelled(true);
                 if (block == Material.DEEPSLATE_GOLD_ORE) { oreRespawn(p, block, Material.RAW_GOLD, 350L, b);
                 } else if (block == Material.DEEPSLATE_REDSTONE_ORE) { oreRespawn(p, block, Material.REDSTONE, 350L, b);
                 } else if (block == Material.DEEPSLATE_IRON_ORE) { oreRespawn(p, block, Material.RAW_IRON, 350L, b);
