@@ -21,7 +21,7 @@ public class OpenSlotGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 12, 13, 26, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
 
         gui.openSlot(13);
         gui.setOnClickOpenSlot(this::checkItem);
