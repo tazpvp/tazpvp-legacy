@@ -5,11 +5,14 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class oreMine {
+public class oreMine implements Listener {
 
+    @EventHandler
     public void onBlockBreak(org.bukkit.event.block.BlockBreakEvent e){
         Player p = e.getPlayer();
 

@@ -11,6 +11,7 @@ import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.buyRank;
+import net.tazpvp.tazpvp.Utils.oreMine;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -140,6 +141,7 @@ public final class Tazpvp extends JavaPlugin {
         regList(new InteractEvent());
         regList(new buyRank());
         regList(new ClickBlockEvent());
+        regList(new oreMine());
     }
 
     public void regList(Listener listener){
