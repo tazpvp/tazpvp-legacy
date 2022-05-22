@@ -154,11 +154,6 @@ gui string:gui {
     user player
     hook gui
 }
-appeal {
-    help /appeal
-    user player
-    hook appeal
-}
 
 report player:target string...:reason{
     help /report <player> <reason>
@@ -166,18 +161,12 @@ report player:target string...:reason{
     hook report
 }
 
-apply {
-    help /apply
+rules,rule {
+    help /rules
     user player
-    hook apply
+    hook rules
 }
 
-init {
-    permission tazpvp.admin
-    help /init
-    user player
-    hook init
-}
 
 region {
     permission tazpvp.admin
