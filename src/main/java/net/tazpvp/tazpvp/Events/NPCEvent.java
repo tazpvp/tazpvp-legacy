@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.HeadsToShards;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
@@ -41,6 +42,8 @@ public class NPCEvent implements Listener {
                             new MainGUI(e.getPlayer());
                         } else if (id == 4) {
                             e.getPlayer().sendMessage("coming soon");
+                        } else if (id == 5) {
+                            new HeadsToShards().convertHeadsToShards(e.getPlayer());
                         } else {
                             e.getPlayer().sendMessage(ChatColor.RED + "Uh oh! You found a super secret error! Report this to Ntdi, 0xEf300 err resp: " + id +".EntityStorage");
                         }
