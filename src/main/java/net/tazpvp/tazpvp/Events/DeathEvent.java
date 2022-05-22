@@ -22,6 +22,7 @@ import redempt.redlib.itemutils.ItemUtils;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
+import java.util.Random;
 import java.util.WeakHashMap;
 
 public class DeathEvent implements Listener {
@@ -99,8 +100,10 @@ public class DeathEvent implements Listener {
         if (d != null) { //code will run if a player kills another player
 
             if (dropHead) {
-                ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
-                Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), head);
+                if (new Random().nextInt(10) <= 2){
+                    ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
+                    Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), head);
+                }
             }
 
             if (Bukkit.getOnlinePlayers().size() < 20) {
