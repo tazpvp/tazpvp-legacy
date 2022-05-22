@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class UnlockSwordGUI {
     private InventoryGUI gui;
+    private boolean isSpinning = false;
 
     public UnlockSwordGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, "Spins: " + Tazpvp.statsManager.getSpins(p)));
@@ -46,12 +47,17 @@ public class UnlockSwordGUI {
         ItemButton spinSword = ItemButton.create(new ItemBuilder(Material.SUNFLOWER)
                 .setName("Spin for Sword")
                 .setLore("Spins Available: " + Tazpvp.statsManager.getSpins(p)), e -> {
-            if (Tazpvp.statsManager.getSpins(p) > 0) {
-                Tazpvp.statsManager.setSpins(p, Tazpvp.statsManager.getSpins(p) - 1);
-                spinSword(sword, p);
+            if (isSpinning) {
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             } else {
-                e.getWhoClicked().sendMessage("You don't have any spins!");
-                e.getWhoClicked().closeInventory();
+                if (Tazpvp.statsManager.getSpins(p) > 0) {
+                    Tazpvp.statsManager.setSpins(p, Tazpvp.statsManager.getSpins(p) - 1);
+                    spinSword(sword, p);
+                    isSpinning = true;
+                } else {
+                    e.getWhoClicked().sendMessage("You don't have any spins!");
+                    e.getWhoClicked().closeInventory();
+                }
             }
         });
         gui.addButton(12, spinSword);
@@ -60,7 +66,7 @@ public class UnlockSwordGUI {
     }
 
     public void spinSword(ItemButton sword, Player p) {
-        int maxRuns = 15;
+        int maxRuns = 50;
         final int[] runs = {0};
         new BukkitRunnable() {
             @Override
@@ -68,11 +74,11 @@ public class UnlockSwordGUI {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
                     Items unlockedItem = GetRandomSword.getRandomSword();
-                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 5, 5);
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
                     if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-                        p.sendMessage("You already have unlocked sword!");
+                        p.sendMessage("You have already unlocked " + unlockedItem.getName() + "!");
                     } else {
                         List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         swords.add(unlockedItem);
@@ -80,6 +86,7 @@ public class UnlockSwordGUI {
                         p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
                     }
+                    p.closeInventory();
                     cancel();
                 } else {
                     Items item = Items.values()[new Random().nextInt(Items.values().length)];
@@ -88,7 +95,7 @@ public class UnlockSwordGUI {
                     gui.update();
                 }
             }
-        }.runTaskTimer(Tazpvp.getInstance(), 5, 5);
+        }.runTaskTimer(Tazpvp.getInstance(), 3, 3);
 
     }
 }
