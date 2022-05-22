@@ -78,6 +78,7 @@ public class UnlockSwordGUI {
                         swords.add(unlockedItem);
                         Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
                         p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
+                        net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
                     }
                     cancel();
                 } else {
