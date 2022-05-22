@@ -66,7 +66,7 @@ public class UnlockSwordGUI {
     }
 
     public void spinSword(ItemButton sword, Player p) {
-        int maxRuns = 50;
+        int maxRuns = 20;
         final int[] runs = {0};
         new BukkitRunnable() {
             @Override
