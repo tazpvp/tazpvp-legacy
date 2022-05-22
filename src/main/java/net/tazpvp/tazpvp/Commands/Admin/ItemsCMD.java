@@ -13,6 +13,8 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.commandmanager.CommandHook;
 
+import java.util.List;
+
 public class ItemsCMD {
     @CommandHook("items_give")
     public void itemsGive(Player p){
@@ -39,5 +41,12 @@ public class ItemsCMD {
     @CommandHook("items_unlocked")
     public void itemsUnlocked(Player p) {
         p.sendMessage(Tazpvp.playerWrapperMap.get(p.getUniqueId()).toString());
+    }
+    @CommandHook("items_wipe")
+    public void itemsWipe(Player p) {
+        List<Items> items = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
+        items.clear();
+        Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(items);
+        p.sendMessage("Swords wiped!");
     }
 }

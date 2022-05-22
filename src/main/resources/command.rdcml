@@ -266,6 +266,9 @@ items {
     unlocked {
         hook items_unlocked
     }
+    wipe {
+        hook items_wipe
+    }
 }
 bounty {
     help set a bounty on a player
