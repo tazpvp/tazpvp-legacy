@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
+import net.tazpvp.tazpvp.GUI.OpenSlotGUI;
 import net.tazpvp.tazpvp.unused.FlameVilGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.GUI.TestGUI;
@@ -18,6 +19,8 @@ public class GuiCMD {
             new MainGUI(p);
         } else if (gui.equalsIgnoreCase("flame")) {
             new FlameVilGUI(p);
+        } else if (gui.equalsIgnoreCase("os")) {
+            new OpenSlotGUI(p);
         }
     }
 }
