@@ -13,7 +13,9 @@ import net.tazpvp.tazpvp.Utils.MathUtils;
 import net.tazpvp.tazpvp.Utils.buyRank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -54,6 +56,7 @@ public final class Tazpvp extends JavaPlugin {
 
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
+    public static List<Material> blocks = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -87,6 +90,12 @@ public final class Tazpvp extends JavaPlugin {
         } else {
             System.out.println("Vault not found!");
         }
+
+        blocks.add(Material.GOLD_ORE);
+        blocks.add(Material.REDSTONE_ORE);
+        blocks.add(Material.LAPIS_ORE);
+        blocks.add(Material.EMERALD_ORE);
+        blocks.add(Material.IRON_ORE);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
