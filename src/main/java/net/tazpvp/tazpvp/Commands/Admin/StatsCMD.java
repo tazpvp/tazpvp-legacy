@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.checkerframework.checker.units.qual.C;
 import redempt.redlib.commandmanager.CommandHook;
 
 public class StatsCMD {
@@ -335,6 +336,12 @@ public class StatsCMD {
         } else {
             sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getStreak(target) + "'s killstreaks");
         }
+    }
+
+    @CommandHook("stats_reset")
+    public void resetStats(Player p, Player target) {
+        Tazpvp.statsManager.initPlayer(target);
+        p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s stats");
     }
 
 }

@@ -127,6 +127,9 @@ stats {
             hook streak_get
         }
     }
+    reset player:target {
+        hook stats_reset
+    }
 }
 gui string:gui {
     permission tazpvp.admin
