@@ -3,10 +3,7 @@ package net.tazpvp.tazpvp.GUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.GetRandomSword;
-import org.bukkit.Bukkit;
-import org.bukkit.Effect;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -38,9 +35,8 @@ public class UnlockSwordGUI {
         });
         gui.addButton(10, buySpins);
 
-        ItemButton sword = ItemButton.create(new ItemBuilder(Material.IRON_SWORD)
-                .setName("Spin to unlock a random sword!")
-                .setLore("Spin me!"), e -> {
+        ItemButton sword = ItemButton.create(new ItemBuilder(Material.RED_STAINED_GLASS)
+                .setName(""), e -> {
         });
         gui.addButton(15, sword);
 
@@ -78,12 +74,16 @@ public class UnlockSwordGUI {
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
                     if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-                        p.sendMessage("You have already unlocked " + unlockedItem.getName() + "!");
+                        p.sendMessage("");
+                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                        p.sendMessage("");
                     } else {
                         List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         swords.add(unlockedItem);
                         Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
-                        p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
+                        p.sendMessage("");
+                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                        p.sendMessage("");
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
                     }
                     p.closeInventory();
