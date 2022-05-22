@@ -29,7 +29,7 @@ public class PlayerWrapper implements Serializable {
         this.swords = swords;
     }
 
-    public List<Items> swords() {
+    public List<Items> getSwords() {
         return swords;
     }
 

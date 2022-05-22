@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,11 +42,8 @@ public class PlayerWrapperStatsManager {
     public void setPlayerWrapper(UUID uuid, PlayerWrapper pw) {
         statsFile.set(uuid.toString()+".pw", SerializePlayerWrapper.PlayerWrapperToString(pw));
     }
-    public void wipeSwords(OfflinePlayer p) {
-        statsFile.set(p.getUniqueId().toString()+".pw", null);
-    }
-    public void wipeSwords(UUID uuid) {
-        statsFile.set(uuid.toString()+".pw", null);
+    public void wipeSwords(Player p) {
+        statsFile.set(p.getUniqueId().toString()+".pw", SerializePlayerWrapper.PlayerWrapperToString(new PlayerWrapper(p)));
     }
 
     public static <T> T getOrDefault(FileConfiguration file, String path, T defaultReturn) {

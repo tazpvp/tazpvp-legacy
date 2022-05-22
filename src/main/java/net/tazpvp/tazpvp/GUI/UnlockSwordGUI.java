@@ -14,6 +14,7 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import java.util.List;
 import java.util.Random;
 
 public class UnlockSwordGUI {
@@ -79,10 +80,12 @@ public class UnlockSwordGUI {
         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
         sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
         gui.update();
-        if (Tazpvp.playerWrapperMap.get(p).swords().contains(unlockedItem)) {
+        if (Tazpvp.playerWrapperMap.get(p).getSwords().contains(unlockedItem)) {
             p.sendMessage("You already have unlocked sword!");
         } else {
-            Tazpvp.playerWrapperMap.get(p).swords().add(unlockedItem);
+            List<Items> swords = Tazpvp.playerWrapperMap.get(p).getSwords();
+            swords.add(unlockedItem);
+            Tazpvp.playerWrapperMap.get(p).setSwords(swords);
             p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
         }
     }
