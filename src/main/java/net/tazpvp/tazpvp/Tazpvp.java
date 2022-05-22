@@ -5,10 +5,7 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
-import net.tazpvp.tazpvp.Managers.PlayerWrapper;
-import net.tazpvp.tazpvp.Managers.PunishmentManager;
-import net.tazpvp.tazpvp.Managers.PlayerWrapperStatsManager;
-import net.tazpvp.tazpvp.Managers.StatsManager;
+import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
@@ -37,6 +34,7 @@ public final class Tazpvp extends JavaPlugin {
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
+    public static AchievementManager achievementManager;
 
     public static boolean isRestarting = false;
 
@@ -66,6 +64,7 @@ public final class Tazpvp extends JavaPlugin {
         statsManager = new StatsManager();
         punishmentManager = new PunishmentManager();
         playerWrapperStatsManager = new PlayerWrapperStatsManager();
+        achievementManager = new AchievementManager();
 
         configFile = this.getConfig();
         initConfig();
@@ -96,11 +95,8 @@ public final class Tazpvp extends JavaPlugin {
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
                 new StatsCMD(),
                 new GuiCMD(),
-                new AppealCMD(),
                 new ReportCMD(),
                 new RulesCMD(),
-                new ApplyCMD(),
-                new initCMD(),
                 new RegionCMD(),
                 new SpawnCMD(),
                 new DiscordCMD(),
@@ -161,6 +157,7 @@ public final class Tazpvp extends JavaPlugin {
         statsManager.saveStats();
         punishmentManager.savePunishments();
         playerWrapperStatsManager.saveStats();
+        achievementManager.saveStats();
     }
 
     public void initScoreboard(Player player) {
