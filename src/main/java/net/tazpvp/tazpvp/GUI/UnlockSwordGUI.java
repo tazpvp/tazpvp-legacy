@@ -35,7 +35,7 @@ public class UnlockSwordGUI {
         });
         gui.addButton(10, buySpins);
 
-        ItemButton sword = ItemButton.create(new ItemBuilder(Material.RED_STAINED_GLASS)
+        ItemButton sword = ItemButton.create(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
                 .setName(""), e -> {
         });
         gui.addButton(15, sword);
