@@ -11,7 +11,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.*;
 
 public enum Items {
-    WOOGSWORD("oak sworden",  Material.WOODEN_SWORD, 100, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>() {{
+    WOOGSWORD(ChatColor.WHITE + "Oak Sworden",  Material.WOODEN_SWORD, 100, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>() {{
 
         }}, ChatColor.GREEN + "3"),
     UNCLESWORD(ChatColor.GREEN + "Uncle Sworden", Material.STONE_SWORD, 100, 2, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>() {{
