@@ -21,6 +21,7 @@ public class ItemBuilder {
         ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(lore);
         ItemMeta meta = itemz.getItemMeta();
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
+        meta.setUnbreakable(true);
         itemz.setItemMeta(meta);
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
