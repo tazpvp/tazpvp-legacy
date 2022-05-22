@@ -243,6 +243,9 @@ items {
     getRandom {
         hook items_getRandom
     }
+    unlocked {
+        hook items_unlocked
+    }
 }
 bounty {
     help set a bounty on a player

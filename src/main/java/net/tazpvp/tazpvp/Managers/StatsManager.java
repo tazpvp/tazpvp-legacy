@@ -67,6 +67,7 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".rank", Tazpvp.permissions.getPrimaryGroup((Player) player));
         statsFile.set(player.getUniqueId().toString()+".bowType", 0);
         statsFile.set(player.getUniqueId().toString()+".rebirth", 0);
+        statsFile.set(player.getUniqueId().toString()+".spins", 0);
     }
 
     public int getMoney(OfflinePlayer player) {
@@ -191,6 +192,15 @@ public class StatsManager {
     }
     public void setBowType(OfflinePlayer player, int type) {
         statsFile.set(player.getUniqueId().toString()+".bowType", type);
+    }
+    public int getSpins(OfflinePlayer player) {
+        return statsFile.getInt(player.getUniqueId().toString()+".spins");
+    }
+    public void setSpins(OfflinePlayer player, int spins) {
+        statsFile.set(player.getUniqueId().toString()+".spins", spins);
+    }
+    public void addSpins(OfflinePlayer player, int spins) {
+        setSpins(player, spins+getSpins(player));
     }
 
 

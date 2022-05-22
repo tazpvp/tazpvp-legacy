@@ -36,4 +36,8 @@ public class ItemsCMD {
     public void itemsGetRandom(Player p) {
         p.sendMessage(new GetRandomSword().getRandomSword().getName());
     }
+    @CommandHook("items_unlocked")
+    public void itemsUnlocked(Player p) {
+        p.sendMessage(Tazpvp.playerWrapperMap.get(p).toString());
+    }
 }

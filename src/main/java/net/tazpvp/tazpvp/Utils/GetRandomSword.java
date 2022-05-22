@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GetRandomSword {
-    public String whichRarity() {
+    public static String whichRarity() {
         int x = new Random().nextInt(100);
         if (x <= 50) {
             return "C";
@@ -22,7 +22,7 @@ public class GetRandomSword {
         }
     }
 
-    public Items getRandomSword() {
+    public static Items getRandomSword() {
         String rarity = whichRarity();
         List<Items> swords = new ArrayList<>();
         for (Items i : Items.values()) {
