@@ -14,6 +14,8 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import java.util.Random;
+
 public class UnlockSwordGUI {
     private InventoryGUI gui;
 
@@ -66,7 +68,7 @@ public class UnlockSwordGUI {
                 if (runs[0] >= maxRuns) {
                     cancel();
                 } else {
-                    Items item = GetRandomSword.getRandomSword();
+                    Items item = Items.values()[new Random().nextInt(Items.values().length)];
                     sword.setItem(new ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(item.getLore()));
                     p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
                     gui.update();
@@ -74,10 +76,7 @@ public class UnlockSwordGUI {
             }
         }.runTaskTimer(Tazpvp.getInstance(), 5, 5);
         Items unlockedItem = GetRandomSword.getRandomSword();
-        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 2);
-        p.getWorld().playEffect(p.getLocation(), Effect.FIREWORK_SHOOT, 1, 1);
-        p.getWorld().playEffect(p.getLocation(), Effect.FIREWORK_SHOOT, 1, 1);
-        p.getWorld().playEffect(p.getLocation(), Effect.FIREWORK_SHOOT, 1, 1);
+        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
         sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
         gui.update();
         if (Tazpvp.playerWrapperMap.get(p).swords().contains(unlockedItem)) {
