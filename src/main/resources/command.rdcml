@@ -306,3 +306,10 @@ pw {
         hook pw_test
     }
 }
+
+enderchest,ec {
+    help /enderchest
+    user player
+    permission tazpvp.enderchest
+    hook enderchest
+}
