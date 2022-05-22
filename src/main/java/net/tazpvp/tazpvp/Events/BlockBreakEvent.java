@@ -8,10 +8,6 @@ public class BlockBreakEvent implements Listener {
     @EventHandler
     public void onBlockBreak(org.bukkit.event.block.BlockBreakEvent e) {
         Player p = e.getPlayer();
-
-        if (!p.getWorld().getName().equals("arena")) {
-            e.setCancelled(true);
-        }
     }
 
 //    @EventHandler

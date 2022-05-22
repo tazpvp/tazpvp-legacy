@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Utils;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -16,11 +17,12 @@ public class oreMine implements Listener {
     public void onBlockBreak(org.bukkit.event.block.BlockBreakEvent e) {
         Player p = e.getPlayer();
         if (p.getGameMode() == GameMode.SURVIVAL) {
-            e.setCancelled(true);
+            Bukkit.broadcastMessage("1");
             Block b = e.getBlock();
             Material block = b.getType();
             if (Tazpvp.blocks.contains(block)) {
                 if (block == Material.DEEPSLATE_GOLD_ORE) {
+                    Bukkit.broadcastMessage("2");
                     oreRespawn(p, block, Material.RAW_GOLD, 350L, b);
                 } else if (block == Material.DEEPSLATE_REDSTONE_ORE) {
                     oreRespawn(p, block, Material.REDSTONE, 350L, b);
@@ -32,16 +34,19 @@ public class oreMine implements Listener {
                     oreRespawn(p, block, Material.EMERALD, 350L, b);
                 }
             }
+            e.setCancelled(true);
         }
     }
 
     public void oreRespawn(Player p, Material block, Material block2, Long dur, Block b){
         p.getInventory().addItem(new ItemStack(block));
+        Bukkit.broadcastMessage("3");
         b.setType(Material.BEDROCK);
         new BukkitRunnable() {
             @Override
             public void run() {
                 b.setType(block);
+                Bukkit.broadcastMessage("4");
             }
         }.runTaskLater(Tazpvp.getInstance(), dur);
     }
