@@ -80,6 +80,11 @@ public class UnlockSwordGUI {
         p.getWorld().playEffect(p.getLocation(), Effect.FIREWORK_SHOOT, 1, 1);
         sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
         gui.update();
-        Tazpvp.playerWrapperMap.get(p).swords().add(unlockedItem);
+        if (Tazpvp.playerWrapperMap.get(p).swords().contains(unlockedItem)) {
+            p.sendMessage("You already have unlocked sword!");
+        } else {
+            Tazpvp.playerWrapperMap.get(p).swords().add(unlockedItem);
+            p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
+        }
     }
 }
