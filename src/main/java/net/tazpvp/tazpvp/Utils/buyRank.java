@@ -21,7 +21,7 @@ public class buyRank implements Listener {
         String msg = e.getMessage();
         Player p = e.getPlayer();
         if (Tazpvp.Buying.contains(p.getUniqueId())){
-            Bukkit.broadcastMessage("g");
+            e.setCancelled(true);
             if (msg.contains("buy")){
                 type = 1;
                 Tazpvp.Buying.remove(p.getUniqueId());
@@ -34,12 +34,11 @@ public class buyRank implements Listener {
             } else {
                 p.sendMessage("That is not a choice.");
             }
-            e.setCancelled(true);
         } else if (Tazpvp.Gifting.contains(p)){
+            e.setCancelled(true);
             recipient = Bukkit.getPlayer(msg);
             RankGive(p, recipient);
             Tazpvp.Gifting.remove(p);
-            e.setCancelled(true);
         }
     }
 

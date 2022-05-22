@@ -13,6 +13,7 @@ import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
+import net.tazpvp.tazpvp.Utils.buyRank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -136,6 +137,7 @@ public final class Tazpvp extends JavaPlugin {
         regList(new DamageEvent());
         regList(new NPCEvent());
         regList(new InteractEvent());
+        regList(new buyRank());
     }
 
     public void regList(Listener listener){
