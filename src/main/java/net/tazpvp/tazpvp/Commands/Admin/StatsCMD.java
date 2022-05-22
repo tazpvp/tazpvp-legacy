@@ -338,6 +338,53 @@ public class StatsCMD {
         }
     }
 
+    // Spins commands
+
+    @CommandHook("spins_add")
+    public void spinsAdd(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.addSpins(target, amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " spins to " + ChatColor.RED + target.getName());
+        } else {
+            sender.sendMessage("Console has added " + amount + " spins to " + target.getName());
+        }
+    }
+    @CommandHook("spins_remove")
+    public void spinsRemove(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.addSpins(target, -amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " spins from " + ChatColor.RED + target.getName());
+        } else {
+            sender.sendMessage("Console has removed " + amount + " spins from " + target.getName());
+        }
+    }
+    @CommandHook("spins_set")
+    public void spinsSet(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.setSpins(target, amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " spins to " + ChatColor.RED + target.getName());
+        } else {
+            sender.sendMessage("Console has set " + amount + " spins to " + target.getName());
+        }
+    }
+    @CommandHook("spins_reset")
+    public void spinsReset(CommandSender sender, Player target) {
+        Tazpvp.statsManager.setSpins(target, 0);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s spins");
+        } else {
+            sender.sendMessage("Console has reset " + target.getName() + "'s spins");
+        }
+    }
+    @CommandHook("spins_get")
+    public void spinsGet(CommandSender sender, Player target) {
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getSpins(target) + ChatColor.GOLD + "'s spins");
+        } else {
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getSpins(target) + "'s spins");
+        }
+    }
+
     @CommandHook("stats_reset")
     public void resetStats(Player p, Player target) {
         Tazpvp.statsManager.initPlayer(target);

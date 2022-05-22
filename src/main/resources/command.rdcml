@@ -127,6 +127,23 @@ stats {
             hook streak_get
         }
     }
+    spins {
+       add player:target int:amount {
+           hook spins_add
+       }
+       remove player:target int:amount {
+           hook spins_remove
+       }
+       set player:target int:amount {
+           hook spins_set
+       }
+       reset player:target {
+           hook spins_reset
+       }
+       get player:target {
+           hook spins_get
+       }
+    }
     reset player:target {
         hook stats_reset
     }
