@@ -24,7 +24,7 @@ public class UnlockSwordGUI {
     }
 
     public void addItems(Player p) {
-        gui.fill(0, 28, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemStack(Material.GRAY_STAINED_GLASS_PANE));
 
         ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.PAPER)
                 .setName("Buy spins")

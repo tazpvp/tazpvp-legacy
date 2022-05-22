@@ -15,7 +15,6 @@ public class ClickBlockEvent implements Listener {
         Player p = e.getPlayer();
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
-            assert b != null;
             if (b.getType() == Material.RESPAWN_ANCHOR) {
                 new UnlockSwordGUI(p);
             }
