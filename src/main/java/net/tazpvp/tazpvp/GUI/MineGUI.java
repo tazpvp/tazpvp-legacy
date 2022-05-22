@@ -40,8 +40,8 @@ public class MineGUI {
             e.getWhoClicked().closeInventory();
         });
 
-        gui.addButton(11, button);
-        gui.addButton(15, button2);
+        gui.addButton(12, button);
+        gui.addButton(14, button2);
         gui.update();
     }
 
