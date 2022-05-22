@@ -30,16 +30,13 @@ import redempt.redlib.enchants.EnchantRegistry;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.WeakHashMap;
+import java.util.*;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
-    public static WeakHashMap<UUID, PlayerWrapper> playerWrapperMap = new WeakHashMap<>();
+    public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
 
     public static boolean isRestarting = false;
 
