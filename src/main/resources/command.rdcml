@@ -313,3 +313,14 @@ enderchest,ec {
     permission tazpvp.enderchest
     hook enderchest
 }
+
+inventory,inv {
+    user player
+    permission tazpvp.inventory
+    poor {
+        hook inv_poor
+    }
+    rich {
+        hook inv_rich
+    }
+}

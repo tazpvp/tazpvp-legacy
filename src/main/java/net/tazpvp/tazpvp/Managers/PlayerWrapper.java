@@ -1,7 +1,9 @@
 package net.tazpvp.tazpvp.Managers;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ public class PlayerWrapper implements Serializable {
     private final Player p;
     private int mothers;
     private List<Items> swords = new ArrayList<>();
+    private Inventory poorINV = Bukkit.createInventory(null, 9, "Buy a rank!");
+    private Inventory richINV = Bukkit.createInventory(null, 27, "Laugh at the poor");
+
 
     public PlayerWrapper(Player p) {
         this.p = p;
@@ -41,5 +46,21 @@ public class PlayerWrapper implements Serializable {
             sb.append(i.toString()).append(" ");
         }
         return sb.toString();
+    }
+
+    public Inventory getPoorInv() {
+        return poorINV;
+    }
+
+    public void setPoorInv(Inventory inv) {
+        this.poorINV = inv;
+    }
+
+    public Inventory richINV() {
+        return richINV;
+    }
+
+    public void setRichINV(Inventory richINV) {
+        this.richINV = richINV;
     }
 }
