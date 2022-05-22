@@ -7,7 +7,7 @@ import redempt.redlib.commandmanager.CommandHook;
 public class initCMD  {
 
     @CommandHook("init")
-    public void hook(Player p){
+    public void initPlayer(Player p){
         Tazpvp.statsManager.initPlayer(p);
         p.sendMessage("Stats wurden erfolgreich initialisiert!");
     }
