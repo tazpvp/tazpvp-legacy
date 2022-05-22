@@ -80,12 +80,12 @@ public class UnlockSwordGUI {
         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
         sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
         gui.update();
-        if (Tazpvp.playerWrapperMap.get(p).getSwords().contains(unlockedItem)) {
+        if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
             p.sendMessage("You already have unlocked sword!");
         } else {
-            List<Items> swords = Tazpvp.playerWrapperMap.get(p).getSwords();
+            List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
             swords.add(unlockedItem);
-            Tazpvp.playerWrapperMap.get(p).setSwords(swords);
+            Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
             p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
         }
     }
