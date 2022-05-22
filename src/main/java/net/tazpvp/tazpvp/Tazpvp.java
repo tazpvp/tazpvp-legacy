@@ -92,11 +92,11 @@ public final class Tazpvp extends JavaPlugin {
             System.out.println("Vault not found!");
         }
 
-        blocks.add(Material.GOLD_ORE);
-        blocks.add(Material.REDSTONE_ORE);
-        blocks.add(Material.LAPIS_ORE);
-        blocks.add(Material.EMERALD_ORE);
-        blocks.add(Material.IRON_ORE);
+        blocks.add(Material.DEEPSLATE_GOLD_ORE);
+        blocks.add(Material.DEEPSLATE_REDSTONE_ORE);
+        blocks.add(Material.DEEPSLATE_LAPIS_ORE);
+        blocks.add(Material.DEEPSLATE_EMERALD_ORE);
+        blocks.add(Material.DEEPSLATE_IRON_ORE);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
