@@ -167,12 +167,6 @@ rules,rule {
     hook rules
 }
 
-init {
-    permission tazpvp.admin
-    help /init
-    user player
-    hook init
-}
 
 region {
     permission tazpvp.admin
