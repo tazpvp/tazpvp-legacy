@@ -25,7 +25,8 @@ public enum Items {
     }}, ChatColor.LIGHT_PURPLE + "fillet deez nuts"),
     EXCALIBUR(ChatColor.GOLD + "Excalibur", Material.DIAMOND_SWORD, 100, 5, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DURABILITY, 1);
-    }}, ChatColor.GOLD + "famoos sword");
+        put(Enchantment.KNOCKBACK, 2);
+    }}, ChatColor.GOLD + "famoos sword", "", ChatColor.GRAY + "Knockback II");
 
 
     private final String name;
