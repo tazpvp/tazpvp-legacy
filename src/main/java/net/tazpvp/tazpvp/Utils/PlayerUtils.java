@@ -37,7 +37,7 @@ public class PlayerUtils {
         ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
         ItemStack sword = new ItemStack(Material.DIAMOND_SWORD);
         ItemStack bow = new ItemStack(Material.BOW);
-        ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
+        ItemStack pickaxe = new ItemStack(Material.WOODEN_PICKAXE);
         ItemStack steak = new ItemStack(Material.COOKED_BEEF, 16);
         ItemStack gapple = new ItemStack(Material.GOLDEN_APPLE, 5);
         ItemStack block = new ItemStack(Material.OAK_PLANKS, 64);
