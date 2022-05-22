@@ -96,7 +96,6 @@ public final class Tazpvp extends JavaPlugin {
                 new StatsCMD(),
                 new GuiCMD(),
                 new ReportCMD(),
-                new RulesCMD(),
                 new RegionCMD(),
                 new SpawnCMD(),
                 new DiscordCMD(),
