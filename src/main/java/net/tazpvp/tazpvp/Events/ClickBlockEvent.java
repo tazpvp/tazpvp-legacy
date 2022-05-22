@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.UnlockSwordGUI;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -14,7 +15,7 @@ public class ClickBlockEvent implements Listener {
         Material block = b.getType();
         if (block == Material.RESPAWN_ANCHOR){
             if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-//                new UnlockSwordGUI(p);
+                new UnlockSwordGUI(p);
             }
         }
     }
