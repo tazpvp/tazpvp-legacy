@@ -136,12 +136,12 @@ public final class Tazpvp extends JavaPlugin {
         regList(new ChatEvent());
         regList(new MoveEvent());
         regList(new LeaveEvnet());
-        regList(new PlaceBlockEvent());
+        regList(new BlockPlaceEvent());
         regList(new DamageEvent());
         regList(new NPCEvent());
         regList(new InteractEvent());
         regList(new buyRank());
-        regList(new ClickBlockEvent());
+        regList(new BlockClickEvent());
         regList(new oreMine());
     }
 
