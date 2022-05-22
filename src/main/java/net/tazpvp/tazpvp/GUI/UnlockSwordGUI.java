@@ -60,13 +60,25 @@ public class UnlockSwordGUI {
     }
 
     public void spinSword(ItemButton sword, Player p) {
-        int maxRuns = 10;
+        int maxRuns = 15;
         final int[] runs = {0};
         new BukkitRunnable() {
             @Override
             public void run() {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
+                    Items unlockedItem = GetRandomSword.getRandomSword();
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
+                    sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
+                    gui.update();
+                    if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
+                        p.sendMessage("You already have unlocked sword!");
+                    } else {
+                        List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
+                        swords.add(unlockedItem);
+                        Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
+                        p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
+                    }
                     cancel();
                 } else {
                     Items item = Items.values()[new Random().nextInt(Items.values().length)];
@@ -76,17 +88,6 @@ public class UnlockSwordGUI {
                 }
             }
         }.runTaskTimer(Tazpvp.getInstance(), 5, 5);
-        Items unlockedItem = GetRandomSword.getRandomSword();
-        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 5);
-        sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
-        gui.update();
-        if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-            p.sendMessage("You already have unlocked sword!");
-        } else {
-            List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
-            swords.add(unlockedItem);
-            Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
-            p.sendMessage("You have unlocked a " + unlockedItem.getName() + "!");
-        }
+
     }
 }

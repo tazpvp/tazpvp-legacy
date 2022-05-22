@@ -38,6 +38,6 @@ public class ItemsCMD {
     }
     @CommandHook("items_unlocked")
     public void itemsUnlocked(Player p) {
-        p.sendMessage(Tazpvp.playerWrapperMap.get(p).toString());
+        p.sendMessage(Tazpvp.playerWrapperMap.get(p.getUniqueId()).toString());
     }
 }
