@@ -15,7 +15,7 @@ public class PWCMD {
     public void pwWipe(Player p) {
         PlayerWrapper newPw = new PlayerWrapper(p);
         Tazpvp.playerWrapperMap.remove(p.getUniqueId());
-        Tazpvp.playerWrapperMap.put(p.getUniqueId(), newPw);
         Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p.getUniqueId(), newPw);
+        Tazpvp.playerWrapperMap.put(p.getUniqueId(), Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p.getUniqueId()));
     }
 }
