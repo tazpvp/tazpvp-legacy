@@ -192,7 +192,6 @@ mutechat,unmutechat {
     help /mutechat
     hook mutechat
 }
-
 mute player:target {
     permission tazpvp.mute
     help /mute <player>
@@ -316,4 +315,14 @@ enderchest,ec {
     user player
     permission tazpvp.enderchest
     hook enderchest
+}
+ban player:target {
+    permission tazpvp.ban
+    help /ban <player>
+    hook ban
+}
+unban player:target {
+    permission tazpvp.ban
+    help /unban <player>
+    hook unban
 }
