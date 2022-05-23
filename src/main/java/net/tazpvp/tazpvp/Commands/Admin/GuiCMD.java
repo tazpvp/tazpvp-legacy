@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.OpenSlotGUI;
 import net.tazpvp.tazpvp.unused.FlameVilGUI;
@@ -21,6 +22,8 @@ public class GuiCMD {
             new FlameVilGUI(p);
         } else if (gui.equalsIgnoreCase("os")) {
             new OpenSlotGUI(p);
+        } else if (gui.equalsIgnoreCase("ecp")) {
+            new EnderChestPoorGUI(p);
         }
     }
 }

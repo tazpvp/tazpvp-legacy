@@ -5,6 +5,7 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Events.*;
+import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
@@ -145,6 +146,7 @@ public final class Tazpvp extends JavaPlugin {
         regList(new buyRank());
         regList(new BlockClickEvent());
         regList(new oreMine());
+        regList(new EnderChestPoorGUI(null));
     }
 
     public void regList(Listener listener){
