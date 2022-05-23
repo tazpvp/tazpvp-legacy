@@ -117,13 +117,13 @@ public final class Tazpvp extends JavaPlugin {
                 new MuteCMD(),
                 new EnchantCMD(),
                 new WorldCMD(),
-                new AdCMD(),
                 new ItemsCMD(),
                 new KitCMD(),
                 new BountyCMD(),
                 new TrollCMD(),
                 new NpcCMD(),
                 new PWCMD(),
+                new BanCMD(),
                 new ECCMD());
 
 

@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class MuteCMD {
+public class BanCMD {
     @CommandHook("ban")
     public void mute(CommandSender sender, Player target) {
         if (!Tazpvp.punishmentManager.isMuted(target)) {

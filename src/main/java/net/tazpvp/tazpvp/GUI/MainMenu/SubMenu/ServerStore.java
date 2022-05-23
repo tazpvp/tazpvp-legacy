@@ -19,32 +19,32 @@ public class ServerStore {
 
     public void setitems(){
         gui.fill(0, 9*5, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        ItemButton VIP = ItemButton.create(new ItemStack(Material.MUSIC_DISC_CHIRP).setName("VIP Rank"), e -> {
+        ItemButton VIP = ItemButton.create(new ItemStack(Material.MUSIC_DISC_CHIRP), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             RankBuying(p);
             buyRank.rank = "vip";
         });
         gui.addButton(11, VIP);
-        ItemButton MVP = ItemButton.create(new ItemStack(Material.MUSIC_DISC_WAIT).setName("MVP Rank"), e -> {
+        ItemButton MVP = ItemButton.create(new ItemStack(Material.MUSIC_DISC_WAIT), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             RankBuying(p);
             buyRank.rank = "mvp";
         });
         gui.addButton(12, MVP);
-        ItemButton MVP2 = ItemButton.create(new ItemStack(Material.MUSIC_DISC_PIGSTEP).setName("MVP+ Rank"), e -> {
+        ItemButton MVP2 = ItemButton.create(new ItemStack(Material.MUSIC_DISC_PIGSTEP), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             RankBuying(p);
             buyRank.rank = "mvp+";
         });
-        gui.addButton(13, UNBAN);
-        ItemButton UNBAN = ItemButton.create(new ItemStack(Material.TNT_MINECART).setName("Unban").setLore("100 Credits"), e -> {
+        gui.addButton(13, MVP2);
+        ItemButton UNBAN = ItemButton.create(new ItemStack(Material.TNT_MINECART), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
-        gui.addButton(13, MVP2);
+        gui.addButton(13, UNBAN);
 
         gui.update();
     }
