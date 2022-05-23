@@ -121,8 +121,7 @@ public final class Tazpvp extends JavaPlugin {
                 new TrollCMD(),
                 new NpcCMD(),
                 new PWCMD(),
-                new ECCMD(),
-                new inventoryCMD());
+                new ECCMD());
 
 
 
