@@ -34,6 +34,7 @@ public class JoinEvent implements Listener {
             p.sendTitle(ChatColor.GOLD + "Welcome to " + ChatColor.YELLOW + "TazPvP", ChatColor.GOLD + "Type /help to get started", 10, 100, 10);
             PlayerUtils.kitPlayer(p);
             Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
+            Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
         }
 
         if (Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p) == null) {

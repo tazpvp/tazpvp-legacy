@@ -38,6 +38,7 @@ public final class Tazpvp extends JavaPlugin {
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
     public static AchievementManager achievementManager;
+    public static EnderChestManager enderChestManager;
 
     public static boolean isRestarting = false;
 
@@ -69,6 +70,7 @@ public final class Tazpvp extends JavaPlugin {
         punishmentManager = new PunishmentManager();
         playerWrapperStatsManager = new PlayerWrapperStatsManager();
         achievementManager = new AchievementManager();
+        enderChestManager = new EnderChestManager();
 
         configFile = this.getConfig();
         initConfig();
@@ -169,6 +171,7 @@ public final class Tazpvp extends JavaPlugin {
         punishmentManager.savePunishments();
         playerWrapperStatsManager.saveStats();
         achievementManager.saveStats();
+        enderChestManager.saveStats();
     }
 
     public void initScoreboard(Player player) {
