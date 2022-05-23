@@ -19,7 +19,7 @@ public class MainGUI {
     }
 
     public void setitems(){
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE).setName("Achievements"));
         ItemButton achievements = ItemButton.create(new ItemStack(Material.WRITABLE_BOOK), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
@@ -27,14 +27,14 @@ public class MainGUI {
             new SwordCollection(p);
         });
         gui.addButton(11, achievements);
-        ItemButton collection = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD), e -> {
+        ItemButton collection = ItemButton.create(new ItemStack(Material.DIAMOND_SWORD).setName("Sword Gallery"), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
             new AchievementsGUI(p);
         });
         gui.addButton(13, collection);
-        ItemButton store = ItemButton.create(new ItemStack(Material.TNT_MINECART), e -> {
+        ItemButton store = ItemButton.create(new ItemStack(Material.TNT_MINECART).setName("Swag Shop"), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
