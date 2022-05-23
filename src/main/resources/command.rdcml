@@ -305,6 +305,10 @@ pw {
     test {
         hook pw_test
     }
+    wipe {
+        hook pw_wipe
+
+    }
 }
 
 enderchest,ec {

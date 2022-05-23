@@ -11,4 +11,11 @@ public class PWCMD {
         PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());
         pw.sendMother();
     }
+    @CommandHook("pw_wipe")
+    public void pwWipe(Player p) {
+        PlayerWrapper newPw = new PlayerWrapper(p);
+        Tazpvp.playerWrapperMap.remove(p.getUniqueId());
+        Tazpvp.playerWrapperMap.put(p.getUniqueId(), newPw);
+        Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p.getUniqueId(), newPw);
+    }
 }
