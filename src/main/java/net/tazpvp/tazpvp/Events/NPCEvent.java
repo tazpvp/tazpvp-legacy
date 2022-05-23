@@ -41,7 +41,7 @@ public class NPCEvent implements Listener {
                         } else if (id == 3) {
                             new MainGUI(e.getPlayer());
                         } else if (id == 4) {
-                            e.getPlayer().sendMessage("coming soon");
+                            new SelectGUI(e.getPlayer());
                         } else if (id == 5) {
                             new HeadsToShards().convertHeadsToShards(e.getPlayer());
                         } else {
