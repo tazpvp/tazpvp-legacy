@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
