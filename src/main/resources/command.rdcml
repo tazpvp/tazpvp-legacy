@@ -219,11 +219,6 @@ world {
         hook world_tp
     }
 }
-ad{
-    help /ad
-    user player
-    hook ad
-}
 items {
     permission tazpvp.items
     help items command yes
