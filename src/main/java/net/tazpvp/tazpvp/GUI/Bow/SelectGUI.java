@@ -13,13 +13,13 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class SelectGUI {
     private InventoryGUI gui;
     public SelectGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 3 * 9, ChatColor.RED + "Select Your " + ChatColor.YELLOW + "Bow Type"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.RED + "Select Your " + ChatColor.YELLOW + "Bow Type"));
         makeItems();
         gui.open(p);
     }
 
     public void makeItems() {
-        gui.fill(0, 3 * 9 + 1, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
+        gui.fill(0, 27, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
 
         ItemStack opt1 = new ItemBuilder(Material.BLAZE_POWDER).setName(ChatColor.RED + "Flame").setLore(ChatColor.YELLOW + "Click to go down the flame enchantment path!",
                 " ",
