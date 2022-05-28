@@ -23,10 +23,15 @@ public class BlockBreakEvent implements Listener {
             Material block = b.getType();
             if (isPlayerPlaced(b)) {
                 e.setCancelled(false);
+                p.sendMessage("playerplaced");
                 return;
-            } else { e.setCancelled(true);}
+            } else {
+                e.setCancelled(true);
+                p.sendMessage("cancelled");
+            }
             if (Tazpvp.blocks.contains(block)) {
                 e.setCancelled(true);
+                p.sendMessage("ore");
                 if (block == Material.DEEPSLATE_GOLD_ORE) { oreRespawn(p, block, Material.RAW_GOLD, 350L, b);
                 } else if (block == Material.DEEPSLATE_REDSTONE_ORE) { oreRespawn(p, block, Material.REDSTONE, 350L, b);
                 } else if (block == Material.DEEPSLATE_IRON_ORE) { oreRespawn(p, block, Material.RAW_IRON, 350L, b);
