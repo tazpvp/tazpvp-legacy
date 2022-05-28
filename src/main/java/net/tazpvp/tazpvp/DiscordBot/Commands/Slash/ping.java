@@ -15,6 +15,8 @@ public class ping extends SlashCommand {
 
         List<OptionData> options = new ArrayList<OptionData>();
         options.add(new OptionData(OptionType.USER, "user", "ping someone in the process!").setRequired(false));
+
+        this.options = options;
     }
 
     @Override
