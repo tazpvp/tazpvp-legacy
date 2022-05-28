@@ -147,6 +147,11 @@ stats {
     reset player:target {
         hook stats_reset
     }
+
+    scoreboard {
+        hook stats_scoreboard
+        user player
+    }
 }
 gui string:gui {
     permission tazpvp.admin
