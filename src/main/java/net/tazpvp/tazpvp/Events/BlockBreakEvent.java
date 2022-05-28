@@ -21,14 +21,7 @@ public class BlockBreakEvent implements Listener {
         if(p.getGameMode() == GameMode.SURVIVAL) {
             Block b = e.getBlock();
             Material block = b.getType();
-            if (isPlayerPlaced(b)) {
-                e.setCancelled(false);
-                p.sendMessage("playerplaced");
-                return;
-            } else {
-                e.setCancelled(true);
-                p.sendMessage("cancelled");
-            }
+            if (!isPlayerPlaced(b)) {e.setCancelled(true);}
             if (Tazpvp.blocks.contains(block)) {
                 e.setCancelled(true);
                 p.sendMessage("ore");

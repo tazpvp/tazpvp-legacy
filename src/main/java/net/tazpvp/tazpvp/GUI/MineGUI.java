@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -34,23 +35,29 @@ public class MineGUI {
 
         ItemButton button = ItemButton.create(pickaxe, e -> {
             e.getWhoClicked().closeInventory();
-            //open sword gui ex: new SwordGUI(p);
+
         });
         ItemButton button2 = ItemButton.create(upgrade, e -> {
-            e.getWhoClicked().closeInventory();
+            Player p = (Player) e.getWhoClicked();
+            ItemStack i = p.getItemOnCursor();
+            int amount = p.getItemOnCursor().getAmount();
+            Material b = i.getType();
+            if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.GOLD_ORE, amount))){ sellOre(p, b, amount, 1);}
+            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.REDSTONE_ORE, amount))){ sellOre(p, b, amount, 1);}
+            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.IRON_ORE, amount))){ sellOre(p, b, amount, 1);}
+            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.LAPIS_ORE, amount))){ sellOre(p, b, amount, 1);}
+            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.EMERALD_ORE, amount))){ sellOre(p, b, amount, 1);}
         });
-
         gui.addButton(12, button);
         gui.addButton(14, button2);
         gui.update();
     }
 
-    public void sellOre(Player p, Material ore, int amount, int price) {
+    public void sellOre(Player p, Material ore, int amount, double price) {
         if (Objects.equals(p.getItemOnCursor(), new ItemStack(ore, amount))) {
             p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
-            Tazpvp.statsManager.addMoney(p, amount * price);
+            Tazpvp.statsManager.addMoney(p, (int) (amount * price));
             p.sendMessage(ChatColor.GOLD + "[NPC] Miner: " + "Great doing business! Here, take " + ChatColor.AQUA + "" );
         }
-
     }
 }
