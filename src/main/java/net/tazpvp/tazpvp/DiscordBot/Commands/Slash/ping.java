@@ -12,18 +12,11 @@ public class ping extends SlashCommand {
     public ping() {
         this.name = "ping";
         this.help = "Pongs you!";
-
-        List<OptionData> options = new ArrayList<OptionData>();
-        options.add(new OptionData(OptionType.USER, "user", "ping someone in the process!").setRequired(false));
-
-        this.options = options;
     }
 
     @Override
     protected void execute(SlashCommandEvent e) {
-        String user = e.getOption("user").getAsString();
-
-        e.reply("Pong! " + (user.equalsIgnoreCase("") ? "" : "to <@" + user + ">")).queue();
+        e.reply("Pong!").queue();
     }
 
 }
