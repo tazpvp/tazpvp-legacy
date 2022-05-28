@@ -4,6 +4,7 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
+import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.Managers.*;
@@ -78,6 +79,8 @@ public final class Tazpvp extends JavaPlugin {
 
         registerEvents();
         registeRedLib();
+        StartBotThread thread = new StartBotThread();
+        thread.start();
 
         new Generator().generator(this);
         new Tips().Text(this);

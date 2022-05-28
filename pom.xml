@@ -80,7 +80,22 @@
             <id>everything</id>
             <url>https://repo.citizensnpcs.co/</url>
         </repository>
-
+        <!-- Chew's Maven Repo for JDA-Chewtils -->
+        <repository>
+            <id>chew</id>
+            <name>m2-chew</name>
+            <url>https://m2.chew.pro/releases</url>
+        </repository>
+        <repository>
+            <id>chew-m2-snapshots</id>
+            <url>https://m2.chew.pro/snapshots/</url>
+        </repository>
+        <!-- JDA repo to get JDA -->
+        <repository>
+            <id>dv8tion</id>
+            <name>m2-dv8tion</name>
+            <url>https://m2.dv8tion.net/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -114,6 +129,18 @@
             <version>2.0.28-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.dv8tion</groupId>
+            <artifactId>JDA</artifactId>
+            <version>5.0.0-alpha.5</version>
+        </dependency>
+        <dependency>
+            <groupId>pw.chew</groupId>
+            <artifactId>jda-chewtils</artifactId>
+            <version>2.0-SNAPSHOT</version>
+            <scope>compile</scope>
+            <type>pom</type>
         </dependency>
     </dependencies>
 </project>
