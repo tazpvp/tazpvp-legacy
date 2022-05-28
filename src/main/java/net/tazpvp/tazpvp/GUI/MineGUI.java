@@ -57,7 +57,7 @@ public class MineGUI {
         if (Objects.equals(p.getItemOnCursor(), new ItemStack(ore, amount))) {
             p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
             Tazpvp.statsManager.addMoney(p, (int) (amount * price));
-            p.sendMessage(ChatColor.GOLD + "[NPC] Miner: " + "Great doing business! Here, take " + ChatColor.AQUA + "" );
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
         }
     }
 }
