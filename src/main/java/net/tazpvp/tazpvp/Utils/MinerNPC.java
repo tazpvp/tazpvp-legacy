@@ -12,7 +12,7 @@ import java.util.Objects;
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
 
 public class MinerNPC {
-    public void clickMiner(Player p){
+    public static void clickMiner(Player p){
         if (sellables.contains(p.getMainHand())){
             ItemStack hand = p.getInventory().getItemInMainHand();
             int amount = p.getInventory().getItemInMainHand().getAmount();
@@ -25,7 +25,7 @@ public class MinerNPC {
         } else { new MineGUI(p); }
     }
 
-    public void sellOre(Player p, Material ore, int amount, double price) {
+    public static void sellOre(Player p, Material ore, int amount, double price) {
         if (Objects.equals(p.getMainHand(), new ItemStack(ore, amount))) {
             p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
             Tazpvp.statsManager.addMoney(p, (int) (amount * price));

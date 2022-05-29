@@ -34,6 +34,7 @@ import java.util.*;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
+    public static BoolManager boolManager;
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
@@ -68,6 +69,7 @@ public final class Tazpvp extends JavaPlugin {
         Bukkit.getLogger().info(" Tazspree has been enabled!");
 
         statsManager = new StatsManager();
+        boolManager = new BoolManager();
         punishmentManager = new PunishmentManager();
         playerWrapperStatsManager = new PlayerWrapperStatsManager();
         achievementManager = new AchievementManager();
@@ -170,6 +172,7 @@ public final class Tazpvp extends JavaPlugin {
         }
 
         statsManager.saveStats();
+        boolManager.saveStats();
         punishmentManager.savePunishments();
         playerWrapperStatsManager.saveStats();
         achievementManager.saveStats();
@@ -196,7 +199,7 @@ public final class Tazpvp extends JavaPlugin {
             h.setDisplaySlot(DisplaySlot.BELOW_NAME);
             h.setDisplayName(ChatColor.RED + "❤");
         }
-        Score blank = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "--------------- ");
+        Score blank = objective.getScore(ChatColor.DARK_AQUA + "");
         blank.setScore(14);
         Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "PLAYER");
         blank1.setScore(13);
@@ -221,7 +224,7 @@ public final class Tazpvp extends JavaPlugin {
         deaths.setScore(4);
         Score kdr = objective.getScore(ChatColor.AQUA + "〡 KDR  " + ChatColor.DARK_AQUA + ((Tazpvp.statsManager.getDeaths(player) > 0) ? MathUtils.round((float) Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player), 2) : Tazpvp.statsManager.getKills(player)));
         kdr.setScore(3);
-        Score blank4 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "---------------");
+        Score blank4 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "");
         blank4.setScore(2);
         Score blank5 = objective.getScore(ChatColor.GRAY + "〡 tazpvp.net");
         blank5.setScore(1);
