@@ -73,6 +73,9 @@ public class StatsManager {
     public int getMoney(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".money");
     }
+    public int getMoney(UUID player) {
+        return statsFile.getInt(player.toString()+".money");
+    }
     public void setMoney(OfflinePlayer player, int money) {
         statsFile.set(player.getUniqueId().toString()+".money", money);
         Tazpvp.getInstance().initScoreboard((Player) player);
@@ -82,6 +85,9 @@ public class StatsManager {
     }
     public int getShards(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".shards");
+    }
+    public int getShards(UUID player) {
+        return statsFile.getInt(player.toString()+".shards");
     }
     public void setShards(OfflinePlayer player, int points) {
         statsFile.set(player.getUniqueId().toString()+".shards", points);
@@ -98,6 +104,9 @@ public class StatsManager {
     public int getLevel(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".level");
     }
+    public int getLevel(UUID player) {
+        return statsFile.getInt(player.toString()+".level");
+    }
     public void setLevel(OfflinePlayer player, int level) {
         statsFile.set(player.getUniqueId().toString()+".level", level);
         Tazpvp.getInstance().initScoreboard((Player) player);
@@ -110,6 +119,9 @@ public class StatsManager {
     }
     public int getDeaths(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".deaths");
+    }
+    public int getDeaths(UUID player) {
+        return statsFile.getInt(player.toString()+".deaths");
     }
     public void setDeaths(OfflinePlayer player, int deaths) {
         statsFile.set(player.getUniqueId().toString()+".deaths", deaths);
@@ -146,6 +158,9 @@ public class StatsManager {
     public int getKills(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".kills");
     }
+    public int getKills(UUID player) {
+        return statsFile.getInt(player.toString()+".kills");
+    }
     public void setKills(OfflinePlayer player, int kills) {
         statsFile.set(player.getUniqueId().toString()+".kills", kills);
         Tazpvp.getInstance().initScoreboard((Player) player);
@@ -156,6 +171,9 @@ public class StatsManager {
     public double getExp(OfflinePlayer player) {
         return statsFile.getDouble(player.getUniqueId().toString()+".exp");
     }
+    public double getExp(UUID player) {
+        return statsFile.getDouble(player.toString()+".exp");
+    }
     public void setExp(OfflinePlayer player, double exp) {
         statsFile.set(player.getUniqueId().toString()+".exp", exp);
         Tazpvp.getInstance().initScoreboard((Player) player);
@@ -165,6 +183,9 @@ public class StatsManager {
     }
     public double getExpLeft(OfflinePlayer player) {
         return statsFile.getDouble(player.getUniqueId().toString()+".expLeft");
+    }
+    public double getExpLeft(UUID player) {
+        return statsFile.getDouble(player.toString()+".expLeft");
     }
     public void setExpLeft(OfflinePlayer player, double exp) {
         statsFile.set(player.getUniqueId().toString()+".expLeft", exp);
