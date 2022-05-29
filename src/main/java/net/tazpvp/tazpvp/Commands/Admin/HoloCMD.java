@@ -20,7 +20,7 @@ public class HoloCMD {
         int x = (int) p.getLocation().getX();
         int y = (int) p.getLocation().getY();
         int z = (int) p.getLocation().getZ();
-        Location loc = new Location(p.getWorld(), x + 0.5, y, z + 0.5);
+        Location loc = new Location(p.getWorld(), x - 0.5, y, z - 0.5);
         ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(loc, EntityType.ARMOR_STAND);
         a.setInvisible(true);
         a.setCanPickupItems(false);
