@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.StatsSCMD;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.ping;
 
 import javax.security.auth.login.LoginException;
@@ -14,13 +15,14 @@ import javax.security.auth.login.LoginException;
 public class TazBot {
     public static void main(String[] args) throws LoginException, InterruptedException {
         CommandClientBuilder builder = new CommandClientBuilder();
-        builder.addSlashCommands(new ping());
-        builder.forceGuildOnly(535281648980459550L);
+        builder.addSlashCommands(new ping(), new StatsSCMD());
+        builder.forceGuildOnly("535281648980459550");
         builder.setServerInvite("https://discord.gg/56rdkbSqa8");
         builder.setOwnerId("811580599068262421");
         builder.setCoOwnerIds(348587937144897537L);
         builder.setPrefix("/");
         builder.useHelpBuilder(false);
+
         builder.setActivity(Activity.watching("idiots play block games"));
         CommandClient commandClient = builder.build();
 
