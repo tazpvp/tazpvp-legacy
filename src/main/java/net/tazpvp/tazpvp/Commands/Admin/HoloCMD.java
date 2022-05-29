@@ -8,16 +8,21 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoloCMD {
+public class HoloCMD implements Listener {
     @CommandHook("holo_create")
     public void holoCreate(Player p, int id, String text) {
-        ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
+        int x = (int) p.getLocation().getX();
+        int y = (int) p.getLocation().getY();
+        int z = (int) p.getLocation().getZ();
+        ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(new Location(p.getWorld(), x + 0.5, y, z + 0.5), EntityType.ARMOR_STAND);
         a.setInvisible(true);
         a.setCanPickupItems(false);
         a.setInvulnerable(true);
@@ -77,5 +82,16 @@ public class HoloCMD {
             }
         });
         p.sendMessage("Hologram removed!");
+    }
+
+    @EventHandler
+    public void onRightClick(PlayerInteractAtEntityEvent e) {
+        if (e.getRightClicked() instanceof ArmorStand) {
+            if (e.getRightClicked().getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "hid"), PersistentDataType.INTEGER)) {
+                if (e.getPlayer().hasPermission("tazpvp.holo")) {
+                    e.getPlayer().sendMessage("ID: " + e.getRightClicked().getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "hid"), PersistentDataType.INTEGER));
+                }
+            }
+        }
     }
 }
