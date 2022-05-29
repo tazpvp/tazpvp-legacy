@@ -13,20 +13,20 @@ import java.util.*;
 public enum Items {
     WOOGSWORD(ChatColor.WHITE + "Oak Sworden",  Material.WOODEN_SWORD, 100, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>() {{
 
-        }}, ChatColor.GREEN + "3"),
+        }}, ChatColor.GREEN + "3", "", ChatColor.RED + "Damage: 1"),
     UNCLESWORD(ChatColor.GREEN + "Uncle Sworden", Material.STONE_SWORD, 100, 2, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>() {{
 
-    }}, ChatColor.GREEN + "very uncle"),
+    }}, ChatColor.GREEN + "very uncle", "", ChatColor.RED + "Damage: 2"),
     GULKSWORD(ChatColor.YELLOW + "Gulk Sworden", Material.GOLDEN_SWORD, 100, 3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>() {{
 
-    }}, ChatColor.YELLOW + "gulk"),
+    }}, ChatColor.YELLOW + "gulk", "", ChatColor.RED + "Damage: 3"),
     FILLETSWORD(ChatColor.LIGHT_PURPLE + "Fillet Sworden", Material.IRON_SWORD, 100, 4, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>() {{
 
-    }}, ChatColor.LIGHT_PURPLE + "fillet deez nuts"),
+    }}, ChatColor.LIGHT_PURPLE + "fillet deez nuts", "", ChatColor.RED + "Damage: 4"),
     EXCALIBUR(ChatColor.GOLD + "Excalibur", Material.DIAMOND_SWORD, 100, 5, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DURABILITY, 1);
         put(Enchantment.KNOCKBACK, 2);
-    }}, ChatColor.GOLD + "famoos sword", "", ChatColor.GRAY + "Knockback II");
+    }}, ChatColor.GOLD + "famoos sword", "", ChatColor.RED + "Damage: 5", ChatColor.GRAY + "Knockback II");
 
 
     private final String name;
