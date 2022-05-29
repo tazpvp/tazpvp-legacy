@@ -2,10 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 
 import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,14 +33,17 @@ public class MoveEvent implements Listener {
     }
 
     public void Launchpad(Player p) {
-        p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), true));
-        p.setVelocity(new Vector(0, 1.5, 3));
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), false));
-            }
-        }.runTaskLater(Tazpvp.getInstance(), 20 * 4);
+        if (p.getGameMode().equals(GameMode.SURVIVAL)){
+            p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), true));
+            p.setVelocity(new Vector(0, 1.5, 3));
+            p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 1, 1);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), false));
+                }
+            }.runTaskLater(Tazpvp.getInstance(), 20 * 3);
+        }
     }
 
     @EventHandler
