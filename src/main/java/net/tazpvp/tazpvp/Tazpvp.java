@@ -136,8 +136,6 @@ public final class Tazpvp extends JavaPlugin {
                 new ECCMD());
 
 
-
-
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
 

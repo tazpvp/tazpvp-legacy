@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Utils;
 
+import org.apache.commons.io.IOUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,6 +11,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+
+import java.io.IOException;
+import java.net.URL;
+import java.text.ParseException;
 
 public class PlayerUtils {
     public static void healPlayer(Player p) {
@@ -79,5 +86,20 @@ public class PlayerUtils {
         inv.setItem(4, steak);
         inv.setItem(5, block);
         inv.setItem(8, arrow);
+    }
+
+    public static String ignToUUID(String name) {
+        String url = "https://api.mojang.com/users/profiles/minecraft/"+name;
+        try {
+            @SuppressWarnings("deprecation")
+            String UUIDJson = IOUtils.toString(new URL(url));
+            if(UUIDJson.isEmpty()) return "error";
+            JSONObject UUIDObject = (JSONObject) JSONValue.parseWithException(UUIDJson);
+            return UUIDObject.get("id").toString();
+        } catch (IOException | org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }
+
+        return "error";
     }
 }
