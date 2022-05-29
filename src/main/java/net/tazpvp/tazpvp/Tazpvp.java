@@ -60,7 +60,19 @@ public final class Tazpvp extends JavaPlugin {
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static List<Material> blocks = new ArrayList<>();
-    public static List<Material> sellables = new ArrayList<>();
+    public static Map<Material, Integer> sellables = new HashMap<Material, Integer>(){{
+        sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
+        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
+        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
+        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
+        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
+        sellables.put(Material.RAW_GOLD, 1);
+        sellables.put(Material.RAW_IRON, 1);
+        sellables.put(Material.REDSTONE, 1);
+        sellables.put(Material.LAPIS_LAZULI, 1);
+        sellables.put(Material.EMERALD, 1);
+
+    }};
 
     @Override
     public void onEnable() {
@@ -109,16 +121,6 @@ public final class Tazpvp extends JavaPlugin {
         blocks.add(Material.DEEPSLATE_LAPIS_ORE);
         blocks.add(Material.DEEPSLATE_EMERALD_ORE);
 
-        sellables.add(Material.DEEPSLATE_GOLD_ORE);
-        sellables.add(Material.DEEPSLATE_IRON_ORE);
-        sellables.add(Material.DEEPSLATE_REDSTONE_ORE);
-        sellables.add(Material.DEEPSLATE_LAPIS_ORE);
-        sellables.add(Material.DEEPSLATE_EMERALD_ORE);
-        sellables.add(Material.RAW_GOLD);
-        sellables.add(Material.RAW_IRON);
-        sellables.add(Material.REDSTONE);
-        sellables.add(Material.LAPIS_LAZULI);
-        sellables.add(Material.EMERALD);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));

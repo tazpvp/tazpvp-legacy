@@ -16,31 +16,8 @@ public class MinerNPC {
         if (!Tazpvp.boolManager.getHasClickedMiner(p)) {
             p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Hey there traveller! Sell me your ores, or take a look at what upgrades I can offer.");
             Tazpvp.boolManager.setHasClickedMiner(p, true);
-        } else if (sellables.contains(p.getMainHand())){
-            ItemStack hand = p.getInventory().getItemInMainHand();
-            int amount = p.getInventory().getItemInMainHand().getAmount();
-            Material ore = hand.getType();
-            if (ore.equals(Material.DEEPSLATE_GOLD_ORE)){
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.DEEPSLATE_REDSTONE_ORE)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.DEEPSLATE_IRON_ORE)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.DEEPSLATE_LAPIS_ORE)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.DEEPSLATE_EMERALD_ORE)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.RAW_GOLD)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.REDSTONE)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.RAW_IRON)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.LAPIS_LAZULI)) {
-                sellOre(p, amount, 1);
-            } else if (ore.equals(Material.EMERALD)) {
-                sellOre(p, amount, 1);
-            }
+        } else if (sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
+            sellOre(p, p.getInventory().getItemInMainHand().getAmount(), sellables.get(p.getInventory().getItemInMainHand().getType()));
         } else { new MineGUI(p); }
     }
 
