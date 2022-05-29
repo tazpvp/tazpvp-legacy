@@ -25,11 +25,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.*;
+import redempt.redlib.RedLib;
 import redempt.redlib.commandmanager.ArgType;
 import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
 
+import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -77,7 +79,11 @@ public final class Tazpvp extends JavaPlugin {
         configFile = this.getConfig();
         initConfig();
 
-        registerEvents();
+        try {
+            registerEvents();
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
         registeRedLib();
         StartBotThread thread = new StartBotThread();
         thread.start();
@@ -135,22 +141,10 @@ public final class Tazpvp extends JavaPlugin {
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
 
-    public void registerEvents(){
-        regList(new DeathEvent());
-        regList(new JoinEvent());
-        regList(new SpawnCMD());
-        regList(new ChatEvent());
-        regList(new MoveEvent());
-        regList(new LeaveEvnet());
-        regList(new DamageEvent());
-        regList(new NPCEvent());
-        regList(new InteractEvent());
-        regList(new buyRank());
-        regList(new BlockClickEvent());
-        regList(new BlockPlaceEvent());
-        regList(new BlockBreakEvent());
-        regList(new oreMine());
-        regList(new EnderChestPoorGUI(null));
+    public void registerEvents() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
+            regList(listener.getConstructor().newInstance());
+        }
     }
 
     public void regList(Listener listener){
