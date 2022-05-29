@@ -95,11 +95,28 @@ public class PlayerUtils {
             String UUIDJson = IOUtils.toString(new URL(url));
             if(UUIDJson.isEmpty()) return "error";
             JSONObject UUIDObject = (JSONObject) JSONValue.parseWithException(UUIDJson);
-            return UUIDObject.get("id").toString();
+            String UUID = UUIDObject.get("id").toString();
+            UUID = insertString(UUID, "-", 8);
+            UUID = insertString(UUID, "-", 13);
+            UUID = insertString(UUID, "-", 18);
+            UUID = insertString(UUID, "-", 23);
+            return UUID;
         } catch (IOException | org.json.simple.parser.ParseException e) {
             e.printStackTrace();
         }
 
         return "error";
+    }
+
+    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/
+    public static String insertString(String originalString, String stringToBeInserted, int index) {
+        String newString = new String();
+        for (int i = 0; i < originalString.length(); i++) {
+            newString += originalString.charAt(i);
+            if (i == index) {
+                newString += stringToBeInserted;
+            }
+        }
+        return newString;
     }
 }
