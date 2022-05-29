@@ -20,24 +20,33 @@ public class MinerNPC {
             ItemStack hand = p.getInventory().getItemInMainHand();
             int amount = p.getInventory().getItemInMainHand().getAmount();
             Material ore = hand.getType();
-            if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_GOLD_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_REDSTONE_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_IRON_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_LAPIS_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_EMERALD_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.RAW_GOLD, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.REDSTONE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.RAW_IRON, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.LAPIS_LAZULI, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.EMERALD, amount))){ sellOre(p, ore, amount, 1);}
+            if (ore.equals(Material.DEEPSLATE_GOLD_ORE)){
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.DEEPSLATE_REDSTONE_ORE)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.DEEPSLATE_IRON_ORE)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.DEEPSLATE_LAPIS_ORE)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.DEEPSLATE_EMERALD_ORE)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.RAW_GOLD)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.REDSTONE)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.RAW_IRON)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.LAPIS_LAZULI)) {
+                sellOre(p, amount, 1);
+            } else if (ore.equals(Material.EMERALD)) {
+                sellOre(p, amount, 1);
+            }
         } else { new MineGUI(p); }
     }
 
-    public static void sellOre(Player p, Material ore, int amount, double price) {
-        if (Objects.equals(p.getMainHand(), new ItemStack(ore, amount))) {
-            p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
-            Tazpvp.statsManager.addMoney(p, (int) (amount * price));
-            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
-        }
+    public static void sellOre(Player p, int amount, double price) {
+        p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+        Tazpvp.statsManager.addMoney(p, (int) (amount * price));
+        p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
     }
 }
