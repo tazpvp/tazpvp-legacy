@@ -14,7 +14,7 @@ public class ConsumableItem extends Item{
         super(item);
         this.cooldownTime = cooldownTime;
     }
-    public boolean execute(Player p, ItemStack itemStack) {
+    public boolean execute(Player p, ItemStack itemStack, double cID) {
         if(cooldown.containsKey(p.getUniqueId())){
         long secondsLeft = cooldown.get(p.getUniqueId())-System.currentTimeMillis();
         if(secondsLeft>0) {
@@ -24,8 +24,8 @@ public class ConsumableItem extends Item{
         }
         }
         cooldown.put(p.getUniqueId(), System.currentTimeMillis() + (cooldownTime * 1000L));
-        if(p.getItemInHand().getAmount() == 1) {
-            p.getInventory().setItemInHand(new ItemStack(Material.AIR));
+        if(p.getInventory().getItemInMainHand().getAmount() == 1) {
+            p.getInventory().setItemInMainHand( new ItemStack(Material.AIR));
         }
         itemStack.setAmount(itemStack.getAmount()-1);
         return false;

@@ -16,7 +16,7 @@ public class ClickableItem extends Item{
 
 
     @Override
-    public boolean execute(Player p, ItemStack itemStack) {
+    public boolean execute(Player p, ItemStack itemStack, double cID) {
         if(cooldown.containsKey(p.getUniqueId())){
             long secondsLeft = cooldown.get(p.getUniqueId())-System.currentTimeMillis();
         if(secondsLeft>0) {

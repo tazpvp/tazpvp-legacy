@@ -11,8 +11,8 @@ public class Extinguish extends ConsumableItem {
     }
 
     @Override
-    public boolean execute(Player p, ItemStack itemStack) {
-        if(super.execute(p, itemStack)) {
+    public boolean execute(Player p, ItemStack itemStack, double cID) {
+        if(super.execute(p, itemStack, cID)) {
             return true;
         }
         p.setFireTicks(0);
