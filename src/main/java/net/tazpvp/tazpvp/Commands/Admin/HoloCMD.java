@@ -21,7 +21,6 @@ public class HoloCMD {
         a.setCanPickupItems(false);
         a.setInvulnerable(true);
         a.setSmall(true);
-        a.setHealth(99999999);
         a.setGravity(false);
         a.setCustomNameVisible(true);
         a.setCustomName(ChatColor.translateAlternateColorCodes('&', text));
