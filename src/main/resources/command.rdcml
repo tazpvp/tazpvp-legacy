@@ -331,7 +331,7 @@ holo {
     user player
     permission tazpvp.holo
     help /holo <create|remove|list|tp> [id]
-    create string...:text int:id {
+    create int:id string...:text {
         hook holo_create
     }
     remove int:id {
