@@ -104,16 +104,21 @@ public final class Tazpvp extends JavaPlugin {
         }
 
         blocks.add(Material.DEEPSLATE_GOLD_ORE);
+        blocks.add(Material.DEEPSLATE_IRON_ORE);
         blocks.add(Material.DEEPSLATE_REDSTONE_ORE);
         blocks.add(Material.DEEPSLATE_LAPIS_ORE);
         blocks.add(Material.DEEPSLATE_EMERALD_ORE);
-        blocks.add(Material.DEEPSLATE_IRON_ORE);
 
         sellables.add(Material.DEEPSLATE_GOLD_ORE);
+        sellables.add(Material.DEEPSLATE_IRON_ORE);
         sellables.add(Material.DEEPSLATE_REDSTONE_ORE);
         sellables.add(Material.DEEPSLATE_LAPIS_ORE);
         sellables.add(Material.DEEPSLATE_EMERALD_ORE);
-        sellables.add(Material.DEEPSLATE_IRON_ORE);
+        sellables.add(Material.RAW_GOLD);
+        sellables.add(Material.RAW_IRON);
+        sellables.add(Material.REDSTONE);
+        sellables.add(Material.LAPIS_LAZULI);
+        sellables.add(Material.EMERALD);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
