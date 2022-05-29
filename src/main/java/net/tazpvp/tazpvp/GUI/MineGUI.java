@@ -38,26 +38,12 @@ public class MineGUI {
 
         });
         ItemButton button2 = ItemButton.create(upgrade, e -> {
-            Player p = (Player) e.getWhoClicked();
-            ItemStack i = p.getItemOnCursor();
-            int amount = p.getItemOnCursor().getAmount();
-            Material b = i.getType();
-            if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.GOLD_ORE, amount))){ sellOre(p, b, amount, 1);}
-            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.REDSTONE_ORE, amount))){ sellOre(p, b, amount, 1);}
-            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.IRON_ORE, amount))){ sellOre(p, b, amount, 1);}
-            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.LAPIS_ORE, amount))){ sellOre(p, b, amount, 1);}
-            else if (Objects.equals(p.getItemOnCursor(), new ItemStack(Material.EMERALD_ORE, amount))){ sellOre(p, b, amount, 1);}
+
         });
         gui.addButton(12, button);
         gui.addButton(14, button2);
         gui.update();
     }
 
-    public void sellOre(Player p, Material ore, int amount, double price) {
-        if (Objects.equals(p.getItemOnCursor(), new ItemStack(ore, amount))) {
-            p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
-            Tazpvp.statsManager.addMoney(p, (int) (amount * price));
-            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
-        }
-    }
+
 }

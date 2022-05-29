@@ -5,15 +5,11 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
-import net.tazpvp.tazpvp.Events.*;
-import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
-import net.tazpvp.tazpvp.Utils.buyRank;
-import net.tazpvp.tazpvp.Utils.oreMine;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -38,6 +34,7 @@ import java.util.*;
 
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
+    public static BoolManager boolManager;
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
@@ -63,6 +60,7 @@ public final class Tazpvp extends JavaPlugin {
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static List<Material> blocks = new ArrayList<>();
+    public static List<Material> sellables = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -71,6 +69,7 @@ public final class Tazpvp extends JavaPlugin {
         Bukkit.getLogger().info(" Tazspree has been enabled!");
 
         statsManager = new StatsManager();
+        boolManager = new BoolManager();
         punishmentManager = new PunishmentManager();
         playerWrapperStatsManager = new PlayerWrapperStatsManager();
         achievementManager = new AchievementManager();
@@ -109,6 +108,12 @@ public final class Tazpvp extends JavaPlugin {
         blocks.add(Material.DEEPSLATE_LAPIS_ORE);
         blocks.add(Material.DEEPSLATE_EMERALD_ORE);
         blocks.add(Material.DEEPSLATE_IRON_ORE);
+
+        sellables.add(Material.DEEPSLATE_GOLD_ORE);
+        sellables.add(Material.DEEPSLATE_REDSTONE_ORE);
+        sellables.add(Material.DEEPSLATE_LAPIS_ORE);
+        sellables.add(Material.DEEPSLATE_EMERALD_ORE);
+        sellables.add(Material.DEEPSLATE_IRON_ORE);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
@@ -167,6 +172,7 @@ public final class Tazpvp extends JavaPlugin {
         }
 
         statsManager.saveStats();
+        boolManager.saveStats();
         punishmentManager.savePunishments();
         playerWrapperStatsManager.saveStats();
         achievementManager.saveStats();
@@ -193,7 +199,7 @@ public final class Tazpvp extends JavaPlugin {
             h.setDisplaySlot(DisplaySlot.BELOW_NAME);
             h.setDisplayName(ChatColor.RED + "❤");
         }
-        Score blank = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "--------------- ");
+        Score blank = objective.getScore(ChatColor.DARK_AQUA + "");
         blank.setScore(14);
         Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "PLAYER");
         blank1.setScore(13);
@@ -218,7 +224,7 @@ public final class Tazpvp extends JavaPlugin {
         deaths.setScore(4);
         Score kdr = objective.getScore(ChatColor.AQUA + "〡 KDR  " + ChatColor.DARK_AQUA + ((Tazpvp.statsManager.getDeaths(player) > 0) ? MathUtils.round((float) Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player), 2) : Tazpvp.statsManager.getKills(player)));
         kdr.setScore(3);
-        Score blank4 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "---------------");
+        Score blank4 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "");
         blank4.setScore(2);
         Score blank5 = objective.getScore(ChatColor.GRAY + "〡 tazpvp.net");
         blank5.setScore(1);

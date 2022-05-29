@@ -6,6 +6,7 @@ import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.HeadsToShards;
+import net.tazpvp.tazpvp.Utils.MinerNPC;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
@@ -18,6 +19,8 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import static net.tazpvp.tazpvp.Utils.MinerNPC.clickMiner;
 
 public class NPCEvent implements Listener {
     @EventHandler
@@ -38,7 +41,7 @@ public class NPCEvent implements Listener {
                         if (id == 1) {
                             new ShopGUI(e.getPlayer());
                         } else if (id == 2) {
-                            new MineGUI(e.getPlayer());
+                            clickMiner(e.getPlayer());
                         } else if (id == 3) {
                             new MainGUI(e.getPlayer());
                         } else if (id == 4) {
