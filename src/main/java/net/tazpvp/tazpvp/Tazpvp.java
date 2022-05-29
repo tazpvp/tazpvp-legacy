@@ -60,19 +60,7 @@ public final class Tazpvp extends JavaPlugin {
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static List<Material> blocks = new ArrayList<>();
-    public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>(){static {
-        sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
-        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
-        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
-        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
-        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
-        sellables.put(Material.RAW_GOLD, 1);
-        sellables.put(Material.RAW_IRON, 1);
-        sellables.put(Material.REDSTONE, 1);
-        sellables.put(Material.LAPIS_LAZULI, 1);
-        sellables.put(Material.EMERALD, 1);
-
-    }};
+    public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
 
     @Override
     public void onEnable() {
@@ -120,6 +108,17 @@ public final class Tazpvp extends JavaPlugin {
         blocks.add(Material.DEEPSLATE_REDSTONE_ORE);
         blocks.add(Material.DEEPSLATE_LAPIS_ORE);
         blocks.add(Material.DEEPSLATE_EMERALD_ORE);
+
+        sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
+        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
+        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
+        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
+        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
+        sellables.put(Material.RAW_GOLD, 1);
+        sellables.put(Material.RAW_IRON, 1);
+        sellables.put(Material.REDSTONE, 1);
+        sellables.put(Material.LAPIS_LAZULI, 1);
+        sellables.put(Material.EMERALD, 1);
 
     }
     public void registeRedLib(){
