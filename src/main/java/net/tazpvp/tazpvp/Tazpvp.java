@@ -60,7 +60,7 @@ public final class Tazpvp extends JavaPlugin {
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static List<Material> blocks = new ArrayList<>();
-    public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>(){{
+    public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>(){static {
         sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
         sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
         sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
