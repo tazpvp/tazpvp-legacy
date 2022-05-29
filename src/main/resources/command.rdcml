@@ -295,6 +295,16 @@ npc {
         hook npc_remove
         postarg
     }
+    rename string:name string:New{
+        help rename an npc
+        hook npc_rename
+        postarg
+    }
+    list {
+        help list all npcs
+        hook npc_list
+        postarg
+    }
 }
 
 pw {

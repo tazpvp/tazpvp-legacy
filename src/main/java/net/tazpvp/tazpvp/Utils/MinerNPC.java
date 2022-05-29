@@ -12,16 +12,24 @@ import java.util.Objects;
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
 
 public class MinerNPC {
-    public static void clickMiner(Player p){
-        if (sellables.contains(p.getMainHand())){
+    public static void clickMiner(Player p) {
+        if (!Tazpvp.boolManager.getHasClickedMiner(p)) {
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Hey there traveller! Sell me your ores, or take a look at what upgrades I can offer.");
+            Tazpvp.boolManager.setHasClickedMiner(p, true);
+        } else if (sellables.contains(p.getMainHand())){
             ItemStack hand = p.getInventory().getItemInMainHand();
             int amount = p.getInventory().getItemInMainHand().getAmount();
             Material ore = hand.getType();
-            if (Objects.equals(hand, new ItemStack(Material.GOLD_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.REDSTONE_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.IRON_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.LAPIS_ORE, amount))){ sellOre(p, ore, amount, 1);}
-            else if (Objects.equals(hand, new ItemStack(Material.EMERALD_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_GOLD_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_REDSTONE_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_IRON_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_LAPIS_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.DEEPSLATE_EMERALD_ORE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.RAW_GOLD, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.REDSTONE, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.RAW_IRON, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.LAPIS_LAZULI, amount))){ sellOre(p, ore, amount, 1);}
+            else if (Objects.equals(hand, new ItemStack(Material.EMERALD, amount))){ sellOre(p, ore, amount, 1);}
         } else { new MineGUI(p); }
     }
 

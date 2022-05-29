@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class oreMine implements Listener {
+public class OreMine implements Listener {
     public static void oreRespawn(Player p, Material block, Material block2, Long dur, Block b){
         p.getInventory().addItem(new ItemStack(block));
         b.setType(Material.BEDROCK);
