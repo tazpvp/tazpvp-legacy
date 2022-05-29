@@ -12,8 +12,10 @@ import java.util.Objects;
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
 
 public class MinerNPC {
-    public static void clickMiner(Player p){
-        if (sellables.contains(p.getMainHand())){
+    public static void clickMiner(Player p) {
+        if (!Tazpvp.boolManager.getHasClickedMiner(p)) {
+            p.sendMessage("");
+        } else if (sellables.contains(p.getMainHand())){
             ItemStack hand = p.getInventory().getItemInMainHand();
             int amount = p.getInventory().getItemInMainHand().getAmount();
             Material ore = hand.getType();
