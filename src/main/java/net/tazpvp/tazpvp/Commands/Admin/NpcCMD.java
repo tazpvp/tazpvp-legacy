@@ -39,7 +39,7 @@ public class NpcCMD {
     }
 
     @CommandHook("npc_list")
-    public void npcListCMD(Player p, String name, String New){
+    public void npcListCMD(Player p){
         List<ArmorStand> npcs = new ArrayList<>();
         p.getWorld().getEntities().stream().filter(e -> e instanceof Villager).forEach(e -> {
             if (e.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
