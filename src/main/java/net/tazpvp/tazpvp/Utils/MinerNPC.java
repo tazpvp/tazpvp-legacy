@@ -14,7 +14,8 @@ import static net.tazpvp.tazpvp.Tazpvp.sellables;
 public class MinerNPC {
     public static void clickMiner(Player p) {
         if (!Tazpvp.boolManager.getHasClickedMiner(p)) {
-            p.sendMessage("");
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Hey there traveller! Sell me your ores, or take a look at what upgrades I can offer.");
+            Tazpvp.boolManager.setHasClickedMiner(p, true);
         } else if (sellables.contains(p.getMainHand())){
             ItemStack hand = p.getInventory().getItemInMainHand();
             int amount = p.getInventory().getItemInMainHand().getAmount();
