@@ -24,6 +24,8 @@ public class ItemBuilder {
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         itemz.setItemMeta(meta);
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
