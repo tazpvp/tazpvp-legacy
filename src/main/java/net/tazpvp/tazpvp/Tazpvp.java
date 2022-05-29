@@ -5,15 +5,11 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
-import net.tazpvp.tazpvp.Events.*;
-import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
-import net.tazpvp.tazpvp.Utils.buyRank;
-import net.tazpvp.tazpvp.Utils.oreMine;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -63,6 +59,7 @@ public final class Tazpvp extends JavaPlugin {
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static List<Material> blocks = new ArrayList<>();
+    public static List<Material> sellables = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -109,6 +106,12 @@ public final class Tazpvp extends JavaPlugin {
         blocks.add(Material.DEEPSLATE_LAPIS_ORE);
         blocks.add(Material.DEEPSLATE_EMERALD_ORE);
         blocks.add(Material.DEEPSLATE_IRON_ORE);
+
+        sellables.add(Material.DEEPSLATE_GOLD_ORE);
+        sellables.add(Material.DEEPSLATE_REDSTONE_ORE);
+        sellables.add(Material.DEEPSLATE_LAPIS_ORE);
+        sellables.add(Material.DEEPSLATE_EMERALD_ORE);
+        sellables.add(Material.DEEPSLATE_IRON_ORE);
     }
     public void registeRedLib(){
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
