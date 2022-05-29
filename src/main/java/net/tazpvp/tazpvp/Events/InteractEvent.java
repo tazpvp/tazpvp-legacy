@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Items.Item;
 import net.tazpvp.tazpvp.Utils.Custom.Items.ItemManager;
 import net.tazpvp.tazpvp.Utils.Custom.Items.Items;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -34,7 +35,6 @@ public class InteractEvent implements Listener {
         ItemStack inHand = p.getInventory().getItemInMainHand();
         if (inHand.hasItemMeta()) {
             ItemMeta meta = inHand.getItemMeta();
-            assert meta != null;
             if (meta.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE)) {
                 double cID = meta.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE);
                 for (Item item : ItemManager.items) {

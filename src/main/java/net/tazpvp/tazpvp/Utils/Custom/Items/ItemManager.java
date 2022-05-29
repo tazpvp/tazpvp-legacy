@@ -11,13 +11,12 @@ import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemManager {
-    public static final ArrayList<Item> items = new ArrayList<>();
-    public static void init() {
-        items.add(new Agility());
-        items.add(new Extinguish());
-    }
+    public static final ArrayList<Item> items = new ArrayList<>(Arrays.asList(
+            new Agility(), new Extinguish()
+    ));
 
     public static void givePlayerItem(Player player, Items item, int count) {
         player.getInventory().addItem(createItem(item.item, count, item.name, item.cID, item.lore));
