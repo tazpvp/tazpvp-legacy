@@ -330,7 +330,7 @@ unban player:target {
 holo {
     user player
     permission tazpvp.holo
-    help /holo <create|remove|list|tp> [id]
+    help /holo <create|remove|list|tp|edit> [id]
     create int:id string...:text {
         hook holo_create
     }
@@ -342,5 +342,8 @@ holo {
     }
     tp int:id {
         hook holo_tp
+    }
+    edit int:id string...:text {
+        hook holo_edit
     }
 }

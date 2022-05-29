@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
@@ -16,7 +17,11 @@ import java.util.List;
 public class HoloCMD {
     @CommandHook("holo_create")
     public void holoCreate(Player p, int id, String text) {
-        ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
+        int x = (int) p.getLocation().getX();
+        int y = (int) p.getLocation().getY();
+        int z = (int) p.getLocation().getZ();
+        Location loc = new Location(p.getWorld(), x + 0.5, y, z + 0.5);
+        ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(loc, EntityType.ARMOR_STAND);
         a.setInvisible(true);
         a.setCanPickupItems(false);
         a.setInvulnerable(true);
@@ -64,5 +69,17 @@ public class HoloCMD {
             }
         });
         p.sendMessage("Teleported " + id + " to you!");
+    }
+
+    @CommandHook("holo_edit")
+    public void holoRemove(Player p, int id, String text) {
+        p.getWorld().getEntities().stream().filter(e -> e instanceof ArmorStand).forEach(e -> {
+            if (e.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "hid"), PersistentDataType.INTEGER)) {
+                if (e.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "hid"), PersistentDataType.INTEGER) == id) {
+                    e.setCustomName(ChatColor.translateAlternateColorCodes('&', text));
+                }
+            }
+        });
+        p.sendMessage("Hologram removed!");
     }
 }
