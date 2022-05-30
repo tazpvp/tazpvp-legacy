@@ -68,6 +68,7 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".bowType", 0);
         statsFile.set(player.getUniqueId().toString()+".rebirth", 0);
         statsFile.set(player.getUniqueId().toString()+".spins", 0);
+        statsFile.set(player.getUniqueId().toString()+".credits", 0);
     }
 
     public int getMoney(OfflinePlayer player) {
@@ -223,6 +224,13 @@ public class StatsManager {
     public void addSpins(OfflinePlayer player, int spins) {
         setSpins(player, spins+getSpins(player));
     }
+    public int getCredits(OfflinePlayer player) {
+        return statsFile.getInt(player.getUniqueId().toString()+".credits");
+    }
+    public void setCredits(OfflinePlayer player, int credits) {
+        statsFile.set(player.getUniqueId().toString()+".credits", credits);
+    }
+    public void addCredits(OfflinePlayer player, int credits) { setCredits(player, credits+getCredits(player)); }
 
 
     public Team getTeam(Player player, Scoreboard sb) {

@@ -60,7 +60,7 @@ public final class Tazpvp extends JavaPlugin {
     public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
     public static WeakHashMap<UUID, UUID> lastDamage = new WeakHashMap<>();
 
-    public static List<UUID> Buying = new ArrayList<>();
+    public static HashMap<UUID, Integer> Buying = new HashMap<>();
     public static List<UUID> Gifting = new ArrayList<>();
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();

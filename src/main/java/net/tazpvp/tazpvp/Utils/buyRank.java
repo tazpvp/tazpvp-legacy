@@ -9,7 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import redempt.redlib.itemutils.ItemBuilder;
 
 public class buyRank implements Listener {
     public static int type;
@@ -20,12 +22,14 @@ public class buyRank implements Listener {
     public void onChat(AsyncPlayerChatEvent e){
         String msg = e.getMessage();
         Player p = e.getPlayer();
-        if (Tazpvp.Buying.contains(p.getUniqueId())){
+        int price = 1000;
+        if (Tazpvp.Buying.containsKey(p.getUniqueId())){
             e.setCancelled(true);
             if (msg.contains("buy")){
                 type = 1;
+                price = Tazpvp.Buying.get(p.getUniqueId());
                 Tazpvp.Buying.remove(p.getUniqueId());
-                RankGive(p, p);
+                RankGive(p, p, price);
             } else if (msg.contains("gift")){
                 type = 2;
                 p.sendMessage("who to gift?");
@@ -37,25 +41,28 @@ public class buyRank implements Listener {
         } else if (Tazpvp.Gifting.contains(p)){
             e.setCancelled(true);
             recipient = Bukkit.getPlayer(msg);
-            RankGive(p, recipient);
+            RankGive(p, recipient, price);
             Tazpvp.Gifting.remove(p);
         }
     }
 
-    public static void RankBuying(Player p) {
-        p.sendMessage("Gift or buy?");
-        Tazpvp.Buying.add(p.getUniqueId());
+    public static void RankBuying(Player p, int price) {
+        p.sendMessage(ChatColor.DARK_PURPLE + "Would you like to " + ChatColor.LIGHT_PURPLE + "'Gift' " + ChatColor.DARK_PURPLE + "or " + ChatColor.LIGHT_PURPLE + "'Buy' " + ChatColor.DARK_PURPLE + "this package?");
+        Tazpvp.Buying.put(p.getUniqueId(), price);
         new BukkitRunnable() {
             @Override
             public void run(){
-                if (Tazpvp.Buying.contains(p.getUniqueId())) {
+                if (Tazpvp.Buying.containsKey(p.getUniqueId())) {
                     Tazpvp.Buying.remove(p.getUniqueId());
-                    p.sendMessage("no msg");
+                    p.sendMessage(ChatColor.RED + "You took too long.");
                 }
             }
         }.runTaskLater(Tazpvp.getInstance(), 100L);
     }
-    public static void RankGive(Player buyer, Player recipient) {
+    public static void RankGive(Player buyer, Player recipient, int price) {
+        if (Tazpvp.statsManager.getCredits(buyer) >= price){ Tazpvp.statsManager.addCredits(buyer, -price);
+        } else { buyer.sendMessage(ChatColor.RED + "You don't have enough money!"); buyer.playSound(buyer.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1); }
+
         Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
         if (type == 1) { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " just purchased " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " in the store!");
         } else { Bukkit.broadcastMessage(ChatColor.YELLOW + buyer.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" +rank.toUpperCase()+ "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + recipient.getName()); }

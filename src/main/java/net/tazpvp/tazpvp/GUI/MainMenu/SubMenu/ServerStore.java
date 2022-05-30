@@ -1,10 +1,13 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.milkbowl.vault.chat.Chat;
+import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.buyRank;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
@@ -19,13 +22,20 @@ public class ServerStore {
         gui.open(p);
     }
 
+    public void createShopButton(ItemStack item, int slot, int price, String name, String description){
+        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
+        ItemButton button = ItemButton.create(b, e -> {
+            Player p = (Player) e.getWhoClicked();
+            RankBuying(p, price);
+        });
+        gui.addButton(slot, button);
+    }
+
     public void setitems(){
-        ChatColor red = ChatColor.RED;
         gui.fill(0, 9*5, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        ItemButton VIP = ItemButton.create(new ItemBuilder(Material.MUSIC_DISC_CHIRP).setName(ChatColor.RED + "" + ChatColor.BOLD + "VIP " + ChatColor.GRAY + "250 Credits")
-                        .setLore(red + "〡Enderchest access\n"+red+"〡Hat command\n"+red+"〡Nickname command\n"+red+"〡Votekick command\n"+red+"〡Invsee command\n"+
-                                red+"〡Vanish command\n"+red+"〡RGB Armor Colors\n"+red+"〡Durable Blocks\n"+red+"〡Anti-spam Bypass\n"+red+"〡No Lag-back\n"+red+"〡RGB Blocks\n"+red+"〡VIP++ discord rank")
-                , e -> {
+
+        ItemBuilder VIP
+        ItemButton VIP = ItemButton.create(new ItemBuilder(Material.MUSIC_DISC_CHIRP).setName(ChatColor.RED + "" + ChatColor.BOLD + "VIP " + ChatColor.GRAY + "250 Credits").setLore(vip), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             RankBuying(p);
