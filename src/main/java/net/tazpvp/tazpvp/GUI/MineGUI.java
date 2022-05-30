@@ -52,6 +52,7 @@ public class MineGUI {
 
         ItemBuilder pickaxeBuilder = new ItemBuilder(pickaxe).addItemFlags(ItemFlag.HIDE_ATTRIBUTES).setLore(ChatColor.GRAY + "Click to upgrade your pickaxe.", "1 Shard");
 
+        // TODO: make all of this into function tmr
         ItemButton button3 = ItemButton.create(pickaxeBuilder, e -> {
             if (e.getWhoClicked() instanceof Player pl) {
                 if (Tazpvp.statsManager.getShards(pl) >= 1) {
@@ -62,24 +63,32 @@ public class MineGUI {
                         ItemMeta meta = getPickaxe(pl).getItemMeta();
                         meta.setLore(Lore);
                         getPickaxe(pl).setItemMeta(meta);
+                        getPickaxe(pl).removeEnchantment(Enchantment.LOOT_BONUS_BLOCKS);
+                        getPickaxe(pl).removeEnchantment(Enchantment.SILK_TOUCH);
                     } else if (getPickaxe(pl).getType() == Material.STONE_PICKAXE) {
                         getPickaxe(pl).setType(Material.IRON_PICKAXE);
                         List<String> Lore = new ArrayList<>();
                         ItemMeta meta = getPickaxe(pl).getItemMeta();
                         meta.setLore(Lore);
                         getPickaxe(pl).setItemMeta(meta);
+                        getPickaxe(pl).removeEnchantment(Enchantment.LOOT_BONUS_BLOCKS);
+                        getPickaxe(pl).removeEnchantment(Enchantment.SILK_TOUCH);
                     } else if (getPickaxe(pl).getType() == Material.IRON_PICKAXE) {
                         getPickaxe(pl).setType(Material.GOLDEN_PICKAXE);
                         List<String> Lore = new ArrayList<>();
                         ItemMeta meta = getPickaxe(pl).getItemMeta();
                         meta.setLore(Lore);
                         getPickaxe(pl).setItemMeta(meta);
+                        getPickaxe(pl).removeEnchantment(Enchantment.LOOT_BONUS_BLOCKS);
+                        getPickaxe(pl).removeEnchantment(Enchantment.SILK_TOUCH);
                     } else if (getPickaxe(pl).getType() == Material.GOLDEN_PICKAXE) {
                         getPickaxe(pl).setType(Material.DIAMOND_PICKAXE);
                         List<String> Lore = new ArrayList<>();
                         ItemMeta meta = getPickaxe(pl).getItemMeta();
                         meta.setLore(Lore);
                         getPickaxe(pl).setItemMeta(meta);
+                        getPickaxe(pl).removeEnchantment(Enchantment.LOOT_BONUS_BLOCKS);
+                        getPickaxe(pl).removeEnchantment(Enchantment.SILK_TOUCH);
                     } else if (getPickaxe(pl).getType() == Material.DIAMOND_PICKAXE) {
                         pl.sendMessage(ChatColor.RED + "You already have the best pickaxe!");
                     } else {
