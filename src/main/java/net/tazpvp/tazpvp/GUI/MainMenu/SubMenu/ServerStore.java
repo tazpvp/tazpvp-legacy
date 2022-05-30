@@ -1,20 +1,15 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
-import net.milkbowl.vault.chat.Chat;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.buyRank;
+import net.tazpvp.tazpvp.Utils.RankUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
-import static net.tazpvp.tazpvp.Utils.buyRank.RankBuying;
 
 public class ServerStore {
     private final InventoryGUI gui;
@@ -27,9 +22,7 @@ public class ServerStore {
     public void createShopButton(ItemBuilder b, int slot, int price, String rank){
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
-            p.closeInventory();
-            buyRank.rank = rank;
-            RankBuying(p, price);
+            giftOrBuy(p, price, rank);
         });
         gui.addButton(slot, button);
     }
@@ -95,5 +88,35 @@ public class ServerStore {
         gui.addButton(21, UNBAN);
 
         gui.update();
+    }
+
+    public void giftOrBuy(Player p, int price, String rank){
+        gui.clear();
+        gui.fill(0, 9*5, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+
+        createGiftOrBuyBTN(p, new ItemBuilder(Material.SLIME_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Buy").setLore(ChatColor.GRAY + "Buy this rank for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 21, true);
+
+        createGiftOrBuyBTN(p, new ItemBuilder(Material.HONEY_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gift").setLore(ChatColor.GRAY + "Gift this rank to someone for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 23, false);
+
+        gui.update();
+    }
+
+    public void createGiftOrBuyBTN(Player p, ItemStack item, int price, String rank, int slot, boolean buying) {
+        ItemButton btn = ItemButton.create(item, e -> {
+            if (Tazpvp.statsManager.getMoney(p) >= price) {
+                if (buying) {
+                    Tazpvp.statsManager.addMoney(p, -price);
+                    RankUtils.rankBuy(p, rank);
+                    p.closeInventory();
+                } else {
+                    p.closeInventory();
+                    RankUtils.rankGift(p, rank, price);
+                }
+            } else {
+                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+                p.closeInventory();
+            }
+        });
+        gui.addButton(btn, slot);
     }
 }

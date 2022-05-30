@@ -50,6 +50,7 @@ public class ItemStackUtils {
     public static void hideFlag(ItemStack item){
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        itemMeta.addItemFlags(ItemFlag.HIDE_DESTROYS);
         item.setItemMeta(itemMeta);
     }
 
