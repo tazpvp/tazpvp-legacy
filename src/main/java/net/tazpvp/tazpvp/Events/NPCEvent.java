@@ -2,11 +2,9 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
-import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.GUI.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.HeadsToShards;
-import net.tazpvp.tazpvp.Utils.MinerNPC;
+import net.tazpvp.tazpvp.NPCS.HeadsToShards;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.EntityType;
@@ -20,7 +18,7 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static net.tazpvp.tazpvp.Utils.MinerNPC.clickMiner;
+import static net.tazpvp.tazpvp.NPCS.MinerNPC.clickMiner;
 
 public class NPCEvent implements Listener {
     @EventHandler

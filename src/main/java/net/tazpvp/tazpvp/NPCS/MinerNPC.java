@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.NPCS;
 
 import net.tazpvp.tazpvp.GUI.MineGUI;
 import net.tazpvp.tazpvp.Tazpvp;
