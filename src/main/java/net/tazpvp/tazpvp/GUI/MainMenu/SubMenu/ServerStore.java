@@ -24,12 +24,12 @@ public class ServerStore {
         gui.open(p);
     }
 
-    public void createShopButton(ItemBuilder b, int slot, int price){
+    public void createShopButton(ItemBuilder b, int slot, int price, String rank){
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             RankBuying(p, price);
-            buyRank.rank = "vip";
+            buyRank.rank = rank;
         });
         gui.addButton(slot, button);
     }
@@ -53,7 +53,7 @@ public class ServerStore {
                         r+"〡RGB Blocks",
                         r+"〡VIP++ discord rank"
                 );
-        createShopButton(vip, 11, 250);
+        createShopButton(vip, 11, 250, "vip");
         ChatColor gr = ChatColor.GREEN; ItemStack mvpmat = new ItemStack(Material.MUSIC_DISC_WAIT); hideFlag(vipmat);
         ItemBuilder mvp = new ItemBuilder(mvpmat).setName(ChatColor.GREEN+""+ChatColor.BOLD+"MVP " + ChatColor.GRAY + 450 + " Credits")
                 .setLore(
@@ -70,7 +70,7 @@ public class ServerStore {
                         gr+"〡RGB Blocks",
                         gr+"〡VIP++ discord rank"
                 );
-        createShopButton(mvp, 12, 250);
+        createShopButton(mvp, 12, 250, "mvp");
         ChatColor go = ChatColor.GOLD; ItemStack mvp2mat = new ItemStack(Material.MUSIC_DISC_PIGSTEP); hideFlag(vipmat);
         ItemBuilder mvp2 = new ItemBuilder(mvp2mat).setName(ChatColor.GOLD+""+ChatColor.BOLD+"MVP+ " + ChatColor.GRAY + 950 + " Credits")
                 .setLore(
@@ -87,7 +87,7 @@ public class ServerStore {
                         go+"〡RGB Blocks",
                         go+"〡VIP++ discord rank"
                 );
-        createShopButton(mvp2, 13, 250);
+        createShopButton(mvp2, 13, 250, "mvp+");
         ItemButton UNBAN = ItemButton.create(new ItemBuilder(Material.TNT_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN").setLore(ChatColor.GRAY + "Purchase an unban.\n" + ChatColor.DARK_AQUA + "100 Credits"), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
