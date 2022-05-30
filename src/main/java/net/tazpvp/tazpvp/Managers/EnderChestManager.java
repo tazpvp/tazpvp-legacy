@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.Managers;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.ItemStackSerializer;
+import net.tazpvp.tazpvp.Utils.ItemStackUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -30,9 +30,9 @@ public class EnderChestManager {
     }
 
     public ItemStack[] getItemContents(OfflinePlayer p){
-        return ItemStackSerializer.deserialize(statsFile.getString(p.getUniqueId().toString()+".ec"));
+        return ItemStackUtils.deserialize(statsFile.getString(p.getUniqueId().toString()+".ec"));
     }
     public void setItemContents(OfflinePlayer p, ItemStack[] contents) {
-        statsFile.set(p.getUniqueId().toString()+".ec", ItemStackSerializer.serialize(contents));
+        statsFile.set(p.getUniqueId().toString()+".ec", ItemStackUtils.serialize(contents));
     }
 }
