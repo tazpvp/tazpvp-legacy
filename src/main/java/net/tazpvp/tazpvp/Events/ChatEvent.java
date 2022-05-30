@@ -82,8 +82,7 @@ public class ChatEvent implements Listener {
 //                e.setCancelled(true);
 //                return;
 //            }
-        } else {
-            if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
+        } else if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
                 e.setFormat(p.getDisplayName() + ": " + "%2$s");
             } else {
                 e.setFormat(ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s");
@@ -93,7 +92,6 @@ public class ChatEvent implements Listener {
 //                e.setCancelled(true);
 //                return;
 //            }
-        }
 
         previousMessages.put(p, msg);
         cooldown.add(p);
