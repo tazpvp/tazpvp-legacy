@@ -41,12 +41,12 @@ public class MineGUI {
         }
 
         ItemButton button = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Auto Smelt I").setLore(ChatColor.GRAY + "1 coins"), e -> {
-            updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Auto Smelt I", 1);
+            updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Auto Smelt I", 1);
         });
 
 
         ItemButton button2 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Double Ores I").setLore(ChatColor.GRAY + "1 coins"), e -> {
-            updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Double Ores I", 1);
+            updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Double Ores I", 1);
         });
 
 

@@ -18,10 +18,13 @@ public class OreMine implements Listener {
             ItemStack i = p.getInventory().getItemInMainHand();
             if (i.containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS) && i.containsEnchantment(Enchantment.SILK_TOUCH)){
                 p.getInventory().addItem(new ItemStack(block2, 2));
+                return;
             } else if (i.containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)){
                 p.getInventory().addItem(new ItemStack(block, 2));
+                return;
             } else if (i.containsEnchantment(Enchantment.SILK_TOUCH)){
                 p.getInventory().addItem(new ItemStack(block2, 1));
+                return;
             } else {
                 p.getInventory().addItem(new ItemStack(block, 1));
             }
