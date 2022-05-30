@@ -16,7 +16,7 @@ public class Generator {
         new BukkitRunnable(){
             @Override
             public void run() {
-                if (Bukkit.getOnlinePlayers().size() > 0) {
+                if (Bukkit.getOnlinePlayers().size() > 6) {
                     Item i = Objects.requireNonNull(Bukkit.getWorld("arena")).dropItem(new Location(Bukkit.getWorld("arena"), 0.5, 84.5, 94.5), shard);
                     i.setVelocity(new Vector(0, 0, 0));
                     new BukkitRunnable(){
@@ -28,10 +28,10 @@ public class Generator {
                                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
                             }
                         }
-                    }.runTaskLater(plugin, 20*10);
+                    }.runTaskLater(plugin, 20*60*5);
                 }
             }
-        }.runTaskTimer(plugin, 20*60, 20*10);
+        }.runTaskTimer(plugin, 20*60, 20*60*6);
 
     }
 }
