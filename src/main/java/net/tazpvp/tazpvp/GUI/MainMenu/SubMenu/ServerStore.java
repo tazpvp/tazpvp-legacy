@@ -99,9 +99,9 @@ public class ServerStore {
         gui.clear();
         gui.fill(0, 9*5, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
 
-        createGiftOrBuyBTN(p, new ItemBuilder(Material.SLIME_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Buy").setLore(ChatColor.GRAY + "Buy this rank for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 12);
+        createGiftOrBuyBTN(p, new ItemBuilder(Material.SLIME_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Buy").setLore(ChatColor.GRAY + "Buy this rank for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 21);
 
-        createGiftOrBuyBTN(p, new ItemBuilder(Material.HONEY_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gift").setLore(ChatColor.GRAY + "Gift this rank to someone for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 14);
+        createGiftOrBuyBTN(p, new ItemBuilder(Material.HONEY_BLOCK).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gift").setLore(ChatColor.GRAY + "Gift this rank to someone for " + ChatColor.GOLD + price + ChatColor.GRAY + " Moneys"), price, rank, 23);
 
         gui.update();
     }
