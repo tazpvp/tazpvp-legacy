@@ -18,11 +18,15 @@ public class ItemPickUpEvent implements Listener {
             if (e.getItem().getItemStack().getType() == Material.AMETHYST_SHARD) {
                 new BukkitRunnable(){
                     public void run(){
+                        for (ItemStack invitem : p.getInventory()) {
+                            if (invitem.getType().equals(Material.AMETHYST_SHARD)){
+                                invitem.setAmount(invitem.getAmount()-1);
+                            }
+                        }
                         p.getInventory().remove(Material.AMETHYST_SHARD);
                         p.sendMessage(ChatColor.DARK_AQUA + "You picked up a shard. " + ChatColor.AQUA + "+1 Shard");
                         p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1, 1);
                         Tazpvp.statsManager.addShards(p, 1);
-
                     }
                 }.runTaskLater(Tazpvp.getInstance(), 5);
             }
