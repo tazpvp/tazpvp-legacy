@@ -1,6 +1,9 @@
 package net.tazpvp.tazpvp.Utils;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
@@ -8,7 +11,7 @@ import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
-public class ItemStackSerializer {
+public class ItemStackUtils {
     public static String serialize(ItemStack[] obj) {
         try {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -43,4 +46,11 @@ public class ItemStackSerializer {
             return new ItemStack[0];
         }
     }
+
+    public static void hideFlag(ItemStack item){
+        ItemMeta itemMeta = item.getItemMeta();
+        itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        item.setItemMeta(itemMeta);
+    }
+
 }
