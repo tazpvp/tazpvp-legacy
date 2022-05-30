@@ -36,7 +36,7 @@ public class MoveEvent implements Listener {
         if (p.getGameMode().equals(GameMode.SURVIVAL)){
             p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), true));
             p.setVelocity(new Vector(0, 1.5, 3));
-            p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_BLAST, 1, 1);
+            p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
             new BukkitRunnable() {
                 @Override
                 public void run() {
