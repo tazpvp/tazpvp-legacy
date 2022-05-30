@@ -23,7 +23,7 @@ public class BlockPlaceEvent implements Listener {
         Player p = event.getPlayer();
 
         if (p.getGameMode() == GameMode.SURVIVAL) {
-            if (p.getLocation().getY() <= 95) {
+            if (event.getBlock().getLocation().getY() <= 95) {
                 event.setCancelled(true);
             } else {
                 Block b = event.getBlock();
