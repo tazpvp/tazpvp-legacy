@@ -56,7 +56,7 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.ARROW, 5), 13, 13, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false, false, null);
         createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 14, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_CARROT, 1), 15, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$15", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 16, 250, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$225", false, false, null);
+        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 16, 25, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$225", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 20, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$20", false, false, null);
         createShopButton(new ItemStack(Material.SHEARS, 1), 20, 25, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$25", false, false, null);
         createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 50, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip\n" + ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$60\n" + "\n" + ChatColor.GREEN + "Rank Required", true, false, null);

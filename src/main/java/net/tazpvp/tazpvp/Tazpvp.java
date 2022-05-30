@@ -20,6 +20,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.*;
 import redempt.redlib.RedLib;
 import redempt.redlib.commandmanager.ArgType;
@@ -119,6 +121,14 @@ public final class Tazpvp extends JavaPlugin {
         sellables.put(Material.REDSTONE, 1);
         sellables.put(Material.LAPIS_LAZULI, 1);
         sellables.put(Material.EMERALD, 1);
+
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                CombatLogManager.tick();
+            }
+        }.runTaskTimerAsynchronously(this, 20L, 20L);
 
     }
     public void registeRedLib(){
