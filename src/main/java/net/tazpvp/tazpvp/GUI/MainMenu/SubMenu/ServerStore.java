@@ -28,8 +28,8 @@ public class ServerStore {
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
-            RankBuying(p, price);
             buyRank.rank = rank;
+            RankBuying(p, price);
         });
         gui.addButton(slot, button);
     }
