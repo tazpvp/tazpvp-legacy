@@ -216,9 +216,9 @@ public final class Tazpvp extends JavaPlugin {
             h.setDisplaySlot(DisplaySlot.BELOW_NAME);
             h.setDisplayName(ChatColor.RED + "❤");
         }
-        Score blank = objective.getScore(ChatColor.DARK_AQUA + "                     ");
+        Score blank = objective.getScore(ChatColor.DARK_AQUA + "                            ");
         blank.setScore(14);
-        Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "PLAYER");
+        Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WEALTH");
         blank1.setScore(13);
         Score level = objective.getScore(ChatColor.AQUA + "〡 Level  " + ChatColor.DARK_AQUA + Tazpvp.statsManager.getLevel(player));
         level.setScore(12);
