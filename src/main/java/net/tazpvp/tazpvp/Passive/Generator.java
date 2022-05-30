@@ -12,7 +12,7 @@ public class Generator {
         new BukkitRunnable(){
             @Override
             public void run() {
-                if (Bukkit.getOnlinePlayers().size() > 6) {
+                if (Bukkit.getOnlinePlayers().size() > 0) {
                     Bukkit.getWorld("arena").dropItemNaturally(new Location(Bukkit.getWorld("arena"), 0.5, 84.5, 94.5), shard);
                     new BukkitRunnable(){
                         public void run() {
