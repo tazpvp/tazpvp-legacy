@@ -18,10 +18,10 @@ public class CombatLogManager {
         combatLog.put(p, 10L);
     }
 
-    public boolean isInCombat(Player p) {
+    public static boolean isInCombat(Player p) {
         return combatLog.containsKey(p.getUniqueId());
     }
-    public boolean isInCombat(UUID p) {
+    public static boolean isInCombat(UUID p) {
         return combatLog.containsKey(p);
     }
 
