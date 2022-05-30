@@ -19,9 +19,9 @@ import java.util.List;
 public class HoloCMD implements Listener {
     @CommandHook("holo_create")
     public void holoCreate(Player p, int id, String text) {
-        int x = (int) p.getLocation().getX();
-        int y = (int) p.getLocation().getY();
-        int z = (int) p.getLocation().getZ();
+        double x =  p.getLocation().getBlock().getLocation().getX();
+        double y = p.getLocation().getY();
+        double z = p.getLocation().getBlock().getLocation().getZ();
         ArmorStand a = (ArmorStand) p.getWorld().spawnEntity(new Location(p.getWorld(), x + 0.5, y, z + 0.5), EntityType.ARMOR_STAND);
         a.setInvisible(true);
         a.setCanPickupItems(false);
