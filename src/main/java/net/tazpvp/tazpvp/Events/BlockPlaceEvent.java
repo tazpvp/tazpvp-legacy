@@ -23,38 +23,42 @@ public class BlockPlaceEvent implements Listener {
         Player p = event.getPlayer();
 
         if (p.getGameMode() == GameMode.SURVIVAL) {
-            Block b = event.getBlock();
-            b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
-            if (!Tazpvp.isRestarting) {
-                Material blockType = event.getBlockPlaced().getType();
-                ArrayList<Material> unreq = new ArrayList<>();
-                unreq.add(Material.DEEPSLATE_GOLD_ORE);
-                unreq.add(Material.DEEPSLATE_REDSTONE_ORE);
-                unreq.add(Material.DEEPSLATE_LAPIS_ORE);
-                unreq.add(Material.DEEPSLATE_EMERALD_ORE);
-                unreq.add(Material.DEEPSLATE_IRON_ORE);
-
-                if (!unreq.contains(blockType)) {
-                }
-                int timer = 0;
-
-                event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
-                if (blockType == Material.OAK_PLANKS) {
-                    timer = 20 * 10;
-                } else if (blockType == Material.DIRT) {
-                    event.setCancelled(true);
-                } else {
-                    timer = 20 * 20;
-                }
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        event.getBlockPlaced().setType(Material.AIR);
-                    }
-                }.runTaskLater(Tazpvp.getInstance(), timer);
-            } else {
+            if (p.getLocation().getY() <= 95) {
                 event.setCancelled(true);
-                event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks right now.");
+            } else {
+                Block b = event.getBlock();
+                b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
+                if (!Tazpvp.isRestarting) {
+                    Material blockType = event.getBlockPlaced().getType();
+                    ArrayList<Material> unreq = new ArrayList<>();
+                    unreq.add(Material.DEEPSLATE_GOLD_ORE);
+                    unreq.add(Material.DEEPSLATE_REDSTONE_ORE);
+                    unreq.add(Material.DEEPSLATE_LAPIS_ORE);
+                    unreq.add(Material.DEEPSLATE_EMERALD_ORE);
+                    unreq.add(Material.DEEPSLATE_IRON_ORE);
+
+                    if (!unreq.contains(blockType)) {
+                    }
+                    int timer = 0;
+
+                    event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
+                    if (blockType == Material.OAK_PLANKS) {
+                        timer = 20 * 10;
+                    } else if (blockType == Material.DIRT) {
+                        event.setCancelled(true);
+                    } else {
+                        timer = 20 * 20;
+                    }
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            event.getBlockPlaced().setType(Material.AIR);
+                        }
+                    }.runTaskLater(Tazpvp.getInstance(), timer);
+                } else {
+                    event.setCancelled(true);
+                    event.getPlayer().sendMessage(ChatColor.RED + "You cannot place blocks right now.");
+                }
             }
         }
     }

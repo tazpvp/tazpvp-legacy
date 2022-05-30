@@ -23,10 +23,10 @@ public class Generator {
                                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
                             }
                         }
-                    }.runTaskLater(plugin, 20*60*5);
+                    }.runTaskLater(plugin, 20*60*1);
                 }
             }
-        }.runTaskTimer(plugin, 20*60, 20*60*6);
+        }.runTaskTimer(plugin, 20*60, 20*60*1);
 
     }
 }
