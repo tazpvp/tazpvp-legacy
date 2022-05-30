@@ -1,11 +1,13 @@
 package net.tazpvp.tazpvp.GUI;
 
+import com.google.common.collect.Lists;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -15,6 +17,7 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import java.util.List;
 import java.util.Objects;
 
 public class MineGUI {
@@ -29,25 +32,24 @@ public class MineGUI {
     public void createButton(Player p) {
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
 
-
-        ItemStack upgrade = new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.DARK_AQUA + "Trade").setLore(ChatColor.GRAY + "Click to sell your ores.");
-
-        ItemButton button = ItemButton.create(new ItemBuilder(Material.DIRT), e -> {
-            e.getWhoClicked().closeInventory();
-
-        });
-        ItemButton button2 = ItemButton.create(upgrade, e -> {
-
-        });
-
         ItemStack pickaxe = getPickaxe(p);
         if (pickaxe == null) {
             p.sendMessage(ChatColor.RED + "You do not have a pickaxe in your inventory!");
+            p.closeInventory();
+            return;
         }
-        assert pickaxe != null;
+
+        ItemButton button = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Auto Smelt I").setLore(ChatColor.GRAY + "1 coins"), e -> {
+            updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Auto Smelt I", 1);
+        });
+
+
+        ItemButton button2 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Double Ores I").setLore(ChatColor.GRAY + "1 coins"), e -> {
+            updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Double Ores I", 1);
+        });
+
+
         ItemBuilder pickaxeBuilder = new ItemBuilder(pickaxe).addItemFlags(ItemFlag.HIDE_ATTRIBUTES).setLore(ChatColor.GRAY + "Click to upgrade your pickaxe.", "1 Shard");
-
-
 
         ItemButton button3 = ItemButton.create(pickaxeBuilder, e -> {
             if (e.getWhoClicked() instanceof Player pl) {
@@ -88,5 +90,31 @@ public class MineGUI {
             }
         }
         return null;
+    }
+
+    public void updatePickaxeItem(Player p, ItemStack pickaxe, Enchantment ench, String lore, int cost) {
+        if (pickaxe.containsEnchantment(ench)) {
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You already have this enchant.");
+            p.closeInventory();
+        } else {
+            if (Tazpvp.statsManager.getMoney(p) >= cost) {
+                Tazpvp.statsManager.addMoney(p, -cost);
+                ItemMeta meta = pickaxe.getItemMeta();
+                List<String> loreList = meta.getLore();
+                if (loreList == null) {
+                    loreList = Lists.newArrayList();
+                }
+                loreList.add(lore);
+                meta.setLore(loreList);
+                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                pickaxe.setItemMeta(meta);
+                pickaxe.addEnchantment(ench, 1);
+                p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Here is your new enchant!");
+                p.closeInventory();
+            } else {
+                p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You do not have enough money!");
+                p.closeInventory();
+            }
+        }
     }
 }
