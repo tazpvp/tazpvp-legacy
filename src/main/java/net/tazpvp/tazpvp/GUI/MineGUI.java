@@ -17,6 +17,7 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -57,12 +58,28 @@ public class MineGUI {
                     Tazpvp.statsManager.addShards(pl, -1);
                     if (getPickaxe(pl).getType() == Material.WOODEN_PICKAXE) {
                         getPickaxe(pl).setType(Material.STONE_PICKAXE);
+                        List<String> Lore = new ArrayList<>();
+                        ItemMeta meta = getPickaxe(pl).getItemMeta();
+                        meta.setLore(Lore);
+                        getPickaxe(pl).setItemMeta(meta);
                     } else if (getPickaxe(pl).getType() == Material.STONE_PICKAXE) {
                         getPickaxe(pl).setType(Material.IRON_PICKAXE);
+                        List<String> Lore = new ArrayList<>();
+                        ItemMeta meta = getPickaxe(pl).getItemMeta();
+                        meta.setLore(Lore);
+                        getPickaxe(pl).setItemMeta(meta);
                     } else if (getPickaxe(pl).getType() == Material.IRON_PICKAXE) {
                         getPickaxe(pl).setType(Material.GOLDEN_PICKAXE);
+                        List<String> Lore = new ArrayList<>();
+                        ItemMeta meta = getPickaxe(pl).getItemMeta();
+                        meta.setLore(Lore);
+                        getPickaxe(pl).setItemMeta(meta);
                     } else if (getPickaxe(pl).getType() == Material.GOLDEN_PICKAXE) {
                         getPickaxe(pl).setType(Material.DIAMOND_PICKAXE);
+                        List<String> Lore = new ArrayList<>();
+                        ItemMeta meta = getPickaxe(pl).getItemMeta();
+                        meta.setLore(Lore);
+                        getPickaxe(pl).setItemMeta(meta);
                     } else if (getPickaxe(pl).getType() == Material.DIAMOND_PICKAXE) {
                         pl.sendMessage(ChatColor.RED + "You already have the best pickaxe!");
                     } else {
