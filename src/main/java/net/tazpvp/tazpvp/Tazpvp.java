@@ -10,6 +10,7 @@ import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
+import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,6 +21,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.*;
 import redempt.redlib.RedLib;
 import redempt.redlib.commandmanager.ArgType;
@@ -59,7 +62,7 @@ public final class Tazpvp extends JavaPlugin {
 
     public static List<UUID> Buying = new ArrayList<>();
     public static List<UUID> Gifting = new ArrayList<>();
-    public static List<Material> blocks = new ArrayList<>();
+    public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
 
     @Override
@@ -103,11 +106,11 @@ public final class Tazpvp extends JavaPlugin {
             System.out.println("Vault not found!");
         }
 
-        blocks.add(Material.DEEPSLATE_GOLD_ORE);
-        blocks.add(Material.DEEPSLATE_IRON_ORE);
-        blocks.add(Material.DEEPSLATE_REDSTONE_ORE);
-        blocks.add(Material.DEEPSLATE_LAPIS_ORE);
-        blocks.add(Material.DEEPSLATE_EMERALD_ORE);
+        blocks.put(Material.DEEPSLATE_GOLD_ORE, Material.RAW_GOLD);
+        blocks.put(Material.DEEPSLATE_IRON_ORE, Material.RAW_IRON);
+        blocks.put(Material.DEEPSLATE_REDSTONE_ORE, Material.REDSTONE);
+        blocks.put(Material.DEEPSLATE_LAPIS_ORE, Material.LAPIS_LAZULI);
+        blocks.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
 
         sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
         sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
@@ -119,6 +122,14 @@ public final class Tazpvp extends JavaPlugin {
         sellables.put(Material.REDSTONE, 1);
         sellables.put(Material.LAPIS_LAZULI, 1);
         sellables.put(Material.EMERALD, 1);
+
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                CombatLogManager.tick();
+            }
+        }.runTaskTimerAsynchronously(this, 20L, 20L);
 
     }
     public void registeRedLib(){

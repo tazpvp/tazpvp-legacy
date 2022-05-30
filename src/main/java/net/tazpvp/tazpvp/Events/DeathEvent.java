@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.PdcUtils;
@@ -44,6 +45,8 @@ public class DeathEvent implements Listener {
                 if (e instanceof EntityDamageByEntityEvent) {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+                        CombatLogManager.combatLog.put(p.getUniqueId(), 10L);
+                        CombatLogManager.combatLog.put(d.getUniqueId(), 10L);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
                         if (item.hasItemMeta()) {

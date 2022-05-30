@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.NPCS;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
@@ -13,12 +13,12 @@ public class HeadsToShards {
     public void convertHeadsToShards(Player p) {
         if (p.getInventory().getItemInMainHand().getType().equals(Material.PLAYER_HEAD)) {
             ItemStack item = p.getInventory().getItemInMainHand();
-            ItemStack ie = new ItemBuilder(Material.PRISMARINE_SHARD).setName(ChatColor.AQUA + "Shard").setCount(item.getAmount());
-            p.getInventory().setItemInMainHand(ie);
+            p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            Tazpvp.statsManager.addShards(p, item.getAmount());
             for (int i = 0; i < item.getAmount(); i++) {
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             }
-            p.sendMessage(prefix + "Traded in " + item.getAmount() + " heads for " + item.getAmount() + " shards.");
+            p.sendMessage(prefix + "Traded in " + item.getAmount() + " shards for " + item.getAmount() + " shards.");
         } else if (p.getInventory().getItemInMainHand().getType().equals(Material.PRISMARINE_SHARD)) {
             ItemStack item = p.getInventory().getItemInMainHand();
             p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
