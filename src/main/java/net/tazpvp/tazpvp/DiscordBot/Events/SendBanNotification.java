@@ -4,53 +4,55 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Channel;
 import net.tazpvp.tazpvp.DiscordBot.TazBot;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.DiscordWebhook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.awt.*;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class SendBanNotification {
-    public static void sendBanNotification(UUID uuid, CommandSender plr) {
+    public static void sendBanNotification(UUID uuid, CommandSender plr) throws IOException {
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
-        EmbedBuilder banEmbed = new EmbedBuilder();
-        banEmbed.setTitle("**" + p.getName() + "** has been banned!");
-        banEmbed.setDescription("**Time:** " + dtf.format(now));
-        banEmbed.setColor(Color.RED);
-        banEmbed.setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64");
-        banEmbed.setFooter("they better have been hacking");
+        DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/981287942448382042/kwIJJAQ7_c3t4HCZcf_I_RrmzoqHqxei2wkoH0ncO7Quq4ZI5SFdw6wkC5lFcW_olCQj");
 
-        banEmbed.addField("**Reason**", Tazpvp.punishmentManager.getBanReason(p), true);
-        banEmbed.addField("**Banned By**", plr.getName(), true);
+        webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setTitle("**" + p.getName() + "** has been banned!")
+                .setDescription("**Time:** " + dtf.format(now))
+                .setColor(Color.RED)
+                .setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64")
+                .setFooter("they better have been hacking", null)
+                .addField("**Reason**", Tazpvp.punishmentManager.getBanReason(p) + "", true)
+                .addField("**Banned By**", plr.getName(), true));
 
-
-        TazBot.jda.getTextChannelById(981276321705496626L).sendMessageEmbeds(banEmbed.build()).queue();
+        webhook.execute();
     }
 
-    public static void sendUnBanNotification(UUID uuid, CommandSender plr) {
+    public static void sendUnBanNotification(UUID uuid, CommandSender plr) throws IOException {
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
-        EmbedBuilder banEmbed = new EmbedBuilder();
-        banEmbed.setTitle("**" + p.getName() + "** has been unbanned!");
-        banEmbed.setDescription("**Time:** " + dtf.format(now));
-        banEmbed.setColor(Color.GREEN);
-        banEmbed.setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64");
-        banEmbed.setFooter("here we go again");
+        DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/981287942448382042/kwIJJAQ7_c3t4HCZcf_I_RrmzoqHqxei2wkoH0ncO7Quq4ZI5SFdw6wkC5lFcW_olCQj");
 
-        banEmbed.addField("**Unbanned By**", plr.getName(), true);
+        webhook.addEmbed(new DiscordWebhook.EmbedObject()
+                .setTitle("**" + p.getName() + "** has been unbanned!")
+                .setDescription("**Time:** " + dtf.format(now))
+                .setColor(Color.YELLOW)
+                .setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64")
+                .setFooter("here we go again", null)
+                .addField("**Unbanned By**", plr.getName(), true));
 
-
-        TazBot.jda.getTextChannelById(981276321705496626L).sendMessageEmbeds(banEmbed.build()).queue();
+        webhook.execute();
     }
 }

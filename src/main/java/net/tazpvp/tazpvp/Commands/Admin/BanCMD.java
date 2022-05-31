@@ -11,12 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.commandmanager.CommandHook;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class BanCMD {
     @CommandHook("ban")
-    public void ban(CommandSender sender, Player target, String reason) {
+    public void ban(CommandSender sender, Player target, String reason) throws IOException {
         if (reason == null) {
             reason = "Unfair Advantage";
         }
@@ -51,7 +52,7 @@ public class BanCMD {
     }
 
     @CommandHook("unban")
-    public void unban(CommandSender sender, Player target) {
+    public void unban(CommandSender sender, Player target) throws IOException {
         if (Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.removeBan(target);
             for (Player p : Bukkit.getOnlinePlayers()){
