@@ -3,10 +3,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
+import org.bukkit.entity.*;
 import org.bukkit.persistence.PersistentDataType;
 import redempt.redlib.commandmanager.CommandHook;
 
@@ -16,6 +13,18 @@ import java.util.List;
 public class NpcCMD {
     @CommandHook("npc_create")
     public void npcCMD(Player p, String name, String profession, String type, int id) {
+        Vindicator ban = (Vindicator) p.getWorld().spawnEntity(p.getLocation(), EntityType.VINDICATOR);
+        ban.setAI(false);
+        ban.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
+        ban.setInvulnerable(true);
+        ban.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
+        p.sendMessage("NPC created!");
+        WanderingTrader shop = (WanderingTrader) p.getWorld().spawnEntity(p.getLocation(), EntityType.WANDERING_TRADER);
+        shop.setAI(false);
+        shop.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
+        shop.setInvulnerable(true);
+        shop.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
+        p.sendMessage("NPC created!");
         Villager v = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
         v.setAI(false);
         v.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
@@ -23,7 +32,7 @@ public class NpcCMD {
         v.setVillagerType(Villager.Type.valueOf(type.toUpperCase()));
         v.setInvulnerable(true);
         v.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
-        p.sendMessage("Villager created!");
+        p.sendMessage("NPC created!");
     }
 
     @CommandHook("npc_rename")
@@ -61,6 +70,20 @@ public class NpcCMD {
                 }
             }
         });
-        p.sendMessage("Villager removed!");
+        p.getWorld().getEntities().stream().filter(e -> e instanceof Vindicator).forEach(e -> {
+            if (e.getCustomName() != null) {
+                if (e.getCustomName().equalsIgnoreCase(name)) {
+                    e.remove();
+                }
+            }
+        });
+        p.getWorld().getEntities().stream().filter(e -> e instanceof WanderingTrader).forEach(e -> {
+            if (e.getCustomName() != null) {
+                if (e.getCustomName().equalsIgnoreCase(name)) {
+                    e.remove();
+                }
+            }
+        });
+        p.sendMessage("NPC removed!");
     }
 }
