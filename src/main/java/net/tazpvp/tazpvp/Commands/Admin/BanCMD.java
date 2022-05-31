@@ -16,7 +16,7 @@ public class BanCMD {
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, Arrays.toString(reason));
             sender.sendMessage(ChatColor.GOLD + "You have banned " + ChatColor.RED + target.getName() + ChatColor.GOLD + " for " + ChatColor.RED + Arrays.toString(reason));
-            // teleport to hell target.teleport(new Location(target.getWorld(), 0, 0, 0));
+            target.teleport(new Location(Bukkit.getWorld("ban"), 0, 70, 0));
         } else {
             sender.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " is already banned");
         }

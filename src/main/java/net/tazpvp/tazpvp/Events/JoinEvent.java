@@ -44,7 +44,7 @@ public class JoinEvent implements Listener {
         Tazpvp.playerWrapperMap.put(p.getUniqueId(), Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p));
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
-            // teleport to hell world
+            p.teleport(new Location(Bukkit.getWorld("ban"), 0, 70, 0));
         } else {
             p.teleport(spawn);
         }

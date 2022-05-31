@@ -24,6 +24,12 @@ public class ChatEvent implements Listener {
         if (e.getPlayer().isOp()) return;
         Player p = e.getPlayer();
 
+        if (Tazpvp.punishmentManager.isBanned(p)) {
+            e.setCancelled(true);
+            e.getPlayer().sendMessage(ChatColor.RED + "You is banned!");
+            return;
+        }
+
         if (Tazpvp.chatMuted){
             e.setCancelled(true);
             p.sendMessage(ChatColor.RED + "Chat is currently muted.");
