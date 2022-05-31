@@ -12,11 +12,14 @@ import java.util.Arrays;
 
 public class BanCMD {
     @CommandHook("ban")
-    public void ban(CommandSender sender, Player target, String... reason) {
+    public void ban(CommandSender sender, Player target, String reason) {
+        if (reason == null) {
+            reason = "Unfair Advantage";
+        }
         if (!Tazpvp.punishmentManager.isBanned(target)) {
-            Tazpvp.punishmentManager.initBan(target, true, Arrays.toString(reason));
-            sender.sendMessage(ChatColor.GOLD + "You have banned " + ChatColor.RED + target.getName() + ChatColor.GOLD + " for " + ChatColor.RED + Arrays.toString(reason));
-            target.teleport(new Location(Bukkit.getWorld("ban"), 0, 70, 0));
+            Tazpvp.punishmentManager.initBan(target, true, reason);
+            sender.sendMessage(ChatColor.GOLD + "You have banned " + ChatColor.RED + target.getName() + ChatColor.GOLD + " for " + ChatColor.RED + reason);
+            target.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
         } else {
             sender.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " is already banned");
         }
