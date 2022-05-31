@@ -6,6 +6,7 @@ import net.tazpvp.tazpvp.DiscordBot.TazBot;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class SendBanNotification {
-    public static void sendBanNotification(UUID uuid, Player plr) {
+    public static void sendBanNotification(UUID uuid, CommandSender plr) {
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -34,7 +35,7 @@ public class SendBanNotification {
         TazBot.jda.getTextChannelById(981276321705496626L).sendMessageEmbeds(banEmbed.build()).queue();
     }
 
-    public static void sendUnBanNotification(UUID uuid, Player plr) {
+    public static void sendUnBanNotification(UUID uuid, CommandSender plr) {
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
