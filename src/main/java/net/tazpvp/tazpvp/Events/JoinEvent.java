@@ -43,7 +43,12 @@ public class JoinEvent implements Listener {
         }
         Tazpvp.playerWrapperMap.put(p.getUniqueId(), Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p));
 
-        p.teleport(spawn);
+        if (Tazpvp.punishmentManager.isBanned(p)) {
+            // teleport to hell world
+        } else {
+            p.teleport(spawn);
+        }
+
 
         for(Scoreboard sb : Tazpvp.statsManager.scoreboards.values()) {
             Tazpvp.statsManager.getTeam(p, sb).addEntry(p.getName());

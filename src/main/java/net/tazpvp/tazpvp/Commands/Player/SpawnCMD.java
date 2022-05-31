@@ -19,6 +19,7 @@ import java.util.List;
 public class SpawnCMD implements Listener {
     @CommandHook("spawn")
     public void spawn(Player p){
+        if (Tazpvp.punishmentManager.isBanned(p)) return;
         if (p.hasPermission("tazpvp.spawn")){
             p.teleport(configUtils.spawn);
         } else {

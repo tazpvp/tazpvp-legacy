@@ -326,7 +326,7 @@ enderchest,ec {
     permission tazpvp.enderchest
     hook enderchest
 }
-ban player:target {
+ban player:target reason:string...?(Unfair Advantage) {
     permission tazpvp.ban
     help /ban <player>
     hook ban

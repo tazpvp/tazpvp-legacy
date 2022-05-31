@@ -40,6 +40,24 @@ public class PunishmentManager {
         return punishmentFile.contains("mutes." + player.getUniqueId().toString());
     }
 
+    public void initBan(OfflinePlayer player, boolean permanent, String reason){
+        punishmentFile.set("bans." + player.getUniqueId().toString()+".time", new Date().getTime());
+        punishmentFile.set("bans." + player.getUniqueId().toString()+".perm", permanent);
+        punishmentFile.set("bans." + player.getUniqueId().toString()+".perm", reason);
+    }
+
+    public void removeBan(OfflinePlayer player) {
+        punishmentFile.set("bans." + player.getUniqueId().toString(), null);
+    }
+
+    public boolean isBanned(OfflinePlayer player) {
+        return punishmentFile.contains("bans." + player.getUniqueId().toString());
+    }
+
+    public String getBanReason(OfflinePlayer player) {
+        return punishmentFile.getString("bans." + player.getUniqueId().toString()+".reason");
+    }
+
     public long getMuteTime(OfflinePlayer player) {
         return punishmentFile.getLong("mutes." + player.getUniqueId().toString() + ".time");
     }
