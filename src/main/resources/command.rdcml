@@ -285,7 +285,7 @@ npc {
     help /npc
     user player
     permission tazpvp.npc
-    create string:name string:profession string:type int:id{
+    create string:name string:profession string:type int:id entitytype:entity{
         help create a npc
         hook npc_create
         postarg
