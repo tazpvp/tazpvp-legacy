@@ -155,7 +155,11 @@ public class DeathEvent implements Listener {
             public void run() {
                 PlayerUtils.healPlayer(p);
 
-                p.teleport(configUtils.spawn);
+                if (Tazpvp.punishmentManager.isBanned(p)) {
+                    p.teleport(new Location(Bukkit.getWorld("ban"), 0, 70, 0));
+                } else {
+                    p.teleport(configUtils.spawn);
+                }
                 p.setGameMode(GameMode.SURVIVAL);
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
