@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.RankUtils;
+import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
