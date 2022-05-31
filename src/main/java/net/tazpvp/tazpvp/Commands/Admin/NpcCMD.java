@@ -16,26 +16,17 @@ public class NpcCMD {
         if (entity == 1){
             Vindicator ban = (Vindicator) p.getWorld().spawnEntity(p.getLocation(), EntityType.VINDICATOR);
             ban.setAI(false);
-            ban.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
-            ban.setInvulnerable(true);
-            ban.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
-            p.sendMessage("NPC created!");
+            newNPC(p, ban, name, id);
         } else if (entity == 2) {
             WanderingTrader shop = (WanderingTrader) p.getWorld().spawnEntity(p.getLocation(), EntityType.WANDERING_TRADER);
             shop.setAI(false);
-            shop.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
-            shop.setInvulnerable(true);
-            shop.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
-            p.sendMessage("NPC created!");
+            newNPC(p, shop, name, id);
         } else if (entity == 3) {
             Villager v = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
             v.setAI(false);
-            v.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
             v.setProfession(Villager.Profession.valueOf(profession.toUpperCase()));
             v.setVillagerType(Villager.Type.valueOf(type.toUpperCase()));
-            v.setInvulnerable(true);
-            v.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
-            p.sendMessage("NPC created!");
+            newNPC(p, v, name, id);
         } else {
             p.sendMessage("no");
         }
@@ -69,21 +60,7 @@ public class NpcCMD {
 
     @CommandHook("npc_remove")
     public void npcRemoveCMD(Player p, String name) {
-        p.getWorld().getEntities().stream().filter(e -> e instanceof Villager).forEach(e -> {
-            if (e.getCustomName() != null) {
-                if (e.getCustomName().equalsIgnoreCase(name)) {
-                    e.remove();
-                }
-            }
-        });
-        p.getWorld().getEntities().stream().filter(e -> e instanceof Vindicator).forEach(e -> {
-            if (e.getCustomName() != null) {
-                if (e.getCustomName().equalsIgnoreCase(name)) {
-                    e.remove();
-                }
-            }
-        });
-        p.getWorld().getEntities().stream().filter(e -> e instanceof WanderingTrader).forEach(e -> {
+        p.getWorld().getEntities().stream().filter(e -> e instanceof Villager || e instanceof Vindicator || e instanceof WanderingTrader).forEach(e -> {
             if (e.getCustomName() != null) {
                 if (e.getCustomName().equalsIgnoreCase(name)) {
                     e.remove();
@@ -91,5 +68,12 @@ public class NpcCMD {
             }
         });
         p.sendMessage("NPC removed!");
+    }
+
+    public void newNPC(Player p, Entity e, String name, int id){
+        e.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
+        e.setInvulnerable(true);
+        e.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
+        p.sendMessage("NPC created!");
     }
 }
