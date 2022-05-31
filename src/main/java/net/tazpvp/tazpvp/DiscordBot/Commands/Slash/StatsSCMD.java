@@ -55,7 +55,7 @@ public class StatsSCMD extends SlashCommand {
         stats.setColor(Color.pink);
         stats.setAuthor("TazPVP", null, "https://cdn.discordapp.com/attachments/811666816278724639/980269861806686288/Taznet_Logo_16.png");
         stats.setFooter("tazpvp.net");
-        stats.setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/128");
+        stats.setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64");
 
         stats.addField("**Level**", "" + Tazpvp.statsManager.getLevel(uuid) + "", true);
         stats.addField("**Exp**", "" + Tazpvp.statsManager.getExp(uuid) + "/" + df.format(d), true);
