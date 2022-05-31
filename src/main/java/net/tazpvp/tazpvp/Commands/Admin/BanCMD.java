@@ -23,7 +23,7 @@ public class BanCMD {
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, reason);
             for (Player p : Bukkit.getOnlinePlayers()){
-                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
+                p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
                 if (!p.getName().equals(target.getName())){
                     p.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
                     p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been banned for " + ChatColor.WHITE + reason);
@@ -54,7 +54,14 @@ public class BanCMD {
     public void unban(CommandSender sender, Player target) {
         if (Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.removeBan(target);
-            sender.sendMessage(ChatColor.GOLD + "You have unbanned " + ChatColor.RED + target.getName());
+            for (Player p : Bukkit.getOnlinePlayers()){
+                p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
+                if (p.hasPermission("tazpvp.ban")){
+                    p.sendMessage("");
+                    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been unbanned by " + ChatColor.WHITE + sender);
+                    p.sendMessage("");
+                }
+            }
             target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
             target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN" + ChatColor.GRAY + " Congratulations! You have been unbanned.");
             target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
