@@ -1,6 +1,7 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Ranks;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.configUtils;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -70,15 +71,5 @@ public class RankUtils implements Listener {
         }
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         Bukkit.dispatchCommand(console, configUtils.setLPRankCommand(recipient, rank));
-    }
-
-    public static boolean hasHigherRankCosmetic(String pRank, String nRank) {
-        HashMap<String, Integer> cosmeticRankWeight = new HashMap<>(){{
-            put("VIP", 1);
-            put("MVP", 2);
-            put("MVP+", 3);
-        }};
-
-        return cosmeticRankWeight.get(pRank) >= cosmeticRankWeight.get(nRank);
     }
 }
