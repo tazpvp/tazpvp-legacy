@@ -25,9 +25,9 @@ public class BanCMD {
             for (Player p : Bukkit.getOnlinePlayers()){
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
                 if (!p.getName().equals(target.getName())){
-                    p.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+                    p.sendMessage(ChatColor.DARK_GRAY + "");
                     p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been banned for " + ChatColor.WHITE + reason);
-                    p.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+                    p.sendMessage(ChatColor.DARK_GRAY + "");
                 }
             }
 
@@ -39,10 +39,10 @@ public class BanCMD {
                 public void run(){
                     target.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "BANNED", ChatColor.GOLD + "You have been sent to The Depths.", 10, 100, 10);
 
-                    target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+                    target.sendMessage(ChatColor.DARK_GRAY + "");
                     target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN" + ChatColor.GRAY + " You've been banned for " + ChatColor.WHITE + rs);
                     target.sendMessage(ChatColor.GRAY + "If you wish to be unbanned, do not log out. Follow the steps in " + ChatColor.WHITE + "/appeal");
-                    target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+                    target.sendMessage(ChatColor.DARK_GRAY + "");
                 }
             }.runTaskLater(Tazpvp.getInstance(), 30);
         } else {
@@ -58,13 +58,13 @@ public class BanCMD {
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
                 if (p.hasPermission("tazpvp.ban")){
                     p.sendMessage("");
-                    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been unbanned by " + ChatColor.WHITE + sender);
+                    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been unbanned by " + ChatColor.WHITE + sender.getName());
                     p.sendMessage("");
                 }
             }
-            target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            target.sendMessage("");
             target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN" + ChatColor.GRAY + " Congratulations! You have been unbanned.");
-            target.sendMessage(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
+            target.sendMessage("");
             target.teleport(new Location(Bukkit.getWorld("arena"), 0.5, 101, -1.5, 0, 0));
             SendBanNotification.sendUnBanNotification(target.getUniqueId(), sender);
         } else {
