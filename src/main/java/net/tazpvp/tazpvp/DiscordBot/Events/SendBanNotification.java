@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 public class SendBanNotification {
-    public static void sendBanNotification(UUID uuid, CommandSender plr) throws IOException {
+    public static void sendBanNotification(UUID uuid, CommandSender plr, String reason) throws IOException {
         OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -31,7 +31,7 @@ public class SendBanNotification {
                 .setColor(Color.RED)
                 .setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64")
                 .setFooter("they better have been hacking", null)
-                .addField("**Reason**", Tazpvp.punishmentManager.getBanReason(p) + "", true)
+                .addField("**Reason**", reason + "", true)
                 .addField("**Banned By**", plr.getName(), true));
 
         webhook.execute();
