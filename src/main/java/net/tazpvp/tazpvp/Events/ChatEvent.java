@@ -21,7 +21,10 @@ public class ChatEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        if (e.getPlayer().isOp()) return;
+        if (e.getPlayer().isOp()) {
+            e.setMessage(ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+            return;
+        }
         Player p = e.getPlayer();
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
