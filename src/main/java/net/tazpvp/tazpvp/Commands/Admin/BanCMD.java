@@ -23,6 +23,7 @@ public class BanCMD {
         }
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, reason);
+            SendBanNotification.sendBanNotification(target.getUniqueId(), sender, reason);
             for (Player p : Bukkit.getOnlinePlayers()){
                 p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
                 if (!p.getName().equals(target.getName())){
@@ -32,7 +33,6 @@ public class BanCMD {
                 }
             }
 
-            SendBanNotification.sendBanNotification(target.getUniqueId(), sender);
 
             final String rs = reason;
             target.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
