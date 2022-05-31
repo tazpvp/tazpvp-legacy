@@ -12,22 +12,22 @@ import java.util.List;
 
 public class NpcCMD {
     @CommandHook("npc_create")
-    public void npcCMD(Player p, String name, String profession, String type, int id, EntityType entity) {
-        if (entity == EntityType.VINDICATOR){
+    public void npcCMD(Player p, String name, String profession, String type, int id, int entity) {
+        if (entity == 1){
             Vindicator ban = (Vindicator) p.getWorld().spawnEntity(p.getLocation(), EntityType.VINDICATOR);
             ban.setAI(false);
             ban.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
             ban.setInvulnerable(true);
             ban.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
             p.sendMessage("NPC created!");
-        } else if (entity == EntityType.WANDERING_TRADER) {
+        } else if (entity == 2) {
             WanderingTrader shop = (WanderingTrader) p.getWorld().spawnEntity(p.getLocation(), EntityType.WANDERING_TRADER);
             shop.setAI(false);
             shop.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
             shop.setInvulnerable(true);
             shop.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER, id);
             p.sendMessage("NPC created!");
-        } else if (entity == EntityType.VILLAGER) {
+        } else if (entity == 3) {
             Villager v = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
             v.setAI(false);
             v.setCustomName(ChatColor.translateAlternateColorCodes('&', name));
