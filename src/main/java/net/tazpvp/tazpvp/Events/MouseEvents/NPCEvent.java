@@ -5,8 +5,10 @@ import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.NPCS.HeadsToShards;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -28,6 +30,9 @@ public class NPCEvent implements Listener {
             Villager v = (Villager) e.getRightClicked();
             if (v.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
                 int id = v.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER);
+                int pitch = v.getPersistentDataContainer().get(PdcUtils.pitchKey, PersistentDataType.INTEGER);
+                e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.ENTITY_VILLAGER_YES, 1, pitch);
+
 
                 //shop id 1
                 //upgrade id 2
