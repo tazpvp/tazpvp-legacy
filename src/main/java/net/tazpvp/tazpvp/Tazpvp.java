@@ -31,6 +31,7 @@ import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -127,13 +128,14 @@ public final class Tazpvp extends JavaPlugin {
 
         new EnchantRegistry(this).registerAll(this);
 
-        ArrayList<Class<? extends CommandListener>> commandListeners = new ArrayList<>();
-        for (Class<? extends CommandListener> cmdListener : RedLib.getExtendingClasses(this, CommandListener.class)) {
-            commandListeners.add(cmdListener);
+        ArrayList<CommandListener> listes = new ArrayList<>();
+
+        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
+            listes.add(listener.getConstructor().newInstance());
         }
 
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
-                commandListeners);
+                listes.toArray());
 
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
