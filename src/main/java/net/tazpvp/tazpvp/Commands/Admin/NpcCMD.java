@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -10,7 +11,7 @@ import redempt.redlib.commandmanager.CommandHook;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NpcCMD {
+public class NpcCMD implements CommandListener {
     @CommandHook("npc_create")
     public void npcCMD(Player p, String name, String profession, String type, int id, int entity) {
         if (entity == 1){

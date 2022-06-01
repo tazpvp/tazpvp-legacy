@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Player;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.ChatColor;
@@ -16,7 +17,7 @@ import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.List;
 
-public class SpawnCMD implements Listener {
+public class SpawnCMD implements Listener, CommandListener {
     @CommandHook("spawn")
     public void spawn(Player p){
         if (Tazpvp.punishmentManager.isBanned(p)) return;

@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -16,7 +17,7 @@ import redempt.redlib.commandmanager.CommandHook;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoloCMD implements Listener {
+public class HoloCMD implements Listener, CommandListener {
     @CommandHook("holo_create")
     public void holoCreate(Player p, int id, String text) {
         double x =  p.getLocation().getBlock().getLocation().getX();

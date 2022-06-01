@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -7,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.units.qual.C;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class StatsCMD {
+public class StatsCMD implements CommandListener {
 
     //Points Command
 

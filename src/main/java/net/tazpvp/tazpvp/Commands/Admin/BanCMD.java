@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.DiscordBot.Events.SendBanNotification;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class BanCMD {
+public class BanCMD implements CommandListener {
     @CommandHook("ban")
     public void ban(CommandSender sender, Player target, String reason) throws IOException {
         if (reason == null) {

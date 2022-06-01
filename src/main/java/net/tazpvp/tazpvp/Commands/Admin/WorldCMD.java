@@ -1,11 +1,12 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class WorldCMD {
+public class WorldCMD implements CommandListener {
     @CommandHook("world_list")
     public void worldList(Player p) {
         p.sendMessage(ChatColor.GOLD + "Worlds:");

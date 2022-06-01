@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Managers.*;
@@ -80,7 +81,17 @@ public final class Tazpvp extends JavaPlugin {
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        registeRedLib();
+        try {
+            registeRedLib();
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
         StartBotThread thread = new StartBotThread();
         thread.start();
 
@@ -111,31 +122,18 @@ public final class Tazpvp extends JavaPlugin {
         }.runTaskTimerAsynchronously(this, 20L, 20L);
 
     }
-    public void registeRedLib(){
+    public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
         new EnchantRegistry(this).registerAll(this);
+
+        ArrayList<Class<? extends CommandListener>> commandListeners = new ArrayList<>();
+        for (Class<? extends CommandListener> cmdListener : RedLib.getExtendingClasses(this, CommandListener.class)) {
+            commandListeners.add(cmdListener);
+        }
+
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
-                new StatsCMD(),
-                new GuiCMD(),
-                new ReportCMD(),
-                new RegionCMD(),
-                new SpawnCMD(),
-                new DiscordCMD(),
-                new WarnCMD(),
-                new MutechatCMD(),
-                new MuteCMD(),
-                new EnchantCMD(),
-                new WorldCMD(),
-                new ItemsCMD(),
-                new KitCMD(),
-                new BountyCMD(),
-                new TrollCMD(),
-                new NpcCMD(),
-                new PWCMD(),
-                new BanCMD(),
-                new ECCMD(),
-                new HoloCMD());
+                commandListeners);
 
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();

@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,7 +9,7 @@ import redempt.redlib.commandmanager.CommandHook;
 import redempt.redlib.enchants.CustomEnchant;
 import redempt.redlib.enchants.EnchantRegistry;
 
-public class EnchantCMD {
+public class EnchantCMD implements CommandListener {
     @CommandHook("enchant")
     public void enchant(Player p, String enchantName, int level) {
         ItemStack item = p.getInventory().getItemInMainHand();

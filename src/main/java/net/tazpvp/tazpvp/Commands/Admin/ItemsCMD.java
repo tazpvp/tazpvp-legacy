@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
@@ -15,7 +16,7 @@ import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.List;
 
-public class ItemsCMD {
+public class ItemsCMD implements CommandListener {
     @CommandHook("items_give")
     public void itemsGive(Player p){
         for (Items item : Items.values()){

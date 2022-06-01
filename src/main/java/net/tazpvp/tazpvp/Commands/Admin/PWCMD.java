@@ -1,11 +1,12 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class PWCMD {
+public class PWCMD implements CommandListener {
     @CommandHook("pw_test")
     public void pwTest(Player p) {
         PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());

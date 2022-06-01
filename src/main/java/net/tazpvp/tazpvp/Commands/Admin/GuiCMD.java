@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.MutliGuiPrototype.TestOne;
@@ -10,7 +11,7 @@ import net.tazpvp.tazpvp.GUI.Template.TestGUI;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class GuiCMD {
+public class GuiCMD implements CommandListener {
     @CommandHook("gui")
     public void gui(Player p, String gui) {
         if (gui.equalsIgnoreCase("test")) {

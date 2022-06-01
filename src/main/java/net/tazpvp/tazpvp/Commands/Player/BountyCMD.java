@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Player;
 
+import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,7 +9,7 @@ import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.UUID;
 
-public class BountyCMD {
+public class BountyCMD implements CommandListener {
     @CommandHook("bounty_set")
     public void bounty_set(Player p, Player target, int amount) {
         if (Tazpvp.statsManager.getMoney(p) > amount) {
