@@ -23,6 +23,7 @@ public class ShopGUI {
 
     public void createShopButton(ItemStack item, int slot, int price, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
         ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
+        if(rankRequired) b.setLore(ChatColor.GOLD + "Rank Required");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
