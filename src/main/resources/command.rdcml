@@ -357,3 +357,7 @@ holo {
         hook holo_edit
     }
 }
+
+bal player:target?(context self){
+    help /bal
+}
