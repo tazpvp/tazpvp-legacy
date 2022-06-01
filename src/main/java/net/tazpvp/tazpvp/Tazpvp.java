@@ -128,15 +128,9 @@ public final class Tazpvp extends JavaPlugin {
 
         new EnchantRegistry(this).registerAll(this);
 
-        ArrayList<CommandListener> listes = new ArrayList<>();
+        ArrayList<CommandListener> listes = new ArrayList<>(); for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) { listes.add(listener.getConstructor().newInstance());}
 
-        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
-            listes.add(listener.getConstructor().newInstance());
-        }
-
-        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
-                listes.toArray());
-
+        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this, listes.toArray());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
