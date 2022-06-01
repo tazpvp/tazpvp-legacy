@@ -173,7 +173,7 @@ region {
     hook region
 }
 
-spawn {
+spawn player:target?(context self){
     help /spawn
     user player
     hook spawn
