@@ -64,6 +64,7 @@ public final class Tazpvp extends JavaPlugin {
 
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
+    public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
 
     @Override
     public void onEnable() {
