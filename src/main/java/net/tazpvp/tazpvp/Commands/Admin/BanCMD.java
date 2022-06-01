@@ -22,6 +22,10 @@ public class BanCMD implements CommandListener {
         if (reason == null) {
             reason = "Unfair Advantage";
         }
+        if (target.hasPermission("tazpvp.banBypass")) {
+            sender.sendMessage(ChatColor.RED + "You cannot ban this player!");
+            return;
+        }
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, reason);
             SendBanNotification.sendBanNotification(target.getUniqueId(), sender, reason);

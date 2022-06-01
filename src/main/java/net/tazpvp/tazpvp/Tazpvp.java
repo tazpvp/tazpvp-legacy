@@ -129,9 +129,33 @@ public final class Tazpvp extends JavaPlugin {
 
         new EnchantRegistry(this).registerAll(this);
 
-        ArrayList<CommandListener> listes = new ArrayList<>(); for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) { listes.add(listener.getConstructor().newInstance());}
+        ArrayList<CommandListener> listes = new ArrayList<>();
+        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
+            listes.add(listener.getConstructor().newInstance());
+        }
+        getLogger().info(listes.toString());
 
-        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this, listes.toArray());
+        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this, listes,
+                new StatsCMD(),
+                new GuiCMD(),
+                new ReportCMD(),
+                new RegionCMD(),
+                new SpawnCMD(),
+                new DiscordCMD(),
+                new WarnCMD(),
+                new MutechatCMD(),
+                new MuteCMD(),
+                new EnchantCMD(),
+                new WorldCMD(),
+                new ItemsCMD(),
+                new KitCMD(),
+                new BountyCMD(),
+                new TrollCMD(),
+                new NpcCMD(),
+                new PWCMD(),
+                new BanCMD(),
+                new ECCMD(),
+                new HoloCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
