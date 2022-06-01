@@ -10,6 +10,7 @@ import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.YamlStats.*;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
+import net.tazpvp.tazpvp.Utils.ASCIIArtUtil;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
 import org.bukkit.Bukkit;
@@ -66,35 +67,10 @@ public final class Tazpvp extends JavaPlugin {
     public void onEnable() {
         instance = this;
         // Plugin startup logic
-        getLogger().finest("\n" +
-                "              ,---------------------------,\n" +
-                "              |  /---------------------\\ |\n" +
-                "              | |                       | |\n" +
-                "              | |      Loading...       | |\n" +
-                "              | |        Tazpvp         | |\n" +
-                "              | |                       | |\n" +
-                "              | |                       | |\n" +
-                "              |  \\_____________________/  |\n" +
-                "              |___________________________|\n" +
-                        "            ,---\\_____     []     _______/------,\n" +
-                        "          /         /______________\\           /|\n" +
-                        "        /___________________________________ /  | ___\n" +
-                        "        |                                   |   |    )\n" +
-                        "        |  _ _ _                 [-------]  |   |   (\n" +
-                        "        |  o o o                 [-------]  |  /    _)_\n" +
-                        "        |__________________________________ |/     /  /\n" +
-                        "    /-------------------------------------/|      ( )/\n" +
-                        "  /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /\n" +
-                        "/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /\n" +
-                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        getLogger().finest(ASCIIArtUtil.getArt("      Loading...       "));
 
 
-        statsManager = new StatsManager();
-        boolManager = new BoolManager();
-        punishmentManager = new PunishmentManager();
-        playerWrapperStatsManager = new PlayerWrapperStatsManager();
-        achievementManager = new AchievementManager();
-        enderChestManager = new EnderChestManager();
+        managers(true);
 
         configFile = this.getConfig();
         initConfig();
@@ -124,22 +100,7 @@ public final class Tazpvp extends JavaPlugin {
             System.out.println("Vault not found!");
         }
 
-        blocks.put(Material.DEEPSLATE_GOLD_ORE, Material.RAW_GOLD);
-        blocks.put(Material.DEEPSLATE_IRON_ORE, Material.RAW_IRON);
-        blocks.put(Material.DEEPSLATE_REDSTONE_ORE, Material.REDSTONE);
-        blocks.put(Material.DEEPSLATE_LAPIS_ORE, Material.LAPIS_LAZULI);
-        blocks.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
-
-        sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
-        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
-        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
-        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
-        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
-        sellables.put(Material.RAW_GOLD, 1);
-        sellables.put(Material.RAW_IRON, 1);
-        sellables.put(Material.REDSTONE, 1);
-        sellables.put(Material.LAPIS_LAZULI, 1);
-        sellables.put(Material.EMERALD, 1);
+        doHashMaps();
 
 
         new BukkitRunnable() {
@@ -195,23 +156,54 @@ public final class Tazpvp extends JavaPlugin {
         this.saveConfig();
     }
 
+    public void managers(boolean init) {
+        if (init) {
+            statsManager = new StatsManager();
+            boolManager = new BoolManager();
+            punishmentManager = new PunishmentManager();
+            playerWrapperStatsManager = new PlayerWrapperStatsManager();
+            achievementManager = new AchievementManager();
+            enderChestManager = new EnderChestManager();
+        } else {
+            statsManager.saveStats();
+            boolManager.saveStats();
+            punishmentManager.savePunishments();
+            playerWrapperStatsManager.saveStats();
+            achievementManager.saveStats();
+            enderChestManager.saveStats();
+        }
+    }
+
+    public void doHashMaps() {
+        blocks.put(Material.DEEPSLATE_GOLD_ORE, Material.RAW_GOLD);
+        blocks.put(Material.DEEPSLATE_IRON_ORE, Material.RAW_IRON);
+        blocks.put(Material.DEEPSLATE_REDSTONE_ORE, Material.REDSTONE);
+        blocks.put(Material.DEEPSLATE_LAPIS_ORE, Material.LAPIS_LAZULI);
+        blocks.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
+
+        sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
+        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
+        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
+        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
+        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
+        sellables.put(Material.RAW_GOLD, 1);
+        sellables.put(Material.RAW_IRON, 1);
+        sellables.put(Material.REDSTONE, 1);
+        sellables.put(Material.LAPIS_LAZULI, 1);
+        sellables.put(Material.EMERALD, 1);
+    }
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-
-        Bukkit.getLogger().info(" Tazspree has been disabled!");
+        getLogger().finest(ASCIIArtUtil.getArt("      Disabling...     "));
 
         this.saveConfig();
         for (Player player : Bukkit.getOnlinePlayers()) {
             playerWrapperStatsManager.setPlayerWrapper(player, playerWrapperMap.get(player.getUniqueId()));
         }
 
-        statsManager.saveStats();
-        boolManager.saveStats();
-        punishmentManager.savePunishments();
-        playerWrapperStatsManager.saveStats();
-        achievementManager.saveStats();
-        enderChestManager.saveStats();
+        managers(false);
     }
 
     public void initScoreboard(Player player) {
