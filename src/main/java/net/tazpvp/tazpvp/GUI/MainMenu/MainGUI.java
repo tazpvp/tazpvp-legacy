@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.GUI.MainMenu;
 
-import net.tazpvp.tazpvp.GUI.AchievementsGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.SwordCollection;
 import org.bukkit.Bukkit;

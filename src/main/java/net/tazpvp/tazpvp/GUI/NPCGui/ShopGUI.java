@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI;
+package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;

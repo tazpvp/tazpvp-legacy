@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI;
+package net.tazpvp.tazpvp.GUI.Template;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

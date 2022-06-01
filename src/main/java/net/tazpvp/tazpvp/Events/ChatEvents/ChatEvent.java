@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events;
+package net.tazpvp.tazpvp.Events.ChatEvents;
 
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.Tazpvp;

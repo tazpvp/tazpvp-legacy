@@ -1,7 +1,8 @@
-package net.tazpvp.tazpvp.Managers;
+package net.tazpvp.tazpvp.Managers.YamlStats;
 
+import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
+import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.SerializePlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -9,8 +10,6 @@ import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class PlayerWrapperStatsManager {

@@ -1,8 +1,8 @@
-package net.tazpvp.tazpvp.Events;
+package net.tazpvp.tazpvp.Events.MouseEvents;
 
 import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
-import net.tazpvp.tazpvp.GUI.ShopGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.NPCS.HeadsToShards;
 import org.bukkit.ChatColor;

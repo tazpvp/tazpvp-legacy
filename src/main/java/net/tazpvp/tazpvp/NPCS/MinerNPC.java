@@ -1,13 +1,11 @@
 package net.tazpvp.tazpvp.NPCS;
 
-import net.tazpvp.tazpvp.GUI.MineGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.MineGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.Objects;
 
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
 

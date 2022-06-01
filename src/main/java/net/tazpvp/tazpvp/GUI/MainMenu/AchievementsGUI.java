@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI;
+package net.tazpvp.tazpvp.GUI.MainMenu;
 
 import net.tazpvp.tazpvp.Achievements.Achievements;
 import net.tazpvp.tazpvp.Tazpvp;

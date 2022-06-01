@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events;
+package net.tazpvp.tazpvp.Events.PhysicalEvents;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BlockPlaceEvent implements Listener {
-    private final Random rand = new Random();
-
     @EventHandler
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {

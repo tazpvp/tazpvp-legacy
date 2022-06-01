@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI;
+package net.tazpvp.tazpvp.GUI.RespawnAnchorGui;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;

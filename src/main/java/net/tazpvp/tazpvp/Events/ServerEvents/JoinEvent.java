@@ -1,6 +1,6 @@
-package net.tazpvp.tazpvp.Events;
+package net.tazpvp.tazpvp.Events.ServerEvents;
 
-import net.tazpvp.tazpvp.Managers.PlayerWrapper;
+import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;

@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events;
+package net.tazpvp.tazpvp.Events.DamageEvents;
 
 import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Tazpvp;

@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
-import net.tazpvp.tazpvp.Managers.PlayerWrapper;
+import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;

@@ -1,13 +1,11 @@
-package net.tazpvp.tazpvp.Managers;
+package net.tazpvp.tazpvp.Managers.PlayerWrapperManagers;
 
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Base64;
-import java.util.List;
 
 public class SerializePlayerWrapper {
     public static String PlayerWrapperToString(PlayerWrapper pw) {

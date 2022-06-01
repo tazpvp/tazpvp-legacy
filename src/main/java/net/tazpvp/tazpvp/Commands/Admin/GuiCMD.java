@@ -3,10 +3,10 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.GUI.EnderChests.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.MutliGuiPrototype.TestOne;
-import net.tazpvp.tazpvp.GUI.OpenSlotGUI;
+import net.tazpvp.tazpvp.GUI.Template.OpenSlotGUI;
 import net.tazpvp.tazpvp.unused.FlameVilGUI;
-import net.tazpvp.tazpvp.GUI.ShopGUI;
-import net.tazpvp.tazpvp.GUI.TestGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
+import net.tazpvp.tazpvp.GUI.Template.TestGUI;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 

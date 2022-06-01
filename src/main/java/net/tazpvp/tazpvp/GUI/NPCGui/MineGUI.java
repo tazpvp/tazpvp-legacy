@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI;
+package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import com.google.common.collect.Lists;
 import net.tazpvp.tazpvp.Tazpvp;

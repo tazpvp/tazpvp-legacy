@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Managers;
+package net.tazpvp.tazpvp.Managers.PlayerWrapperManagers;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
