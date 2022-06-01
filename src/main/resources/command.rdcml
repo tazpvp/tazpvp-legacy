@@ -173,7 +173,7 @@ region {
     hook region
 }
 
-spawn {
+spawn player:target?(context self){
     help /spawn
     user player
     hook spawn
@@ -285,7 +285,7 @@ npc {
     help /npc
     user player
     permission tazpvp.npc
-    create string:name string:profession string:type int:id int:entity{
+    create string:name string:profession string:type int:id int:entity int:pitch{
         help create a npc
         hook npc_create
         postarg

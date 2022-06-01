@@ -19,13 +19,21 @@ import java.util.List;
 
 public class SpawnCMD implements Listener, CommandListener {
     @CommandHook("spawn")
-    public void spawn(Player p){
+    public void spawn(Player p, Player target){
         if (Tazpvp.punishmentManager.isBanned(p)) return;
-        if (p.hasPermission("tazpvp.spawn")){
-            p.teleport(configUtils.spawn);
+        if (target.equals(p)) {
+            if (!p.hasPermission("tazpvp.spawn")) {
+                p.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
+                return;
+            } else {
+                target.teleport(configUtils.spawn);
+            }
+        }
+        if (target.hasPermission("tazpvp.spawn")){
+            target.teleport(configUtils.spawn);
         } else {
-            p.sendMessage(ChatColor.GOLD + "You will be teleported to spawn in " + ChatColor.RED + "5s");
-            p.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), true));
+            target.sendMessage(ChatColor.GOLD + "You will be teleported to spawn in " + ChatColor.RED + "5s");
+            target.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
             new BukkitRunnable(){
                 @Override
