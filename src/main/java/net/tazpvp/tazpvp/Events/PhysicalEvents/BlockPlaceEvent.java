@@ -35,7 +35,8 @@ public class BlockPlaceEvent implements Listener {
                     unreq.add(Material.DEEPSLATE_EMERALD_ORE);
                     unreq.add(Material.DEEPSLATE_IRON_ORE);
 
-                    if (!unreq.contains(blockType)) {
+                    if (unreq.contains(blockType)) {
+                        event.setCancelled(true);
                     }
                     int timer = 0;
 
@@ -46,6 +47,9 @@ public class BlockPlaceEvent implements Listener {
                         event.setCancelled(true);
                     } else {
                         timer = 20 * 20;
+                    }
+                    if (event.getPlayer().hasPermission("rank.longerBlocks")) {
+                        timer = timer * 2;
                     }
                     new BukkitRunnable() {
                         @Override
