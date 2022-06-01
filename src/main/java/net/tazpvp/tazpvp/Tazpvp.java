@@ -68,7 +68,7 @@ public final class Tazpvp extends JavaPlugin {
         // Plugin startup logic
         getLogger().finest("\n" +
                 "              ,---------------------------,\n" +
-                "              |  /---------------------\\  |\n" +
+                "              |  /---------------------\\ |\n" +
                 "              | |                       | |\n" +
                 "              | |      Loading...       | |\n" +
                 "              | |        Tazpvp         | |\n" +
