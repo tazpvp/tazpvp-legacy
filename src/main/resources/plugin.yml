@@ -2,7 +2,7 @@ name: Tazpvp
 version: '${project.version}'
 main: net.tazpvp.tazpvp.Tazpvp
 api-version: 1.18
-prefix: tazpvp
+prefix: Taz
 authors: [ rownox, Ntdi, BubbleGum, RealTrippy ]
 description: Tazpvp main logic
 website: tazpvp.net
