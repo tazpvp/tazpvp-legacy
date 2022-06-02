@@ -58,5 +58,7 @@ public class JoinEvent implements Listener {
         for (Player plr : Bukkit.getOnlinePlayers()) {
             Tazpvp.sendBaseTablist(plr);
         }
+
+        Tazpvp.statsManager.scoreboards.get(p.getUniqueId()).getTeam(p.getUniqueId().toString()).setDisplayName(p.getDisplayName());
     }
 }

@@ -43,6 +43,7 @@ public class StatsManager {
         sb.registerNewTeam("n");
         sb.registerNewTeam("o");
         sb.registerNewTeam("z");
+        sb.registerNewTeam(player.getUniqueId().toString());
         sb.registerNewObjective("sb", "dummy");
         scoreboards.put(player.getUniqueId(), sb);
         Tazpvp.getInstance().initScoreboard(player);

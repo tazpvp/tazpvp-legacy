@@ -82,7 +82,7 @@ public final class Tazpvp extends JavaPlugin {
     public void onEnable() {
         instance = this;
         // Plugin startup logic
-        getLogger().finest(ASCIIArtUtil.getArt("      Loading...       "));
+        getLogger().info(ASCIIArtUtil.getArt("      Loading...       "));
 
 
         managers(true);
