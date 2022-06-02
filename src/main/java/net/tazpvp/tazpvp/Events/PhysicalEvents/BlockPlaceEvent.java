@@ -26,7 +26,6 @@ public class BlockPlaceEvent implements Listener {
                 }
             }
             Block b = event.getBlock();
-            b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
             if (!Tazpvp.isRestarting) {
                 Material blockType = event.getBlockPlaced().getType();
                 ArrayList<Material> unreq = new ArrayList<>();

@@ -21,7 +21,6 @@ public class BlockBreakEvent implements Listener {
         if(p.getGameMode() == GameMode.SURVIVAL) {
             Block b = e.getBlock();
             Material block = b.getType();
-            if (!isPlayerPlaced(b)) {e.setCancelled(true);}
             if (Tazpvp.blocks.containsKey(block)) {
                 e.setCancelled(true);
                 Material smeltedForm = Tazpvp.blocks.get(block);
@@ -34,13 +33,4 @@ public class BlockBreakEvent implements Listener {
             }
         }
     }
-
-    public boolean isPlayerPlaced(Block b){
-        List<MetadataValue> metaDataValues = b.getMetadata("PlayerPlaced");
-        for (MetadataValue metaDataValue : metaDataValues) {
-            return metaDataValue.asBoolean();
-        }
-        return false;
-    }
-
 }
