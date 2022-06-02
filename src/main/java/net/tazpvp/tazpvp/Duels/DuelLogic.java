@@ -70,6 +70,7 @@ public class DuelLogic implements Listener {
 
                 inventoryManagement(p, opponent, false);
                 new WorldManageent().deleteWorld(d.getDuelMap().getName());
+                duels.remove(Arrays.asList(p.getUniqueId(), opponent.getUniqueId()));
             }
         }.runTaskLater(Tazpvp.getInstance(), 20 * 5L);
     }
