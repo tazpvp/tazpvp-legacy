@@ -25,7 +25,7 @@ import static net.tazpvp.tazpvp.NPCS.MinerNPC.clickMiner;
 public class NPCEvent implements Listener {
     @EventHandler
     public void onNpcClick(PlayerInteractAtEntityEvent e) {
-        if (e.getRightClicked().getType() == EntityType.VILLAGER) {
+        if (e.getRightClicked().getType() == EntityType.VILLAGER || e.getRightClicked().getType() == EntityType.WANDERING_TRADER || e.getRightClicked().getType() == EntityType.VINDICATOR) {
             e.setCancelled(true);
             Villager v = (Villager) e.getRightClicked();
             if (v.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
