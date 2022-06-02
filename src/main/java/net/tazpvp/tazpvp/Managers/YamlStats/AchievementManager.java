@@ -29,6 +29,7 @@ public class AchievementManager {
 
     public void initPlayer(OfflinePlayer player){
         statsFile.set(player.getUniqueId().toString()+".sendchatmessage", false);
+        statsFile.set(player.getUniqueId().toString()+".collectemall", false);
     }
 
     public Boolean getSendChatMessage(OfflinePlayer player){
@@ -36,5 +37,8 @@ public class AchievementManager {
     }
     public void setChatMessage(OfflinePlayer player, Boolean val){
         statsFile.set(player.getUniqueId().toString()+".sendchatmessage", val);
+    }
+    public Boolean getCollectEmAll(OfflinePlayer player){
+        return statsFile.getBoolean(player.getUniqueId().toString()+".collectemall");
     }
 }

@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Achievements {
-    SENDCHATMESSAGE("Send a chat message!", ".sendchatmessage", new ArrayList<>(Arrays.asList("Become Cool and send a chat messG!")));
+    SENDCHATMESSAGE("Send a chat message!", ".sendchatmessage", new ArrayList<>(Arrays.asList("Become Cool and send a chat messG!"))),
+    COLLECTEMALL("Gotta Collect Em' All!", ".collectemall", new ArrayList<>(Arrays.asList("Collect all the swords in the game!")));
+
 
     private final String name;
     private final List<String> lore;

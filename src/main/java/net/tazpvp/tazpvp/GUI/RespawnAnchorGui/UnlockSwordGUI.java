@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.RespawnAnchorGui;
 
+import net.tazpvp.tazpvp.Achievements.UnlockAchievement;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.GetRandomSword;
@@ -85,6 +86,11 @@ public class UnlockSwordGUI {
                         p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
                         p.sendMessage("");
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
+
+                        List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
+                        if (swordUnlocked.size() >= Items.values().length) {
+                            UnlockAchievement.unlockCollectEmAll(p);
+                        }
                     }
                     p.closeInventory();
                     cancel();
