@@ -30,7 +30,7 @@ public class TazBot {
         builder.setActivity(Activity.watching("idiots play block games"));
         CommandClient commandClient = builder.build();
 
-        JDA jda = JDABuilder.createDefault("OTgwMjMwNjcyMzczNDA3ODI1.G4fLKO.y19vIa1muDpChcG3PzGQPsTVvx-zMq-qxALJlw")
+        JDA jda = JDABuilder.createDefault("OTgwMjMwNjcyMzczNDA3ODI1.Gziehr.HtY1OSHTegKla5EdmbjRhEUhzx7V2dAL50OzQE")
                 .disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE)
                 .setBulkDeleteSplittingEnabled(false)
                 .addEventListeners(
