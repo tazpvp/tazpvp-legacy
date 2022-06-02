@@ -36,6 +36,10 @@ public class DeathEvent implements Listener {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
+                        if (Tazpvp.duelLogic.isInDuel(p)) {
+                            Tazpvp.duelLogic.duelEnd(p);
+                            return;
+                        }
                         DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager(), true);
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null, false);

@@ -33,6 +33,7 @@ public enum KitManager {
 
     public void giveKit(Player p) {
         Inventory inv = p.getInventory();
+        inv.clear();
 
         inv.setItem(36, boots);
         inv.setItem(37, leggings);
