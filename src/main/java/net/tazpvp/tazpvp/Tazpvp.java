@@ -6,6 +6,7 @@ import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
+import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.YamlStats.*;
@@ -45,6 +46,7 @@ public final class Tazpvp extends JavaPlugin {
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
     public static AchievementManager achievementManager;
     public static EnderChestManager enderChestManager;
+    public static DuelLogic duelLogic;
 
     public static boolean isRestarting = false;
 
@@ -183,6 +185,7 @@ public final class Tazpvp extends JavaPlugin {
             playerWrapperStatsManager = new PlayerWrapperStatsManager();
             achievementManager = new AchievementManager();
             enderChestManager = new EnderChestManager();
+            duelLogic = new DuelLogic();
         } else {
             statsManager.saveStats();
             boolManager.saveStats();
