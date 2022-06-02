@@ -35,10 +35,10 @@ public enum KitManager {
         Inventory inv = p.getInventory();
         inv.clear();
 
+        inv.setContents(contents);
         inv.setItem(36, boots);
         inv.setItem(37, leggings);
         inv.setItem(38, chestplate);
         inv.setItem(39, helmet);
-        inv.setContents(contents);
     }
 }

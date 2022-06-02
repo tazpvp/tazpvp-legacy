@@ -41,6 +41,5 @@ public class TazBot {
         CommandListUpdateAction commandListUpdateAction = jda.updateCommands();
         commandListUpdateAction.queue();
 
-        channel = jda.getTextChannelById("981276321705496626");
     }
 }
