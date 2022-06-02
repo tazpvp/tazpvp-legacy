@@ -361,3 +361,12 @@ holo {
 bal player:target?(context self){
     help /bal
 }
+
+world {
+    help /world <list|tp> <world>
+    user player
+    permission tazpvp.world
+    create string:clone string:newname {
+        hook world_create
+    }
+}

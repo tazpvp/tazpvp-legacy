@@ -62,11 +62,9 @@ public class NpcCMD implements CommandListener {
 
     @CommandHook("npc_remove")
     public void npcRemoveCMD(Player p, String name) {
-        p.getWorld().getEntities().stream().filter(e -> e instanceof Villager || e instanceof Vindicator || e instanceof WanderingTrader).forEach(e -> {
-            if (e.getCustomName() != null) {
-                if (e.getCustomName().equalsIgnoreCase(name)) {
-                    e.remove();
-                }
+        p.getWorld().getEntities().stream().filter(entity -> entity.getCustomName() != null).forEach(e -> {
+            if (e.getCustomName().equalsIgnoreCase(name)) {
+                e.remove();
             }
         });
         p.sendMessage("NPC removed!");
