@@ -9,6 +9,7 @@ import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -27,7 +28,7 @@ public class NPCEvent implements Listener {
     public void onNpcClick(PlayerInteractAtEntityEvent e) {
         if (e.getRightClicked().getType() == EntityType.VILLAGER || e.getRightClicked().getType() == EntityType.WANDERING_TRADER || e.getRightClicked().getType() == EntityType.VINDICATOR) {
             e.setCancelled(true);
-            Villager v = (Villager) e.getRightClicked();
+            Entity v = e.getRightClicked();
             if (v.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
                 int id = v.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER);
                 int pitch = v.getPersistentDataContainer().get(PdcUtils.pitchKey, PersistentDataType.INTEGER);
