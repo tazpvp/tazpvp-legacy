@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
+import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.YamlStats.*;
@@ -67,6 +68,15 @@ public final class Tazpvp extends JavaPlugin {
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
+
+    @Override
+    public void onLoad() {
+        for (World world : Bukkit.getWorlds()) {
+            if (world.getName().startsWith("active_duel")) {
+                new WorldManageent().deleteWorld(world.getName());
+            }
+        }
+    }
 
     @Override
     public void onEnable() {
