@@ -370,3 +370,10 @@ world {
         hook world_create
     }
 }
+
+duel player:target{
+    help /duel <player>
+    permission tazpvp.duel
+    user player
+    hook duel
+}

@@ -167,7 +167,8 @@ public final class Tazpvp extends JavaPlugin {
                 new PWCMD(),
                 new BanCMD(),
                 new ECCMD(),
-                new HoloCMD());
+                new HoloCMD(),
+                new DuelCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
