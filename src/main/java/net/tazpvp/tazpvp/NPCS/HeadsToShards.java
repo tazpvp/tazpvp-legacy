@@ -29,7 +29,6 @@ public class HeadsToShards {
             p.sendMessage(prefix + "Traded in " + item.getAmount() + " shards for " + item.getAmount() + " digital shards.");
         } else {
             p.sendMessage(prefix + "I trade player heads for shards, hold them in your hand next time bud.");
-            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
         }
     }
 }
