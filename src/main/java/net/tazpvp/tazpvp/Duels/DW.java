@@ -22,8 +22,8 @@ public class DW {
         this.p1 = p1;
         this.p2 = p2;
         this.duelMap = duelMap;
-        this.spawn1 = new Location(duelMap, 0, 65, 0, 90, 0);
-        this.spawn2 = new Location(duelMap, -48, 65, 0, -90, 0);
+        this.spawn1 = new Location(duelMap, 0.5, 65, 0.5, 90, 0);
+        this.spawn2 = new Location(duelMap, -48.5, 65, 0.5, -90, 0);
         this.kit = kit;
     }
 

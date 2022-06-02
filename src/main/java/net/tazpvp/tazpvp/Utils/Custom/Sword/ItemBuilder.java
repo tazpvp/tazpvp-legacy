@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -18,6 +19,8 @@ public class ItemBuilder {
         String lore[] = item.getLore();
         List<String> loree = new ArrayList<>();
         Material material = item.getMaterial();
+
+        loree.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
 
         ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(lore);
         ItemMeta meta = itemz.getItemMeta();
