@@ -11,19 +11,19 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.*;
 
 public enum Items {
-    WOOGSWORD(ChatColor.WHITE + "Oak Sworden",  Material.WOODEN_SWORD, 100, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>() {{
+    WOOGSWORD(ChatColor.WHITE + "Oak Sworden",  Material.WOODEN_SWORD,  1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>() {{
 
         }}, ChatColor.GREEN + "3"),
-    UNCLESWORD(ChatColor.GREEN + "Uncle Sworden", Material.STONE_SWORD, 100, 2, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>() {{
+    UNCLESWORD(ChatColor.GREEN + "Uncle Sworden", Material.STONE_SWORD,  2, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>() {{
 
     }}, ChatColor.GREEN + "very uncle"),
-    GULKSWORD(ChatColor.YELLOW + "Gulk Sworden", Material.GOLDEN_SWORD, 100, 3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>() {{
+    GULKSWORD(ChatColor.YELLOW + "Gulk Sworden", Material.GOLDEN_SWORD,  3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>() {{
 
     }}, ChatColor.YELLOW + "gulk"),
-    FILLETSWORD(ChatColor.LIGHT_PURPLE + "Fillet Sworden", Material.IRON_SWORD, 100, 4, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>() {{
+    FILLETSWORD(ChatColor.LIGHT_PURPLE + "Fillet Sworden", Material.IRON_SWORD,  4, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>() {{
 
     }}, ChatColor.LIGHT_PURPLE + "fillet deez nuts"),
-    EXCALIBUR(ChatColor.GOLD + "Excalibur", Material.DIAMOND_SWORD, 100, 5, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>() {{
+    EXCALIBUR(ChatColor.GOLD + "Excalibur", Material.DIAMOND_SWORD,  5, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DURABILITY, 1);
         put(Enchantment.KNOCKBACK, 2);
     }}, ChatColor.GOLD + "famoos sword", ChatColor.GRAY + "Knockback II");
@@ -32,7 +32,6 @@ public enum Items {
     private final String name;
     private final String[] lore;
     private final Material material;
-    private final int cost;
     private final int damage;
     private final int exp;
     private final String rarity; //c = common, u = uncommon, r = rare, e = epic, l = legendary
@@ -42,11 +41,10 @@ public enum Items {
     private final double storedID;
     private final Map<Enchantment, Integer> enchantments;
 
-    Items(String name, Material material, int cost, int damage, int exp, String rarity, double cooldown, NamespacedKey key, PersistentDataType type, double storedID, Map<Enchantment, Integer> enchantments, String... lore) {
+    Items(String name, Material material, int damage, int exp, String rarity, double cooldown, NamespacedKey key, PersistentDataType type, double storedID, Map<Enchantment, Integer> enchantments, String... lore) {
         this.name = name;
         this.lore = lore;
         this.material = material;
-        this.cost = cost;
         this.damage = damage;
         this.exp = exp;
         this.rarity = rarity;
@@ -67,10 +65,6 @@ public enum Items {
 
     public Material getMaterial() {
         return this.material;
-    }
-
-    public int getCost() {
-        return this.cost;
     }
 
     public int getDamage() {
