@@ -33,6 +33,17 @@ public class DuelLogic implements Listener {
         inventoryManagement(p1, p2, true);
 
         d.start();
+
+        p1.sendMessage(ChatColor.GREEN + "Duel starting in 3 seconds!");
+        p2.sendMessage(ChatColor.GREEN + "Duel starting in 3 seconds!");
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                p1.teleport(d.getSpawn1());
+                p2.teleport(d.getSpawn2());
+            }
+        }.runTaskLater(Tazpvp.getInstance(), 20L * 3);
     }
 
     public void duelEnd(final Player p) {
