@@ -17,7 +17,6 @@ import javax.security.auth.login.LoginException;
 
 public class TazBot {
     public static TextChannel channel;
-
     public static void main(String[] args) throws LoginException, InterruptedException {
         CommandClientBuilder builder = new CommandClientBuilder();
         builder.addSlashCommands(new ping(), new StatsSCMD());

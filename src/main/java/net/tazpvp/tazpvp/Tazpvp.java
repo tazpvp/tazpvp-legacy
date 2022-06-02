@@ -228,7 +228,7 @@ public final class Tazpvp extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        getLogger().finest(ASCIIArtUtil.getArt("      Disabling...     "));
+        getLogger().info(ASCIIArtUtil.getArt("      Disabling...     "));
 
         this.saveConfig();
         for (Player player : Bukkit.getOnlinePlayers()) {
