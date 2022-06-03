@@ -53,7 +53,6 @@ public class NpcCMD implements CommandListener {
             if (e.getPersistentDataContainer().has(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER)) {
                 npcs.add((ArmorStand) e);
             }
-            p.sendMessage();
         });
         for (ArmorStand a : npcs) {
             p.sendMessage(a.getPersistentDataContainer().get(new NamespacedKey(Tazpvp.getInstance(), "id"), PersistentDataType.INTEGER) + ": " + a.getCustomName());
@@ -62,7 +61,7 @@ public class NpcCMD implements CommandListener {
 
     @CommandHook("npc_remove")
     public void npcRemoveCMD(Player p, String name) {
-        p.getWorld().getEntities().stream().filter(entity -> entity.getCustomName() != null).forEach(e -> {
+        p.getWorld().getEntities().stream().filter(e -> e.getCustomName() != null).forEach(e -> {
             if (e.getCustomName().equalsIgnoreCase(name)) {
                 e.remove();
             }
