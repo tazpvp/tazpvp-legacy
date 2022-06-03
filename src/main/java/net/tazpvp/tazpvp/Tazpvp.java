@@ -334,20 +334,18 @@ public final class Tazpvp extends JavaPlugin {
             player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getGroupPrefix((String) null, permissions.getPrimaryGroup(player)) + player.getDisplayName()));
         }
         player.setScoreboard(sb);
-        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-            setNametag(onlinePlayers, player);
-        }
+        setNametag(player);
 
     }
 
-    public void setNametag(Player player1, Player player2) {
+    public void setNametag(Player player1) {
         Scoreboard scoreboard = player1.getScoreboard();
-        if (scoreboard.getTeam(player2.getUniqueId().toString()) != null) {
-            scoreboard.getTeam(player2.getUniqueId().toString()).unregister();
+        if (scoreboard.getTeam(player1.getUniqueId().toString()) != null) {
+            scoreboard.getTeam(player1.getUniqueId().toString()).unregister();
         }
-        Team team = scoreboard.registerNewTeam(player2.getUniqueId().toString());
+        Team team = scoreboard.registerNewTeam(player1.getUniqueId().toString());
         team.setPrefix(ChatColor.translateAlternateColorCodes('&', "eee"));
-        scoreboard.getTeam(player2.getUniqueId().toString()).addPlayer(player2);
+        scoreboard.getTeam(player1.getUniqueId().toString()).addPlayer(player1);
     }
 
     public static void sendBaseTablist(Player p) {
