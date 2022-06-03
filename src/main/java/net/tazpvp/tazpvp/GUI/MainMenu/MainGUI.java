@@ -11,6 +11,8 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
+
 public class MainGUI {
     private final InventoryGUI gui;
     public MainGUI(Player p) {
@@ -27,7 +29,8 @@ public class MainGUI {
             new AchievementsGUI(p);
         });
         gui.addButton(11, achievements);
-        ItemButton collection = ItemButton.create(new ItemBuilder(Material.DIAMOND_SWORD).setName(ChatColor.YELLOW + "" + ChatColor.BOLD + "WEAPONRY").setLore(ChatColor.GRAY + "View your collected weapons."), e -> {
+        ItemStack swordMat = new ItemStack(Material.DIAMOND_SWORD); hideFlag(swordMat);
+        ItemButton collection = ItemButton.create(new ItemBuilder(swordMat).setName(ChatColor.YELLOW + "" + ChatColor.BOLD + "WEAPONRY").setLore(ChatColor.GRAY + "View your collected weapons."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new SwordCollection(p);

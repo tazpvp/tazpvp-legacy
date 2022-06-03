@@ -51,7 +51,7 @@ public class ItemStackUtils {
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         itemMeta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+        itemMeta.addItemFlags(ItemFlag.values());
         item.setItemMeta(itemMeta);
     }
-
 }
