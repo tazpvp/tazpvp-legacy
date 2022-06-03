@@ -334,7 +334,9 @@ public final class Tazpvp extends JavaPlugin {
             player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getGroupPrefix((String) null, permissions.getPrimaryGroup(player)) + player.getDisplayName()));
         }
         player.setScoreboard(sb);
-        setNametag(player);
+        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+            setNametag(onlinePlayers);
+        }
 
     }
 
