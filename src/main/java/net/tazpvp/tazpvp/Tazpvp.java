@@ -232,11 +232,11 @@ public final class Tazpvp extends JavaPlugin {
         getLogger().info(ASCIIArtUtil.getArt("      Disabling...     "));
 
         this.saveConfig();
+
+        managers(false);
         for (Player player : Bukkit.getOnlinePlayers()) {
             playerWrapperStatsManager.setPlayerWrapper(player, playerWrapperMap.get(player.getUniqueId()));
         }
-
-        managers(false);
     }
 
     public void initScoreboard(Player player) {
