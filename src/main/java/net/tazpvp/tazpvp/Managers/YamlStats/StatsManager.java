@@ -139,6 +139,7 @@ public class StatsManager {
     public void levelUp(OfflinePlayer player, int number){
         Tazpvp.statsManager.addLevel(player, 1*number);
         Tazpvp.statsManager.addMoney(player, 60*number);
+        Tazpvp.statsManager.addShards(player, 1);
         Tazpvp.statsManager.setExpLeft(player, (Tazpvp.statsManager.getExpLeft(player)*1.05)*number);
         Tazpvp.statsManager.setExp(player, 0);
         //Tazpvp.statsManager.addMulti(player, 1);
@@ -147,8 +148,8 @@ public class StatsManager {
             p.sendMessage("");
             p.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "  LEVEL UP " + ChatColor.DARK_AQUA + "Combat Lvl. " + ChatColor.AQUA + Tazpvp.statsManager.getLevel(player));
             p.sendMessage("");
-            p.sendMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "  REWARDS");
-            p.sendMessage(ChatColor.DARK_GRAY + "  +" + ChatColor.GOLD + "60 Coins");
+            p.sendMessage(ChatColor.DARK_GRAY + "  ▶ " + ChatColor.GOLD + "60 Coins");
+            p.sendMessage(ChatColor.DARK_GRAY + "  ▶ " + ChatColor.DARK_AQUA + "1 Shard");
             p.sendMessage("");
             p.setLevel(Tazpvp.statsManager.getLevel(player));
             p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1 );
