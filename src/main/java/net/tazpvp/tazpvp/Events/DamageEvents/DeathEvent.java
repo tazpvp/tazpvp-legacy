@@ -126,10 +126,19 @@ public class DeathEvent implements Listener {
 
             if (Bukkit.getOnlinePlayers().size() < 20) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
-                    if (Objects.equals(online.getName(), d.getName())) {
-                        d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
+                    if (d.getInventory().getItemInMainHand().hasItemMeta()) {
+                        String cusName = d.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                        if (Objects.equals(online.getName(), d.getName())) {
+                            d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " with " + ChatColor.AQUA + cusName + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
+                        } else {
+                            online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " with " + ChatColor.AQUA + cusName );
+                        }
                     } else {
-                        online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
+                        if (Objects.equals(online.getName(), d.getName())) {
+                            d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
+                        } else {
+                            online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
+                        }
                     }
                 }
             } else {
