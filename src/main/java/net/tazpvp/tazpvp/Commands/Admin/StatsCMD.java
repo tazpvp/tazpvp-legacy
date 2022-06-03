@@ -12,48 +12,48 @@ public class StatsCMD implements CommandListener {
 
     //Points Command
 
-    @CommandHook("point_add")
+    @CommandHook("shard_add")
     public void pointAdd(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addShards(target, amount);
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " points to " + ChatColor.RED + target.getName());
+            p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " shards to " + ChatColor.RED + target.getName());
         } else {
-            sender.sendMessage("Console has added " + amount + " points to " + target.getName());
+            sender.sendMessage("Console has added " + amount + " shards to " + target.getName());
         }
     }
-    @CommandHook("point_remove")
+    @CommandHook("shard_remove")
     public void pointRemove(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addShards(target, -amount);
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " points from " + ChatColor.RED + target.getName());
+            p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " shards from " + ChatColor.RED + target.getName());
         } else {
-            sender.sendMessage("Console has removed " + amount + " points from " + target.getName());
+            sender.sendMessage("Console has removed " + amount + " shards from " + target.getName());
         }
     }
-    @CommandHook("point_set")
+    @CommandHook("shard_set")
     public void pointSet(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.setShards(target, amount);
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " points to " + ChatColor.RED + target.getName());
+            p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " shards to " + ChatColor.RED + target.getName());
         } else {
-            sender.sendMessage("Console has set " + amount + " points to " + target.getName());
+            sender.sendMessage("Console has set " + amount + " shards to " + target.getName());
         }
     }
-    @CommandHook("point_reset")
+    @CommandHook("shard_reset")
     public void pointReset(CommandSender sender, Player target) {
         Tazpvp.statsManager.setShards(target, 0);
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s points");
+            p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s shards");
         } else {
-            sender.sendMessage("Console has reset " + target.getName() + "'s points");
+            sender.sendMessage("Console has reset " + target.getName() + "'s shards");
         }
     }
-    @CommandHook("point_get")
+    @CommandHook("shard_get")
     public void pointGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getShards(target) + ChatColor.GOLD + "'s points");
+            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getShards(target) + ChatColor.GOLD + "'s shards");
         } else {
-            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getShards(target) + "'s points");
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getShards(target) + "'s shards");
         }
     }
 
