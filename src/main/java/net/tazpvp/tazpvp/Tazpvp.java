@@ -197,21 +197,21 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public void registerEvents() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-//        for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
-//            regList(listener.getConstructor().newInstance());
-//        }
-        regList(new ChatEvent());
-        regList(new PlayerCommandPreprocessEvent());
-        regList(new DamageEvent());
-        regList(new DeathEvent());
-        regList(new ItemPickUpEvent());
-        regList(new InteractEvent());
-        regList(new NPCEvent());
-        regList(new BlockBreakEvent());
-        regList(new BlockPlaceEvent());
-        regList(new MoveEvent());
-        regList(new JoinEvent());
-        regList(new LeaveEvnet());
+        for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
+            regList(listener.getConstructor().newInstance());
+        }
+//        regList(new ChatEvent());
+//        regList(new PlayerCommandPreprocessEvent());
+//        regList(new DamageEvent());
+//        regList(new DeathEvent());
+//        regList(new ItemPickUpEvent());
+//        regList(new InteractEvent());
+//        regList(new NPCEvent());
+//        regList(new BlockBreakEvent());
+//        regList(new BlockPlaceEvent());
+//        regList(new MoveEvent());
+//        regList(new JoinEvent());
+//        regList(new LeaveEvnet());
     }
 
     public void regList(Listener listener){
