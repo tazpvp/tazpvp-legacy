@@ -21,7 +21,7 @@ public class MainGUI {
 
     public void setitems(){
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.AQUA + "" + ChatColor.BOLD + "ACHIEVEMENTS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
+        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.AQUA + "" + ChatColor.BOLD + "PROGRESS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new AchievementsGUI(p);
