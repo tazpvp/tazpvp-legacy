@@ -12,7 +12,7 @@ import static net.tazpvp.tazpvp.Tazpvp.sellables;
 public class MinerNPC {
     public static void clickMiner(Player p) {
         if (!p.getInventory().getItemInMainHand().getType().name().toLowerCase().endsWith("_pickaxe") && !sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
-            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Hey there traveller! Sell me your ores, or take a look at what upgrades I can offer.");
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Hey there traveler! Sell me your ores, or hand me your pickaxe to take a look at what upgrades I can offer.");
         } else if (sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
             sellOre(p, p.getInventory().getItemInMainHand().getAmount(), sellables.get(p.getInventory().getItemInMainHand().getType()));
         } else { new MineGUI(p); }
