@@ -161,7 +161,7 @@ public final class Tazpvp extends JavaPlugin {
     public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
-//        new EnchantRegistry(this).registerAll(this);
+        new EnchantRegistry(this).registerAll(this);
 //
 //        ArrayList<CommandListener> listes = new ArrayList<>();
 //        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
@@ -200,18 +200,6 @@ public final class Tazpvp extends JavaPlugin {
         for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
             regList(listener.getConstructor().newInstance());
         }
-//        regList(new ChatEvent());
-//        regList(new PlayerCommandPreprocessEvent());
-//        regList(new DamageEvent());
-//        regList(new DeathEvent());
-//        regList(new ItemPickUpEvent());
-//        regList(new InteractEvent());
-//        regList(new NPCEvent());
-//        regList(new BlockBreakEvent());
-//        regList(new BlockPlaceEvent());
-//        regList(new MoveEvent());
-//        regList(new JoinEvent());
-//        regList(new LeaveEvnet());
     }
 
     public void regList(Listener listener){
