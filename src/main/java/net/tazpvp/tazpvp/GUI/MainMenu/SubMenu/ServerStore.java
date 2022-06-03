@@ -47,7 +47,7 @@ public class ServerStore {
                         r+"〡VIP++ discord rank"
                 );
         createShopButton(vip, 29, 250, "vip");
-        ChatColor gr = ChatColor.GREEN; ItemStack mvpmat = new ItemStack(Material.MUSIC_DISC_WAIT); hideFlag(vipmat);
+        ChatColor gr = ChatColor.GREEN; ItemStack mvpmat = new ItemStack(Material.MUSIC_DISC_WAIT); hideFlag(mvpmat);
         ItemBuilder mvp = new ItemBuilder(mvpmat).setName(ChatColor.GREEN+""+ChatColor.BOLD+"MVP " + ChatColor.GRAY + 450 + " Credits")
                 .setLore(
                         gr+"〡Enderchest access",
@@ -64,7 +64,7 @@ public class ServerStore {
                         gr+"〡VIP++ discord rank"
                 );
         createShopButton(mvp, 20, 250, "mvp");
-        ChatColor go = ChatColor.GOLD; ItemStack mvp2mat = new ItemStack(Material.MUSIC_DISC_PIGSTEP); hideFlag(vipmat);
+        ChatColor go = ChatColor.GOLD; ItemStack mvp2mat = new ItemStack(Material.MUSIC_DISC_PIGSTEP); hideFlag(mvp2mat);
         ItemBuilder mvp2 = new ItemBuilder(mvp2mat).setName(ChatColor.GOLD+""+ChatColor.BOLD+"MVP+ " + ChatColor.GRAY + 950 + " Credits")
                 .setLore(
                         go+"〡Enderchest access",
