@@ -145,7 +145,13 @@ public class DeathEvent implements Listener {
             Tazpvp.statsManager.addKills(d, 1);
             Tazpvp.statsManager.addExp(d, 15);
             Tazpvp.statsManager.addMoney(d, 7);
-            d.setHealth(d.getHealth() + 3);
+
+            if (d.getHealth() > 14) {
+                d.setHealth(20);
+            } else {
+                d.setHealth(d.getHealth() + 6);
+            }
+
 
             if (Tazpvp.statsManager.checkLevelUp(d)) {
                 Tazpvp.statsManager.levelUp(d, 1);

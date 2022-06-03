@@ -1,22 +1,22 @@
 stats {
     permission tazpvp.admin
     help /stats <points|exp|expleft|level|money|deaths|kills|streak>
-    points {
-        help /stats points <add|remove|set|reset|get> <player> [amount]
+    shards {
+        help /stats shards <add|remove|set|reset|get> <player> [amount]
         add player:target int:amount {
-            hook point_add
+            hook shard_add
         }
         remove player:target int:amount {
-            hook point_remove
+            hook shard_remove
         }
         set player:target int:amount {
-            hook point_set
+            hook shard_set
         }
         reset player:target {
-            hook point_reset
+            hook shard_reset
         }
         get player:target {
-            hook point_get
+            hook shard_get
         }
     }
     exp {
