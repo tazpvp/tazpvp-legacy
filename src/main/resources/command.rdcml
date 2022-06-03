@@ -377,3 +377,10 @@ duel player:target{
     user player
     hook duel
 }
+
+stick {
+    help /stick
+    user player
+    permission tazpvp.stick
+    hook stick
+}

@@ -116,7 +116,6 @@ public class DeathEvent implements Listener {
 
     public void DeathFunction(Player p, @Nullable Player d, boolean dropHead) {
         if (d != null) { //code will run if a player kills another player
-            d = Bukkit.getPlayer(String.valueOf(p.getMetadata("LastDamager")));
 
             if (dropHead) {
                 if (new Random().nextInt(10) <= 2){
