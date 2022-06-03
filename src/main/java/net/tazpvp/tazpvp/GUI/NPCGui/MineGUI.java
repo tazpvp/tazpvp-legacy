@@ -25,7 +25,7 @@ public class MineGUI {
     private InventoryGUI gui;
 
     public MineGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.RED + "Miner"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "PICKAXE UPGRADES"));
         createButton(p);
         gui.open(p);
     }

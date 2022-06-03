@@ -20,7 +20,7 @@ public class UnlockSwordGUI {
     private boolean isSpinning = false;
 
     public UnlockSwordGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "Spins: " + Tazpvp.statsManager.getSpins(p)));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WHEEL OF BLADES"));
         addItems(p);
         gui.open(p);
     }
@@ -28,15 +28,15 @@ public class UnlockSwordGUI {
     public void addItems(Player p) {
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
 
-        ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.PAPER)
-                .setName("Buy spins")
+        ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART)
+                .setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Purchase Spins")
                 .setCount(1)
-                .setLore("cost would go here but lazy :)"), e -> {
+                .setLore(ChatColor.DARK_AQUA + "Cost: " + ChatColor.DARK_AQUA + "1 Shard " + ChatColor.GRAY + "& " + ChatColor.GOLD + "100 Coins"), e -> {
             e.getWhoClicked().closeInventory();
         });
-        gui.addButton(10, buySpins);
+        gui.addButton(11, buySpins);
 
-        ItemButton sword = ItemButton.create(new ItemBuilder(Material.RED_STAINED_GLASS_PANE)
+        ItemButton sword = ItemButton.create(new ItemBuilder(Material.CYAN_STAINED_GLASS_PANE)
                 .setName(""), e -> {
         });
         gui.addButton(15, sword);
@@ -57,7 +57,7 @@ public class UnlockSwordGUI {
                 }
             }
         });
-        gui.addButton(12, spinSword);
+        gui.addButton(15, spinSword);
 
         gui.update();
     }
