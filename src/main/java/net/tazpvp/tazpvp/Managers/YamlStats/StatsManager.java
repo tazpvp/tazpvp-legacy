@@ -18,8 +18,6 @@ public class StatsManager {
     final File file;
     public final WeakHashMap<UUID, Scoreboard> scoreboards = new WeakHashMap<>();
 
-
-
     public StatsManager(){
         file = new File(Tazpvp.getInstance().getDataFolder() + "/stats.yml");
         statsFile = YamlConfiguration.loadConfiguration(file);
