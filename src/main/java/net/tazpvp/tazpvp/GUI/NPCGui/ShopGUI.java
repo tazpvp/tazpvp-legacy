@@ -12,6 +12,8 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
 
+import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
+
 public class ShopGUI {
     private InventoryGUI gui;
 
@@ -50,6 +52,7 @@ public class ShopGUI {
 
     public void addItems(){
         gui.fill(0, 45, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+
         //starting at 10
         createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
         createShopButton(new ItemStack(Material.PRISMARINE_SHARD, 1), 11, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
