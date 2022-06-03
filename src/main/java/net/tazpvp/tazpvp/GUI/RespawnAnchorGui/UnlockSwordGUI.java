@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.RespawnAnchorGui;
 
+import net.milkbowl.vault.chat.Chat;
 import net.tazpvp.tazpvp.Achievements.UnlockAchievement;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
@@ -31,7 +32,7 @@ public class UnlockSwordGUI {
         ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART)
                 .setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Buy Spins")
                 .setCount(1)
-                .setLore(ChatColor.DARK_AQUA + "Cost:", ChatColor.AQUA + "1 Shard", ChatColor.GOLD + "100 Coins"), e -> {
+                .setLore(ChatColor.DARK_PURPLE + "Cost:", ChatColor.DARK_AQUA + "1 Shard", ChatColor.GOLD + "100 Coins"), e -> {
             e.getWhoClicked().closeInventory();
         });
         gui.addButton(11, buySpins);
@@ -42,8 +43,8 @@ public class UnlockSwordGUI {
         gui.addButton(15, sword);
 
         ItemButton spinSword = ItemButton.create(new ItemBuilder(Material.SUNFLOWER)
-                .setName("Spin for Sword")
-                .setLore("Spins Available: " + Tazpvp.statsManager.getSpins(p)), e -> {
+                .setName(ChatColor.RED + "" + ChatColor.BOLD + "Spin Me!")
+                .setLore(ChatColor.GRAY + "Roll the wheel.", ChatColor.DARK_AQUA + "Spins Left: " + ChatColor.AQUA + Tazpvp.statsManager.getSpins(p)), e -> {
             if (isSpinning) {
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             } else {
