@@ -33,10 +33,12 @@ public class SwordCollection {
             });
             gui.addButton(i, tool);
 
-            if((i+1) % 7 == 0) {
+            if (i == 16 || i == 25) {
                 i += 2;
+            } else {
+                i++;
             }
-            i++;
+
         }
 
         gui.update();
