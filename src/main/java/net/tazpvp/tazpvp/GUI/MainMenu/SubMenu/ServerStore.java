@@ -46,7 +46,7 @@ public class ServerStore {
                         r+"〡RGB Blocks",
                         r+"〡VIP++ discord rank"
                 );
-        createShopButton(vip, 11, 250, "vip");
+        createShopButton(vip, 29, 250, "vip");
         ChatColor gr = ChatColor.GREEN; ItemStack mvpmat = new ItemStack(Material.MUSIC_DISC_WAIT); hideFlag(vipmat);
         ItemBuilder mvp = new ItemBuilder(mvpmat).setName(ChatColor.GREEN+""+ChatColor.BOLD+"MVP " + ChatColor.GRAY + 450 + " Credits")
                 .setLore(
@@ -80,7 +80,7 @@ public class ServerStore {
                         go+"〡RGB Blocks",
                         go+"〡VIP++ discord rank"
                 );
-        createShopButton(mvp2, 29, 250, "mvp+");
+        createShopButton(mvp2, 11, 250, "mvp+");
         ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
