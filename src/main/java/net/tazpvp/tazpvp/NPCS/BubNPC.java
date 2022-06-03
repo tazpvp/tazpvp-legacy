@@ -6,9 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import redempt.redlib.itemutils.ItemBuilder;
 
-public class HeadsToShards {
+public class BubNPC {
     String prefix = ChatColor.YELLOW + "[NPC] Bub: " + ChatColor.WHITE;
     public void convertHeadsToShards(Player p) {
         if (p.getInventory().getItemInMainHand().getType().equals(Material.PLAYER_HEAD)) {

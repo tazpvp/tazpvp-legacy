@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
 
-public class MinerNPC {
+public class CaesarNPC {
     public static void clickMiner(Player p) {
         if (!p.getInventory().getItemInMainHand().getType().name().toLowerCase().endsWith("_pickaxe") && !sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
             p.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "Hey there traveler! Sell me your ores, or hand me your pickaxe to view what upgrades I can offer.");

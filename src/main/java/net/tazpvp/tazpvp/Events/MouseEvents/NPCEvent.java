@@ -4,7 +4,7 @@ import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.NPCS.HeadsToShards;
+import net.tazpvp.tazpvp.NPCS.BubNPC;
 import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -12,7 +12,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryOpenEvent;
@@ -21,7 +20,7 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static net.tazpvp.tazpvp.NPCS.MinerNPC.clickMiner;
+import static net.tazpvp.tazpvp.NPCS.CaesarNPC.clickMiner;
 
 public class NPCEvent implements Listener {
     @EventHandler
@@ -51,7 +50,7 @@ public class NPCEvent implements Listener {
                         } else if (id == 4) {
                             new SelectGUI(e.getPlayer());
                         } else if (id == 5) {
-                            new HeadsToShards().convertHeadsToShards(e.getPlayer());
+                            new BubNPC().convertHeadsToShards(e.getPlayer());
                         } else {
                             e.getPlayer().sendMessage(ChatColor.RED + "Uh oh! You found a super secret error! Report this to Ntdi, 0xEf300 err resp: " + id +".EntityStorage");
                         }
