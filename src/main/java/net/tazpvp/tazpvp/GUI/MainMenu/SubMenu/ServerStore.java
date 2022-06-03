@@ -14,7 +14,7 @@ import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
 public class ServerStore {
     private final InventoryGUI gui;
     public ServerStore(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, "main"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "SERVER STORE " + ChatColor.DARK_RED + "25% SALE"));
         setitems();
         gui.open(p);
     }

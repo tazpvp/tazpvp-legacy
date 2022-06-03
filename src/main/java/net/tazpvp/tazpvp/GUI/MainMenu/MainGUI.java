@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.GUI.MainMenu;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.SwordCollection;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -13,7 +14,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class MainGUI {
     private final InventoryGUI gui;
     public MainGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "main"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "MENU"));
         setitems();
         gui.open(p);
     }

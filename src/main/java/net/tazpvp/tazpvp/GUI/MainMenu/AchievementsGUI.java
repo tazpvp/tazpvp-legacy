@@ -18,7 +18,7 @@ public class AchievementsGUI {
     private InventoryGUI gui;
 
     public AchievementsGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "ach"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "ACHIEVEMENTS"));
         addItems(p);
         gui.open(p);
     }

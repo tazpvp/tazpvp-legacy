@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +13,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class SwordCollection {
     private final InventoryGUI gui;
     public SwordCollection(Player p){
-        gui = new InventoryGUI(Bukkit.createInventory(null, 5*9, "upgrade"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 5*9, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WEAPONRY"));
         setitems();
         gui.open(p);
     }
