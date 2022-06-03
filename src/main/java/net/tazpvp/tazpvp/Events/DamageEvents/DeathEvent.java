@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Utils.PdcUtils;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.*;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -42,6 +43,15 @@ public class DeathEvent implements Listener {
                             return;
                         }
                         DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager(), true);
+                    } else if (((EntityDamageByEntityEvent) e).getDamager() instanceof Arrow a){ // arrowwwwwww
+                        if (a.getShooter() instanceof Player) {
+                            if (Tazpvp.duelLogic.isInDuel(p)) {
+                                Tazpvp.duelLogic.duelEnd(p);
+                                e.setCancelled(false);
+                                return;
+                            }
+                            DeathFunction(p, (Player) a.getShooter(), true);
+                        }
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null, false);
                     }
@@ -106,6 +116,7 @@ public class DeathEvent implements Listener {
 
     public void DeathFunction(Player p, @Nullable Player d, boolean dropHead) {
         if (d != null) { //code will run if a player kills another player
+            d = Bukkit.getPlayer(String.valueOf(p.getMetadata("LastDamager")));
 
             if (dropHead) {
                 if (new Random().nextInt(10) <= 2){
