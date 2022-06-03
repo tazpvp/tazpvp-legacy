@@ -6,7 +6,7 @@ prefix: Taz
 authors: [ rownox, Ntdi, BubbleGum, RealTrippy ]
 description: Tazpvp main logic
 website: tazpvp.net
-depend: [WorldGuard]
+depend: [WorldGuard, ProtocolLib]
 commands:
   rules:
     usage: /rules

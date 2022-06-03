@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events.ServerEvents;
 
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.NameTag;
 import net.tazpvp.tazpvp.Utils.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.configUtils;
 import org.bukkit.Bukkit;
@@ -12,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 public class JoinEvent implements Listener {
     @EventHandler
@@ -59,5 +61,19 @@ public class JoinEvent implements Listener {
         }
 
         Tazpvp.statsManager.scoreboards.get(p.getUniqueId()).getTeam(p.getUniqueId().toString()).setDisplayName(p.getDisplayName());
+
+        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+            setNametag(onlinePlayers, p);
+        }
+    }
+
+    public void setNametag(Player player1, Player player2) {
+        Scoreboard scoreboard = player1.getScoreboard();
+        if (scoreboard.getTeam(player1.getUniqueId().toString()) != null) {
+            scoreboard.getTeam(player1.getUniqueId().toString()).unregister();
+        }
+        Team team = scoreboard.registerNewTeam(player1.getUniqueId().toString());
+        team.setPrefix(ChatColor.translateAlternateColorCodes('&', "eee"));
+        scoreboard.getTeam(player1.getUniqueId().toString()).addPlayer(player2);
     }
 }

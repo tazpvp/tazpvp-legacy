@@ -1,5 +1,7 @@
 package net.tazpvp.tazpvp;
 
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
@@ -8,6 +10,18 @@ import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
+import net.tazpvp.tazpvp.Events.ChatEvents.ChatEvent;
+import net.tazpvp.tazpvp.Events.ChatEvents.PlayerCommandPreprocessEvent;
+import net.tazpvp.tazpvp.Events.DamageEvents.DamageEvent;
+import net.tazpvp.tazpvp.Events.DamageEvents.DeathEvent;
+import net.tazpvp.tazpvp.Events.ItemEvents.ItemPickUpEvent;
+import net.tazpvp.tazpvp.Events.MouseEvents.InteractEvent;
+import net.tazpvp.tazpvp.Events.MouseEvents.NPCEvent;
+import net.tazpvp.tazpvp.Events.PhysicalEvents.BlockBreakEvent;
+import net.tazpvp.tazpvp.Events.PhysicalEvents.BlockPlaceEvent;
+import net.tazpvp.tazpvp.Events.PhysicalEvents.MoveEvent;
+import net.tazpvp.tazpvp.Events.ServerEvents.JoinEvent;
+import net.tazpvp.tazpvp.Events.ServerEvents.LeaveEvnet;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.YamlStats.*;
@@ -56,6 +70,7 @@ public final class Tazpvp extends JavaPlugin {
 
     public static Permission permissions;
     public static Chat chat;
+    public static ProtocolManager protocolManager;
 
     public static FileConfiguration configFile;
 
@@ -128,6 +143,8 @@ public final class Tazpvp extends JavaPlugin {
             System.out.println("Vault not found!");
         }
 
+        protocolManager = ProtocolLibrary.getProtocolManager();
+
         doHashMaps();
 
         NpcUtils.spawnAll();
@@ -144,15 +161,15 @@ public final class Tazpvp extends JavaPlugin {
     public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
-        new EnchantRegistry(this).registerAll(this);
+//        new EnchantRegistry(this).registerAll(this);
+//
+//        ArrayList<CommandListener> listes = new ArrayList<>();
+//        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
+//            listes.add(listener.getConstructor().newInstance());
+//        }
+//        getLogger().info(listes.toString());
 
-        ArrayList<CommandListener> listes = new ArrayList<>();
-        for (Class<? extends CommandListener> listener : RedLib.getExtendingClasses(this, CommandListener.class)) {
-            listes.add(listener.getConstructor().newInstance());
-        }
-        getLogger().info(listes.toString());
-
-        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this, listes,
+        new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
                 new StatsCMD(),
                 new GuiCMD(),
                 new ReportCMD(),
@@ -180,9 +197,21 @@ public final class Tazpvp extends JavaPlugin {
     }
 
     public void registerEvents() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
-            regList(listener.getConstructor().newInstance());
-        }
+//        for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
+//            regList(listener.getConstructor().newInstance());
+//        }
+        regList(new ChatEvent());
+        regList(new PlayerCommandPreprocessEvent());
+        regList(new DamageEvent());
+        regList(new DeathEvent());
+        regList(new ItemPickUpEvent());
+        regList(new InteractEvent());
+        regList(new NPCEvent());
+        regList(new BlockBreakEvent());
+        regList(new BlockPlaceEvent());
+        regList(new MoveEvent());
+        regList(new JoinEvent());
+        regList(new LeaveEvnet());
     }
 
     public void regList(Listener listener){
@@ -305,6 +334,20 @@ public final class Tazpvp extends JavaPlugin {
             player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getGroupPrefix((String) null, permissions.getPrimaryGroup(player)) + player.getDisplayName()));
         }
         player.setScoreboard(sb);
+        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+            setNametag(onlinePlayers, player);
+        }
+
+    }
+
+    public void setNametag(Player player1, Player player2) {
+        Scoreboard scoreboard = player1.getScoreboard();
+        if (scoreboard.getTeam(player2.getUniqueId().toString()) != null) {
+            scoreboard.getTeam(player2.getUniqueId().toString()).unregister();
+        }
+        Team team = scoreboard.registerNewTeam(player2.getUniqueId().toString());
+        team.setPrefix(ChatColor.translateAlternateColorCodes('&', "eee"));
+        scoreboard.getTeam(player2.getUniqueId().toString()).addPlayer(player2);
     }
 
     public static void sendBaseTablist(Player p) {

@@ -234,41 +234,24 @@ public class StatsManager {
 
 
     public Team getTeam(Player player, Scoreboard sb) {
-        switch (Tazpvp.permissions.getPrimaryGroup(player).toLowerCase()) {
-            case"owner":
-                return sb.getTeam("a");
-            case"manager":
-                return sb.getTeam("b");
-            case"sr.admin":
-                return sb.getTeam("c");
-            case"admin":
-                return sb.getTeam("d");
-            case"developer":
-                return sb.getTeam("e");
-            case"sr.mod":
-                return sb.getTeam("f");
-            case"mod":
-                return sb.getTeam("g");
-            case"helper":
-                return sb.getTeam("h");
-            case"builder":
-                return sb.getTeam("i");
-            case"media":
-                return sb.getTeam("j");
-            case"vip":
-                return sb.getTeam("k");
-            case"mvp":
-                return sb.getTeam("l");
-            case"mvp+":
-                return sb.getTeam("m");
-            case"mvp++":
-                return sb.getTeam("n");
-            case"default":
-                return sb.getTeam("o");
-            case"banned":
-                return sb.getTeam("z");
-        }
-        return null;
+        return switch (Tazpvp.permissions.getPrimaryGroup(player).toLowerCase()) {
+            case "owner" -> sb.getTeam("a");
+            case "manager" -> sb.getTeam("b");
+            case "sr.admin" -> sb.getTeam("c");
+            case "admin" -> sb.getTeam("d");
+            case "developer" -> sb.getTeam("e");
+            case "sr.mod" -> sb.getTeam("f");
+            case "mod" -> sb.getTeam("g");
+            case "helper" -> sb.getTeam("h");
+            case "builder" -> sb.getTeam("i");
+            case "media" -> sb.getTeam("j");
+            case "vip" -> sb.getTeam("k");
+            case "mvp" -> sb.getTeam("l");
+            case "mvp+" -> sb.getTeam("m");
+            case "mvp++" -> sb.getTeam("n");
+            case "banned" -> sb.getTeam("z");
+            default -> sb.getTeam("o");
+        };
     }
     public static <T> T getOrDefault(FileConfiguration file, String path, T defaultReturn) {
         if(file.contains(path) && file.get(path) != null) {
