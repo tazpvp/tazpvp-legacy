@@ -21,11 +21,14 @@ public class ChatEvent implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        String msg = e.getMessage();
+        Player p = e.getPlayer();
+        String prefix = Tazpvp.chat.getPlayerPrefix(p);
+        msg = ChatColor.translateAlternateColorCodes('&', prefix) + msg;
         if (e.getPlayer().isOp()) {
-            e.setMessage(ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+            msg = (ChatColor.translateAlternateColorCodes('&', msg));
             return;
         }
-        Player p = e.getPlayer();
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
             e.setCancelled(true);
@@ -58,7 +61,6 @@ public class ChatEvent implements Listener {
         badWord.add("slut");
         badWord.add("fuk");
         badWord.add("fuc");
-        String msg = e.getMessage();
         for (int i = 0; i < badWord.size(); i++) {
             if (msg.contains(badWord.get(i))) {
                 e.setCancelled(true);
@@ -80,10 +82,10 @@ public class ChatEvent implements Listener {
 
         if (!p.hasPermission("tazpvp.staff.level")){
             if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
-                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + p.getDisplayName() + ": " + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + p.getDisplayName() + ": " + "%2$s";
+                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + ": " + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + ": " + "%2$s";
                 e.setFormat(str);
             } else {
-                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s" ;
+                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + p.getDisplayName() + " " + ChatColor.WHITE + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s" ;
                 e.setFormat(str);
             }
 //            if(p.hasPermission("staff.staffchat") && Tazpvp.staffManager.staffChatToggled(p)){
@@ -94,7 +96,7 @@ public class ChatEvent implements Listener {
         } else if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
                 e.setFormat(p.getDisplayName() + ": " + "%2$s");
             } else {
-                e.setFormat(ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s");
+                e.setFormat(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s");
             }
 //            if(p.hasPermission("staff.staffchat") && TazPvP.staffManager.staffChatToggled(p)){
 //                TazPvP.staffManager.sendStaffChat(p, e.getMessage());
