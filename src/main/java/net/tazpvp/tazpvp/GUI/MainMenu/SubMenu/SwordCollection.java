@@ -35,9 +35,8 @@ public class SwordCollection {
 
             if (i == 16 || i == 25) {
                 i += 2;
-            } else {
-                i++;
             }
+            i++;
 
         }
 
