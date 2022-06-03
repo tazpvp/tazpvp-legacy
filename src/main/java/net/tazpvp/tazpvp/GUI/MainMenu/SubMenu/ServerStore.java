@@ -63,7 +63,7 @@ public class ServerStore {
                         gr+"〡RGB Blocks",
                         gr+"〡VIP++ discord rank"
                 );
-        createShopButton(mvp, 12, 250, "mvp");
+        createShopButton(mvp, 20, 250, "mvp");
         ChatColor go = ChatColor.GOLD; ItemStack mvp2mat = new ItemStack(Material.MUSIC_DISC_PIGSTEP); hideFlag(vipmat);
         ItemBuilder mvp2 = new ItemBuilder(mvp2mat).setName(ChatColor.GOLD+""+ChatColor.BOLD+"MVP+ " + ChatColor.GRAY + 950 + " Credits")
                 .setLore(
@@ -80,12 +80,30 @@ public class ServerStore {
                         go+"〡RGB Blocks",
                         go+"〡VIP++ discord rank"
                 );
-        createShopButton(mvp2, 13, 250, "mvp+");
-        ItemButton UNBAN = ItemButton.create(new ItemBuilder(Material.TNT_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN").setLore(ChatColor.GRAY + "Purchase an unban.\n" + ChatColor.DARK_AQUA + "100 Credits"), e -> {
+        createShopButton(mvp2, 29, 250, "mvp+");
+        ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
-        gui.addButton(21, UNBAN);
+        gui.addButton(22, CREDITS);
+
+        ItemButton ITEMRENAME = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "Rename Item").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+            Player p = (Player) e.getWhoClicked();
+            p.closeInventory();
+        });
+        gui.addButton(15, ITEMRENAME);
+
+        ItemButton CUSTOMPREFIX = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Custom Prefix").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+            Player p = (Player) e.getWhoClicked();
+            p.closeInventory();
+        });
+        gui.addButton(24, CUSTOMPREFIX);
+
+        ItemButton PARTICLES = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Particles!").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+            Player p = (Player) e.getWhoClicked();
+            p.closeInventory();
+        });
+        gui.addButton(33, PARTICLES);
 
         gui.update();
     }
