@@ -14,14 +14,14 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class MainGUI {
     private final InventoryGUI gui;
     public MainGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "MENU"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "MENU"));
         setitems();
         gui.open(p);
     }
 
     public void setitems(){
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "ACHIEVEMENTS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
+        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.AQUA + "" + ChatColor.BOLD + "ACHIEVEMENTS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new AchievementsGUI(p);

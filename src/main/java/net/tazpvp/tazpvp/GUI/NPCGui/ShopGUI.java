@@ -16,7 +16,7 @@ public class ShopGUI {
     private InventoryGUI gui;
 
     public ShopGUI(Player p){
-        gui = new InventoryGUI(Bukkit.createInventory(null, 45, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "SHOP"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 45, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
         addItems();
         gui.open(p);
     }

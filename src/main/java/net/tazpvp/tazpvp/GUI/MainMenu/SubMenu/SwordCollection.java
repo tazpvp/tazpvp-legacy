@@ -13,7 +13,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class SwordCollection {
     private final InventoryGUI gui;
     public SwordCollection(Player p){
-        gui = new InventoryGUI(Bukkit.createInventory(null, 5*9, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WEAPONRY"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 5*9, ChatColor.BLUE + "" + ChatColor.BOLD + "WEAPONRY"));
         setitems();
         gui.open(p);
     }

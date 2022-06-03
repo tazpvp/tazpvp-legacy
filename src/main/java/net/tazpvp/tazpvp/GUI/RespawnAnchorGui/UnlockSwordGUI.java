@@ -21,7 +21,7 @@ public class UnlockSwordGUI {
     private boolean isSpinning = false;
 
     public UnlockSwordGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WHEEL OF BLADES"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "WHEEL o BLADES"));
         addItems(p);
         gui.open(p);
     }
