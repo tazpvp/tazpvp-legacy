@@ -388,7 +388,6 @@ public class StatsCMD implements CommandListener {
 
     @CommandHook("stats_reset")
     public void resetStats(Player p, Player target) {
-        Tazpvp.boolManager.initBool(target);
         Tazpvp.statsManager.initPlayer(target);
         Tazpvp.playerWrapperStatsManager.wipeSwords(target);
         p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s stats and swords");

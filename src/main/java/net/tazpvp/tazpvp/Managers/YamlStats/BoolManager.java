@@ -13,7 +13,7 @@ public class BoolManager {
     final File file;
 
     public BoolManager(){
-        file = new File(Tazpvp.getInstance().getDataFolder() + "/stats.yml");
+        file = new File(Tazpvp.getInstance().getDataFolder() + "/bool.yml");
         statsFile = YamlConfiguration.loadConfiguration(file);
     }
 
