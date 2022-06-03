@@ -13,7 +13,7 @@ public class StatsCMD implements CommandListener {
     //Points Command
 
     @CommandHook("shard_add")
-    public void pointAdd(CommandSender sender, Player target, int amount) {
+    public void shardAdd(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addShards(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " shards to " + ChatColor.RED + target.getName());
@@ -22,7 +22,7 @@ public class StatsCMD implements CommandListener {
         }
     }
     @CommandHook("shard_remove")
-    public void pointRemove(CommandSender sender, Player target, int amount) {
+    public void shardRemove(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.addShards(target, -amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " shards from " + ChatColor.RED + target.getName());
@@ -31,7 +31,7 @@ public class StatsCMD implements CommandListener {
         }
     }
     @CommandHook("shard_set")
-    public void pointSet(CommandSender sender, Player target, int amount) {
+    public void shardSet(CommandSender sender, Player target, int amount) {
         Tazpvp.statsManager.setShards(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " shards to " + ChatColor.RED + target.getName());
@@ -40,7 +40,7 @@ public class StatsCMD implements CommandListener {
         }
     }
     @CommandHook("shard_reset")
-    public void pointReset(CommandSender sender, Player target) {
+    public void shardReset(CommandSender sender, Player target) {
         Tazpvp.statsManager.setShards(target, 0);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s shards");
@@ -49,7 +49,7 @@ public class StatsCMD implements CommandListener {
         }
     }
     @CommandHook("shard_get")
-    public void pointGet(CommandSender sender, Player target) {
+    public void shardGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getShards(target) + ChatColor.GOLD + "'s shards");
         } else {
