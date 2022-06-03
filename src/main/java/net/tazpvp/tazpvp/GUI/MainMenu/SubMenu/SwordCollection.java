@@ -24,7 +24,6 @@ public class SwordCollection {
             String name = item.getName();
             String[] lore = item.getLore();
             Material material = item.getMaterial();
-            int cost = item.getCost();
             int damage = item.getDamage();
             String rarity = item.getRarity();
 
