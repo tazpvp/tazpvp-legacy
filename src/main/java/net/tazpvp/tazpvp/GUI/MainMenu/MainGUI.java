@@ -21,19 +21,19 @@ public class MainGUI {
 
     public void setitems(){
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
-        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName("Achievements"), e -> {
+        ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "ACHIEVEMENTS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new AchievementsGUI(p);
         });
         gui.addButton(11, achievements);
-        ItemButton collection = ItemButton.create(new ItemBuilder(Material.DIAMOND_SWORD).setName("Collection"), e -> {
+        ItemButton collection = ItemButton.create(new ItemBuilder(Material.DIAMOND_SWORD).setName(ChatColor.YELLOW + "" + ChatColor.BOLD + "WEAPONRY").setLore(ChatColor.GRAY + "View your collected weapons."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new SwordCollection(p);
         });
         gui.addButton(13, collection);
-        ItemButton store = ItemButton.create(new ItemBuilder(Material.TNT_MINECART).setName("Store").setLore("Ranks and Cosmetics"), e -> {
+        ItemButton store = ItemButton.create(new ItemBuilder(Material.TNT_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "STORE").setLore(ChatColor.GRAY + "Ranks and Cosmetics."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
 
