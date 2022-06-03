@@ -384,3 +384,9 @@ stick {
     permission tazpvp.stick
     hook stick
 }
+
+pay player:target int:amount{
+    help /pay <player> <amount>
+    user player
+    hook pay
+}
