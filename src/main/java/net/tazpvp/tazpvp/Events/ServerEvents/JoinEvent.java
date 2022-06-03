@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events.ServerEvents;
 
+import dev.jcsoftware.jscoreboards.JScoreboardTeam;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.NameTag;
@@ -49,6 +50,8 @@ public class JoinEvent implements Listener {
         } else {
             p.teleport(spawn);
         }
+//
+//        Tazpvp.sbUtil.init(p);
 
 
         for(Scoreboard sb : Tazpvp.statsManager.scoreboards.values()) {
@@ -68,7 +71,7 @@ public class JoinEvent implements Listener {
     }
 
     public void setNametag(Player player1, Player player2) {
-        Scoreboard scoreboard = player1.getScoreboard();
+        Scoreboard scoreboard = player2.getScoreboard();
         if (scoreboard.getTeam(player1.getUniqueId().toString()) != null) {
             scoreboard.getTeam(player1.getUniqueId().toString()).unregister();
         }

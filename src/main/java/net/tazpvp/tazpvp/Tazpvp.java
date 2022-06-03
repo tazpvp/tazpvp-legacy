@@ -2,6 +2,8 @@ package net.tazpvp.tazpvp;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import dev.jcsoftware.jscoreboards.JGlobalScoreboard;
+import dev.jcsoftware.jscoreboards.JPerPlayerScoreboard;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
@@ -32,6 +34,7 @@ import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ASCIIArtUtil;
 import net.tazpvp.tazpvp.Utils.ConfigGetter;
 import net.tazpvp.tazpvp.Utils.MathUtils;
+import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -65,12 +68,14 @@ public final class Tazpvp extends JavaPlugin {
     public static AchievementManager achievementManager;
     public static EnderChestManager enderChestManager;
     public static DuelLogic duelLogic;
+    public static SbUtil sbUtil;
 
     public static boolean isRestarting = false;
 
     public static Permission permissions;
     public static Chat chat;
     public static ProtocolManager protocolManager;
+    public static JPerPlayerScoreboard scoreboard;
 
     public static FileConfiguration configFile;
 
@@ -101,7 +106,6 @@ public final class Tazpvp extends JavaPlugin {
         instance = this;
         // Plugin startup logic
         getLogger().info(ASCIIArtUtil.getArt("      Loading...       "));
-
 
         managers(true);
 
@@ -149,15 +153,18 @@ public final class Tazpvp extends JavaPlugin {
 
         NpcUtils.spawnAll();
 
-
         new BukkitRunnable() {
             @Override
             public void run() {
                 CombatLogManager.tick();
+//                for (Player p : Bukkit.getOnlinePlayers()) {
+//                    sbUtil.addScoreboard(p);
+//                }
             }
         }.runTaskTimerAsynchronously(this, 20L, 20L);
 
     }
+
     public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
@@ -220,6 +227,7 @@ public final class Tazpvp extends JavaPlugin {
             achievementManager = new AchievementManager();
             enderChestManager = new EnderChestManager();
             duelLogic = new DuelLogic();
+            sbUtil = new SbUtil();
         } else {
             statsManager.saveStats();
             boolManager.saveStats();
@@ -322,20 +330,6 @@ public final class Tazpvp extends JavaPlugin {
             player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', chat.getGroupPrefix((String) null, permissions.getPrimaryGroup(player)) + player.getDisplayName()));
         }
         player.setScoreboard(sb);
-        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-            setNametag(onlinePlayers);
-        }
-
-    }
-
-    public void setNametag(Player player1) {
-        Scoreboard scoreboard = player1.getScoreboard();
-        if (scoreboard.getTeam(player1.getUniqueId().toString()) != null) {
-            scoreboard.getTeam(player1.getUniqueId().toString()).unregister();
-        }
-        Team team = scoreboard.registerNewTeam(player1.getUniqueId().toString());
-        team.setPrefix(ChatColor.translateAlternateColorCodes('&', "eee"));
-        scoreboard.getTeam(player1.getUniqueId().toString()).addPlayer(player1);
     }
 
     public static void sendBaseTablist(Player p) {
