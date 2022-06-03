@@ -10,7 +10,7 @@ import org.bukkit.persistence.PersistentDataType;
 public enum Villagers {
     SHOP(ChatColor.GOLD + "" + ChatColor.BOLD + "Maxim", Villager.Profession.FARMER, Villager.Type.SAVANNA, 1, 1, new Location(Bukkit.getWorld("arena"), -7, 101, 8, -135, 0)),
     MENU(ChatColor.RED + "" + ChatColor.BOLD + "Lorenzo", Villager.Profession.CLERIC, Villager.Type.JUNGLE, 3, 1, new Location(Bukkit.getWorld("arena"), 8, 101, 8, 135, 0)),
-    MINER(ChatColor.YELLOW + "" + ChatColor.BOLD + "Caesar", Villager.Profession.WEAPONSMITH, Villager.Type.JUNGLE, 2, 1, new Location(Bukkit.getWorld("arena"), -1, 96, 176, -165, 0)),
+    MINER(ChatColor.YELLOW + "" + ChatColor.BOLD + "Caesar", Villager.Profession.WEAPONSMITH, Villager.Type.JUNGLE, 2, 1, new Location(Bukkit.getWorld("arena"), -1.2, 96, 176.3, -154, 0)),
     SHARDS(ChatColor.AQUA + "" + ChatColor.BOLD + "Bub", Villager.Profession.MASON, Villager.Type.SNOW, 5, 1, new Location(Bukkit.getWorld("arena"), 18.5, 80, 103.5, -90, 0)),
     REBIRTH(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rigel", Villager.Profession.FLETCHER, Villager.Type.SWAMP, 6, 1, new Location(Bukkit.getWorld("arena"), -9, 101, -12, -45, 0));
 
