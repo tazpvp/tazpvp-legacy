@@ -1,9 +1,11 @@
 package net.tazpvp.tazpvp.NPCS;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
+import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.PdcUtils;
+import org.bukkit.*;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
+import org.bukkit.persistence.PersistentDataType;
 
 public enum Villagers {
     SHOP(ChatColor.GOLD + "" + ChatColor.BOLD + "Maxim", Villager.Profession.FARMER, Villager.Type.SAVANNA, 1, 1, new Location(Bukkit.getWorld("arena"), -7, 101, 8, -135, 0)),
@@ -12,12 +14,12 @@ public enum Villagers {
     SHARDS(ChatColor.AQUA + "" + ChatColor.BOLD + "Bub", Villager.Profession.MASON, Villager.Type.SNOW, 5, 1, new Location(Bukkit.getWorld("arena"), 18.5, 80, 103.5, -90, 0)),
     REBIRTH(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rigel", Villager.Profession.FLETCHER, Villager.Type.SWAMP, 6, 1, new Location(Bukkit.getWorld("arena"), -9, 101, -12, -45, 0));
 
-    private final String name;
-    private final Villager.Profession profession;
-    private final Villager.Type biome;
-    private final int id;
-    private final int pitch;
-    private final Location location;
+    public final String name;
+    public final Villager.Profession profession;
+    public final Villager.Type biome;
+    public final int id;
+    public final int pitch;
+    public final Location location;
 
 
     //shop id 1
@@ -25,7 +27,7 @@ public enum Villagers {
     //store id 3
     //achievements id 4
     //bub id 5
-    //rigel id 7
+    //rigel id 6
 
     Villagers(String name, Villager.Profession profession, Villager.Type biome, int id, int pitch, Location location) {
         this.name = name;

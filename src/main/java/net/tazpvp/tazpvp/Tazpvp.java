@@ -11,6 +11,8 @@ import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.YamlStats.*;
+import net.tazpvp.tazpvp.NPCS.NpcUtils;
+import net.tazpvp.tazpvp.NPCS.Villagers;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.ASCIIArtUtil;
@@ -22,6 +24,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -126,6 +129,8 @@ public final class Tazpvp extends JavaPlugin {
         }
 
         doHashMaps();
+
+        NpcUtils.spawnAll();
 
 
         new BukkitRunnable() {
@@ -237,6 +242,8 @@ public final class Tazpvp extends JavaPlugin {
         for (Player player : Bukkit.getOnlinePlayers()) {
             playerWrapperStatsManager.setPlayerWrapper(player, playerWrapperMap.get(player.getUniqueId()));
         }
+
+        NpcUtils.removeAll();
     }
 
     public void initScoreboard(Player player) {
