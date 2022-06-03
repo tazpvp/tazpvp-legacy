@@ -81,25 +81,25 @@ public class ServerStore {
                         go+"〡VIP++ discord rank"
                 );
         createShopButton(mvp2, 11, 250, "mvp+");
-        ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
+        ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
         gui.addButton(22, CREDITS);
 
-        ItemButton ITEMRENAME = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.RED + "" + ChatColor.BOLD + "Rename Item").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+        ItemButton ITEMRENAME = ItemButton.create(new ItemBuilder(Material.ANVIL).setName(ChatColor.RED + "" + ChatColor.BOLD + "Rename Item").setLore(ChatColor.GRAY + "Rank Required."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
         gui.addButton(15, ITEMRENAME);
 
-        ItemButton CUSTOMPREFIX = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Custom Prefix").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+        ItemButton CUSTOMPREFIX = ItemButton.create(new ItemBuilder(Material.NAME_TAG).setName(ChatColor.BLUE + "" + ChatColor.BOLD + "Custom Prefix").setLore(ChatColor.GRAY + "Rank Required."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
         gui.addButton(24, CUSTOMPREFIX);
 
-        ItemButton PARTICLES = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Particles!").setLore(ChatColor.GRAY + "Rank Required."), e -> {
+        ItemButton PARTICLES = ItemButton.create(new ItemBuilder(Material.BLAZE_POWDER).setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Particles!").setLore(ChatColor.GRAY + "Rank Required."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
         });
