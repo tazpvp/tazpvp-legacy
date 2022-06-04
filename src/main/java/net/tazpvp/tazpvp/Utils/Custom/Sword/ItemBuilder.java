@@ -28,6 +28,9 @@ public class ItemBuilder {
         lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
 
         String[] split = lore.toString().split(", ");
+        split[0] = split[0].replace("[", "");
+        split[split.length - 1] = split[split.length - 1].replace("]", "");
+
 
         ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(split);
         ItemMeta meta = itemz.getItemMeta();

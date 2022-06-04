@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Events.ServerEvents;
 import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.UpdateSword;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -59,6 +61,12 @@ public class JoinEvent implements Listener {
             p.getInventory().clear();
             ArmorManager.setPlayerContents(p, true);
             Tazpvp.returnItems.remove(p.getUniqueId());
+        }
+
+        for (ItemStack i : p.getInventory().getContents()) {
+            if (i != null) {
+                UpdateSword.updateSword(p, i);
+            }
         }
 
 
