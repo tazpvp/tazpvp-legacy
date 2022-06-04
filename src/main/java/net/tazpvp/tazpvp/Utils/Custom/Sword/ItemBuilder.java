@@ -16,7 +16,7 @@ import java.util.Map;
 public class ItemBuilder {
     public static void giveItem(Player p, Items item, int amount) {
         String name = item.getName();
-        List<String> loree = List.of(item.getLore());
+        List<String> loree = new ArrayList<>(List.of(item.getLore()));
         Material material = item.getMaterial();
 
         loree.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
