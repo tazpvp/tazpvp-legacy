@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Events.ServerEvents;
 
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.Bukkit;
@@ -48,8 +49,12 @@ public class JoinEvent implements Listener {
         } else {
             p.teleport(spawn);
         }
-//
-//        Tazpvp.sbUtil.init(p);
+
+        if (Tazpvp.returnItems.contains(p.getUniqueId())) {
+            p.getInventory().clear();
+            ArmorManager.setPlayerContents(p, true);
+            Tazpvp.returnItems.remove(p.getUniqueId());
+        }
 
 
         for(Scoreboard sb : Tazpvp.statsManager.scoreboards.values()) {

@@ -62,6 +62,8 @@ public class DuelLogic implements Listener {
         }
         opponent.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
         p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
+        Tazpvp.returnItems.add(p.getUniqueId());
+        Tazpvp.returnItems.add(opponent.getUniqueId());
 
         p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
         for (ItemStack i : p.getInventory().getContents()) {
@@ -79,12 +81,19 @@ public class DuelLogic implements Listener {
             public void run() {
                 d.end();
 
-                p.getInventory().clear();
-                opponent.getInventory().clear();
-
-                inventoryManagement(p, opponent, false);
+                if (p.isOnline()) {
+                    p.getInventory().clear();
+                    ArmorManager.setPlayerContents(p, false);
+                    Tazpvp.returnItems.remove(p.getUniqueId());
+                }
+                if (opponent.isOnline()) {
+                    opponent.getInventory().clear();
+                    ArmorManager.setPlayerContents(opponent, false);
+                    Tazpvp.returnItems.remove(opponent.getUniqueId());
+                }
                 new WorldManageent().deleteWorld(d.getDuelMap().getName());
                 duels.remove(Arrays.asList(p.getUniqueId(), opponent.getUniqueId()));
+                duels.remove(Arrays.asList(opponent.getUniqueId(), p.getUniqueId()));
             }
         }.runTaskLater(Tazpvp.getInstance(), 20 * 5L);
     }
@@ -94,8 +103,8 @@ public class DuelLogic implements Listener {
             ArmorManager.storeAndClearInventory(p1);
             ArmorManager.storeAndClearInventory(p2);
         } else {
-            ArmorManager.setPlayerContents(p1, true);
-            ArmorManager.setPlayerContents(p2, true);
+            ArmorManager.setPlayerContents(p1, false);
+            ArmorManager.setPlayerContents(p2, false);
         }
     }
 
