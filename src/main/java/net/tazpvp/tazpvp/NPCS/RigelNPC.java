@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.NPCS;
 
+import net.tazpvp.tazpvp.GUI.NPCGui.RigelGUI;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import net.tazpvp.tazpvp.unused.ConfigGetter;
 import org.bukkit.Bukkit;
@@ -25,7 +26,7 @@ public class RigelNPC {
                 clickedOnce.add(p);
             }
         } else if (p.getWorld().equals(Bukkit.getWorld("ban"))) {
-            p.teleport(configUtils.spawn);
+            new RigelGUI(p);
         }
     }
 }
