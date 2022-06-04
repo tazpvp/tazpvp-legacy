@@ -24,7 +24,7 @@ public class DuelCMD {
         } else {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), p.getName()));
             TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
-            Accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/duel accept " + p.getName()));
+            Accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/duel " + p.getName()));
 
             target.sendMessage(ChatColor.DARK_GRAY + "");
             target.sendMessage(" " + ChatColor.GOLD + p.getName() + ChatColor.YELLOW + " has challenged you to a duel.");
