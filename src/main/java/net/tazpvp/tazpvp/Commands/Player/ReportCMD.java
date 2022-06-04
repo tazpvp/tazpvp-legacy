@@ -10,6 +10,7 @@ import redempt.redlib.commandmanager.CommandHook;
 public class ReportCMD implements CommandListener {
     @CommandHook("report")
     public void report(Player p, Player target, String reason) {
+        Bukkit.getLogger().info("REPOR");
         if (Tazpvp.hasBeenReported.containsKey(target.getUniqueId())) {
             p.sendMessage(ChatColor.DARK_AQUA + "Thank you for reporting " + ChatColor.WHITE + target.getName() + ChatColor.DARK_AQUA + " they will be reviewed shortly.");
         } else {

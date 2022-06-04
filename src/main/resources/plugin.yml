@@ -8,29 +8,3 @@ description: Tazpvp main logic
 website: tazpvp.net
 depend: [WorldGuard, ProtocolLib]
 commands:
-  rules:
-    usage: /rules
-    description: shows the rules
-    aliases:
-      - rule
-  appeal:
-    usage: /appeal
-    description: appeal to the server staff
-    aliases:
-      - appeal
-      - appealp
-  report:
-    usage: /report <player> <reason>
-    description: report a player
-    aliases:
-      - wdr
-  apply:
-    usage: /apply
-    description: apply to the server staff
-    aliases:
-      - apply
-      - applyp
-  region:
-    usage: /region
-  init:
-    usage: /init
