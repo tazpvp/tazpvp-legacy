@@ -20,7 +20,7 @@ public class CaesarNPC {
 
     public static void sellOre(Player p, int amount, double price) {
         p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
-        Tazpvp.statsManager.addMoney(p, (int) (amount * price));
+        Tazpvp.statsManager.addCoins(p, (int) (amount * price));
         p.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
     }
 }

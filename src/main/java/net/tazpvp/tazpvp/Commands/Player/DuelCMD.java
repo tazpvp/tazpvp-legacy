@@ -20,7 +20,7 @@ public class DuelCMD {
     public void duel(Player p, Player target) {
         if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin."); return; }
         if (CombatLogManager.isInCombat(p) || CombatLogManager.isInCombat(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of combat to begin."); return;}
-        if (sentDuel(target).equals(p.getName())) {
+        if (sentDuel(p).equals(target.getName())) {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             Tazpvp.duelLogic.duelStart(p, target, null);
@@ -44,5 +44,12 @@ public class DuelCMD {
             return metaDataValue.asString();
         }
         return "";
+    }
+    public boolean requesting(Player p){
+        List<MetadataValue> metaDataValues = p.getMetadata("requesting");
+        for (MetadataValue metaDataValue : metaDataValues) {
+            return metaDataValue.asBoolean();
+        }
+        return false;
     }
 }

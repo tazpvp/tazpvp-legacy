@@ -36,7 +36,7 @@ public class RankUtils implements Listener {
                     }
                     Player target = Bukkit.getPlayer(text);
 
-                    Tazpvp.statsManager.addMoney(player, -Price);
+                    Tazpvp.statsManager.addCoins(player, -Price);
                     rankMSG(p, target, Rank);
                     return AnvilGUI.Response.close();
                 })
@@ -49,7 +49,7 @@ public class RankUtils implements Listener {
 
     private static void cancelRefundFunc(Player p, int Price) {
         p.sendMessage(ChatColor.RED + "Canceled, refunding money lost.");
-        Tazpvp.statsManager.addMoney(p, Price);
+        Tazpvp.statsManager.addCoins(p, Price);
         p.closeInventory();
     }
 

@@ -12,14 +12,14 @@ public class UnlockAchievement {
     public static void unlockSendChatMessage(Player p) {
         if (Tazpvp.achievementManager.getSendChatMessage(p)) {
             unlockMSG(p, Achievements.SENDCHATMESSAGE, "+3 moneys");
-            Tazpvp.statsManager.addMoney(p, 3);
+            Tazpvp.statsManager.addCoins(p, 3);
         }
     }
 
     public static void unlockCollectEmAll(Player p) {
         if (Tazpvp.achievementManager.getSendChatMessage(p)) {
             unlockMSG(p, Achievements.COLLECTEMALL, "+3 moneys");
-            Tazpvp.statsManager.addMoney(p, 3);
+            Tazpvp.statsManager.addCoins(p, 3);
         }
     }
 }
