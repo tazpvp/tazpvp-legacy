@@ -376,7 +376,6 @@ world {
 
 duel player:target{
     help /duel <player>
-    permission tazpvp.duel
     user player
     hook duel
 }
