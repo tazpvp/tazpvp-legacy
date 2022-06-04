@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events.ServerEvents;
 
+import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
@@ -37,6 +38,10 @@ public class JoinEvent implements Listener {
             PlayerUtils.kitPlayer(p);
             Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
             Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
+        }
+
+        if (CombatLogManager.isInCombat(p)) {
+            CombatLogManager.combatLog.remove(p.getUniqueId());
         }
 
         if (Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p) == null) {

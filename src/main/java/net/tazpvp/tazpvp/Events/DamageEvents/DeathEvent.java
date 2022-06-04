@@ -190,6 +190,7 @@ public class DeathEvent implements Listener {
                     p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
                 } else {
                     p.teleport(configUtils.spawn);
+                    CombatLogManager.combatLog.remove(p.getUniqueId());
                 }
                 p.setGameMode(GameMode.SURVIVAL);
             }
