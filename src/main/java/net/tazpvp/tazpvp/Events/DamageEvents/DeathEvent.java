@@ -127,7 +127,12 @@ public class DeathEvent implements Listener {
             if (Bukkit.getOnlinePlayers().size() < 20) {
                 for (Player online : Bukkit.getOnlinePlayers()) {
                     if (d.getInventory().getItemInMainHand().hasItemMeta()) {
-                        String cusName = d.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                        String cusName;
+                        if (d.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
+                            cusName = d.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                        } else {
+                            cusName = d.getInventory().getItemInMainHand().getItemMeta().getLocalizedName();
+                        }
                         if (Objects.equals(online.getName(), d.getName())) {
                             d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " with " + ChatColor.AQUA + cusName + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Experience");
                         } else {
