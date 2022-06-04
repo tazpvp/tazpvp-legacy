@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -57,6 +58,9 @@ public class DuelLogic implements Listener {
         } else {
             opponent = d.getPlayer1();
         }
+        p.spigot().respawn();
+        p.setGameMode(GameMode.SPECTATOR);
+        p.teleport(opponent.getLocation());
 
         Bukkit.broadcastMessage(ChatColor.GOLD + opponent.getName() + ChatColor.YELLOW + " has won the duel against " + ChatColor.GOLD + p.getName());
 
