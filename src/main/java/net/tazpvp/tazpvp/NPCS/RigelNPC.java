@@ -10,7 +10,7 @@ import java.util.List;
 public class RigelNPC {
     private static List<Player> clickedOnce = new ArrayList<>();
 
-    public static void clickRigel(Player p){
+    public void clickRigel(Player p){
         if (p.getWorld().equals(Bukkit.getWorld("arena"))){
             if (clickedOnce.contains(p)){
                 p.sendMessage("good luck buddy");

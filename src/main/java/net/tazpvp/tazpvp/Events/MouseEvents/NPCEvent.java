@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Events.MouseEvents;
 import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
+import net.tazpvp.tazpvp.NPCS.RigelNPC;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.NPCS.BubNPC;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
@@ -51,6 +52,8 @@ public class NPCEvent implements Listener {
                             new SelectGUI(e.getPlayer());
                         } else if (id == 5) {
                             new BubNPC().convertHeadsToShards(e.getPlayer());
+                        } else if (id == 6) {
+                            new RigelNPC().clickRigel(e.getPlayer());
                         } else {
                             e.getPlayer().sendMessage(ChatColor.RED + "Uh oh! You found a super secret error! Report this to Ntdi, 0xEf300 err resp: " + id +".EntityStorage");
                         }
