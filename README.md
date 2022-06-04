@@ -1,2 +1,2 @@
 # tazpvp
-the all in one stupid plugin test
+the all in one stupid plugin
