@@ -51,7 +51,7 @@ public class ShopGUI {
 
         //starting at 10
         createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
-        createShopButton(new ItemStack(Material.PRISMARINE_SHARD, 1), 11, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
+        createShopButton(new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1), 11, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
         createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 12, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
         createShopButton(new ItemStack(Material.ARROW, 5), 13, 13, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles", false, false, null);
         createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 14, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies", false, false, null);
