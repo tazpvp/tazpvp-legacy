@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
+import net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
-import redempt.redlib.itemutils.ItemBuilder;
 
 public class SwordCollection {
     private final InventoryGUI gui;
@@ -22,13 +22,7 @@ public class SwordCollection {
         gui.fill(0, 5*9, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
         int i = 10;
         for (Items item : Items.values()) {
-            String name = item.getName();
-            String[] lore = item.getLore();
-            Material material = item.getMaterial();
-            int damage = item.getDamage();
-            String rarity = item.getRarity();
-
-            ItemButton tool = ItemButton.create(new ItemBuilder(material).setName(name).setLore(lore), e -> {
+            ItemButton tool = ItemButton.create(ItemBuilder.maekItem(item), e -> {
                 e.setCancelled(true);
             });
             gui.addButton(i, tool);
