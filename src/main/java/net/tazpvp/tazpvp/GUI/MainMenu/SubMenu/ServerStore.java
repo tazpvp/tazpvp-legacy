@@ -2,7 +2,7 @@ package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
-import net.tazpvp.tazpvp.Utils.RenameSwordUtil;
+import net.tazpvp.tazpvp.Utils.Ranks.RenameSwordUtil;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -10,7 +10,7 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
+import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 
 public class ServerStore {
     private final InventoryGUI gui;

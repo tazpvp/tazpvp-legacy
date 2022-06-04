@@ -10,10 +10,6 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import javax.annotation.Nullable;
-
-import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
-
 public class ShopGUI {
     private InventoryGUI gui;
 

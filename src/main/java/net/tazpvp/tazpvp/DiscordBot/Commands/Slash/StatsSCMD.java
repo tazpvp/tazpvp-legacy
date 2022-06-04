@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.PlayerUtils;
+import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 

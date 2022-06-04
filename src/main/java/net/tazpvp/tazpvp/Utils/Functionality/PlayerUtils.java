@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Functionality;
 
 import org.apache.commons.io.IOUtils;
 import net.tazpvp.tazpvp.Tazpvp;
@@ -105,6 +105,9 @@ public class PlayerUtils {
         }
 
         return "error";
+    }
+    public static String setLPRankCommand(Player p, String rank) {
+        return "pex user " + p.getName() + " group set " + rank;
     }
 //
 //    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/

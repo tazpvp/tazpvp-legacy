@@ -2,7 +2,7 @@ package net.tazpvp.tazpvp.Commands.Player;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.configUtils;
+import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

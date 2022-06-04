@@ -11,7 +11,7 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import static net.tazpvp.tazpvp.Utils.ItemStackUtils.hideFlag;
+import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 
 public class MainGUI {
     private final InventoryGUI gui;

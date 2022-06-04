@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Fun;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.awt.Color;

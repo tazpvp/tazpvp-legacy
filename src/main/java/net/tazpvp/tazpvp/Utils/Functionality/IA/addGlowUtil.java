@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Functionality.IA;
 
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;

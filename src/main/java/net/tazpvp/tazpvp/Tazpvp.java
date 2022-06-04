@@ -16,9 +16,9 @@ import net.tazpvp.tazpvp.Managers.YamlStats.*;
 import net.tazpvp.tazpvp.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
-import net.tazpvp.tazpvp.Utils.ASCIIArtUtil;
-import net.tazpvp.tazpvp.Utils.ConfigGetter;
-import net.tazpvp.tazpvp.Utils.MathUtils;
+import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
+import net.tazpvp.tazpvp.unused.ConfigGetter;
+import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -210,7 +210,6 @@ public final class Tazpvp extends JavaPlugin {
             achievementManager = new AchievementManager();
             enderChestManager = new EnderChestManager();
             duelLogic = new DuelLogic();
-            sbUtil = new SbUtil();
         } else {
             statsManager.saveStats();
             boolManager.saveStats();

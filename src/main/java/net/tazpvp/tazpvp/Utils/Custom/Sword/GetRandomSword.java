@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 

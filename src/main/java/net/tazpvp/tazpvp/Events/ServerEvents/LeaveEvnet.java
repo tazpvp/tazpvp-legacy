@@ -1,9 +1,8 @@
 package net.tazpvp.tazpvp.Events.ServerEvents;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.ArmorManager;
+import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;

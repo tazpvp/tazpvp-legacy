@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.Commands.Player;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
-import net.tazpvp.tazpvp.Utils.DiscordUtils;
+import net.tazpvp.tazpvp.Utils.Variables.DiscordUtils;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 

@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Functionality;
 
 public class MathUtils {
     //https://stackoverflow.com/a/35833800

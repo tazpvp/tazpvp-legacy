@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Variables;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
@@ -13,7 +13,4 @@ public class configUtils {
             (float)Tazpvp.configFile.getDouble("spawn.yaw"),
             (float)Tazpvp.configFile.getDouble("spawn.pitch"));
 
-    public static String setLPRankCommand(Player p, String rank) {
-        return "pex user " + p.getName() + " group set " + rank;
-    }
 }

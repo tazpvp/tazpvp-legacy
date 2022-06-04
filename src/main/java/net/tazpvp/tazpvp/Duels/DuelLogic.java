@@ -2,7 +2,7 @@ package net.tazpvp.tazpvp.Duels;
 
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.ArmorManager;
+import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;

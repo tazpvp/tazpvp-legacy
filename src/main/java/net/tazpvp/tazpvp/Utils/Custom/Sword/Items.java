@@ -1,12 +1,10 @@
 package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
-import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.PdcUtils;
+import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.util.*;

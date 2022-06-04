@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Duels;
 
-import net.tazpvp.tazpvp.Utils.configUtils;
+import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;

@@ -1,14 +1,9 @@
 package net.tazpvp.tazpvp.DiscordBot.Events;
 
-import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Channel;
-import net.tazpvp.tazpvp.DiscordBot.TazBot;
-import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.DiscordWebhook;
+import net.tazpvp.tazpvp.Utils.Fun.DiscordWebhook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.awt.*;
 import java.io.IOException;

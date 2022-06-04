@@ -1,11 +1,9 @@
 package net.tazpvp.tazpvp.Events.ServerEvents;
 
-import dev.jcsoftware.jscoreboards.JScoreboardTeam;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.NameTag;
-import net.tazpvp.tazpvp.Utils.PlayerUtils;
-import net.tazpvp.tazpvp.Utils.configUtils;
+import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
+import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

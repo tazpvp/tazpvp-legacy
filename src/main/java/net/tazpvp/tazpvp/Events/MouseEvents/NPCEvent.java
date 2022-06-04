@@ -5,7 +5,7 @@ import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.NPCS.BubNPC;
-import net.tazpvp.tazpvp.Utils.PdcUtils;
+import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;

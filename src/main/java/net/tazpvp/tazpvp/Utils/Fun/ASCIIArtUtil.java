@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Fun;
 
 public class ASCIIArtUtil {
     public static String getArt(String middleLine) {

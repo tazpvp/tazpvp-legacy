@@ -1,10 +1,9 @@
 package net.tazpvp.tazpvp.GUI.RespawnAnchorGui;
 
-import net.milkbowl.vault.chat.Chat;
 import net.tazpvp.tazpvp.Achievements.UnlockAchievement;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
-import net.tazpvp.tazpvp.Utils.GetRandomSword;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

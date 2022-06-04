@@ -2,7 +2,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.PdcUtils;
+import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.*;

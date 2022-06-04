@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Ranks;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;

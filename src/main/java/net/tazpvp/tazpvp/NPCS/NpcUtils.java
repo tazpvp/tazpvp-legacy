@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.NPCS;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.PdcUtils;
+import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;

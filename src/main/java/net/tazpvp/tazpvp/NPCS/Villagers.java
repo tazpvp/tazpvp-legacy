@@ -1,11 +1,7 @@
 package net.tazpvp.tazpvp.NPCS;
 
-import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.PdcUtils;
 import org.bukkit.*;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
-import org.bukkit.persistence.PersistentDataType;
 
 public enum Villagers {
     SHOP(ChatColor.GOLD + "" + ChatColor.BOLD + "Maxim", Villager.Profession.FARMER, Villager.Type.SAVANNA, 1, 1, new Location(Bukkit.getWorld("arena"), -7, 101, 8, -135, 0)),

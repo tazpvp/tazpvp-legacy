@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Utils;
+package net.tazpvp.tazpvp.Utils.Functionality;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

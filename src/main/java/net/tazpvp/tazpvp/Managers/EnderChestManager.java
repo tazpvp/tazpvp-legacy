@@ -1,16 +1,14 @@
 package net.tazpvp.tazpvp.Managers;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.ItemStackUtils;
+import net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 public class EnderChestManager {
     public final FileConfiguration statsFile;

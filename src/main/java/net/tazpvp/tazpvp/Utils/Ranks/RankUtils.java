@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Ranks;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.configUtils;
+import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +13,6 @@ import org.bukkit.event.Listener;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
-import java.util.HashMap;
 
 public class RankUtils implements Listener {
 
@@ -70,6 +69,6 @@ public class RankUtils implements Listener {
             pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
         }
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-        Bukkit.dispatchCommand(console, configUtils.setLPRankCommand(recipient, rank));
+        Bukkit.dispatchCommand(console, PlayerUtils.setLPRankCommand(recipient, rank));
     }
 }

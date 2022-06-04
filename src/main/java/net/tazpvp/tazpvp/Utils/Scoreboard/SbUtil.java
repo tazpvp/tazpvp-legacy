@@ -1,16 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Scoreboard;
 
-import dev.jcsoftware.jscoreboards.JPerPlayerScoreboard;
-import dev.jcsoftware.jscoreboards.JScoreboardTeam;
-import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.MathUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-
-import java.text.DecimalFormat;
-import java.util.Arrays;
-
 public class SbUtil {
 //    private JPerPlayerScoreboard scoreboard = Tazpvp.scoreboard;
 //

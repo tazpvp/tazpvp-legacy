@@ -7,11 +7,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.metadata.MetadataValue;
 
-import java.util.List;
-
-import static net.tazpvp.tazpvp.Utils.OreMine.oreRespawn;
+import static net.tazpvp.tazpvp.Utils.Functionality.OreMine.oreRespawn;
 
 public class BlockBreakEvent implements Listener {
 
