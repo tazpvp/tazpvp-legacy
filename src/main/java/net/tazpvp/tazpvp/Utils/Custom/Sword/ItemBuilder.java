@@ -15,13 +15,21 @@ import java.util.Map;
 
 public class ItemBuilder {
     public static void giveItem(Player p, Items item, int amount) {
+        for (int i = 0; i < amount; i++) {
+            p.getInventory().addItem(maekItem(item));
+        }
+    }
+
+    public static ItemStack maekItem(Items item) {
         String name = item.getName();
-        List<String> loree = new ArrayList<>(List.of(item.getLore()));
+        List<String> lore = new ArrayList<>(List.of(item.getLore()));
         Material material = item.getMaterial();
 
-        loree.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
+        lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
 
-        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(String.valueOf(loree));
+        String[] split = lore.toString().split(", ");
+
+        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(split);
         ItemMeta meta = itemz.getItemMeta();
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
         meta.setUnbreakable(true);
@@ -35,8 +43,6 @@ public class ItemBuilder {
             itemz.addUnsafeEnchantment(entry.getKey(), entry.getValue());
         }
 
-        for (int i = 0; i < amount; i++) {
-            p.getInventory().addItem(itemz);
-        }
+        return itemz;
     }
 }
