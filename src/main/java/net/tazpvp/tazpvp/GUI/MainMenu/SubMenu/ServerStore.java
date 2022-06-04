@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
+import net.tazpvp.tazpvp.Utils.RenameSwordUtil;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -89,7 +90,11 @@ public class ServerStore {
 
         ItemButton ITEMRENAME = ItemButton.create(new ItemBuilder(Material.ANVIL).setName(ChatColor.RED + "" + ChatColor.BOLD + "Rename Item").setLore(ChatColor.GRAY + "Rank Required."), e -> {
             Player p = (Player) e.getWhoClicked();
-            p.closeInventory();
+            if (RenameSwordUtil.getSwordToRename(p) == null) {
+                p.sendMessage(ChatColor.RED + "You do not have a sword to rename.");
+            } else {
+                RenameSwordUtil.renameChecks(p, RenameSwordUtil.getSwordToRename(p));
+            }
         });
         gui.addButton(15, ITEMRENAME);
 

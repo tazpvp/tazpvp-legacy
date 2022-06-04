@@ -43,4 +43,15 @@ public class RenameSwordUtil {
             p.sendMessage(ChatColor.RED + "You don't have enough money to rename this sword!");
         }
     }
+
+    public static ItemStack getSwordToRename(Player p) {
+        for (ItemStack item : p.getInventory().getContents()) {
+            if (item != null) {
+                if (item.getType().toString().toLowerCase(Locale.ROOT).contains("sword")) {
+                    return item;
+                }
+            }
+        }
+        return null;
+    }
 }
