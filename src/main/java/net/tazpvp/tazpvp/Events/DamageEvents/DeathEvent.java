@@ -39,7 +39,7 @@ public class DeathEvent implements Listener {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
                         if (Tazpvp.duelLogic.isInDuel(p)) {
                             Tazpvp.duelLogic.duelEnd(p);
-                            e.setCancelled(false);
+                            e.setCancelled(true);
                             return;
                         }
                         DeathFunction(p, (Player) ((EntityDamageByEntityEvent) e).getDamager(), true);
@@ -47,7 +47,7 @@ public class DeathEvent implements Listener {
                         if (a.getShooter() instanceof Player) {
                             if (Tazpvp.duelLogic.isInDuel(p)) {
                                 Tazpvp.duelLogic.duelEnd(p);
-                                e.setCancelled(false);
+                                e.setCancelled(true);
                                 return;
                             }
                             DeathFunction(p, (Player) a.getShooter(), true);
