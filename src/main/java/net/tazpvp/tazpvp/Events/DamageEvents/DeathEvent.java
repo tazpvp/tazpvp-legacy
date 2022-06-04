@@ -33,7 +33,25 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            if (p.getHealth() - e.getFinalDamage() <= 0) {
+            double fd = 0;
+            if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
+                ItemStack item = d.getInventory().getItemInMainHand();
+                if (item.hasItemMeta()) {
+                    NamespacedKey key = PdcUtils.key;
+                    ItemMeta meta = item.getItemMeta();
+                    PersistentDataContainer container = meta.getPersistentDataContainer();
+
+                    if (container.has(key, PersistentDataType.DOUBLE)){
+                        fd = container.get(key, PersistentDataType.DOUBLE);
+                    }
+                }
+            } else {
+                fd = e.getFinalDamage();
+            }
+            if (fd == 0) {
+                fd = e.getFinalDamage();
+            }
+            if (p.getHealth() - fd <= 0) {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {

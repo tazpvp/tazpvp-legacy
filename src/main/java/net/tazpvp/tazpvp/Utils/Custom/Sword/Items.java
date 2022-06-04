@@ -20,7 +20,7 @@ public enum Items {
     BalCen(ChatColor.WHITE + "Balisik Centurion", Material.WOODEN_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 6, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged by urmom"),
     // uncommon swords
     ThuShoSwo(ChatColor.GREEN + "Thunderfury Short Sword", Material.STONE_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 7, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged by urmom"),
-    Wit(ChatColor.GREEN + "With", Material.STONE_SWORD, 2, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "killed with"),
+    Wit(ChatColor.GREEN + "With", Material.STONE_SWORD, 20, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "killed with"),
     // rare swords
     InfGamDag(ChatColor.AQUA + "Inferno Gambit Dagger", Material.GOLDEN_SWORD, 5, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 9, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.FIRE_ASPECT, 2);
@@ -28,7 +28,7 @@ public enum Items {
     // epic swords
     HeaDulKni(ChatColor.LIGHT_PURPLE + "Heavenly Dull Knife", Material.IRON_SWORD, 1, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged by urmom"),
     // legendary swords
-    StiCla(ChatColor.YELLOW + "Stinger Claw", Material.DIAMOND_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(){{
+    StiCla(ChatColor.YELLOW + "Stinger Claw", Material.DIAMOND_SWORD, 3, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(){{
         put(Enchantment.DAMAGE_ALL, 1);
     }}, ChatColor.GRAY + "Forged by urmom");
 
