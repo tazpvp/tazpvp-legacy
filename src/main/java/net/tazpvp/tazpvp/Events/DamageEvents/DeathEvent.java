@@ -34,16 +34,20 @@ public class DeathEvent implements Listener {
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
             double fd = 0;
-            if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
-                ItemStack item = d.getInventory().getItemInMainHand();
-                if (item.hasItemMeta()) {
-                    NamespacedKey key = PdcUtils.key;
-                    ItemMeta meta = item.getItemMeta();
-                    PersistentDataContainer container = meta.getPersistentDataContainer();
+            if (e instanceof EntityDamageByEntityEvent) {
+                if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
+                    ItemStack item = d.getInventory().getItemInMainHand();
+                    if (item.hasItemMeta()) {
+                        NamespacedKey key = PdcUtils.key;
+                        ItemMeta meta = item.getItemMeta();
+                        PersistentDataContainer container = meta.getPersistentDataContainer();
 
-                    if (container.has(key, PersistentDataType.DOUBLE)){
-                        fd = container.get(key, PersistentDataType.DOUBLE);
+                        if (container.has(key, PersistentDataType.DOUBLE)){
+                            fd = container.get(key, PersistentDataType.DOUBLE);
+                        }
                     }
+                } else {
+                    fd = e.getFinalDamage();
                 }
             } else {
                 fd = e.getFinalDamage();
