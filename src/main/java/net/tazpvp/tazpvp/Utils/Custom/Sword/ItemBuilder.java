@@ -16,13 +16,12 @@ import java.util.Map;
 public class ItemBuilder {
     public static void giveItem(Player p, Items item, int amount) {
         String name = item.getName();
-        String lore[] = item.getLore();
-        List<String> loree = new ArrayList<>();
+        List<String> loree = List.of(item.getLore());
         Material material = item.getMaterial();
 
         loree.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
 
-        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(lore);
+        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(String.valueOf(loree));
         ItemMeta meta = itemz.getItemMeta();
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
         meta.setUnbreakable(true);

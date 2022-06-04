@@ -7,6 +7,7 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
@@ -51,6 +52,7 @@ public class DuelLogic implements Listener {
     }
 
     public void duelEnd(final Player p) {
+
         DW d = this.getDuel(p);
         Player opponent;
         if (p.equals(d.getPlayer1())) {
@@ -58,6 +60,8 @@ public class DuelLogic implements Listener {
         } else {
             opponent = d.getPlayer1();
         }
+        opponent.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
+        p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
 
         p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
         for (ItemStack i : p.getInventory().getContents()) {
