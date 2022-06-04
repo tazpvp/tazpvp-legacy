@@ -21,7 +21,7 @@ public class RigelNPC {
                 p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "THE DEPTHS", ChatColor.LIGHT_PURPLE + "Look alive.", 10, 100, 10);
                 clickedOnce.remove(p);
             } else {
-                p.sendMessage(ChatColor.DARK_PURPLE + "[NPC] Rigel " + ChatColor.LIGHT_PURPLE + "Although this land allows you to rebirth, The Depths is a dangerous place full of god-like enemies. Are you sure? (click again)");
+                p.sendMessage(ChatColor.DARK_PURPLE + "[NPC] Rigel " + ChatColor.LIGHT_PURPLE + "Although this land allows you to rebirth, The Depths is a dangerous place full of god-like enemies. Are you sure?");
                 clickedOnce.add(p);
             }
         } else if (p.getWorld().equals(Bukkit.getWorld("ban"))) {
