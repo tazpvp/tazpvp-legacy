@@ -55,22 +55,22 @@ stats {
             hook level_get
         }
     }
-    money {
+    coins {
         help /stats money <add|remove|set|reset|get> <player> [amount]
         add player:target int:amount {
-            hook money_add
+            hook coins_add
         }
         remove player:target int:amount {
-            hook money_remove
+            hook coins_remove
         }
         set player:target int:amount {
-            hook money_set
+            hook coins_set
         }
         reset player:target {
-            hook money_reset
+            hook coins_reset
         }
         get player:target {
-            hook money_get
+            hook coins_get
         }
     }
     deaths {

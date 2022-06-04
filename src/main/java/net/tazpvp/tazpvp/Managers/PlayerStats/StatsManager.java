@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Managers.YamlStats;
+package net.tazpvp.tazpvp.Managers.PlayerStats;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
@@ -59,7 +59,7 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".exp", 0);
         statsFile.set(player.getUniqueId().toString()+".expLeft", 45);
         statsFile.set(player.getUniqueId().toString()+".level", 0);
-        statsFile.set(player.getUniqueId().toString()+".money", 0);
+        statsFile.set(player.getUniqueId().toString()+".coins", 0);
         statsFile.set(player.getUniqueId().toString()+".deaths", 0);
         statsFile.set(player.getUniqueId().toString()+".kills", 0);
         statsFile.set(player.getUniqueId().toString()+".streak", 0);
@@ -70,18 +70,18 @@ public class StatsManager {
         statsFile.set(player.getUniqueId().toString()+".credits", 0);
     }
 
-    public int getMoney(OfflinePlayer player) {
-        return statsFile.getInt(player.getUniqueId().toString()+".money");
+    public int getCoins(OfflinePlayer player) {
+        return statsFile.getInt(player.getUniqueId().toString()+".coins");
     }
-    public int getMoney(UUID player) {
-        return statsFile.getInt(player.toString()+".money");
+    public int getCoins(UUID player) {
+        return statsFile.getInt(player.toString()+".coins");
     }
-    public void setMoney(OfflinePlayer player, int money) {
-        statsFile.set(player.getUniqueId().toString()+".money", money);
+    public void setCoins(OfflinePlayer player, int coins) {
+        statsFile.set(player.getUniqueId().toString()+".coins", coins);
         Tazpvp.getInstance().initScoreboard((Player) player);
     }
-    public void addMoney(OfflinePlayer player, int money) {
-        setMoney(player, (money+getMoney(player)));
+    public void addCoins(OfflinePlayer player, int coins) {
+        setCoins(player, (coins+getCoins(player)));
     }
     public int getShards(OfflinePlayer player) {
         return statsFile.getInt(player.getUniqueId().toString()+".shards");
@@ -136,7 +136,7 @@ public class StatsManager {
     }
     public void levelUp(OfflinePlayer player, int number){
         Tazpvp.statsManager.addLevel(player, 1*number);
-        Tazpvp.statsManager.addMoney(player, 60*number);
+        Tazpvp.statsManager.addCoins(player, 60*number);
         Tazpvp.statsManager.addShards(player, 1);
         Tazpvp.statsManager.setExpLeft(player, (Tazpvp.statsManager.getExpLeft(player)*1.05)*number);
         Tazpvp.statsManager.setExp(player, 0);

@@ -108,8 +108,8 @@ public class MineGUI {
             p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You already have this enchant.");
             p.closeInventory();
         } else {
-            if (Tazpvp.statsManager.getMoney(p) >= cost) {
-                Tazpvp.statsManager.addMoney(p, -cost);
+            if (Tazpvp.statsManager.getCoins(p) >= cost) {
+                Tazpvp.statsManager.addCoins(p, -cost);
                 ItemMeta meta = pickaxe.getItemMeta();
                 List<String> loreList = meta.getLore();
                 if (loreList == null) {

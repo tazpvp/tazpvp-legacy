@@ -12,8 +12,8 @@ import java.util.UUID;
 public class BountyCMD implements CommandListener {
     @CommandHook("bounty_set")
     public void bounty_set(Player p, Player target, int amount) {
-        if (Tazpvp.statsManager.getMoney(p) > amount) {
-            Tazpvp.statsManager.setMoney(p, Tazpvp.statsManager.getMoney(p) - amount);
+        if (Tazpvp.statsManager.getCoins(p) > amount) {
+            Tazpvp.statsManager.setCoins(p, Tazpvp.statsManager.getCoins(p) - amount);
             //actually putting the bounty
             if (Tazpvp.bounty.containsKey(target.getUniqueId())) {
                 Tazpvp.bounty.put(target.getUniqueId(), Tazpvp.bounty.get(target.getUniqueId()) + amount);
@@ -38,8 +38,8 @@ public class BountyCMD implements CommandListener {
     @CommandHook("bounty_remove")
     public void bounty_remove(Player p, Player target) {
         if (Tazpvp.bounty.containsKey(target.getUniqueId())) {
-            if (Tazpvp.statsManager.getMoney(p) > Tazpvp.bounty.get(target.getUniqueId())) {
-                Tazpvp.statsManager.setMoney(p, Tazpvp.statsManager.getMoney(p) - Tazpvp.bounty.get(target.getUniqueId()));
+            if (Tazpvp.statsManager.getCoins(p) > Tazpvp.bounty.get(target.getUniqueId())) {
+                Tazpvp.statsManager.setCoins(p, Tazpvp.statsManager.getCoins(p) - Tazpvp.bounty.get(target.getUniqueId()));
                 Tazpvp.bounty.remove(target.getUniqueId());
                 p.sendMessage(ChatColor.GOLD + "Removed the bounty of " + ChatColor.RED + target.getName());
             } else {

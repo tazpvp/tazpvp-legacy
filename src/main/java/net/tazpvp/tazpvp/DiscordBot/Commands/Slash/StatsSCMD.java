@@ -61,7 +61,7 @@ public class StatsSCMD extends SlashCommand {
         stats.addField("**Exp**", "" + Tazpvp.statsManager.getExp(uuid) + "/" + df.format(d), true);
         stats.addField("**Kills**", "" + Tazpvp.statsManager.getKills(uuid) + "", true);
         stats.addField("**Deaths**", "" + Tazpvp.statsManager.getDeaths(uuid) + "", true);
-        stats.addField("**Money**", "" + Tazpvp.statsManager.getMoney(uuid) + "", true);
+        stats.addField("**Money**", "" + Tazpvp.statsManager.getCoins(uuid) + "", true);
         stats.addField("**Shards**", "" + Tazpvp.statsManager.getShards(uuid) + "", true);
 
         e.replyEmbeds(stats.build()).queue();

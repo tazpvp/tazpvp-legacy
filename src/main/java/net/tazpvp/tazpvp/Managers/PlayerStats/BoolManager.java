@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Managers.YamlStats;
+package net.tazpvp.tazpvp.Managers.PlayerStats;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.OfflinePlayer;

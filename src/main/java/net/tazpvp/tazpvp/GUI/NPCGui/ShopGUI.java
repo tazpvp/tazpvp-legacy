@@ -28,8 +28,8 @@ public class ShopGUI {
                 p.sendMessage(ChatColor.RED + "You do not have permission to buy this item.");
                 return;
             }
-            if (Tazpvp.statsManager.getMoney(p) >= price){
-                Tazpvp.statsManager.addMoney(p, -price);
+            if (Tazpvp.statsManager.getCoins(p) >= price){
+                Tazpvp.statsManager.addCoins(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 if (cIDRequired){
                     ItemMeta meta = itemstack.getItemMeta();

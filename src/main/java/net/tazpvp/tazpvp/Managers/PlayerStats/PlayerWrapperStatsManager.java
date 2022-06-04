@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Managers.YamlStats;
+package net.tazpvp.tazpvp.Managers.PlayerStats;
 
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.SerializePlayerWrapper;

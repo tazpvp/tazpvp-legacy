@@ -153,48 +153,48 @@ public class StatsCMD implements CommandListener {
 
     // Money commands
 
-    @CommandHook("money_add")
+    @CommandHook("coins_add")
     public void moneyAdd(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addMoney(target, amount);
+        Tazpvp.statsManager.addCoins(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have added " + ChatColor.RED + amount + ChatColor.GOLD + " money to " + ChatColor.RED + target.getName());
         } else {
             sender.sendMessage("Console has added " + amount + " money to " + target.getName());
         }
     }
-    @CommandHook("money_remove")
+    @CommandHook("coins_remove")
     public void moneyRemove(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.addMoney(target, -amount);
+        Tazpvp.statsManager.addCoins(target, -amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have removed " + ChatColor.RED + amount + ChatColor.GOLD + " money from " + ChatColor.RED + target.getName());
         } else {
             sender.sendMessage("Console has removed " + amount + " money from " + target.getName());
         }
     }
-    @CommandHook("money_set")
+    @CommandHook("coins_set")
     public void moneySet(CommandSender sender, Player target, int amount) {
-        Tazpvp.statsManager.setMoney(target, amount);
+        Tazpvp.statsManager.setCoins(target, amount);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have set " + ChatColor.RED + amount + ChatColor.GOLD + " money to " + ChatColor.RED + target.getName());
         } else {
             sender.sendMessage("Console has set " + amount + " money to " + target.getName());
         }
     }
-    @CommandHook("money_reset")
+    @CommandHook("coins_reset")
     public void moneyReset(CommandSender sender, Player target) {
-        Tazpvp.statsManager.setMoney(target, 0);
+        Tazpvp.statsManager.setCoins(target, 0);
         if (sender instanceof Player p) {
             p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s money");
         } else {
             sender.sendMessage("Console has reset " + target.getName() + "'s money");
         }
     }
-    @CommandHook("money_get")
+    @CommandHook("coins_get")
     public void moneyGet(CommandSender sender, Player target) {
         if (sender instanceof Player p) {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getMoney(target) + ChatColor.GOLD + "'s money");
+            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has got " + ChatColor.RED + Tazpvp.statsManager.getCoins(target) + ChatColor.GOLD + "'s money");
         } else {
-            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getMoney(target) + "'s money");
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getCoins(target) + "'s money");
         }
     }
 

@@ -37,7 +37,7 @@ public class RenameSwordUtil {
     }
 
     public static void renameChecks(Player p, ItemStack sword) {
-        if (Tazpvp.statsManager.getMoney(p) >= 200) {
+        if (Tazpvp.statsManager.getCoins(p) >= 200) {
             renameSword(p, sword);
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money to rename this sword!");

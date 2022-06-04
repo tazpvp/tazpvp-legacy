@@ -12,7 +12,7 @@ import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
-import net.tazpvp.tazpvp.Managers.YamlStats.*;
+import net.tazpvp.tazpvp.Managers.PlayerStats.*;
 import net.tazpvp.tazpvp.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
@@ -280,7 +280,7 @@ public final class Tazpvp extends JavaPlugin {
         blank1.setScore(13);
         Score level = objective.getScore(ChatColor.AQUA + "〡 Level  " + ChatColor.DARK_AQUA + Tazpvp.statsManager.getLevel(player));
         level.setScore(12);
-        Score money = objective.getScore(ChatColor.AQUA + "〡 Money  " + ChatColor.DARK_AQUA + "$" + Tazpvp.statsManager.getMoney(player));
+        Score money = objective.getScore(ChatColor.AQUA + "〡 Coins  " + ChatColor.DARK_AQUA + "$" + Tazpvp.statsManager.getCoins(player));
         money.setScore(11);
         Score points = objective.getScore(ChatColor.AQUA + "〡 Shards  " + ChatColor.DARK_AQUA + Tazpvp.statsManager.getShards(player));
         points.setScore(10);
