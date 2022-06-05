@@ -37,6 +37,12 @@ public class DuelCMD {
         }
     }
 
+    @CommandHook("spectate")
+    public void onSpectate(Player p, Player target) {
+        Tazpvp.duelLogic.addSpectator(p, target);
+    }
+
+
     public String sentDuel(Player p){
         List<MetadataValue> metaDataValues = p.getMetadata("sentDuel");
         for (MetadataValue metaDataValue : metaDataValues) {

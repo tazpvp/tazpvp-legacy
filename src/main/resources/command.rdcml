@@ -392,3 +392,9 @@ pay player:target int:amount{
     user player
     hook pay
 }
+
+spectate player:target {
+    help /spectate <player>
+    user player
+    hook spectate
+}

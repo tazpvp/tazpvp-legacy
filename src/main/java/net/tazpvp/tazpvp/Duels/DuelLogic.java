@@ -1,8 +1,10 @@
 package net.tazpvp.tazpvp.Duels;
 
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
+import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
+import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -18,7 +20,12 @@ public class DuelLogic implements Listener {
     public HashMap<List<UUID>, DW> duels = new HashMap<>();
     public Random random = new Random();
 
-
+    /**
+     * Create a new duel
+     * @param p1 player one
+     * @param p2 player two
+     * @param kit kit used if null, will use default
+     */
     public void duelStart(final Player p1, final Player p2, @Nullable KitManager kit) {
         String duelName = "active_duel_" + p1.getName() + "_" + p2.getName();
         World w = new WorldManageent().cloneWorld(this.chooseRandomDuelMap(), duelName);
@@ -37,6 +44,7 @@ public class DuelLogic implements Listener {
         p1.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
         p2.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
 
+        Bukkit.broadcastMessage(ChatColor.YELLOW + p1.getName() + " and " + p2.getName() + " have started a duel! " + ChatColor.GOLD + "/spectate " + p1.getName());
 
         new BukkitRunnable() {
             @Override
@@ -51,6 +59,10 @@ public class DuelLogic implements Listener {
         }.runTaskLater(Tazpvp.getInstance(), 20L * 5);
     }
 
+    /**
+     * Run the duel ending logic
+     * @param p player that was killed
+     */
     public void duelEnd(final Player p) {
 
         DW d = this.getDuel(p);
@@ -81,6 +93,15 @@ public class DuelLogic implements Listener {
             public void run() {
                 d.end();
 
+                List<UUID> spectators = d.spectators();
+                for (UUID u : spectators) {
+                    Player p = Bukkit.getPlayer(u);
+                    if (p != null) {
+                        p.setGameMode(GameMode.SURVIVAL);
+                        p.teleport(configUtils.spawn);
+                    }
+                }
+
                 if (p.isOnline()) {
                     p.getInventory().clear();
                     ArmorManager.setPlayerContents(p, false);
@@ -96,6 +117,24 @@ public class DuelLogic implements Listener {
                 duels.remove(Arrays.asList(opponent.getUniqueId(), p.getUniqueId()));
             }
         }.runTaskLater(Tazpvp.getInstance(), 20 * 5L);
+    }
+
+    /**
+     * makes player start spectating another player
+     * @param p the player to set spectating
+     * @param dueler the player to spectate
+     */
+    public void addSpectator(Player p, Player dueler) {
+        if (isInDuel(dueler) && !isInDuel(p) && !CombatLogManager.isInCombat(p) && !isSpectating(p)) {
+            DW d = this.getDuel(dueler);
+            d.addSpectator(p);
+            p.setGameMode(GameMode.SPECTATOR);
+            p.teleport(d.getSpawn1());
+            p.sendMessage(ChatColor.GREEN + "You are now spectating " + ChatColor.GOLD + dueler.getName());
+            p.sendMessage(ChatColor.GREEN + "You can leave the duel by typing /spawn");
+        } else {
+            p.sendMessage(ChatColor.RED + "You can't spectate that player");
+        }
     }
 
     public void inventoryManagement(final Player p1, final Player p2, final Boolean save) {
@@ -126,6 +165,38 @@ public class DuelLogic implements Listener {
         return false;
     }
 
+    /**
+     * Check if a player is spectating
+     * @param p the player to check if they are spectating
+     * @return true if the player is spectating a duel
+     */
+    public boolean isSpectating(final Player p) {
+        for (DW dw : duels.values()) {
+            if (dw.spectators().contains(p.getUniqueId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if an uuid is spectating
+     * @param uuid the uuid to check if they are spectating
+     * @return true if the uuid is spectating a duel
+     */
+    public boolean isSpectating(final UUID uuid) {
+        for (DW dw : duels.values()) {
+            if (dw.spectators().contains(uuid)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get a random duel map
+     * @return the name of the map
+     */
     public String chooseRandomDuelMap() {
         List<String> maps = new ArrayList<>();
         for (World w : Bukkit.getWorlds()) {

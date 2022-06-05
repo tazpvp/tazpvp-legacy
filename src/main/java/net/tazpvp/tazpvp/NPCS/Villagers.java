@@ -10,7 +10,7 @@ public enum Villagers {
     SHARDS(ChatColor.AQUA + "" + ChatColor.BOLD + "Bub", Villager.Profession.MASON, Villager.Type.SNOW, 5, 1, new Location(Bukkit.getWorld("arena"), 18.5, 80, 103.5, -90, 0)),
     REBIRTH(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rigel", Villager.Profession.FLETCHER, Villager.Type.SWAMP, 6, 1, new Location(Bukkit.getWorld("arena"), -9, 101, -12, -45, 0)),
     REBIRTH2(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "Rigel", Villager.Profession.FLETCHER, Villager.Type.SWAMP, 6, 1, new Location(Bukkit.getWorld("ban"), -1.5, 78, 11, -180, 0)),
-    BOW(ChatColor.GREEN + "" + ChatColor.BOLD + "Frank", Villager.Profession.FLETCHER, Villager.Type.PLAINS, 8, 1, new Location(Bukkit.getWorld("arena"), 29.5, 97, 109, 0, 0));
+    BOW(ChatColor.GREEN + "" + ChatColor.BOLD + "Hrank", Villager.Profession.FLETCHER, Villager.Type.PLAINS, 8, 1, new Location(Bukkit.getWorld("arena"), 29.5, 97, 109, 0, 0));
 
     public final String name;
     public final Villager.Profession profession;

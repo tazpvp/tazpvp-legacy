@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class DW {
     private Player p1;
     private Player p2;
+    private List<UUID> spectators;
     private World duelMap;
     private Location spawn1;
     private Location spawn2;
@@ -21,6 +23,7 @@ public class DW {
     public DW(final Player p1, final Player p2, final World duelMap, final KitManager kit) {
         this.p1 = p1;
         this.p2 = p2;
+        this.spectators = new ArrayList<>();
         this.duelMap = duelMap;
         this.spawn1 = new Location(duelMap, 0.5, 65, 0.5, 90, 0);
         this.spawn2 = new Location(duelMap, -48.5, 65, 0.5, -90, 0);
@@ -35,8 +38,28 @@ public class DW {
         return this.p2;
     }
 
+    /**
+     * Get a list of the dueling players
+     * @return List<UUID> dueling players
+     */
     public List<UUID> getPlayers() {
         return Arrays.asList(this.p1.getUniqueId(), this.p2.getUniqueId());
+    }
+
+    /**
+     * Get Spectators
+     * @return List<UUID> of spectators
+     */
+    public List<UUID> spectators() {
+        return spectators;
+    }
+
+    /**
+     * Add a player to the spectators list.
+     * @param p the Player to add to the spectators list
+     */
+    public void addSpectator(Player p) {
+        spectators.add(p.getUniqueId());
     }
 
     public World getDuelMap() {
