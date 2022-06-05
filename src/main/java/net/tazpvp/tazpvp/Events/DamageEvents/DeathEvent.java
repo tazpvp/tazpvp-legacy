@@ -79,6 +79,8 @@ public class DeathEvent implements Listener {
                     } else { //this will run if a mob kills a player, etc. creeper boom
                         DeathFunction(p, null, false);
                     }
+                } else { // this will run if a player dies with no damager player
+                    DeathFunction(p, null, false);
                 }
             } else {
                 if (e instanceof EntityDamageByEntityEvent) {
@@ -184,10 +186,11 @@ public class DeathEvent implements Listener {
             Tazpvp.statsManager.addExp(d, 15);
             Tazpvp.statsManager.addCoins(d, 7);
 
-            if (d.getHealth() > 14) {
+            double health = d.getHealth();
+            if (health + 4 > 20) {
                 d.setHealth(20);
             } else {
-                d.setHealth(d.getHealth() + 6);
+                d.setHealth(health + 4);
             }
             fatPerk(d);
 
