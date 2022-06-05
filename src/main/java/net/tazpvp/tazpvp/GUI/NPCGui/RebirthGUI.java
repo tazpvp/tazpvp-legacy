@@ -11,11 +11,11 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-public class RigelGUI {
+public class RebirthGUI {
     private InventoryGUI gui;
 
 
-    public RigelGUI(Player p) {
+    public RebirthGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, "TestGUI"));
         addItems();
         gui.open(p);
