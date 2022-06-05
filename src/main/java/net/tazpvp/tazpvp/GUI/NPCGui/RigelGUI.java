@@ -14,6 +14,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class RigelGUI {
     private InventoryGUI gui;
 
+
     public RigelGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, "TestGUI"));
         addItems();
@@ -29,7 +30,7 @@ public class RigelGUI {
             Player p = (Player) e.getWhoClicked();
           if (Tazpvp.statsManager.getLevel(p) >= 100) {
               Tazpvp.statsManager.setLevel(p, 0);
-              //run more reberth functionality later
+              //run more rebirth functionality later
           } else {
               p.sendMessage(ChatColor.GREEN + "You cannot reberth yet");
           }
