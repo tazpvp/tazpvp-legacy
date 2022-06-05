@@ -23,15 +23,15 @@ public class amerGUI {
     public void makeItems(Player p) {
         gui.fill(0, 26, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
         ItemButton power = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "THORNS I").setLore("1 shard"), e -> {
-            doChecks(p, Enchantment.THORNS, 1);
+            doChecksR(p, Enchantment.THORNS, 1);
         });
 
         ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "PROTECTION II").setLore("1 shard"), e -> {
-            doChecks(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
         });
 
         ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "FEATHER FALLING IV").setLore("1 shard"), e -> {
-            doChecks(p, Enchantment.PROTECTION_FALL, 4);
+            doChecksR(p, Enchantment.PROTECTION_FALL, 4);
         });
 
         gui.addButton(11, power);
@@ -39,7 +39,7 @@ public class amerGUI {
         gui.addButton(19, flame);
     }
 
-    public void doChecks(Player p, Enchantment ench, int level) {
+    public void doChecksR(Player p, Enchantment ench, int level) {
         BowUtils.getArmor(p);
         if (Tazpvp.statsManager.getShards(p) >= 1) {
             Tazpvp.statsManager.addShards(p, -1);

@@ -15,13 +15,16 @@ public class BowGUI {
     private InventoryGUI gui;
 
     public BowGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.RED + "Upgade bow"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.RED + "eCHANTS"));
         makeItems(p);
         gui.open(p);
     }
 
     public void makeItems(Player p) {
-        gui.fill(0, 26, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
+        gui.fill(0, 4 * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
+        ItemButton Bow = ItemButton.create(new ItemBuilder(Material.BOW).setName(ChatColor.RED + "BOW").setLore("You can only have one enchantment at a time!"), e -> {});
+        ItemButton Armor = ItemButton.create(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName(ChatColor.RED + "ARMOR").setLore("You can only have one enchantment at a time!"), e -> {});
+
         ItemButton power = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "Power").setLore("1 shard"), e -> {
             doChecks(p, Enchantment.ARROW_DAMAGE);
         });
@@ -33,10 +36,28 @@ public class BowGUI {
         ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "Flame").setLore("1 shard"), e -> {
             doChecks(p, Enchantment.ARROW_FIRE);
         });
+        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "THORNS I").setLore("1 shard"), e -> {
+            doChecksR(p, Enchantment.THORNS, 1);
+        });
 
-        gui.addButton(11, power);
-        gui.addButton(3, punch);
-        gui.addButton(19, flame);
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "PROTECTION II").setLore("1 shard"), e -> {
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+        });
+
+        ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "FEATHER FALLING IV").setLore("1 shard"), e -> {
+            doChecksR(p, Enchantment.PROTECTION_FALL, 4);
+        });
+
+        gui.addButton(11, Bow);
+        gui.addButton(15,  Armor);
+
+        gui.addButton(19, power);
+        gui.addButton(20, punch);
+        gui.addButton(21, flame);
+
+        gui.addButton(23, thorns);
+        gui.addButton(24, prot);
+        gui.addButton(25, ff);
     }
 
     public void doChecks(Player p, Enchantment ench) {
@@ -48,6 +69,18 @@ public class BowGUI {
         if (Tazpvp.statsManager.getShards(p) >= 1) {
             Tazpvp.statsManager.addShards(p, -1);
             BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
+            p.closeInventory();
+        } else {
+            p.sendMessage(ChatColor.RED + "You do not have enough shards!");
+            p.closeInventory();
+        }
+    }
+
+    public void doChecksR(Player p, Enchantment ench, int level) {
+        BowUtils.getArmor(p);
+        if (Tazpvp.statsManager.getShards(p) >= 1) {
+            Tazpvp.statsManager.addShards(p, -1);
+            BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
             p.closeInventory();
         } else {
             p.sendMessage(ChatColor.RED + "You do not have enough shards!");
