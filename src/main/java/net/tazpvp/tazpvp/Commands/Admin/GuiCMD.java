@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.GUI.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.PerkGUI;
 import net.tazpvp.tazpvp.GUI.Template.MutliGuiPrototype.TestOne;
 import net.tazpvp.tazpvp.GUI.Template.OpenSlotGUI;
@@ -31,6 +32,8 @@ public class GuiCMD implements CommandListener {
             new PerkGUI(p);
         } else if (gui.equalsIgnoreCase("testOne")) {
             new TestOne(p);
+        } else if (gui.equalsIgnoreCase("bow")) {
+            new BowGUI(p);
         }
     }
 }
