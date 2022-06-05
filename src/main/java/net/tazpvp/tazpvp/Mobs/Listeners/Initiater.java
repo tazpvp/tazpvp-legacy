@@ -11,8 +11,6 @@ public class Initiater {
     }
 
     public void onTick() {
-        System.out.println("Hello!!");
-
         // Notify everybody that may be interested.
         for (TickListener hl : listeners)
             hl.onTick();

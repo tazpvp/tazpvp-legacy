@@ -148,7 +148,6 @@ public final class Tazpvp extends JavaPlugin {
             @Override
             public void run() {
                 CombatLogManager.tick();
-                initiater.onTick();
             }
         }.runTaskTimer(this, 20L, 20L);
     }
