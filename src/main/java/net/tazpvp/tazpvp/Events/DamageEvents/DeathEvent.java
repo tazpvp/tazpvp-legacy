@@ -206,7 +206,6 @@ public class DeathEvent implements Listener {
         }
 
         p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-
         p.setGameMode(GameMode.SPECTATOR);
         new BukkitRunnable() {
             @Override

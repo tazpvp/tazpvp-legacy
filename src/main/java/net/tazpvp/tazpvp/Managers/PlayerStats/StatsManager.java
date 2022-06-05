@@ -45,6 +45,10 @@ public class StatsManager {
         sb.registerNewObjective("sb", "dummy");
         scoreboards.put(player.getUniqueId(), sb);
         Tazpvp.getInstance().initScoreboard(player);
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            Tazpvp.getInstance().addPlayerToOnlinePlayersSB(onlinePlayer);
+            Tazpvp.getInstance().addOnlinePlayersToSB(onlinePlayer);
+        }
     }
 
     public void saveStats(){

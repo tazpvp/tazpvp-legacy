@@ -21,4 +21,22 @@ public class BowUtils {
         }
         return null;
     }
+
+    public static void apllyEnchant(ItemStack[] items, Enchantment ench, int level) {
+        for (ItemStack item : items) {
+            for (org.bukkit.enchantments.Enchantment e : item.getEnchantments().keySet()) {
+                item.removeEnchantment(e);
+            }
+            item.addUnsafeEnchantment(ench, level);
+        }
+    }
+
+    public static ItemStack[] getArmor(Player p) {
+        ItemStack[] armor = new ItemStack[4];
+        for (int i = 0; i < 4; i++) {
+            armor[i] = p.getInventory().getArmorContents()[i];
+        }
+        return armor;
+    }
+
 }
