@@ -13,6 +13,9 @@ import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Managers.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
+import net.tazpvp.tazpvp.Mobs.CZombie;
+import net.tazpvp.tazpvp.Mobs.Listeners.Initiater;
+import net.tazpvp.tazpvp.Mobs.MobUtil;
 import net.tazpvp.tazpvp.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Passive.Generator;
 import net.tazpvp.tazpvp.Passive.Tips;
@@ -97,6 +100,9 @@ public final class Tazpvp extends JavaPlugin {
         configFile = this.getConfig();
         initConfig();
 
+        Initiater initiater = new Initiater();
+        initiater.addListener(new MobUtil());
+
         try {
             registerEvents();
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
@@ -142,14 +148,11 @@ public final class Tazpvp extends JavaPlugin {
             @Override
             public void run() {
                 CombatLogManager.tick();
-//                for (Player p : Bukkit.getOnlinePlayers()) {
-//                    sbUtil.addScoreboard(p);
-//                }
+                initiater.onTick();
             }
-        }.runTaskTimerAsynchronously(this, 20L, 20L);
-
-
+        }.runTaskTimer(this, 20L, 20L);
     }
+
 
     public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
