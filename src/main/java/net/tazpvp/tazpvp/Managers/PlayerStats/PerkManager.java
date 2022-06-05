@@ -27,6 +27,9 @@ public class PerkManager {
     public boolean getExcavatorPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".excavatorPerk"); }
     public void setExcavatorPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".excavatorPerk", type); }
 
+    public boolean getArcherPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".archerPerk"); }
+    public void setArcherPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".archerPerk", type); }
+
     public void saveStats(){
         try {
             statsFile.save(file);
