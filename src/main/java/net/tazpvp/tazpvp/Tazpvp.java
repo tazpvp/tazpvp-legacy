@@ -46,7 +46,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public final class Tazpvp extends JavaPlugin {
+public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static StatsManager statsManager;
     public static BoolManager boolManager;
     public static PerkManager perkManager;
