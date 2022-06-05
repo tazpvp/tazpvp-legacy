@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events.PhysicalEvents;
+package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.GameMode;

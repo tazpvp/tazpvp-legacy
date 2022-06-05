@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events.MouseEvents;
+package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.SelectGUI;

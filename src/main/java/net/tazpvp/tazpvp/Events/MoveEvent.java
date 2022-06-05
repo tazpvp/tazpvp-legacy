@@ -1,7 +1,6 @@
-package net.tazpvp.tazpvp.Events.PhysicalEvents;
+package net.tazpvp.tazpvp.Events;
 
 
-import net.tazpvp.tazpvp.Events.DamageEvents.DeathEvent;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.block.Block;

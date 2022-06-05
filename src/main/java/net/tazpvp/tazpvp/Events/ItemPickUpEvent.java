@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events.ItemEvents;
+package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;

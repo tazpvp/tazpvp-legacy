@@ -13,4 +13,9 @@ public class PerkUtils {
             p.setHealth(p.getHealth() + 2);
         }
     }
+
+    public static void excavatorPerk(Player p){
+
+
+    }
 }
