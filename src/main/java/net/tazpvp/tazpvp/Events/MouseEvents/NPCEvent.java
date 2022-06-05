@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Events.MouseEvents;
 
-import net.tazpvp.tazpvp.GUI.Bow.SelectGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.RigelGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;

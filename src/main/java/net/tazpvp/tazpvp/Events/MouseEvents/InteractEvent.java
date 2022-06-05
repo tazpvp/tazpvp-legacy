@@ -1,11 +1,9 @@
 package net.tazpvp.tazpvp.Events.MouseEvents;
 
-import net.tazpvp.tazpvp.GUI.RespawnAnchorGui.UnlockSwordGUI;
+import net.tazpvp.tazpvp.GUI.UnlockSwordGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Items.Item;
 import net.tazpvp.tazpvp.Utils.Custom.Items.ItemManager;
-import net.tazpvp.tazpvp.Utils.Custom.Items.Items;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;

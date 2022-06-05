@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI.EnderChests;
+package net.tazpvp.tazpvp.GUI;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;

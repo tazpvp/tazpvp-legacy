@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI.RespawnAnchorGui;
+package net.tazpvp.tazpvp.GUI;
 
 import net.tazpvp.tazpvp.Achievements.UnlockAchievement;
 import net.tazpvp.tazpvp.Tazpvp;
