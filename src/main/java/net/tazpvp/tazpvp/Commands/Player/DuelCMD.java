@@ -10,7 +10,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
-import org.checkerframework.checker.units.qual.C;
 import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.List;
