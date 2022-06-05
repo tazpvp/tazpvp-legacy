@@ -64,6 +64,7 @@ public class PlayerUtils {
         boots.setItemMeta(bootsMeta);
         ItemMeta swordMeta = sword.getItemMeta();
         swordMeta.setUnbreakable(true);
+        swordMeta.setDisplayName(ChatColor.WHITE + "Poor Sword");
         sword.setItemMeta(swordMeta);
         ItemMeta bowMeta = bow.getItemMeta();
         bowMeta.setUnbreakable(true);
