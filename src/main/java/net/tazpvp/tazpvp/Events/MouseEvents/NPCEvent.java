@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events.MouseEvents;
 
+import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.RebirthGUI;
@@ -57,6 +58,8 @@ public class NPCEvent implements Listener {
                             new RigelNPC().clickRigel(e.getPlayer());
                         } else if (id == 7)  {
                             new RebirthGUI(e.getPlayer());
+                        } else if (id == 8) {
+                            new BowGUI(e.getPlayer());
                         } else {
                             e.getPlayer().sendMessage(ChatColor.RED + "Uh oh! You found a super secret error! Report this to Ntdi, 0xEf300 err resp: " + id +".EntityStorage");
                         }
