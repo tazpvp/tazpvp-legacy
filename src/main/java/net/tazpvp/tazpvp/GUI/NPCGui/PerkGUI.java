@@ -31,11 +31,6 @@ public class PerkGUI {
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 if (id == 1) {
                     Tazpvp.perkManager.setFatPerk(p, true);
-                    if (Tazpvp.perkManager.getFatPerk(p)){
-                        p.sendMessage("true");
-                    } else {
-                        p.sendMessage("false");
-                    }
                 }
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
