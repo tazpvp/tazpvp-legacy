@@ -7,5 +7,4 @@ public class PdcUtils {
     public static NamespacedKey key = new NamespacedKey(Tazpvp.getInstance(), "custom-sword");
     public static NamespacedKey pitchKey = new NamespacedKey(Tazpvp.getInstance(), "pitch-vil");
 
-    //more variables should go here 
 }
