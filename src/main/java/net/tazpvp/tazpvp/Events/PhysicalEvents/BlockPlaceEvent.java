@@ -45,6 +45,8 @@ public class BlockPlaceEvent implements Listener {
                     timer = 20 * 10;
                 } else if (blockType == Material.DIRT) {
                     event.setCancelled(true);
+                }else if (blockType == Material.COBWEB) {
+                    timer= 3 * 20;
                 } else {
                     timer = 20 * 20;
                 }

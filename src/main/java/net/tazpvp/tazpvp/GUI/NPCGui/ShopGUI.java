@@ -66,7 +66,7 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.GREEN_WOOL, 64), 32, 50, ChatColor.WHITE + "Green Blocks", ChatColor.BLUE + "Bushy", true, false, null);
         createShopButton(new ItemStack(Material.BROWN_WOOL, 64), 33, 50, ChatColor.WHITE + "Brown Blocks", ChatColor.BLUE + "Ew", true, false, null);
         createShopButton(new ItemStack(Material.RED_WOOL, 64), 34, 50, ChatColor.WHITE + "Red Blocks", ChatColor.BLUE + "u mad?", true, false, null);
-
+        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 35, 25, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
         gui.update();
     }
 }
