@@ -9,6 +9,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 
@@ -28,19 +29,16 @@ public class SwordCollection {
         for (Items item : Items.values()) {
             PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());
             List<Items> items = pw.getSwords();
-            ItemStack itemStack;
-            if (items.contains(item)) {
-                itemStack = ItemBuilder.maekItem(item);
-                List<String> lore = itemStack.getItemMeta().getLore();
-                lore.add(ChatColor.GREEN + "Owned");
-                itemStack.getItemMeta().setLore(lore);
-            } else {
-                itemStack = ItemBuilder.maekItem(item);
-                List<String> lore = itemStack.getItemMeta().getLore();
-                lore.add(ChatColor.RED + "Not Owned");
-                itemStack.getItemMeta().setLore(lore);
-            }
-            ItemButton tool = ItemButton.create(itemStack, e -> {
+            ItemStack itemStack = ItemBuilder.maekItem(item);;
+            List<String> lore = new java.util.ArrayList<>(List.of(item.getLore()));
+            String addtxt = items.contains(item) ? ChatColor.GREEN + "Owned" : ChatColor.RED + "Not Owned";
+            lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
+            lore.add(addtxt);
+            String[] split = lore.toString().split(", ");
+            split[0] = split[0].replace("[", "");
+            split[split.length - 1] = split[split.length - 1].replace("]", "");
+
+            ItemButton tool = ItemButton.create(new redempt.redlib.itemutils.ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(split), e -> {
                 e.setCancelled(true);
             });
             gui.addButton(i, tool);
