@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Events.DamageEvents;
+package net.tazpvp.tazpvp.Events;
 
 import org.bukkit.Material;
 import org.bukkit.event.Listener;
