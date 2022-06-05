@@ -83,6 +83,7 @@ public class JoinEvent implements Listener {
 
         for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
             setNametag(onlinePlayers, p);
+            setNametag(p, onlinePlayers);
         }
     }
 
@@ -92,7 +93,7 @@ public class JoinEvent implements Listener {
             scoreboard.getTeam(player1.getUniqueId().toString()).unregister();
         }
         Team team = scoreboard.registerNewTeam(player1.getUniqueId().toString());
-        team.setPrefix(ChatColor.translateAlternateColorCodes('&', "eee"));
+        team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player2)));
         scoreboard.getTeam(player1.getUniqueId().toString()).addPlayer(player2);
     }
 }

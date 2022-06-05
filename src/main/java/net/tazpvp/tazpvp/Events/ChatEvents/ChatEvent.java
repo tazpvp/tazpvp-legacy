@@ -27,7 +27,6 @@ public class ChatEvent implements Listener {
         msg = ChatColor.translateAlternateColorCodes('&', prefix) + msg;
         if (e.getPlayer().isOp()) {
             msg = (ChatColor.translateAlternateColorCodes('&', msg));
-            return;
         }
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
