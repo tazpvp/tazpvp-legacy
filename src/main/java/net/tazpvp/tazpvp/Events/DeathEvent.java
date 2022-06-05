@@ -217,7 +217,6 @@ public class DeathEvent implements Listener {
             @Override
             public void run() {
                 PlayerUtils.healPlayer(p);
-
                 if (Tazpvp.punishmentManager.isBanned(p)) {
                     p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
                 } else {
@@ -225,6 +224,7 @@ public class DeathEvent implements Listener {
                     CombatLogManager.combatLog.remove(p.getUniqueId());
                 }
                 p.setGameMode(GameMode.SURVIVAL);
+                p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
     }
