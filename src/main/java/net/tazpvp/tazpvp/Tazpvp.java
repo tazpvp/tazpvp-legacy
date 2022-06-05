@@ -330,6 +330,40 @@ public final class Tazpvp extends JavaPlugin {
 
     }
 
+    public void addOnlinePlayersToSB(Player player) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            if (player.equals(onlinePlayer))
+                continue;
+
+            Team team = player.getScoreboard().getTeam(onlinePlayer.getUniqueId().toString());
+            if (team != null) {
+                team.unregister();
+            }
+
+            team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
+
+            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            team.addPlayer(onlinePlayer);
+
+        }
+    }
+
+    public void addPlayerToOnlinePlayersSB(Player player) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            Scoreboard scoreboard = onlinePlayer.getScoreboard();
+
+            Team team = scoreboard.getTeam(player.getUniqueId().toString());
+
+            if (team != null)
+                team.unregister();
+
+            team = scoreboard.registerNewTeam(player.getUniqueId().toString());
+
+            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            team.addPlayer(player);
+        }
+    }
+
     public static Tazpvp getInstance(){
         return instance;
     }
