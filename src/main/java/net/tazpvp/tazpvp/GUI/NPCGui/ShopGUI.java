@@ -59,6 +59,7 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 16, 25, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 20, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood", false, false, null);
         createShopButton(new ItemStack(Material.SHEARS, 1), 20, 25, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool", false, false, null);
+        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 25, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
         createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 50, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip", true, false, null);
         createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 29, 50, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?", true, false, null);
         createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 30, 50, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream", true, false, null);
@@ -66,7 +67,6 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.GREEN_WOOL, 64), 32, 50, ChatColor.WHITE + "Green Blocks", ChatColor.BLUE + "Bushy", true, false, null);
         createShopButton(new ItemStack(Material.BROWN_WOOL, 64), 33, 50, ChatColor.WHITE + "Brown Blocks", ChatColor.BLUE + "Ew", true, false, null);
         createShopButton(new ItemStack(Material.RED_WOOL, 64), 34, 50, ChatColor.WHITE + "Red Blocks", ChatColor.BLUE + "u mad?", true, false, null);
-        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 35, 25, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
         gui.update();
     }
 }
