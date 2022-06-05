@@ -47,7 +47,7 @@ public class BowGUI {
         }
         if (Tazpvp.statsManager.getShards(p) >= 1) {
             Tazpvp.statsManager.addShards(p, -1);
-            BowUtils.applyEnchant(Enchantment.ARROW_DAMAGE, 1, BowUtils.getBow(p));
+            BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
             p.closeInventory();
         } else {
             p.sendMessage(ChatColor.RED + "You do not have enough shards!");
