@@ -24,6 +24,9 @@ public class PerkManager {
     public boolean getFatPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".fatPerk"); }
     public void setFatPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".fatPerk", type); }
 
+    public boolean getExcavatorPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".excavatorPerk"); }
+    public void setExcavatorPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".excavatorPerk", type); }
+
     public void saveStats(){
         try {
             statsFile.save(file);

@@ -15,7 +15,7 @@ public class PerkUtils {
     }
 
     public static void excavatorPerk(Player p){
-
-
+        if (!Tazpvp.perkManager.getExcavatorPerk(p)) return;
+        Tazpvp.statsManager.addExp(p, 1);
     }
 }

@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.OreMine.oreRespawn;
+import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.excavatorPerk;
 
 public class BlockBreakEvent implements Listener {
 
@@ -21,12 +22,12 @@ public class BlockBreakEvent implements Listener {
             if (Tazpvp.blocks.containsKey(block)) {
                 e.setCancelled(true);
                 Material smeltedForm = Tazpvp.blocks.get(block);
+                excavatorPerk(p);
                 if (block == Material.DEEPSLATE_GOLD_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
                 } else if (block == Material.DEEPSLATE_REDSTONE_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
                 } else if (block == Material.DEEPSLATE_IRON_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
                 } else if (block == Material.DEEPSLATE_LAPIS_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                } else if (block == Material.DEEPSLATE_EMERALD_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                }
+                } else if (block == Material.DEEPSLATE_EMERALD_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);}
             }
         }
     }
