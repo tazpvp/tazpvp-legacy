@@ -67,41 +67,36 @@ public class ChatEvent implements Listener {
             }
         }
 
-        if (cooldown.contains(p)) {
+        if (cooldown.contains(p) && !p.isOp()) {
             e.setCancelled(true);
             p.sendMessage(ChatColor.RED + "Please don't spam the chat!");
         }
 
-        if (previousMessages.containsKey(p)){
+        if (previousMessages.containsKey(p) && !p.isOp()){
             if (msg.equalsIgnoreCase(previousMessages.get(p))) {
                 e.setCancelled(true);
                 p.sendMessage(ChatColor.RED + "You cannot repeat the same message!");
             }
         }
 
-        if (!p.hasPermission("tazpvp.staff.level")){
-            if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
-                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + ": " + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + ": " + "%2$s";
-                e.setFormat(str);
-            } else {
-                String str = (Tazpvp.statsManager.getRebirth(p) > 0) ? ChatColor.GRAY+ "[" + ChatColor.GOLD + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] " + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + p.getDisplayName() + " " + ChatColor.WHITE + "%2$s" : ChatColor.GRAY+ "[" + Tazpvp.statsManager.getLevel(p) + "] " + ChatColor.translateAlternateColorCodes('&',Tazpvp.chat.getGroupPrefix((String) null, Tazpvp.permissions.getPrimaryGroup(p))+ p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s" ;
-                e.setFormat(str);
-            }
-//            if(p.hasPermission("staff.staffchat") && Tazpvp.staffManager.staffChatToggled(p)){
-//                TazPvP.staffManager.sendStaffChat(p, e.getMessage());
-//                e.setCancelled(true);
-//                return;
-//            }
-        } else if(Tazpvp.permissions.getPrimaryGroup(p).equals("default")) {
-                e.setFormat(p.getDisplayName() + ": " + "%2$s");
-            } else {
-                e.setFormat(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p) + p.getDisplayName()) + " " + ChatColor.WHITE + "%2$s");
-            }
-//            if(p.hasPermission("staff.staffchat") && TazPvP.staffManager.staffChatToggled(p)){
-//                TazPvP.staffManager.sendStaffChat(p, e.getMessage());
-//                e.setCancelled(true);
-//                return;
-//            }
+        ChatColor lvl = ChatColor.GRAY;
+        if (Tazpvp.statsManager.getRebirth(p) > 0) {
+            lvl = ChatColor.GOLD;
+        }
+        String lvltxt = ChatColor.GRAY + "[" + lvl + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] ";
+        if (p.hasPermission("tazpvp.level")) {
+            lvltxt = "";
+        }
+
+        String fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s ";
+
+        String format = p.isOp()
+                ? fmsg + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', "%s")
+                : fmsg + ChatColor.WHITE + "%s";
+        e.setFormat(format);
+
+//        String format = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + ChatColor.WHITE + "%s";
+//        e.setFormat(format);
 
         previousMessages.put(p, msg);
         cooldown.add(p);
