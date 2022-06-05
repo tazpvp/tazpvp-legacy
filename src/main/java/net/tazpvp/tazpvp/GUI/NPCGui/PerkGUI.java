@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.NPCGui;
 
+import net.tazpvp.tazpvp.Managers.PlayerStats.PerkManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.*;
@@ -21,14 +22,16 @@ public class PerkGUI {
         gui.open(p);
     }
 
-    public void createShopButton(String name, int slot, ItemStack item, int price, String description){
+    public void createShopButton(String name, int slot, ItemStack item, int price, String description, int id){
         ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.statsManager.getShards(p) >= price){
                 Tazpvp.statsManager.addShards(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
-                p.getInventory().addItem(itemstack);
+                if (id == 1) {
+                    Tazpvp.perkManager
+                }
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
                 p.sendMessage(ChatColor.RED + "You don't have enough money!");
@@ -41,6 +44,6 @@ public class PerkGUI {
     public void addItems(){
         gui.fill(0, 26, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
 
-        createShopButton("Fat I", 11, new ItemStack(Material.BREAD), 2, "Fat Perk");
+        createShopButton("Fat I", 11, new ItemStack(Material.BREAD), 2, "Fat Perk", 1);
     }
 }

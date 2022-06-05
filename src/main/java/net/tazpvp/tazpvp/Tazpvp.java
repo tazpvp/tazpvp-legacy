@@ -49,6 +49,7 @@ import java.util.*;
 public final class Tazpvp extends JavaPlugin {
     public static StatsManager statsManager;
     public static BoolManager boolManager;
+    public static PerkManager perkManager;
     public static PunishmentManager punishmentManager;
     public static PlayerWrapperStatsManager playerWrapperStatsManager;
     public static HashMap<UUID, PlayerWrapper> playerWrapperMap = new HashMap<>();
@@ -210,6 +211,7 @@ public final class Tazpvp extends JavaPlugin {
         if (init) {
             statsManager = new StatsManager();
             boolManager = new BoolManager();
+            perkManager = new PerkManager();
             punishmentManager = new PunishmentManager();
             playerWrapperStatsManager = new PlayerWrapperStatsManager();
             achievementManager = new AchievementManager();
@@ -218,6 +220,7 @@ public final class Tazpvp extends JavaPlugin {
         } else {
             statsManager.saveStats();
             boolManager.saveStats();
+            perkManager.saveStats();
             punishmentManager.savePunishments();
             playerWrapperStatsManager.saveStats();
             achievementManager.saveStats();
