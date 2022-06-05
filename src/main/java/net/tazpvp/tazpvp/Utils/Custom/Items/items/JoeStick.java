@@ -25,7 +25,7 @@ public class JoeStick extends ClickableItem implements Listener {
                     }
                 }
             }
-        }0
+        }
     }
 
 }
