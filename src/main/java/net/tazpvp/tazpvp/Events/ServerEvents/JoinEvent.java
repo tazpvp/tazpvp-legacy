@@ -81,10 +81,8 @@ public class JoinEvent implements Listener {
 
         Tazpvp.statsManager.scoreboards.get(p.getUniqueId()).getTeam(p.getUniqueId().toString()).setDisplayName(p.getDisplayName());
 
-        for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-            setNametag(onlinePlayers, p);
-            setNametag(p, onlinePlayers);
-        }
+        Tazpvp.getInstance().addPlayerToOnlinePlayersSB(p);
+        Tazpvp.getInstance().addOnlinePlayersToSB(p);
     }
 
     public void setNametag(Player player1, Player player2) {
