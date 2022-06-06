@@ -17,7 +17,7 @@ public class PerkGUI {
 
 
     public PerkGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, "Perk GUI"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "PERKS"));
         addItems();
         gui.open(p);
     }
