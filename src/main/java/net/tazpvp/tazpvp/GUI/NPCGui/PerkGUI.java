@@ -48,12 +48,12 @@ public class PerkGUI {
     public void addItems(){
         gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
 
-        createShopButton("Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Fat Perk", 1);
-        createShopButton("Excavator", 11, new ItemStack(Material.GOLDEN_PICKAXE), 7, ChatColor.GRAY + "Excavator Perk", 2);
-        createShopButton("Builder", 12, new ItemStack(Material.SCAFFOLDING), 4, ChatColor.GRAY + "Builder Perk", 3);
-        createShopButton("Archer", 13, new ItemStack(Material.BOW), 6, ChatColor.GRAY + "Archer Perk", 4);
-        createShopButton("Gobble", 14, new ItemStack(Material.CAKE), 7, ChatColor.GRAY + "Gobble Perk", 5);
-        createShopButton("Agility", 15, new ItemStack(Material.FEATHER), 5, ChatColor.GRAY + "Agility Perk", 6);
-        createShopButton("Tank", 16, new ItemStack(Material.NETHERITE_CHESTPLATE), 6, ChatColor.GRAY + "Tank Perk", 7);
+        createShopButton(ChatColor.YELLOW + "Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Gain an extra heart on kill.", 1);
+        createShopButton(ChatColor.BLUE + "Excavator", 11, new ItemStack(Material.GOLDEN_PICKAXE), 7, ChatColor.GRAY + "Gain Exp for mining.", 2);
+        createShopButton(ChatColor.LIGHT_PURPLE + "Builder", 12, new ItemStack(Material.SCAFFOLDING), 4, ChatColor.GRAY + "Chance to duplicate your placed block.", 3);
+        createShopButton( ChatColor.GREEN + "Archer", 13, new ItemStack(Material.BOW), 6, ChatColor.GRAY + "Archer Perk", 4);
+        createShopButton(ChatColor.AQUA + "Gobble", 14, new ItemStack(Material.CAKE), 7, ChatColor.GRAY + "Gobble Perk", 5);
+        createShopButton(ChatColor.RED + "Agility", 15, new ItemStack(Material.FEATHER), 5, ChatColor.GRAY + "Agility Perk", 6);
+        createShopButton(ChatColor.GOLD + "Tank", 16, new ItemStack(Material.NETHERITE_CHESTPLATE), 6, ChatColor.GRAY + "Tank Perk", 7);
     }
 }
