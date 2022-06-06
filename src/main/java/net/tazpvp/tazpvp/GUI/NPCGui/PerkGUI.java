@@ -15,6 +15,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class PerkGUI {
     private InventoryGUI gui;
     private Player p;
+    String prefix = ChatColor.DARK_PURPLE + "[NPC] Rigel: " + ChatColor.LIGHT_PURPLE;
 
 
     public PerkGUI(Player p) {
@@ -26,18 +27,20 @@ public class PerkGUI {
 
     public void createShopButton(String name, int slot, ItemStack item, int price, String description, String statsFileName){
         String isOwned = Tazpvp.perkManager.getStatsString(p, statsFileName)
-                ? ChatColor.GREEN + "Owned"
-                : ChatColor.RED + "Not Owned";
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GRAY + "Cost: " + ChatColor.AQUA + price + " Shards", ChatColor.GRAY + "Owned: " + isOwned);
+                ? ChatColor.GREEN + "Unlocked"
+                : ChatColor.RED + "Locked";
+        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GRAY + "Cost: " + ChatColor.AQUA + price + " Shards", isOwned);
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
-            if (Tazpvp.statsManager.getShards(p) >= price){
+            if (Tazpvp.perkManager.getStatsString(p, statsFileName)) {
+                p.sendMessage(prefix + "You already have this perk!");
+            } else if (Tazpvp.statsManager.getShards(p) >= price){
                 Tazpvp.perkManager.setStatsString(p, statsFileName, true);
                 Tazpvp.statsManager.addShards(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
-                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+                p.sendMessage(prefix + "You don't have enough money!");
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             }
         });
