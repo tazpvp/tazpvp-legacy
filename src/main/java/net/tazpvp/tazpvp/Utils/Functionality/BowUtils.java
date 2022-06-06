@@ -34,6 +34,9 @@ public class BowUtils {
     public static ItemStack[] getArmor(Player p) {
         ItemStack[] armor = new ItemStack[4];
         for (int i = 0; i < 4; i++) {
+            armor[i] = new ItemStack(Material.AIR);
+        }
+        for (int i = 0; i < 4; i++) {
             armor[i] = p.getInventory().getArmorContents()[i];
         }
         return armor;

@@ -62,7 +62,7 @@ public class BowGUI {
 
     public void doChecks(Player p, Enchantment ench) {
         if (BowUtils.getBow(p) == null) {
-            p.sendMessage(ChatColor.RED + "You do not have a bow!");
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have a bow!");
             p.closeInventory();
             return;
         }
@@ -71,19 +71,21 @@ public class BowGUI {
             BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
             p.closeInventory();
         } else {
-            p.sendMessage(ChatColor.RED + "You do not have enough shards!");
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have enough shards!");
             p.closeInventory();
         }
     }
 
     public void doChecksR(Player p, Enchantment ench, int level) {
-        BowUtils.getArmor(p);
+        if (BowUtils.getArmor(p)[1].getType() == Material.AIR) {
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have armor!");
+        }
         if (Tazpvp.statsManager.getShards(p) >= 1) {
             Tazpvp.statsManager.addShards(p, -1);
             BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
             p.closeInventory();
         } else {
-            p.sendMessage(ChatColor.RED + "You do not have enough shards!");
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have enough shards!");
             p.closeInventory();
         }
     }
