@@ -54,7 +54,7 @@ public class PerkUtils {
         }
     }
 
-    public static tankPerk(Player p) {
+    public static void tankPerk(Player p) {
         if (!Tazpvp.perkManager.getTankPerk(p)) return;
         if (rand.nextInt(10) > 6) {
             p.setAbsorptionAmount(4);
