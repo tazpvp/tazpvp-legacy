@@ -12,39 +12,39 @@ import java.util.Map;
 
 public enum Items {
     // common swords
-    WooKni(ChatColor.WHITE + "Wooden Knife", Material.IRON_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Simple but effective."),
-    SteCut(ChatColor.WHITE + "Steel Cutlass", Material.WOODEN_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 5, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Looking for something durable?."),
+    WooKni(ChatColor.WHITE + "Wooden Knife", Material.WOODEN_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Simple but effective."),
+    SteCut(ChatColor.WHITE + "Steel Cutlass", Material.IRON_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 5, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Looking for something durable?."),
     KeeDag(ChatColor.WHITE + "Keen Dagger", Material.STONE_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 13, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Basic but precise."),
-    PriSha(ChatColor.WHITE + "Prison Shank", Material.STONE_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "a Shank stolen directaly from a shitty prisons server."),
-    ShaCle(ChatColor.WHITE + "Sharp Cleaver", Material.WOODEN_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Best of the worst."),
+    PriSha(ChatColor.WHITE + "Prison Shank", Material.WOODEN_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "a Shank stolen directaly from a shitty prisons server."),
+    ShaCle(ChatColor.WHITE + "Sharp Cleaver", Material.IRON_SWORD, 1, 1, "C", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Best of the worst."),
 
     // uncommon swords
-    HeaDulKni(ChatColor.GREEN + "Heavenly Dull Knife", Material.IRON_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "It's heavy and useless, but it's a knife."),
-    LigSteMac(ChatColor.GREEN + "Light Steel Machete", Material.STONE_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Privileged machete."),
-    GolSwiBla(ChatColor.GREEN + "Golden Switchblade", Material.DIAMOND_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Speedy and thin."),
-    DarShe(ChatColor.GREEN + "Darth Shear", Material.WOODEN_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Shear darth vader."),
-    ThoSti(ChatColor.GREEN + "Thorn Striker", Material.WOODEN_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Strike the enemy with your thorns."),
-    CopJac(ChatColor.GREEN + "Copper Jackknife", Material.IRON_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A copjac."),
+    HeaDulKni(ChatColor.GREEN + "Heavenly Dull Knife", Material.GOLDEN_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "It's heavy and useless, but it's a knife."),
+    LigSteMac(ChatColor.GREEN + "Light Steel Machete", Material.IRON_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Privileged machete."),
+    GolSwiBla(ChatColor.GREEN + "Golden Switchblade", Material.GOLDEN_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Speedy and thin."),
+    DarShe(ChatColor.GREEN + "Darth Shear", Material.NETHERITE_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Shear darth vader."),
+    ThoSti(ChatColor.GREEN + "Thorn Striker", Material.STONE_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Strike the enemy with your thorns."),
+    CopJac(ChatColor.GREEN + "Copper Jackknife", Material.WOODEN_SWORD, 1, 1, "U", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A copjac."),
 
     // rare swords
-    WinRip(ChatColor.AQUA + "Wind Ripper", Material.WOODEN_SWORD, 3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Rips the wind from your massive farts."),
-    WitBla(ChatColor.AQUA + "Withering Blade", Material.STONE_SWORD, 1, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A double edged blade??"),
+    WinRip(ChatColor.AQUA + "Wind Ripper", Material.DIAMOND_SWORD, 3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Rips the wind from your massive farts."),
+    WitBla(ChatColor.AQUA + "Withering Blade", Material.NETHERITE_SWORD, 1, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A double edged blade??"),
     ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.STONE_SWORD, 1, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 9, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "As furious as thunder and short lmfao."),
     StiCla(ChatColor.AQUA + "Stinger Claw", Material.DIAMOND_SWORD, 3, 1, "R", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DAMAGE_ALL, 1);
     }}, ChatColor.GRAY + "Sting a cats claw or smt idfk."),
 
     // epic swords
-    BlaRaz(ChatColor.RED + "Blackiron Razor", Material.WOODEN_SWORD, 1, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 6, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A Iron razor, but illegal."),
-    BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.WOODEN_SWORD, 1, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Viagra."),
+    BlaRaz(ChatColor.RED + "Blackiron Razor", Material.NETHERITE_SWORD, 1, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 6, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A Iron razor, but illegal."),
+    BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.GOLDEN_SWORD, 1, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Viagra."),
     InfGamDag(ChatColor.RED + "Inferno Gambit Dagger", Material.GOLDEN_SWORD, 5, 1, "E", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.FIRE_ASPECT, 2);
     }}, ChatColor.GRAY + "Firey dagger straight from the gambit."),
 
     // legendary swords
-    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.WOODEN_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the ivoery of a dwagon uwu."),
-    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.WOODEN_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 7, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "I dont even know if those are words."),
-    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge Sword", Material.STONE_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Split atoms with this edgy sword.")
+    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 0, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the ivoery of a dwagon uwu."),
+    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 7, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "I dont even know if those are words."),
+    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge Sword", Material.DIAMOND_SWORD, 1, 1, "L", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Split atoms with this edgy sword.")
     ;
 
     private final String name;
