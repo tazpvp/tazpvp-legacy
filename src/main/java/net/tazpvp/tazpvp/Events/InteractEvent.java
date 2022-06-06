@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class InteractEvent implements Listener {
     @EventHandler
@@ -25,7 +26,12 @@ public class InteractEvent implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
             if (b.getType() == Material.RESPAWN_ANCHOR) {
-                new UnlockSwordGUI(p);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        new UnlockSwordGUI(p);
+                    }
+                }.runTaskLater(Tazpvp.getInstance(), 2L);
             }
         } else {
             runCustomItem(e.getPlayer());
