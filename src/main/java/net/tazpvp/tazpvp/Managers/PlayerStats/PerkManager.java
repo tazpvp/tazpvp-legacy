@@ -58,6 +58,14 @@ public class PerkManager {
         if (getTankPerk(p)) { p.sendMessage(ChatColor.RED + "You already have this perk!"); return;}
         statsFile.set(p.getUniqueId().toString()+".tankPerk", type); }
 
+    public void setStatsString(Player p, String s, boolean value) {
+        statsFile.set(p.getUniqueId().toString()+"."+s, value);
+    }
+
+    public boolean getStatsString(Player p, String s) {
+        return statsFile.getBoolean(p.getUniqueId().toString()+"."+s);
+    }
+
     public void saveStats(){
         try {
             statsFile.save(file);
