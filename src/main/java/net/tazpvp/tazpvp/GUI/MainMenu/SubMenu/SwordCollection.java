@@ -30,7 +30,7 @@ public class SwordCollection {
             List<Items> items = pw.getSwords();
             ItemStack itemStack = ItemBuilder.maekItem(item);;
             List<String> lore = new java.util.ArrayList<>(List.of(item.getLore()));
-            String addtxt = items.contains(item) ? ChatColor.GREEN + "Owned" : ChatColor.RED + "Not Owned";
+            String addtxt = items.contains(item) ? ChatColor.GREEN + "Unlocked" : ChatColor.RED + "Locked";
             lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
             lore.add(addtxt);
             String[] split = lore.toString().split(", ");
