@@ -12,10 +12,14 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import java.awt.*;
+
 import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 
 public class ServerStore {
     private final InventoryGUI gui;
+    TextComponent link = new TextComponent("Click");
+    link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://store.tazpvp.net/"));
     public ServerStore(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, ChatColor.BLUE + "" + ChatColor.BOLD + "STORE " + ChatColor.DARK_RED + "25% SALE"));
         setitems();
@@ -87,6 +91,8 @@ public class ServerStore {
         ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
+            p.spigot().sendMessage(link);
+
         });
         gui.addButton(22, CREDITS);
 
