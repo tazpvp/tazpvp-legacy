@@ -28,14 +28,14 @@ public class PerkUtils {
 
     public static void archerPerk(Player p) {
         if (!Tazpvp.perkManager.getArcherPerk(p)) return;
-        if (rand.nextInt(10) > 6) {
+        if (rand.nextInt(11) <= 1) {
             p.getInventory().addItem(new ItemBuilder(Material.ARROW));
         }
     }
 
     public static void builderPerk(Player p, ItemStack item) {
         if (!Tazpvp.perkManager.getBuilderPerk(p)) return;
-        if (rand.nextInt(10) > 6) {
+        if (rand.nextInt(11) <= 1) {
             p.getInventory().addItem(item);
         }
     }
@@ -47,12 +47,12 @@ public class PerkUtils {
 
     public static void agilityPerk(Player p) {
         if (!Tazpvp.perkManager.getAgilityPerk(p)) return;
-        p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 10, 1));
+        p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 5, 1));
     }
 
     public static void tankPerk(Player p) {
         if (!Tazpvp.perkManager.getTankPerk(p)) return;
-        if (rand.nextInt(10) > 6) {
+        if (rand.nextInt(11) <= 1) {
             p.setAbsorptionAmount(4);
         }
     }
