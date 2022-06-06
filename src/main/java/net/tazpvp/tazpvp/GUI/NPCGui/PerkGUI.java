@@ -23,13 +23,11 @@ public class PerkGUI {
     }
 
     public void createShopButton(String name, int slot, ItemStack item, int price, String description, int id){
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GRAY + "Cost: " + ChatColor.AQUA + price + "Shards");
+        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GRAY + "Cost: " + ChatColor.AQUA + price + " Shards");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.statsManager.getShards(p) >= price){
                 Tazpvp.statsManager.addShards(p, -price);
-                ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
-
                 if (id == 1) { Tazpvp.perkManager.setFatPerk(p, true);
                 } else if (id == 2) { Tazpvp.perkManager.setExcavatorPerk(p, true);
                 } else if (id == 3) { Tazpvp.perkManager.setBuilderPerk(p, true);
@@ -37,7 +35,7 @@ public class PerkGUI {
                 } else if (id == 5) { Tazpvp.perkManager.setGobblePerk(p, true);
                 } else if (id == 6) { Tazpvp.perkManager.setAgilityPerk(p, true);
                 } else if (id == 7) { Tazpvp.perkManager.setTankPerk(p, true); }
-
+                ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
                 p.sendMessage(ChatColor.RED + "You don't have enough money!");
@@ -50,12 +48,12 @@ public class PerkGUI {
     public void addItems(){
         gui.fill(0, 26, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
 
-        createShopButton("Fat", 11, new ItemStack(Material.SLIME_BALL), 5, "Fat Perk", 1);
-        createShopButton("Excavator", 15, new ItemStack(Material.GOLDEN_PICKAXE), 7, "Excavator Perk", 2);
-        createShopButton("Builder", 19, new ItemStack(Material.SCAFFOLDING), 4, "Builder Perk", 3);
-        createShopButton("Archer", 23, new ItemStack(Material.BOW), 6, "Archer Perk", 4);
-        createShopButton("Gobble", 27, new ItemStack(Material.CAKE), 7, "Gobble Perk", 5);
-        createShopButton("Agility", 31, new ItemStack(Material.FEATHER), 5, "Agility Perk", 6);
-        createShopButton("Tank", 35, new ItemStack(Material.NETHERITE_CHESTPLATE), 6, "Tank Perk", 7);
+        createShopButton("Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Fat Perk", 1);
+        createShopButton("Excavator", 11, new ItemStack(Material.GOLDEN_PICKAXE), 7, ChatColor.GRAY + "Excavator Perk", 2);
+        createShopButton("Builder", 12, new ItemStack(Material.SCAFFOLDING), 4, ChatColor.GRAY + "Builder Perk", 3);
+        createShopButton("Archer", 13, new ItemStack(Material.BOW), 6, ChatColor.GRAY + "Archer Perk", 4);
+        createShopButton("Gobble", 14, new ItemStack(Material.CAKE), 7, ChatColor.GRAY + "Gobble Perk", 5);
+        createShopButton("Agility", 15, new ItemStack(Material.FEATHER), 5, ChatColor.GRAY + "Agility Perk", 6);
+        createShopButton("Tank", 16, new ItemStack(Material.NETHERITE_CHESTPLATE), 6, ChatColor.GRAY + "Tank Perk", 7);
     }
 }
