@@ -1,17 +1,19 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.minecraft.world.item.ItemStack;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.builderPerk;
 
 public class BlockPlaceEvent implements Listener {
     @EventHandler
@@ -29,6 +31,10 @@ public class BlockPlaceEvent implements Listener {
             Block b = event.getBlock();
             if (!Tazpvp.isRestarting) {
                 Material blockType = event.getBlockPlaced().getType();
+                ItemStack blockItem = new ItemStack(blockType, 1);
+
+                builderPerk(p, blockItem);
+
                 ArrayList<Material> unreq = new ArrayList<>();
                 unreq.add(Material.DEEPSLATE_GOLD_ORE);
                 unreq.add(Material.DEEPSLATE_REDSTONE_ORE);

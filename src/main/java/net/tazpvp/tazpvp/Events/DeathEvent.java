@@ -29,6 +29,7 @@ import java.util.Random;
 import java.util.WeakHashMap;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.fatPerk;
+import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.gobblePerk;
 
 public class DeathEvent implements Listener {
     public WeakHashMap<Player, Long> cooldowns = new WeakHashMap<Player, Long>();
@@ -199,6 +200,7 @@ public class DeathEvent implements Listener {
                 d.setHealth(health + 4);
             }
             fatPerk(d);
+            gobblePerk(d);
 
 
             if (Tazpvp.statsManager.checkLevelUp(d)) {
