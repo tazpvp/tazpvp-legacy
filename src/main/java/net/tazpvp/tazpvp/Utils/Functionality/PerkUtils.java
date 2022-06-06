@@ -43,7 +43,21 @@ public class PerkUtils {
     public static void gobblePerk(Player p) {
         if (!Tazpvp.perkManager.getGobblePerk(p)) return;
         if (rand.nextInt(10) > 6) {
-            p.getInventory().addItem(new ItemBuilder(Material.GOLDEN_APPLE).setAmount(1).build());
+            p.setFoodLevel(20);
+        }
+    }
+
+    public static void agilityPerk(Player p) {
+        if (!Tazpvp.perkManager.getAgilityPerk(p)) return;
+        if (rand.nextInt(10) > 6) {
+            p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 10, 1));
+        }
+    }
+
+    public static tankPerk(Player p) {
+        if (!Tazpvp.perkManager.getTankPerk(p)) return;
+        if (rand.nextInt(10) > 6) {
+            p.setAbsorptionAmount(4);
         }
     }
 
