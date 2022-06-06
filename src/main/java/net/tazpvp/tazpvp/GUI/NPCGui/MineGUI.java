@@ -36,7 +36,7 @@ public class MineGUI {
 
         ItemStack pickaxe = getPickaxe(p);
         if (pickaxe == null) {
-            p.sendMessage(ChatColor.RED + "You do not have a pickaxe in your inventory!");
+            p.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You do not have a pickaxe in your inventory!");
             p.closeInventory();
             return;
         }
@@ -66,12 +66,12 @@ public class MineGUI {
                     } else if (getPickaxe(pl).getType() == Material.GOLDEN_PICKAXE) {
                         updatePickaxeType(pl, Material.DIAMOND_PICKAXE);
                     } else if (getPickaxe(pl).getType() == Material.DIAMOND_PICKAXE) {
-                        pl.sendMessage(ChatColor.RED + "You already have the best pickaxe!");
+                        pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You already have the best pickaxe!");
                     } else {
-                        pl.sendMessage(ChatColor.RED + "You already have the best pickaxe!");
+                        pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You already have the best pickaxe!");
                     }
                 } else {
-                    pl.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You don't have enough shards to upgrade your pickaxe.");
+                    pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You don't have enough shards to upgrade your pickaxe.");
                     pl.closeInventory();
                     pl.playSound(pl.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
                 }
