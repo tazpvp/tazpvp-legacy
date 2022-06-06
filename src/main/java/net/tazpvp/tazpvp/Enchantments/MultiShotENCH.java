@@ -1,11 +1,7 @@
 package net.tazpvp.tazpvp.Enchantments;
 
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import redempt.redlib.enchants.CustomEnchant;
 import redempt.redlib.enchants.trigger.EnchantTrigger;
 

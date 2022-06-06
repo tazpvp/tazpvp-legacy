@@ -1,15 +1,12 @@
 package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import com.google.common.collect.Lists;
-import net.milkbowl.vault.chat.Chat;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -20,7 +17,6 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MineGUI {
     private InventoryGUI gui;

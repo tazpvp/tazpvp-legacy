@@ -8,8 +8,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
-import redempt.redlib.inventorygui.ItemButton;
-import redempt.redlib.itemutils.ItemBuilder;
 
 public class OpenSlotGUI {
     private InventoryGUI gui;

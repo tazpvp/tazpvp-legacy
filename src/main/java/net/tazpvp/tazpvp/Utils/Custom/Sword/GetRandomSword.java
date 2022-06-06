@@ -1,7 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

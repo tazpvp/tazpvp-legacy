@@ -1,7 +1,10 @@
 package net.tazpvp.tazpvp.Managers.PlayerStats;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

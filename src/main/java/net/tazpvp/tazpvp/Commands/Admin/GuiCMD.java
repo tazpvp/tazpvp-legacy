@@ -5,11 +5,11 @@ import net.tazpvp.tazpvp.GUI.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.PerkGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.GUI.Template.MutliGuiPrototype.TestOne;
 import net.tazpvp.tazpvp.GUI.Template.OpenSlotGUI;
-import net.tazpvp.tazpvp.unused.FlameVilGUI;
-import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.GUI.Template.TestGUI;
+import net.tazpvp.tazpvp.unused.FlameVilGUI;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 

@@ -2,13 +2,10 @@ package net.tazpvp.tazpvp.Utils.Ranks;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.ArrayList;
 import java.util.Arrays;

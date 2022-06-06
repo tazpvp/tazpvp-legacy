@@ -1,10 +1,8 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
 import org.apache.commons.io.IOUtils;
-import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -16,7 +14,6 @@ import org.json.simple.JSONValue;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 
 public class PlayerUtils {
     public static void healPlayer(Player p) {

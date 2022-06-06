@@ -2,7 +2,6 @@ package net.tazpvp.tazpvp.GUI.MainMenu;
 
 import net.tazpvp.tazpvp.Achievements.Achievements;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

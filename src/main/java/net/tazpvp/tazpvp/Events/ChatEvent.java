@@ -1,8 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

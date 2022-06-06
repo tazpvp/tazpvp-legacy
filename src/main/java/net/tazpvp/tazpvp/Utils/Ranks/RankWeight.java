@@ -1,7 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Ranks;
 
-import javax.annotation.Nullable;
-
 public enum RankWeight {
     VIP("VIP", 1),
     MVP("MVP", 2),

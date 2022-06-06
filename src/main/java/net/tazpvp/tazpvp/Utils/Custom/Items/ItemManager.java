@@ -1,7 +1,8 @@
 package net.tazpvp.tazpvp.Utils.Custom.Items;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Items.items.*;
+import net.tazpvp.tazpvp.Utils.Custom.Items.items.Agility;
+import net.tazpvp.tazpvp.Utils.Custom.Items.items.Extinguish;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;

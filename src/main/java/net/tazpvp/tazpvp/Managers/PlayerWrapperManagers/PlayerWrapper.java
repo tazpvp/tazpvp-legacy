@@ -1,9 +1,7 @@
 package net.tazpvp.tazpvp.Managers.PlayerWrapperManagers;
 
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 import java.io.Serializable;
 import java.util.ArrayList;

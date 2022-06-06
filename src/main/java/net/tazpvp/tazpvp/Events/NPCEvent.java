@@ -1,13 +1,13 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
-import net.tazpvp.tazpvp.GUI.NPCGui.SelectGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.RebirthGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.SelectGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
+import net.tazpvp.tazpvp.NPCS.BubNPC;
 import net.tazpvp.tazpvp.NPCS.RigelNPC;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.NPCS.BubNPC;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;

@@ -4,7 +4,6 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.Random;

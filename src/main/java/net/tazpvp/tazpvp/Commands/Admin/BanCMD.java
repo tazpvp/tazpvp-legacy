@@ -13,8 +13,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.commandmanager.CommandHook;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class BanCMD implements CommandListener {
     @CommandHook("ban")
