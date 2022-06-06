@@ -50,7 +50,7 @@ public class RebirthGUI {
         });
         gui.addButton(13, perks);
 
-        ItemButton home = ItemButton.create(new ItemBuilder(Material.DARK_OAK_DOOR).setName("go home").setLore(ChatColor.GREEN + "Click to go to spawn"), e -> {
+        ItemButton home = ItemButton.create(new ItemBuilder(Material.DARK_OAK_DOOR).setName(ChatColor.RED + "" + ChatColor.BOLD + "LEAVE").setLore(ChatColor.GRAY + "Return home."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.teleport(configUtils.spawn);
             p.sendMessage(prefix + "Welcome back.");
