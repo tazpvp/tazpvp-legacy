@@ -30,6 +30,18 @@ public class PerkManager {
     public boolean getArcherPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".archerPerk"); }
     public void setArcherPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".archerPerk", type); }
 
+    public boolean getBuilderPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".builderPerk"); }
+    public void setBuilderPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".builderPerk", type); }
+
+    public boolean getGobblePerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".gobblePerk"); }
+    public void setGobblePerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".gobblePerk", type); }
+
+    public boolean getAgilityPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".agilityPerk"); }
+    public void setAgilityPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".agilityPerk", type); }
+
+    public boolean getTankPerk(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".tankPerk"); }
+    public void setTankPerk(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".tankPerk", type); }
+
     public void saveStats(){
         try {
             statsFile.save(file);

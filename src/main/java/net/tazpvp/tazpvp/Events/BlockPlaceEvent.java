@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.minecraft.world.item.ItemStack;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.block.Block;

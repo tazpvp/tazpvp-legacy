@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Utils.Functionality;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
@@ -29,6 +30,20 @@ public class PerkUtils {
         if (!Tazpvp.perkManager.getArcherPerk(p)) return;
         if (rand.nextInt(10) > 6) {
             p.getInventory().addItem(new ItemBuilder(Material.ARROW));
+        }
+    }
+
+    public static void builderPerk(Player p, ItemStack item) {
+        if (!Tazpvp.perkManager.getBuilderPerk(p)) return;
+        if (rand.nextInt(10) > 6) {
+            p.getInventory().addItem(item);
+        }
+    }
+
+    public static void gobblePerk(Player p) {
+        if (!Tazpvp.perkManager.getGobblePerk(p)) return;
+        if (rand.nextInt(10) > 6) {
+            p.getInventory().addItem(new ItemBuilder(Material.GOLDEN_APPLE).setAmount(1).build());
         }
     }
 
