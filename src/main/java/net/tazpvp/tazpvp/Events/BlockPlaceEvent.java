@@ -21,7 +21,7 @@ public class BlockPlaceEvent implements Listener {
 
         if (p.getGameMode() == GameMode.SURVIVAL) {
             if (p.getWorld().getName().equals("arena")) {
-                if (event.getBlock().getLocation().distance(radius) > 47 || event.getBlock().getLocation().getY() <= 95) {
+                if (event.getBlock().getLocation().distance(radius) > 50 || event.getBlock().getLocation().getY() <= 95) {
                     event.setCancelled(true);
                 }
             }

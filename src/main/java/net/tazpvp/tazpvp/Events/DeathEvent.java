@@ -16,6 +16,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -35,6 +36,7 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
+            if (p.getLocation().distance(configUtils.spawn) < 25) e.setCancelled(true);
             double fd = 0;
             if (e instanceof EntityDamageByEntityEvent) {
                 if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
@@ -213,6 +215,7 @@ public class DeathEvent implements Listener {
 
         p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
         p.setGameMode(GameMode.SPECTATOR);
+        p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), true));
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -223,9 +226,12 @@ public class DeathEvent implements Listener {
                     p.teleport(configUtils.spawn);
                     CombatLogManager.combatLog.remove(p.getUniqueId());
                 }
+                p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), false));
                 p.setGameMode(GameMode.SURVIVAL);
                 p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
     }
+
+
 }
