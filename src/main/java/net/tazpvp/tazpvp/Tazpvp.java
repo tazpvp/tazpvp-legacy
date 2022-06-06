@@ -325,7 +325,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static void sendBaseTablist(Player p) {
         p.setPlayerListHeaderFooter(
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP.NET\n",
-                ChatColor.GOLD + "                                 \nTPS: " + ChatColor.YELLOW + "20" + "\n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
+                ChatColor.GOLD + "                                 \n" + ChatColor.AQUA + Bukkit.getOnlinePlayers().size() + ChatColor.GRAY + "/" + ChatColor.DARK_AQUA + Bukkit.getMaxPlayers()
         );
 
     }
