@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import com.google.common.collect.Lists;
+import net.milkbowl.vault.chat.Chat;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
@@ -25,7 +26,7 @@ public class MineGUI {
     private InventoryGUI gui;
 
     public MineGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "PICKAXE UPGRADES"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "PICKAXE SHOP"));
         createButton(p);
         gui.open(p);
     }
@@ -40,22 +41,22 @@ public class MineGUI {
             return;
         }
 
-        ItemButton button = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Auto Smelt I").setLore(ChatColor.GRAY + "1 coins"), e -> {
-            updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Auto Smelt I", 1);
+        ItemButton button = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.DARK_AQUA + "Auto Smelt").setLore(ChatColor.GRAY + "Automatically refine ores.", ChatColor.GRAY + "Cost: " + ChatColor.GOLD + "178 Coins"), e -> {
+            updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Auto Smelt I", 178);
         });
 
 
-        ItemButton button2 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.GRAY + "Double Ores I").setLore(ChatColor.GRAY + "1 coins"), e -> {
-            updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Double Ores I", 1);
+        ItemButton button2 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.DARK_AQUA + "Double Ores").setLore(ChatColor.GRAY + "2x ores you mine.", ChatColor.GRAY + "Cost: " + ChatColor.GOLD + "317 Coins"), e -> {
+            updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Double Ores I", 317);
         });
 
 
-        ItemBuilder pickaxeBuilder = new ItemBuilder(pickaxe).addItemFlags(ItemFlag.HIDE_ATTRIBUTES).setLore(ChatColor.GRAY + "Click to upgrade your pickaxe.", "1 Shard");
+        ItemBuilder pickaxeBuilder = new ItemBuilder(pickaxe).addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_UNBREAKABLE).setLore(ChatColor.GRAY + "Enhance your pickaxe material.", ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards");
 
         ItemButton button3 = ItemButton.create(pickaxeBuilder, e -> {
             if (e.getWhoClicked() instanceof Player pl) {
-                if (Tazpvp.statsManager.getShards(pl) >= 1) {
-                    Tazpvp.statsManager.addShards(pl, -1);
+                if (Tazpvp.statsManager.getShards(pl) >= 4) {
+                    Tazpvp.statsManager.addShards(pl, -4);
                     if (getPickaxe(pl).getType() == Material.WOODEN_PICKAXE) {
                         updatePickaxeType(pl, Material.STONE_PICKAXE);
                     } else if (getPickaxe(pl).getType() == Material.STONE_PICKAXE) {
