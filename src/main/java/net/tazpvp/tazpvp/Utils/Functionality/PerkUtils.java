@@ -42,16 +42,12 @@ public class PerkUtils {
 
     public static void gobblePerk(Player p) {
         if (!Tazpvp.perkManager.getGobblePerk(p)) return;
-        if (rand.nextInt(10) > 6) {
-            p.setFoodLevel(20);
-        }
+        p.setFoodLevel(20);
     }
 
     public static void agilityPerk(Player p) {
         if (!Tazpvp.perkManager.getAgilityPerk(p)) return;
-        if (rand.nextInt(10) > 6) {
-            p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 10, 1));
-        }
+        p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 10, 1));
     }
 
     public static void tankPerk(Player p) {
