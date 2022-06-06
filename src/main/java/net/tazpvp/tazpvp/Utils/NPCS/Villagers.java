@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.NPCS;
+package net.tazpvp.tazpvp.Utils.NPCS;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

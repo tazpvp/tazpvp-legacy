@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Passive;
+package net.tazpvp.tazpvp.Utils.Passive;
 
 import org.bukkit.*;
 import org.bukkit.entity.Item;

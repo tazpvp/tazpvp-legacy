@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.NPCS;
+package net.tazpvp.tazpvp.Utils.NPCS;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;

@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.Enchantments;
+package net.tazpvp.tazpvp.unused.Enchantments;
 
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
