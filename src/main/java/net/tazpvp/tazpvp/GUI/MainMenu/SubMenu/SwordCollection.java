@@ -31,7 +31,9 @@ public class SwordCollection {
             ItemStack itemStack = ItemBuilder.maekItem(item);;
             List<String> lore = new java.util.ArrayList<>(List.of(item.getLore()));
             String addtxt = items.contains(item) ? ChatColor.GREEN + "Unlocked" : ChatColor.RED + "Locked";
-            lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
+
+            lore.add(ChatColor.DARK_AQUA + "Damage: " + ChatColor.AQUA + item.getDamage());
+            lore.add(item.getRarity());
             lore.add(addtxt);
             String[] split = lore.toString().split(", ");
             split[0] = split[0].replace("[", "");
