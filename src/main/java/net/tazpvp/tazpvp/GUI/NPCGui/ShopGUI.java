@@ -25,7 +25,7 @@ public class ShopGUI {
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
-                p.sendMessage(ChatColor.RED + "You do not have permission to buy this item.");
+                p.sendMessage(ChatColor.YELLOW + "[Maxim]" + ChatColor.WHITE + " You do not have permission to buy this item.");
                 return;
             }
             if (Tazpvp.statsManager.getCoins(p) >= price){
@@ -39,7 +39,7 @@ public class ShopGUI {
                 p.getInventory().addItem(itemstack);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
-                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+                p.sendMessage(ChatColor.YELLOW + "[Maxim]" + ChatColor.WHITE + " You don't have enough money!");
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             }
         });

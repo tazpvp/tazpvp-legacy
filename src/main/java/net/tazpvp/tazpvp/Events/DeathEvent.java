@@ -36,9 +36,11 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            if (p.getLocation().distance(configUtils.spawn) < 25) {
-                e.setCancelled(true);
-                return;
+            if (p.getWorld().getName().equals("arena")) {
+                if (p.getLocation().distance(configUtils.spawn) < 25) {
+                    e.setCancelled(true);
+                    return;
+                }
             }
             double fd = 0;
             if (e instanceof EntityDamageByEntityEvent) {

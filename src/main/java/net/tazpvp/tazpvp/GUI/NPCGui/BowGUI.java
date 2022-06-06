@@ -71,7 +71,7 @@ public class BowGUI {
             BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
             p.closeInventory();
         } else {
-            p.sendMessage(ChatColor.RED + "You do not have enough shards!");
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have enough shards!");
             p.closeInventory();
         }
     }
@@ -85,7 +85,7 @@ public class BowGUI {
             BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
             p.closeInventory();
         } else {
-            p.sendMessage(ChatColor.RED + "You do not have enough shards!");
+            p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have enough shards!");
             p.closeInventory();
         }
     }
