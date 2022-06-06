@@ -36,7 +36,10 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            if (p.getLocation().distance(configUtils.spawn) < 25) e.setCancelled(true);
+            if (p.getLocation().distance(configUtils.spawn) < 25) {
+                e.setCancelled(true);
+                return;
+            }
             double fd = 0;
             if (e instanceof EntityDamageByEntityEvent) {
                 if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
@@ -88,6 +91,7 @@ public class DeathEvent implements Listener {
                 if (e instanceof EntityDamageByEntityEvent) {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+
                         CombatLogManager.combatLog.put(p.getUniqueId(), 10L);
                         CombatLogManager.combatLog.put(d.getUniqueId(), 10L);
 
