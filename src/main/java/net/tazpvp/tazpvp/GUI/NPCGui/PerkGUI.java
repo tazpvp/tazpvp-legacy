@@ -19,7 +19,7 @@ public class PerkGUI {
 
 
     public PerkGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "PERKS"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "PERKS"));
         this.p = p;
         addItems();
         gui.open(p);
