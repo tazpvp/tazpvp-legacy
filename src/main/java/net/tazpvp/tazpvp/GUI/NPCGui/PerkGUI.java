@@ -27,7 +27,6 @@ public class PerkGUI {
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.statsManager.getShards(p) >= price){
-                Tazpvp.statsManager.addShards(p, -price);
                 if (id == 1) { Tazpvp.perkManager.setFatPerk(p, true);
                 } else if (id == 2) { Tazpvp.perkManager.setExcavatorPerk(p, true);
                 } else if (id == 3) { Tazpvp.perkManager.setBuilderPerk(p, true);
@@ -35,6 +34,7 @@ public class PerkGUI {
                 } else if (id == 5) { Tazpvp.perkManager.setGobblePerk(p, true);
                 } else if (id == 6) { Tazpvp.perkManager.setAgilityPerk(p, true);
                 } else if (id == 7) { Tazpvp.perkManager.setTankPerk(p, true); }
+                Tazpvp.statsManager.addShards(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
