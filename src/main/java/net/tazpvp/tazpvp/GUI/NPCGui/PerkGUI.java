@@ -29,7 +29,7 @@ public class PerkGUI {
         String isOwned = Tazpvp.perkManager.getStatsString(p, statsFileName)
                 ? ChatColor.GREEN + "Unlocked"
                 : ChatColor.RED + "Locked";
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GRAY + "Cost: " + ChatColor.AQUA + price + " Shards", isOwned);
+        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.DARK_AQUA + "Cost: " + ChatColor.AQUA + price + " Shards", isOwned);
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.perkManager.getStatsString(p, statsFileName)) {
