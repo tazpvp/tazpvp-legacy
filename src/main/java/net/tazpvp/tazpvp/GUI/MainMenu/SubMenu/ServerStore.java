@@ -1,5 +1,7 @@
 package net.tazpvp.tazpvp.GUI.MainMenu.SubMenu;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
 import net.tazpvp.tazpvp.Utils.Ranks.RenameSwordUtil;
@@ -18,8 +20,9 @@ import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 
 public class ServerStore {
     private final InventoryGUI gui;
-    TextComponent link = new TextComponent("Click");
-    link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://store.tazpvp.net/"));
+    TextComponent link = new TextComponent(ChatColor.GREEN + "" + ChatColor.BOLD + "STORE LINK: " + ChatColor.WHITE + "" + ChatColor.BOLD + "CLICK HERE");
+    link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://store.tazpvp.net"));
+
     public ServerStore(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, ChatColor.BLUE + "" + ChatColor.BOLD + "STORE " + ChatColor.DARK_RED + "25% SALE"));
         setitems();
