@@ -22,7 +22,7 @@ public class MainGUI {
     }
 
     public void setitems(){
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(""));
         ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.AQUA + "" + ChatColor.BOLD + "PROGRESS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
