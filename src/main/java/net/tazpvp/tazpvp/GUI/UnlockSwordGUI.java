@@ -82,22 +82,18 @@ public class UnlockSwordGUI {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
                     Items unlockedItem = GetRandomSword.getRandomSword();
-                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 5, 5);
+                    p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
-                    if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                        p.sendMessage("");
-                    } else {
+                    p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 100, 10);
+                    p.sendMessage("");
+                    p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                    p.sendMessage("");
+                    if (!Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
                         List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         swords.add(unlockedItem);
                         Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                        p.sendMessage("");
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
-
                         List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         if (swordUnlocked.size() >= Items.values().length) {
                             UnlockAchievement.unlockCollectEmAll(p);
