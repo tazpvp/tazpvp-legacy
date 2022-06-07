@@ -25,9 +25,9 @@ public class ItemBuilder {
         Material material = item.getMaterial();
 
         lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
-
+        lore.add("");
         lore.add(item.getRarity());
-
+        lore.add("");
         String[] split = lore.toString().split(", ");
         split[0] = split[0].replace("[", "");
         split[split.length - 1] = split[split.length - 1].replace("]", "");
