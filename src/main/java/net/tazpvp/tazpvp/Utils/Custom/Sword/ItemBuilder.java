@@ -24,10 +24,8 @@ public class ItemBuilder {
         List<String> lore = new ArrayList<>(List.of(item.getLore()));
         Material material = item.getMaterial();
 
-        lore.add(ChatColor.RED + "" + ChatColor.BOLD + "Damage: " + item.getDamage());
         lore.add("");
-        lore.add(item.getRarity());
-        lore.add("");
+        lore.add(ChatColor.DARK_AQUA + "Damage: " + ChatColor.AQUA + item.getDamage());
         String[] split = lore.toString().split(", ");
         split[0] = split[0].replace("[", "");
         split[split.length - 1] = split[split.length - 1].replace("]", "");
