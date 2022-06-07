@@ -19,7 +19,7 @@ public enum Items {
     ShaCle(ChatColor.WHITE + "Sharp Cleaver", Material.IRON_SWORD, 4, 1, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 5, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Best of the worst."),
 
     // uncommon swords
-    HeaDulKni(ChatColor.GREEN + "Heavenly Dull Knife", Material.GOLDEN_SWORD, 3, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 6, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "feels amazing in your hand, but is quite dull."),
+    HeaDulKni(ChatColor.GREEN + "Heavenly Dull Knife", Material.GOLDEN_SWORD, 3, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 6, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "feels amazing in your hand but is quite dull."),
     LigSteMac(ChatColor.GREEN + "Light Steel Machete", Material.IRON_SWORD, 4, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 7, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Easy to handle"),
     GolSwiBla(ChatColor.GREEN + "Golden Switchblade", Material.GOLDEN_SWORD, 4, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Speedy and thin."),
     DarShe(ChatColor.GREEN + "Darth Shear", Material.NETHERITE_SWORD, 5, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 9, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Am relic of the dark side."),
@@ -39,7 +39,7 @@ public enum Items {
     BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.GOLDEN_SWORD, 6, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
     InfGamDag(ChatColor.RED + "Inferno Gambit Dagger", Material.GOLDEN_SWORD, 5, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.FIRE_ASPECT, 2);
-    }}, ChatColor.GRAY + "Once used, the enemy will surely die, right?"),
+    }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
 
     // legendary swords
     IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 6, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
