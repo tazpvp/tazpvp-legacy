@@ -133,6 +133,10 @@ public class DeathEvent implements Listener {
                 cooldowns.put(d, System.currentTimeMillis());
                 // Do Command Here
                 e.setDamage(item.getDamage());
+                if (d.getVelocity().getY() < 0) {
+                    e.setDamage(item.getDamage() * 1.5F);
+                }
+
             }
         }
     }
