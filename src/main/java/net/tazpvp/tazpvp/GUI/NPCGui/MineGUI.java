@@ -20,6 +20,7 @@ import java.util.List;
 
 public class MineGUI {
     private InventoryGUI gui;
+    String prefix = ChatColor.YELLOW + "[NPC] Caesar " + ChatColor.WHITE;
 
     public MineGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "PICKAXE SHOP"));
@@ -32,8 +33,9 @@ public class MineGUI {
 
         ItemStack pickaxe = getPickaxe(p);
         if (pickaxe == null) {
-            p.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You do not have a pickaxe in your inventory!");
+            p.sendMessage(prefix + "You do not have a pickaxe in your inventory!");
             p.closeInventory();
+            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             return;
         }
 
@@ -62,12 +64,14 @@ public class MineGUI {
                     } else if (getPickaxe(pl).getType() == Material.GOLDEN_PICKAXE) {
                         updatePickaxeType(pl, Material.DIAMOND_PICKAXE);
                     } else if (getPickaxe(pl).getType() == Material.DIAMOND_PICKAXE) {
-                        pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You already have the best pickaxe!");
+                        pl.sendMessage(prefix + "You already have the best pickaxe!");
+                        p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
                     } else {
-                        pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You already have the best pickaxe!");
+                        pl.sendMessage(prefix + "You already have the best pickaxe!");
+                        p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
                     }
                 } else {
-                    pl.sendMessage(ChatColor.YELLOW + "[NPC] Caesar: " + ChatColor.WHITE + "You don't have enough shards to upgrade your pickaxe.");
+                    pl.sendMessage(prefix + "You don't have enough shards to upgrade your pickaxe.");
                     pl.closeInventory();
                     pl.playSound(pl.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
                 }
@@ -96,14 +100,15 @@ public class MineGUI {
         ItemMeta meta = getPickaxe(p).getItemMeta();
         meta.setLore(Lore);
         getPickaxe(p).setItemMeta(meta);
-        getPickaxe(p).removeEnchantment(Enchantment.LOOT_BONUS_BLOCKS);
-        getPickaxe(p).removeEnchantment(Enchantment.SILK_TOUCH);
+        p.closeInventory();
+        p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
     }
 
     public void updatePickaxeItem(Player p, ItemStack pickaxe, Enchantment ench, String lore, int cost) {
         if (pickaxe.containsEnchantment(ench)) {
-            p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You already have this enchant.");
+            p.sendMessage(prefix + "You already have this enchantment.");
             p.closeInventory();
+            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
         } else {
             if (Tazpvp.statsManager.getCoins(p) >= cost) {
                 Tazpvp.statsManager.addCoins(p, -cost);
@@ -117,11 +122,13 @@ public class MineGUI {
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
                 pickaxe.setItemMeta(meta);
                 pickaxe.addEnchantment(ench, 1);
-                p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "Here is your new enchant!");
+                p.sendMessage(prefix + "You enchanted your pickaxe with " + lore);
                 p.closeInventory();
+                p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
-                p.sendMessage(ChatColor.YELLOW + "[NPC] Miner: " + ChatColor.WHITE + "You do not have enough money!");
+                p.sendMessage(prefix + "You do not have enough money!");
                 p.closeInventory();
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             }
         }
     }

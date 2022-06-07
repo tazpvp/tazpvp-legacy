@@ -33,7 +33,9 @@ public class SwordCollection {
             String addtxt = items.contains(item) ? ChatColor.GREEN + "Unlocked" : ChatColor.RED + "Locked";
 
             lore.add(ChatColor.DARK_AQUA + "Damage: " + ChatColor.AQUA + item.getDamage());
+            lore.add("");
             lore.add(item.getRarity());
+            lore.add("");
             lore.add(addtxt);
             String[] split = lore.toString().split(", ");
             split[0] = split[0].replace("[", "");

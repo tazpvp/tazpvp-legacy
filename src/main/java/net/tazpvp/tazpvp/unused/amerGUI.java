@@ -1,4 +1,4 @@
-package net.tazpvp.tazpvp.GUI.NPCGui;
+package net.tazpvp.tazpvp.unused;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.BowUtils;

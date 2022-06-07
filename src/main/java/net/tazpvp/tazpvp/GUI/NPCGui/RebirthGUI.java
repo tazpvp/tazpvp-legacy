@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
@@ -34,8 +35,10 @@ public class RebirthGUI {
             Player p = (Player) e.getWhoClicked();
           if (Tazpvp.statsManager.getLevel(p) >= 100) {
               Tazpvp.statsManager.setLevel(p, 0);
+              p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
           } else {
               p.sendMessage(prefix + "You do not have enough levels to rebirth!");
+              p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
           }
         });
         gui.addButton(11, rebirth);
@@ -47,6 +50,7 @@ public class RebirthGUI {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             new PerkGUI(p);
+            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_YES, 1, 1);
         });
         gui.addButton(13, perks);
 
@@ -54,6 +58,7 @@ public class RebirthGUI {
             Player p = (Player) e.getWhoClicked();
             p.teleport(configUtils.spawn);
             p.sendMessage(prefix + "Welcome back.");
+            p.playSound(p.getLocation(), Sound.BLOCK_BELL_RESONATE, 1, 1);
         });
         gui.addButton(15, home);
 

@@ -39,10 +39,11 @@ public class UnlockSwordGUI {
                 Tazpvp.statsManager.addCoins(p, -100);
                 Tazpvp.statsManager.addShards(p, -1);
                 Tazpvp.statsManager.addSpins(p, 1);
-                p.sendMessage(ChatColor.GREEN + "You have bought 1 spin.");
+                p.sendMessage(ChatColor.DARK_AQUA + "You purchased a spin.");
                 p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
             } else {
                 p.sendMessage(ChatColor.RED + "You do not have enough money.");
+                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_GUITAR, 1, 1);
             }
         });
         gui.addButton(11, buySpins);
@@ -60,11 +61,13 @@ public class UnlockSwordGUI {
             } else {
                 if (Tazpvp.statsManager.getSpins(p) > 0) {
                     Tazpvp.statsManager.setSpins(p, Tazpvp.statsManager.getSpins(p) - 1);
+                    p.sendMessage(ChatColor.DARK_AQUA + "You spun the wheel. What will you get?");
                     spinSword(sword, p);
                     isSpinning = true;
                 } else {
-                    e.getWhoClicked().sendMessage("You don't have any spins!");
+                    e.getWhoClicked().sendMessage(ChatColor.RED + "You don't have any spins!");
                     e.getWhoClicked().closeInventory();
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_GUITAR, 1, 1);
                 }
             }
         });
@@ -82,22 +85,18 @@ public class UnlockSwordGUI {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
                     Items unlockedItem = GetRandomSword.getRandomSword();
-                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 5, 5);
+                    p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
-                    if (Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                        p.sendMessage("");
-                    } else {
+                    p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 100, 10);
+                    p.sendMessage("");
+                    p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                    p.sendMessage("");
+                    if (!Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
                         List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         swords.add(unlockedItem);
                         Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
-                        p.sendMessage("");
-                        p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                        p.sendMessage("");
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
-
                         List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         if (swordUnlocked.size() >= Items.values().length) {
                             UnlockAchievement.unlockCollectEmAll(p);
@@ -108,7 +107,7 @@ public class UnlockSwordGUI {
                 } else {
                     Items item = Items.values()[new Random().nextInt(Items.values().length)];
                     sword.setItem(new ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(item.getLore()));
-                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1, 1);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 3, 1);
                     gui.update();
                 }
             }

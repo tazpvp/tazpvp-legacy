@@ -33,6 +33,7 @@ public class PerkGUI {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.perkManager.getStatsString(p, statsFileName)) {
                 p.sendMessage(prefix + "You already have this perk!");
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             } else if (Tazpvp.statsManager.getShards(p) >= price){
                 Tazpvp.perkManager.setStatsString(p, statsFileName, true);
                 Tazpvp.statsManager.addShards(p, -price);
