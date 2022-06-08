@@ -57,7 +57,7 @@ public class RebirthGUI {
             Player p = (Player) e.getWhoClicked();
             p.teleport(configUtils.spawn);
             p.sendMessage(prefix + "Welcome back.");
-            p.playSound(p.getLocation(), Sound.BLOCK_BELL_RESONATE, 1, 1);
+            p.playSound(p.getLocation(), Sound.BLOCK_BELL_USE, 1, 1);
         });
         gui.addButton(15, home);
 
