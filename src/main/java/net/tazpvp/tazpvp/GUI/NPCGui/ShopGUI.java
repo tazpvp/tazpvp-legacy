@@ -15,7 +15,7 @@ public class ShopGUI {
     String prefix = ChatColor.GOLD + "[NPC] Maxim" + ChatColor.WHITE;
 
     public ShopGUI(Player p){
-        gui = new InventoryGUI(Bukkit.createInventory(null, 45, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 9*4, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
         addItems();
         gui.open(p);
     }
@@ -48,7 +48,7 @@ public class ShopGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 45, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
+        gui.fill(0, 9*4, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         createShopButton(10, 34, new ItemStack(Material.ENDER_EYE, 1),"Agility", "Speed Boost", false, true, 1.0);
         createShopButton(11, 8, new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1),"Extinguisher","Feel the mist", false, true, 2.0);
