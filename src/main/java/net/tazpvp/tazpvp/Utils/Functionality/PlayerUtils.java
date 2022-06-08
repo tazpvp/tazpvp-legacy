@@ -134,6 +134,7 @@ public class PlayerUtils {
 
         p.setHealth(20);
         p.setFoodLevel(20);
+        Tazpvp.boolManager.setHasRebirthed(p, true);
 
         for (Player op : Bukkit.getOnlinePlayers()) {
             sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH" + ChatColor.WHITE + p + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");

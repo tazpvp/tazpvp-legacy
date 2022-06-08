@@ -12,6 +12,8 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.rebirthPlayer;
+
 public class RebirthGUI {
     private InventoryGUI gui;
     String prefix = ChatColor.DARK_PURPLE + "[NPC] Rigel: " + ChatColor.LIGHT_PURPLE;
@@ -33,12 +35,9 @@ public class RebirthGUI {
                     ChatColor.DARK_PURPLE + "≻ Infinite Arrows")
             , e -> {
             Player p = (Player) e.getWhoClicked();
-          if (Tazpvp.statsManager.getLevel(p) >= 100) {
-
-          } else {
-              p.sendMessage(prefix + "You do not have enough levels to rebirth!");
-              p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
-          }
+            if (Tazpvp.boolManager.getHasRebirthed(p)) { p.sendMessage(ChatColor.RED + "You have already rebirthed."); return; }
+            if (p.getLevel() < 100) { p.sendMessage(ChatColor.RED + "You must be level 100 to rebirth."); p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1); return; }
+            rebirthPlayer(p);
         });
         gui.addButton(11, rebirth);
 

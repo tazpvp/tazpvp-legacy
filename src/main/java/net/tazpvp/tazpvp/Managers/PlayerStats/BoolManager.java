@@ -21,8 +21,9 @@ public class BoolManager {
         statsFile.set(p.getUniqueId().toString()+".hasClickedMiner", false);
     }
 
-    public boolean getHasClickedMiner(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".hasClickedMiner"); }
-    public void setHasClickedMiner(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".hasClickedMiner", type); }
+    public boolean getHasRebirthed(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".hasRebirthed"); }
+    public void setHasRebirthed(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".hasRebirthed", type); }
+
 
     public void saveStats(){
         try {
