@@ -139,10 +139,9 @@ public class PlayerUtils {
         p.setFoodLevel(20);
         Tazpvp.boolManager.setHasRebirthed(p, true);
         kitPlayer(p);
-        
 
         for (Player op : Bukkit.getOnlinePlayers()) {
-            sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH" + ChatColor.WHITE + p + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");
+            sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH " + ChatColor.WHITE + p.getName() + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");
             p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
             p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "REBIRTH", ChatColor.LIGHT_PURPLE + "You awake as a new person.", 10, 100, 10);
         }
