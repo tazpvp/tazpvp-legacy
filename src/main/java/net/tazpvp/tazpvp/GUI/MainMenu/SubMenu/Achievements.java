@@ -27,7 +27,7 @@ public class Achievements {
         ItemStack item = new ItemStack(isComplete2, 1);
         ItemButton icon = ItemButton.create(new ItemBuilder(item)
             .setName(ChatColor.DARK_AQUA + name)
-            .setLore(ChatColor.GRAY + description, description2, " ", isComplete)
+            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", isComplete)
             , e -> {
             e.setCancelled(true);
         });
