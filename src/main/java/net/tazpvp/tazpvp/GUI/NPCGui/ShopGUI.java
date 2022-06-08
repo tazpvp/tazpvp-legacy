@@ -20,9 +20,9 @@ public class ShopGUI {
         gui.open(p);
     }
 
-    public void createShopButton(ItemStack item, int slot, int price, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
-        ItemBuilder b = new ItemBuilder(item).setName(name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
-        if(rankRequired) b.setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
+    public void createShopButton(int slot, int price, ItemStack item, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
+        ItemBuilder b = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
+        if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
@@ -50,25 +50,27 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 45, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 34, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
-        createShopButton(new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1), 11, 8, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
-        createShopButton(new ItemStack(Material.COBWEB, 5), 12, 32, ChatColor.WHITE + "Insta-Web", ChatColor.BLUE + "Slow down enemies.", false, false, null);
-        createShopButton(new ItemStack(Material.ARROW, 5), 16, 13, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles", false, false, null);
-        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 25, 28, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
-        createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 22, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_CARROT, 1), 23, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 27, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 33, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood", false, false, null);
-        createShopButton(new ItemStack(Material.SHEARS, 1), 20, 26, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool", false, false, null);
-        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 9, ChatColor.WHITE + "Rusty shield", ChatColor.BLUE + "One time use", false, false, null);
-        createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 17, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip", true, false, null);
-        createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 29, 17, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?", true, false, null);
-        createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 30, 17, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream", true, false, null);
-        createShopButton(new ItemStack(Material.YELLOW_WOOL, 64), 31, 17, ChatColor.WHITE + "Yellow Blocks", ChatColor.BLUE + "Who peed?", true, false, null);
-        createShopButton(new ItemStack(Material.GREEN_WOOL, 64), 32, 17, ChatColor.WHITE + "Green Blocks", ChatColor.BLUE + "Bushy", true, false, null);
-        createShopButton(new ItemStack(Material.BROWN_WOOL, 64), 33, 17, ChatColor.WHITE + "Brown Blocks", ChatColor.BLUE + "Ew", true, false, null);
-        createShopButton(new ItemStack(Material.RED_WOOL, 64), 34, 17, ChatColor.WHITE + "Red Blocks", ChatColor.BLUE + "u mad?", true, false, null);
-        createShopButton(new ItemStack(Material.INK_SAC, 1), 13, 18, ChatColor.WHITE + "Inker", ChatColor.BLUE + "Morb people", false, false, null);
+        createShopButton(10, 34, new ItemStack(Material.ENDER_EYE, 1),"Agility", "Speed Boost", false, true, 1.0);
+        createShopButton(11, 10, new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1),"Extinguisher","Feel the mist", false, true, 2.0);
+        createShopButton(12, 32, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
+        createShopButton(13, 18, new ItemStack(Material.INK_SAC, 1),"Inker","Morb people", false, false, null);
+        createShopButton(15, 10, new ItemBuilder(Material.SHIELD, 1).setDurability(335),"Rusty shield","One time use", false, false, null);
+        createShopButton(16, 28, new ItemStack(Material.OAK_PLANKS, 64),"Planks","Placeable Blocks", false, false, null);
+
+        createShopButton(19, 33, new ItemStack(Material.GOLDEN_AXE, 1),"Axe","Break Wood", false, false, null);
+        createShopButton(20, 26, new ItemStack(Material.SHEARS, 1),"Scissors","Break Wool", false, false, null);
+        createShopButton(21, 13, new ItemStack(Material.ARROW, 5),"Arrow","Bow Projectiles", false, false, null);
+        createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, false, null);
+        createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 1),"Gold Carrot","Healthy Choice", false, false, null);
+        createShopButton(24, 27, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
+        createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"Blue Blocks","Drip", true, false, null);
+
+
+
+
+
+
+
         gui.update();
     }
 }
