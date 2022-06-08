@@ -20,6 +20,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
@@ -121,9 +123,13 @@ public class DeathEvent implements Listener {
     }
 
     public void customItems(EntityDamageByEntityEvent e) {
+        Player p = (Player) e.getEntity();
         if (e.getDamager() instanceof Player d) {
             ItemStack item = d.getInventory().getItemInMainHand();
             // do stuff
+            if (item.getType().equals(Material.INK_SAC)){
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 2, 1));
+            }
         }
     }
 
