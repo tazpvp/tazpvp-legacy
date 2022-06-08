@@ -22,7 +22,7 @@ public class Achievements {
     }
 
     public void createShopButton(int slot, String name, String description, String statsFileName) {
-        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? "Completed!" : "Incomplete!";
+        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.GREEN + "Completed!" : ChatColor.RED + "Incomplete!";
         Material isComplete2 = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? Material.CHEST_MINECART : Material.MINECART;
         ItemStack item = new ItemStack(isComplete2, 1);
         ItemButton icon = ItemButton.create(new ItemBuilder(item)
