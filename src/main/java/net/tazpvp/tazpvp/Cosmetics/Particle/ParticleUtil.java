@@ -32,7 +32,9 @@ public class ParticleUtil {
 
     public void onTick() {
         for (ParticleEffect pe : inUse.values()) {
-            pe.onUpdate();
+            if (pe != null) {
+                pe.onUpdate();
+            }
         }
     }
 }

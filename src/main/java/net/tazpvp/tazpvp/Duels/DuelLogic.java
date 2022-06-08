@@ -44,6 +44,9 @@ public class DuelLogic implements Listener {
         p1.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
         p2.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
 
+        Tazpvp.particleUtil.save(p1);
+        Tazpvp.particleUtil.save(p2);
+
         Bukkit.broadcastMessage(ChatColor.YELLOW + p1.getName() + " and " + p2.getName() + " have started a duel! " + ChatColor.GOLD + "/spectate " + p1.getName());
 
         new BukkitRunnable() {
@@ -106,11 +109,13 @@ public class DuelLogic implements Listener {
                     p.getInventory().clear();
                     ArmorManager.setPlayerContents(p, false);
                     Tazpvp.returnItems.remove(p.getUniqueId());
+                    Tazpvp.particleUtil.load(p);
                 }
                 if (opponent.isOnline()) {
                     opponent.getInventory().clear();
                     ArmorManager.setPlayerContents(opponent, false);
                     Tazpvp.returnItems.remove(opponent.getUniqueId());
+                    Tazpvp.particleUtil.load(opponent);
                 }
                 new WorldManageent().deleteWorld(d.getDuelMap().getName());
                 duels.remove(Arrays.asList(p.getUniqueId(), opponent.getUniqueId()));

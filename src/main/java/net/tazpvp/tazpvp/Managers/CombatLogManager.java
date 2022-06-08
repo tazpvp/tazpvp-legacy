@@ -15,10 +15,10 @@ public class CombatLogManager {
 
     public static void putInCombat(Player p) {
         Tazpvp.particleUtil.save(p);
-        combatLog.put(p.getUniqueId(), 10L);
+        combatLog.put(p.getUniqueId(), 10L * 20L);
     }
     public static void putInCombat(UUID p) {
-        combatLog.put(p, 10L);
+        combatLog.put(p, 10L * 20);
     }
 
     public static boolean isInCombat(Player p) {
