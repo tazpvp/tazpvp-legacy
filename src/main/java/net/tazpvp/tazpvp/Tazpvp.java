@@ -8,6 +8,7 @@ import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
+import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleUtil;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
@@ -57,6 +58,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static EnderChestManager enderChestManager;
     public static DuelLogic duelLogic;
     public static SbUtil sbUtil;
+    public static ParticleUtil particleUtil;
 
     public static boolean isRestarting = false;
 
@@ -80,7 +82,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
-    public static WeakHashMap<Player, ParticleEffect> particleEffects = new WeakHashMap<>();
 
     @Override
     public void onLoad() {
@@ -112,13 +113,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         }
         try {
             registeRedLib();
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
         StartBotThread thread = new StartBotThread();
@@ -150,9 +145,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             @Override
             public void run() {
                 CombatLogManager.tick();
-                for (Player p : particleEffects.keySet()) {
-                    particleEffects.get(p).onUpdate();
-                }
+                particleUtil.onTick();
             }
         }.runTaskTimer(this, 1L, 1L);
     }
@@ -223,6 +216,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             achievementManager = new AchievementManager();
             enderChestManager = new EnderChestManager();
             duelLogic = new DuelLogic();
+            particleUtil = new ParticleUtil();
         } else {
             statsManager.saveStats();
             boolManager.saveStats();

@@ -138,6 +138,7 @@ public class DeathUtils {
                 } else {
                     p.teleport(configUtils.spawn);
                     CombatLogManager.combatLog.remove(p.getUniqueId());
+                    Tazpvp.particleUtil.load(p);
                 }
                 p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), false));
                 p.setGameMode(GameMode.SURVIVAL);

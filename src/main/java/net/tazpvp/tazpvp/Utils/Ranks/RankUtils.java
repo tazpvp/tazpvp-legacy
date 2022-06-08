@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
+import java.util.Locale;
 
 public class RankUtils implements Listener {
 
@@ -70,5 +71,14 @@ public class RankUtils implements Listener {
         }
         ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
         Bukkit.dispatchCommand(console, PlayerUtils.setLPRankCommand(recipient, rank));
+    }
+
+    public static RankWeight getRankFromString(String rankSTR) {
+        for (RankWeight rank : RankWeight.values()) {
+            if (rank.getName().equalsIgnoreCase(rankSTR)) {
+                return rank;
+            }
+        }
+        return null;
     }
 }

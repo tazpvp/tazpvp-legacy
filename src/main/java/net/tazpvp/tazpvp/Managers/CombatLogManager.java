@@ -13,10 +13,11 @@ import java.util.WeakHashMap;
 public class CombatLogManager {
     public static WeakHashMap<UUID, Long> combatLog = new WeakHashMap<>();
 
-    public void putInCombat(Player p) {
+    public static void putInCombat(Player p) {
+        Tazpvp.particleUtil.save(p);
         combatLog.put(p.getUniqueId(), 10L);
     }
-    public void putInCombat(UUID p) {
+    public static void putInCombat(UUID p) {
         combatLog.put(p, 10L);
     }
 
@@ -42,6 +43,7 @@ public class CombatLogManager {
                 combatLog.remove(uuid);
                 Bukkit.getPlayer(uuid).sendMessage(ChatColor.RED + "You are no longer in combat.");
                 Tazpvp.lastDamage.remove(uuid);
+                Tazpvp.particleUtil.load(Bukkit.getPlayer(uuid));
             }
         }
     }

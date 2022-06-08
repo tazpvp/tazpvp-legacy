@@ -96,8 +96,8 @@ public class DeathEvent implements Listener {
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
-                        CombatLogManager.combatLog.put(p.getUniqueId(), 10L);
-                        CombatLogManager.combatLog.put(d.getUniqueId(), 10L);
+                        CombatLogManager.putInCombat(p);
+                        CombatLogManager.putInCombat(d);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
                         if (item.hasItemMeta()) {
