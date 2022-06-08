@@ -48,7 +48,7 @@ public class PerkGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+        gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         createShopButton(ChatColor.YELLOW + "Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Gain an extra heart on kill.", "fatPerk");
         createShopButton(ChatColor.BLUE + "Excavator", 11, new ItemStack(Material.GOLDEN_PICKAXE), 7, ChatColor.GRAY + "Gain Exp for mining.", "excavatorPerk");

@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI.MainMenu;
 
+import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.Achievements;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ServerStore;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.SwordCollection;
 import org.bukkit.Bukkit;
@@ -7,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
@@ -27,7 +27,7 @@ public class MainGUI {
         ItemButton achievements = ItemButton.create(new ItemBuilder(Material.WRITABLE_BOOK).setName(ChatColor.AQUA + "" + ChatColor.BOLD + "PROGRESS").setLore(ChatColor.GRAY + "Achievement book."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
-            new AchievementsGUI(p);
+            new Achievements(p);
         });
         gui.addButton(11, achievements);
         ItemStack swordMat = new ItemStack(Material.DIAMOND_SWORD); hideFlag(swordMat);

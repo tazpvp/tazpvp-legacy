@@ -29,7 +29,7 @@ public class MineGUI {
     }
 
     public void createButton(Player p) {
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         ItemStack pickaxe = getPickaxe(p);
         if (pickaxe == null) {

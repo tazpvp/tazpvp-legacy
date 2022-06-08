@@ -23,7 +23,7 @@ public class SwordCollection {
     }
 
     public void setitems(Player p){
-        gui.fill(0, 5*9, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 5*9, new redempt.redlib.itemutils.ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
         int i = 10;
         for (Items item : Items.values()) {
             PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());

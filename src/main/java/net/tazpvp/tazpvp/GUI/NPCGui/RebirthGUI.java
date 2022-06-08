@@ -24,7 +24,7 @@ public class RebirthGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+        gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         ItemButton rebirth = ItemButton.create(new ItemBuilder(Material.TOTEM_OF_UNDYING).setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH" + ChatColor.GRAY + " Lvl 100 Req.")
             .setLore(ChatColor.GRAY + "Warning: resets stats and items.",

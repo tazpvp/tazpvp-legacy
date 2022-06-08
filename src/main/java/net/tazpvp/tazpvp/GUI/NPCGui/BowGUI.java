@@ -21,7 +21,7 @@ public class BowGUI {
     }
 
     public void makeItems(Player p) {
-        gui.fill(0, 4 * 9, new ItemBuilder(Material.GRAY_STAINED_GLASS_PANE).setName(" "));
+        gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
         ItemButton Bow = ItemButton.create(new ItemBuilder(Material.BOW).setName(ChatColor.RED + "BOW").setLore("You can only have one enchantment at a time!"), e -> {});
         ItemButton Armor = ItemButton.create(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName(ChatColor.RED + "ARMOR").setLore("You can only have one enchantment at a time!"), e -> {});
 

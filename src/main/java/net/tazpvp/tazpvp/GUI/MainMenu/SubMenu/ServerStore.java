@@ -38,7 +38,7 @@ public class ServerStore {
     }
 
     public void setitems(){
-        gui.fill(0, 9*5, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 9*5, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         ChatColor r = ChatColor.RED; ItemStack vipmat = new ItemStack(Material.MUSIC_DISC_CHIRP); hideFlag(vipmat);
         ItemBuilder vip = new ItemBuilder(vipmat).setName(ChatColor.RED+""+ChatColor.BOLD+"VIP " + ChatColor.GRAY + 250 + " Credits")

@@ -29,7 +29,7 @@ public class UnlockSwordGUI {
     }
 
     public void addItems(Player p) {
-        gui.fill(0, 27, new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
+        gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART)
                 .setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Buy Spins")

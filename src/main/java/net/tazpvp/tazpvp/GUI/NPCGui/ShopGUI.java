@@ -48,7 +48,7 @@ public class ShopGUI {
     }
 
     public void addItems(){
-        gui.fill(0, 45, new ItemStack(Material.BLACK_STAINED_GLASS_PANE, 1));
+        gui.fill(0, 45, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         //starting at 10
         createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
