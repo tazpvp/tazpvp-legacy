@@ -43,6 +43,7 @@ public class BlockPlaceEvent implements Listener {
 
                 if (unreq.contains(blockType)) {
                     event.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + "You cannot place ores.");
                 }
                 int timer = 0;
 
