@@ -37,6 +37,7 @@ public class RebirthGUI {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.boolManager.getHasRebirthed(p)) { p.sendMessage(ChatColor.RED + "You have already rebirthed."); return; }
             if (Tazpvp.statsManager.getLevel(p) < 100) { p.sendMessage(ChatColor.RED + "You must be level 100 to rebirth."); p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1); return; }
+            p.closeInventory();
             rebirthPlayer(p);
         });
         gui.addButton(11, rebirth);
