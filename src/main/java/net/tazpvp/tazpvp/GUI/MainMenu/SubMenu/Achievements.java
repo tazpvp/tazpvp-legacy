@@ -5,47 +5,38 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import java.util.List;
-
 public class Achievements {
     private InventoryGUI gui;
+    private Player p;
 
     public Achievements(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "ACHIEVEMENTS"));
-        addItems(p);
+        this.p = p;
+        addItems();
         gui.open(p);
     }
 
-    public void addItems(Player p) {
+    public void createShopButton(int slot, String name, String description, String statsFileName) {
+        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? "Completed!" : "Incomplete!";
+        Material isComplete2 = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? Material.CHEST_MINECART : Material.MINECART;
+        ItemStack item = new ItemStack(isComplete2, 1);
+        ItemButton icon = ItemButton.create(new ItemBuilder(item)
+            .setName(ChatColor.AQUA + name)
+            .setLore(ChatColor.GRAY + description, " ", isComplete)
+            , e -> {
+            e.setCancelled(true);
+        });
+        gui.addButton(slot, icon);
+    }
+
+    public void addItems() {
         gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        int i = 10;
-        for (net.tazpvp.tazpvp.Achievements.Achievements ach : net.tazpvp.tazpvp.Achievements.Achievements.values()) {
-            String name = ach.getName();
-            List<String> lore = ach.getLore();
-            Material material = Material.MINECART;
-
-            if (Tazpvp.achievementManager.statsFile.getBoolean((p.getUniqueId().toString() + ach.getStatsFileName()))) {
-                material = Material.CHEST_MINECART;
-                lore.add(ChatColor.GREEN + "Completed!");
-            } else {
-                lore.add(ChatColor.RED + "Incomplete!");
-            }
-
-            ItemButton tool = ItemButton.create(new ItemBuilder(material).setName(name).setLore(String.valueOf(lore)), e -> {
-                e.setCancelled(true);
-            });
-            gui.addButton(i, tool);
-
-            if((i+1) % 7 == 0) {
-                i += 2;
-            }
-            i++;
-        }
-        gui.update();
+        createShopButton(10,"Hoarder","Collect all swords from the wheel.","hoarder");
     }
 }
