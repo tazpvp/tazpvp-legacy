@@ -43,7 +43,7 @@ public class PunishmentManager {
     public void initBan(OfflinePlayer player, boolean permanent, String reason){
         punishmentFile.set("bans." + player.getUniqueId().toString()+".time", new Date().getTime());
         punishmentFile.set("bans." + player.getUniqueId().toString()+".perm", permanent);
-        punishmentFile.set("bans." + player.getUniqueId().toString()+".perm", reason);
+        punishmentFile.set("bans." + player.getUniqueId().toString()+".reason", reason);
     }
 
     public void removeBan(OfflinePlayer player) {

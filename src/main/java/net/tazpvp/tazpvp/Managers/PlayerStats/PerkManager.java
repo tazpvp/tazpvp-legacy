@@ -19,7 +19,13 @@ public class PerkManager {
     }
 
     public void initPerks(OfflinePlayer p){
-        statsFile.set(p.getUniqueId().toString()+".hasClickedMiner", false);
+        statsFile.set(p.getUniqueId().toString()+".fatPerk", false);
+        statsFile.set(p.getUniqueId().toString()+".excavatorPerk", false);
+        statsFile.set(p.getUniqueId().toString()+".archer", false);
+        statsFile.set(p.getUniqueId().toString()+".builder", false);
+        statsFile.set(p.getUniqueId().toString()+".gobble", false);
+        statsFile.set(p.getUniqueId().toString()+".agility", false);
+        statsFile.set(p.getUniqueId().toString()+".tank", false);
     }
 
     public boolean getFatPerk(Player p){ return statsFile.getBoolean(p.getUniqueId().toString()+".fatPerk"); }
