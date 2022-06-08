@@ -85,7 +85,7 @@ public class ParticlesGUI {
     }
 
     public Color getColor(Player p) {
-        if (RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getColor() == null) {
+        if (RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)) == null) {
             return (p.hasPermission("tazpvp.staff.particles") ? Color.PURPLE : Color.WHITE);
         } else {
             return RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getColor();
