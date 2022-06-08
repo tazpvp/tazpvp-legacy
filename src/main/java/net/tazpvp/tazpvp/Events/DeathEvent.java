@@ -3,6 +3,7 @@ package net.tazpvp.tazpvp.Events;
 import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
+import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -154,99 +155,30 @@ public class DeathEvent implements Listener {
     }
 
     public void DeathFunction(Player p, @Nullable Player d, boolean dropHead) {
+        DeathUtils deathUtils = new DeathUtils(p, d);
         if (d != null) { //code will run if a player kills another player
-
             if (dropHead) {
-                if (new Random().nextInt(10) <= 2){
-                    ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
-                    Bukkit.getWorld("arena").dropItemNaturally(p.getLocation(), head);
-                }
+                deathUtils.dropHead(10, 2);
             }
 
             if (Bukkit.getOnlinePlayers().size() < 20) {
-                for (Player online : Bukkit.getOnlinePlayers()) {
-                    if (d.getInventory().getItemInMainHand().hasItemMeta()) {
-                        String cusName;
-                        if (d.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
-                            cusName = d.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
-                        } else {
-                            cusName = d.getInventory().getItemInMainHand().getItemMeta().getLocalizedName();
-                        }
-                        if (Objects.equals(online.getName(), d.getName())) {
-                            d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Exp");
-                        } else {
-                            online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " using " + ChatColor.AQUA + cusName );
-                        }
-                    } else {
-                        if (Objects.equals(online.getName(), d.getName())) {
-                            d.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You killed " + ChatColor.GRAY + p.getName() + ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Exp");
-                        } else {
-                            online.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.GRAY + d.getName() + ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName());
-                        }
-                    }
-                }
+                deathUtils.sendDeathMessageAll();
             } else {
-                p.sendMessage(ChatColor.GRAY + "[" + ChatColor.DARK_RED + "☠" + ChatColor.GRAY + "] " + ChatColor.DARK_GRAY + "You were killed by " + ChatColor.GRAY + d.getName());
+                deathUtils.sendDeadDeathMessage();
+                deathUtils.sendDeathMessage(d);
             }
 
-            if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
-                Tazpvp.statsManager.addCoins(d, Tazpvp.bounty.get(p.getUniqueId()));
-                Bukkit.broadcastMessage(ChatColor.AQUA + d.getName() + ChatColor.DARK_AQUA + " collected the " + ChatColor.AQUA + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.DARK_AQUA + " bounty on " + ChatColor.AQUA + p.getName());
-                Tazpvp.bounty.remove(p.getUniqueId());
-            }
+            deathUtils.bountyCheck();
 
-            Tazpvp.statsManager.addKills(d, 1);
-            Tazpvp.statsManager.addExp(d, 15);
-            if (Tazpvp.boolManager.getHasRebirthed(p)){ Tazpvp.statsManager.addExp(d, 5); }
-            Tazpvp.statsManager.addCoins(d, 7);
+            deathUtils.statsUpdate();
 
-            double health = d.getHealth();
-            if (Tazpvp.boolManager.getHasRebirthed(p)){
-                setHealth(d, 24, 2);
-            } else if (Tazpvp.perkManager.getFatPerk(p)){
-                setHealth(d, 22, 2);
-            } else {
-                setHealth(d, 20, 4);
-            }
+            deathUtils.applyHealth();
             gobblePerk(d);
             agilityPerk(d);
             tankPerk(d);
-
-
-            if (Tazpvp.statsManager.checkLevelUp(d)) {
-                Tazpvp.statsManager.levelUp(d, 1);
-                Tazpvp.statsManager.initScoreboard(d);
-            }
-
-            Tazpvp.statsManager.initScoreboard(d);
         }
 
-
-        Tazpvp.statsManager.addDeaths(p, 1);
-        Tazpvp.statsManager.initScoreboard(p);
-
-        if (p.hasMetadata("LastDamager")) {
-            p.removeMetadata("LastDamager", Tazpvp.getInstance());
-        }
-
-        p.getWorld().playEffect(p.getLocation().add(0, 1, 0), Effect.STEP_SOUND, Material.REDSTONE_BLOCK);
-        p.setGameMode(GameMode.SPECTATOR);
-        p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), true));
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                PlayerUtils.healPlayer(p);
-                if (Tazpvp.punishmentManager.isBanned(p)) {
-                    p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
-                } else {
-                    p.teleport(configUtils.spawn);
-                    CombatLogManager.combatLog.remove(p.getUniqueId());
-                }
-                p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), false));
-                p.setGameMode(GameMode.SURVIVAL);
-                p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
-            }
-        }.runTaskLater(Tazpvp.getInstance(), 60L);
+        deathUtils.kys();
     }
 
 
