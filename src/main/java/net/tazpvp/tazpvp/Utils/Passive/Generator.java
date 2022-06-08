@@ -17,7 +17,7 @@ public class Generator {
             @Override
             public void run() {
                 if (Bukkit.getOnlinePlayers().size() > 6) {
-                    Item i = Objects.requireNonNull(Bukkit.getWorld("arena")).dropItem(new Location(Bukkit.getWorld("arena"), 0.5, 84.5, 94.5), shard);
+                    Item i = Objects.requireNonNull(Bukkit.getWorld("arena")).dropItem(new Location(Bukkit.getWorld("arena"), 0.5, 80.5, 94.5), shard);
                     i.setVelocity(new Vector(0, 0, 0));
                     new BukkitRunnable(){
                         public void run() {
