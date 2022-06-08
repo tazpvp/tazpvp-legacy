@@ -9,10 +9,6 @@ import redempt.redlib.commandmanager.CommandHook;
 public class ParticleCMD {
     @CommandHook("particle")
     public void onParticle(Player p, int id, boolean run) {
-        if (Tazpvp.particleEffects.containsKey(p)) {
-            Tazpvp.particleEffects.remove(p);
-        } else {
-            Tazpvp.particleEffects.put(p, new WideCircleParticle(p, Color.RED, Color.WHITE));
-        }
+
     }
 }
