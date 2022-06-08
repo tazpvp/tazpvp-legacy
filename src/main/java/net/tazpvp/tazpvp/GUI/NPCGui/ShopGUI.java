@@ -54,20 +54,20 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1), 11, 8, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
         createShopButton(new ItemStack(Material.COBWEB, 5), 12, 32, ChatColor.WHITE + "Insta-Web", ChatColor.BLUE + "Slow down enemies.", false, false, null);
         createShopButton(new ItemStack(Material.ARROW, 5), 13, 13, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles", false, false, null);
-        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 25, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
+        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 25, 28, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
         createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 22, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_CARROT, 1), 23, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 25, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
-        createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 20, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood", false, false, null);
-        createShopButton(new ItemStack(Material.SHEARS, 1), 20, 25, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool", false, false, null);
-        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 25, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
-        createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 50, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip", true, false, null);
-        createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 29, 50, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?", true, false, null);
-        createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 30, 50, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream", true, false, null);
-        createShopButton(new ItemStack(Material.YELLOW_WOOL, 64), 31, 50, ChatColor.WHITE + "Yellow Blocks", ChatColor.BLUE + "Who peed?", true, false, null);
-        createShopButton(new ItemStack(Material.GREEN_WOOL, 64), 32, 50, ChatColor.WHITE + "Green Blocks", ChatColor.BLUE + "Bushy", true, false, null);
-        createShopButton(new ItemStack(Material.BROWN_WOOL, 64), 33, 50, ChatColor.WHITE + "Brown Blocks", ChatColor.BLUE + "Ew", true, false, null);
-        createShopButton(new ItemStack(Material.RED_WOOL, 64), 34, 50, ChatColor.WHITE + "Red Blocks", ChatColor.BLUE + "u mad?", true, false, null);
+        createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 27, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
+        createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 33, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood", false, false, null);
+        createShopButton(new ItemStack(Material.SHEARS, 1), 20, 26, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool", false, false, null);
+        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 9, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
+        createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 17, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip", true, false, null);
+        createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 29, 17, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?", true, false, null);
+        createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 30, 17, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream", true, false, null);
+        createShopButton(new ItemStack(Material.YELLOW_WOOL, 64), 31, 17, ChatColor.WHITE + "Yellow Blocks", ChatColor.BLUE + "Who peed?", true, false, null);
+        createShopButton(new ItemStack(Material.GREEN_WOOL, 64), 32, 17, ChatColor.WHITE + "Green Blocks", ChatColor.BLUE + "Bushy", true, false, null);
+        createShopButton(new ItemStack(Material.BROWN_WOOL, 64), 33, 17, ChatColor.WHITE + "Brown Blocks", ChatColor.BLUE + "Ew", true, false, null);
+        createShopButton(new ItemStack(Material.RED_WOOL, 64), 34, 17, ChatColor.WHITE + "Red Blocks", ChatColor.BLUE + "u mad?", true, false, null);
         gui.update();
     }
 }
