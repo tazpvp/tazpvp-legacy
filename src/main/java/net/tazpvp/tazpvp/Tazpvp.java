@@ -9,6 +9,7 @@ import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
 import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
 import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleUtil;
+import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.StaticSpingParticle;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
@@ -138,6 +139,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         protocolManager = ProtocolLibrary.getProtocolManager();
 
         doHashMaps();
+        particleUtil.staticEffects.add(new StaticSpingParticle());
 
         NpcUtils.spawnAll();
 
