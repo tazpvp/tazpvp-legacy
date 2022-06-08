@@ -398,3 +398,10 @@ spectate player:target {
     user player
     hook spectate
 }
+
+particle int:id boolean:run?(true) {
+    help /particle <id> [run]
+    user player
+    permission tazpvp.particle
+    hook particle
+}

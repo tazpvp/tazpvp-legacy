@@ -7,6 +7,7 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
+import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
@@ -79,6 +80,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
+    public static WeakHashMap<Player, ParticleEffect> particleEffects = new WeakHashMap<>();
 
     @Override
     public void onLoad() {
@@ -148,8 +150,11 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             @Override
             public void run() {
                 CombatLogManager.tick();
+                for (Player p : particleEffects.keySet()) {
+                    particleEffects.get(p).onUpdate();
+                }
             }
-        }.runTaskTimer(this, 20L, 20L);
+        }.runTaskTimer(this, 1L, 1L);
     }
 
 
@@ -186,7 +191,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
                 new ECCMD(),
                 new HoloCMD(),
                 new DuelCMD(),
-                new BalCMD());
+                new BalCMD(),
+                new ParticleCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
