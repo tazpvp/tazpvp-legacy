@@ -7,7 +7,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class AchieveUtils {
-    public void Achieve(Player p, String name, String s, int shards, int coins) {
+    public static void Achieve(Player p, String name, String s, int shards, int coins) {
         if (!Tazpvp.achievementManager.getAchievement(p, s)) {
             Tazpvp.achievementManager.setAchievement(p, s, true);
             Tazpvp.statsManager.addShards(p, shards);

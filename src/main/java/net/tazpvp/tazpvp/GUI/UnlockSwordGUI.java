@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.GUI;
 
-import net.tazpvp.tazpvp.Achievements.UnlockAchievement;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
@@ -9,7 +8,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
@@ -17,6 +15,8 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.List;
 import java.util.Random;
+
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 
 public class UnlockSwordGUI {
     private InventoryGUI gui;
@@ -99,7 +99,7 @@ public class UnlockSwordGUI {
                         net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
                         List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
                         if (swordUnlocked.size() >= Items.values().length) {
-                            UnlockAchievement.unlockCollectEmAll(p);
+                            Achieve(p, "Hoarder", "hoarder", 5, 220);
                         }
                     }
                     p.closeInventory();
