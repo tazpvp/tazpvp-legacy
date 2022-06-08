@@ -74,6 +74,9 @@ public class PlayerUtils {
         sword.setItemMeta(swordMeta);
         ItemMeta bowMeta = bow.getItemMeta();
         bowMeta.setUnbreakable(true);
+        if (Tazpvp.boolManager.getHasRebirthed(p)) {
+            bowMeta.addEnchant(org.bukkit.enchantments.Enchantment.ARROW_INFINITE, 1, true);
+        }
         bow.setItemMeta(bowMeta);
         ItemMeta pickaxeMeta = pickaxe.getItemMeta();
         pickaxeMeta.setUnbreakable(true);
@@ -135,6 +138,8 @@ public class PlayerUtils {
         p.setHealth(20);
         p.setFoodLevel(20);
         Tazpvp.boolManager.setHasRebirthed(p, true);
+        kitPlayer(p);
+        
 
         for (Player op : Bukkit.getOnlinePlayers()) {
             sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH" + ChatColor.WHITE + p + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");
