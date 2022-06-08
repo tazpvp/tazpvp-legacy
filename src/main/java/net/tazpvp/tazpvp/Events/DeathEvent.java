@@ -138,7 +138,7 @@ public class DeathEvent implements Listener {
                 if (d.getVelocity().getY() < 0) {
                     e.setDamage(item.getDamage() * 1.5F);
                 }
-
+                return;
             }
         }
     }
