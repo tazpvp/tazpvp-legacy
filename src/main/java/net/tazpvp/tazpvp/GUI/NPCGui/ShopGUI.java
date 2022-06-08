@@ -12,7 +12,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 public class ShopGUI {
     private InventoryGUI gui;
-    String prefix = ChatColor.GOLD + "[NPC] Maxim " + ChatColor.WHITE;
+    String prefix = ChatColor.GOLD + "[NPC] Maxim" + ChatColor.WHITE;
 
     public ShopGUI(Player p){
         gui = new InventoryGUI(Bukkit.createInventory(null, 45, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
@@ -50,10 +50,11 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 45, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 45, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
-        createShopButton(new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1), 11, 45, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
-        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 12, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
+        createShopButton(new ItemStack(Material.ENDER_EYE, 1), 10, 34, ChatColor.WHITE + "Agility", ChatColor.BLUE + "Speed Boost", false, true, 1.0);
+        createShopButton(new ItemStack(Material.GLOW_SQUID_SPAWN_EGG, 1), 11, 8, ChatColor.WHITE + "Extinguisher", ChatColor.BLUE + "Feel the mist", false, true, 2.0);
+        createShopButton(new ItemStack(Material.COBWEB, 5), 12, 32, ChatColor.WHITE + "Insta-Web", ChatColor.BLUE + "Slow down enemies.", false, false, null);
         createShopButton(new ItemStack(Material.ARROW, 5), 13, 13, ChatColor.WHITE + "Arrow", ChatColor.BLUE + "Bow Projectiles", false, false, null);
+        createShopButton(new ItemStack(Material.OAK_PLANKS, 64), 25, 40, ChatColor.WHITE + "Planks", ChatColor.BLUE + "Placeable Blocks", false, false, null);
         createShopButton(new ItemStack(Material.COOKED_BEEF, 5), 22, 15, ChatColor.WHITE + "Steak", ChatColor.BLUE + "Arbies", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_CARROT, 1), 23, 15, ChatColor.WHITE + "Gold Carrot", ChatColor.BLUE + "Healthy Choice", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 25, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
