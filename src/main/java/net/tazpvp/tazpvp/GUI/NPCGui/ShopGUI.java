@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -12,11 +13,13 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 public class ShopGUI {
     private InventoryGUI gui;
+    private Player p;
     String prefix = ChatColor.GOLD + "[NPC] Maxim" + ChatColor.WHITE;
 
     public ShopGUI(Player p){
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*4, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
         addItems();
+        this.p = p;
         gui.open(p);
     }
 
@@ -36,6 +39,16 @@ public class ShopGUI {
                     ItemMeta meta = itemstack.getItemMeta();
                     meta.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE, cID);
                     itemstack.setItemMeta(meta);
+                }
+                if (item.equals(Material.BLUE_WOOL)) {
+                    int Rank = RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getWeight();
+                    if (Rank == 1) {
+                        item.setType(Material.RED_WOOL);
+                    } else if (Rank == 2) {
+                        item.setType(Material.GREEN_WOOL);
+                    } else if (Rank == 3) {
+                        item.setType(Material.YELLOW_WOOL);
+                    }
                 }
                 p.getInventory().addItem(itemstack);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
