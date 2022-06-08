@@ -389,6 +389,7 @@ public class StatsCMD implements CommandListener {
     public void resetStats(Player p, Player target) {
         Tazpvp.statsManager.initPlayer(target);
         Tazpvp.playerWrapperStatsManager.wipeSwords(target);
+        Tazpvp.boolManager.setHasRebirthed(target, false);
         p.sendMessage(ChatColor.GOLD + "You have reset " + ChatColor.RED + target.getName() + ChatColor.GOLD + "'s stats and swords");
     }
 
