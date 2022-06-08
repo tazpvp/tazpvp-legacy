@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class AchievementManager {
     final File file;
 
     public AchievementManager(){
-        file = new File(Tazpvp.getInstance().getDataFolder() + "/ach.yml");
+        file = new File(Tazpvp.getInstance().getDataFolder() + "/achievements.yml");
         statsFile = YamlConfiguration.loadConfiguration(file);
     }
 
@@ -25,18 +26,12 @@ public class AchievementManager {
         }
     }
 
-    public void initPlayer(OfflinePlayer player){
-        statsFile.set(player.getUniqueId().toString()+".sendchatmessage", false);
-        statsFile.set(player.getUniqueId().toString()+".collectemall", false);
+    public void initAch(OfflinePlayer player){
+        statsFile.set(player.getUniqueId().toString()+".hasSentChat", false);
     }
 
-    public Boolean getSendChatMessage(OfflinePlayer player){
-        return statsFile.getBoolean(player.getUniqueId().toString()+".sendchatmessage");
-    }
-    public void setChatMessage(OfflinePlayer player, Boolean val){
-        statsFile.set(player.getUniqueId().toString()+".sendchatmessage", val);
-    }
-    public Boolean getCollectEmAll(OfflinePlayer player){
-        return statsFile.getBoolean(player.getUniqueId().toString()+".collectemall");
+    public void setAchievement(Player p, String s, boolean value) { statsFile.set(p.getUniqueId().toString()+"."+s, value); }
+    public boolean getAchievement(Player p, String s) {
+        return statsFile.getBoolean(p.getUniqueId().toString()+"."+s);
     }
 }

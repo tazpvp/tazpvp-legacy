@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,14 +18,6 @@ public class BoolManager {
         statsFile = YamlConfiguration.loadConfiguration(file);
     }
 
-    public void initBool(OfflinePlayer p){
-        statsFile.set(p.getUniqueId().toString()+".hasClickedMiner", false);
-    }
-
-    public boolean getHasRebirthed(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".hasRebirthed"); }
-    public void setHasRebirthed(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".hasRebirthed", type); }
-
-
     public void saveStats(){
         try {
             statsFile.save(file);
@@ -32,4 +25,16 @@ public class BoolManager {
             e.printStackTrace();
         }
     }
+
+    public void initBool(OfflinePlayer p){
+        statsFile.set(p.getUniqueId().toString()+".hasRebirthed", false);
+    }
+
+    public boolean getHasRebirthed(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".hasRebirthed"); }
+    public void setHasRebirthed(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".hasRebirthed", type); }
+
+
+
+
+
 }
