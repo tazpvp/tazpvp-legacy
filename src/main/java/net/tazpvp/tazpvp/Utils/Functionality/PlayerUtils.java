@@ -128,7 +128,7 @@ public class PlayerUtils {
             sendSurround(p, ChatColor.RED + "" + ChatColor.BOLD + "UNBANNED " + ChatColor.WHITE + "You are now released from the dead.");
         }
         Tazpvp.statsManager.initPlayer(p);
-        Tazpvp.perkManager.initPerks(p);
+        Tazpvp.perkManager.initPlayer(p);
         Tazpvp.playerWrapperStatsManager.wipeSwords(p);
         Tazpvp.punishmentManager.removeBan(p);
         Tazpvp.punishmentManager.removeMute(p);
