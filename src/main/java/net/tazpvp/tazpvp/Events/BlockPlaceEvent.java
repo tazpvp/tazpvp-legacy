@@ -56,7 +56,7 @@ public class BlockPlaceEvent implements Listener {
                 } else {
                     timer = 20 * 20;
                 }
-                if (event.getPlayer().hasPermission("rank.longerBlocks")) {
+                if (event.getPlayer().hasPermission("tazpvp.rank")) {
                     timer = timer * 2;
                 }
                 new BukkitRunnable() {
