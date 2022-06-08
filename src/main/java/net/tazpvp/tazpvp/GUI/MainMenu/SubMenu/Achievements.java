@@ -21,13 +21,13 @@ public class Achievements {
         gui.open(p);
     }
 
-    public void createShopButton(int slot, String name, String description, String statsFileName) {
-        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.GREEN + "Completed!" : ChatColor.RED + "Incomplete!";
+    public void createShopButton(int slot, String name, String description, String description2, String statsFileName) {
+        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.AQUA + "Completed!" : ChatColor.RED + "Incomplete!";
         Material isComplete2 = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? Material.CHEST_MINECART : Material.MINECART;
         ItemStack item = new ItemStack(isComplete2, 1);
         ItemButton icon = ItemButton.create(new ItemBuilder(item)
-            .setName(ChatColor.AQUA + name)
-            .setLore(ChatColor.GRAY + description, " ", isComplete)
+            .setName(ChatColor.DARK_AQUA + name)
+            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", isComplete)
             , e -> {
             e.setCancelled(true);
         });
@@ -37,6 +37,6 @@ public class Achievements {
     public void addItems() {
         gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10,"Hoarder","Collect all swords from the wheel.","hoarder");
+        createShopButton(10,"Hoarder","Collect every sword","from the wheel.","hoarder");
     }
 }
