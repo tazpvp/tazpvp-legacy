@@ -34,8 +34,7 @@ public class RebirthGUI {
             , e -> {
             Player p = (Player) e.getWhoClicked();
           if (Tazpvp.statsManager.getLevel(p) >= 100) {
-              Tazpvp.statsManager.setLevel(p, 0);
-              p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
+
           } else {
               p.sendMessage(prefix + "You do not have enough levels to rebirth!");
               p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);

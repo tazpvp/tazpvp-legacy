@@ -1,11 +1,15 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
+import net.tazpvp.tazpvp.Tazpvp;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.EnderChest;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,6 +21,8 @@ import redempt.redlib.itemutils.ItemUtils;
 
 import java.io.IOException;
 import java.net.URL;
+
+import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
 
 public class PlayerUtils {
     public static void healPlayer(Player p) {
@@ -109,6 +115,31 @@ public class PlayerUtils {
     }
     public static String setLPRankCommand(Player p, String rank) {
         return "pex user " + p.getName() + " group set " + rank;
+    }
+
+    public static void rebirthPlayer(Player p) {
+        Inventory inv = p.getInventory();
+        Inventory enc = p.getEnderChest();
+
+        if(Tazpvp.punishmentManager.isBanned(p)) {
+            sendSurround(p, ChatColor.RED + "" + ChatColor.BOLD + "UNBANNED " + ChatColor.WHITE + "You are now released from the dead.");
+        }
+        Tazpvp.statsManager.initPlayer(p);
+        Tazpvp.playerWrapperStatsManager.wipeSwords(p);
+        Tazpvp.perkManager.initPerks(p);
+        Tazpvp.punishmentManager.removeBan(p);
+        Tazpvp.punishmentManager.removeMute(p);
+        enc.clear();
+        inv.clear();
+
+        p.setHealth(20);
+        p.setFoodLevel(20);
+
+        for (Player op : Bukkit.getOnlinePlayers()) {
+            sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH" + ChatColor.WHITE + p + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");
+            p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
+            p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "REBIRTH", ChatColor.LIGHT_PURPLE + "You awake as a new person.", 10, 100, 10);
+        }
     }
 
     public static void skullPlayer(Player p) {
