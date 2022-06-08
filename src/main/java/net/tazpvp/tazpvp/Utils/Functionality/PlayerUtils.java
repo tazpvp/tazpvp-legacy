@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
 import org.apache.commons.io.IOUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -11,6 +12,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import redempt.redlib.itemutils.ItemBuilder;
+import redempt.redlib.itemutils.ItemUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -106,6 +109,11 @@ public class PlayerUtils {
     }
     public static String setLPRankCommand(Player p, String rank) {
         return "pex user " + p.getName() + " group set " + rank;
+    }
+
+    public static void skullPlayer(Player p) {
+        ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
+        p.getInventory().addItem(head);
     }
 //
 //    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/

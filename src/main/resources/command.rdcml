@@ -271,6 +271,12 @@ kit player:target?(context self){
     permission tazpvp.kit
     hook kit
 }
+skull player:target?(context self){
+    help /skull <user>
+    user player
+    permission tazpvp.skull
+    hook skull
+}
 
 troll player:target{
     help /troll <user>
