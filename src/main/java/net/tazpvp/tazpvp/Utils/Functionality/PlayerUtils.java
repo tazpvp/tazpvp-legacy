@@ -147,6 +147,16 @@ public class PlayerUtils {
         ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
         p.getInventory().addItem(head);
     }
+
+    public static void setHealth(Player p, int MaxHealth, int Amount) {
+        double health = p.getHealth();
+        if (health + Amount > MaxHealth) {
+            p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(MaxHealth);
+            p.setHealth(MaxHealth);
+        } else {
+            p.setHealth(health + Amount);
+        }
+    }
 //
 //    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/
 //    public static String insertString(String originalString, String stringToBeInserted, int index) {

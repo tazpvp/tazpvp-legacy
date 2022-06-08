@@ -29,6 +29,7 @@ import java.util.Random;
 import java.util.WeakHashMap;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.*;
+import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
 
 public class DeathEvent implements Listener {
     public WeakHashMap<Player, Long> cooldowns = new WeakHashMap<Player, Long>();
@@ -196,15 +197,17 @@ public class DeathEvent implements Listener {
 
             Tazpvp.statsManager.addKills(d, 1);
             Tazpvp.statsManager.addExp(d, 15);
+            if (Tazpvp.boolManager.getHasRebirthed(p)){ Tazpvp.statsManager.addExp(d, 5); }
             Tazpvp.statsManager.addCoins(d, 7);
 
             double health = d.getHealth();
-            if (health + 4 > 20) {
-                d.setHealth(20);
+            if (Tazpvp.boolManager.getHasRebirthed(p)){
+                setHealth(d, 24, 2);
+            } else if (Tazpvp.perkManager.getFatPerk(p)){
+                setHealth(d, 22, 2);
             } else {
-                d.setHealth(health + 4);
+                setHealth(d, 20, 4);
             }
-            fatPerk(d);
             gobblePerk(d);
             agilityPerk(d);
             tankPerk(d);
