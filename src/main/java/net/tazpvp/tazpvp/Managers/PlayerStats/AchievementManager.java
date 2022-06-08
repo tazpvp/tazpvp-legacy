@@ -26,7 +26,7 @@ public class AchievementManager {
         }
     }
 
-    public void initAch(OfflinePlayer player){
+    public void initPlayer(OfflinePlayer player){
         statsFile.set(player.getUniqueId().toString()+".hasSentChat", false);
     }
 

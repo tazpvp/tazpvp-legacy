@@ -18,7 +18,7 @@ public class PerkManager {
         statsFile = YamlConfiguration.loadConfiguration(file);
     }
 
-    public void initPerks(OfflinePlayer p){
+    public void initPlayer(OfflinePlayer p){
         statsFile.set(p.getUniqueId().toString()+".fatPerk", false);
         statsFile.set(p.getUniqueId().toString()+".excavatorPerk", false);
         statsFile.set(p.getUniqueId().toString()+".archer", false);

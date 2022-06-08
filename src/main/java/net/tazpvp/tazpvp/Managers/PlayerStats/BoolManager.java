@@ -26,7 +26,7 @@ public class BoolManager {
         }
     }
 
-    public void initBool(OfflinePlayer p){
+    public void initPlayer(OfflinePlayer p){
         statsFile.set(p.getUniqueId().toString()+".hasRebirthed", false);
     }
 
