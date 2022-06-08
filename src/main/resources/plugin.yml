@@ -3,7 +3,7 @@ version: '${project.version}'
 main: net.tazpvp.tazpvp.Tazpvp
 api-version: 1.18
 prefix: Taz
-authors: [ rownox, Ntdi, BubbleGum, RealTrippy ]
+authors: [ rownox, Ntdi, Your mom ]
 description: Tazpvp main logic
 website: tazpvp.net
 depend: [WorldGuard, ProtocolLib]
