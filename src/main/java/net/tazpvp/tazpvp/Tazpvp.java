@@ -192,8 +192,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new HoloCMD(),
             new DuelCMD(),
             new BalCMD(),
-            new ParticleCMD());
-            new SkullCMD();
+            new ParticleCMD(),
+            new SkullCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
