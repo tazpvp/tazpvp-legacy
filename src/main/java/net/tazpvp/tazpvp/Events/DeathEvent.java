@@ -108,11 +108,22 @@ public class DeathEvent implements Listener {
                             if (container.has(key, PersistentDataType.DOUBLE)){
                                 double foundValue = container.get(key, PersistentDataType.DOUBLE);
                                 itemDamage(foundValue, (EntityDamageByEntityEvent) e);
+                                return;
                             }
                         }
+
+                        customItems((EntityDamageByEntityEvent) e);
+
                     }
                 }
             }
+        }
+    }
+
+    public void customItems(EntityDamageByEntityEvent e) {
+        if (e.getDamager() instanceof Player d) {
+            ItemStack item = d.getInventory().getItemInMainHand();
+            // do stuff
         }
     }
 
