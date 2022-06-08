@@ -21,7 +21,7 @@ public class ShopGUI {
     }
 
     public void createShopButton(int slot, int price, ItemStack item, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
-        ItemBuilder b = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
+        ItemBuilder b = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
         if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
