@@ -60,7 +60,7 @@ public class ShopGUI {
         createShopButton(new ItemStack(Material.GOLDEN_APPLE, 1), 24, 27, ChatColor.WHITE + "Gold Apple", ChatColor.BLUE + "Not Steroids", false, false, null);
         createShopButton(new ItemStack(Material.GOLDEN_AXE, 1), 19, 33, ChatColor.WHITE + "Axe", ChatColor.BLUE + "Break Wood", false, false, null);
         createShopButton(new ItemStack(Material.SHEARS, 1), 20, 26, ChatColor.WHITE + "Scissors", ChatColor.BLUE + "Break Wool", false, false, null);
-        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 9, ChatColor.WHITE + "Bad shield", ChatColor.BLUE + "Broken shiled", false, false, null);
+        createShopButton(new ItemBuilder(Material.SHIELD, 1).setDurability(335), 21, 9, ChatColor.WHITE + "Rusty shield", ChatColor.BLUE + "One time use", false, false, null);
         createShopButton(new ItemStack(Material.BLUE_WOOL, 64), 28, 17, ChatColor.WHITE + "Blue Blocks", ChatColor.BLUE + "Drip", true, false, null);
         createShopButton(new ItemStack(Material.PURPLE_WOOL, 64), 29, 17, ChatColor.WHITE + "Purple Blocks", ChatColor.BLUE + "Portal?", true, false, null);
         createShopButton(new ItemStack(Material.MAGENTA_WOOL, 64), 30, 17, ChatColor.WHITE + "Pink Blocks", ChatColor.BLUE + "Ice cream", true, false, null);
