@@ -5,8 +5,6 @@ import org.bukkit.entity.Player;
 
 public class ChatUtils {
     public static void sendSurround(Player p, String msg){
-        p.sendMessage(" ");
-        p.sendMessage(msg);
-        p.sendMessage(" ");
+        p.sendMessage("\n" + msg + "\n");
     }
 }
