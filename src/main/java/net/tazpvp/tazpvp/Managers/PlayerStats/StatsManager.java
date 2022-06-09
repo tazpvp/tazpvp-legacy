@@ -185,7 +185,6 @@ public class StatsManager {
     public void setExp(OfflinePlayer player, double exp) {
         statsFile.set(player.getUniqueId().toString()+".exp", exp);
         Tazpvp.getInstance().initScoreboard((Player) player);
-        if (player.isOnline()) updateXPBar((Player) player);
     }
     public void addExp(OfflinePlayer player, double exp) {
         setExp(player, exp+getExp(player));
