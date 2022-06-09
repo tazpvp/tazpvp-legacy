@@ -24,7 +24,7 @@ public enum Items {
     GolSwiBla(ChatColor.GREEN + "Golden Switchblade", Material.GOLDEN_SWORD, 4, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Speedy and thin."),
     DarShe(ChatColor.GREEN + "Darth Shear", Material.NETHERITE_SWORD, 5, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 9, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Am relic of the dark side."),
     ThoSti(ChatColor.GREEN + "Thorn Striker", Material.STONE_SWORD, 5, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Those stricken feel unbearable pain."),
-    CopJac(ChatColor.GREEN + "Copper Jackknife", Material.WOODEN_SWORD, 5, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A tool for heavy duty jobs."),
+    CopJac(ChatColor.GREEN + "Copper Jackknife", Material.WOODEN_SWORD, 5, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A tool for heavy duty jobs."),
 
     // rare swords
     WinRip(ChatColor.AQUA + "Wind Ripper", Material.DIAMOND_SWORD, 6, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Packed inside is the force of a hurricane."),
