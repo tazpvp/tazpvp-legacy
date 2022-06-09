@@ -260,6 +260,27 @@ public class StatsManager {
             default -> sb.getTeam("o");
         };
     }
+
+    public ChatColor getColor(Player p) {
+        return switch (Tazpvp.permissions.getPrimaryGroup(p).toLowerCase()) {
+            case "owner" -> ChatColor.RED;
+            case "manager" -> ChatColor.DARK_GREEN;
+            case "sr.admin" -> ChatColor.DARK_AQUA;
+            case "admin" -> ChatColor.DARK_PURPLE;
+            case "developer" -> ChatColor.GOLD;
+            case "sr.mod" -> ChatColor.AQUA;
+            case "mod" -> ChatColor.BLUE;
+            case "helper" -> ChatColor.DARK_GRAY;
+            case "builder" -> ChatColor.DARK_GREEN;
+            case "media" -> ChatColor.DARK_AQUA;
+            case "vip" -> ChatColor.GOLD;
+            case "mvp" -> ChatColor.GOLD;
+            case "mvp+" -> ChatColor.GOLD;
+            case "mvp++" -> ChatColor.GOLD;
+            case "banned" -> ChatColor.RED;
+            default -> ChatColor.GRAY;
+        };
+    }
     public static <T> T getOrDefault(FileConfiguration file, String path, T defaultReturn) {
         if(file.contains(path) && file.get(path) != null) {
             return (T) file.get(path);

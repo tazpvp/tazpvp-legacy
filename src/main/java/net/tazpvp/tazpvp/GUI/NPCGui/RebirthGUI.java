@@ -55,6 +55,10 @@ public class RebirthGUI {
 
         ItemButton home = ItemButton.create(new ItemBuilder(Material.DARK_OAK_DOOR).setName(ChatColor.RED + "" + ChatColor.BOLD + "LEAVE").setLore(ChatColor.GRAY + "Return home."), e -> {
             Player p = (Player) e.getWhoClicked();
+            if (Tazpvp.punishmentManager.isBanned(p)) {
+                p.sendMessage(ChatColor.RED + "Nice try");
+                return;
+            }
             p.teleport(configUtils.spawn);
             p.sendMessage(prefix + "Welcome back.");
             p.playSound(p.getLocation(), Sound.BLOCK_BELL_USE, 1, 1);
