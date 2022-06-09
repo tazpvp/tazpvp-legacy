@@ -32,7 +32,7 @@ public class SpawnCMD implements Listener, CommandListener {
         if (target.hasPermission("tazpvp.spawn")){
             target.teleport(configUtils.spawn);
         } else {
-            target.sendMessage(ChatColor.GOLD + "You will be teleported to spawn in " + ChatColor.RED + "5s");
+            target.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + "5 Seconds" + ChatColor.DARK_AQUA + " Do not move.");
             target.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
             new BukkitRunnable(){

@@ -48,17 +48,11 @@ public class BlockPlaceEvent implements Listener {
                 int timer = 0;
 
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
-                if (blockType == Material.OAK_PLANKS) {
-                    timer = 20 * 10;
-                } else if (blockType == Material.DIRT) {
-                    event.setCancelled(true);
-                }else if (blockType == Material.COBWEB) {
-                    timer = 2 * 20;
+
+                if (event.getPlayer().hasPermission("tazpvp.rank")) {
+                    timer = 20 * 50;
                 } else {
                     timer = 20 * 20;
-                }
-                if (event.getPlayer().hasPermission("tazpvp.rank")) {
-                    timer = timer * 2;
                 }
                 new BukkitRunnable() {
                     @Override
