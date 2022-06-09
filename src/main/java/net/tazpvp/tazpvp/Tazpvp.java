@@ -138,8 +138,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         doHashMaps();
         particleUtil.staticEffects.add(new StaticSpingParticle());
 
-        NpcUtils.spawnAll();
-
         new BukkitRunnable() {
             @Override
             public void run() {
