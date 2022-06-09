@@ -15,36 +15,36 @@ public class BowGUI {
     private InventoryGUI gui;
 
     public BowGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.RED + "eCHANTS"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.BLUE + "" + ChatColor.BLUE + "BOWS AND ARMOR"));
         makeItems(p);
         gui.open(p);
     }
 
     public void makeItems(Player p) {
         gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
-        ItemButton Bow = ItemButton.create(new ItemBuilder(Material.BOW).setName(ChatColor.RED + "BOW").setLore("You can only have one enchantment at a time!"), e -> {});
-        ItemButton Armor = ItemButton.create(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName(ChatColor.RED + "ARMOR").setLore("You can only have one enchantment at a time!"), e -> {});
+        ItemButton Bow = ItemButton.create(new ItemBuilder(Material.BOW).setName(ChatColor.GOLD + "" + ChatColor.BOLD + "BOW UPGRADES").setLore(ChatColor.GRAY + "Only 1 upgrade can be", ChatColor.GRAY + "selected at a time."), e -> {});
+        ItemButton Armor = ItemButton.create(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "ARMOR UPGRADES").setLore(ChatColor.GRAY + "Only 1 upgrade can be", ChatColor.GRAY + "selected at a time."), e -> {});
 
-        ItemButton power = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "Power").setLore("1 shard"), e -> {
+        ItemButton power = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Power").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards"), e -> {
             doChecks(p, Enchantment.ARROW_DAMAGE);
         });
 
-        ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "Punch").setLore("1 shard"), e -> {
+        ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Punch").setLore("1 shard"), e -> {
             doChecks(p, Enchantment.ARROW_KNOCKBACK);
         });
 
-        ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "Flame").setLore("1 shard"), e -> {
+        ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Flame").setLore("1 shard"), e -> {
             doChecks(p, Enchantment.ARROW_FIRE);
         });
-        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "THORNS I").setLore("1 shard"), e -> {
+        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Thorns").setLore("1 shard"), e -> {
             doChecksR(p, Enchantment.THORNS, 1);
         });
 
-        ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "PROTECTION II").setLore("1 shard"), e -> {
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Protection").setLore("1 shard"), e -> {
             doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
         });
 
-        ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.AQUA + "FEATHER FALLING IV").setLore("1 shard"), e -> {
+        ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore("1 shard"), e -> {
             doChecksR(p, Enchantment.PROTECTION_FALL, 4);
         });
 
