@@ -361,7 +361,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
             team = scoreboard.registerNewTeam(player.getUniqueId().toString());
 
-            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
             team.addPlayer(player);
         }
     }
