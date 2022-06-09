@@ -46,7 +46,7 @@ public class DeathUtils {
      * @param receiver the player to send the message to
      */
     public void sendDeathMessage(final Player receiver) {
-        final String who = (receiver == killer) ? "You" : ChatColor.GRAY + p.getName();
+        final String who = (receiver == killer) ? "You" : ChatColor.GRAY + killer.getName();
         final String between = ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName();
         String end = "";
         if (receiver == killer) {
