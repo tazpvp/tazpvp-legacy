@@ -26,10 +26,7 @@ import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
 import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import net.tazpvp.tazpvp.unused.ConfigGetter;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -344,7 +341,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
             team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
 
-            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+            team.setColor(ChatColor.GREEN);
             team.addPlayer(onlinePlayer);
 
         }
@@ -361,7 +359,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
             team = scoreboard.registerNewTeam(player.getUniqueId().toString());
 
-            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            team.setColor(ChatColor.GREEN);
             team.addPlayer(player);
         }
     }
