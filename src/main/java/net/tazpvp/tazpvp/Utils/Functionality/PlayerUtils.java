@@ -152,7 +152,7 @@ public class PlayerUtils {
         p.getInventory().addItem(head);
     }
 
-    public static void setHealth(Player p, int MaxHealth, int Amount) {
+    public static void setHealth(Player p, double MaxHealth, double Amount) {
         double health = p.getHealth();
         if (health + Amount > MaxHealth) {
             p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(MaxHealth);
