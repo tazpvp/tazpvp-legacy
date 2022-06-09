@@ -62,6 +62,7 @@ public class RebirthGUI {
             p.teleport(configUtils.spawn);
             p.sendMessage(prefix + "Welcome back.");
             p.playSound(p.getLocation(), Sound.BLOCK_BELL_USE, 1, 1);
+            p.sendTitle(ChatColor.GREEN + "" + ChatColor.BOLD + "OVERWORLD", ChatColor.DARK_GREEN + "Welcome back.", 10, 100, 10);
         });
         gui.addButton(15, home);
 

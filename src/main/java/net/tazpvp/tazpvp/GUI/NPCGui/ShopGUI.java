@@ -14,7 +14,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 public class ShopGUI {
     private InventoryGUI gui;
     private Player p;
-    String prefix = ChatColor.GOLD + "[NPC] Maxim" + ChatColor.WHITE;
+    String prefix = ChatColor.GOLD + "[NPC] Maxim" + ChatColor.YELLOW;
 
     public ShopGUI(Player p){
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*4, ChatColor.BLUE + "" + ChatColor.BOLD + "SHOP"));
@@ -51,6 +51,7 @@ public class ShopGUI {
                     itemstack.setItemMeta(meta);
                 }
                 p.getInventory().addItem(itemstack);
+                p.sendMessage(prefix + " You purchased " + ChatColor.WHITE + name + ChatColor.YELLOW + " for " + ChatColor.WHITE + "$" + price);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
                 p.sendMessage(prefix + " You don't have enough money!");
