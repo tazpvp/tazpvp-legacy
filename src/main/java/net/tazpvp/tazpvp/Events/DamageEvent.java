@@ -1,13 +1,26 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class DamageEvent implements Listener {
+    public void onDamage(EntityDamageEvent e) {
+        Player p = (Player) e.getEntity();
+        if (e.getCause() == EntityDamageEvent.DamageCause.FALL){
+            if (Tazpvp.fallDamageImmune.contains(p)) {
+                e.setCancelled(true);
+                Tazpvp.fallDamageImmune.remove(p);
+            }
+        }
+    }
+
     public static List<ItemStack> items = Arrays.asList(
             new ItemStack(Material.WOODEN_SWORD),
             new ItemStack(Material.STONE_SWORD),
@@ -16,6 +29,7 @@ public class DamageEvent implements Listener {
             new ItemStack(Material.DIAMOND_SWORD),
             new ItemStack(Material.NETHERITE_SWORD)
     );
+
 //    @EventHandler
 //    public void onDamage(EntityDamageByEntityEvent e) {
 //        if (e.getDamager() instanceof Player attacker && e.getEntity() instanceof Player p) {

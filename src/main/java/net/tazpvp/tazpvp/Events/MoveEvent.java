@@ -36,17 +36,9 @@ public class MoveEvent implements Listener {
 
     public void Launchpad(Player p) {
         if (p.getGameMode().equals(GameMode.SURVIVAL)){
-            p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), true));
             Tazpvp.fallDamageImmune.add(p.getUniqueId());
-            p.setVelocity(new Vector(0, 1.5, 3));
             p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), false));
-                    Tazpvp.fallDamageImmune.remove(p.getUniqueId());
-                }
-            }.runTaskLater(Tazpvp.getInstance(), 20 * 4);
+            p.setVelocity(new Vector(0, 1.5, 3));
         }
     }
 
