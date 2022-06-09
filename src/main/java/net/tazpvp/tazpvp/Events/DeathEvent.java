@@ -112,6 +112,7 @@ public class DeathEvent implements Listener {
                                 itemDamage(foundValue, (EntityDamageByEntityEvent) e);
                                 return;
                             }
+                            customItems((EntityDamageByEntityEvent) e);
                         }
 
                         customItems((EntityDamageByEntityEvent) e);
@@ -128,8 +129,18 @@ public class DeathEvent implements Listener {
             ItemStack item = d.getInventory().getItemInMainHand();
             // do stuff
             if (item.getType().equals(Material.INK_SAC)){
-                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 2, 1));
+                removeOne(d);
+                p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 2 * 20, 1));
             }
+        }
+    }
+
+    public void removeOne(Player p) {
+        ItemStack item = p.getInventory().getItemInMainHand();
+        if (item.getAmount() > 1) {
+            item.setAmount(item.getAmount() - 1);
+        } else {
+            p.getInventory().setItemInMainHand(null);
         }
     }
 
