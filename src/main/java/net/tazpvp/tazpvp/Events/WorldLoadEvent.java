@@ -12,13 +12,13 @@ import static net.tazpvp.tazpvp.Utils.NPCS.NpcUtils.spawn;
 public class WorldLoadEvent implements Listener {
     @EventHandler
     public void onWorldLoad(org.bukkit.event.world.WorldLoadEvent e) {
-        Bukkit.getLogger().info("woreddddd " + e.getWorld().getName());
-        World ew = e.getWorld();
-        for (Villagers vil : Villagers.values()) {
-            World w = vil.location.getWorld();
-            if (w == ew) {
-                spawn(vil);
-            }
-        }
+//        Bukkit.getLogger().info("woreddddd " + e.getWorld().getName());
+//        World ew = e.getWorld();
+//        for (Villagers vil : Villagers.values()) {
+//            World w = vil.location.getWorld();
+//            if (w == ew) {
+//                spawn(vil);
+//            }
+//        }
     }
 }
