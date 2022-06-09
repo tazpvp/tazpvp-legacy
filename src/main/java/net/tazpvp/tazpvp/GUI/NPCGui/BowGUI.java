@@ -29,22 +29,22 @@ public class BowGUI {
             doChecks(p, Enchantment.ARROW_DAMAGE);
         });
 
-        ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Punch").setLore("1 shard"), e -> {
+        ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Punch").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards"), e -> {
             doChecks(p, Enchantment.ARROW_KNOCKBACK);
         });
 
-        ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Flame").setLore("1 shard"), e -> {
+        ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Flame").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards"), e -> {
             doChecks(p, Enchantment.ARROW_FIRE);
         });
-        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Thorns").setLore("1 shard"), e -> {
+        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Thorns").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards"), e -> {
             doChecksR(p, Enchantment.THORNS, 1);
         });
 
-        ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Protection").setLore("1 shard"), e -> {
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Protection").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards"), e -> {
             doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
         });
 
-        ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore("1 shard"), e -> {
+        ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards"), e -> {
             doChecksR(p, Enchantment.PROTECTION_FALL, 4);
         });
 
