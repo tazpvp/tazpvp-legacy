@@ -139,6 +139,12 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         doHashMaps();
         particleUtil.staticEffects.add(new StaticSpingParticle());
 
+        for (Villagers vi : Villagers.values()) {
+            if (vi.location.getWorld() != null) {
+                NpcUtils.spawn(vi);
+            }
+        }
+
         new BukkitRunnable() {
             @Override
             public void run() {
