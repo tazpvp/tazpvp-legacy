@@ -140,14 +140,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         particleUtil.staticEffects.add(new StaticSpingParticle());
 
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                for (Villagers vil : Villagers.values()) {
-                    NpcUtils.spawn(vil);
-                }
-            }
-        }.runTaskLater(this, 20L * 5);
+        for (Villagers vil : Villagers.values()) {
+            NpcUtils.spawn(vil);
+        }
 
         new BukkitRunnable() {
             @Override
