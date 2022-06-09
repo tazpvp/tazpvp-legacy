@@ -28,7 +28,7 @@ public class ShopGUI {
         if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
-            if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
+            if (rankRequired && !p.hasPermission("tazpvp.buy")){
                 p.sendMessage(prefix + " A rank is required to attain this item.");
                 return;
             }
