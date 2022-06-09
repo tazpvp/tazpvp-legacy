@@ -102,17 +102,17 @@ public class DeathEvent implements Listener {
                         CombatLogManager.putInCombat(d);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
-                        if (item.hasItemMeta()) {
-                            NamespacedKey key = PdcUtils.key;
-                            ItemMeta meta = item.getItemMeta();
-                            PersistentDataContainer container = meta.getPersistentDataContainer();
-
-                            if (container.has(key, PersistentDataType.DOUBLE)){
-                                double foundValue = container.get(key, PersistentDataType.DOUBLE);
-                                //itemDamage(foundValue, (EntityDamageByEntityEvent) e);
-                                return;
-                            }
-                        }
+//                        if (item.hasItemMeta()) {
+//                            NamespacedKey key = PdcUtils.key;
+//                            ItemMeta meta = item.getItemMeta();
+//                            PersistentDataContainer container = meta.getPersistentDataContainer();
+//
+//                            if (container.has(key, PersistentDataType.DOUBLE)){
+//                                double foundValue = container.get(key, PersistentDataType.DOUBLE);
+//                                itemDamage(foundValue, (EntityDamageByEntityEvent) e);
+//                                return;
+//                            }
+//                        }
 
                         customItems((EntityDamageByEntityEvent) e);
 
