@@ -106,6 +106,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         initiater.addListener(new MobUtil());
 
         new WorldCreator("ban").environment(World.Environment.NETHER).createWorld();
+        new WorldCreator("arena").environment(World.Environment.NORMAL).createWorld();
 
         try {
             registerEvents();
@@ -140,12 +141,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         doHashMaps();
         particleUtil.staticEffects.add(new StaticSpingParticle());
-
-        for (Villagers vi : Villagers.values()) {
-            if (vi.location.getWorld() != null) {
-                NpcUtils.spawn(vi);
-            }
-        }
 
         new BukkitRunnable() {
             @Override

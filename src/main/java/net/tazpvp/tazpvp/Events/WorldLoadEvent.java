@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
