@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class BubNPC {
-    String prefix = ChatColor.YELLOW + "[NPC] Bub: " + ChatColor.AQUA;
+    String prefix = ChatColor.DARK_AQUA + "[NPC] Bub: " + ChatColor.AQUA;
     public void convertHeadsToShards(Player p) {
         if (p.getInventory().getItemInMainHand().getType().equals(Material.PLAYER_HEAD)) {
             ItemStack item = p.getInventory().getItemInMainHand();
