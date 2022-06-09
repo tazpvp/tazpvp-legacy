@@ -106,7 +106,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         initiater.addListener(new MobUtil());
 
         new WorldCreator("ban").environment(World.Environment.NETHER).createWorld();
-        new WorldCreator("arena").environment(World.Environment.NORMAL).createWorld();
 
         try {
             registerEvents();
