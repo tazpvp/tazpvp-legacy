@@ -43,51 +43,39 @@ public class ServerStore {
         ChatColor r = ChatColor.RED; ItemStack vipmat = new ItemStack(Material.MUSIC_DISC_CHIRP); hideFlag(vipmat);
         ItemBuilder vip = new ItemBuilder(vipmat).setName(ChatColor.RED+""+ChatColor.BOLD+"VIP " + ChatColor.GRAY + 250 + " Credits")
                 .setLore(
-                        r+"〡Enderchest access",
-                        r+"〡Hat command",
-                        r+"〡Nickname command",
-                        r+"〡Votekick command",
-                        r+"〡Invsee command",
-                        r+"〡Vanish command",
-                        r+"〡RGB Armor Colors",
-                        r+"〡Durable Blocks",
-                        r+"〡Anti-spam Bypass",
-                        r+"〡No Lag-back",
-                        r+"〡RGB Blocks",
+                        r+"〡Nick Command",
+                        r+"〡Colored Prefix",
+                        r+"〡Colored Particles",
+                        r+"〡Colored Blocks",
+                        r+"〡Long lasting blocks",
                         r+"〡VIP++ discord rank"
                 );
         createShopButton(vip, 29, 250, "vip");
         ChatColor gr = ChatColor.GREEN; ItemStack mvpmat = new ItemStack(Material.MUSIC_DISC_WAIT); hideFlag(mvpmat);
         ItemBuilder mvp = new ItemBuilder(mvpmat).setName(ChatColor.GREEN+""+ChatColor.BOLD+"MVP " + ChatColor.GRAY + 450 + " Credits")
                 .setLore(
-                        gr+"〡Enderchest access",
-                        gr+"〡Hat command",
-                        gr+"〡Nickname command",
-                        gr+"〡Votekick command",
-                        gr+"〡Invsee command",
-                        gr+"〡Vanish command",
-                        gr+"〡RGB Armor Colors",
-                        gr+"〡Durable Blocks",
+                        gr+"〡Nick Command",
+                        gr+"〡Votekick Command",
+                        gr+"〡Colored Prefix",
+                        gr+"〡Colored Particles",
+                        gr+"〡Colored Blocks",
+                        gr+"〡Long lasting blocks",
                         gr+"〡Anti-spam Bypass",
-                        gr+"〡No Lag-back",
-                        gr+"〡RGB Blocks",
                         gr+"〡VIP++ discord rank"
                 );
         createShopButton(mvp, 20, 250, "mvp");
         ChatColor go = ChatColor.GOLD; ItemStack mvp2mat = new ItemStack(Material.MUSIC_DISC_PIGSTEP); hideFlag(mvp2mat);
         ItemBuilder mvp2 = new ItemBuilder(mvp2mat).setName(ChatColor.GOLD+""+ChatColor.BOLD+"MVP+ " + ChatColor.GRAY + 950 + " Credits")
                 .setLore(
-                        go+"〡Enderchest access",
-                        go+"〡Hat command",
-                        go+"〡Nickname command",
-                        go+"〡Votekick command",
-                        go+"〡Invsee command",
-                        go+"〡Vanish command",
-                        go+"〡RGB Armor Colors",
-                        go+"〡Durable Blocks",
+                        go+"〡Nick Command",
+                        go+"〡Votekick Command",
+                        go+"〡Invsee Command (no advantage)",
+                        go+"〡Vanish Command (no advantage)",
+                        go+"〡Colored Prefix",
+                        go+"〡Colored Particles",
+                        go+"〡Colored Blocks",
+                        go+"〡Long lasting blocks",
                         go+"〡Anti-spam Bypass",
-                        go+"〡No Lag-back",
-                        go+"〡RGB Blocks",
                         go+"〡VIP++ discord rank"
                 );
         createShopButton(mvp2, 11, 250, "mvp+");
