@@ -136,16 +136,16 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             System.out.println("Vault not found!");
         }
 
+        protocolManager = ProtocolLibrary.getProtocolManager();
+
+        doHashMaps();
+        particleUtil.staticEffects.add(new StaticSpingParticle());
+
         for (Villagers vi : Villagers.values()) {
             if (vi.location.getWorld() != null) {
                 NpcUtils.spawn(vi);
             }
         }
-
-        protocolManager = ProtocolLibrary.getProtocolManager();
-
-        doHashMaps();
-        particleUtil.staticEffects.add(new StaticSpingParticle());
 
         new BukkitRunnable() {
             @Override
