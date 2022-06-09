@@ -28,18 +28,12 @@ public class ShopGUI {
         if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
-            if (rankRequired && !p.hasPermission("tazpvp.rank.buy")){
+            if (rankRequired && !p.hasPermission("tazpvp.buy")){
                 p.sendMessage(prefix + " A rank is required to attain this item.");
                 return;
             }
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 Tazpvp.statsManager.addCoins(p, -price);
-                ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
-                if (cIDRequired){
-                    ItemMeta meta = itemstack.getItemMeta();
-                    meta.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE, cID);
-                    itemstack.setItemMeta(meta);
-                }
                 if (item.equals(Material.BLUE_WOOL)) {
                     int Rank = RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getWeight();
                     if (Rank == 1) {
@@ -49,6 +43,12 @@ public class ShopGUI {
                     } else if (Rank == 3) {
                         item.setType(Material.YELLOW_WOOL);
                     }
+                }
+                ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
+                if (cIDRequired){
+                    ItemMeta meta = itemstack.getItemMeta();
+                    meta.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE, cID);
+                    itemstack.setItemMeta(meta);
                 }
                 p.getInventory().addItem(itemstack);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
