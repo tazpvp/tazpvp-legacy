@@ -44,7 +44,7 @@ public class MoveEvent implements Listener {
                 public void run() {
                     p.setMetadata("Invulnerable", new FixedMetadataValue(Tazpvp.getInstance(), false));
                 }
-            }.runTaskLater(Tazpvp.getInstance(), 20 * 3);
+            }.runTaskLater(Tazpvp.getInstance(), 20 * 4);
         }
     }
 
@@ -58,4 +58,18 @@ public class MoveEvent implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void dmgE(EntityDamageEvent e) {
+        if(e.getCause() == EntityDamageEvent.DamageCause.FALL) { //Check if its falling damages
+            if(e.getEntity() instanceof Player p) {
+                if (p.hasMetadata("Invulnerable")) {
+                    if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
+                        e.setCancelled(true);
+                    }
+                }
+            }
+        }
+    }
+
 }
