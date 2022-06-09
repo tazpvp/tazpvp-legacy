@@ -166,13 +166,6 @@ report player:target string...:reason{
     hook report
 }
 
-region {
-    permission tazpvp.admin
-    help /init
-    user player
-    hook region
-}
-
 spawn player:target?(context self){
     help /spawn
     user player

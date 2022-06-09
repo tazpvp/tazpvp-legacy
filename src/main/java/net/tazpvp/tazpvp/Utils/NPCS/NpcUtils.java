@@ -35,11 +35,9 @@ public class NpcUtils {
     }
 
     public static void removeAll() {
-        World w = Bukkit.getWorld("arena");
-        World b = Bukkit.getWorld("ban");
         for (Villagers vil : Villagers.values()) {
-            remove(vil.id, w);
-            remove(vil.id, b);
+            remove(vil.id, Bukkit.getWorld("arena"));
+            remove(vil.id, Bukkit.getWorld("ban"));
         }
     }
 

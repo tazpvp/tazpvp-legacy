@@ -20,6 +20,7 @@ import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Mobs.Listeners.Initiater;
 import net.tazpvp.tazpvp.Mobs.MobUtil;
 import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
+import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
 import net.tazpvp.tazpvp.Utils.Passive.Generator;
 import net.tazpvp.tazpvp.Utils.Passive.Tips;
 import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
@@ -137,6 +138,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         doHashMaps();
         particleUtil.staticEffects.add(new StaticSpingParticle());
+
+        NpcUtils.spawnAll();
 
         new BukkitRunnable() {
             @Override
