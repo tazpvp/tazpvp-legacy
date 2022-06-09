@@ -7,10 +7,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldLoadEvent;
 
 public class WorldWorldLoadEvent implements Listener {
-    @EventHandler
-    public void onWorldLoad(WorldLoadEvent e) {
-        if (e.getWorld().getName().equals("ban")) {
-            NpcUtils.spawn(Villagers.REBIRTH2);
-        }
-    }
+//    @EventHandler
+//    public void onWorldLoad(WorldLoadEvent e) {
+//        if (e.getWorld().getName().equals("ban")) {
+//            NpcUtils.spawn(Villagers.REBIRTH2);
+//        }
+//    }
 }

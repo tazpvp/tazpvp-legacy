@@ -144,8 +144,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             @Override
             public void run() {
                 for (Villagers vil : Villagers.values()) {
-                    if (vil.location.getWorld() != null)
-                        NpcUtils.spawn(vil);
+                    NpcUtils.spawn(vil);
                 }
             }
         }.runTaskLater(this, 20L * 5);
