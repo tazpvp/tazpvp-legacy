@@ -172,12 +172,6 @@ spawn player:target?(context self){
     hook spawn
 }
 
-discord {
-    help /discord
-    user player
-    hook discord
-}
-
 warn player:target string...:reason {
     permission tazpvp.warn
     help /warn <player> <reason>

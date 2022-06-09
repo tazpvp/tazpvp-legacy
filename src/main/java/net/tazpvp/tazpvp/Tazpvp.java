@@ -174,7 +174,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new GuiCMD(),
             new ReportCMD(),
             new SpawnCMD(),
-            new DiscordCMD(),
             new WarnCMD(),
             new MutechatCMD(),
             new MuteCMD(),
