@@ -111,10 +111,8 @@ public class DeathUtils {
     public void applyHealth() {
         if (Tazpvp.boolManager.getHasRebirthed(killer)) {
             setHealth(killer, 24, 2);
-            return;
         } else if (Tazpvp.perkManager.getFatPerk(killer)) {
             setHealth(killer, 22, 2);
-            return;
         } else {
             setHealth(killer, 20, 4);
         }
