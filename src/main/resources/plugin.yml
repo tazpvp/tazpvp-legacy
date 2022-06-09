@@ -7,4 +7,5 @@ authors: [ rownox, Ntdi, Your mom ]
 description: Tazpvp main logic
 website: tazpvp.net
 depend: [ProtocolLib]
+load: POSTWORLD
 commands:
