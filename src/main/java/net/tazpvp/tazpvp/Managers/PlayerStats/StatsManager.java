@@ -185,6 +185,7 @@ public class StatsManager {
     public void setExp(OfflinePlayer player, double exp) {
         statsFile.set(player.getUniqueId().toString()+".exp", exp);
         Tazpvp.getInstance().initScoreboard((Player) player);
+        if (player.isOnline()) updateXPBar((Player) player);
     }
     public void addExp(OfflinePlayer player, double exp) {
         setExp(player, exp+getExp(player));
@@ -280,6 +281,14 @@ public class StatsManager {
             case "banned" -> ChatColor.RED;
             default -> ChatColor.GRAY;
         };
+    }
+
+    public void updateXPBar(final Player p) {
+        p.setExp(getXpBar((float) getExp(p), (float) getExpLeft(p)));
+    }
+
+    public float getXpBar(final float currXp, final float xpLeft) {
+        return currXp / xpLeft;
     }
     public static <T> T getOrDefault(FileConfiguration file, String path, T defaultReturn) {
         if(file.contains(path) && file.get(path) != null) {
