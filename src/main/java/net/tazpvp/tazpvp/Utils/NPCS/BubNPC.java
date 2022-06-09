@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class BubNPC {
-    String prefix = ChatColor.YELLOW + "[NPC] Bub: " + ChatColor.WHITE;
+    String prefix = ChatColor.YELLOW + "[NPC] Bub: " + ChatColor.AQUA;
     public void convertHeadsToShards(Player p) {
         if (p.getInventory().getItemInMainHand().getType().equals(Material.PLAYER_HEAD)) {
             ItemStack item = p.getInventory().getItemInMainHand();
@@ -17,7 +17,7 @@ public class BubNPC {
             for (int i = 0; i < item.getAmount(); i++) {
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             }
-            p.sendMessage(prefix + "You gave me " + ChatColor.GOLD +  item.getAmount() + ChatColor.WHITE + " heads. Take "  + ChatColor.GOLD + item.getAmount()  + ChatColor.WHITE + " shards.");
+            p.sendMessage(prefix + "You gave me " + ChatColor.DARK_AQUA +  item.getAmount() + ChatColor.AQUA + " heads. Take "  + ChatColor.DARK_AQUA + item.getAmount()  + ChatColor.AQUA + " shards.");
         } else {
             p.sendMessage(prefix + "I trade player heads for shards, hold them in your hand next time bud.");
         }
