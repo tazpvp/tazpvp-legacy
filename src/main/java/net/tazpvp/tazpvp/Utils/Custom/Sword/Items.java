@@ -27,24 +27,24 @@ public enum Items {
     CopJac(ChatColor.GREEN + "Copper Jackknife", Material.WOODEN_SWORD, 2, 1, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A tool for heavy duty jobs."),
 
     // rare swords
-    WinRip(ChatColor.AQUA + "Wind Ripper", Material.DIAMOND_SWORD, 3, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Packed inside is the force of a hurricane."),
-    WitBla(ChatColor.AQUA + "Withering Blade", Material.NETHERITE_SWORD, 3, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 13, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "The effects of such blade can be toxic."),
-    ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.STONE_SWORD, 5, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Only a master can wield such power."),
-    StiCla(ChatColor.AQUA + "Stinger Claw", Material.DIAMOND_SWORD, 3, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>() {{
+    WinRip(ChatColor.AQUA + "Wind Ripper", Material.DIAMOND_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Packed inside is the force of a hurricane."),
+    WitBla(ChatColor.AQUA + "Withering Blade", Material.NETHERITE_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 13, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "The effects of such blade can be toxic."),
+    ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.STONE_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Only a master can wield such power."),
+    StiCla(ChatColor.AQUA + "Stinger Claw", Material.DIAMOND_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DAMAGE_ALL, 1);
     }}, ChatColor.GRAY + "Sting a cats claw or smt idfk."),
 
     // epic swords
-    BlaRaz(ChatColor.RED + "Blackiron Razor", Material.NETHERITE_SWORD, 3, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
-    BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.GOLDEN_SWORD, 3, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
-    InfGamDag(ChatColor.RED + "Inferno Gambit Dagger", Material.GOLDEN_SWORD, 3, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{
+    BlaRaz(ChatColor.RED + "Blackiron Razor", Material.NETHERITE_SWORD, 2, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
+    BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.GOLDEN_SWORD, 2, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
+    InfGamDag(ChatColor.RED + "Inferno Gambit Dagger", Material.GOLDEN_SWORD, 2, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.FIRE_ASPECT, 2);
     }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
 
     // legendary swords
-    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 3, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
-    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 3, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Sacred blade of the Fang clan."),
-    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge Sword", Material.DIAMOND_SWORD, 3, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
+    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
+    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Sacred blade of the Fang clan."),
+    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge Sword", Material.DIAMOND_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
     ;
 
     private final String name;
