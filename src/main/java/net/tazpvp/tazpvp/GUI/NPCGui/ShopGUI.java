@@ -51,7 +51,7 @@ public class ShopGUI {
                     itemstack.setItemMeta(meta);
                 }
                 p.getInventory().addItem(itemstack);
-                p.sendMessage(prefix + " You purchased " + ChatColor.WHITE + name + ChatColor.YELLOW + " for " + ChatColor.WHITE + "$" + price);
+                p.sendMessage(prefix + " You purchased " + ChatColor.GOLD + name + ChatColor.YELLOW + " for " + ChatColor.GOLD + "$" + price);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
             } else {
                 p.sendMessage(prefix + " You don't have enough money!");

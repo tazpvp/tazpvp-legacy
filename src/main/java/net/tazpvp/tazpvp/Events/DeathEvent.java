@@ -179,7 +179,7 @@ public class DeathEvent implements Listener {
         DeathUtils deathUtils = new DeathUtils(p, d);
         if (d != null) { //code will run if a player kills another player
             if (dropHead) {
-                deathUtils.dropHead(10, 2);
+                deathUtils.dropHead(100, 5);
             }
 
             if (Bukkit.getOnlinePlayers().size() < 20) {
