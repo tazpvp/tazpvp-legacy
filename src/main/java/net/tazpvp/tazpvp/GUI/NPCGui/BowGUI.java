@@ -13,6 +13,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 public class BowGUI {
     private InventoryGUI gui;
+    String prefix = ChatColor.GREEN + "[NPC] Frank" + ChatColor.DARK_GREEN;
 
     public BowGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.BLUE + "" + ChatColor.BLUE + "BOWS AND ARMOR"));
@@ -26,26 +27,26 @@ public class BowGUI {
         ItemButton Armor = ItemButton.create(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "ARMOR UPGRADES").setLore(ChatColor.GRAY + "Only 1 upgrade can be", ChatColor.GRAY + "selected at a time."), e -> {});
 
         ItemButton power = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Power").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards"), e -> {
-            doChecks(p, Enchantment.ARROW_DAMAGE);
+            doChecks(p, Enchantment.ARROW_DAMAGE, 6);
         });
 
         ItemButton punch = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Punch").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards"), e -> {
-            doChecks(p, Enchantment.ARROW_KNOCKBACK);
+            doChecks(p, Enchantment.ARROW_KNOCKBACK, 6);
         });
 
         ItemButton flame = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Flame").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards"), e -> {
-            doChecks(p, Enchantment.ARROW_FIRE);
+            doChecks(p, Enchantment.ARROW_FIRE, 5);
         });
         ItemButton thorns = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Thorns").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards"), e -> {
-            doChecksR(p, Enchantment.THORNS, 1);
+            doChecksR(p, Enchantment.THORNS, 1, 4);
         });
 
         ItemButton prot = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Protection").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards"), e -> {
-            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2, 5);
         });
 
         ItemButton ff = ItemButton.create(new ItemBuilder(Material.KNOWLEDGE_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards"), e -> {
-            doChecksR(p, Enchantment.PROTECTION_FALL, 4);
+            doChecksR(p, Enchantment.PROTECTION_FALL, 4, 2);
         });
 
         gui.addButton(11, Bow);
@@ -60,14 +61,14 @@ public class BowGUI {
         gui.addButton(25, ff);
     }
 
-    public void doChecks(Player p, Enchantment ench) {
+    public void doChecks(Player p, Enchantment ench, int price) {
         if (BowUtils.getBow(p) == null) {
             p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have a bow!");
             p.closeInventory();
             return;
         }
-        if (Tazpvp.statsManager.getShards(p) >= 1) {
-            Tazpvp.statsManager.addShards(p, -1);
+        if (Tazpvp.statsManager.getShards(p) >= price) {
+            Tazpvp.statsManager.addShards(p, -price);
             BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
             p.closeInventory();
         } else {
@@ -76,12 +77,12 @@ public class BowGUI {
         }
     }
 
-    public void doChecksR(Player p, Enchantment ench, int level) {
+    public void doChecksR(Player p, Enchantment ench, int level, int price) {
         if (BowUtils.getArmor(p)[1].getType() == Material.AIR) {
             p.sendMessage(ChatColor.YELLOW + "[Hrank]" + ChatColor.WHITE + " You do not have armor!");
         }
-        if (Tazpvp.statsManager.getShards(p) >= 1) {
-            Tazpvp.statsManager.addShards(p, -1);
+        if (Tazpvp.statsManager.getShards(p) >= price) {
+            Tazpvp.statsManager.addShards(p, -price);
             BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
             p.closeInventory();
         } else {
