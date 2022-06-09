@@ -2,14 +2,12 @@ package net.tazpvp.tazpvp.Cosmetics.Particle;
 
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.WeakHashMap;
+import java.util.*;
 
 public class ParticleUtil {
-    public static WeakHashMap<UUID, ParticleEffect> savd = new WeakHashMap<>();
-    public static WeakHashMap<Player, ParticleEffect> inUse = new WeakHashMap<>();
+    public WeakHashMap<UUID, ParticleEffect> savd = new WeakHashMap<>();
+    public WeakHashMap<Player, ParticleEffect> inUse = new WeakHashMap<>();
+    public List<ParticleEffect> staticEffects = new ArrayList<>();
 
     public void save(Player p) {
         savd.put(p.getUniqueId(), inUse.get(p));
@@ -32,6 +30,11 @@ public class ParticleUtil {
 
     public void onTick() {
         for (ParticleEffect pe : inUse.values()) {
+            if (pe != null) {
+                pe.onUpdate();
+            }
+        }
+        for (ParticleEffect pe : staticEffects) {
             if (pe != null) {
                 pe.onUpdate();
             }
