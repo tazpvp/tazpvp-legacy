@@ -6,5 +6,5 @@ prefix: Taz
 authors: [ rownox, Ntdi, Your mom ]
 description: Tazpvp main logic
 website: tazpvp.net
-depend: [WorldGuard, ProtocolLib]
+depend: [ProtocolLib]
 commands:
