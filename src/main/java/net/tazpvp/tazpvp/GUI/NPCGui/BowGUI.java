@@ -19,7 +19,7 @@ public class BowGUI {
     String prefix = ChatColor.GREEN + "[NPC] Frank" + ChatColor.DARK_GREEN;
 
     public BowGUI(Player p) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.BLUE + "" + ChatColor.BOLD + "BOWS AND ARMOR"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, ChatColor.BLUE + "" + ChatColor.BOLD + "BOWS & ARMOR"));
         makeItems(p);
         gui.open(p);
     }
