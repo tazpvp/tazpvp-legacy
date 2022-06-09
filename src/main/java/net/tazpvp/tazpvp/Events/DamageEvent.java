@@ -13,11 +13,9 @@ import java.util.List;
 public class DamageEvent implements Listener {
     public void onDamage(EntityDamageEvent e) {
         Player p = (Player) e.getEntity();
-        if (e.getCause() == EntityDamageEvent.DamageCause.FALL){
-            if (Tazpvp.fallDamageImmune.contains(p)) {
-                e.setCancelled(true);
-                Tazpvp.fallDamageImmune.remove(p);
-            }
+        if (Tazpvp.fallDamageImmune.contains(p)) {
+            e.setCancelled(true);
+            Tazpvp.fallDamageImmune.remove(p);
         }
     }
 
