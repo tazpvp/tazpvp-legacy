@@ -112,7 +112,6 @@ public class DeathEvent implements Listener {
                                 itemDamage(foundValue, (EntityDamageByEntityEvent) e);
                                 return;
                             }
-                            customItems((EntityDamageByEntityEvent) e);
                         }
 
                         customItems((EntityDamageByEntityEvent) e);
