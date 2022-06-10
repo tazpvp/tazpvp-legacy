@@ -132,20 +132,27 @@ public class DeathEvent implements Listener {
         Player p = (Player) e.getEntity();
         if (e.getDamager() instanceof Player d) {
             ItemStack item = d.getInventory().getItemInMainHand();
+            ItemStack offhand = d.getInventory().getItemInOffHand();
             // do stuff
             if (item.getType().equals(Material.INK_SAC)){
-                removeOne(d);
+                removeOne(d, true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 2 * 20, 1));
+            } else if (offhand.getType().equals(Material.SHIELD)) {
+                removeOne(d, false);
             }
         }
     }
 
-    public void removeOne(Player p) {
-        ItemStack item = p.getInventory().getItemInMainHand();
+    public void removeOne(Player p, boolean mainHand) {
+        ItemStack item = (mainHand) ? p.getInventory().getItemInMainHand() : p.getInventory().getItemInOffHand();
         if (item.getAmount() > 1) {
             item.setAmount(item.getAmount() - 1);
         } else {
-            p.getInventory().setItemInMainHand(null);
+            if (mainHand) {
+                p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
+            } else {
+                p.getInventory().setItemInOffHand(new ItemStack(Material.AIR));
+            }
         }
     }
 
