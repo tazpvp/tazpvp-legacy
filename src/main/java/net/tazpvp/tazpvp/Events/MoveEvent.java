@@ -32,6 +32,21 @@ public class MoveEvent implements Listener {
                 Launchpad(p); // Launchpad
             }
         }
+
+        if (p.getWorld().getName().equals("arena")) {
+            double y = p.getLocation().getY();
+            if (y > 103 && y < 106 ) {
+                if (p.hasMetadata("Invulnerable")) {
+                    if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
+                        Bukkit.getLogger().info("uwu");
+                        Location loc = new Location(p.getWorld(), p.getLocation().getX(), 97, p.getLocation().getZ());
+                        p.setVelocity(new Vector(0, 0, 0));
+                        p.setFallDistance(0);
+                        p.teleport(loc);
+                    }
+                }
+            }
+        }
     }
 
     public void Launchpad(Player p) {
