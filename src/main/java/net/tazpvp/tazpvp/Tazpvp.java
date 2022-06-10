@@ -80,7 +80,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
-    public static List<UUID> fallDamageImmune = new ArrayList<>();
+    public static List<Player> fallDamageImmune = new ArrayList<>();
 
     @Override
     public void onLoad() {
