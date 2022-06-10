@@ -24,55 +24,38 @@ public class MoveEvent implements Listener {
             } else {
                 new DeathEvent().DeathFunction(p, null, false);
             }
+            return;
         }
 
         Location raidus = new Location(Bukkit.getWorld("arena"), 0, 100, 24);
         if (p.getWorld().getName().equals("arena")) {
             if (p.getLocation().distance(raidus) < 5) {
                 Launchpad(p); // Launchpad
+                return;
             }
         }
 
         if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
-            double z = p.getLocation().getZ();
-            if (z > 60) {
+            double y = p.getLocation().getY();
+            if (y > 98 && y < 99) {
                 Tazpvp.fallDamageImmune.remove(p.getUniqueId());
-                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 97, p.getLocation().getZ());
+                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 96, p.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch());
                 p.setVelocity(new Vector(0, 0, 0));
                 p.setFallDistance(0);
-                p.teleport(loc);
             }
         }
     }
 
     public void Launchpad(Player p) {
         if (p.getGameMode().equals(GameMode.SURVIVAL)){
-            Tazpvp.fallDamageImmune.add(p.getUniqueId());
             p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
             p.setVelocity(new Vector(0, 1.5, 3));
-        }
-    }
-
-    @EventHandler
-    public void dmg(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player p) {
-            if (p.hasMetadata("Invulnerable")) {
-                if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
-                    e.setCancelled(true);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    Tazpvp.fallDamageImmune.add(p.getUniqueId());
                 }
-            }
+            }.runTaskLater(Tazpvp.getInstance(), 3);
         }
     }
-
-    @EventHandler
-    public void dmgE(EntityDamageEvent e) {
-        if(e.getCause() == EntityDamageEvent.DamageCause.FALL) { //Check if its falling damages
-            if(e.getEntity() instanceof Player p) {
-                if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
-                    e.setCancelled(true);
-                }
-            }
-        }
-    }
-
 }
