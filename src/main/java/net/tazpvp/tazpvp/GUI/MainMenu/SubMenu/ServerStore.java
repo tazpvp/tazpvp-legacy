@@ -23,7 +23,7 @@ public class ServerStore {
 
     public ServerStore(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, ChatColor.BLUE + "" + ChatColor.BOLD + "STORE " + ChatColor.DARK_RED + "25% SALE"));
-        link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://store.tazpvp.net/"));
+        link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://taznet.tebex.io/"));
 
         setitems();
         gui.open(p);

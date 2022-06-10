@@ -1,5 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Ranks;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.ChatColor;
@@ -37,7 +39,9 @@ public class RenameSwordUtil {
         if (Tazpvp.statsManager.getCoins(p) >= 200) {
             renameSword(p, sword);
         } else {
-            p.sendMessage(ChatColor.RED + "You don't have enough money to rename this sword!");
+            TextComponent nocred = new TextComponent(ChatColor.RED + "Insufficient Credits! " + ChatColor.WHITE + "[CLICK HERE]");
+            nocred.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://tazpvp.tebex.io/"));
+            p.spigot().sendMessage(nocred);
         }
     }
 
