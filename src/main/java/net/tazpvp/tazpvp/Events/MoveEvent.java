@@ -34,8 +34,8 @@ public class MoveEvent implements Listener {
         }
 
         if (p.getWorld().getName().equals("arena")) {
-            double y = p.getLocation().getY();
-            if (y > 103 && y < 106 ) {
+            double z = p.getLocation().getZ();
+            if (z > 50) {
                 if (p.hasMetadata("Invulnerable")) {
                     if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
                         Bukkit.getLogger().info("uwu");
