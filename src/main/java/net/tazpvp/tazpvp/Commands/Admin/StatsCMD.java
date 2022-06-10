@@ -385,6 +385,52 @@ public class StatsCMD implements CommandListener {
         }
     }
 
+    //credits commands
+    @CommandHook("credits_add")
+    public void creditsAdd(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.addCredits(target, amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.DARK_AQUA + "You have added " + ChatColor.AQUA + amount + ChatColor.DARK_AQUA + " credits to " + ChatColor.AQUA + target.getName());
+        } else {
+            sender.sendMessage("Console has added " + amount + " credits to " + target.getName());
+        }
+    }
+    @CommandHook("credits_remove")
+    public void creditsRemove(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.addCredits(target, -amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.DARK_AQUA + "You have removed " + ChatColor.AQUA + amount + ChatColor.DARK_AQUA + " credits from " + ChatColor.AQUA + target.getName());
+        } else {
+            sender.sendMessage("Console has removed " + amount + " credits from " + target.getName());
+        }
+    }
+    @CommandHook("credits_set")
+    public void creditsSet(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.setCredits(target, amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.DARK_AQUA + "You have set " + ChatColor.AQUA + amount + ChatColor.DARK_AQUA + " credits to " + ChatColor.AQUA + target.getName());
+        } else {
+            sender.sendMessage("Console has set " + amount + " credits to " + target.getName());
+        }
+    }
+    @CommandHook("credits_reset")
+    public void creditsReset(CommandSender sender, Player target) {
+        Tazpvp.statsManager.setCredits(target, 0);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.DARK_AQUA + "You have reset " + ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + "'s credits");
+        } else {
+            sender.sendMessage("Console has reset " + target.getName() + "'s credits");
+        }
+    }
+    @CommandHook("credits_get")
+    public void creditsGet(CommandSender sender, Player target) {
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " has got " + ChatColor.AQUA + Tazpvp.statsManager.getCredits(target) + ChatColor.DARK_AQUA + "'s credits");
+        } else {
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getCredits(target) + "'s credits");
+        }
+    }
+
     @CommandHook("stats_reset")
     public void resetStats(Player p, Player target) {
         Tazpvp.statsManager.initPlayer(target);
