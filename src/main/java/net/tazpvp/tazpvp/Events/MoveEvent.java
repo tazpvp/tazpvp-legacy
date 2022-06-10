@@ -35,12 +35,13 @@ public class MoveEvent implements Listener {
 
         if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
             double z = p.getLocation().getZ();
-            if (z > 50) {
+            if (z > 60) {
+                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
                 Location loc = new Location(p.getWorld(), p.getLocation().getX(), 97, p.getLocation().getZ());
                 p.setVelocity(new Vector(0, 0, 0));
                 p.setFallDistance(0);
                 p.teleport(loc);
-                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
+
             }
         }
     }
