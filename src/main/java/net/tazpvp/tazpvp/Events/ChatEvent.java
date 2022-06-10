@@ -75,7 +75,7 @@ public class ChatEvent implements Listener {
                 p.sendMessage(ChatColor.RED + "Please don't spam the chat!");
             }
             if (previousMessages.containsKey(p)){
-                if (msg.equalsIgnoreCase(previousMessages.get(p))) {
+                if (msg.contains(previousMessages.get(p))) {
                     e.setCancelled(true);
                     p.sendMessage(ChatColor.RED + "You cannot repeat the same message!");
                 }
