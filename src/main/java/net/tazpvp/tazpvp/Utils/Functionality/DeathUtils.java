@@ -82,7 +82,7 @@ public class DeathUtils {
     public void bountyCheck() {
         if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
             Tazpvp.statsManager.addCoins(killer, Tazpvp.bounty.get(p.getUniqueId()));
-            Bukkit.broadcastMessage(ChatColor.AQUA + killer.getName() + ChatColor.DARK_AQUA + " collected the " + ChatColor.AQUA + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.DARK_AQUA + " bounty on " + ChatColor.AQUA + p.getName());
+            Bukkit.broadcastMessage(ChatColor.AQUA + killer.getName() + ChatColor.DARK_AQUA + " collected the " + ChatColor.AQUA + "$" + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.DARK_AQUA + " bounty on " + ChatColor.AQUA + p.getName());
             Tazpvp.bounty.remove(p.getUniqueId());
         }
     }
