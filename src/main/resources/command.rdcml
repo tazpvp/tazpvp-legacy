@@ -422,3 +422,10 @@ tazload {
     permission tazpvp.tazload
     hook tazload
 }
+
+staffchat,sc string...:message? {
+    help /staffchat [message]
+    user player
+    permission tazpvp.staffchat
+    hook staffchat
+}

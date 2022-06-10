@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.ChatUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,6 +27,11 @@ public class ChatEvent implements Listener {
         ChatColor lvl = ChatColor.GRAY;
         String lvltxt = ChatColor.GRAY + "[" + lvl + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] ";
         String fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s ";
+
+
+        if (p.hasMetadata("staffchat")) {
+            ChatUtils.sendStaffChatMessage(p, e.getMessage());
+        }
 
         List<String> badWord = new ArrayList<>();
         badWord.add("fuck");
