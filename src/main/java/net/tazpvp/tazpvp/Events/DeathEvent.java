@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.minecraft.world.item.enchantment.EnchantmentProtection;
 import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
@@ -40,10 +41,13 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            if (Tazpvp.fallDamageImmune.contains(p)) {
-                e.setCancelled(true);
-                Tazpvp.fallDamageImmune.remove(p);
-                return;
+            //check if fall damage
+            if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
+                if (Tazpvp.fallDamageImmune.contains(p)) {
+                    e.setCancelled(true);
+                    Tazpvp.fallDamageImmune.remove(p);
+                    return;
+                }
             }
             if (p.getWorld().getName().equals("arena")) {
                 if (p.getLocation().distance(configUtils.spawn) < 25) {
