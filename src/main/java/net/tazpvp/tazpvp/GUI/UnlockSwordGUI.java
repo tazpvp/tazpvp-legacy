@@ -34,8 +34,8 @@ public class UnlockSwordGUI {
         ItemButton buySpins = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART)
                 .setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Buy Spins")
                 .setCount(1)
-                .setLore(ChatColor.DARK_PURPLE + "Cost:", ChatColor.DARK_AQUA + "12 Shards", ChatColor.GOLD + "100 Coins"), e -> {
-            if (Tazpvp.statsManager.getCoins(p) >= 173  && Tazpvp.statsManager.getShards(p) >= 9) {
+                .setLore(ChatColor.DARK_PURPLE + "Cost:", ChatColor.DARK_AQUA + "7 Shards", ChatColor.GOLD + "125 Coins"), e -> {
+            if (Tazpvp.statsManager.getCoins(p) >= 125  && Tazpvp.statsManager.getShards(p) >= 7) {
                 Tazpvp.statsManager.addCoins(p, -125);
                 Tazpvp.statsManager.addShards(p, -7);
                 Tazpvp.statsManager.addSpins(p, 1);

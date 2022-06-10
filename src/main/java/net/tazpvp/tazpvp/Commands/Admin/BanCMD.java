@@ -35,8 +35,8 @@ public class BanCMD implements CommandListener {
                     target.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "BANNED", ChatColor.GOLD + "You have been sent to The Depths.", 10, 100, 10);
 
                     target.sendMessage(ChatColor.DARK_GRAY + "");
-                    target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN" + ChatColor.GRAY + " You've been banned for " + ChatColor.WHITE + rs);
-                    target.sendMessage(ChatColor.GRAY + "If you wish to be unbanned, do not log out. Follow the steps in " + ChatColor.WHITE + "/appeal");
+                    target.sendMessage(ChatColor.DARK_RED + " You've been banned for " + ChatColor.GRAY + rs);
+                    target.sendMessage(ChatColor.GRAY + " If you wish to be unbanned, do not log out. Follow the steps in " + ChatColor.GRAY + "/appeal");
                     target.sendMessage(ChatColor.DARK_GRAY + "");
 
                     for (Player p : Bukkit.getOnlinePlayers()){
