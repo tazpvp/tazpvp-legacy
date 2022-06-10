@@ -32,7 +32,7 @@ public enum Items {
     ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.GOLDEN_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Only a master can wield such power."),
     StiCla(ChatColor.AQUA + "Stinger Claw", Material.GOLDEN_SWORD, 2, 1, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>() {{
         put(Enchantment.DAMAGE_ALL, 1);
-    }}, ChatColor.GRAY + "Sting a cats claw or smt idfk."),
+    }}, ChatColor.GRAY + "Deadly slashes."),
 
     // epic swords
     BlaRaz(ChatColor.RED + "Blackiron Razor", Material.DIAMOND_SWORD, 2, 1, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
@@ -44,7 +44,7 @@ public enum Items {
     // legendary swords
     IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
     BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Sacred blade of the Fang clan."),
-    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge Sword", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
+    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge", Material.NETHERITE_SWORD, 2, 1, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
     ;
 
     private final String name;
