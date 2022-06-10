@@ -17,7 +17,7 @@ public class RigelNPC {
         if (p.getWorld().equals(Bukkit.getWorld("arena"))){
             if (clickedOnce.contains(p)){
                 p.sendMessage(ChatColor.DARK_PURPLE + "[NPC] Rigel " + ChatColor.LIGHT_PURPLE + "Alright, here you go.");
-                p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 77, 0.5, 0, 0));
+                p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5, 0, 0));
                 p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "THE DEPTHS", ChatColor.LIGHT_PURPLE + "Look alive.", 10, 100, 10);
                 p.playSound(p.getLocation(), Sound.AMBIENT_CAVE, 1, 1);
                 clickedOnce.remove(p);

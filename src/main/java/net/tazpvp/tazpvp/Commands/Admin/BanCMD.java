@@ -27,18 +27,9 @@ public class BanCMD implements CommandListener {
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, reason);
             SendBanNotification.sendBanNotification(target.getUniqueId(), sender, reason);
-            for (Player p : Bukkit.getOnlinePlayers()){
-                p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
-                if (!p.getName().equals(target.getName())){
-                    p.sendMessage(ChatColor.DARK_GRAY + "");
-                    p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been banned for " + ChatColor.WHITE + reason);
-                    p.sendMessage(ChatColor.DARK_GRAY + "");
-                }
-            }
-
 
             final String rs = reason;
-            target.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
+            target.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
             new BukkitRunnable(){
                 public void run(){
                     target.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "BANNED", ChatColor.GOLD + "You have been sent to The Depths.", 10, 100, 10);
@@ -47,6 +38,15 @@ public class BanCMD implements CommandListener {
                     target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN" + ChatColor.GRAY + " You've been banned for " + ChatColor.WHITE + rs);
                     target.sendMessage(ChatColor.GRAY + "If you wish to be unbanned, do not log out. Follow the steps in " + ChatColor.WHITE + "/appeal");
                     target.sendMessage(ChatColor.DARK_GRAY + "");
+
+                    for (Player p : Bukkit.getOnlinePlayers()){
+                        p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
+                        if (!p.getName().equals(target.getName())){
+                            p.sendMessage(ChatColor.DARK_GRAY + "");
+                            p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been banned for " + ChatColor.WHITE + rs);
+                            p.sendMessage(ChatColor.DARK_GRAY + "");
+                        }
+                    }
                 }
             }.runTaskLater(Tazpvp.getInstance(), 30);
         } else {
