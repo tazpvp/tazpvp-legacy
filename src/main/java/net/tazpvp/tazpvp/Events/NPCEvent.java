@@ -2,7 +2,7 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
-import net.tazpvp.tazpvp.GUI.NPCGui.RebirthGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.DepthsGUI;
 import net.tazpvp.tazpvp.unused.SelectGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.Utils.NPCS.BubNPC;
@@ -57,7 +57,7 @@ public class NPCEvent implements Listener {
                         } else if (id == 6) {
                             new RigelNPC().clickRigel(e.getPlayer());
                         } else if (id == 7)  {
-                            new RebirthGUI(e.getPlayer());
+                            new DepthsGUI(e.getPlayer());
                         } else if (id == 8) {
                             new BowGUI(e.getPlayer());
                         } else {

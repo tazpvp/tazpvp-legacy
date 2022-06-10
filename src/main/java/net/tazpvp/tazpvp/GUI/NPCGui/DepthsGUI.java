@@ -7,19 +7,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.rebirthPlayer;
 
-public class RebirthGUI {
+public class DepthsGUI {
     private InventoryGUI gui;
     String prefix = ChatColor.DARK_PURPLE + "[NPC] Rigel: " + ChatColor.LIGHT_PURPLE;
 
 
-    public RebirthGUI(Player p) {
+    public DepthsGUI(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 27, ChatColor.BLUE + "" + ChatColor.BOLD + "DEPTHS MENU"));
         addItems();
         gui.open(p);

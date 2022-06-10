@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Utils.NPCS;
 
-import net.tazpvp.tazpvp.GUI.NPCGui.RebirthGUI;
+import net.tazpvp.tazpvp.GUI.NPCGui.DepthsGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -26,7 +26,7 @@ public class RigelNPC {
                 clickedOnce.add(p);
             }
         } else if (p.getWorld().equals(Bukkit.getWorld("ban"))) {
-            new RebirthGUI(p);
+            new DepthsGUI(p);
         }
     }
 }
