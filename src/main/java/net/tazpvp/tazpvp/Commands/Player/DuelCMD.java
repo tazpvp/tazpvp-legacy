@@ -18,8 +18,12 @@ public class DuelCMD {
     @CommandHook("duel")
     public void duel(Player p, Player target) {
         if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin."); return; }
-        if (CombatLogManager.isInCombat(p) || CombatLogManager.isInCombat(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of combat to begin."); return;}
+        if (CombatLogManager.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
         if (sentDuel(p).equals(target.getName())) {
+            if (CombatLogManager.isInCombat(target)) {
+                target.sendMessage(ChatColor.RED + "You accept duels in combat.");
+                return;
+            }
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             Tazpvp.duelLogic.duelStart(p, target, null);
