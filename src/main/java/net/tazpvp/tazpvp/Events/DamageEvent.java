@@ -12,11 +12,7 @@ import java.util.List;
 
 public class DamageEvent implements Listener {
     public void onDamage(EntityDamageEvent e) {
-        Player p = (Player) e.getEntity();
-        if (Tazpvp.fallDamageImmune.contains(p)) {
-            e.setCancelled(true);
-            Tazpvp.fallDamageImmune.remove(p);
-        }
+
     }
 
     public static List<ItemStack> items = Arrays.asList(

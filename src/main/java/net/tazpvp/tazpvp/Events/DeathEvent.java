@@ -40,6 +40,10 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
+            if (Tazpvp.fallDamageImmune.contains(p)) {
+                e.setCancelled(true);
+                Tazpvp.fallDamageImmune.remove(p);
+            }
             if (p.getWorld().getName().equals("arena")) {
                 if (p.getLocation().distance(configUtils.spawn) < 25) {
                     e.setCancelled(true);
