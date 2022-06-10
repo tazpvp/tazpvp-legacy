@@ -398,3 +398,10 @@ particle int:id boolean:run?(true) {
     permission tazpvp.particle
     hook particle
 }
+
+tazload {
+    help /tazload
+    user player
+    permission tazpvp.tazload
+    hook tazload
+}
