@@ -7,7 +7,6 @@ import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
 import net.tazpvp.tazpvp.Commands.Player.*;
-import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
 import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleUtil;
 import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.StaticSpingParticle;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
@@ -22,7 +21,7 @@ import net.tazpvp.tazpvp.Mobs.MobUtil;
 import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
 import net.tazpvp.tazpvp.Utils.Passive.Generator;
-import net.tazpvp.tazpvp.Utils.Passive.Tips;
+import net.tazpvp.tazpvp.Utils.Passive.Messages;
 import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
 import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
@@ -122,7 +121,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         thread.start();
 
         new Generator().generator(this);
-        new Tips().Text(this);
+        new Messages().Text(this);
 
         if(getServer().getPluginManager().getPlugin("Vault") != null) {
             RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
