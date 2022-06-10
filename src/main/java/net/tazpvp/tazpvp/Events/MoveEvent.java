@@ -31,19 +31,18 @@ public class MoveEvent implements Listener {
         if (p.getWorld().getName().equals("arena")) {
             if (p.getLocation().distance(raidus) < 5) {
                 Launchpad(p); // Launchpad
-                return;
             }
         }
 
-        if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
-            double y = p.getLocation().getY();
-            if (y > 98 && y < 99) {
-                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
-                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 96, p.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch());
-                p.setVelocity(new Vector(0, 0, 0));
-                p.setFallDistance(0);
-            }
-        }
+//        if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
+//            double y = p.getLocation().getY();
+//            if (y > 98 && y < 99) {
+//                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
+//                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 96, p.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch());
+//                p.setVelocity(new Vector(0, 0, 0));
+//                p.setFallDistance(0);
+//            }
+//        }
     }
 
     public void Launchpad(Player p) {
