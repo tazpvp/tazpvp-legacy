@@ -264,19 +264,16 @@ public class StatsManager {
     public ChatColor getColor(Player p) {
         return switch (Tazpvp.permissions.getPrimaryGroup(p).toLowerCase()) {
             case "owner" -> ChatColor.RED;
-            case "manager" -> ChatColor.DARK_GREEN;
-            case "sr.admin" -> ChatColor.DARK_AQUA;
-            case "admin" -> ChatColor.DARK_PURPLE;
-            case "developer" -> ChatColor.GOLD;
+            case "manager" -> ChatColor.DARK_AQUA;
+            case "admin" -> ChatColor.RED;
+            case "developer" -> ChatColor.YELLOW;
             case "sr.mod" -> ChatColor.AQUA;
             case "mod" -> ChatColor.BLUE;
-            case "helper" -> ChatColor.DARK_GRAY;
-            case "builder" -> ChatColor.DARK_GREEN;
-            case "media" -> ChatColor.DARK_AQUA;
-            case "vip" -> ChatColor.GOLD;
-            case "mvp" -> ChatColor.GOLD;
+            case "helper" -> ChatColor.GREEN;
+            case "youtube" -> ChatColor.RED;
+            case "vip" -> ChatColor.RED;
+            case "mvp" -> ChatColor.GREEN;
             case "mvp+" -> ChatColor.GOLD;
-            case "mvp++" -> ChatColor.GOLD;
             case "banned" -> ChatColor.RED;
             default -> ChatColor.GRAY;
         };
