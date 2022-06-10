@@ -20,7 +20,7 @@ public class BountyCMD implements CommandListener {
             } else {
                 Tazpvp.bounty.put(target.getUniqueId(), amount);
             }
-            Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + " set a bounty of " + ChatColor.AQUA + amount + "$" + ChatColor.DARK_AQUA + " on " + ChatColor.AQUA + target.getName());
+            Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + " set a bounty of " + ChatColor.AQUA + "$" + amount + ChatColor.DARK_AQUA + " on " + ChatColor.AQUA + target.getName());
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money");
         }
@@ -29,9 +29,9 @@ public class BountyCMD implements CommandListener {
     @CommandHook("bounty_get")
     public void bounty_get(Player p, Player target) {
         if (Tazpvp.bounty.containsKey(target.getUniqueId())) {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has a bounty of " + ChatColor.RED + Tazpvp.bounty.get(target.getUniqueId()) + "$");
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " has a bounty of " + ChatColor.RED + "$" + Tazpvp.bounty.get(target.getUniqueId()));
         } else {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " has no bounty");
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " has no bounty");
         }
     }
 
@@ -41,12 +41,12 @@ public class BountyCMD implements CommandListener {
             if (Tazpvp.statsManager.getCoins(p) > Tazpvp.bounty.get(target.getUniqueId())) {
                 Tazpvp.statsManager.setCoins(p, Tazpvp.statsManager.getCoins(p) - Tazpvp.bounty.get(target.getUniqueId()));
                 Tazpvp.bounty.remove(target.getUniqueId());
-                p.sendMessage(ChatColor.GOLD + "Removed the bounty of " + ChatColor.RED + target.getName());
+                p.sendMessage(ChatColor.DARK_AQUA + "Removed the bounty of " + ChatColor.AQUA + target.getName());
             } else {
                 p.sendMessage(ChatColor.RED + "You don't have enough money");
             }
         } else {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " does not have a bounty");
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " does not have a bounty");
         }
     }
 
@@ -54,9 +54,9 @@ public class BountyCMD implements CommandListener {
     public void bounty_forceremove(Player p, Player target) {
         if (Tazpvp.bounty.containsKey(target.getUniqueId())) {
             Tazpvp.bounty.remove(target.getUniqueId());
-            p.sendMessage(ChatColor.GOLD + "Removed the bounty of " + ChatColor.RED + target.getName());
+            p.sendMessage(ChatColor.DARK_AQUA + "Removed the bounty of " + ChatColor.AQUA + target.getName());
         } else {
-            p.sendMessage(ChatColor.RED + target.getName() + ChatColor.GOLD + " does not have a bounty");
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " does not have a bounty");
         }
     }
 
@@ -66,7 +66,7 @@ public class BountyCMD implements CommandListener {
             p.sendMessage(ChatColor.GOLD + "Bounties:");
             for (UUID uuid : Tazpvp.bounty.keySet()) {
                 Player bounti = Bukkit.getPlayer(uuid);
-                p.sendMessage("  " + ChatColor.RED + bounti.getName() + ChatColor.GOLD + ": " + ChatColor.RED + Tazpvp.bounty.get(uuid) + "$");
+                p.sendMessage("  " + ChatColor.AQUA + bounti.getName() + ChatColor.DARK_AQUA + ": " + ChatColor.AQUA + "$" +Tazpvp.bounty.get(uuid));
             }
         } else {
             p.sendMessage(ChatColor.RED + "There are no active bounties");
