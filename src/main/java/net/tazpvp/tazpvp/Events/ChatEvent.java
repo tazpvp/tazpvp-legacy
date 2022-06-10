@@ -91,7 +91,7 @@ public class ChatEvent implements Listener {
 
         String format = p.isOp()
                 ? fmsg + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', "%s")
-                : fmsg + ChatColor.WHITE + "%s";
+                : fmsg + ChatColor.GRAY + "%s";
         e.setFormat(format);
 
 //        String format = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + ChatColor.WHITE + "%s";
