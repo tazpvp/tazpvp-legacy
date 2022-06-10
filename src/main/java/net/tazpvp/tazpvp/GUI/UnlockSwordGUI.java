@@ -35,9 +35,9 @@ public class UnlockSwordGUI {
                 .setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Buy Spins")
                 .setCount(1)
                 .setLore(ChatColor.DARK_PURPLE + "Cost:", ChatColor.DARK_AQUA + "12 Shards", ChatColor.GOLD + "100 Coins"), e -> {
-            if (Tazpvp.statsManager.getCoins(p) >= 100  && Tazpvp.statsManager.getShards(p) >= 12) {
-                Tazpvp.statsManager.addCoins(p, -100);
-                Tazpvp.statsManager.addShards(p, -12);
+            if (Tazpvp.statsManager.getCoins(p) >= 173  && Tazpvp.statsManager.getShards(p) >= 9) {
+                Tazpvp.statsManager.addCoins(p, -173);
+                Tazpvp.statsManager.addShards(p, -9);
                 Tazpvp.statsManager.addSpins(p, 1);
                 p.sendMessage(ChatColor.DARK_AQUA + "You purchased a spin.");
                 p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);

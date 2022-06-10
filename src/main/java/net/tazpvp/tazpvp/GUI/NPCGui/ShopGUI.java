@@ -77,7 +77,7 @@ public class ShopGUI {
         createShopButton(21, 13, new ItemStack(Material.ARROW, 5),"Arrow","Bow Projectiles", false, false, null);
         createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, false, null);
         createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 1),"Gold Carrot","Healthy Choice", false, false, null);
-        createShopButton(24, 27, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
+        createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
         createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"Blue Blocks","Drip", true, false, null);
 
 
