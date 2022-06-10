@@ -141,7 +141,7 @@ public class PlayerUtils {
         kitPlayer(p);
 
         for (Player op : Bukkit.getOnlinePlayers()) {
-            sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH " + ChatColor.WHITE + p.getName() + ChatColor.DARK_PURPLE + " rebirthed as a stronger warrior");
+            sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH " + ChatColor.DARK_PURPLE + p.getName() + " was reborn stronger.");
             p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
             p.sendTitle(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "REBIRTH", ChatColor.LIGHT_PURPLE + "You awake as a new person.", 10, 100, 10);
         }

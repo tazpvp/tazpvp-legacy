@@ -39,8 +39,10 @@ public class PerkGUI {
                 Tazpvp.statsManager.addShards(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                p.closeInventory();
+                p.sendMessage(prefix + "You bought the perk " + ChatColor.DARK_PURPLE + name + ChatColor.LIGHT_PURPLE + " for " + ChatColor.DARK_PURPLE + price + " Shards.");
             } else {
-                p.sendMessage(prefix + "You don't have enough money!");
+                p.sendMessage(prefix + "You don't have enough shards!");
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
             }
         });
