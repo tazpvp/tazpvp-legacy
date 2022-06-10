@@ -92,7 +92,7 @@ public class DeathUtils {
      */
     public void statsUpdate() {
         Tazpvp.statsManager.addKills(killer, 1);
-        Tazpvp.statsManager.addExp(killer, 15);
+        Tazpvp.statsManager.addExp(killer, 10);
         if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
         Tazpvp.statsManager.addCoins(killer, 7);
         Tazpvp.statsManager.addDeaths(p, 1);
