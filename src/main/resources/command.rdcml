@@ -144,6 +144,23 @@ stats {
            hook spins_get
        }
     }
+    credits {
+           add player:target int:amount {
+               hook credits_add
+           }
+           remove player:target int:amount {
+               hook credits_remove
+           }
+           set player:target int:amount {
+               hook credits_set
+           }
+           reset player:target {
+               hook credits_reset
+           }
+           get player:target {
+               hook credits_get
+           }
+        }
     reset player:target {
         hook stats_reset
     }
