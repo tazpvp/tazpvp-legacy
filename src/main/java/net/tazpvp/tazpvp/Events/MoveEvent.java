@@ -33,18 +33,13 @@ public class MoveEvent implements Listener {
             }
         }
 
-        if (p.getWorld().getName().equals("arena")) {
+        if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
             double z = p.getLocation().getZ();
             if (z > 50) {
-                if (p.hasMetadata("Invulnerable")) {
-                    if (p.getMetadata("Invulnerable").get(0).asBoolean()) {
-                        Bukkit.getLogger().info("uwu");
-                        Location loc = new Location(p.getWorld(), p.getLocation().getX(), 97, p.getLocation().getZ());
-                        p.setVelocity(new Vector(0, 0, 0));
-                        p.setFallDistance(0);
-                        p.teleport(loc);
-                    }
-                }
+                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 97, p.getLocation().getZ());
+                p.setVelocity(new Vector(0, 0, 0));
+                p.setFallDistance(0);
+                p.teleport(loc);
             }
         }
     }
