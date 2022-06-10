@@ -71,27 +71,45 @@ public class BowGUI {
             p.closeInventory();
             return;
         }
-        if (Tazpvp.statsManager.getShards(p) >= price) {
-            Tazpvp.statsManager.addShards(p, -price);
-            BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
+        if (checkIfAlreadyHasEnchatn(BowUtils.getBow(p), ench)) {
+            p.sendMessage(prefix + " You already have this enchantment!");
             p.closeInventory();
-        } else {
+            return;
+        }
+        if (Tazpvp.statsManager.getShards(p) < price) {
             p.sendMessage(prefix + " You do not have enough shards!");
             p.closeInventory();
+            return;
         }
+        Tazpvp.statsManager.addShards(p, -price);
+        BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p), (Tazpvp.statsManager.getRebirth(p) >= 1));
+        p.closeInventory();
     }
 
     public void doChecksR(Player p, Enchantment ench, int level, int price) {
-        if (BowUtils.getArmor(p)[1].getType() == Material.AIR) {
-            p.sendMessage(prefix + " Please wear your full armor set.");
+        for (ItemStack i : BowUtils.getArmor(p)) {
+            if (i.getType().equals(Material.AIR)) {
+                p.sendMessage(prefix + " You do not have any armor!");
+                p.closeInventory();
+                return;
+            } else if (checkIfAlreadyHasEnchatn(i, ench)) {
+                p.sendMessage(prefix + " You already have this enchantment!");
+                p.closeInventory();
+                return;
+            }
         }
-        if (Tazpvp.statsManager.getShards(p) >= price) {
-            Tazpvp.statsManager.addShards(p, -price);
-            BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
-            p.closeInventory();
-        } else {
+        if (Tazpvp.statsManager.getShards(p) < price) {
             p.sendMessage(prefix + " You do not have enough shards!");
             p.closeInventory();
+            return;
         }
+
+        Tazpvp.statsManager.addShards(p, -price);
+        BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
+        p.closeInventory();
+    }
+
+    private boolean checkIfAlreadyHasEnchatn(final ItemStack i, final Enchantment ench) {
+        return (i.getEnchantments().containsKey(ench));
     }
 }
