@@ -22,16 +22,15 @@ public class Generator {
                     new BukkitRunnable(){
                         public void run() {
                             Bukkit.broadcastMessage("");
-                            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + " A shard will generate underground in " + ChatColor.DARK_PURPLE + "60 " + ChatColor.LIGHT_PURPLE + "seconds.");
+                            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + " A shard will generate underground in " + ChatColor.DARK_PURPLE + "30 " + ChatColor.LIGHT_PURPLE + "seconds.");
                             Bukkit.broadcastMessage("");
                             for (Player p : Bukkit.getOnlinePlayers()) {
                                 p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
                             }
                         }
-                    }.runTaskLater(plugin, 20*60*5);
+                    }.runTaskLater(plugin, 3600); //3 mins
                 }
             }
-        }.runTaskTimer(plugin, 20*60, 20*60*6);
-
+        }.runTaskTimer(plugin, 20*60, 4200); //3.5 mins
     }
 }
