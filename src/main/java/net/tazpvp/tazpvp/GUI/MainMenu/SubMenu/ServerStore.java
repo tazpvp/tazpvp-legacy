@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
@@ -106,6 +107,12 @@ public class ServerStore {
         ItemButton PARTICLES = ItemButton.create(new ItemBuilder(Material.BLAZE_POWDER).setName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Particles!").setLore(ChatColor.GRAY + "Rank Required."), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    new ParticlesGUI(p);
+                }
+            }.runTaskLater(Tazpvp.getInstance(), 2);
         });
         gui.addButton(33, PARTICLES);
 
