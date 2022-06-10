@@ -92,8 +92,8 @@ public class DeathEvent implements Listener {
                     DeathFunction(p, null, false);
                 }
             } else {
-                if (e instanceof EntityDamageByEntityEvent) {
-                    if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
+                if (e instanceof EntityDamageByEntityEvent ee) {
+                    if ((ee).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
                         CombatLogManager.putInCombat(p);
@@ -113,6 +113,14 @@ public class DeathEvent implements Listener {
 //                        }
 
                         customItems((EntityDamageByEntityEvent) e);
+
+                    } else if (ee.getDamager() instanceof Arrow) {
+                        if (((Arrow) ee.getDamager()).getShooter() instanceof Player d) {
+                            Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+
+                            CombatLogManager.putInCombat(p);
+                            CombatLogManager.putInCombat(d);
+                        }
 
                     }
                 }
