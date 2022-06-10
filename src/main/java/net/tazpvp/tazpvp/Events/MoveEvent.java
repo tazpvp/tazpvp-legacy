@@ -40,6 +40,7 @@ public class MoveEvent implements Listener {
                 p.setVelocity(new Vector(0, 0, 0));
                 p.setFallDistance(0);
                 p.teleport(loc);
+                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
             }
         }
     }
