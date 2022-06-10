@@ -135,7 +135,9 @@ public class ServerStore {
                     RankUtils.rankGift(p, rank, price);
                 }
             } else {
-                p.sendMessage(ChatColor.RED + "You don't have enough money!");
+                TextComponent nocred = new TextComponent(ChatColor.RED + "Insufficient Credits! " + ChatColor.WHITE + "[CLICK HERE]");
+                nocred.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://tazpvp.tebex.io/"));
+                p.spigot().sendMessage(nocred);
                 p.closeInventory();
             }
         });
