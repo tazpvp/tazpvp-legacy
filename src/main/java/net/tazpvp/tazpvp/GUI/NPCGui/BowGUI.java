@@ -82,7 +82,7 @@ public class BowGUI {
             return;
         }
         Tazpvp.statsManager.addShards(p, -price);
-        BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p));
+        BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p), (Tazpvp.statsManager.getRebirth(p) >= 1));
         p.closeInventory();
     }
 
