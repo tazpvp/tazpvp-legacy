@@ -80,6 +80,11 @@ public class DeathUtils {
      * Checks if the {@code dead} player has a bounty
      */
     public void bountyCheck() {
+        if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
+            Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 3);
+        } else {
+            Tazpvp.bounty.put(killer.getUniqueId(), 3);
+        }
         if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
             Tazpvp.statsManager.addCoins(killer, Tazpvp.bounty.get(p.getUniqueId()));
             Bukkit.broadcastMessage(ChatColor.AQUA + killer.getName() + ChatColor.DARK_AQUA + " collected the " + ChatColor.AQUA + "$" + Tazpvp.bounty.get(p.getUniqueId()) + ChatColor.DARK_AQUA + " bounty on " + ChatColor.AQUA + p.getName());
@@ -94,11 +99,11 @@ public class DeathUtils {
         Tazpvp.statsManager.addKills(killer, 1);
         Tazpvp.statsManager.addExp(killer, 25);
         Tazpvp.statsManager.addStreak(killer, 1);
-        if (Tazpvp.bounty.containsKey(killer.getUniqueId())) { Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 3);
-        } else { Tazpvp.bounty.put(killer.getUniqueId(), 3);}
         if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
         Tazpvp.statsManager.addCoins(killer, 5);
         Tazpvp.statsManager.addDeaths(p, 1);
+        Tazpvp.statsManager.setStreak(p, 0);
+
 
         if (Tazpvp.statsManager.checkLevelUp(killer)) {
             Tazpvp.statsManager.levelUp(killer, 1);
