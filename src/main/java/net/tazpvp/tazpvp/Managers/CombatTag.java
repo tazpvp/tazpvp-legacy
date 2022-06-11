@@ -15,7 +15,8 @@ public class CombatTag {
 
     public static void putInCombat(Player p) {
         if (!CombatTag.isInCombat(p)) {
-            p.sendMessage(ChatColor.RED + "You are now in combat, do not log out."); Tazpvp.particleUtil.save(p);
+            p.sendMessage(ChatColor.RED + "You are now in combat, do not log out.");
+            Tazpvp.particleUtil.save(p);
         }
         combatLog.put(p.getUniqueId(), 10L * 20L);
     }
