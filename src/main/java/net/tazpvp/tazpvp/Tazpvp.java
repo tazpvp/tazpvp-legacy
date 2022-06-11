@@ -12,6 +12,7 @@ import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.StaticSpingParticle;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
+import net.tazpvp.tazpvp.Guilds.GuildManager;
 import net.tazpvp.tazpvp.Managers.CombatLogManager;
 import net.tazpvp.tazpvp.Managers.EnderChestManager;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
@@ -57,6 +58,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static DuelLogic duelLogic;
     public static SbUtil sbUtil;
     public static ParticleUtil particleUtil;
+    public static GuildManager guildManager;
 
     public static boolean isRestarting = false;
 
@@ -224,6 +226,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             enderChestManager = new EnderChestManager();
             duelLogic = new DuelLogic();
             particleUtil = new ParticleUtil();
+            guildManager = new GuildManager();
         } else {
             statsManager.saveStats();
             boolManager.saveStats();
@@ -232,6 +235,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             playerWrapperStatsManager.saveStats();
             achievementManager.saveStats();
             enderChestManager.saveStats();
+            guildManager.saveStats();
         }
     }
 
