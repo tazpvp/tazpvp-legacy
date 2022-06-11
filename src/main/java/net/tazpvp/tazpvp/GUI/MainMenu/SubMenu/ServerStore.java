@@ -21,11 +21,12 @@ import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 public class ServerStore {
     private final InventoryGUI gui;
     private final TextComponent link = new TextComponent(ChatColor.GREEN + "" + ChatColor.BOLD + "STORE LINK: " + ChatColor.WHITE + "" + ChatColor.BOLD + "CLICK HERE");
+    private Player p;
 
     public ServerStore(Player p) {
         gui = new InventoryGUI(Bukkit.createInventory(null, 9*5, ChatColor.BLUE + "" + ChatColor.BOLD + "STORE " + ChatColor.DARK_RED + "25% SALE"));
         link.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://taznet.tebex.io/"));
-
+        this.p = p;
         setitems();
         gui.open(p);
     }
@@ -80,7 +81,8 @@ public class ServerStore {
                         go+"〡VIP++ discord rank"
                 );
         createShopButton(mvp2, 11, 250, "mvp+");
-        ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "BUY CREDITS").setLore(ChatColor.GRAY + "Store link."), e -> {
+        ItemButton CREDITS = ItemButton.create(new ItemBuilder(Material.CHEST_MINECART).setName(ChatColor.GREEN + "" + ChatColor.BOLD + "BUY CREDITS")
+                .setLore(ChatColor.GRAY + "Store link.", ChatColor.DARK_AQUA + "Your Credits: " + ChatColor.AQUA + Tazpvp.statsManager.getCredits(p)), e -> {
             Player p = (Player) e.getWhoClicked();
             p.closeInventory();
             p.spigot().sendMessage(link);
