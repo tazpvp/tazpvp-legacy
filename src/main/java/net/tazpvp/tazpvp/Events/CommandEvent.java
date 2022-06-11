@@ -9,9 +9,11 @@ public class CommandEvent implements Listener {
     @EventHandler
     public void onCMD(org.bukkit.event.player.PlayerCommandPreprocessEvent e){
         if (Tazpvp.punishmentManager.isBanned(e.getPlayer())) {
-            if (!e.getMessage().startsWith("/pm")){
-                e.setCancelled(true);
-                e.getPlayer().sendMessage(ChatColor.RED + "You cannot use commands while you are banned.");
+            for (String cmd : Tazpvp.allowedCmds) {
+                if (!e.getMessage().startsWith(cmd)) {
+                    e.setCancelled(true);
+                    e.getPlayer().sendMessage(ChatColor.RED + "You cannot use commands while you are banned.");
+                }
             }
         }
     }
