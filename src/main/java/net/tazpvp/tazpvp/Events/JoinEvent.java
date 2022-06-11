@@ -36,8 +36,6 @@ public class JoinEvent implements Listener {
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] " + p.getName());
         } else {
             Tazpvp.statsManager.initPlayer(p);
-            Tazpvp.achievementManager.initPlayer(p);
-            Tazpvp.perkManager.initPlayer(p);
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "+" + ChatColor.GRAY + "] " + p.getName());
             p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "TAZPVP", ChatColor.DARK_AQUA + "Type " + ChatColor.AQUA + "/help " + ChatColor.DARK_AQUA + "to get started", 10, 100, 10);
             PlayerUtils.kitPlayer(p);
