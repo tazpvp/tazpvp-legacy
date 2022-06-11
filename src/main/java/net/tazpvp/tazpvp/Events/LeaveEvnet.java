@@ -1,6 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.Bukkit;
@@ -21,8 +21,8 @@ public class LeaveEvnet implements Listener {
             Tazpvp.duelLogic.duelEnd(e.getPlayer());
         }
 
-        if (CombatLogManager.isInCombat(e.getPlayer())) {
-            CombatLogManager.combatLog.remove(e.getPlayer().getUniqueId());
+        if (CombatTag.isInCombat(e.getPlayer())) {
+            CombatTag.combatLog.remove(e.getPlayer().getUniqueId());
             if (Tazpvp.lastDamage.containsKey(e.getPlayer().getUniqueId())) {
                 Tazpvp.statsManager.addKills(Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(e.getPlayer().getUniqueId())), 1);
                 Tazpvp.statsManager.addExp(Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(e.getPlayer().getUniqueId())), 15);

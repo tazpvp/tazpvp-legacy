@@ -1,9 +1,8 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
 import jline.internal.Nullable;
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Functionality.IA.addGlowUtil;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -151,7 +150,7 @@ public class DeathUtils {
                     p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
                 } else {
                     p.teleport(configUtils.spawn);
-                    CombatLogManager.combatLog.remove(p.getUniqueId());
+                    CombatTag.combatLog.remove(p.getUniqueId());
                     Tazpvp.particleUtil.load(p);
                 }
                 p.setMetadata("spectating", new FixedMetadataValue(Tazpvp.getInstance(), false));

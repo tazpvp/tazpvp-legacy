@@ -13,7 +13,7 @@ import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Guilds.GuildManager;
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.EnderChestManager;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
@@ -153,7 +153,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         new BukkitRunnable() {
             @Override
             public void run() {
-                CombatLogManager.tick();
+                CombatTag.tick();
                 particleUtil.onTick();
             }
         }.runTaskTimer(this, 1L, 1L);

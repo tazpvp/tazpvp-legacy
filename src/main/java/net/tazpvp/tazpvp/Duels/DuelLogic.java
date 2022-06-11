@@ -1,7 +1,7 @@
 package net.tazpvp.tazpvp.Duels;
 
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -130,7 +130,7 @@ public class DuelLogic implements Listener {
      * @param dueler the player to spectate
      */
     public void addSpectator(Player p, Player dueler) {
-        if (isInDuel(dueler) && !isInDuel(p) && !CombatLogManager.isInCombat(p) && !isSpectating(p)) {
+        if (isInDuel(dueler) && !isInDuel(p) && !CombatTag.isInCombat(p) && !isSpectating(p)) {
             DW d = this.getDuel(dueler);
             d.addSpectator(p);
             p.setGameMode(GameMode.SPECTATOR);

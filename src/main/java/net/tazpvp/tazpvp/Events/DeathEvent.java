@@ -1,11 +1,9 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.minecraft.world.item.enchantment.EnchantmentProtection;
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
-import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.*;
@@ -18,22 +16,15 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-import redempt.redlib.itemutils.ItemBuilder;
-import redempt.redlib.itemutils.ItemUtils;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Random;
 import java.util.WeakHashMap;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.*;
-import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
 
 public class DeathEvent implements Listener {
     public WeakHashMap<Player, Long> cooldowns = new WeakHashMap<Player, Long>();
@@ -41,7 +32,6 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player p) {
-            //check if fall damage
             if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 if (Tazpvp.fallDamageImmune.contains(p)) {
                     e.setCancelled(true);
@@ -101,8 +91,8 @@ public class DeathEvent implements Listener {
                     if ((ee).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
-                        CombatLogManager.putInCombat(p);
-                        CombatLogManager.putInCombat(d);
+                        CombatTag.putInCombat(p, d);
+                        CombatTag.putInCombat(d, p);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
 //                        if (item.hasItemMeta()) {
@@ -123,10 +113,9 @@ public class DeathEvent implements Listener {
                         if (((Arrow) ee.getDamager()).getShooter() instanceof Player d) {
                             Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
-                            CombatLogManager.putInCombat(p);
-                            CombatLogManager.putInCombat(d);
+                            CombatTag.putInCombat(p, d);
+                            CombatTag.putInCombat(d, p);
                         }
-
                     }
                 }
             }

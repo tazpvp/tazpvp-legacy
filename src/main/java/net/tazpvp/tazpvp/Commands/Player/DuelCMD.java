@@ -4,7 +4,7 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.tazpvp.tazpvp.Managers.CombatLogManager;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -18,9 +18,9 @@ public class DuelCMD {
     @CommandHook("duel")
     public void duel(Player p, Player target) {
         if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin."); return; }
-        if (CombatLogManager.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
+        if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
         if (sentDuel(p).equals(target.getName())) {
-            if (CombatLogManager.isInCombat(target)) {
+            if (CombatTag.isInCombat(target)) {
                 target.sendMessage(ChatColor.RED + "You accept duels in combat.");
                 return;
             }
