@@ -13,7 +13,10 @@ import java.util.WeakHashMap;
 public class CombatTag {
     public static WeakHashMap<UUID, Long> combatLog = new WeakHashMap<>();
 
-    public static void putInCombat(Player p, Player k) {
+    public static void putInCombat(Player p) {
+        if (!CombatTag.isInCombat(p)) {
+            p.sendMessage(ChatColor.RED + "You are now in combat, do not log out."); Tazpvp.particleUtil.save(p);
+        }
         combatLog.put(p.getUniqueId(), 10L * 20L);
     }
     public static void putInCombat(UUID p) {

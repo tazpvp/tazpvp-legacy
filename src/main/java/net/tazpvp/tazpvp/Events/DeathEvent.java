@@ -91,10 +91,8 @@ public class DeathEvent implements Listener {
                     if ((ee).getDamager() instanceof Player d) {
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
-                        if (!CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + d.getName()); Tazpvp.particleUtil.save(p);}
-                        if (!CombatTag.isInCombat(d)) { d.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + p.getName()); Tazpvp.particleUtil.save(d);}
-                        CombatTag.putInCombat(d, p);
-                        CombatTag.putInCombat(p, d);
+                        CombatTag.putInCombat(d);
+                        CombatTag.putInCombat(p);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
 //                        if (item.hasItemMeta()) {
@@ -115,10 +113,8 @@ public class DeathEvent implements Listener {
                         if (((Arrow) ee.getDamager()).getShooter() instanceof Player d) {
                             Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
-                            if (!CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + d.getName()); Tazpvp.particleUtil.save(p);}
-                            if (!CombatTag.isInCombat(d)) { d.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + p.getName()); Tazpvp.particleUtil.save(d);}
-                            CombatTag.putInCombat(p, d);
-                            CombatTag.putInCombat(d, p);
+                            CombatTag.putInCombat(p);
+                            CombatTag.putInCombat(d);
                         }
                     }
                 }
