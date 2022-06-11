@@ -22,7 +22,7 @@ public class RigelNPC {
                 p.playSound(p.getLocation(), Sound.AMBIENT_CAVE, 1, 1);
                 clickedOnce.remove(p);
             } else {
-                p.sendMessage(ChatColor.DARK_PURPLE + "[NPC] Rigel " + ChatColor.LIGHT_PURPLE + "Although this land allows you to improve greatly, The Depths is a dangerous place full of god-like enemies. Are you sure?");
+                p.sendMessage(ChatColor.DARK_PURPLE + "[NPC] Rigel " + ChatColor.LIGHT_PURPLE + "Although this land allows you to improve greatly, The Depths is a dangerous place full of elite enemies. Are you sure?");
                 clickedOnce.add(p);
             }
         } else if (p.getWorld().equals(Bukkit.getWorld("ban"))) {
