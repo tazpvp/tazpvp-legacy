@@ -83,6 +83,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
     public static List<Player> fallDamageImmune = new ArrayList<>();
+    public static List<String> allowedCmds = new ArrayList<>();
 
     @Override
     public void onLoad() {
@@ -246,15 +247,25 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         blocks.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
 
         sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
-        sellables.put(Material.DEEPSLATE_IRON_ORE, 1);
-        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 1);
-        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 1);
-        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 1);
-        sellables.put(Material.RAW_GOLD, 1);
-        sellables.put(Material.RAW_IRON, 1);
-        sellables.put(Material.REDSTONE, 1);
-        sellables.put(Material.LAPIS_LAZULI, 1);
-        sellables.put(Material.EMERALD, 1);
+        sellables.put(Material.DEEPSLATE_IRON_ORE, 2);
+        sellables.put(Material.DEEPSLATE_REDSTONE_ORE, 2);
+        sellables.put(Material.DEEPSLATE_LAPIS_ORE, 3);
+        sellables.put(Material.DEEPSLATE_EMERALD_ORE, 4);
+        sellables.put(Material.RAW_GOLD, 2);
+        sellables.put(Material.RAW_IRON, 3);
+        sellables.put(Material.REDSTONE, 3);
+        sellables.put(Material.LAPIS_LAZULI, 4);
+        sellables.put(Material.EMERALD, 5);
+
+        allowedCmds.add("/ad");
+        allowedCmds.add("/pm");
+        allowedCmds.add("/appeal");
+        allowedCmds.add("/apply");
+        allowedCmds.add("/help");
+        allowedCmds.add("/discord");
+        allowedCmds.add("/playtime");
+        allowedCmds.add("/rules");
+        allowedCmds.add("/store");
     }
 
     @Override

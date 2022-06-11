@@ -50,7 +50,7 @@ public class DeathUtils {
         final String between = ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName();
         String end = "";
         if (receiver == killer) {
-            end = ChatColor.GOLD + " + 7 Coins " + ChatColor.DARK_AQUA + "+ 15 Exp";
+            end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 25 Exp";
         } else {
             if (killer.getInventory().getItemInMainHand().hasItemMeta() && killer.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                 end = ChatColor.DARK_GRAY + " using " + ChatColor.AQUA + killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
@@ -92,10 +92,11 @@ public class DeathUtils {
      */
     public void statsUpdate() {
         Tazpvp.statsManager.addKills(killer, 1);
-        Tazpvp.statsManager.addExp(killer, 9);
+        Tazpvp.statsManager.addExp(killer, 25);
         Tazpvp.statsManager.addStreak(killer, 1);
+        Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 3);
         if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
-        Tazpvp.statsManager.addCoins(killer, 7);
+        Tazpvp.statsManager.addCoins(killer, 5);
         Tazpvp.statsManager.addDeaths(p, 1);
 
         if (Tazpvp.statsManager.checkLevelUp(killer)) {
@@ -132,7 +133,7 @@ public class DeathUtils {
             public void run() {
                 PlayerUtils.healPlayer(p);
                 if (Tazpvp.punishmentManager.isBanned(p)) {
-                    p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
+                    p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
                 } else {
                     p.teleport(configUtils.spawn);
                     CombatLogManager.combatLog.remove(p.getUniqueId());

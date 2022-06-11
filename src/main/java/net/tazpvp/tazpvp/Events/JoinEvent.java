@@ -37,7 +37,6 @@ public class JoinEvent implements Listener {
         } else {
             Tazpvp.statsManager.initPlayer(p);
             Tazpvp.achievementManager.initPlayer(p);
-            Tazpvp.boolManager.initPlayer(p);
             Tazpvp.perkManager.initPlayer(p);
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "+" + ChatColor.GRAY + "] " + p.getName());
             p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "TAZPVP", ChatColor.DARK_AQUA + "Type " + ChatColor.AQUA + "/help " + ChatColor.DARK_AQUA + "to get started", 10, 100, 10);
@@ -56,7 +55,7 @@ public class JoinEvent implements Listener {
         Tazpvp.playerWrapperMap.put(p.getUniqueId(), Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p));
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
-            p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
+            p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
         } else {
             p.teleport(spawn);
         }
