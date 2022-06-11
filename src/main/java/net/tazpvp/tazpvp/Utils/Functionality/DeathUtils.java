@@ -115,7 +115,7 @@ public class DeathUtils {
         if ((Tazpvp.statsManager.getStreak(killer) % 5) == 0) {
             Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + ChatColor.YELLOW + " has a kill streak of " + ChatColor.GOLD + Tazpvp.statsManager.getStreak(killer));
             if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
-                Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + "'s bounty: " + ChatColor.YELLOW + "$" + Tazpvp.bounty.get(killer.getUniqueId()));
+                Bukkit.broadcastMessage(ChatColor.GOLD + "Bounty: " + ChatColor.YELLOW + "$" + Tazpvp.bounty.get(killer.getUniqueId()));
             }
             Tazpvp.statsManager.addCoins(killer, 10);
             killer.sendMessage(ChatColor.GOLD + "+ $" + 10);
