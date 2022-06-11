@@ -16,6 +16,8 @@ public class GuildUtils {
     public final static String gCreated = "Guild created.";
     public final static String notInG = "You are not in a guild.";
     public final static String noPermission = "You do not have permission to do that.";
+    public final static String targetNotInG = "That player is not in a guild.";
+    public final static String targetNotInUrG = "That player is not in your guild.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
 
@@ -105,7 +107,48 @@ public class GuildUtils {
             p.sendMessage(noPermission);
             return;
         }
+        if (guild.owner().contains(target.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
 
+        if (!guild.allMembers().contains(target.getUniqueId())) {
+            p.sendMessage(targetNotInUrG);
+            return;
+        }
 
+        guild.removeFromGuild(target.getUniqueId());
+        Tazpvp.guildManager.removePlayerGuild(target);
+        Tazpvp.guildManager.setGuild(guild.getID(), guild);
+    }
+
+    public static void promote(Player p, Player target, Guild guild) {
+        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
+
+        if (!guild.allMembers().contains(target.getUniqueId())) {
+            p.sendMessage(targetNotInUrG);
+            return;
+        }
+
+        guild.promote(p, target.getUniqueId());
+        Tazpvp.guildManager.setGuild(guild.getID(), guild);
+    }
+
+    public static void demote(Player p, Player target, Guild guild) {
+        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
+
+        if (!guild.allMembers().contains(target.getUniqueId())) {
+            p.sendMessage(targetNotInUrG);
+            return;
+        }
+
+        guild.demote(p, target.getUniqueId());
+        Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 }

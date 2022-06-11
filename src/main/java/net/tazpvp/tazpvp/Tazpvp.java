@@ -364,7 +364,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
 
             team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
-            team.setColor(statsManager.getColor(player));
+            team.setColor(statsManager.getColor(onlinePlayer));
             team.addPlayer(onlinePlayer);
 
         }
@@ -382,7 +382,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             team = scoreboard.registerNewTeam(player.getUniqueId().toString());
 
             team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
-            team.setColor(statsManager.getColor(onlinePlayer));
+            team.setColor(statsManager.getColor(player));
             team.addPlayer(player);
         }
     }
