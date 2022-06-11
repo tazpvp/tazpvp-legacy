@@ -133,7 +133,7 @@ public class DeathUtils {
             public void run() {
                 PlayerUtils.healPlayer(p);
                 if (Tazpvp.punishmentManager.isBanned(p)) {
-                    p.teleport(new Location(Bukkit.getWorld("ban"), 0, 77, 0));
+                    p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
                 } else {
                     p.teleport(configUtils.spawn);
                     CombatLogManager.combatLog.remove(p.getUniqueId());
