@@ -14,7 +14,7 @@ public class CombatTag {
     public static WeakHashMap<UUID, Long> combatLog = new WeakHashMap<>();
 
     public static void putInCombat(Player p, Player k) {
-        p.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + k);
+        p.sendMessage(ChatColor.RED + "You are now in combat with" + ChatColor.YELLOW + " " + k.getName());
         Tazpvp.particleUtil.save(p);
         combatLog.put(p.getUniqueId(), 10L * 20L);
     }
