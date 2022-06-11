@@ -117,7 +117,7 @@ public class PlayerUtils {
         return "error";
     }
     public static String setLPRankCommand(Player p, String rank) {
-        return "pex user " + p.getName() + " group set " + rank;
+        return "lp user " + p.getName() + " group add " + rank;
     }
 
     public static void rebirthPlayer(Player p) {
