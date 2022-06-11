@@ -94,6 +94,7 @@ public class DeathUtils {
         Tazpvp.statsManager.addKills(killer, 1);
         Tazpvp.statsManager.addExp(killer, 9);
         Tazpvp.statsManager.addStreak(killer, 1);
+        Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 3);
         if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
         Tazpvp.statsManager.addCoins(killer, 7);
         Tazpvp.statsManager.addDeaths(p, 1);
