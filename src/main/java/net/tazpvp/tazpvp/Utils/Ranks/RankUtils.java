@@ -56,7 +56,7 @@ public class RankUtils implements Listener {
 
     private static void rankMSG(Player p, @Nullable Player target, String rank) {
         Player recipient = null;
-        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.STRIKETHROUGH + "                                                  ");
         if (target == null) {
             Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + ChatColor.GOLD + " just purchased " + ChatColor.YELLOW + "[" + rank.toUpperCase() + "]" + ChatColor.GOLD + " in the store!");
             recipient = p;
@@ -64,7 +64,7 @@ public class RankUtils implements Listener {
             Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + ChatColor.GOLD + " has gifted " + ChatColor.YELLOW + "[" + rank.toUpperCase() + "]" + ChatColor.GOLD + " to " + ChatColor.YELLOW + target.getName());
             recipient = target;
         }
-        Bukkit.broadcastMessage(ChatColor.DARK_GRAY + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯");
+        Bukkit.broadcastMessage(ChatColor.GOLD + "" + ChatColor.STRIKETHROUGH + "                                                  ");
 
         for (Player pl : Bukkit.getOnlinePlayers()) {
             pl.playSound(pl.getLocation(), Sound.ENTITY_WITHER_DEATH, 1, 1);
