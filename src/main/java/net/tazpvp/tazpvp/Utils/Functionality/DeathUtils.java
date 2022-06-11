@@ -79,11 +79,6 @@ public class DeathUtils {
      * Checks if the {@code dead} player has a bounty
      */
     public void bountyCheck() {
-        if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
-            Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 3);
-        } else {
-            Tazpvp.bounty.put(killer.getUniqueId(), 3);
-        }
         if (Tazpvp.bounty.containsKey(p.getUniqueId())) {
             Tazpvp.statsManager.addCoins(killer, Tazpvp.bounty.get(p.getUniqueId()));
             Bukkit.broadcastMessage(ChatColor.AQUA + killer.getName() + ChatColor.DARK_AQUA + " collected " + ChatColor.AQUA + p.getName() + "'s " + ChatColor.DARK_AQUA + "bounty: " + ChatColor.AQUA + "$" + Tazpvp.bounty.get(p.getUniqueId()));
@@ -112,6 +107,11 @@ public class DeathUtils {
         Tazpvp.statsManager.initScoreboard(killer);
 
         if ((Tazpvp.statsManager.getStreak(killer) % 5) == 0) {
+            if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
+                Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 32);
+            } else {
+                Tazpvp.bounty.put(killer.getUniqueId(), 25);
+            }
             Bukkit.broadcastMessage(ChatColor.GOLD + killer.getName() + ChatColor.YELLOW + " has a kill streak of " + ChatColor.GOLD + Tazpvp.statsManager.getStreak(killer));
             if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
                 Bukkit.broadcastMessage(ChatColor.GOLD + "Bounty: " + ChatColor.YELLOW + "$" + Tazpvp.bounty.get(killer.getUniqueId()));
