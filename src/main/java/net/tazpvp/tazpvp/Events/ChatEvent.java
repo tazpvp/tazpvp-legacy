@@ -95,7 +95,7 @@ public class ChatEvent implements Listener {
         }
 
 
-        String format = p.isOp()
+        String format = p.hasPermission("tazpvp.chat")
                 ? fmsg + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', "%s")
                 : fmsg + ChatColor.GRAY + "%s";
         e.setFormat(format);
