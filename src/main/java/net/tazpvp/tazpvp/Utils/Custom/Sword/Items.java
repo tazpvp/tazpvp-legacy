@@ -35,9 +35,9 @@ public enum Items {
     }}, ChatColor.GRAY + "Deadly slashes."),
 
     // epic swords
-    BlaRaz(ChatColor.RED + "Blackiron Razor", Material.DIAMOND_SWORD, 8, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
-    BlaOfVig(ChatColor.RED + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
-    InfGamDag(ChatColor.RED + "Inferno Gambit Dagger", Material.DIAMOND_SWORD, 8, ChatColor.RED + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
+    BlaRaz(ChatColor.LIGHT_PURPLE + "Blackiron Razor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
+    BlaOfVig(ChatColor.LIGHT_PURPLE + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
+    InfGamDag(ChatColor.LIGHT_PURPLE + "Inferno Gambit Dagger", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
 
     // legendary swords
     IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
