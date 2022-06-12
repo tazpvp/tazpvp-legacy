@@ -204,7 +204,7 @@ public class GuildUtils {
             return;
         }
 
-        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+        if (guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;
         }

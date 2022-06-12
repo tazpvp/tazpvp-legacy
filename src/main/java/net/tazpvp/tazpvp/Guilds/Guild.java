@@ -216,4 +216,11 @@ public class Guild implements Serializable {
             }
         }
     }
+
+    public boolean hasPerms(Player p) {
+        if (isOwner(p.getUniqueId())) {
+            return true;
+        }
+        return isStaff(p.getUniqueId());
+    }
 }

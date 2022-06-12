@@ -51,4 +51,8 @@ public class GuildCMD {
             p.sendMessage("You are not in a guild!");
         }
     }
+
+    @CommandHook("guild_accept") public void onGuildAccept(Player p) {
+        GuildUtils.acceptInvite(p);
+    }
 }
