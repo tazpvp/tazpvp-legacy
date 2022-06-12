@@ -34,8 +34,9 @@ public class ShopGUI {
             }
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 Tazpvp.statsManager.addCoins(p, -price);
-                if (item.equals(Material.BLUE_WOOL)) {
+                if (item.getType() == Material.BLUE_WOOL) {
                     int Rank = RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getWeight();
+                    Bukkit.getLogger().info(String.valueOf(Rank));
                     if (Rank == 1) {
                         item.setType(Material.RED_WOOL);
                     } else if (Rank == 2) {
@@ -44,7 +45,7 @@ public class ShopGUI {
                         item.setType(Material.YELLOW_WOOL);
                     }
                 }
-                ItemStack itemstack = new ItemBuilder(item).setName(name).setLore(description);
+                ItemStack itemstack = new ItemBuilder(item);
                 if (cIDRequired){
                     ItemMeta meta = itemstack.getItemMeta();
                     meta.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE, cID);
