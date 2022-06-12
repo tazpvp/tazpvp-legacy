@@ -96,12 +96,12 @@ public class StatsManager {
     public int getShards(UUID player) {
         return statsFile.getInt(player.toString()+".shards");
     }
-    public void setShards(OfflinePlayer player, int points) {
-        statsFile.set(player.getUniqueId().toString()+".shards", points);
+    public void setShards(OfflinePlayer player, int shards) {
+        statsFile.set(player.getUniqueId().toString()+".shards", shards);
         Tazpvp.getInstance().initScoreboard((Player) player);
     }
-    public void addShards(OfflinePlayer player, int points) {
-        setShards(player, points+getShards(player));
+    public void addShards(OfflinePlayer player, int shards) {
+        setShards(player, shards+getShards(player));
     }
 
     public int getRebirth(OfflinePlayer player){return statsFile.getInt(player.getUniqueId().toString()+".rebirth");}

@@ -85,6 +85,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
     public static List<Player> fallDamageImmune = new ArrayList<>();
     public static List<String> allowedCmds = new ArrayList<>();
+    public static List<Player> afkPlayers = new ArrayList<>();
 
     @Override
     public void onLoad() {

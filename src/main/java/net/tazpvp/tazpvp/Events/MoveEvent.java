@@ -34,6 +34,11 @@ public class MoveEvent implements Listener {
             }
         }
 
+        if (Tazpvp.afkPlayers.contains(p)) {
+            Tazpvp.afkPlayers.remove(p);
+            p.sendMessage(ChatColor.YELLOW + "You are no longer AFK.");
+        }
+
 //        if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
 //            double y = p.getLocation().getY();
 //            if (y > 98 && y < 99) {

@@ -32,6 +32,9 @@ public class Messages {
                     case 4:
                         Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Think they're hacking? Report them with " + ChatColor.DARK_AQUA + "/report");
                         break;
+                    case 5:
+                        Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Win prizes every 10 minutes for being AFK " + ChatColor.DARK_AQUA + "/afk");
+                        break;
                 }
                 Bukkit.broadcastMessage("");
             }

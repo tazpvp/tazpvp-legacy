@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Utils.Functionality;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.itemutils.ItemBuilder;
@@ -14,6 +15,10 @@ public class PerkUtils {
     public static void excavatorPerk(Player p){
         if (!Tazpvp.perkManager.getExcavatorPerk(p)) return;
         Tazpvp.statsManager.addExp(p, 1);
+        p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+        if (Tazpvp.statsManager.checkLevelUp(p)) {
+            Tazpvp.statsManager.levelUp(p, 1);
+        }
     }
 
     public static void archerPerk(Player p) {
