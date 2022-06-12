@@ -1,5 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Passive;
 
+import net.tazpvp.tazpvp.Managers.PlayerStats.StatsManager;
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -32,5 +34,17 @@ public class Generator {
                 }
             }
         }.runTaskTimer(plugin, 20*60, 4200); //3.5 mins
+
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                for (Player p : Tazpvp.afkPlayers){
+                    Tazpvp.statsManager.addShards(p, 1);
+                    Tazpvp.statsManager.addCoins(p, 30);
+                    p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BANJO, 1, 1);
+                    p.sendMessage(ChatColor.GOLD + "AFK REWARD: " + ChatColor.YELLOW + "1 SHARD & 30 COINS");
+                }
+            }
+        }.runTaskTimer(plugin, 1000, 12000);
     }
 }
