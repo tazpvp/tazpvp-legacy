@@ -39,6 +39,20 @@ public class GuildCMD {
     @CommandHook("guild_leave") public void onGuildLeave(Player p) {
         if (GuildUtils.isInGuild(p)) {
             GuildUtils.leaveGuild(p, GuildUtils.getGuild(p));
+        } else {
+            p.sendMessage("You are not in a guild!");
         }
+    }
+
+    @CommandHook("guild_invite") public void onGuildInvite(Player p, Player target) {
+        if (GuildUtils.isInGuild(p)) {
+            GuildUtils.invite(p, target, GuildUtils.getGuild(p));
+        } else {
+            p.sendMessage("You are not in a guild!");
+        }
+    }
+
+    @CommandHook("guild_accept") public void onGuildAccept(Player p) {
+        GuildUtils.acceptInvite(p);
     }
 }

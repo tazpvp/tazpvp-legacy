@@ -446,4 +446,10 @@ guild {
     leave {
         hook guild_leave
     }
+    invite player:target {
+        hook guild_invite
+    }
+    accept {
+        hook guild_accept
+    }
 }
