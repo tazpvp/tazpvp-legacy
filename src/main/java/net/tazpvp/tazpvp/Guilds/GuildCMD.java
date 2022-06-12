@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GuildCMD {
-    @CommandHook("sorttest")
+    @CommandHook("guild_sorttest")
     public void sortest(Player p) {
         HashMap<UUID, Double> map = new HashMap<>();
         for (Guild g : Tazpvp.guildManager.getAllGuilds()) {
