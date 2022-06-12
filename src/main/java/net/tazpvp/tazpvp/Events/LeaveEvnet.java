@@ -2,12 +2,17 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.util.UUID;
 
 public class LeaveEvnet implements Listener {
     @EventHandler
@@ -22,11 +27,23 @@ public class LeaveEvnet implements Listener {
         }
 
         if (CombatTag.isInCombat(e.getPlayer())) {
-            CombatTag.combatLog.remove(e.getPlayer().getUniqueId());
-            if (Tazpvp.lastDamage.containsKey(e.getPlayer().getUniqueId())) {
-                Tazpvp.statsManager.addKills(Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(e.getPlayer().getUniqueId())), 1);
-                Tazpvp.statsManager.addExp(Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(e.getPlayer().getUniqueId())), 15);
-                Tazpvp.statsManager.addCoins(Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(e.getPlayer().getUniqueId())), 7);
+            Player p = e.getPlayer();
+            UUID k = Tazpvp.lastDamage.get(p.getUniqueId());
+            Player h = Bukkit.getOfflinePlayer(k).getPlayer();
+            DeathUtils deathUtils = new DeathUtils(p, h);
+
+            CombatTag.combatLog.remove(p.getUniqueId());
+            if (Tazpvp.lastDamage.containsKey(p.getUniqueId())) {
+                if (Bukkit.getOfflinePlayer(k).isOnline()) {
+                    if (Bukkit.getOnlinePlayers().size() < 8) {
+                        deathUtils.sendDeathMessageAll();
+                    } else {
+                        deathUtils.sendDeathMessage(h);
+                    }
+                }
+                Tazpvp.statsManager.addKills(Bukkit.getOfflinePlayer(k), 1);
+                Tazpvp.statsManager.addExp(Bukkit.getOfflinePlayer(k), 15);
+                Tazpvp.statsManager.addCoins(Bukkit.getOfflinePlayer(k), 7);
             }
         }
     }
