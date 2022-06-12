@@ -23,7 +23,7 @@ public enum Items {
     LigSteMac(ChatColor.GREEN + "Light Steel Machete", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 7, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Easy to handle"),
     GolSwiBla(ChatColor.GREEN + "Iron Switchblade", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 8, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Speedy and thin."),
     DarShe(ChatColor.GREEN + "Darth Shear", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 9, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}, ChatColor.GRAY + "Am relic of the dark side."),
-    ThoSti(ChatColor.GREEN + "Thorn Striker", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.FIRE_ASPECT, 2);}}, ChatColor.GRAY + "Those stricken feel unbearable pain."),
+    ThoSti(ChatColor.GREEN + "Thorn Striker", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 10, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.FIRE_ASPECT, 1);}}, ChatColor.GRAY + "Those stricken feel unbearable pain."),
     CopJac(ChatColor.GREEN + "Copper Jackknife", Material.IRON_SWORD, 7, ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 11, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "A tool for heavy duty jobs."),
 
     // rare swords
@@ -39,8 +39,8 @@ public enum Items {
 
     // legendary swords
     IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}, ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
-    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Sacred blade of the Fang clan."),
-    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
+    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Sacred blade of the Fang clan."),
+    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge", Material.NETHERITE_SWORD, 10, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
     ;
 
     private final String name;
