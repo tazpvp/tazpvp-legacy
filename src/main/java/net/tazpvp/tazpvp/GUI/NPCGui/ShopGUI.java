@@ -25,13 +25,9 @@ public class ShopGUI {
 
     public void createShopButton(int slot, int price, ItemStack item, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
         ItemBuilder b = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
-        if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Rank Required");
+        if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Colored based on your rank.");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
-            if (rankRequired && !p.hasPermission("tazpvp.buy")){
-                p.sendMessage(prefix + " A rank is required to attain this item.");
-                return;
-            }
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 Tazpvp.statsManager.addCoins(p, -price);
                 if (item.getType() == Material.BLUE_WOOL) {
@@ -43,6 +39,11 @@ public class ShopGUI {
                         item.setType(Material.GREEN_WOOL);
                     } else if (Rank == 3) {
                         item.setType(Material.YELLOW_WOOL);
+                    } else if (p.hasPermission("tazpvp.buy")){
+                        item.setType(Material.BLUE_WOOL);
+                    } else {
+                        p.sendMessage(prefix + " VIP rank or above is required to attain this item.");
+                        return;
                     }
                 }
                 ItemStack itemstack = new ItemBuilder(item);
@@ -79,7 +80,7 @@ public class ShopGUI {
         createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, false, null);
         createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 1),"Gold Carrot","Healthy Choice", false, false, null);
         createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
-        createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"Blue Blocks","Drip", true, false, null);
+        createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"RGB Blocks","Drip", true, false, null);
 
 
 
