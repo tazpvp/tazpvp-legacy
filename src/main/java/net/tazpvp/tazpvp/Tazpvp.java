@@ -12,6 +12,7 @@ import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.StaticSpingParticle;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
+import net.tazpvp.tazpvp.Guilds.GuildCMD;
 import net.tazpvp.tazpvp.Guilds.GuildManager;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.EnderChestManager;
@@ -195,7 +196,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new ParticleCMD(),
             new SkullCMD(),
                 new TazloadCMD(),
-                new StaffchatCMD());
+                new StaffchatCMD(),
+                new GuildCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }

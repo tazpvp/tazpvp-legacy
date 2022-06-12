@@ -159,8 +159,7 @@ public class Guild implements Serializable {
             return;
         }
         if (isStaff(uuid)) {
-            staff.remove(uuid);
-            owner.add(uuid);
+            p.sendMessage("You can't promote a staff of the guild!");
             return;
         }
         if (isOwner(uuid)) {
@@ -169,11 +168,6 @@ public class Guild implements Serializable {
     }
 
     public void demote(Player p, UUID uuid) {
-        if (isOwner(uuid)) {
-            owner.remove(uuid);
-            staff.add(uuid);
-            return;
-        }
         if (isStaff(uuid)) {
             staff.remove(uuid);
             members.add(uuid);
@@ -182,7 +176,9 @@ public class Guild implements Serializable {
         if (isMember(uuid)) {
             members.remove(uuid);
             p.sendMessage("You can't demote a member of a guild! You must kick them instead.");
+            return;
         }
+        p.sendMessage("Owner's cannot be demoted.");
     }
 
     public Guild addMember(UUID uuid) {

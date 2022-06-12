@@ -7,9 +7,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class GuildUtils {
     public final static String gNameTaken = "Guild name already taken.";
@@ -88,6 +86,11 @@ public class GuildUtils {
         return Tazpvp.guildManager.getPlayerGuild(p) != null;
     }
 
+    /**
+     * Leaves a guild, will promote staff if leader leaves.
+     * @param p The player leaving the guild
+     * @param guild The guild {@code p} is leaving
+     */
     public static void leaveGuild(Player p, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
@@ -106,6 +109,12 @@ public class GuildUtils {
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 
+    /**
+     * Kick a player from a guild.
+     * @param p The player who is kicking {@code target}.
+     * @param target The player being kicked by {@code p}.
+     * @param guild The guild that {@code p} is kicking {@code target} from.
+     */
     public static void kickFromGuild(Player p, Player target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
@@ -131,6 +140,12 @@ public class GuildUtils {
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 
+    /**
+     * Promotes a player to a new rank, will only work if {@code target} is a member.
+     * @param p The player who is promoting.
+     * @param target The player who is being promoted.
+     * @param guild The guild that {@code p} is promoting in.
+     */
     public static void promote(Player p, Player target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
@@ -151,6 +166,12 @@ public class GuildUtils {
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 
+    /**
+     * Demotes a player's ranking in a guild. Will only work if {@code target} is a Staff member.
+     * @param p The player who is demoting {@code target}
+     * @param target The Player who is being demoted.
+     * @param guild The guild to demote {@code target} from.
+     */
     public static void demote(Player p, Player target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
@@ -171,6 +192,12 @@ public class GuildUtils {
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 
+    /**
+     * Sends a guild invite to {@code target}
+     * @param p The player who sent the invite.
+     * @param target The player who is receiving the guild invite.
+     * @param guild The guild that {@code p} is inviting {@code target} to.
+     */
     public static void invite(Player p, Player target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
@@ -201,6 +228,10 @@ public class GuildUtils {
         target.setMetadata("guildInvite", new FixedMetadataValue(Tazpvp.getInstance(), guild.getID()));
     }
 
+    /**
+     * Checks if {@code p} has a valid invite to accept.
+     * @param p the Player who we are checking.
+     */
     public static void acceptInvite(Player p) {
         if (isInGuild(p)) {
             p.sendMessage(alrdyInG);
@@ -221,6 +252,12 @@ public class GuildUtils {
         guild.sendAlL(primaryColor + p.getName() + " has joined " + guild.name());
     }
 
+    /**
+     * Checks if {@code p} is in the same guild as {@code target}.
+     * @param p The player who is in the guild.
+     * @param target the target to check if in the guild of p.
+     * @return {@code true} if in the same guild, {@code false} if not or not in a guild entirely.
+     */
     public static boolean areInSameGuild(Player p, Player target) {
         if (!isInGuild(p)) {
             return false;
@@ -229,5 +266,24 @@ public class GuildUtils {
             return false;
         }
         return Tazpvp.guildManager.getPlayerGuild(p).equals(Tazpvp.guildManager.getPlayerGuild(target));
+    }
+
+    /**
+     * Sorts a Map by value.
+     * @param map The map to sort.
+     * @return A sorted map.
+     * @param <K> The key type.
+     * @param <V> The value type.
+     */
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }

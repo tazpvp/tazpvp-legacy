@@ -429,3 +429,12 @@ staffchat,sc string...:message? {
     permission tazpvp.staffchat
     hook staffchat
 }
+
+guild {
+    help /guild
+    user player
+    permission tazpvp.guild
+    sorttest {
+        hook guild_sorttest
+    }
+}
