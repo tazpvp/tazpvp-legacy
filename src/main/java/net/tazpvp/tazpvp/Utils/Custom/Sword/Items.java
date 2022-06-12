@@ -34,13 +34,13 @@ public enum Items {
 
     // epic swords
     BlaRaz(ChatColor.LIGHT_PURPLE + "Blackiron Razor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}, ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
-    BlaOfVig(ChatColor.LIGHT_PURPLE + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>() {{put(Enchantment.KNOCKBACK, 2);}}, ChatColor.GRAY + "Power is amplified with this ancient treasure"),
+    BlaOfVig(ChatColor.LIGHT_PURPLE + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>() {{put(Enchantment.KNOCKBACK, 1);}}, ChatColor.GRAY + "Power is amplified with this ancient treasure", ChatColor.GRAY + "Knockback I"),
     InfGamDag(ChatColor.LIGHT_PURPLE + "Inferno Gambit Dagger", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
 
     // legendary swords
-    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}, ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
-    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Sacred blade of the Fang clan."),
-    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge", Material.NETHERITE_SWORD, 10, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
+    IvoDraKat(ChatColor.GOLD + "Ivory Dragon Katana", Material.NETHERITE_SWORD, 8, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 19, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}, ChatColor.GRAY + "Made from the claws of the Southern Dragons."),
+    BalCen(ChatColor.GOLD + "Balisik Centurion", Material.NETHERITE_SWORD, 8, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 20, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Sacred blade of the Fang clan."),
+    AtoEdgSwo(ChatColor.GOLD + "Atomic Edge", Material.NETHERITE_SWORD, 9, ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 21, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "This sword will split anything in two.")
     ;
 
     private final String name;
