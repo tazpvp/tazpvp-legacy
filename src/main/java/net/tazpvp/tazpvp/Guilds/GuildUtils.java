@@ -278,4 +278,12 @@ public class GuildUtils {
         }
         return temp;
     }
+
+    public static Guild getGuild(Player p) {
+        return Tazpvp.guildManager.getGuild(Tazpvp.guildManager.getPlayerGuild(p));
+    }
+
+    public static Guild getGuild(UUID uuid) {
+        return Tazpvp.guildManager.getGuild(uuid);
+    }
 }

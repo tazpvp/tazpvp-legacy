@@ -437,4 +437,13 @@ guild {
     sorttest {
         hook guild_sorttest
     }
+    create string:name string...:description {
+        hook guild_create
+    }
+    display {
+        hook guild_display
+    }
+    leave {
+        hook guild_leave
+    }
 }

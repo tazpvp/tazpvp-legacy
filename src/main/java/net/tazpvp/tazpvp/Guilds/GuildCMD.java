@@ -20,4 +20,25 @@ public class GuildCMD {
             p.sendMessage(Tazpvp.guildManager.getGuild(entry.getKey()).name() + " has " + entry.getValue() + " kills");
         }
     }
+
+    @CommandHook("guild_create") public void onGuildCreate(Player p, String name, String description) {
+        GuildUtils.createGuild(p, name, description);
+    }
+
+    @CommandHook("guild_display") public void onGuildDisplay(Player p) {
+        if (GuildUtils.isInGuild(p)) {
+            Guild guild = GuildUtils.getGuild(p);
+            p.sendMessage(GuildUtils.viewGuild(guild).toString());
+            p.sendMessage(guild.owner().toString());
+            p.sendMessage(guild.staff().toString());
+            p.sendMessage(guild.members().toString());
+            p.sendMessage(guild.invites().toString());
+        }
+    }
+
+    @CommandHook("guild_leave") public void onGuildLeave(Player p) {
+        if (GuildUtils.isInGuild(p)) {
+            GuildUtils.leaveGuild(p, GuildUtils.getGuild(p));
+        }
+    }
 }
