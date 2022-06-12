@@ -29,12 +29,12 @@ public enum Items {
     // rare swords
     WinRip(ChatColor.AQUA + "Wind Ripper", Material.GOLDEN_SWORD, 8, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 12, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}, ChatColor.GRAY + "Packed inside is the force of a hurricane."),
     WitBla(ChatColor.AQUA + "Withering Blade", Material.GOLDEN_SWORD, 7, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 13, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}, ChatColor.GRAY + "The effects of such blade can be toxic."),
-    ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.GOLDEN_SWORD, 7, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}, ChatColor.GRAY + "Only a master can wield such power."),
+    ThuShoSwo(ChatColor.AQUA + "Thunderfury Short Sword", Material.GOLDEN_SWORD, 7, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 14, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.KNOCKBACK, 1);}}, ChatColor.GRAY + "Only a master can wield such power."),
     StiCla(ChatColor.AQUA + "Stinger Claw", Material.GOLDEN_SWORD, 6, ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 15, new HashMap<Enchantment, Integer>()  {{ put(Enchantment.SWEEPING_EDGE, 3); }}, ChatColor.GRAY + "Deadly slashes."),
 
     // epic swords
     BlaRaz(ChatColor.LIGHT_PURPLE + "Blackiron Razor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 16, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}, ChatColor.GRAY + "Forged from the Blackiron of the Taznanium mines."),
-    BlaOfVig(ChatColor.LIGHT_PURPLE + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Power is amplified with this ancient treasure"),
+    BlaOfVig(ChatColor.LIGHT_PURPLE + "Blade of Vigor", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 17, new HashMap<Enchantment, Integer>() {{put(Enchantment.KNOCKBACK, 2);}}, ChatColor.GRAY + "Power is amplified with this ancient treasure"),
     InfGamDag(ChatColor.LIGHT_PURPLE + "Inferno Gambit Dagger", Material.DIAMOND_SWORD, 8, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 0.625, PdcUtils.key, PersistentDataType.DOUBLE, 18, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 2); }}, ChatColor.GRAY + "Once used; the enemy will surely die; right?"),
 
     // legendary swords
