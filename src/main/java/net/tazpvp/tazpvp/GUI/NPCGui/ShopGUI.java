@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
+import net.tazpvp.tazpvp.Utils.Ranks.RankWeight;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -31,16 +32,12 @@ public class ShopGUI {
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 Tazpvp.statsManager.addCoins(p, -price);
                 if (item.getType() == Material.BLUE_WOOL) {
-                    int Rank = RankUtils.getRankFromString(Tazpvp.permissions.getPrimaryGroup(p)).getWeight();
-                    Bukkit.getLogger().info(String.valueOf(Rank));
-                    if (Rank == 1) {
-                        item.setType(Material.RED_WOOL);
-                    } else if (Rank == 2) {
-                        item.setType(Material.GREEN_WOOL);
-                    } else if (Rank == 3) {
+                    if (p.hasPermission("tazpvp.mvp+")){
                         item.setType(Material.YELLOW_WOOL);
-                    } else if (p.hasPermission("tazpvp.buy")){
-                        item.setType(Material.BLUE_WOOL);
+                    } else if (p.hasPermission("tazpvp.mvp")) {
+                        item.setType(Material.GREEN_WOOL);
+                    } else if (p.hasPermission("tazpvp.vip")) {
+                        item.setType(Material.RED_WOOL);
                     } else {
                         p.sendMessage(prefix + " VIP rank or above is required to attain this item.");
                         return;
@@ -81,12 +78,6 @@ public class ShopGUI {
         createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 1),"Gold Carrot","Healthy Choice", false, false, null);
         createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
         createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"RGB Blocks","Drip", true, false, null);
-
-
-
-
-
-
 
         gui.update();
     }
