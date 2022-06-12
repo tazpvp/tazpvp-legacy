@@ -43,6 +43,10 @@ public class MineGUI {
             updatePickaxeItem(p, pickaxe, Enchantment.SILK_TOUCH, ChatColor.GRAY + "Auto Smelt I", 178);
         });
 
+        ItemButton button1 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.DARK_AQUA + "Efficiency").setLore(ChatColor.GRAY + "Mine ores faster.", ChatColor.GRAY + "Cost: " + ChatColor.GOLD + "426 Coins"), e -> {
+            updatePickaxeItem(p, pickaxe, Enchantment.DIG_SPEED, ChatColor.GRAY + "Efficiency", 426);
+        });
+
 
         ItemButton button2 = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.DARK_AQUA + "Double Ores").setLore(ChatColor.GRAY + "2x ores you mine.", ChatColor.GRAY + "Cost: " + ChatColor.GOLD + "317 Coins"), e -> {
             updatePickaxeItem(p, pickaxe, Enchantment.LOOT_BONUS_BLOCKS, ChatColor.GRAY + "Double Ores I", 317);
@@ -80,6 +84,7 @@ public class MineGUI {
         });
 
         gui.addButton(11, button);
+        gui.addButton(12, button1);
         gui.addButton(13, button2);
         gui.addButton(15, button3);
         gui.update();
@@ -104,9 +109,28 @@ public class MineGUI {
         p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
     }
 
+    public void efficnencyLevel(Player p, ItemStack i) {
+        if (i.getEnchantments().containsKey(Enchantment.DIG_SPEED)) {
+            int currLevel = i.getEnchantmentLevel(Enchantment.DIG_SPEED);
+            i.addUnsafeEnchantment(Enchantment.DIG_SPEED, currLevel + 1);
+        }
+    }
+
+    public boolean maxEffyLevel(ItemStack i) {
+        if (i.getEnchantments().containsKey(Enchantment.DIG_SPEED)) {
+            int currLevel = i.getEnchantmentLevel(Enchantment.DIG_SPEED);
+            return currLevel == 5;
+        }
+        return false;
+    }
+
     public void updatePickaxeItem(Player p, ItemStack pickaxe, Enchantment ench, String lore, int cost) {
-        if (pickaxe.containsEnchantment(ench)) {
+        if (pickaxe.containsEnchantment(ench) && !ench.equals(Enchantment.DIG_SPEED)) {
             p.sendMessage(prefix + "You already have this enchantment.");
+            p.closeInventory();
+            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
+        } else if (maxEffyLevel(pickaxe)) {
+            p.sendMessage(prefix + "You have reached the max level of this enchantment.");
             p.closeInventory();
             p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
         } else {
@@ -121,7 +145,11 @@ public class MineGUI {
                 meta.setLore(loreList);
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
                 pickaxe.setItemMeta(meta);
-                pickaxe.addEnchantment(ench, 1);
+                if ((ench != Enchantment.DIG_SPEED)) {
+                    pickaxe.addEnchantment(ench, 1);
+                } else {
+                    efficnencyLevel(p, pickaxe);
+                }
                 p.sendMessage(prefix + "You enchanted your pickaxe with " + lore);
                 p.closeInventory();
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
