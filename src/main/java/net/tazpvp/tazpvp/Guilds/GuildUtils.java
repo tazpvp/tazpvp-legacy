@@ -268,22 +268,14 @@ public class GuildUtils {
         return Tazpvp.guildManager.getPlayerGuild(p).equals(Tazpvp.guildManager.getPlayerGuild(target));
     }
 
-    /**
-     * Sorts a Map by value.
-     * @param map The map to sort.
-     * @return A sorted map.
-     * @param <K> The key type.
-     * @param <V> The value type.
-     */
-    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
-        List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
-        list.sort(Map.Entry.comparingByValue());
+    public static HashMap<UUID, Double> sortByValue(HashMap<UUID, Double> hm) {
+        List<Map.Entry<UUID, Double> > list = new LinkedList<>(hm.entrySet());
+        list.sort(Map.Entry.<UUID,Double>comparingByValue().reversed());
 
-        Map<K, V> result = new LinkedHashMap<>();
-        for (Map.Entry<K, V> entry : list) {
-            result.put(entry.getKey(), entry.getValue());
+        HashMap<UUID, Double> temp = new LinkedHashMap<>();
+        for (Map.Entry<UUID, Double> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
         }
-
-        return result;
+        return temp;
     }
 }
