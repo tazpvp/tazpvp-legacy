@@ -8,14 +8,14 @@ import java.util.Random;
 
 public class GetRandomSword {
     public static String whichRarity() {
-        int x = new Random().nextInt(100);
-        if (x <= 80) {
+        int x = new Random().nextInt(101);
+        if (x <= 50) {
             return ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON";
-        } else if (x <= 93) {
+        } else if (x <= 80) {
             return ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON";
-        } else if (x <= 97) {
+        } else if (x <= 92) {
             return ChatColor.AQUA + "" + ChatColor.BOLD + "RARE";
-        } else if (x <= 99) {
+        } else if (x <= 97) {
             return ChatColor.RED + "" + ChatColor.BOLD + "EPIC";
         } else {
             return ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY";
