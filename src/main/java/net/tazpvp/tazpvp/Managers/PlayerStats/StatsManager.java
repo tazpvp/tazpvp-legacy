@@ -243,21 +243,18 @@ public class StatsManager {
     public Team getTeam(Player player, Scoreboard sb) {
         return switch (Tazpvp.permissions.getPrimaryGroup(player).toLowerCase()) {
             case "owner" -> sb.getTeam("a");
-            case "manager" -> sb.getTeam("b");
-            case "sr.admin" -> sb.getTeam("c");
-            case "admin" -> sb.getTeam("d");
-            case "developer" -> sb.getTeam("e");
-            case "sr.mod" -> sb.getTeam("f");
-            case "mod" -> sb.getTeam("g");
-            case "helper" -> sb.getTeam("h");
-            case "builder" -> sb.getTeam("i");
-            case "media" -> sb.getTeam("j");
-            case "vip" -> sb.getTeam("k");
-            case "mvp" -> sb.getTeam("l");
-            case "mvp+" -> sb.getTeam("m");
-            case "mvp++" -> sb.getTeam("n");
-            case "banned" -> sb.getTeam("z");
-            default -> sb.getTeam("o");
+            case "admin" -> sb.getTeam("b");
+            case "developer" -> sb.getTeam("c");
+            case "sr.mod" -> sb.getTeam("d");
+            case "mod" -> sb.getTeam("e");
+            case "helper" -> sb.getTeam("f");
+            case "media" -> sb.getTeam("g");
+            case "vip" -> sb.getTeam("h");
+            case "mvp" -> sb.getTeam("i");
+            case "mvp+" -> sb.getTeam("j");
+            case "mvp++" -> sb.getTeam("k");
+            case "banned" -> sb.getTeam("l");
+            default -> sb.getTeam("m");
         };
     }
 
@@ -269,11 +266,11 @@ public class StatsManager {
             case "sr.mod" -> ChatColor.BLUE;
             case "mod" -> ChatColor.DARK_AQUA;
             case "helper" -> ChatColor.AQUA;
-            case "youtube" -> ChatColor.RED;
+            case "media" -> ChatColor.RED;
             case "vip" -> ChatColor.RED;
             case "mvp" -> ChatColor.GREEN;
             case "mvp+" -> ChatColor.GOLD;
-            case "banned" -> ChatColor.RED;
+            case "banned" -> ChatColor.DARK_GRAY;
             default -> ChatColor.GRAY;
         };
     }
