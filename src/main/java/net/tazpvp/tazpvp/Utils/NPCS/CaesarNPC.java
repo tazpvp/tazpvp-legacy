@@ -12,7 +12,8 @@ import static net.tazpvp.tazpvp.Tazpvp.sellables;
 public class CaesarNPC {
     public static void clickMiner(Player p) {
         String prefix = ChatColor.YELLOW + "[NPC] Caesar " + ChatColor.WHITE;
-        if (!p.getInventory().getItemInMainHand().getType().name().toLowerCase().endsWith("_pickaxe") && !sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
+        Material userItem = p.getInventory().getItemInMainHand().getType();
+        if (!userItem.name().toLowerCase().endsWith("_pickaxe") && !sellables.containsKey(userItem)) {
             p.sendMessage(prefix + "Hey there traveler! Sell me your ores, or hand me your pickaxe to view what upgrades I can offer.");
         } else if (sellables.containsKey(p.getInventory().getItemInMainHand().getType())) {
             int amount = p.getInventory().getItemInMainHand().getAmount();
