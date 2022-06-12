@@ -46,7 +46,7 @@ public class ShopGUI {
                         return;
                     }
                 }
-                ItemStack itemstack = new ItemBuilder(item);
+                ItemStack itemstack = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(ChatColor.BLUE + description);
                 if (cIDRequired){
                     ItemMeta meta = itemstack.getItemMeta();
                     meta.getPersistentDataContainer().set(new NamespacedKey(Tazpvp.getInstance(), "cid"), PersistentDataType.DOUBLE, cID);
