@@ -16,6 +16,9 @@ public class PerkUtils {
         if (!Tazpvp.perkManager.getExcavatorPerk(p)) return;
         Tazpvp.statsManager.addExp(p, 1);
         p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+        if (Tazpvp.statsManager.checkLevelUp(p)) {
+            Tazpvp.statsManager.levelUp(p, 1);
+        }
     }
 
     public static void archerPerk(Player p) {
