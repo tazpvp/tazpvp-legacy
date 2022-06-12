@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Guilds;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -209,5 +210,14 @@ public class Guild implements Serializable {
 
     public double getKDR() {
         return kills / deaths;
+    }
+
+    public void sendAlL(String msg) {
+        for (UUID uuid : allMembers()) {
+            Player p = Bukkit.getPlayer(uuid);
+            if (p != null) {
+                p.sendMessage(msg);
+            }
+        }
     }
 }

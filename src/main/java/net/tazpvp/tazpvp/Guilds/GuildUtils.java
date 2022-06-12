@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,9 @@ public class GuildUtils {
     public final static String noPermission = "You do not have permission to do that.";
     public final static String targetNotInG = "That player is not in a guild.";
     public final static String targetNotInUrG = "That player is not in your guild.";
+    public final static String alrdyInUrG = "That player is already in your guild.";
+    public final static String targetAlrdyInG = "That player is already in a guild.";
+    public final static String noGInv = "You have no pending guild invites.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
 
@@ -66,7 +70,7 @@ public class GuildUtils {
         List<String> guildInfo = new ArrayList<>();
         guildInfo.add(secondaryColor + guild.description());
         guildInfo.add(primaryColor + "-" + uuidToOfflinePlayer(guild.owner().get(0)).getName());
-        guildInfo.add(secondaryColor + "KDR: " + primaryColor + guild.getKDR());
+        guildInfo.add(secondaryColor + "Kills: " + primaryColor + guild.getKills());
         guildInfo.add(secondaryColor + "Members: " + primaryColor + guild.allMembers().size());
         return guildInfo;
     }
@@ -103,6 +107,11 @@ public class GuildUtils {
     }
 
     public static void kickFromGuild(Player p, Player target, Guild guild) {
+        if (!isInGuild(p)) {
+            p.sendMessage(notInG);
+            return;
+        }
+
         if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
             p.sendMessage(noPermission);
             return;
@@ -123,6 +132,11 @@ public class GuildUtils {
     }
 
     public static void promote(Player p, Player target, Guild guild) {
+        if (!isInGuild(p)) {
+            p.sendMessage(notInG);
+            return;
+        }
+
         if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
             p.sendMessage(noPermission);
             return;
@@ -138,6 +152,11 @@ public class GuildUtils {
     }
 
     public static void demote(Player p, Player target, Guild guild) {
+        if (!isInGuild(p)) {
+            p.sendMessage(notInG);
+            return;
+        }
+
         if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
             p.sendMessage(noPermission);
             return;
@@ -150,5 +169,65 @@ public class GuildUtils {
 
         guild.demote(p, target.getUniqueId());
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
+    }
+
+    public static void invite(Player p, Player target, Guild guild) {
+        if (!isInGuild(p)) {
+            p.sendMessage(notInG);
+            return;
+        }
+
+        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
+
+        if (guild.allMembers().contains(target.getUniqueId())) {
+            p.sendMessage(alrdyInUrG);
+            return;
+        }
+
+        if (isInGuild(target)) {
+            p.sendMessage(targetAlrdyInG);
+            return;
+        }
+
+        guild.addInvites(target.getUniqueId());
+        Tazpvp.guildManager.setGuild(guild.getID(), guild);
+
+        guild.sendAlL(primaryColor + target.getName() + " has been invited to join " + guild.name() + " by " + p.getName());
+        target.sendMessage("You have been invited to join " + guild.name() + ".");
+        target.sendMessage("Type /guild accept to join.");
+        target.setMetadata("guildInvite", new FixedMetadataValue(Tazpvp.getInstance(), guild.getID()));
+    }
+
+    public static void acceptInvite(Player p) {
+        if (isInGuild(p)) {
+            p.sendMessage(alrdyInG);
+            return;
+        }
+
+        if (!p.hasMetadata("guildInvite")) {
+            p.sendMessage(noGInv);
+            return;
+        }
+        UUID gUUID = UUID.fromString(p.getMetadata("guildInvite").get(0).asString());
+        Guild guild = Tazpvp.guildManager.getGuild(gUUID);
+        guild.removeInvites(p.getUniqueId());
+        guild.addMember(p.getUniqueId());
+        Tazpvp.guildManager.setPlayerGuild(p, gUUID);
+        Tazpvp.guildManager.setGuild(gUUID, guild);
+        p.removeMetadata("guildInvite", Tazpvp.getInstance());
+        guild.sendAlL(primaryColor + p.getName() + " has joined " + guild.name());
+    }
+
+    public static boolean areInSameGuild(Player p, Player target) {
+        if (!isInGuild(p)) {
+            return false;
+        }
+        if (!isInGuild(target)) {
+            return false;
+        }
+        return Tazpvp.guildManager.getPlayerGuild(p).equals(Tazpvp.guildManager.getPlayerGuild(target));
     }
 }
