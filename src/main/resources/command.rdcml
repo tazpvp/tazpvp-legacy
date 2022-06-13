@@ -452,4 +452,10 @@ guild {
     accept {
         hook guild_accept
     }
+    promote player:target {
+        hook guild_promote
+    }
+    demote player:target {
+        hook guild_demote
+    }
 }

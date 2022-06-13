@@ -203,8 +203,9 @@ public class GuildUtils {
             p.sendMessage(notInG);
             return;
         }
-
-        if (guild.hasPerms(p)) {
+        p.sendMessage(guild.owner().toString());
+        p.sendMessage(guild.staff().toString());
+        if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;
         }
