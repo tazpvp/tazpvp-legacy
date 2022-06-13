@@ -1,6 +1,10 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
 import jline.internal.Nullable;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Content;
+import net.md_5.bungee.api.chat.hover.content.Text;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -12,6 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
@@ -45,6 +50,7 @@ public class DeathUtils {
      * @param receiver the player to send the message to
      */
     public void sendDeathMessage(final Player receiver) {
+        TextComponent hover = new TextComponent();
         final String who = (receiver == killer) ? "You" : ChatColor.GRAY + killer.getName();
         final String between = ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName();
         String end = "";
@@ -52,9 +58,11 @@ public class DeathUtils {
             end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 25 Exp";
         } else {
             if (killer.getInventory().getItemInMainHand().hasItemMeta() && killer.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
-                end = ChatColor.DARK_GRAY + " using " + ChatColor.AQUA + killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+                hover.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName())));
             }
         }
+        String msg = prefix + who + between + end;
+        hover.setText(msg);
 
         receiver.sendMessage(prefix + who + between + end);
     }

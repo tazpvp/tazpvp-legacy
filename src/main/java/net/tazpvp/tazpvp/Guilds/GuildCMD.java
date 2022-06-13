@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Guilds;
 
 import net.minecraft.world.level.World;
 import net.tazpvp.tazpvp.Tazpvp;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
@@ -13,9 +14,10 @@ public class GuildCMD {
     @CommandHook("guild_sorttest")
     public void sortest(Player p) {
         HashMap<UUID, Double> map = new HashMap<>();
-        for (Guild g : Tazpvp.guildManager.getAllGuilds()) {
-            map.put(g.getID(), g.getKills());
+        for (UUID uuid : Tazpvp.guildManager.getAllGuilds()) {
+            map.put(uuid, Tazpvp.guildManager.getGuild(uuid).getKills());
         }
+        Bukkit.getLogger().info(map.toString());
         Map<UUID, Double> sorted = GuildUtils.sortByValue(map);
         for (Map.Entry<UUID, Double> entry : sorted.entrySet()) {
             p.sendMessage(Tazpvp.guildManager.getGuild(entry.getKey()).name() + " has " + entry.getValue() + " kills");

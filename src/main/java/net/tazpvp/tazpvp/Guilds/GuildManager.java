@@ -44,13 +44,14 @@ public class GuildManager {
         guildFile.set("guilds.guild-list." + id, null);
     }
 
-    public List<Guild> getAllGuilds() {
+    public List<UUID> getAllGuilds() {
         List<String> guilds = guildFile.getStringList("guilds.guild-list");
-        List<Guild> guildList = new ArrayList<>();
-        for(String guild : guilds) {
-            guildList.add(SerializeGuild.StringToGuild(guild));
+        List<UUID> guildIDs = new ArrayList<>();
+        for (String guild : guilds) {
+            guildIDs.add(UUID.fromString(guild));
         }
-        return guildList;
+
+        return guildIDs;
     }
 
     public List<String> getTakeNames() {

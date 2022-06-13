@@ -24,8 +24,10 @@ public class GuildUtils {
     public final static String wasDemo = " was demoted to ";
     public final static String wasKicked = " was kicked from the guild.";
     public final static String leavedG = " left the guild.";
+    public final static String guildFull = "Guild is full.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
+    public final static int maxSize = 15;
 
     /**
      * Creates a guild
@@ -213,6 +215,11 @@ public class GuildUtils {
         }
         if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
+            return;
+        }
+
+        if (guild.allMembers().size() >= maxSize) {
+            p.sendMessage(guildFull);
             return;
         }
 
