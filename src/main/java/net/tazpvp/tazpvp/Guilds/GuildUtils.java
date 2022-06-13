@@ -20,6 +20,10 @@ public class GuildUtils {
     public final static String alrdyInUrG = "That player is already in your guild.";
     public final static String targetAlrdyInG = "That player is already in a guild.";
     public final static String noGInv = "You have no pending guild invites.";
+    public final static String wasPromo = " was promoted to ";
+    public final static String wasDemo = " was demoted to ";
+    public final static String wasKicked = " was kicked from the guild.";
+    public final static String leavedG = " left the guild.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
 
@@ -107,6 +111,7 @@ public class GuildUtils {
             guild.promote(p, (guild.staff().size()  > 0) ? guild.staff().get(0) : guild.allMembers().get(0));
         }
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
+        guild.sendAlL(p.getName() + leavedG);
     }
 
     /**
@@ -121,7 +126,7 @@ public class GuildUtils {
             return;
         }
 
-        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+        if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;
         }
@@ -135,6 +140,7 @@ public class GuildUtils {
             return;
         }
 
+        guild.sendAlL(target.getName() + wasKicked);
         guild.removeFromGuild(target.getUniqueId());
         Tazpvp.guildManager.removePlayerGuild(target);
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
@@ -152,7 +158,7 @@ public class GuildUtils {
             return;
         }
 
-        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+        if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;
         }
@@ -162,6 +168,7 @@ public class GuildUtils {
             return;
         }
 
+        guild.sendAlL(target.getName() + wasPromo + guild.getGroup(target.getUniqueId()));
         guild.promote(p, target.getUniqueId());
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
@@ -178,7 +185,7 @@ public class GuildUtils {
             return;
         }
 
-        if (!guild.staff().contains(p.getUniqueId()) || !guild.owner().contains(p.getUniqueId())) {
+        if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;
         }
@@ -188,6 +195,7 @@ public class GuildUtils {
             return;
         }
 
+        guild.sendAlL(target.getName() + wasDemo + guild.getGroup(target.getUniqueId()));
         guild.demote(p, target.getUniqueId());
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
@@ -203,8 +211,6 @@ public class GuildUtils {
             p.sendMessage(notInG);
             return;
         }
-        p.sendMessage(guild.owner().toString());
-        p.sendMessage(guild.staff().toString());
         if (!guild.hasPerms(p)) {
             p.sendMessage(noPermission);
             return;

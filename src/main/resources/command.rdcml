@@ -458,4 +458,7 @@ guild {
     demote player:target {
         hook guild_demote
     }
+    kick player:target {
+        hook guild_kick
+    }
 }

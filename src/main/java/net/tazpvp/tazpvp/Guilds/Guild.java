@@ -223,4 +223,14 @@ public class Guild implements Serializable {
         }
         return isStaff(p.getUniqueId());
     }
+
+    public String getGroup(UUID uuid) {
+        if (isOwner(uuid)) {
+            return "Owner";
+        }
+        if (isStaff(uuid)) {
+            return "Staff";
+        }
+        return "Member";
+    }
 }
