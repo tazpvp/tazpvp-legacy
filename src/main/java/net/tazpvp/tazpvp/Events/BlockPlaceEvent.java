@@ -19,6 +19,7 @@ public class BlockPlaceEvent implements Listener {
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {
         Player p = event.getPlayer();
+        int timer = 0;
         Location radius = new Location(Bukkit.getWorld("arena"), 0, 96, 94);
 
         if (p.getGameMode() == GameMode.SURVIVAL) {
@@ -34,18 +35,11 @@ public class BlockPlaceEvent implements Listener {
 
                 builderPerk(p, blockItem);
 
-                ArrayList<Material> unreq = new ArrayList<>();
-                unreq.add(Material.DEEPSLATE_GOLD_ORE);
-                unreq.add(Material.DEEPSLATE_REDSTONE_ORE);
-                unreq.add(Material.DEEPSLATE_LAPIS_ORE);
-                unreq.add(Material.DEEPSLATE_EMERALD_ORE);
-                unreq.add(Material.DEEPSLATE_IRON_ORE);
-
-                if (unreq.contains(blockType)) {
+                if (Tazpvp.blocks.containsKey(blockType)) {
                     event.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + "You cannot place ores.");
+                    p.sendMessage(ChatColor.RED + "You cannot place ores, sell them to Caesar.");
+                    return;
                 }
-                int timer = 0;
 
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
