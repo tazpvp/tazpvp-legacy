@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.Utils.Functionality.BowUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -83,6 +84,7 @@ public class BowGUI {
         }
         Tazpvp.statsManager.addShards(p, -price);
         BowUtils.applyEnchant(ench, 1, BowUtils.getBow(p), (Tazpvp.boolManager.getHasRebirthed(p)));
+        p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
         p.closeInventory();
     }
 
@@ -106,6 +108,7 @@ public class BowGUI {
 
         Tazpvp.statsManager.addShards(p, -price);
         BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
+        p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
         p.closeInventory();
     }
 
