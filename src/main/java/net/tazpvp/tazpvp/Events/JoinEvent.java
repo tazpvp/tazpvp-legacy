@@ -54,6 +54,7 @@ public class JoinEvent implements Listener {
 
         if (Tazpvp.punishmentManager.isBanned(p)) {
             p.teleport(new Location(Bukkit.getWorld("ban"), 0.5, 70, 0.5));
+            p.sendTitle(ChatColor.RED + "" + ChatColor.BOLD + "BANNED", ChatColor.RED + "You are still currently banned. Try /appeal", 10, 100, 10);
         } else {
             p.teleport(spawn);
         }
@@ -95,4 +96,5 @@ public class JoinEvent implements Listener {
         team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player2)));
         scoreboard.getTeam(player1.getUniqueId().toString()).addPlayer(player2);
     }
+
 }
