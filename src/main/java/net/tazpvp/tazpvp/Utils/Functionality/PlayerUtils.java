@@ -135,10 +135,12 @@ public class PlayerUtils {
         enc.clear();
         inv.clear();
 
+        Tazpvp.statsManager.initScoreboard(p);
         p.setHealth(20);
         p.setFoodLevel(20);
         Tazpvp.boolManager.setHasRebirthed(p, true);
         kitPlayer(p);
+
 
         for (Player op : Bukkit.getOnlinePlayers()) {
             sendSurround(op, ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "REBIRTH " + ChatColor.DARK_PURPLE + p.getName() + " was reborn stronger.");
