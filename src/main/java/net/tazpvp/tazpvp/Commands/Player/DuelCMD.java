@@ -19,6 +19,9 @@ public class DuelCMD {
     public void duel(Player p, Player target) {
         if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin."); return; }
         if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
+        if (p.equals(target)) {
+            p.sendMessage(ChatColor.RED + "You cannot duel yourself.");
+        }
         if (sentDuel(p).equals(target.getName())) {
             if (CombatTag.isInCombat(target)) {
                 target.sendMessage(ChatColor.RED + "You accept duels in combat.");
