@@ -64,14 +64,21 @@ public class DeathUtils {
         String msg = prefix + who + between + end;
         hover.setText(msg);
 
-        receiver.sendMessage(prefix + who + between + end);
+        receiver.spigot().sendMessage(hover);
     }
 
     /**
      * Send a death message to the player who died
      */
     public void sendDeadDeathMessage() {
-        p.sendMessage(prefix + ChatColor.DARK_GRAY + "You were killed by " + ChatColor.GRAY + killer.getName());
+        String msg = prefix + ChatColor.DARK_GRAY + "You were killed by " + ChatColor.GRAY + killer.getName();
+        TextComponent hover = new TextComponent();
+        if (killer.getInventory().getItemInMainHand().hasItemMeta() && killer.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
+            hover.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName())));
+        }
+        hover.setText(msg);
+
+        p.spigot().sendMessage(hover);
     }
 
     /**

@@ -195,7 +195,7 @@ public class DeathEvent implements Listener {
                 deathUtils.dropHead(100, 5);
             }
 
-            if (Bukkit.getOnlinePlayers().size() < 8) {
+            if (Bukkit.getOnlinePlayers().size() < 10) {
                 deathUtils.sendDeathMessageAll();
             } else {
                 deathUtils.sendDeadDeathMessage();
