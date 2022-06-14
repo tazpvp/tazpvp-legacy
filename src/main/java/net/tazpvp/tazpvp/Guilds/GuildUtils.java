@@ -174,8 +174,8 @@ public class GuildUtils {
             return;
         }
 
-        guild.sendAlL(target.getName() + wasPromo + guild.getGroup(target.getUniqueId()));
         guild.promote(p, target.getUniqueId());
+        guild.sendAlL(target.getName() + wasPromo + guild.getGroup(target.getUniqueId()));
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 
@@ -201,8 +201,8 @@ public class GuildUtils {
             return;
         }
 
-        guild.sendAlL(target.getName() + wasDemo + guild.getGroup(target.getUniqueId()));
         guild.demote(p, target.getUniqueId());
+        guild.sendAlL(target.getName() + wasDemo + guild.getGroup(target.getUniqueId()));
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
     }
 

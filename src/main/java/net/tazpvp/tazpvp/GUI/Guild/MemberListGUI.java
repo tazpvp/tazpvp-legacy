@@ -28,7 +28,7 @@ public class MemberListGUI {
 
     public void addItems(Player p, Guild g) {
         gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
-        ItemButton owner = ItemButton.create(new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName()).setLore(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Guild Master"), (e) ->{});
+        ItemButton owner = ItemButton.create(new ItemBuilder(ItemUtils.skull(Bukkit.getOfflinePlayer(g.owner().get(0)))).setName(ChatColor.YELLOW + Bukkit.getOfflinePlayer(g.owner().get(0)).getName()).setLore(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Guild Master"), (e) ->{});
         List<OfflinePlayer> members = new ArrayList<>();
         for (UUID uuid : g.staff()) {
             OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
@@ -38,6 +38,7 @@ public class MemberListGUI {
             OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
             members.add(op);
         }
+        gui.addButton(4, owner);
         allOthers(members, g, p);
         gui.update();
     }
@@ -47,12 +48,18 @@ public class MemberListGUI {
         for (OfflinePlayer p : members) {
             ChatColor nameColor = g.staff().contains(p.getUniqueId()) ? ChatColor.GREEN : ChatColor.GRAY;
             ChatColor rankColor = g.staff().contains(p.getUniqueId()) ? ChatColor.DARK_GREEN : ChatColor.GRAY;
-            String extraLore = g.hasPerms(p) ? ChatColor.RED + "Click me to edit!" : "";
-
-            ItemStack plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()), extraLore);
+            String extraLore = g.hasPerms(viewer) ? ChatColor.RED + "Click me to edit!" : "";
+            ItemStack plrItem;
+            if (g.hasPerms(viewer)) {
+                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()), "", extraLore);
+            } else {
+                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()));
+            }
             ItemButton plr = ItemButton.create(plrItem, (e) -> {
-                if (g.isOwner(p.getUniqueId())) ownerGui(viewer, p, g);
-                else if (g.isStaff(p.getUniqueId())) staffGui(viewer, p, g);
+                if (!viewer.getUniqueId().equals(p.getUniqueId())) {
+                    if (g.isOwner(viewer.getUniqueId())) ownerGui(viewer, p, g);
+                    else if (g.isStaff(viewer.getUniqueId())) staffGui(viewer, p, g);
+                }
             });
 
             gui.addButton(index, plr);
@@ -66,6 +73,7 @@ public class MemberListGUI {
     }
 
     public void ownerGui(Player p, OfflinePlayer target, Guild g) {
+        gui.clear();
         gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
         ItemButton targetBTN = ItemButton.create(new ItemBuilder(ItemUtils.skull(target)).setName(ChatColor.RED + p.getName()).setLore(ChatColor.GRAY + g.getGroup(target.getUniqueId())), (e) ->{});
         gui.addButton(13, targetBTN);
@@ -92,18 +100,13 @@ public class MemberListGUI {
 
         ItemButton closeBTN = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.RED + "Return").setLore(ChatColor.GRAY + "Return to the main screen."), (e) -> {
             run(p, Sound.BLOCK_ANVIL_PLACE);
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    new MemberListGUI(p, Tazpvp.guildManager.getGuild(Tazpvp.guildManager.getPlayerGuild(p)));
-                }
-            }.runTaskLater(Tazpvp.getInstance(), 2L);
         });
         gui.addButton(4 * 9 - 1, closeBTN);
         gui.update();
     }
 
     public void staffGui(Player p, OfflinePlayer target, Guild g) {
+        gui.clear();
         gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
         ItemButton targetBTN = ItemButton.create(new ItemBuilder(ItemUtils.skull(target)).setName(ChatColor.RED + p.getName()).setLore(ChatColor.GRAY + g.getGroup(target.getUniqueId())), (e) ->{});
         gui.addButton(13, targetBTN);
@@ -117,12 +120,6 @@ public class MemberListGUI {
 
         ItemButton closeBTN = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.RED + "Return").setLore(ChatColor.GRAY + "Return to the main screen."), (e) -> {
             run(p, Sound.BLOCK_ANVIL_PLACE);
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    new MemberListGUI(p, Tazpvp.guildManager.getGuild(Tazpvp.guildManager.getPlayerGuild(p)));
-                }
-            }.runTaskLater(Tazpvp.getInstance(), 2L);
         });
         gui.addButton(4 * 9 - 1, closeBTN);
         gui.update();
@@ -131,5 +128,11 @@ public class MemberListGUI {
     public void run(Player p, Sound sound) {
         p.closeInventory();
         p.playSound(p.getLocation(), sound, 1, 1);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                new MemberListGUI(p, Tazpvp.guildManager.getGuild(Tazpvp.guildManager.getPlayerGuild(p)));
+            }
+        }.runTaskLater(Tazpvp.getInstance(), 2L);
     }
 }
