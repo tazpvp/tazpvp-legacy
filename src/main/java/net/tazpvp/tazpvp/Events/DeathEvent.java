@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
@@ -205,6 +206,8 @@ public class DeathEvent implements Listener {
             deathUtils.bountyCheck();
 
             deathUtils.statsUpdate();
+
+            GuildUtils.addKillToGuild(d);
 
             deathUtils.applyHealth();
             gobblePerk(d);

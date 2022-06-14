@@ -304,4 +304,17 @@ public class GuildUtils {
     public static Guild getGuild(UUID uuid) {
         return Tazpvp.guildManager.getGuild(uuid);
     }
+
+    /**
+     * Checks if {@code p} is in a guild and adds one kill to the guilds leaderboard.
+     * @param p The player to check.
+     */
+    public static void addKillToGuild(Player p) {
+        if (!isInGuild(p)) {
+            return;
+        }
+        Guild g = getGuild(p);
+        g.setKills(g.getKills() + 1);
+        Tazpvp.guildManager.setGuild(g.getID(), g);
+    }
 }
