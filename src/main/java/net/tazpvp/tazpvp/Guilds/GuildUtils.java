@@ -141,6 +141,10 @@ public class GuildUtils {
             p.sendMessage(targetNotInUrG);
             return;
         }
+        if (guild.staff().contains(target.getUniqueId()) && guild.staff().contains(p.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
 
         guild.sendAlL(target.getName() + wasKicked);
         guild.removeFromGuild(target.getUniqueId());
