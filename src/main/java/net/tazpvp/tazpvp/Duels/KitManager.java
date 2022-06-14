@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Duels;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -8,12 +9,12 @@ import redempt.redlib.itemutils.ItemBuilder;
 
 public enum KitManager {
 
-    SWORD(new ItemBuilder(Material.DIAMOND_HELMET).unbreakable(),
-            new ItemBuilder(Material.DIAMOND_CHESTPLATE).unbreakable(),
-            new ItemBuilder(Material.DIAMOND_LEGGINGS).unbreakable(),
-            new ItemBuilder(Material.DIAMOND_BOOTS).unbreakable(),
+    SWORD(new ItemBuilder(Material.DIAMOND_HELMET).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.DIAMOND_CHESTPLATE).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.DIAMOND_LEGGINGS).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.DIAMOND_BOOTS).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
             new ItemStack[]{
-                new ItemBuilder(Material.DIAMOND_SWORD).unbreakable(),
+                new ItemBuilder(Material.DIAMOND_SWORD).unbreakable().addEnchant(Enchantment.DAMAGE_ALL, 5).addEnchant(Enchantment.SWEEPING_EDGE, 3),
                 new ItemBuilder(Material.GOLDEN_APPLE, 8)
     });
 
