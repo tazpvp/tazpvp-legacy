@@ -208,6 +208,7 @@ public class DeathEvent implements Listener {
             deathUtils.statsUpdate();
 
             GuildUtils.addKillToGuild(d);
+            GuildUtils.addDeathToGuild(p);
 
             deathUtils.applyHealth();
             gobblePerk(d);

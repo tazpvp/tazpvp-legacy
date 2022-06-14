@@ -58,22 +58,10 @@ public class GuildUtils {
             p.sendMessage(alrdyInG);
             return;
         }
-
-        String[] full = getNameAnvil(p);
-
-        Guild guild = new Guild(full[0], null, full[1], p.getUniqueId());
-        Tazpvp.guildManager.addGuild(guild);
-        Tazpvp.guildManager.setPlayerGuild(p, guild.getID());
-        Tazpvp.guildManager.addTakeName(full[0]);
-        p.sendMessage(gCreated);
+        getNameAnvil(p);
     }
 
     public static String[] getNameAnvil(Player p) {
-        var wrapper = new Object() {
-            public String name = null;
-            public String description = null;
-        };
-
         new AnvilGUI.Builder()
                 .onComplete((player, text) -> {
                     if (text.startsWith(">")) {
@@ -83,10 +71,12 @@ public class GuildUtils {
                         p.sendMessage(gNameTaken);
                         return AnvilGUI.Response.close();
                     }
-
-                    wrapper.name = text;
                     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
-                    wrapper.description = getDescriptionAnvil(p);
+
+                    String name = text;
+                    getDescriptionAnvil(player, name);
+
+
                     return AnvilGUI.Response.close();
                 })
                 .onClose(player -> {
@@ -97,25 +87,24 @@ public class GuildUtils {
                 .title(ChatColor.YELLOW + "Guild Name:")
                 .plugin(Tazpvp.getInstance())
                 .open(p);
-        Bukkit.getLogger().info(wrapper.name + " " + wrapper.description);
-        String[] full = new String[2];
-        full[0] = wrapper.name;
-        full[1] = wrapper.description;
-        return full;
+        return null;
     }
 
-    public static String getDescriptionAnvil(Player p) {
-        var wrapper = new Object() {
-            public String description = "";
-        };
+    public static void getDescriptionAnvil(Player p, String name) {
         new AnvilGUI.Builder()
                 .onComplete((player, text) -> {
                     if (text.startsWith(">")) {
                         text = text.replaceFirst(">", "");
                     }
 
-                    wrapper.description = text;
+                    String description = text;
                     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+
+                    Guild guild = new Guild(name, null, description, p.getUniqueId());
+                    Tazpvp.guildManager.addGuild(guild);
+                    Tazpvp.guildManager.setPlayerGuild(p, guild.getID());
+                    Tazpvp.guildManager.addTakeName(name);
+                    p.sendMessage(gCreated);
                     return AnvilGUI.Response.close();
                 })
                 .onClose(player -> {
@@ -127,7 +116,6 @@ public class GuildUtils {
                 .plugin(Tazpvp.getInstance())
                 .open(p);
 
-        return wrapper.description;
     }
 
 
@@ -385,7 +373,7 @@ public class GuildUtils {
     }
 
     /**
-     * Checks if {@code p} is in a guild and adds one kill to the guilds leaderboard.
+     * Checks if {@code p} is in a guild and adds one kill to the guild's leaderboard.
      * @param p The player to check.
      */
     public static void addKillToGuild(Player p) {
@@ -394,6 +382,19 @@ public class GuildUtils {
         }
         Guild g = getGuild(p);
         g.setKills(g.getKills() + 1);
+        Tazpvp.guildManager.setGuild(g.getID(), g);
+    }
+
+    /**
+     * Checks if {@code p} is in a guild and adds one death to the guild's leaderboard.
+     * @param p The player to check.
+     */
+    public static void addDeathToGuild(Player p) {
+        if (!isInGuild(p)) {
+            return;
+        }
+        Guild g = getGuild(p);
+        g.setDeaths(g.getDeaths() + 1);
         Tazpvp.guildManager.setGuild(g.getID(), g);
     }
 }
