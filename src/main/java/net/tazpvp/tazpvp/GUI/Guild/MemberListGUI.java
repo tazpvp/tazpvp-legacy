@@ -84,7 +84,7 @@ public class MemberListGUI {
         }
 
         if (members.isEmpty()) {
-            ItemButton emptylmfao = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.WHITE + "Such Lonely").setLore(ChatColor.GRAY + "Invite some members with /guild invite <player>"), e->{});
+            ItemButton emptylmfao = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.WHITE + "Such Lonely (╯°□°）╯︵ ┻━┻").setLore(ChatColor.GRAY + "Invite some members with /guild invite <player>"), e->{});
             gui.addButton(22, emptylmfao);
         }
 
