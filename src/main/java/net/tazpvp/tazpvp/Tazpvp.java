@@ -196,9 +196,10 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new BalCMD(),
             new ParticleCMD(),
             new SkullCMD(),
-                new TazloadCMD(),
-                new StaffchatCMD(),
-                new GuildCMD());
+            new TazloadCMD(),
+            new StaffchatCMD(),
+            new AfkCMD(),
+            new GuildCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }

@@ -462,3 +462,9 @@ guild {
         hook guild_kick
     }
 }
+
+afk {
+    help /afk
+    user player
+    hook afk
+}

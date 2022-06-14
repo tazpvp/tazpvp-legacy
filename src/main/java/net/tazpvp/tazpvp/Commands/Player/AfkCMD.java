@@ -8,7 +8,7 @@ import redempt.redlib.commandmanager.CommandHook;
 public class AfkCMD {
     @CommandHook("afk")
     public void afkCMD(Player p) {
-        if (Tazpvp.afkPlayers.contains(p)) {
+        if (!Tazpvp.afkPlayers.contains(p)) {
             Tazpvp.afkPlayers.add(p);
             p.sendMessage(ChatColor.YELLOW + "You are now AFK.");
         } else {
