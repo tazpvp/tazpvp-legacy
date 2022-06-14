@@ -461,10 +461,10 @@ guild {
     kick player:target {
         hook guild_kick
     }
+}
 
 afk {
     help /afk
     user player
     hook afk
-}
 }
