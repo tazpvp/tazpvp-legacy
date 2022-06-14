@@ -40,6 +40,19 @@ public class MemberListGUI {
         }
         gui.addButton(4, owner);
         allOthers(members, g, p);
+
+        ItemButton closeBTN = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.RED + "Return").setLore(ChatColor.GRAY + "Return to the main screen."), (e) -> {
+            p.closeInventory();
+            p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 1, 1);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    new GuildInfoGUI(p, g);
+                }
+            }.runTaskLater(Tazpvp.getInstance(), 2L);
+        });
+        gui.addButton(4 * 9 - 1, closeBTN);
+
         gui.update();
     }
 
@@ -69,6 +82,12 @@ public class MemberListGUI {
             }
             index++;
         }
+
+        if (members.isEmpty()) {
+            ItemButton emptylmfao = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.WHITE + "Such Lonely").setLore(ChatColor.GRAY + "Invite some members with /guild invite <player>"), e->{});
+            gui.addButton(22, emptylmfao);
+        }
+
         gui.update();
     }
 

@@ -234,4 +234,13 @@ public class Guild implements Serializable {
         }
         return "Member";
     }
+
+    public Material getIcon() {
+        return icon;
+    }
+
+    public Guild setIcon(Material icon) {
+        this.icon = icon;
+        return this;
+    }
 }
