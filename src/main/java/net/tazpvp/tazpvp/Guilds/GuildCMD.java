@@ -19,7 +19,6 @@ public class GuildCMD {
         for (UUID uuid : Tazpvp.guildManager.getAllGuilds()) {
             map.put(uuid, Tazpvp.guildManager.getGuild(uuid).getKills());
         }
-        Bukkit.getLogger().info(map.toString());
         Map<UUID, Double> sorted = GuildUtils.sortByValue(map);
         for (Map.Entry<UUID, Double> entry : sorted.entrySet()) {
             p.sendMessage(Tazpvp.guildManager.getGuild(entry.getKey()).name() + " has " + entry.getValue() + " kills");

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class GuildManager {
@@ -45,12 +46,11 @@ public class GuildManager {
     }
 
     public List<UUID> getAllGuilds() {
-        List<String> guilds = guildFile.getStringList("guilds.guild-list");
+        Set<String> guilds = guildFile.getConfigurationSection("guilds.guild-list").getKeys(false);
         List<UUID> guildIDs = new ArrayList<>();
         for (String guild : guilds) {
             guildIDs.add(UUID.fromString(guild));
         }
-
         return guildIDs;
     }
 

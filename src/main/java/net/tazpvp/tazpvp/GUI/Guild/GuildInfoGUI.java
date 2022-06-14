@@ -1,12 +1,14 @@
 package net.tazpvp.tazpvp.GUI.Guild;
 
 import net.tazpvp.tazpvp.Guilds.Guild;
+import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
@@ -33,7 +35,19 @@ public class GuildInfoGUI {
             new MemberListGUI(p, g);
         });
         String tag = g.tag() == null ? "" : " " + ChatColor.YELLOW + "[" + g.tag() + "]";
-        ItemButton info = ItemButton.create(new ItemBuilder(g.getIcon()).setName(ChatColor.GREEN + g.name() + tag).setLore("", ChatColor.GRAY + g.description()), e -> {});
+
+        ItemButton info = (g.isOwner(p.getUniqueId()) ?
+                ItemButton.create(new ItemBuilder(g.getIcon()).setName(ChatColor.GREEN + g.name() + tag).setLore(ChatColor.GRAY + g.description(), ChatColor.RED + "Click to edit"), e -> {
+                    p.closeInventory();
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            new EditGuildGUI(p, g);
+                        }
+                    }.runTaskLater(Tazpvp.getInstance(), 2L);
+                })
+                :
+                ItemButton.create(new ItemBuilder(g.getIcon()).setName(ChatColor.GREEN + g.name() + tag).setLore(ChatColor.GRAY + g.description()), e -> {}));
 
         ItemButton stats = ItemButton.create(new ItemBuilder(Material.ARMOR_STAND).setName(ChatColor.YELLOW + "Stats").setLore(
                 ChatColor.DARK_GREEN + "Kills: " + ChatColor.GREEN + g.getKills(),
