@@ -122,7 +122,7 @@ public class GuildUtils {
      * @param target The player being kicked by {@code p}.
      * @param guild The guild that {@code p} is kicking {@code target} from.
      */
-    public static void kickFromGuild(Player p, Player target, Guild guild) {
+    public static void kickFromGuild(Player p, OfflinePlayer target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
             return;
@@ -154,7 +154,7 @@ public class GuildUtils {
      * @param target The player who is being promoted.
      * @param guild The guild that {@code p} is promoting in.
      */
-    public static void promote(Player p, Player target, Guild guild) {
+    public static void promote(Player p, OfflinePlayer target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
             return;
@@ -181,7 +181,7 @@ public class GuildUtils {
      * @param target The Player who is being demoted.
      * @param guild The guild to demote {@code target} from.
      */
-    public static void demote(Player p, Player target, Guild guild) {
+    public static void demote(Player p, OfflinePlayer target, Guild guild) {
         if (!isInGuild(p)) {
             p.sendMessage(notInG);
             return;

@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Guilds;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.io.Serializable;
@@ -217,7 +218,7 @@ public class Guild implements Serializable {
         }
     }
 
-    public boolean hasPerms(Player p) {
+    public boolean hasPerms(OfflinePlayer p) {
         if (isOwner(p.getUniqueId())) {
             return true;
         }

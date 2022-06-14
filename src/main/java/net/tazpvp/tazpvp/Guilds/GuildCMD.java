@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Guilds;
 
 import net.minecraft.world.level.World;
+import net.tazpvp.tazpvp.GUI.Guild.MemberListGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -31,11 +32,7 @@ public class GuildCMD {
     @CommandHook("guild_display") public void onGuildDisplay(Player p) {
         if (GuildUtils.isInGuild(p)) {
             Guild guild = GuildUtils.getGuild(p);
-            p.sendMessage(GuildUtils.viewGuild(guild).toString());
-            p.sendMessage(guild.owner().toString());
-            p.sendMessage(guild.staff().toString());
-            p.sendMessage(guild.members().toString());
-            p.sendMessage(guild.invites().toString());
+            new MemberListGUI(p, guild);
         } else {
             p.sendMessage(GuildUtils.notInG);
         }
