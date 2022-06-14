@@ -21,7 +21,7 @@ public class MemberListGUI {
     private InventoryGUI gui;
 
     public MemberListGUI(Player p, Guild guild) {
-        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, "Guild Members"));
+        gui = new InventoryGUI(Bukkit.createInventory(null, 4 * 9, guild.name() + " Members"));
         addItems(p, guild);
         gui.open(p);
     }
