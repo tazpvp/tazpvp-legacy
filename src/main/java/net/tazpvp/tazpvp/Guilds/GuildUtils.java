@@ -26,6 +26,8 @@ public class GuildUtils {
     public final static String wasKicked = " was kicked from the guild.";
     public final static String leavedG = " left the guild.";
     public final static String guildFull = "Guild is full.";
+    public final static String gDisband = "The guild has been disbanded!";
+    public final static String gOwnerLeave = "You are the owner of this guild and cannot leave it, You may disband it permanently though.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
     public final static int maxSize = 15;
@@ -169,6 +171,13 @@ public class GuildUtils {
             p.sendMessage(notInG);
             return;
         }
+
+        if (guild.owner().contains(p.getUniqueId())) {
+            p.sendMessage(gOwnerLeave);
+            return;
+        }
+
+        guild.sendAlL(p.getName() + leavedG);
         guild.removeFromGuild(p.getUniqueId());
         Tazpvp.guildManager.removePlayerGuild(p);
         if (guild.getGuildCount() == 0) {
@@ -180,7 +189,6 @@ public class GuildUtils {
             guild.promote(p, (guild.staff().size()  > 0) ? guild.staff().get(0) : guild.allMembers().get(0));
         }
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
-        guild.sendAlL(p.getName() + leavedG);
     }
 
     /**
@@ -396,5 +404,20 @@ public class GuildUtils {
         Guild g = getGuild(p);
         g.setDeaths(g.getDeaths() + 1);
         Tazpvp.guildManager.setGuild(g.getID(), g);
+    }
+
+    public static void guildDisband(Player p, Guild g) {
+        if (!g.isOwner(p.getUniqueId())) {
+            p.sendMessage(noPermission);
+            return;
+        }
+
+        for (UUID uuid : g.allMembers()) {
+            OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
+            if (op.isOnline()) op.getPlayer().sendMessage(gDisband);
+            Tazpvp.guildManager.removePlayerGuild(op);
+        }
+        Tazpvp.guildManager.removeGuild(g.getID());
+        Tazpvp.guildManager.removeTakeName(g.name());
     }
 }

@@ -84,4 +84,12 @@ public class GuildCMD {
         }
     }
 
+    @CommandHook("guild_disband") public void onGuildDisband(Player p) {
+        if (GuildUtils.isInGuild(p)) {
+            GuildUtils.guildDisband(p, GuildUtils.getGuild(p));
+        } else {
+            p.sendMessage(GuildUtils.notInG);
+        }
+    }
+
 }

@@ -461,6 +461,9 @@ guild {
     kick player:target {
         hook guild_kick
     }
+    disband {
+        hook guild_disband
+    }
 }
 
 afk {
