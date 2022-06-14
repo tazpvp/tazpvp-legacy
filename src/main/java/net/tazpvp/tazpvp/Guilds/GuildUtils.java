@@ -1,13 +1,14 @@
 package net.tazpvp.tazpvp.Guilds;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
+import net.wesjd.anvilgui.AnvilGUI;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GuildUtils {
     public final static String gNameTaken = "Guild name already taken.";
@@ -51,6 +52,84 @@ public class GuildUtils {
         Tazpvp.guildManager.addTakeName(name);
         p.sendMessage(gCreated);
     }
+
+    public static void createGuildAnvilGui(Player p) {
+        if (isInGuild(p)) {
+            p.sendMessage(alrdyInG);
+            return;
+        }
+
+        String[] full = getNameAnvil(p);
+
+        Guild guild = new Guild(full[0], null, full[1], p.getUniqueId());
+        Tazpvp.guildManager.addGuild(guild);
+        Tazpvp.guildManager.setPlayerGuild(p, guild.getID());
+        Tazpvp.guildManager.addTakeName(full[0]);
+        p.sendMessage(gCreated);
+    }
+
+    public static String[] getNameAnvil(Player p) {
+        var wrapper = new Object() {
+            public String name = null;
+            public String description = null;
+        };
+
+        new AnvilGUI.Builder()
+                .onComplete((player, text) -> {
+                    if (text.startsWith(">")) {
+                        text = text.replaceFirst(">", "");
+                    }
+                    if (Tazpvp.guildManager.getTakeNames().contains(text)) {
+                        p.sendMessage(gNameTaken);
+                        return AnvilGUI.Response.close();
+                    }
+
+                    wrapper.name = text;
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                    wrapper.description = getDescriptionAnvil(p);
+                    return AnvilGUI.Response.close();
+                })
+                .onClose(player -> {
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                })
+                .text(">")
+                .itemLeft(new ItemBuilder(Material.NAME_TAG).setName(ChatColor.GREEN + "Guild Creation"))
+                .title(ChatColor.YELLOW + "Guild Name:")
+                .plugin(Tazpvp.getInstance())
+                .open(p);
+        Bukkit.getLogger().info(wrapper.name + " " + wrapper.description);
+        String[] full = new String[2];
+        full[0] = wrapper.name;
+        full[1] = wrapper.description;
+        return full;
+    }
+
+    public static String getDescriptionAnvil(Player p) {
+        var wrapper = new Object() {
+            public String description = "";
+        };
+        new AnvilGUI.Builder()
+                .onComplete((player, text) -> {
+                    if (text.startsWith(">")) {
+                        text = text.replaceFirst(">", "");
+                    }
+
+                    wrapper.description = text;
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                    return AnvilGUI.Response.close();
+                })
+                .onClose(player -> {
+                    player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+                })
+                .text(">")
+                .itemLeft(new ItemBuilder(Material.NAME_TAG).setName(ChatColor.GREEN + "Guild Creation"))
+                .title(ChatColor.YELLOW + "Guild Description:")
+                .plugin(Tazpvp.getInstance())
+                .open(p);
+
+        return wrapper.description;
+    }
+
 
     /**
      * Gets information about specified guild

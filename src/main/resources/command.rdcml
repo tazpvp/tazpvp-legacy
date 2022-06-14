@@ -437,7 +437,7 @@ guild {
     sorttest {
         hook guild_sorttest
     }
-    create string:name string...:description {
+    create {
         hook guild_create
     }
     display {

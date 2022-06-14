@@ -25,8 +25,8 @@ public class GuildCMD {
         }
     }
 
-    @CommandHook("guild_create") public void onGuildCreate(Player p, String name, String description) {
-        GuildUtils.createGuild(p, name, description);
+    @CommandHook("guild_create") public void onGuildCreate(Player p) {
+        GuildUtils.createGuildAnvilGui(p);
     }
 
     @CommandHook("guild_display") public void onGuildDisplay(Player p) {
