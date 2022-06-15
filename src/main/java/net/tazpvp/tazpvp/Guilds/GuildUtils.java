@@ -60,6 +60,10 @@ public class GuildUtils {
             p.sendMessage(alrdyInG);
             return;
         }
+        if (Tazpvp.statsManager.getCoins(p) < 6000 || Tazpvp.statsManager.getShards(p) < 10) {
+            p.sendMessage("You need 6000 coins and 10 shards to create a guild.");
+            return;
+        }
         getNameAnvil(p);
     }
 
@@ -101,6 +105,9 @@ public class GuildUtils {
 
                     String description = text;
                     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
+
+                    Tazpvp.statsManager.addCoins(p, -6000);
+                    Tazpvp.statsManager.addShards(p, -10);
 
                     Guild guild = new Guild(name, null, description, p.getUniqueId());
                     Tazpvp.guildManager.addGuild(guild);
