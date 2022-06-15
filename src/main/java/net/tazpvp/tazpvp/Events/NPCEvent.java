@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.GUI.Guild.GuildBrowserGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.DepthsGUI;
@@ -60,6 +61,8 @@ public class NPCEvent implements Listener {
                             new DepthsGUI(e.getPlayer());
                         } else if (id == 8) {
                             new BowGUI(e.getPlayer());
+                        } else if (id == 9) {
+                            new GuildBrowserGUI(e.getPlayer());
                         } else {
                             e.getPlayer().sendMessage(ChatColor.RED + "Uh oh! You found a super secret error! Report this to Ntdi, 0xEf300 err resp: " + id +".EntityStorage");
                         }

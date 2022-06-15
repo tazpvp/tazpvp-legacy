@@ -2,7 +2,6 @@ package net.tazpvp.tazpvp;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
-import dev.jcsoftware.jscoreboards.JPerPlayerScoreboard;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
@@ -14,6 +13,7 @@ import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
 import net.tazpvp.tazpvp.Guilds.GuildCMD;
 import net.tazpvp.tazpvp.Guilds.GuildManager;
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.EnderChestManager;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
@@ -66,7 +66,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static Permission permissions;
     public static Chat chat;
     public static ProtocolManager protocolManager;
-    public static JPerPlayerScoreboard scoreboard;
 
     public static FileConfiguration configFile;
 
@@ -368,6 +367,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
 
             team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+            if (GuildUtils.isInGuild(onlinePlayer) && GuildUtils.getGuild(onlinePlayer).tag() != null) {
+                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(onlinePlayer).tag() + "]");
+            }
             team.setColor(statsManager.getColor(onlinePlayer));
             team.addPlayer(onlinePlayer);
 
@@ -386,6 +388,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             team = scoreboard.registerNewTeam(player.getUniqueId().toString());
 
             team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            if (GuildUtils.isInGuild(player) && GuildUtils.getGuild(player).tag() != null) {
+                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(player).tag() + "]");
+            }
             team.setColor(statsManager.getColor(player));
             team.addPlayer(player);
         }

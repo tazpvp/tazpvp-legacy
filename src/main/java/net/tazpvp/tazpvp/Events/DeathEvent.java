@@ -112,7 +112,9 @@ public class DeathEvent implements Listener {
 
                     } else if (ee.getDamager() instanceof Arrow) {
                         if (((Arrow) ee.getDamager()).getShooter() instanceof Player d) {
-                            Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+                            if (p != d) {
+                                Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
+                            }
 
                             CombatTag.putInCombat(p);
                             CombatTag.putInCombat(d);

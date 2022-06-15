@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.ChatUtils;
 import org.bukkit.ChatColor;
@@ -26,7 +27,9 @@ public class ChatEvent implements Listener {
         msg = ChatColor.translateAlternateColorCodes('&', prefix) + msg;
         ChatColor lvl = ChatColor.GRAY;
         String lvltxt = ChatColor.GRAY + "[" + lvl + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] ";
-        String fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s ";
+        String tag = (GuildUtils.isInGuild(p) && GuildUtils.getGuild(p).tag() != null)
+                ? ChatColor.YELLOW + "[" + GuildUtils.getGuild(p).tag() + ChatColor.YELLOW + "] " : "";
+        String fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + tag;
 
 
         if (p.hasMetadata("staffchat")) {
@@ -71,7 +74,7 @@ public class ChatEvent implements Listener {
                 return;
             }
             for (int i = 0; i < badWord.size(); i++) {
-                if (msg.contains(badWord.get(i))) {
+                if (msg.toLowerCase().contains(badWord.get(i))) {
                     e.setCancelled(true);
                     e.getPlayer().sendMessage(ChatColor.RED + "Please refrain from using profanity: " + ChatColor.DARK_RED + badWord.get(i));
                 }
@@ -86,11 +89,23 @@ public class ChatEvent implements Listener {
                     p.sendMessage(ChatColor.RED + "You cannot repeat the same message!");
                 }
             }
-            if (Tazpvp.statsManager.getRebirth(p) > 0) {
-                lvl = ChatColor.GOLD;
-            }
-            if (p.hasPermission("tazpvp.level")) {
-                lvltxt = "";
+        }
+        if (Tazpvp.statsManager.getRebirth(p) > 0) {
+            lvl = ChatColor.GOLD;
+        }
+        if (p.hasPermission("tazpvp.level")) {
+            lvltxt = "";
+        }
+
+        if (e.getMessage().startsWith("@")) {
+            if (GuildUtils.isInGuild(p)) {
+                GuildUtils.guildChatMessage(p, e.getMessage().replaceFirst("@", ""), GuildUtils.getGuild(p));
+                e.setCancelled(true);
+                return;
+            } else {
+                p.sendMessage(ChatColor.RED + "You are not in a guild!");
+                e.setCancelled(true);
+                return;
             }
         }
 

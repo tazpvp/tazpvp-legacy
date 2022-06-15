@@ -440,4 +440,17 @@ public class GuildUtils {
         }
         return GuildUtils.sortByValue(map);
     }
+
+    public static void guildChatMessage(Player p, String msg, Guild g) {
+        String guild = ChatColor.GREEN + "Guild > ";
+        String beginning;
+        if (g.getGroup(p.getUniqueId()).equals("Owner")) {
+            beginning = ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "GUILD MASTER " + ChatColor.DARK_GREEN + p.getName() + " ";
+        } else if (g.getGroup(p.getUniqueId()).equals("Staff")) {
+            beginning = ChatColor.GREEN + "" + ChatColor.BOLD + "STAFF " + ChatColor.GREEN + p.getName() + " ";
+        } else {
+            beginning = ChatColor.GRAY + p.getName() + " ";
+        }
+        g.sendAlL(guild + beginning + ChatColor.WHITE + msg);
+    }
 }
