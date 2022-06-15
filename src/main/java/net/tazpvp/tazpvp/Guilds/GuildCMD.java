@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Guilds;
 
 import net.minecraft.world.level.World;
+import net.tazpvp.tazpvp.GUI.Guild.GuildBrowserGUI;
 import net.tazpvp.tazpvp.GUI.Guild.GuildInfoGUI;
 import net.tazpvp.tazpvp.GUI.Guild.MemberListGUI;
 import net.tazpvp.tazpvp.Tazpvp;
@@ -15,14 +16,7 @@ import java.util.UUID;
 public class GuildCMD {
     @CommandHook("guild_sorttest")
     public void sortest(Player p) {
-        HashMap<UUID, Double> map = new HashMap<>();
-        for (UUID uuid : Tazpvp.guildManager.getAllGuilds()) {
-            map.put(uuid, Tazpvp.guildManager.getGuild(uuid).getKills());
-        }
-        Map<UUID, Double> sorted = GuildUtils.sortByValue(map);
-        for (Map.Entry<UUID, Double> entry : sorted.entrySet()) {
-            p.sendMessage(Tazpvp.guildManager.getGuild(entry.getKey()).name() + " has " + entry.getValue() + " kills");
-        }
+        new GuildBrowserGUI(p);
     }
 
     @CommandHook("guild_create") public void onGuildCreate(Player p) {

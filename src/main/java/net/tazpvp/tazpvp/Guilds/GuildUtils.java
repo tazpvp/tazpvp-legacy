@@ -120,6 +120,11 @@ public class GuildUtils {
 
     }
 
+    public static String viewGuildString(Guild guild) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(secondaryColor).append(guild.description()).append(primaryColor + "-").append(uuidToOfflinePlayer(guild.owner().get(0)).getName()).append("\n").append("\n").append(secondaryColor + "Kills: " + primaryColor).append("\n").append(guild.getKills()).append(secondaryColor + "Members: " + primaryColor).append(guild.allMembers().size());
+        return sb.toString();
+    }
 
     /**
      * Gets information about specified guild
@@ -361,11 +366,11 @@ public class GuildUtils {
         return Tazpvp.guildManager.getPlayerGuild(p).equals(Tazpvp.guildManager.getPlayerGuild(target));
     }
 
-    public static HashMap<UUID, Double> sortByValue(HashMap<UUID, Double> hm) {
+    public static LinkedHashMap<UUID, Double> sortByValue(HashMap<UUID, Double> hm) {
         List<Map.Entry<UUID, Double> > list = new LinkedList<>(hm.entrySet());
         list.sort(Map.Entry.<UUID,Double>comparingByValue().reversed());
 
-        HashMap<UUID, Double> temp = new LinkedHashMap<>();
+        LinkedHashMap<UUID, Double> temp = new LinkedHashMap<>();
         for (Map.Entry<UUID, Double> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
@@ -419,5 +424,13 @@ public class GuildUtils {
         }
         Tazpvp.guildManager.removeGuild(g.getID());
         Tazpvp.guildManager.removeTakeName(g.name());
+    }
+
+    public static LinkedHashMap<UUID, Double> sortedGuilds() {
+        LinkedHashMap<UUID, Double> map = new LinkedHashMap<>();
+        for (UUID uuid : Tazpvp.guildManager.getAllGuilds()) {
+            map.put(uuid, Tazpvp.guildManager.getGuild(uuid).getKills());
+        }
+        return GuildUtils.sortByValue(map);
     }
 }
