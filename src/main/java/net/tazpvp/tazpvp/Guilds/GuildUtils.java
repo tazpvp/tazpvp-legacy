@@ -482,4 +482,27 @@ public class GuildUtils {
         }
         g.sendAlL(guild + beginning + ChatColor.WHITE + msg);
     }
+
+    public static void hijack(Player p, Player target, Guild g) {
+        List<UUID> own = new ArrayList<>(g.owner());
+        List<UUID> newOwner = new LinkedList<>();
+        newOwner.add(p.getUniqueId());
+        newOwner.addAll(own);
+        g.owner().clear();
+        g.setOwner(newOwner);
+        g.sendAlL(ChatColor.RED + "The guild has been hijacked by " + p.getName() + "!");
+        Tazpvp.guildManager.setGuild(g.getID(), g);
+        Tazpvp.guildManager.setPlayerGuild(p, g.getID());
+    }
+
+    public static void wipeAllGuildInvites() {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (isInGuild(p)) {
+                Guild g = getGuild(p);
+                g.invites().clear();
+                Tazpvp.guildManager.setGuild(g.getID(), g);
+            }
+        }
+        Bukkit.getLogger().info("All guild invites wiped.");
+    }
 }

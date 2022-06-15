@@ -90,4 +90,12 @@ public class GuildCMD {
         }
     }
 
+    @CommandHook("guild_hijack") public void onGuildHijack(Player p, Player target) {
+        if (GuildUtils.isInGuild(target)) {
+            GuildUtils.hijack(p, target, GuildUtils.getGuild(target));
+        } else {
+            p.sendMessage(GuildUtils.notInG);
+        }
+    }
+
 }

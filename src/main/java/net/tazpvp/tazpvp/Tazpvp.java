@@ -151,6 +151,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             }
         }
 
+        new Thread(() -> Bukkit.getScheduler().runTaskLater(Tazpvp.this, GuildUtils::wipeAllGuildInvites, 20 * 60 * 5)).start();
+
         new BukkitRunnable() {
             @Override
             public void run() {

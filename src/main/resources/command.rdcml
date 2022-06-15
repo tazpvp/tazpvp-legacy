@@ -463,6 +463,10 @@ guild,g {
     disband {
         hook guild_disband
     }
+    hijack player:target {
+        hook guild_hijack
+        permission tazpvp.staff.guild
+    }
 }
 
 afk {
