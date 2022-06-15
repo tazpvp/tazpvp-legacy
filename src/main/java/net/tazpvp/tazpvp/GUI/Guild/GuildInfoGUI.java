@@ -65,10 +65,16 @@ public class GuildInfoGUI {
                 ChatColor.DARK_GREEN + "Ranking: " + ChatColor.GREEN + "#" + index
         ), e -> {});
 
+        ItemButton help = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.YELLOW + "Help").setLore(
+                ChatColor.WHITE + "Type a @ before your message to send it to guild chat!",
+                ChatColor.WHITE + "Edit members by clicking their head in the members list!"
+                        ), e -> {});
+
         gui.addButton(11, info);
         gui.addButton(13, stats);
         gui.addButton(15, owner);
         gui.addButton(16, members);
+        gui.addButton(18, help);
         gui.update();
     }
 }

@@ -36,7 +36,7 @@ public class LeaveEvnet implements Listener {
             if (Tazpvp.lastDamage.containsKey(p.getUniqueId())) {
                 if (Bukkit.getOfflinePlayer(k).isOnline()) {
                     if (Bukkit.getOnlinePlayers().size() < 8) {
-                        deathUtils.sendDeathMessageAll();
+                        deathUtils.sendDeathMessageAll(false);
                     } else {
                         deathUtils.sendDeathMessage(h);
                     }
