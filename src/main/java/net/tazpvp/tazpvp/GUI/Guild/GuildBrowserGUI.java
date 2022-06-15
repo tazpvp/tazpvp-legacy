@@ -63,8 +63,6 @@ public class GuildBrowserGUI {
             }
             displacement++;
         }
-        //47
-        //55
 
         if (page != 0) {
             ItemButton lastPage = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.GREEN + "Last Page"), (e) -> {
@@ -73,7 +71,7 @@ public class GuildBrowserGUI {
             gui.addButton(45, lastPage);
         }
 
-        if (page != pagesNeeded) {
+        if (page != pagesNeeded - 1) {
             ItemButton nextPage = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.GREEN + "Next Page"), (e) -> {
                 if((page + 1) * numNum < guilds.size()) pageChange(p, page + 1);
             });
@@ -101,7 +99,14 @@ public class GuildBrowserGUI {
                 }.runTaskLater(Tazpvp.getInstance(), 2L);
             });
         } else {
-            playerGuild = ItemButton.create(new ItemBuilder(Material.BARRIER).setName(ChatColor.RED + "You are not in a guild."), (e) -> {});
+            playerGuild = ItemButton.create(new ItemBuilder(Material.MINECART).setName(ChatColor.RED + "You are not in a guild.").setLore(
+                    ChatColor.YELLOW + "Click to buy a guild.",
+                    ChatColor.GOLD + "$6,000 Coins",
+                    ChatColor.AQUA + "10 Credits"
+            ), (e) -> {
+                p.closeInventory();
+                GuildUtils.createGuildAnvilGui(p);
+            });
         }
         gui.addButton(4, playerGuild);
 

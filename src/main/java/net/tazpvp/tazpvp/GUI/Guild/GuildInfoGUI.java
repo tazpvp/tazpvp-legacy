@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.GUI.Guild;
 
 import net.tazpvp.tazpvp.Guilds.Guild;
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -14,9 +15,9 @@ import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.util.*;
 
 public class GuildInfoGUI {
     private InventoryGUI gui;
@@ -49,10 +50,20 @@ public class GuildInfoGUI {
                 :
                 ItemButton.create(new ItemBuilder(g.getIcon()).setName(ChatColor.GREEN + g.name() + tag).setLore(ChatColor.GRAY + g.description()), e -> {}));
 
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+
+        LinkedHashMap<UUID, Double> guilds = GuildUtils.sortedGuilds();
+        List<UUID> uuidList = new LinkedList<>(guilds.keySet());
+        int index = uuidList.indexOf(g.getID());
+        index++;
+
         ItemButton stats = ItemButton.create(new ItemBuilder(Material.ARMOR_STAND).setName(ChatColor.YELLOW + "Stats").setLore(
                 ChatColor.DARK_GREEN + "Kills: " + ChatColor.GREEN + g.getKills(),
                 ChatColor.DARK_GREEN + "Deaths: " + ChatColor.GREEN + g.getDeaths(),
-                ChatColor.DARK_GREEN + "KDR: " + ChatColor.GREEN + g.getKDR()), e -> {});
+                ChatColor.DARK_GREEN + "KDR: " + ChatColor.GREEN + df.format(g.getKDR()),
+                ChatColor.DARK_GREEN + "Ranking: " + ChatColor.GREEN + "#" + index
+        ), e -> {});
 
         gui.addButton(11, info);
         gui.addButton(13, stats);
