@@ -1,9 +1,7 @@
 package net.tazpvp.tazpvp.Guilds;
 
 import net.minecraft.world.level.World;
-import net.tazpvp.tazpvp.GUI.Guild.GuildBrowserGUI;
-import net.tazpvp.tazpvp.GUI.Guild.GuildInfoGUI;
-import net.tazpvp.tazpvp.GUI.Guild.MemberListGUI;
+import net.tazpvp.tazpvp.GUI.Guild.*;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -42,15 +40,18 @@ public class GuildCMD {
 
     @CommandHook("guild_invite") public void onGuildInvite(Player p, Player target) {
         if (GuildUtils.isInGuild(p)) {
-            GuildUtils.invite(p, target, GuildUtils.getGuild(p));
+            new InviteGuildGUI(p, GuildUtils.getGuild(p));
         } else {
             p.sendMessage(GuildUtils.notInG);
         }
     }
 
     @CommandHook("guild_accept") public void onGuildAccept(Player p) {
-        GuildUtils.acceptInvite(p);
-
+        if (GuildUtils.acceptInviteChecks(p) != null) {
+            new AcceptGuildGUI(p, GuildUtils.acceptInviteChecks(p));
+        } else {
+            p.sendMessage(GuildUtils.notInG);
+        }
     }
 
     @CommandHook("guild_promote") public void onGuildPromote(Player p, Player target) {

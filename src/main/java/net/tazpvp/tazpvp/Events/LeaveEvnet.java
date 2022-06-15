@@ -1,5 +1,8 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Guilds.Guild;
+import net.tazpvp.tazpvp.Guilds.GuildManager;
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
@@ -49,6 +52,14 @@ public class LeaveEvnet implements Listener {
 
         for (Player plr : Bukkit.getOnlinePlayers()) {
             Tazpvp.sendBaseTablist(plr);
+        }
+
+        if(GuildUtils.isInGuild(e.getPlayer())) {
+            Guild g = GuildUtils.getGuild(e.getPlayer());
+            if (g.isOwner(e.getPlayer().getUniqueId())) {
+                g.invites().clear();
+                Tazpvp.guildManager.setGuild(g.getID(), g);
+            }
         }
     }
 }

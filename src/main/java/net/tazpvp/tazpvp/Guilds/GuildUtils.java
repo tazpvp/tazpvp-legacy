@@ -28,6 +28,7 @@ public class GuildUtils {
     public final static String guildFull = "Guild is full.";
     public final static String gDisband = "The guild has been disbanded!";
     public final static String gOwnerLeave = "You are the owner of this guild and cannot leave it, You may disband it permanently though.";
+    public final static String targetAlrdyInv = "That player is already invited to your guild.";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
     public final static int maxSize = 15;
@@ -324,6 +325,11 @@ public class GuildUtils {
             return;
         }
 
+        if (guild.invites().contains(target.getUniqueId())) {
+            p.sendMessage(targetAlrdyInv);
+            return;
+        }
+
         guild.addInvites(target.getUniqueId());
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
 
@@ -355,6 +361,21 @@ public class GuildUtils {
         Tazpvp.guildManager.setGuild(gUUID, guild);
         p.removeMetadata("guildInvite", Tazpvp.getInstance());
         guild.sendAlL(primaryColor + p.getName() + " has joined " + guild.name());
+    }
+
+    public static Guild acceptInviteChecks(Player p) {
+        if (isInGuild(p)) {
+            p.sendMessage(alrdyInG);
+            return null;
+        }
+
+        if (!p.hasMetadata("guildInvite")) {
+            p.sendMessage(noGInv);
+            return null;
+        }
+        UUID gUUID = UUID.fromString(p.getMetadata("guildInvite").get(0).asString());
+        Guild guild = Tazpvp.guildManager.getGuild(gUUID);
+        return guild;
     }
 
     /**
