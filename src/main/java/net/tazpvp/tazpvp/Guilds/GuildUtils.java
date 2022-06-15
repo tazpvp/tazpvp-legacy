@@ -1,5 +1,10 @@
 package net.tazpvp.tazpvp.Guilds;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Content;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.*;
@@ -333,9 +338,12 @@ public class GuildUtils {
         guild.addInvites(target.getUniqueId());
         Tazpvp.guildManager.setGuild(guild.getID(), guild);
 
+        TextComponent invite = new TextComponent(ChatColor.GOLD + "" + ChatColor.BOLD + "Click Here " + ChatColor.YELLOW + "to join " + guild.name());
+        invite.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.GOLD + "Click Here " + ChatColor.YELLOW + "to join " + guild.name()).create()));
+        invite.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/guild accept"));
+
         guild.sendAlL(primaryColor + target.getName() + " has been invited to join " + guild.name() + " by " + p.getName());
-        target.sendMessage("You have been invited to join " + guild.name() + ".");
-        target.sendMessage("Type /guild accept to join.");
+        target.spigot().sendMessage(invite);
         target.setMetadata("guildInvite", new FixedMetadataValue(Tazpvp.getInstance(), guild.getID()));
     }
 

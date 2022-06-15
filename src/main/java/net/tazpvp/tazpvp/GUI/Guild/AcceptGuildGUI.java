@@ -43,11 +43,12 @@ public class AcceptGuildGUI {
 
         ItemButton accept = ItemButton.create(new ItemBuilder(Material.GREEN_STAINED_GLASS_PANE).setName(ChatColor.GREEN + "Accept").setLore(ChatColor.GRAY + "You can always get invited later"), e -> {
             GuildUtils.acceptInvite(p);
+            p.closeInventory();
         });
 
         gui.addButton(11, guildView);
         gui.addButton(12, stats);
-        gui.addButton(14, accept);
+        gui.addButton(15, accept);
 
         gui.update();
     }

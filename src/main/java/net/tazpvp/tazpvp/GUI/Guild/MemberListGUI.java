@@ -84,8 +84,15 @@ public class MemberListGUI {
         }
 
         if (members.isEmpty()) {
-            ItemButton emptylmfao = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.WHITE + "Such Lonely (╯°□°）╯︵ ┻━┻").setLore(ChatColor.GRAY + "Invite some members with /guild invite <player>"), e->{});
+            ItemButton emptylmfao = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.WHITE + "Such Lonely (╯°□°）╯︵ ┻━┻").setLore(ChatColor.GRAY + "Invite some members with /guild invite or the paper button"), e->{});
             gui.addButton(22, emptylmfao);
+        }
+
+        if (g.hasPerms(viewer)) {
+            ItemButton inviteBTN = ItemButton.create(new ItemBuilder(Material.PAPER).setName(ChatColor.GREEN + "Invite Player").setLore(ChatColor.GRAY + "Invite a player to your guild."), (e) -> {
+                new InviteGuildGUI(viewer, g);
+            });
+            gui.addButton(27, inviteBTN);
         }
 
         gui.update();

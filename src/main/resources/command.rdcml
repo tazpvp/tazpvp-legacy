@@ -430,11 +430,10 @@ staffchat,sc string...:message? {
     hook staffchat
 }
 
-guild {
+guild,g {
     help /guild
     user player
-    permission tazpvp.guild
-    sorttest {
+    leaderboard,lb {
         hook guild_sorttest
     }
     create {
@@ -446,7 +445,7 @@ guild {
     leave {
         hook guild_leave
     }
-    invite player:target {
+    invite {
         hook guild_invite
     }
     accept {

@@ -38,9 +38,13 @@ public class GuildCMD {
         }
     }
 
-    @CommandHook("guild_invite") public void onGuildInvite(Player p, Player target) {
+    @CommandHook("guild_invite") public void onGuildInvite(Player p) {
         if (GuildUtils.isInGuild(p)) {
-            new InviteGuildGUI(p, GuildUtils.getGuild(p));
+            if (GuildUtils.getGuild(p).hasPerms(p)) {
+                new InviteGuildGUI(p, GuildUtils.getGuild(p));
+            } else {
+                p.sendMessage(GuildUtils.noPermission);
+            }
         } else {
             p.sendMessage(GuildUtils.notInG);
         }
