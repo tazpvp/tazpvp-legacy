@@ -112,9 +112,7 @@ public class DeathEvent implements Listener {
 
                     } else if (ee.getDamager() instanceof Arrow) {
                         if (((Arrow) ee.getDamager()).getShooter() instanceof Player d) {
-                            if (p != d) {
-                                Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
-                            }
+                            Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
                             CombatTag.putInCombat(p);
                             CombatTag.putInCombat(d);
@@ -194,12 +192,18 @@ public class DeathEvent implements Listener {
     public void DeathFunction(Player p, @Nullable Player d, boolean dropHead) {
         DeathUtils deathUtils = new DeathUtils(p, d);
         if (d != null) { //code will run if a player kills another player
+            if (p == d) {
+                deathUtils.sendDeathMessageAll(true);
+                deathUtils.statsUpdate();
+                deathUtils.kys();
+                return;
+            }
             if (dropHead) {
                 deathUtils.dropHead(100, 5);
             }
 
             if (Bukkit.getOnlinePlayers().size() < 10) {
-                deathUtils.sendDeathMessageAll();
+                deathUtils.sendDeathMessageAll(false);
             } else {
                 deathUtils.sendDeadDeathMessage();
                 deathUtils.sendDeathMessage(d);

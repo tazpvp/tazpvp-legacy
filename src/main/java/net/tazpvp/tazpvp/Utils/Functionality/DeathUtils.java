@@ -67,6 +67,12 @@ public class DeathUtils {
         receiver.spigot().sendMessage(hover);
     }
 
+    public void sendFunnyDeathMessage(final Player receiver) {
+        final String who = p.getName();
+        final String between = ChatColor.DARK_GRAY + " was killed in their own confusion!";
+        receiver.sendMessage(prefix + who + between);
+    }
+
     /**
      * Send a death message to the player who died
      */
@@ -84,9 +90,13 @@ public class DeathUtils {
     /**
      * Sends a death message to all online players using {@code sendDeadDeathMessage()}
      */
-    public void sendDeathMessageAll() {
+    public void sendDeathMessageAll(boolean funny) {
         for (Player plr : Bukkit.getOnlinePlayers()) {
-            sendDeathMessage(plr);
+            if (funny) {
+                sendFunnyDeathMessage(plr);
+            } else {
+                sendDeathMessage(plr);
+            }
         }
     }
 
