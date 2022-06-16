@@ -5,11 +5,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 public class configUtils {
-    public static final Location spawn = new Location(Bukkit.getWorld(Tazpvp.configFile.getString("spawn.world")),
-            Tazpvp.configFile.getDouble("spawn.x"),
-            Tazpvp.configFile.getDouble("spawn.y"),
-            Tazpvp.configFile.getDouble("spawn.z"),
-            (float)Tazpvp.configFile.getDouble("spawn.yaw"),
-            (float)Tazpvp.configFile.getDouble("spawn.pitch"));
+    public static final Location spawn = new Location(Bukkit.getWorld(Tazpvp.config.getString("spawn.world")),
+            Tazpvp.config.getDouble("spawn.x"),
+            Tazpvp.config.getDouble("spawn.y"),
+            Tazpvp.config.getDouble("spawn.z"),
+            (float)Tazpvp.config.getDouble("spawn.yaw"),
+            (float)Tazpvp.config.getDouble("spawn.pitch"));
 
 }
