@@ -102,7 +102,7 @@ public class GuildBrowserGUI {
             playerGuild = ItemButton.create(new ItemBuilder(Material.MINECART).setName(ChatColor.RED + "You are not in a guild.").setLore(
                     ChatColor.YELLOW + "Click to buy a guild.",
                     ChatColor.GOLD + "$6,000 Coins",
-                    ChatColor.AQUA + "10 Credits"
+                    ChatColor.AQUA + "10 Shards"
             ), (e) -> {
                 p.closeInventory();
                 GuildUtils.createGuildAnvilGui(p);
