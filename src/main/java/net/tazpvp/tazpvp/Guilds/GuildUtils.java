@@ -34,6 +34,7 @@ public class GuildUtils {
     public final static String gDisband = "The guild has been disbanded!";
     public final static String gOwnerLeave = "You are the owner of this guild and cannot leave it, You may disband it permanently though.";
     public final static String targetAlrdyInv = "That player is already invited to your guild.";
+    public final static String badWord = "Bro, that offending";
     public final static ChatColor primaryColor = ChatColor.WHITE;
     public final static ChatColor secondaryColor = ChatColor.GRAY;
     public final static int maxSize = 15;
@@ -83,6 +84,12 @@ public class GuildUtils {
                         p.sendMessage(gNameTaken);
                         return AnvilGUI.Response.close();
                     }
+
+                    if (GuildConfig.isOffending(text)) {
+                        player.sendMessage(badWord);
+                        return AnvilGUI.Response.close();
+                    }
+
                     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 
                     String name = text;
@@ -107,6 +114,11 @@ public class GuildUtils {
                 .onComplete((player, text) -> {
                     if (text.startsWith(">")) {
                         text = text.replaceFirst(">", "");
+                    }
+
+                    if (GuildConfig.isOffending(text)) {
+                        player.sendMessage(badWord);
+                        return AnvilGUI.Response.close();
                     }
 
                     String description = text;

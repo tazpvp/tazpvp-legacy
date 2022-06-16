@@ -467,6 +467,10 @@ guild,g {
         hook guild_hijack
         permission tazpvp.staff.guild
     }
+    configReload {
+        hook guild_reload
+        permission tazpvp.staff.guild
+    }
 }
 
 afk {

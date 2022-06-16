@@ -1,6 +1,8 @@
 package net.tazpvp.tazpvp.GUI.Guild;
 
 import net.tazpvp.tazpvp.Guilds.Guild;
+import net.tazpvp.tazpvp.Guilds.GuildConfig;
+import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.Bukkit;
@@ -136,6 +138,11 @@ public class EditGuildGUI {
                         return AnvilGUI.Response.close();
                     }
 
+                    if (GuildConfig.isOffending(text)) {
+                        player.sendMessage(GuildUtils.badWord);
+                        return AnvilGUI.Response.close();
+                    }
+
                     if (Tazpvp.guildManager.getTakenTags().contains(text)) {
                         p.sendMessage(ChatColor.RED + "Tag is already taken!");
                         return AnvilGUI.Response.close();
@@ -174,6 +181,11 @@ public class EditGuildGUI {
                 .onComplete((player, text) -> {
                     if (text.startsWith(">")) {
                         text = text.replaceFirst(">", "");
+                    }
+
+                    if (GuildConfig.isOffending(text)) {
+                        player.sendMessage(GuildUtils.badWord);
+                        return AnvilGUI.Response.close();
                     }
 
                     g.setDescription(text);

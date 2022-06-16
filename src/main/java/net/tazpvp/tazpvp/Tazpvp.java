@@ -67,9 +67,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static Chat chat;
     public static ProtocolManager protocolManager;
 
-    public static FileConfiguration configFile;
-
     public static Tazpvp instance;
+    public static FileConfiguration config = getInstance().getConfig();
 
     public static Boolean AllowBlocks = true;
 
@@ -103,8 +102,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         managers(true);
 
-        configFile = this.getConfig();
-        initConfig();
+        config.setDefaults(config);
+        config.options().copyDefaults(true);
+        saveConfig();
 
         Initiater initiater = new Initiater();
         initiater.addListener(new MobUtil());
@@ -213,11 +213,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
     public void regList(Listener listener){
         getServer().getPluginManager().registerEvents(listener, this);
-    }
-
-    public void initConfig(){
-        configFile.options().copyDefaults(true);
-        this.saveConfig();
     }
 
     public void managers(boolean init) {

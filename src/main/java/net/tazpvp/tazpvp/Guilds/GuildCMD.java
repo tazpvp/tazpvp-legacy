@@ -98,4 +98,9 @@ public class GuildCMD {
         }
     }
 
+    @CommandHook("guild_reload") public void onGuildReload(Player p) {
+        GuildConfig.reload();
+        p.sendMessage("Reloaded bad-words config");
+    }
+
 }
