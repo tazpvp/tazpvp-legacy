@@ -1,6 +1,8 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
+import net.tazpvp.tazpvp.Utils.Custom.Items.ItemManager;
+import net.tazpvp.tazpvp.Utils.Custom.Items.Items;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -17,8 +19,6 @@ public class TrollCMD implements CommandListener {
 
     @CommandHook("stick")
     public void stickCommand(Player p) {
-         ItemStack i = new ItemBuilder(Material.STICK).setName(ChatColor.RED + "Joe Stick").setLore(ChatColor.GRAY + "With great power comes great responsibilty");
-         i.addUnsafeEnchantment(Enchantment.KNOCKBACK, 256);
-            p.getInventory().addItem(i);
+        ItemManager.givePlayerItem(p, Items.RIDEPEARL, 1);
     }
 }
