@@ -136,8 +136,16 @@ public class EditGuildGUI {
                         return AnvilGUI.Response.close();
                     }
 
+                    if (Tazpvp.guildManager.getTakenTags().contains(text)) {
+                        p.sendMessage(ChatColor.RED + "Tag is already taken!");
+                        return AnvilGUI.Response.close();
+                    }
+                    if (g.tag() != null) {
+                        Tazpvp.guildManager.removeTakenTag(g.tag());
+                    }
                     Tazpvp.statsManager.addCredits(p, -50);
                     g.setTag(text);
+                    Tazpvp.guildManager.addTakenTag(text);
                     Tazpvp.guildManager.setGuild(g.getID(), g);
                     p.sendMessage(ChatColor.GREEN + "Guild tag set to " + ChatColor.YELLOW + text);
                     p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);

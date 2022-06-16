@@ -460,6 +460,8 @@ public class GuildUtils {
         }
         Tazpvp.guildManager.removeGuild(g.getID());
         Tazpvp.guildManager.removeTakeName(g.name());
+        Tazpvp.guildManager.removeTakenTag(g.tag());
+
     }
 
     public static LinkedHashMap<UUID, Double> sortedGuilds() {

@@ -85,4 +85,19 @@ public class GuildManager {
     public void removePlayerGuild(OfflinePlayer p) {
         guildFile.set("players." + p.getUniqueId().toString() + ".guild", null);
     }
+
+    public void addTakenTag(String tag) {
+        List<String> takemTag = guildFile.getStringList("guilds.take-tags");
+        takemTag.add(tag);
+        guildFile.set("guilds.take-tags", takemTag);
+    }
+
+    public void removeTakenTag(String tag) {
+        List<String> takemTag = guildFile.getStringList("guilds.take-tags");
+        takemTag.remove(tag);
+        guildFile.set("guilds.take-tags", takemTag);
+    }
+    public List<String> getTakenTags() {
+        return guildFile.getStringList("guilds.take-tags");
+    }
 }
