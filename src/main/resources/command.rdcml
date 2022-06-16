@@ -471,6 +471,10 @@ guild,g {
         hook guild_reload
         permission tazpvp.staff.guild
     }
+    test string...:msg {
+        hook guild_test
+        permission tazpvp.staff.guild
+    }
 }
 
 afk {

@@ -103,4 +103,12 @@ public class GuildCMD {
         p.sendMessage("Reloaded bad-words config");
     }
 
+    @CommandHook("guild_test") public void onGuildTest(Player p, String msg) {
+        if (GuildConfig.isOffending(msg)) {
+            p.sendMessage("yes");
+        } else {
+            p.sendMessage("no");
+        }
+    }
+
 }

@@ -68,7 +68,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static ProtocolManager protocolManager;
 
     public static Tazpvp instance;
-    public static FileConfiguration config = getInstance().getConfig();
+    public FileConfiguration config = getConfig();
 
     public static Boolean AllowBlocks = true;
 
@@ -102,7 +102,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         managers(true);
 
-        config.setDefaults(config);
         config.options().copyDefaults(true);
         saveConfig();
 
