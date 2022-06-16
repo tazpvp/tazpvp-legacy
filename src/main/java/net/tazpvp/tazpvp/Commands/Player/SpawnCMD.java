@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Commands.Player;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
+import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.ChatColor;
@@ -21,6 +22,8 @@ public class SpawnCMD implements Listener, CommandListener {
     @CommandHook("spawn")
     public void spawn(Player p, Player target){
         if (Tazpvp.punishmentManager.isBanned(p)) return;
+        if (Tazpvp.duelLogic.isInDuel(target)) return;
+        if (Tazpvp.duelLogic.isInDuel(p)) return;
         if (!target.equals(p)) {
             if (!p.hasPermission("tazpvp.spawn")) {
                 p.sendMessage(ChatColor.RED + "You don't have permission to use this command!");

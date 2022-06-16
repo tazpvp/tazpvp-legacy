@@ -21,6 +21,7 @@ public class DuelCMD {
         if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
         if (p.equals(target)) {
             p.sendMessage(ChatColor.RED + "You cannot duel yourself.");
+            return;
         }
         if (sentDuel(p).equals(target.getName())) {
             if (CombatTag.isInCombat(target)) {
