@@ -5,3 +5,10 @@ spawn:
   yaw: 180
   pitch: 0
   world: spawn
+
+bad-words:
+  - "anal"
+  - "anus"
+  - "arse"
+  - "ass"
+  - "ass","fuck","ass","assfucker","asshole","assshole","bastard","bitch","cock","boong","cock","cockfucker","cocksuck","cocksucker","coon","coonnass","cunt","cyberfuck","dick","douche","erect","erection","erotic","fag","faggot","fuck","fuckass","fuckhole","gook","homoerotic","hore","lesbian","lesbians","motherfuck","motherfucker","negro","nigger","orgasim","orgasm","penis","penisfucker","piss","porn","porno","pornography","pussy","retard","sadist","sex","sexy","shit","slut","bitch","tits","viagra","whore","xxx"

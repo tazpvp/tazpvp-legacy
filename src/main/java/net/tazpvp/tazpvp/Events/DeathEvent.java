@@ -180,6 +180,10 @@ public class DeathEvent implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
+        if (Tazpvp.duelLogic.isInDuel(e.getEntity())) {
+            Tazpvp.duelLogic.duelEnd(e.getEntity());
+            return;
+        }
         if (e.getEntity().getKiller() != null) {
             DeathFunction(e.getEntity(), e.getEntity().getKiller(), true);
             e.setDeathMessage(null);
