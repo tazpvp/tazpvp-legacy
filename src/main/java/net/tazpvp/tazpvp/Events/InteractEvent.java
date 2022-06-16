@@ -34,19 +34,25 @@ public class InteractEvent implements Listener {
                 }.runTaskLater(Tazpvp.getInstance(), 2L);
             }
         } else {
-            runCustomItem(e.getPlayer());
+            if (runCustomItem(e.getPlayer())) {
+                e.setCancelled(true);
+            }
         }
     }
     @EventHandler
     public void onInteract(PlayerInteractEntityEvent e) {
-        runCustomItem(e.getPlayer());
+        if (runCustomItem(e.getPlayer())) {
+            e.setCancelled(true);
+        }
     }
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent e) {
-        runCustomItem(e.getPlayer());
+        if (runCustomItem(e.getPlayer())) {
+            e.setCancelled(true);
+        }
     }
 
-    public void runCustomItem(Player p) {
+    public boolean runCustomItem(Player p) {
         ItemStack inHand = p.getInventory().getItemInMainHand();
         if (inHand.hasItemMeta()) {
             ItemMeta meta = inHand.getItemMeta();
@@ -55,11 +61,12 @@ public class InteractEvent implements Listener {
                 for (Item item : ItemManager.items) {
                     if (item.cID == cID) {
                         if (item.execute(p, inHand, cID)) {
-                            break;
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
 }
