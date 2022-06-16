@@ -21,5 +21,6 @@ public class CZombie {
         Location loc = MobLocations.ZOMBIE.location();
         Zombie z = (Zombie) loc.getWorld().spawnEntity(loc, MobLocations.ZOMBIE.mob());
         setZombie(z);
+        MobUtils.mobList.put(z, MobLocations.ZOMBIE);
     }
 }

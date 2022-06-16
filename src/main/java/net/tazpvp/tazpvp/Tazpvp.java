@@ -18,8 +18,7 @@ import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.EnderChestManager;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
-import net.tazpvp.tazpvp.Mobs.Listeners.Initiater;
-import net.tazpvp.tazpvp.Mobs.MobUtil;
+import net.tazpvp.tazpvp.Mobs.MobUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
 import net.tazpvp.tazpvp.Utils.Passive.Generator;
@@ -41,6 +40,7 @@ import redempt.redlib.commandmanager.ArgType;
 import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
+import redempt.redlib.enchants.events.PlayerChangedArmorEvent;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
@@ -105,9 +105,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         config.options().copyDefaults(true);
         saveConfig();
 
-        Initiater initiater = new Initiater();
-        initiater.addListener(new MobUtil());
-
         new WorldCreator("ban").environment(World.Environment.NETHER).createWorld();
 
         try {
@@ -150,7 +147,11 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             }
         }
 
-        new Thread(() -> Bukkit.getScheduler().runTaskLater(Tazpvp.this, GuildUtils::wipeAllGuildInvites, 20 * 60 * 5)).start();
+        new Thread(() -> Bukkit.getScheduler().runTaskTimer(Tazpvp.this, GuildUtils::wipeAllGuildInvites, 20 * 60 * 5, 20 * 60 * 5)).start();
+
+        new Thread(() -> Bukkit.getScheduler().runTaskTimer(Tazpvp.this, MobUtils::everySec, 20, 20)).start();
+
+        MobUtils.doShitFirstTImeYKYK();
 
         new BukkitRunnable() {
             @Override
