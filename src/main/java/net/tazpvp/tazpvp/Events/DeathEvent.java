@@ -85,6 +85,24 @@ public class DeathEvent implements Listener {
                         DeathFunction(p, null, false);
                     }
                 } else { // this will run if a player dies with no damager player
+                    if (e.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
+                        if (Tazpvp.duelLogic.isInDuel(p)) {
+                            if (Tazpvp.duelLogic.getDuel(p).getPlayer1() == p) {
+                                e.getEntity().teleport(Tazpvp.duelLogic.getDuel(p).getPlayer2().getLocation());
+                            } else {
+                                e.getEntity().teleport(Tazpvp.duelLogic.getDuel(p).getPlayer1().getLocation());
+                            }
+                            Tazpvp.duelLogic.duelEnd(p);
+                            e.setCancelled(true);
+                            return;
+                        }
+                    }
+
+                    if (Tazpvp.duelLogic.isInDuel(p)) {
+                        Tazpvp.duelLogic.duelEnd(p);
+                        e.setCancelled(true);
+                        return;
+                    }
                     DeathFunction(p, null, false);
                 }
             } else {
