@@ -48,13 +48,6 @@ public class LeaveEvnet implements Listener {
             }
         }
 
-        for (UUID uuid : Tazpvp.lastDamage.values()) {
-            if (Tazpvp.lastDamage.get(uuid).equals(e.getPlayer().getUniqueId())) {
-                Tazpvp.lastDamage.remove(uuid);
-            }
-        }
-        Tazpvp.lastDamage.remove(e.getPlayer().getUniqueId());
-
         for (Player plr : Bukkit.getOnlinePlayers()) {
             Tazpvp.sendBaseTablist(plr);
         }
