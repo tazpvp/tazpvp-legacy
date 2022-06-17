@@ -44,8 +44,11 @@ public class VotekickCMD {
         invite.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.RED + "CLICK TO VOTE NO").create()));
 
         for (Player pl : Bukkit.getOnlinePlayers()) {
+            pl.sendMessage("");
             pl.spigot().sendMessage(invite);
+            pl.sendMessage("");
             pl.spigot().sendMessage(no);
+            pl.sendMessage("");
         }
 
         new BukkitRunnable() {
@@ -68,7 +71,7 @@ public class VotekickCMD {
                         Tazpvp.toBeKicked.kick();
                     }
                     Tazpvp.tempBan.put(Tazpvp.toBeKicked.getUniqueId(), System.currentTimeMillis());
-                    Bukkit.broadcastMessage(ChatColor.RED + Tazpvp.toBeKicked.getName() + " has kicked!");
+                    Bukkit.broadcastMessage(ChatColor.RED + Tazpvp.toBeKicked.getName() + " has been kicked!");
                 } else {
                     Bukkit.broadcastMessage(ChatColor.RED + "Not enough votes to kick " + Tazpvp.toBeKicked.getName() + "!");
                 }
