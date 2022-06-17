@@ -15,6 +15,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -57,6 +58,14 @@ public class InteractEvent implements Listener {
             e.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void onVehicleEnter(VehicleEnterEvent e) {
+        if (e.getVehicle() instanceof Minecart) {
+            e.setCancelled(true);
+        }
+    }
+
 
     public boolean runCustomItem(Player p) {
         ItemStack inHand = p.getInventory().getItemInMainHand();
