@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Utils.Custom.Items.ItemManager;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,6 +49,11 @@ public class InteractEvent implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent e) {
         if (runCustomItem(e.getPlayer())) {
+            e.setCancelled(true);
+            return;
+        }
+
+        if (e.getRightClicked() instanceof Minecart) {
             e.setCancelled(true);
         }
     }
