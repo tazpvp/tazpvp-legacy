@@ -519,3 +519,18 @@ no {
     user player
     hook no
 }
+
+chat {
+    help Change your chat
+    user player
+    staff {
+        permission tazpvp.staff
+        hook chat_staff
+    }
+    guild {
+        hook chat_guild
+    }
+    all {
+        hook chat_all
+    }
+}

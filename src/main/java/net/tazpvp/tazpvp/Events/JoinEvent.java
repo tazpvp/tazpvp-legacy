@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.UpdateSword;
+import net.tazpvp.tazpvp.Utils.Functionality.ChatEnum;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -95,6 +96,8 @@ public class JoinEvent implements Listener {
 
         Tazpvp.getInstance().addPlayerToOnlinePlayersSB(p);
         Tazpvp.getInstance().addOnlinePlayersToSB(p);
+
+        Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
     }
 
     public void setNametag(Player player1, Player player2) {

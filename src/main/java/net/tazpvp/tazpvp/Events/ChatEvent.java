@@ -1,9 +1,12 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.md_5.bungee.api.ChatColor;
+import net.tazpvp.tazpvp.Guilds.GuildConfig;
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.ChatEnum;
 import net.tazpvp.tazpvp.Utils.Functionality.ChatUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +15,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class ChatEvent implements Listener {
 
@@ -36,27 +38,6 @@ public class ChatEvent implements Listener {
             ChatUtils.sendStaffChatMessage(p, e.getMessage());
         }
 
-        List<String> badWord = new ArrayList<>();
-        badWord.add("fuck");
-        badWord.add("shit");
-        badWord.add("bitch");
-        badWord.add("shit");
-        badWord.add("dick");
-        badWord.add("dildo");
-        badWord.add("pussy");
-        badWord.add("porn");
-        badWord.add("whore");
-        badWord.add("fag");
-        badWord.add("cock");
-        badWord.add("retar");
-        badWord.add("cunt");
-        badWord.add("penis");
-        badWord.add("bitc");
-        badWord.add("nigg");
-        badWord.add("slut");
-        badWord.add("fuk");
-        badWord.add("fuc");
-
 
         if (p.isOp()) {
             msg = (ChatColor.translateAlternateColorCodes('&', msg));
@@ -73,11 +54,10 @@ public class ChatEvent implements Listener {
                 p.sendMessage(ChatColor.RED + "Chat is currently muted.");
                 return;
             }
-            for (int i = 0; i < badWord.size(); i++) {
-                if (msg.toLowerCase().contains(badWord.get(i))) {
-                    e.setCancelled(true);
-                    e.getPlayer().sendMessage(ChatColor.RED + "Please refrain from using profanity: " + ChatColor.DARK_RED + badWord.get(i));
-                }
+            if (GuildConfig.isOffending(msg)) {
+                e.setCancelled(true);
+                p.sendMessage(ChatColor.RED + "You are not allowed to use this word.");
+                return;
             }
             if (cooldown.contains(p)) {
                 e.setCancelled(true);
@@ -107,6 +87,23 @@ public class ChatEvent implements Listener {
                 e.setCancelled(true);
                 return;
             }
+        }
+
+        if (Tazpvp.chatEnum.get(p.getUniqueId()) == ChatEnum.STAFF) {
+            e.setCancelled(true);
+            for (Player pl : Bukkit.getOnlinePlayers()) {
+                if (pl.hasPermission("tazpvp.staff")) {
+                    String begining = ChatColor.AQUA + "Staff > ";
+                    String name = p.getDisplayName() + " ";
+                    String msg2 = org.bukkit.ChatColor.WHITE + e.getMessage();
+                    pl.sendMessage(begining + name + msg2);
+                }
+            }
+            return;
+        } else if (Tazpvp.chatEnum.get(p.getUniqueId()) == ChatEnum.GUILD) {
+            GuildUtils.guildChatMessage(p, e.getMessage().replaceFirst("@", ""), GuildUtils.getGuild(p));
+            e.setCancelled(true);
+            return;
         }
 
 

@@ -20,6 +20,7 @@ import net.tazpvp.tazpvp.Managers.PlayerStats.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Mobs.MobUtils;
 import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
+import net.tazpvp.tazpvp.Utils.Functionality.ChatEnum;
 import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
@@ -88,6 +89,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static List<UUID> votedYes = new ArrayList<>();
     public static List<UUID> votedNo = new ArrayList<>();
     public static Map<UUID, Long> tempBan = new HashMap<>();
+
+    public static Map<UUID, ChatEnum> chatEnum = new HashMap<>();
 
     @Override
     public void onLoad() {
@@ -206,7 +209,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new AfkCMD(),
             new GuildCMD(),
                 new MobsCMD(),
-                new VotekickCMD());
+                new VotekickCMD(),
+                new ChatCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
