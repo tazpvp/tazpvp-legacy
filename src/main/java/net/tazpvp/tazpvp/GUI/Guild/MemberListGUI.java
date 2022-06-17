@@ -12,10 +12,7 @@ import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.*;
 
 public class MemberListGUI {
     private InventoryGUI gui;
@@ -28,7 +25,11 @@ public class MemberListGUI {
 
     public void addItems(Player p, Guild g) {
         gui.fill(0, 4 * 9, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
-        ItemButton owner = ItemButton.create(new ItemBuilder(ItemUtils.skull(Bukkit.getOfflinePlayer(g.owner().get(0)))).setName(ChatColor.YELLOW + Bukkit.getOfflinePlayer(g.owner().get(0)).getName()).setLore(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Guild Master"), (e) ->{});
+
+        String contributions = ChatColor.GRAY + "Kills: " + ChatColor.WHITE + g.getKillsPlayer(p.getUniqueId());
+        String contributions2 = ChatColor.GRAY + "Deaths: " + ChatColor.WHITE + g.getDeathsPlayer(p.getUniqueId());
+
+        ItemButton owner = ItemButton.create(new ItemBuilder(ItemUtils.skull(Bukkit.getOfflinePlayer(g.owner().get(0)))).setName(ChatColor.YELLOW + Bukkit.getOfflinePlayer(g.owner().get(0)).getName()).setLore(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "Guild Master", contributions, contributions2), (e) ->{});
         List<OfflinePlayer> members = new ArrayList<>();
         for (UUID uuid : g.staff()) {
             OfflinePlayer op = Bukkit.getOfflinePlayer(uuid);
@@ -40,6 +41,40 @@ public class MemberListGUI {
         }
         gui.addButton(4, owner);
         allOthers(members, g, p);
+
+        LinkedHashMap<UUID, Double> killsLB = GuildUtils.sortedGuildKills(g);
+        LinkedHashMap<UUID, Double> deathsLB = GuildUtils.sortedGuildDeaths(g);
+
+        List<String> kills = new LinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            if (i >= killsLB.size()) {
+                break;
+            }
+            int place = i + 1;
+            OfflinePlayer op = Bukkit.getOfflinePlayer(killsLB.keySet().stream().toList().get(i));
+            kills.add(ChatColor.GRAY + "#" + place + " " + ChatColor.WHITE + op.getName() + " - " + ChatColor.GREEN + killsLB.get(op.getUniqueId()) + "\n");
+        }
+        String[] yes = kills.toArray(new String[0]);
+
+        List<String> deaths = new LinkedList<>();
+
+        for (int i = 0; i < 10; i++) {
+            if (i >= deathsLB.size()) {
+                break;
+            }
+            int place = i + 1;
+            OfflinePlayer op = Bukkit.getOfflinePlayer(killsLB.keySet().stream().toList().get(i));
+            deaths.add(ChatColor.GRAY + "#" + place + " " + ChatColor.WHITE + op.getName() + " - " + ChatColor.RED + deathsLB.get(op.getUniqueId()) + "\n");
+        }
+
+        String[] no = deaths.toArray(new String[0]);
+
+        ItemButton killsLBBTN = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.RED + "Kills Leaderboard").setLore(yes), (e) ->{});
+
+        ItemButton deathsLBBTN = ItemButton.create(new ItemBuilder(Material.OAK_SIGN).setName(ChatColor.RED + "Deaths Leaderboard").setLore(no), (e) ->{});
+
+        gui.addButton(4 * 9 - 6, killsLBBTN);
+        gui.addButton(4 * 9 - 4, deathsLBBTN);
 
         ItemButton closeBTN = ItemButton.create(new ItemBuilder(Material.ARROW).setName(ChatColor.RED + "Return").setLore(ChatColor.GRAY + "Return to the main screen."), (e) -> {
             p.closeInventory();
@@ -61,12 +96,14 @@ public class MemberListGUI {
         for (OfflinePlayer p : members) {
             ChatColor nameColor = g.staff().contains(p.getUniqueId()) ? ChatColor.GREEN : ChatColor.GRAY;
             ChatColor rankColor = g.staff().contains(p.getUniqueId()) ? ChatColor.DARK_GREEN : ChatColor.GRAY;
+            String contributions = ChatColor.GRAY + "Kills: " + ChatColor.WHITE + g.getKillsPlayer(p.getUniqueId());
+            String contributions2 = ChatColor.GRAY + "Deaths: " + ChatColor.WHITE + g.getDeathsPlayer(p.getUniqueId());
             String extraLore = g.hasPerms(viewer) ? ChatColor.RED + "Click me to edit!" : "";
             ItemStack plrItem;
             if (g.hasPerms(viewer)) {
-                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()), "", extraLore);
+                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()), contributions, contributions2, "", extraLore);
             } else {
-                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()));
+                plrItem = new ItemBuilder(ItemUtils.skull(p)).setName(nameColor + p.getName()).setLore(rankColor + g.getGroup(p.getUniqueId()), contributions, contributions2);
             }
             ItemButton plr = ItemButton.create(plrItem, (e) -> {
                 if (!viewer.getUniqueId().equals(p.getUniqueId())) {

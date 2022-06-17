@@ -1,9 +1,9 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.md_5.bungee.api.ChatColor;
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.ChatUtils;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,9 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
-import jline.internal.Nullable;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Content;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
@@ -16,7 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.itemutils.ItemBuilder;
 import redempt.redlib.itemutils.ItemUtils;
 
-import java.util.ArrayList;
+import javax.annotation.Nullable;
 import java.util.Random;
 
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;

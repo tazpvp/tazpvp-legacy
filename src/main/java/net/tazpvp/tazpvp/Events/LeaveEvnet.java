@@ -1,7 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Guilds.Guild;
-import net.tazpvp.tazpvp.Guilds.GuildManager;
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
@@ -9,7 +8,6 @@ import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -50,7 +48,7 @@ public class LeaveEvnet implements Listener {
             }
         }
 
-        for (UUID uuid : Tazpvp.lastDamage.keySet()) {
+        for (UUID uuid : Tazpvp.lastDamage.values()) {
             if (Tazpvp.lastDamage.get(uuid).equals(e.getPlayer().getUniqueId())) {
                 Tazpvp.lastDamage.remove(uuid);
             }

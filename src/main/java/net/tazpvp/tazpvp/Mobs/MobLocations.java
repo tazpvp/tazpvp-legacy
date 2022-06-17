@@ -6,7 +6,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.util.BoundingBox;
 
 public enum MobLocations {
-    ZOMBIE(EntityType.ZOMBIE, new Location(Bukkit.getWorld("arena"), -23.5, 86, 212.5, 0, 0), 1, new BoundingBox(-1, 98, 188, -31, 85, 219));
+    ZOMBIE(EntityType.ZOMBIE, new Location(Bukkit.getWorld("arena"), -23.5, 86, 212.5, 0, 0), 1, new BoundingBox(-1, 98, 188, -31, 85, 219), 10);
 
     public EntityType mob() {
         return mob;
@@ -24,15 +24,21 @@ public enum MobLocations {
         return boundingBox;
     }
 
-    private EntityType mob;
+    public double respawnTime() {
+        return respawnTime;
+    }
+
+    public EntityType mob;
     private Location location;
     private int id;
     private BoundingBox boundingBox;
+    private double respawnTime;
 
-    MobLocations(EntityType mob, Location location, int id, BoundingBox box) {
+    MobLocations(EntityType mob, Location location, int id, BoundingBox box, double respawnTime) {
         this.mob = mob;
         this.location = location;
         this.id = id;
         this.boundingBox = box;
+        this.respawnTime = respawnTime;
     }
 }

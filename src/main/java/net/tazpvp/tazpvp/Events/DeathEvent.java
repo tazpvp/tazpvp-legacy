@@ -2,18 +2,24 @@ package net.tazpvp.tazpvp.Events;
 
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
+import net.tazpvp.tazpvp.Mobs.CZombie;
+import net.tazpvp.tazpvp.Mobs.MobLocations;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,6 +27,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.WeakHashMap;
@@ -193,6 +200,20 @@ public class DeathEvent implements Listener {
                 }
                 return;
             }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent e) {
+        if (e.getEntity() instanceof Zombie z) {
+            e.setDroppedExp(0);
+            e.getDrops().clear();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    new CZombie().createZombie();
+                }
+            }.runTaskLater(Tazpvp.getInstance(), (long) (20 * MobLocations.ZOMBIE.respawnTime()));
         }
     }
 

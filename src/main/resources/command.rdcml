@@ -482,3 +482,21 @@ afk {
     user player
     hook afk
 }
+
+mobs {
+    permission tazpvp.mobs
+    user player
+    help /mobs
+    spawn {
+        hook mobs_spawn
+    }
+    kill {
+        hook mobs_kill
+    }
+    reload {
+        hook mobs_reload
+    }
+    list {
+        hook mobs_list
+    }
+}

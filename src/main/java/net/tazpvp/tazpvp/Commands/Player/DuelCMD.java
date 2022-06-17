@@ -7,6 +7,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
@@ -21,6 +22,10 @@ public class DuelCMD {
         if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
         if (p.equals(target)) {
             p.sendMessage(ChatColor.RED + "You cannot duel yourself.");
+            return;
+        }
+        if (p.getGameMode().equals(GameMode.SPECTATOR)) {
+            p.sendMessage(ChatColor.RED + "You cannot duel as a spectator.");
             return;
         }
         if (sentDuel(p).equals(target.getName())) {

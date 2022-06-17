@@ -4,7 +4,6 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.chat.hover.content.Content;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.*;
@@ -13,7 +12,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GuildUtils {
     public final static String gNameTaken = "Guild name already taken.";
@@ -207,6 +205,8 @@ public class GuildUtils {
             return;
         }
 
+        guild.getKillsMap().remove(p.getUniqueId());
+        guild.getDeathsMap().remove(p.getUniqueId());
         guild.sendAlL(p.getName() + leavedG);
         guild.removeFromGuild(p.getUniqueId());
         Tazpvp.guildManager.removePlayerGuild(p);
@@ -251,6 +251,9 @@ public class GuildUtils {
             return;
         }
 
+
+        guild.getKillsMap().remove(p.getUniqueId());
+        guild.getDeathsMap().remove(p.getUniqueId());
         guild.sendAlL(target.getName() + wasKicked);
         guild.removeFromGuild(target.getUniqueId());
         Tazpvp.guildManager.removePlayerGuild(target);
@@ -377,6 +380,8 @@ public class GuildUtils {
         Guild guild = Tazpvp.guildManager.getGuild(gUUID);
         guild.removeInvites(p.getUniqueId());
         guild.addMember(p.getUniqueId());
+        guild.getKillsMap().put(p.getUniqueId(), 0.0);
+        guild.getDeathsMap().put(p.getUniqueId(), 0.0);
         Tazpvp.guildManager.setPlayerGuild(p, gUUID);
         Tazpvp.guildManager.setGuild(gUUID, guild);
         p.removeMetadata("guildInvite", Tazpvp.getInstance());
@@ -442,7 +447,7 @@ public class GuildUtils {
             return;
         }
         Guild g = getGuild(p);
-        g.setKills(g.getKills() + 1);
+        g.addKill(p.getUniqueId());
         Tazpvp.guildManager.setGuild(g.getID(), g);
     }
 
@@ -455,7 +460,7 @@ public class GuildUtils {
             return;
         }
         Guild g = getGuild(p);
-        g.setDeaths(g.getDeaths() + 1);
+        g.addDeath(p.getUniqueId());
         Tazpvp.guildManager.setGuild(g.getID(), g);
     }
 
@@ -518,5 +523,23 @@ public class GuildUtils {
             }
         }
         Bukkit.getLogger().info("All guild invites wiped.");
+    }
+
+    public static LinkedHashMap<UUID, Double> sortedGuildKills(Guild g) {
+        LinkedHashMap<UUID, Double> map = new LinkedHashMap<>();
+        Map<UUID, Double> kills = g.getKillsMap();
+        for (UUID uuid : kills.keySet()) {
+            map.put(uuid, kills.get(uuid));
+        }
+        return GuildUtils.sortByValue(map);
+    }
+
+    public static LinkedHashMap<UUID, Double> sortedGuildDeaths(Guild g) {
+        LinkedHashMap<UUID, Double> map = new LinkedHashMap<>();
+        Map<UUID, Double> deaths = g.getDeathsMap();
+        for (UUID uuid : deaths.keySet()) {
+            map.put(uuid, deaths.get(uuid));
+        }
+        return GuildUtils.sortByValue(map);
     }
 }

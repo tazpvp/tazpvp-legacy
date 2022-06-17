@@ -6,9 +6,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class Guild implements Serializable {
     private final UUID id;
@@ -16,8 +14,8 @@ public class Guild implements Serializable {
     private String tag;
     private String description;
     private Material icon;
-    private double kills;
-    private double deaths;
+    private Map<UUID, Double> kills;
+    private Map<UUID, Double> deaths;
     private List<UUID> owner;
     private List<UUID> staff;
     private List<UUID> members;
@@ -29,8 +27,10 @@ public class Guild implements Serializable {
         this.tag = tag;
         this.description = description;
         this.icon = Material.OAK_SIGN;
-        this.kills = 0;
-        this.deaths = 0;
+        this.kills = new HashMap<>();
+        kills.put(owner, 0.0);
+        this.deaths = new HashMap<>();
+        deaths.put(owner, 0.0);
         this.owner = new ArrayList<>();
         this.owner.add(owner);
         this.staff = new ArrayList<>();
@@ -188,25 +188,55 @@ public class Guild implements Serializable {
     }
 
     public double getKills() {
+        double total = 0;
+        for (Double d : kills.values()) {
+            total += d;
+        }
+        return total;
+    }
+
+    public double getKillsPlayer(UUID uuid) {
+        if (kills.containsKey(uuid)) {
+            return kills.get(uuid);
+        }
+        return 0;
+    }
+
+    public Map<UUID, Double> getKillsMap() {
         return kills;
     }
 
-    public Guild setKills(double kills) {
-        this.kills = kills;
+    public Guild addKill(UUID uuid) {
+        this.kills.put(uuid, getKillsPlayer(uuid) + 1);
         return this;
     }
 
     public double getDeaths() {
-        return deaths;
+        double total = 0;
+        for (Double d : deaths.values()) {
+            total += d;
+        }
+        return total;
     }
 
-    public Guild setDeaths(double deaths) {
-        this.deaths = deaths;
+    public double getDeathsPlayer(UUID uuid) {
+        if (deaths.containsKey(uuid)) {
+            return deaths.get(uuid);
+        }
+        return 0;
+    }
+
+    public Guild addDeath(UUID uuid) {
+        this.deaths.put(uuid, getDeathsPlayer(uuid) + 1);
         return this;
     }
 
+    public Map<UUID, Double> getDeathsMap() {
+        return deaths;
+    }
+
     public double getKDR() {
-        return kills / deaths;
+        return getKills() / getDeaths();
     }
 
     public void sendAlL(String msg) {

@@ -19,12 +19,12 @@ import net.tazpvp.tazpvp.Managers.EnderChestManager;
 import net.tazpvp.tazpvp.Managers.PlayerStats.*;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Mobs.MobUtils;
+import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
+import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.NpcUtils;
 import net.tazpvp.tazpvp.Utils.NPCS.Villagers;
 import net.tazpvp.tazpvp.Utils.Passive.Generator;
 import net.tazpvp.tazpvp.Utils.Passive.Messages;
-import net.tazpvp.tazpvp.Utils.Fun.ASCIIArtUtil;
-import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import net.tazpvp.tazpvp.unused.ConfigGetter;
 import org.bukkit.*;
@@ -40,7 +40,6 @@ import redempt.redlib.commandmanager.ArgType;
 import redempt.redlib.commandmanager.CommandParser;
 import redempt.redlib.config.ConfigManager;
 import redempt.redlib.enchants.EnchantRegistry;
-import redempt.redlib.enchants.events.PlayerChangedArmorEvent;
 
 import java.lang.reflect.InvocationTargetException;
 import java.math.RoundingMode;
@@ -200,7 +199,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new TazloadCMD(),
             new StaffchatCMD(),
             new AfkCMD(),
-            new GuildCMD());
+            new GuildCMD(),
+                new MobsCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
@@ -281,6 +281,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         }
 
         NpcUtils.removeAll();
+        MobUtils.clearMobs();
     }
 
     public void initScoreboard(Player player) {
