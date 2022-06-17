@@ -4,6 +4,7 @@ import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Managers.PlayerWrapperManagers.PlayerWrapper;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.UpdateSword;
+import net.tazpvp.tazpvp.Utils.Functionality.ChatEnum;
 import net.tazpvp.tazpvp.Utils.Functionality.IA.ArmorManager;
 import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
@@ -23,6 +24,16 @@ public class JoinEvent implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         Location spawn = configUtils.spawn;
+
+        if (Tazpvp.tempBan.containsKey(p.getUniqueId())) {
+            long elapsedTime = System.currentTimeMillis() - Tazpvp.tempBan.get(p.getUniqueId());
+            if (elapsedTime < 5 * 60 * 1000) {
+                p.kickPlayer(ChatColor.RED + "You are temporarily kicked from the server. Join back in 5 minutes.");
+                return;
+            } else {
+                Tazpvp.tempBan.remove(p.getUniqueId());
+            }
+        }
 
         p.sendMessage("");
         p.sendMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "  ┃  " + ChatColor.RED + "" + ChatColor.BOLD + "TAZPVP");
@@ -85,6 +96,8 @@ public class JoinEvent implements Listener {
 
         Tazpvp.getInstance().addPlayerToOnlinePlayersSB(p);
         Tazpvp.getInstance().addOnlinePlayersToSB(p);
+
+        Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
     }
 
     public void setNametag(Player player1, Player player2) {
