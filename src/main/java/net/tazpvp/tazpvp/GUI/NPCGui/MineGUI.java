@@ -113,6 +113,8 @@ public class MineGUI {
         if (i.getEnchantments().containsKey(Enchantment.DIG_SPEED)) {
             int currLevel = i.getEnchantmentLevel(Enchantment.DIG_SPEED);
             i.addUnsafeEnchantment(Enchantment.DIG_SPEED, currLevel + 1);
+        } else {
+            i.addEnchantment(Enchantment.DIG_SPEED, 1);
         }
     }
 
