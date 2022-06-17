@@ -41,7 +41,7 @@ public class VotekickCMD {
         invite.setClickEvent(new net.md_5.bungee.api.chat.ClickEvent(ClickEvent.Action.RUN_COMMAND, "/yes"));
 
         TextComponent no = new TextComponent(ChatColor.RED + "NO");
-        invite.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.RED + "CLICK TO VOTE NO").create()));
+        no.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.RED + "CLICK TO VOTE NO").create()));
 
         for (Player pl : Bukkit.getOnlinePlayers()) {
             pl.sendMessage("");
