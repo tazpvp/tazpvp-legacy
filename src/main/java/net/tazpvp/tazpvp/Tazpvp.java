@@ -84,6 +84,10 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static List<String> allowedCmds = new ArrayList<>();
     public static List<Player> afkPlayers = new ArrayList<>();
 
+    public static Player toBeKicked;
+    public static List<UUID> votedYes = new ArrayList<>();
+    public static Map<UUID, Long> tempBan = new HashMap<>();
+
     @Override
     public void onLoad() {
         for (World world : Bukkit.getWorlds()) {
@@ -200,7 +204,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new StaffchatCMD(),
             new AfkCMD(),
             new GuildCMD(),
-                new MobsCMD());
+                new MobsCMD(),
+                new VotekickCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }

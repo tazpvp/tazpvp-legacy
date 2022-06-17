@@ -24,6 +24,16 @@ public class JoinEvent implements Listener {
         Player p = e.getPlayer();
         Location spawn = configUtils.spawn;
 
+        if (Tazpvp.tempBan.containsKey(p.getUniqueId())) {
+            long elapsedTime = System.currentTimeMillis() - Tazpvp.tempBan.get(p.getUniqueId());
+            if (elapsedTime < 5 * 60 * 1000) {
+                p.kickPlayer(ChatColor.RED + "You are temporarily kicked from the server. Join back in 5 minutes.");
+                return;
+            } else {
+                Tazpvp.tempBan.remove(p.getUniqueId());
+            }
+        }
+
         p.sendMessage("");
         p.sendMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "  ┃  " + ChatColor.RED + "" + ChatColor.BOLD + "TAZPVP");
         p.sendMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "  ┃  " + ChatColor.GRAY + "Type /discord");

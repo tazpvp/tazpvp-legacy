@@ -500,3 +500,16 @@ mobs {
         hook mobs_list
     }
 }
+
+votekick player:target {
+    help /votekick <player>
+    user player
+    permission tazpvp.votekick
+    hook votekick
+}
+
+yes {
+    help /yes
+    user player
+    hook yes
+}
