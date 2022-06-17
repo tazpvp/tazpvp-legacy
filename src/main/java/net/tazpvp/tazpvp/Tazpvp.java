@@ -86,6 +86,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
     public static Player toBeKicked;
     public static List<UUID> votedYes = new ArrayList<>();
+    public static List<UUID> votedNo = new ArrayList<>();
     public static Map<UUID, Long> tempBan = new HashMap<>();
 
     @Override

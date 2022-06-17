@@ -11,10 +11,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.commandmanager.CommandHook;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 public class VotekickCMD {
     @CommandHook("votekick") public void onCommandSend(Player p,Player target) {
         if (target.getName().equals(p.getName())) {
@@ -42,6 +38,7 @@ public class VotekickCMD {
 
         TextComponent no = new TextComponent(ChatColor.RED + "NO");
         no.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.RED + "CLICK TO VOTE NO").create()));
+        no.setClickEvent(new net.md_5.bungee.api.chat.ClickEvent(ClickEvent.Action.RUN_COMMAND, "/no"));
 
         for (Player pl : Bukkit.getOnlinePlayers()) {
             pl.sendMessage("");
@@ -58,14 +55,8 @@ public class VotekickCMD {
                     cancel();
                     return;
                 }
-                List<UUID> didntVote = new ArrayList<>();
-                for (Player plr : Bukkit.getOnlinePlayers()) {
-                    if (!Tazpvp.votedYes.contains(plr.getUniqueId())) {
-                        didntVote.add(plr.getUniqueId());
-                    }
-                }
 
-                if (Tazpvp.votedYes.size() > didntVote.size()) {
+                if (Tazpvp.votedYes.size() > Tazpvp.votedNo.size()) {
                     if (Tazpvp.toBeKicked.isOnline()) {
                         Tazpvp.toBeKicked.sendMessage(ChatColor.RED + "You have been voted to be kicked by " + p.getName() + "!");
                         Tazpvp.toBeKicked.kick();
@@ -88,12 +79,27 @@ public class VotekickCMD {
             return;
         }
 
-        if (Tazpvp.votedYes.contains(p.getUniqueId())) {
+        if (Tazpvp.votedYes.contains(p.getUniqueId()) || Tazpvp.votedNo.contains(p.getUniqueId())) {
             p.sendMessage(ChatColor.RED + "You have already voted!");
             return;
         }
 
         Tazpvp.votedYes.add(p.getUniqueId());
         p.sendMessage(ChatColor.GREEN + "You have voted yes, This vote is unchangeable!");
+    }
+
+    @CommandHook("no") public void noCommand(Player p) {
+        if (Tazpvp.toBeKicked == null) {
+            p.sendMessage(ChatColor.RED + "No one is being votekicked!");
+            return;
+        }
+
+        if (Tazpvp.votedYes.contains(p.getUniqueId()) || Tazpvp.votedNo.contains(p.getUniqueId())) {
+            p.sendMessage(ChatColor.RED + "You have already voted!");
+            return;
+        }
+
+        Tazpvp.votedNo.add(p.getUniqueId());
+        p.sendMessage(ChatColor.RED + "You have voted no, This vote is unchangeable!");
     }
 }

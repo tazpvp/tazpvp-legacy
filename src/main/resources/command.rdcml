@@ -513,3 +513,9 @@ yes {
     user player
     hook yes
 }
+
+no {
+    help /no
+    user player
+    hook no
+}
