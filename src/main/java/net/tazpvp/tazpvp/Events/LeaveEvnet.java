@@ -44,6 +44,9 @@ public class LeaveEvnet implements Listener {
                 }
                 Tazpvp.statsManager.addKills(Bukkit.getOfflinePlayer(k), 1);
                 Tazpvp.statsManager.addExp(Bukkit.getOfflinePlayer(k), 15);
+                if (Tazpvp.statsManager.checkLevelUp(Bukkit.getOfflinePlayer(k))) {
+                    Tazpvp.statsManager.levelUp(Bukkit.getOfflinePlayer(k), 1);
+                }
                 Tazpvp.statsManager.addCoins(Bukkit.getOfflinePlayer(k), 7);
             }
         }
