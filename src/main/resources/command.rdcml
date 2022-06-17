@@ -534,3 +534,16 @@ chat {
         hook chat_all
     }
 }
+
+sc {
+    help /sc
+    user player
+    permission tazpvp.staffchat
+    hook staffchat
+}
+
+gc {
+    help /gc
+    user player
+    hook guildchat
+}
