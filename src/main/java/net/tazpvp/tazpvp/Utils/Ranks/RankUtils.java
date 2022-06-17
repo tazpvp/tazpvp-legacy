@@ -13,7 +13,6 @@ import org.bukkit.event.Listener;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import javax.annotation.Nullable;
-import java.util.Locale;
 
 public class RankUtils implements Listener {
 
@@ -37,7 +36,7 @@ public class RankUtils implements Listener {
                     }
                     Player target = Bukkit.getPlayer(text);
 
-                    Tazpvp.statsManager.addCoins(player, -Price);
+                    Tazpvp.statsManager.addCredits(player, -Price);
                     rankMSG(p, target, Rank);
                     return AnvilGUI.Response.close();
                 })
@@ -50,7 +49,7 @@ public class RankUtils implements Listener {
 
     private static void cancelRefundFunc(Player p, int Price) {
         p.sendMessage(ChatColor.RED + "Canceled, refunding money lost.");
-        Tazpvp.statsManager.addCoins(p, Price);
+        Tazpvp.statsManager.addCredits(p, Price);
         p.closeInventory();
     }
 

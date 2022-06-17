@@ -134,9 +134,9 @@ public class ServerStore {
 
     public void createGiftOrBuyBTN(Player p, ItemStack item, int price, String rank, int slot, boolean buying) {
         ItemButton btn = ItemButton.create(item, e -> {
-            if (Tazpvp.statsManager.getCoins(p) >= price) {
+            if (Tazpvp.statsManager.getCredits(p) >= price) {
                 if (buying) {
-                    Tazpvp.statsManager.addCoins(p, -price);
+                    Tazpvp.statsManager.addCredits(p, -price);
                     RankUtils.rankBuy(p, rank);
                     p.closeInventory();
                 } else {

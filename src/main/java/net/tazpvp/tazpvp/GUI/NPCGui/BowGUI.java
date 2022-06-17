@@ -47,7 +47,7 @@ public class BowGUI {
         });
 
         ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards"), e -> {
-            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2, 5);
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 1, 5);
         });
 
         ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards"), e -> {
