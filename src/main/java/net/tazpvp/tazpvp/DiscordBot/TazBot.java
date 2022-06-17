@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.LeaderBoardCMD;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.StatsSCMD;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.ping;
 
@@ -17,7 +18,7 @@ public class TazBot {
     public static TextChannel channel;
     public static void main(String[] args) throws LoginException, InterruptedException {
         CommandClientBuilder builder = new CommandClientBuilder();
-        builder.addSlashCommands(new ping(), new StatsSCMD());
+        builder.addSlashCommands(new ping(), new StatsSCMD(), new LeaderBoardCMD());
         builder.forceGuildOnly("535281648980459550");
         builder.setServerInvite("https://discord.gg/56rdkbSqa8");
         builder.setOwnerId("811580599068262421");
