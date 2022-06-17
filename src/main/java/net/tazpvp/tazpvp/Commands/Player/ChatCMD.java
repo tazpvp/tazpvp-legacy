@@ -29,4 +29,32 @@ public class ChatCMD {
         Tazpvp.chatEnum.remove(p.getUniqueId());
         Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
     }
+
+    @CommandHook("staffchat") public void staffchattoggle(Player p) {
+        if (Tazpvp.chatEnum.get(p.getUniqueId()) != ChatEnum.STAFF) {
+            p.sendMessage(ChatColor.YELLOW + "Switched to staff chat!");
+            Tazpvp.chatEnum.remove(p.getUniqueId());
+            Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.STAFF);
+        } else {
+            p.sendMessage(ChatColor.AQUA + "Switched to all chat!");
+            Tazpvp.chatEnum.remove(p.getUniqueId());
+            Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
+        }
+    }
+
+    @CommandHook("guildchat") public void guildchatToggle(Player p) {
+        if (GuildUtils.isInGuild(p)) {
+            if (Tazpvp.chatEnum.get(p.getUniqueId()) != ChatEnum.GUILD) {
+                p.sendMessage(ChatColor.YELLOW + "Switched to guild chat!");
+                Tazpvp.chatEnum.remove(p.getUniqueId());
+                Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.GUILD);
+            } else {
+                p.sendMessage(ChatColor.AQUA + "Switched to all chat!");
+                Tazpvp.chatEnum.remove(p.getUniqueId());
+                Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
+            }
+        } else {
+            p.sendMessage(ChatColor.RED + "You are not in a guild!");
+        }
+    }
 }
