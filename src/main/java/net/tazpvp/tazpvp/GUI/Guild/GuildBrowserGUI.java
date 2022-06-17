@@ -13,7 +13,6 @@ import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -47,7 +46,12 @@ public class GuildBrowserGUI {
         for(int i = (page * numNum); i < Math.min(numNum + (page*numNum), guilds.size()); i++) {
             Guild g = Tazpvp.guildManager.getGuild(UUID.fromString(String.valueOf(guilds.keySet().toArray()[i])));
             String tag = (g.tag() == null) ? "" : ChatColor.YELLOW + " [" + g.tag() + "]";
-            ItemButton guildView = ItemButton.create(new ItemBuilder(g.getIcon()).setName(g.name() + tag).setLore(
+            ChatColor color = ChatColor.WHITE;
+            if (i == 0) color = ChatColor.GOLD;
+            else if (i == 1) color = ChatColor.GRAY;
+            else if (i == 2) color = ChatColor.DARK_RED;
+
+            ItemButton guildView = ItemButton.create(new ItemBuilder(g.getIcon()).setName(color + g.name() + tag).setLore(
                     "",
                     ChatColor.WHITE + g.description(),
                     ChatColor.GRAY + "-" + Bukkit.getOfflinePlayer(g.owner().get(0)).getName(),
