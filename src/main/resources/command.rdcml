@@ -177,12 +177,6 @@ gui string:gui {
     hook gui
 }
 
-report player:target string...:reason{
-    help /report <player> <reason>
-    user player
-    hook report
-}
-
 spawn player:target?(context self){
     help /spawn
     user player

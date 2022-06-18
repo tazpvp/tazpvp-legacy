@@ -111,6 +111,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         new WorldCreator("ban").environment(World.Environment.NETHER).createWorld();
 
+        registerCommands();
+
         try {
             registerEvents();
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
@@ -166,6 +168,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     }
 
 
+    public void registerCommands() {
+        getCommand("report").setExecutor(new ReportCMD());
+    }
     public void registeRedLib() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ArgType<World> worldType = new ArgType<>("world", Bukkit::getWorld).tabStream(c -> Bukkit.getWorlds().stream().map(World::getName));
 
@@ -180,7 +185,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
             new StatsCMD(),
             new GuiCMD(),
-            new ReportCMD(),
             new SpawnCMD(),
             new WarnCMD(),
             new MutechatCMD(),
