@@ -14,7 +14,9 @@ public class ReportCMD implements CommandListener {
         if (Tazpvp.hasBeenReported.containsKey(target.getUniqueId())) {
             p.sendMessage(ChatColor.DARK_AQUA + "Thank you for reporting " + ChatColor.WHITE + target.getName() + ChatColor.DARK_AQUA + " they will be reviewed shortly.");
         } else {
-            Bukkit.broadcast(ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n" + ChatColor.RED + "" + ChatColor.BOLD + "REPORT " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " was reported for " + ChatColor.WHITE + reason + ChatColor.GRAY + " by " + ChatColor.WHITE + p.getName() + "\n" + ChatColor.DARK_GRAY + "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬", "tazspree.staff.reports");
+            Bukkit.broadcast(ChatColor.GRAY + " " + ChatColor.STRIKETHROUGH + "                                        ", "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.RED + "" + ChatColor.BOLD + "REPORT " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " reported " + ChatColor.WHITE + p.getName() + ChatColor.GRAY+ " for " + ChatColor.WHITE + reason, "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.GRAY + " " + ChatColor.STRIKETHROUGH + "                                        ", "tazpvp.reports");
             p.sendMessage(ChatColor.DARK_AQUA + "Thank you for reporting " + ChatColor.WHITE + target.getName() + ChatColor.DARK_AQUA + " they will be reviewed shortly.");
         }
     }
