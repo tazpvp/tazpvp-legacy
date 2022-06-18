@@ -33,7 +33,7 @@ public class ParticlesGUI {
            }
         });
 
-        ItemButton haloCircle = ItemButton.create(new ItemBuilder(Material.SUNFLOWER).setName(ChatColor.RED + "Halo").setLore(ChatColor.RED + "Requires: MVP or higher!"), e -> {
+        ItemButton haloCircle = ItemButton.create(new ItemBuilder(Material.SUNFLOWER).setName(ChatColor.BLUE + "Halo").setLore(ChatColor.RED + "Requires: MVP or higher!"), e -> {
             if (canAccessHmm((Player) e.getWhoClicked(), 2)) {
                 e.getWhoClicked().sendMessage("Applying halo halo particle...");
                 e.getWhoClicked().closeInventory();
@@ -41,7 +41,7 @@ public class ParticlesGUI {
             }
         });
 
-        ItemButton TwoHorzCircle = ItemButton.create(new ItemBuilder(Material.HEART_OF_THE_SEA).setName(ChatColor.RED + "Horizontal Aura").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
+        ItemButton TwoHorzCircle = ItemButton.create(new ItemBuilder(Material.HEART_OF_THE_SEA).setName(ChatColor.BLUE + "Horizontal Aura").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
             if (canAccessHmm((Player) e.getWhoClicked(), 3)) {
                 e.getWhoClicked().sendMessage("Applying your aura particle...");
                 e.getWhoClicked().closeInventory();
@@ -49,7 +49,7 @@ public class ParticlesGUI {
             }
         });
 
-        ItemButton CrushedCandyCane = ItemButton.create(new ItemBuilder(Material.PINK_DYE).setName(ChatColor.RED + "Crushed Candy Cane").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
+        ItemButton CrushedCandyCane = ItemButton.create(new ItemBuilder(Material.PINK_DYE).setName(ChatColor.BLUE + "Crushed Candy Cane").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
             if (canAccessHmm((Player) e.getWhoClicked(), 3)) {
                 e.getWhoClicked().sendMessage("Applying your crushed candy cane particle...");
                 e.getWhoClicked().closeInventory();
@@ -57,7 +57,7 @@ public class ParticlesGUI {
             }
         });
 
-        ItemButton Love = ItemButton.create(new ItemBuilder(Material.RED_CANDLE).setName(ChatColor.RED + "Love Hearts").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
+        ItemButton Love = ItemButton.create(new ItemBuilder(Material.RED_CANDLE).setName(ChatColor.BLUE + "Love Hearts").setLore(ChatColor.RED + "Requires: MVP+ or higher!"), e -> {
             if (canAccessHmm((Player) e.getWhoClicked(), 3)) {
                 e.getWhoClicked().sendMessage("Applying your love <3 particle...");
                 e.getWhoClicked().closeInventory();
@@ -65,7 +65,7 @@ public class ParticlesGUI {
             }
         });
 
-        ItemButton disable = ItemButton.create(new ItemBuilder(Material.BARRIER).setName(ChatColor.RED + "Disable Particles").setLore(ChatColor.RED + "DISABLE all active particles!"), e -> {
+        ItemButton disable = ItemButton.create(new ItemBuilder(Material.BARRIER).setName(ChatColor.BLUE + "Disable Particles").setLore(ChatColor.RED + "DISABLE all active particles!"), e -> {
             Tazpvp.particleUtil.removeAll((Player) e.getWhoClicked());
             e.getWhoClicked().sendMessage(ChatColor.RED + "Particles disabled!");
             e.getWhoClicked().closeInventory();
