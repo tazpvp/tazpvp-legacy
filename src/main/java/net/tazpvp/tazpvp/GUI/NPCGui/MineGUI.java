@@ -58,15 +58,18 @@ public class MineGUI {
         ItemButton button3 = ItemButton.create(pickaxeBuilder, e -> {
             if (e.getWhoClicked() instanceof Player pl) {
                 if (Tazpvp.statsManager.getShards(pl) >= 4) {
-                    Tazpvp.statsManager.addShards(pl, -4);
                     if (getPickaxe(pl).getType() == Material.WOODEN_PICKAXE) {
                         updatePickaxeType(pl, Material.STONE_PICKAXE);
+                        Tazpvp.statsManager.addShards(pl, -4);
                     } else if (getPickaxe(pl).getType() == Material.STONE_PICKAXE) {
                         updatePickaxeType(pl, Material.IRON_PICKAXE);
+                        Tazpvp.statsManager.addShards(pl, -4);
                     } else if (getPickaxe(pl).getType() == Material.IRON_PICKAXE) {
                         updatePickaxeType(pl, Material.GOLDEN_PICKAXE);
+                        Tazpvp.statsManager.addShards(pl, -4);
                     } else if (getPickaxe(pl).getType() == Material.GOLDEN_PICKAXE) {
                         updatePickaxeType(pl, Material.DIAMOND_PICKAXE);
+                        Tazpvp.statsManager.addShards(pl, -4);
                     } else if (getPickaxe(pl).getType() == Material.DIAMOND_PICKAXE) {
                         pl.sendMessage(prefix + "You already have the best pickaxe!");
                         p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1, 1);
