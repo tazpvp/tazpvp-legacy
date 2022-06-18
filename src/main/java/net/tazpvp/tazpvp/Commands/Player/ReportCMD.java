@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Commands.Player;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.CmdCooldown;
 import net.tazpvp.tazpvp.Utils.Functionality.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class ReportCMD implements CommandExecutor {
+public class ReportCMD extends CmdCooldown {
     @Override
     public void execute(Player p, String[] args) {
         Player target = Bukkit.getPlayer(args[0]);
@@ -30,6 +31,6 @@ public class ReportCMD implements CommandExecutor {
     }
 
     public ReportCMD() {
-        super (20*60);
+        super(20*60);
     }
 }

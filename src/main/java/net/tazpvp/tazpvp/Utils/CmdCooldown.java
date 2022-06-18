@@ -43,5 +43,5 @@ public abstract class CmdCooldown implements CommandExecutor {
         this.cooldown = num;
     }
 
-    abstract void execute(Player p, String[] strings);
+    protected abstract void execute(Player p, String[] args);
 }
