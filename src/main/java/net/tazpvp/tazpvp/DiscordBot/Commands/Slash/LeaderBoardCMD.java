@@ -19,7 +19,7 @@ public class LeaderBoardCMD extends SlashCommand {
         this.aliases = new String[]{"lb"};
         this.cooldown = 10;
         this.cooldownScope = CooldownScope.USER;
-        this.children = new SlashCommand[] {new KillLB(), new DeathLB(), new LevelLB(), new CoinsLB(), new ShardsLB()};
+        this.children = new SlashCommand[] {new KillLB(), new DeathLB(), new LevelLB(), new CoinsLB(), new ShardsLB(), new KDRLB()};
     }
 
     @Override
@@ -122,6 +122,26 @@ public class LeaderBoardCMD extends SlashCommand {
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerLevel);
             makeEmbed(event, "Level Leaderboard", sorted);
+        }
+    }
+
+    private static class KDRLB extends SlashCommand {
+        public KDRLB() {
+            this.name = "kdr";
+            this.help = "Gets the top 10 players sorted by KDR!";
+            this.cooldown = 10;
+            this.cooldownScope = CooldownScope.USER;
+            this.children = new SlashCommand[] {};
+        }
+
+        @Override
+        public void execute(SlashCommandEvent event) {
+            HashMap<UUID, Double> playerKDR = new HashMap<>();
+            for (UUID player : playerUUIDS()) {
+                playerKDR.put(player, (double) Tazpvp.statsManager.getLevel(player) / (double) Tazpvp.statsManager.getDeaths(player));
+            }
+            LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKDR);
+            makeEmbed(event, "KDR Leaderboard", sorted);
         }
     }
 
