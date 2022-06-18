@@ -36,6 +36,7 @@ public class DuelCMD {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             Tazpvp.duelLogic.duelStart(p, target, null);
+            return;
         } else {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), p.getName()));
             TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
@@ -46,7 +47,7 @@ public class DuelCMD {
             target.sendMessage(" " + ChatColor.GOLD + p.getName() + ChatColor.YELLOW + " has challenged you to a duel.");
             target.spigot().sendMessage(Accept);
             target.sendMessage(ChatColor.DARK_GRAY + "");
-            p.sendMessage(ChatColor.DARK_GRAY + "Sent Duel");
+            p.sendMessage(ChatColor.GRAY + "Your duel request was sent.");
         }
     }
 
