@@ -43,7 +43,7 @@ public class DuelLogic implements Listener {
 
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
         Bukkit.broadcastMessage(ChatColor.AQUA + p1.getName() + ChatColor.DARK_AQUA + " is now dueling " + ChatColor.AQUA + p2.getName());
-        Bukkit.broadcastMessage(ChatColor.DARK_AQUA +" Type " + ChatColor.GRAY + "/spectate " + p1.getName());
+        Bukkit.broadcastMessage(ChatColor.DARK_AQUA +"Type " + ChatColor.GRAY + "/spectate " + p1.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
 
         p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.BLUE + "The duel will start in 5 seconds.", 10, 40, 20);
@@ -93,7 +93,7 @@ public class DuelLogic implements Listener {
         p.setGameMode(GameMode.SPECTATOR);
 
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
-        Bukkit.broadcastMessage(ChatColor.AQUA + opponent.getName() + ChatColor.BLUE + " won the duel against " + ChatColor.AQUA + p.getName());
+        Bukkit.broadcastMessage(ChatColor.AQUA + opponent.getName() + ChatColor.DARK_AQUA + " won the duel against " + ChatColor.AQUA + p.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
 
         new BukkitRunnable() {
