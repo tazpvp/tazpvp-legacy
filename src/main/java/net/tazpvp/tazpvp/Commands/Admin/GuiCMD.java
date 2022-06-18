@@ -1,7 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
-import net.tazpvp.tazpvp.GUI.EnderChestPoorGUI;
 import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.PerkGUI;
@@ -26,8 +25,6 @@ public class GuiCMD implements CommandListener {
             new FlameVilGUI(p);
         } else if (gui.equalsIgnoreCase("os")) {
             new OpenSlotGUI(p);
-        } else if (gui.equalsIgnoreCase("ecp")) {
-            new EnderChestPoorGUI(p);
         } else if (gui.equalsIgnoreCase("perk")) {
             new PerkGUI(p);
         } else if (gui.equalsIgnoreCase("testOne")) {

@@ -1,7 +1,5 @@
 package net.tazpvp.tazpvp;
 
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
@@ -65,7 +63,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
     public static Permission permissions;
     public static Chat chat;
-    public static ProtocolManager protocolManager;
 
     public static Tazpvp instance;
     public FileConfiguration config = getConfig();
@@ -143,7 +140,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             System.out.println("Vault not found!");
         }
 
-        protocolManager = ProtocolLibrary.getProtocolManager();
 
         doHashMaps();
         particleUtil.staticEffects.add(new StaticSpingParticle());

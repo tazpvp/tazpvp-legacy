@@ -1,11 +1,10 @@
 name: Tazpvp
 version: '${project.version}'
 main: net.tazpvp.tazpvp.Tazpvp
-api-version: 1.18
+api-version: 1.19
 prefix: Taz
 authors: [ rownox, Ntdi, Your mom ]
 description: Tazpvp main logic
 website: tazpvp.net
-depend: [ProtocolLib]
 load: POSTWORLD
 commands:
