@@ -20,14 +20,13 @@ public class BlockBreakEvent implements Listener {
             Block b = e.getBlock();
             Material block = b.getType();
             if (Tazpvp.blocks.containsKey(block)) {
-                e.setCancelled(true);
                 Material smeltedForm = Tazpvp.blocks.get(block);
                 excavatorPerk(p);
-                if (block == Material.DEEPSLATE_GOLD_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                } else if (block == Material.DEEPSLATE_REDSTONE_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                } else if (block == Material.DEEPSLATE_IRON_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                } else if (block == Material.DEEPSLATE_LAPIS_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);
-                } else if (block == Material.DEEPSLATE_EMERALD_ORE) { oreRespawn(p, block, smeltedForm, 350L, b);}
+                if (block == Material.DEEPSLATE_GOLD_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
+                else if (block == Material.DEEPSLATE_REDSTONE_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
+                else if (block == Material.DEEPSLATE_IRON_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
+                else if (block == Material.DEEPSLATE_LAPIS_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
+                else if (block == Material.DEEPSLATE_EMERALD_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
             }
         }
     }
