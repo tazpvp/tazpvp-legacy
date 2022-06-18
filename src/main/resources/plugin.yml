@@ -8,3 +8,5 @@ description: Tazpvp main logic
 website: tazpvp.net
 load: POSTWORLD
 commands:
+  report:
+    description: Report a player
