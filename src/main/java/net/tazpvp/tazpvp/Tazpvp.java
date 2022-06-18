@@ -185,7 +185,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         new CommandParser(this.getResource("command.rdcml")).setArgTypes(worldType).parse().register("tazpvp", this,
             new StatsCMD(),
             new GuiCMD(),
-            new ReportCMD(),
             new SpawnCMD(),
             new WarnCMD(),
             new MutechatCMD(),
