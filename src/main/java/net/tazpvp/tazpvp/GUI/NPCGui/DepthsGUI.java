@@ -31,7 +31,8 @@ public class DepthsGUI {
             .setLore(ChatColor.GRAY + "Warning: resets stats and items.",
                     ChatColor.DARK_PURPLE + "≻ +5 Exp Per Kill",
                     ChatColor.DARK_PURPLE + "≻ +1 Extra Heart",
-                    ChatColor.DARK_PURPLE + "≻ Infinite Arrows")
+                    ChatColor.DARK_PURPLE + "≻ Infinite Arrows",
+                    ChatColor.RED + "Will unban if you are banned.")
             , e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.boolManager.getHasRebirthed(p)) { p.sendMessage(ChatColor.RED + "You have already rebirthed."); return; }

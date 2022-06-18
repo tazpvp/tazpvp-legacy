@@ -41,21 +41,23 @@ public class DuelLogic implements Listener {
 
         d.start();
 
-        p1.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
-        p2.sendMessage(ChatColor.GREEN + "Duel starting in 5 Seconds");
+        Bukkit.broadcastMessage(ChatColor.GRAY + "" + ChatColor.STRIKETHROUGH + "                                            ");
+        Bukkit.broadcastMessage(ChatColor.AQUA + p1.getName() + ChatColor.BLUE + " is now dueling " + ChatColor.AQUA + p2.getName() + ChatColor.BLUE +" Type " + ChatColor.GRAY + "/spectate " + p1.getName());
+        Bukkit.broadcastMessage(ChatColor.GRAY + "" + ChatColor.STRIKETHROUGH + "                                            ");
+
+        p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.BLUE + "The duel will start in 5 seconds.", 10, 40, 20);
+        p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.BLUE + "The duel will start in 5 seconds.", 10, 40, 20);
 
         Tazpvp.particleUtil.save(p1);
         Tazpvp.particleUtil.save(p2);
-
-        Bukkit.broadcastMessage(ChatColor.YELLOW + p1.getName() + " and " + p2.getName() + " have started a duel! " + ChatColor.GOLD + "/spectate " + p1.getName());
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 p1.teleport(d.getSpawn1());
                 p2.teleport(d.getSpawn2());
-                p1.sendMessage(ChatColor.GREEN + "GO!");
-                p2.sendMessage(ChatColor.GREEN + "GO!");
+                p1.sendTitle(ChatColor.RED + "Begin!", ChatColor.BLUE + "", 10, 40, 20);
+                p2.sendTitle(ChatColor.RED + "Begin!", ChatColor.BLUE + "", 10, 40, 20);
                 p1.playSound(p1.getLocation(), Sound.BLOCK_ANVIL_FALL, 1, 1);
                 p2.playSound(p2.getLocation(), Sound.BLOCK_ANVIL_FALL, 1, 1);
             }
@@ -89,7 +91,9 @@ public class DuelLogic implements Listener {
 
         p.setGameMode(GameMode.SPECTATOR);
 
-        Bukkit.broadcastMessage(ChatColor.GOLD + opponent.getName() + ChatColor.YELLOW + " has won the duel against " + ChatColor.GOLD + p.getName());
+        Bukkit.broadcastMessage(ChatColor.GRAY + "" + ChatColor.STRIKETHROUGH + "                                            ");
+        Bukkit.broadcastMessage(ChatColor.AQUA + opponent.getName() + ChatColor.BLUE + " won the duel against " + ChatColor.AQUA + p.getName());
+        Bukkit.broadcastMessage(ChatColor.GRAY + "" + ChatColor.STRIKETHROUGH + "                                            ");
 
         new BukkitRunnable() {
             @Override
@@ -136,7 +140,7 @@ public class DuelLogic implements Listener {
             p.setGameMode(GameMode.SPECTATOR);
             p.teleport(d.getSpawn1());
             p.sendMessage(ChatColor.GREEN + "You are now spectating " + ChatColor.GOLD + dueler.getName());
-            p.sendMessage(ChatColor.GREEN + "You can leave the duel by typing /spawn");
+            p.sendMessage(ChatColor.GREEN + "You can stop spectating by typing /spawn");
         } else {
             p.sendMessage(ChatColor.RED + "You can't spectate that player");
         }
