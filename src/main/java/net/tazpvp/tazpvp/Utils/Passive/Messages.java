@@ -39,13 +39,5 @@ public class Messages {
                 Bukkit.broadcastMessage("");
             }
         }.runTaskTimer(plugin, 20*4*60, 20*4*60);
-        new BukkitRunnable(){
-            @Override
-            public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()){
-                    sendSurround(p, ChatColor.GREEN + "" + ChatColor.BOLD + "BETA " + ChatColor.DARK_GREEN + "This server is currently in beta testing.\n" + ChatColor.DARK_GREEN + "Stats will be reset on full release.");
-                }
-            }
-        }.runTaskTimer(plugin, 20*60*2, 20*60*4);
     }
 }
