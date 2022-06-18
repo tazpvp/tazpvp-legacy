@@ -180,13 +180,11 @@ public class DeathEvent implements Listener {
         for (Items item : Items.values()) {
             if (item.getStoredID() == id) {
                 Player d = (Player) e.getDamager();
-                double cooldownTime = item.getCooldown(); // Get number of seconds from wherever you want
+                double cooldownTime = item.getCooldownMilis(); // Get number of milis from wherever you want
                 if(cooldowns.containsKey(d)) {
-                    double secondsLeft = (((double)cooldowns.get(d)/1000)+cooldownTime) - ((double)System.currentTimeMillis()/1000);
+                    double secondsLeft = (((double)cooldowns.get(d))+cooldownTime) - ((double)System.currentTimeMillis());
                     if(secondsLeft>0) {
-                        // Still cooling down
                         e.setDamage((double) item.getDamage()/4);
-                        //d.sendTitle(ChatColor.RED + "Your weapon is recharging", null, 10, 20, 10);
                         cooldowns.put(d, System.currentTimeMillis());
                         return;
                     }

@@ -87,8 +87,8 @@ public enum Items {
         return this.rarity;
     }
 
-    public double getCooldown() {
-    	return this.cooldown;
+    public double getCooldownMilis() {
+    	return this.cooldown * 1000;
     }
 
     public NamespacedKey getKey() {
