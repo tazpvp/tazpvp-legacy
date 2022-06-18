@@ -68,6 +68,7 @@ public class DeathEvent implements Listener {
                     }
                 }
             }
+            fd = e.getFinalDamage();
             if (p.getHealth() - fd <= 0) {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
