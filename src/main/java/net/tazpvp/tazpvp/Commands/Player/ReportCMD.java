@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.commandmanager.CommandHook;
 
-public class ReportCMD implements CommandListener {
+public class ReportCMD implements CommandListener extends CmdCooldown {
     @CommandHook("report")
     public void report(Player p, Player target, String reason) {
 
