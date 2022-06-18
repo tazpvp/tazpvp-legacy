@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.GUI.NPCGui;
 
 import com.google.common.collect.Lists;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Fun.NumberToRomanNumeral;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -112,12 +113,12 @@ public class MineGUI {
         p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
     }
 
-    public void efficnencyLevel(Player p, ItemStack i) {
-        if (i.getEnchantments().containsKey(Enchantment.DIG_SPEED)) {
-            int currLevel = i.getEnchantmentLevel(Enchantment.DIG_SPEED);
-            i.addUnsafeEnchantment(Enchantment.DIG_SPEED, currLevel + 1);
+    public void efficnencyLevel(Player p, ItemMeta meta) {
+        if (meta.getEnchants().containsKey(Enchantment.DIG_SPEED)) {
+            int currLevel = meta.getEnchantLevel(Enchantment.DIG_SPEED);
+            meta.addEnchant(Enchantment.DIG_SPEED, currLevel + 1, true);
         } else {
-            i.addEnchantment(Enchantment.DIG_SPEED, 1);
+            meta.addEnchant(Enchantment.DIG_SPEED,1, true);
         }
     }
 
@@ -128,6 +129,14 @@ public class MineGUI {
         }
         return false;
     }
+
+    public int currEffyLevel(ItemStack i) {
+        if (i.getEnchantments().containsKey(Enchantment.DIG_SPEED)) {
+            return i.getEnchantmentLevel(Enchantment.DIG_SPEED);
+        }
+        return 0;
+    }
+
 
     public void updatePickaxeItem(Player p, ItemStack pickaxe, Enchantment ench, String lore, int cost) {
         if (pickaxe.containsEnchantment(ench) && !ench.equals(Enchantment.DIG_SPEED)) {
@@ -146,15 +155,23 @@ public class MineGUI {
                 if (loreList == null) {
                     loreList = Lists.newArrayList();
                 }
-                loreList.add(lore);
-                meta.setLore(loreList);
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                pickaxe.setItemMeta(meta);
                 if ((ench != Enchantment.DIG_SPEED)) {
-                    pickaxe.addEnchantment(ench, 1);
+                    meta.addEnchant(ench, 1, true);
+                    loreList.add(lore);
                 } else {
-                    efficnencyLevel(p, pickaxe);
+                    int nextLvl = currEffyLevel(pickaxe) + 1;
+                    efficnencyLevel(p, meta);
+                    for (String s : loreList) {
+                        if (s.contains(lore)) {
+                            loreList.remove(s);
+                            break;
+                        }
+                    }
+                    loreList.add(lore + " " + NumberToRomanNumeral.intToRoman(nextLvl));
                 }
+                meta.setLore(loreList);
+                pickaxe.setItemMeta(meta);
                 p.sendMessage(prefix + "You enchanted your pickaxe with " + lore);
                 p.closeInventory();
                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
