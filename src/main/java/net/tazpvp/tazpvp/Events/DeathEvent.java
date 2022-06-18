@@ -53,7 +53,7 @@ public class DeathEvent implements Listener {
                     return;
                 }
             }
-            double fd = 0;
+            double fd = e.getFinalDamage();
             if (e instanceof EntityDamageByEntityEvent) {
                 if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
                     ItemStack item = d.getInventory().getItemInMainHand();
@@ -68,7 +68,6 @@ public class DeathEvent implements Listener {
                     }
                 }
             }
-            fd = e.getFinalDamage();
             if (p.getHealth() - fd <= 0) {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
