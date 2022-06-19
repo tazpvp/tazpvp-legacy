@@ -490,16 +490,15 @@ public class GuildUtils {
     }
 
     public static void guildChatMessage(Player p, String msg, Guild g) {
-        String guild = ChatColor.GREEN + "Guild > ";
         String beginning;
         if (g.getGroup(p.getUniqueId()).equals("Owner")) {
-            beginning = ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "GUILD MASTER " + ChatColor.DARK_GREEN + p.getName() + " ";
+            beginning = ChatColor.GREEN + "Guild Master > " + ChatColor.DARK_GREEN + p.getName() + " ";
         } else if (g.getGroup(p.getUniqueId()).equals("Staff")) {
-            beginning = ChatColor.GREEN + "" + ChatColor.BOLD + "STAFF " + ChatColor.GREEN + p.getName() + " ";
+            beginning = ChatColor.GREEN + "Guild Staff > " + ChatColor.GREEN + p.getName() + " ";
         } else {
-            beginning = ChatColor.GRAY + p.getName() + " ";
+            beginning = ChatColor.GREEN + "Guild > " + ChatColor.GRAY + p.getName() + " ";
         }
-        g.sendAlL(guild + beginning + ChatColor.WHITE + msg);
+        g.sendAlL(beginning + ChatColor.WHITE + msg);
     }
 
     public static void hijack(Player p, Player target, Guild g) {
