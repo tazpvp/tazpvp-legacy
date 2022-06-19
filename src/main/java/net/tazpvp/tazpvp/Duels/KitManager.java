@@ -15,7 +15,36 @@ public enum KitManager {
             new ItemBuilder(Material.DIAMOND_BOOTS).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
             new ItemStack[]{
                 new ItemBuilder(Material.DIAMOND_SWORD).unbreakable().addEnchant(Enchantment.DAMAGE_ALL, 5).addEnchant(Enchantment.SWEEPING_EDGE, 3),
-                new ItemBuilder(Material.GOLDEN_APPLE, 8)
+                new ItemBuilder(Material.GOLDEN_APPLE, 8),
+    }),
+    CRYSTAL(new ItemBuilder(Material.NETHERITE_HELMET).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.NETHERITE_CHESTPLATE).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.NETHERITE_LEGGINGS).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemBuilder(Material.NETHERITE_BOOTS).unbreakable().addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 4),
+            new ItemStack[]{
+                    new ItemBuilder(Material.NETHERITE_SWORD).unbreakable().addEnchant(Enchantment.DAMAGE_ALL, 5).addEnchant(Enchantment.SWEEPING_EDGE, 3),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64),
+                    new ItemBuilder(Material.GOLDEN_APPLE, 64)
     });
 
     private ItemStack helmet;
