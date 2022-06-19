@@ -24,18 +24,22 @@ public class DuelLogic implements Listener {
      * Create a new duel
      * @param p1 player one
      * @param p2 player two
-     * @param kit kit used if null, will use default
+     * @param type The duel type
      */
-    public void duelStart(final Player p1, final Player p2, @Nullable KitManager kit) {
+    public void duelStart(final Player p1, final Player p2, @Nullable DuelType type) {
         String duelName = "active_duel_" + p1.getName() + "_" + p2.getName();
-        World w = new WorldManageent().cloneWorld(this.chooseRandomDuelMap(), duelName);
+        World w = new WorldManageent().cloneWorld(this.chooseRandomDuelMap("duel"), duelName);
 
-        if (kit == null) {
-            kit = KitManager.SWORD;
+        if (type == null) {
+            type = DuelType.SWORD;
         }
 
-        DW d = new DW(p1, p2, w, kit);
+        DW d = new DW(p1, p2, w, type.kit);
 
+        universal(p1, p2, d);
+    }
+
+    private void universal(final Player p1, final Player p2, DW d) {
         this.duels.put(Arrays.asList(p1.getUniqueId(), p2.getUniqueId()), d);
         inventoryManagement(p1, p2, true);
 
@@ -207,10 +211,10 @@ public class DuelLogic implements Listener {
      * Get a random duel map
      * @return the name of the map
      */
-    public String chooseRandomDuelMap() {
+    public String chooseRandomDuelMap(String worldPrefix) {
         List<String> maps = new ArrayList<>();
         for (World w : Bukkit.getWorlds()) {
-            if (w.getName().startsWith("duel")) {
+            if (w.getName().startsWith(worldPrefix)) {
                 maps.add(w.getName());
             }
         }

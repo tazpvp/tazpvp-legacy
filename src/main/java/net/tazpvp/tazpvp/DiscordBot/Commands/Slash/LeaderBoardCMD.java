@@ -138,7 +138,9 @@ public class LeaderBoardCMD extends SlashCommand {
         public void execute(SlashCommandEvent event) {
             HashMap<UUID, Double> playerKDR = new HashMap<>();
             for (UUID player : playerUUIDS()) {
-                playerKDR.put(player, (double) Tazpvp.statsManager.getLevel(player) / (double) Tazpvp.statsManager.getDeaths(player));
+                if (Tazpvp.statsManager.getDeaths(player) != 0 && Tazpvp.statsManager.getKills(player) != 0) {
+                    playerKDR.put(player, (double) Tazpvp.statsManager.getLevel(player) / (double) Tazpvp.statsManager.getDeaths(player));
+                }
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKDR);
             makeEmbed(event, "KDR Leaderboard", sorted);
