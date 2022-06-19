@@ -42,7 +42,7 @@ public class PerkUtils {
 
     public static void agilityPerk(Player p) {
         if (!Tazpvp.perkManager.getAgilityPerk(p)) return;
-        p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 5, 1));
+        p.addPotionEffect(new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.SPEED, 20*3, 2));
     }
 
     public static void tankPerk(Player p) {

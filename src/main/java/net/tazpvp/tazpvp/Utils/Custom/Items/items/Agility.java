@@ -17,7 +17,7 @@ public class Agility extends ConsumableItem {
         if(super.execute(p, itemStack, cID)) {
             return true;
         }
-        p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*5, 0));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20*5, 2));
         return false;
     }
 }

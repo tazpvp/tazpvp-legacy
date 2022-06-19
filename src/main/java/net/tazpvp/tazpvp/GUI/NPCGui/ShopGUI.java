@@ -63,11 +63,11 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 9*4, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10, 34, new ItemStack(Material.ENDER_EYE, 1),"Agility", "Speed Boost", false, true, 1.0);
+        createShopButton(10, 34, new ItemStack(Material.ENDER_EYE, 5),"Agility", "Speed Boost", false, true, 1.0);
         createShopButton(11, 8, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", false, true, 2.0);
-        createShopButton(12, 32, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
-        createShopButton(13, 18, new ItemStack(Material.INK_SAC, 1),"Inker","Morb people", false, false, null);
-        createShopButton(14, 12, new ItemStack(Material.MILK_BUCKET, 1),"Milk","Refreshing", false, false, null);
+        createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
+        createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, false, null);
+        createShopButton(14, 30, new ItemStack(Material.TRIDENT, 1),"Fork","Woosh", false, false, null);
         createShopButton(15, 9, new ItemBuilder(Material.SHIELD, 1).setDurability(335),"Rusty shield","One time use", false, false, null);
         createShopButton(16, 28, new ItemStack(Material.OAK_PLANKS, 64),"Planks","Placeable Blocks", false, false, null);
 
@@ -75,7 +75,7 @@ public class ShopGUI {
         createShopButton(20, 26, new ItemStack(Material.SHEARS, 1),"Scissors","Break Wool", false, false, null);
         createShopButton(21, 13, new ItemStack(Material.ARROW, 5),"Arrow","Bow Projectiles", false, false, null);
         createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, false, null);
-        createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 1),"Gold Carrot","Healthy Choice", false, false, null);
+        createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 3),"Gold Carrot","Healthy Choice", false, false, null);
         createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
         createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"RGB Blocks","Drip", true, false, null);
 

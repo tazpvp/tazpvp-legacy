@@ -46,8 +46,8 @@ public class DuelLogic implements Listener {
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA +"Type " + ChatColor.GRAY + "/spectate " + p1.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
 
-        p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.BLUE + "The duel will start in 5 seconds.", 10, 40, 20);
-        p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.BLUE + "The duel will start in 5 seconds.", 10, 40, 20);
+        p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 40, 20);
+        p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 40, 20);
 
         Tazpvp.particleUtil.save(p1);
         Tazpvp.particleUtil.save(p2);
