@@ -26,9 +26,10 @@ public class ReportCMD extends CmdCooldown {
         if (Tazpvp.hasBeenReported.containsKey(target.getUniqueId())) {
             p.sendMessage(ChatColor.DARK_AQUA + "Thank you for reporting " + ChatColor.WHITE + target.getName() + ChatColor.DARK_AQUA + " they will be reviewed shortly.");
         } else {
-            Bukkit.broadcast(ChatColor.DARK_GRAY + " " + ChatColor.STRIKETHROUGH + "                                                                         ", "tazpvp.reports");
-            Bukkit.broadcast(ChatColor.RED + "" + ChatColor.BOLD + "REPORT " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " reported " + ChatColor.WHITE + p.getName() + ChatColor.GRAY+ " for " + ChatColor.WHITE + reason, "tazpvp.reports");
-            Bukkit.broadcast(ChatColor.DARK_GRAY + " " + ChatColor.STRIKETHROUGH + "                                                                         ", "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "                                                                         ", "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.RED + "" + ChatColor.BOLD + "REPORT " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " reported " + ChatColor.WHITE + p.getName(), "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.GRAY+ "Reason: " + ChatColor.WHITE + reason, "tazpvp.reports");
+            Bukkit.broadcast(ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "                                                                         ", "tazpvp.reports");
             p.sendMessage(ChatColor.DARK_AQUA + "Thank you for reporting " + ChatColor.WHITE + target.getName() + ChatColor.DARK_AQUA + " they will be reviewed shortly.");
         }
     }
