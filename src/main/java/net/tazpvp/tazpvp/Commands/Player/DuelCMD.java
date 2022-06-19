@@ -28,6 +28,10 @@ public class DuelCMD {
             p.sendMessage(ChatColor.RED + "You cannot duel as a spectator.");
             return;
         }
+        if (sentDuel(target).equals(p.getName())) {
+            p.sendMessage(ChatColor.RED + "You have already sent a duel request to " + target.getName() + ".");
+            return;
+        }
         if (sentDuel(p).equals(target.getName())) {
             if (CombatTag.isInCombat(target)) {
                 target.sendMessage(ChatColor.RED + "You accept duels in combat.");
