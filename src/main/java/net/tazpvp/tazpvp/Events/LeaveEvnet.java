@@ -62,5 +62,7 @@ public class LeaveEvnet implements Listener {
                 Tazpvp.guildManager.setGuild(g.getID(), g);
             }
         }
+
+        Tazpvp.particleUtil.inUse.remove(e.getPlayer());
     }
 }
