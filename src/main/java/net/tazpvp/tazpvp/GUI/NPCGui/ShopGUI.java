@@ -67,7 +67,7 @@ public class ShopGUI {
         createShopButton(11, 8, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", false, true, 2.0);
         createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
         createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, false, null);
-        createShopButton(14, 30, new ItemStack(Material.TRIDENT, 1),"Milk","Woosh", false, false, null);
+        createShopButton(14, 27, new ItemBuilder(Material.FLINT_AND_STEEL, 1).setDurability(60),"Lighter","Burn!", false, false, null);
         createShopButton(15, 9, new ItemBuilder(Material.SHIELD, 1).setDurability(335),"Rusty shield","One time use", false, false, null);
         createShopButton(16, 28, new ItemStack(Material.OAK_PLANKS, 64),"Planks","Placeable Blocks", false, false, null);
 
