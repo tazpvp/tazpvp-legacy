@@ -7,10 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 public class MoveEvent implements Listener {
@@ -39,15 +36,12 @@ public class MoveEvent implements Listener {
             p.sendMessage(ChatColor.YELLOW + "You are no longer AFK.");
         }
 
-//        if (Tazpvp.fallDamageImmune.contains(p.getUniqueId())) {
-//            double y = p.getLocation().getY();
-//            if (y > 98 && y < 99) {
-//                Tazpvp.fallDamageImmune.remove(p.getUniqueId());
-//                Location loc = new Location(p.getWorld(), p.getLocation().getX(), 96, p.getLocation().getZ(), p.getLocation().getYaw(), p.getLocation().getPitch());
-//                p.setVelocity(new Vector(0, 0, 0));
-//                p.setFallDistance(0);
-//            }
-//        }
+        if (Tazpvp.duelLogic.isInDuel(p)) {
+            if (p.getLocation().getY() < -1) {
+                Tazpvp.duelLogic.duelEnd(p);
+            }
+        }
+
     }
 
     public void Launchpad(Player p) {

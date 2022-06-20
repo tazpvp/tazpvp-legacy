@@ -71,7 +71,7 @@ public class DeathEvent implements Listener {
             fd = e.getFinalDamage();
             if (p.getHealth() - fd <= 0) {
                 e.setCancelled(true);
-                if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here
+                if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here{
                     if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player) {
                         if (Tazpvp.duelLogic.isInDuel(p)) {
                             Tazpvp.duelLogic.duelEnd(p);
@@ -102,6 +102,19 @@ public class DeathEvent implements Listener {
                             Tazpvp.duelLogic.duelEnd(p);
                             e.setCancelled(true);
                             return;
+                        }
+                    }
+
+                    if (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)) {
+                        if (Tazpvp.duelLogic.isInDuel(p)) {
+                            Tazpvp.duelLogic.duelEnd(p);
+                            e.setCancelled(true);
+                            return;
+                        }
+                        if (Tazpvp.lastDamage.get(p.getUniqueId()) != null) {
+                            if (Bukkit.getOfflinePlayer(Tazpvp.lastDamage.get(p.getUniqueId())).isOnline()) {
+                                DeathFunction(p, Bukkit.getPlayer(Tazpvp.lastDamage.get(p.getUniqueId())), false);
+                            }
                         }
                     }
 
