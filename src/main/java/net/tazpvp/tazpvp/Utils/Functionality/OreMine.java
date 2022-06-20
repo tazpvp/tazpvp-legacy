@@ -13,6 +13,15 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class OreMine implements Listener {
     public static void oreRespawn(Player p, Material block, Material block2, Long dur, Block b, BlockBreakEvent e){
         e.setCancelled(true);
+
+        b.setType(Material.BEDROCK);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                b.setType(block);
+            }
+        }.runTaskLater(Tazpvp.getInstance(), dur);
+
         if (p.getInventory().getItemInMainHand().getType().name().toLowerCase().endsWith("_pickaxe")) {
             ItemStack i = p.getInventory().getItemInMainHand();
             if (i.containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS) && i.containsEnchantment(Enchantment.SILK_TOUCH)){
@@ -28,12 +37,6 @@ public class OreMine implements Listener {
             p.getInventory().addItem(new ItemStack(block));
         }
 
-        b.setType(Material.BEDROCK);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                b.setType(block);
-            }
-        }.runTaskLater(Tazpvp.getInstance(), dur);
+
     }
 }
