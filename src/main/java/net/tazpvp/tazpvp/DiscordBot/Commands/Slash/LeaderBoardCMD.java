@@ -9,6 +9,8 @@ import net.tazpvp.tazpvp.Utils.Functionality.Sortation;
 import org.bukkit.Bukkit;
 
 import java.awt.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
@@ -41,7 +43,7 @@ public class LeaderBoardCMD extends SlashCommand {
                 playerKills.put(player, (double) Tazpvp.statsManager.getKills(player));
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKills);
-            makeEmbed(event, "Kills Leaderboard", sorted);
+            makeEmbed(event, "Kills Leaderboard", sorted, true);
         }
     }
 
@@ -61,7 +63,7 @@ public class LeaderBoardCMD extends SlashCommand {
                 playerDeaths.put(player, (double) Tazpvp.statsManager.getDeaths(player));
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerDeaths);
-            makeEmbed(event, "Deaths Leaderboard", sorted);
+            makeEmbed(event, "Deaths Leaderboard", sorted, true);
         }
     }
 
@@ -81,7 +83,7 @@ public class LeaderBoardCMD extends SlashCommand {
                 coinAmount.put(player, (double) Tazpvp.statsManager.getCoins(player));
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(coinAmount);
-            makeEmbed(event, "Coins Leaderboard", sorted);
+            makeEmbed(event, "Coins Leaderboard", sorted, false);
         }
     }
 
@@ -101,7 +103,7 @@ public class LeaderBoardCMD extends SlashCommand {
                 playerShards.put(player, (double) Tazpvp.statsManager.getShards(player));
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerShards);
-            makeEmbed(event, "Shards Leaderboard", sorted);
+            makeEmbed(event, "Shards Leaderboard", sorted, true);
         }
     }
 
@@ -121,7 +123,7 @@ public class LeaderBoardCMD extends SlashCommand {
                 playerLevel.put(player, (double) Tazpvp.statsManager.getLevel(player));
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerLevel);
-            makeEmbed(event, "Level Leaderboard", sorted);
+            makeEmbed(event, "Level Leaderboard", sorted, true);
         }
     }
 
@@ -137,17 +139,20 @@ public class LeaderBoardCMD extends SlashCommand {
         @Override
         public void execute(SlashCommandEvent event) {
             HashMap<UUID, Double> playerKDR = new HashMap<>();
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setRoundingMode(RoundingMode.CEILING);
             for (UUID player : playerUUIDS()) {
                 if (Tazpvp.statsManager.getDeaths(player) != 0 && Tazpvp.statsManager.getKills(player) != 0) {
-                    playerKDR.put(player, (double) Tazpvp.statsManager.getLevel(player) / (double) Tazpvp.statsManager.getDeaths(player));
+                    double d = Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player);
+                    playerKDR.put(player, Double.valueOf(df.format(d)));
                 }
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKDR);
-            makeEmbed(event, "KDR Leaderboard", sorted);
+            makeEmbed(event, "KDR Leaderboard", sorted, false);
         }
     }
 
-    public static void makeEmbed(SlashCommandEvent e, String title, LinkedHashMap<UUID, Double> data) {
+    public static void makeEmbed(SlashCommandEvent e, String title, LinkedHashMap<UUID, Double> data, boolean roundTwoInt) {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor(title, null);
         embed.setColor(Color.RED);
@@ -160,7 +165,7 @@ public class LeaderBoardCMD extends SlashCommand {
             }
             int placement = i + 1;
             UUID uuid = data.keySet().stream().toList().get(i);
-            Double value = data.get(uuid);
+            var value = (roundTwoInt) ? Math.ceil(data.get(uuid)) : data.get(uuid);
             list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
         }
 
