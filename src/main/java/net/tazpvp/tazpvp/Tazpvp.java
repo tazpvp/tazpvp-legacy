@@ -9,6 +9,7 @@ import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.StaticSpingParticle;
 import net.tazpvp.tazpvp.DiscordBot.StartBotThread;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Duels.WorldUtils.WorldManageent;
+import net.tazpvp.tazpvp.Events.*;
 import net.tazpvp.tazpvp.Guilds.GuildCMD;
 import net.tazpvp.tazpvp.Guilds.GuildManager;
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
@@ -112,12 +113,12 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         new WorldCreator("ban").environment(World.Environment.NETHER).createWorld();
 
         registerCommands();
-
-        try {
-            registerEvents();
-        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        tempRegisterEvents();
+//        try {
+//            registerEvents();
+//        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
         try {
             registeRedLib();
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
@@ -219,6 +220,12 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         for (Class<? extends Listener> listener : RedLib.getExtendingClasses(this, Listener.class)) {
             regList(listener.getConstructor().newInstance());
         }
+    }
+
+    public void tempRegisterEvents() {
+        List<Listener> listeners = List.of(new BlockBreakEvent(), new BlockFireEvent(), new BlockPlaceEvent(), new BowShootEvent(), new ChatEvent(), new CommandEvent(), new DamageEvent(), new DeathEvent(), new DrinkMilkEvent(), new EatEvent(), new InteractEvent(), new ItemPickUpEvent(), new JoinEvent(), new LeaveEvnet(), new MoveEvent(), new NPCEvent(), new WorldChangeEvent(), new WorldLoadEvent());
+
+        listeners.forEach(this::regList);
     }
 
     public void regList(Listener listener){
