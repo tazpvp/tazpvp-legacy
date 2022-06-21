@@ -24,7 +24,7 @@ public class UpdateSword {
 
                 for (Items item : Items.values()) {
                     if (item.getStoredID() == id) {
-                        p.getInventory().removeItemAnySlot(i);
+                        p.getInventory().removeItem(i);
                         items.add(ItemBuilder.maekItem(item));
                     }
                 }
