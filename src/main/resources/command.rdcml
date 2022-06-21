@@ -145,22 +145,30 @@ stats {
        }
     }
     credits {
-           add player:target int:amount {
-               hook credits_add
-           }
-           remove player:target int:amount {
-               hook credits_remove
-           }
-           set player:target int:amount {
-               hook credits_set
-           }
-           reset player:target {
-               hook credits_reset
-           }
-           get player:target {
-               hook credits_get
-           }
-        }
+       add player:target int:amount {
+           hook credits_add
+       }
+       remove player:target int:amount {
+           hook credits_remove
+       }
+       set player:target int:amount {
+           hook credits_set
+       }
+       reset player:target {
+           hook credits_reset
+       }
+       get player:target {
+           hook credits_get
+       }
+    }
+    expleft {
+       set player:target int:amount {
+           hook expleft_set
+       }
+       get player:target {
+           hook expleft_get
+       }
+    }
     reset player:target {
         hook stats_reset
     }

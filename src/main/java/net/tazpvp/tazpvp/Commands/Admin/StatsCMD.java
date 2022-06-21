@@ -431,6 +431,27 @@ public class StatsCMD implements CommandListener {
         }
     }
 
+    // expleft commands
+
+    @CommandHook("expleft_set")
+    public void expleftSet(CommandSender sender, Player target, int amount) {
+        Tazpvp.statsManager.setExpLeft(target, amount);
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.DARK_AQUA + "You have set " + ChatColor.AQUA + amount + ChatColor.DARK_AQUA + " exp left to " + ChatColor.AQUA + target.getName());
+        } else {
+            sender.sendMessage("Console has set " + amount + " exp left to " + target.getName());
+        }
+    }
+
+    @CommandHook("expleft_get")
+    public void expleftGet(CommandSender sender, Player target) {
+        if (sender instanceof Player p) {
+            p.sendMessage(ChatColor.AQUA + target.getName() + ChatColor.DARK_AQUA + " has got " + ChatColor.AQUA + Tazpvp.statsManager.getExpLeft(target) + ChatColor.DARK_AQUA + "'s exp left");
+        } else {
+            sender.sendMessage(target.getName()+ " has got " + Tazpvp.statsManager.getExpLeft(target) + "'s exp left");
+        }
+    }
+
     @CommandHook("stats_reset")
     public void resetStats(Player p, Player target) {
         Tazpvp.statsManager.initPlayer(target);
