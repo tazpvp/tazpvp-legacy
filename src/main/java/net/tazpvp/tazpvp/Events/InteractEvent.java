@@ -28,6 +28,7 @@ public class InteractEvent implements Listener {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block b = e.getClickedBlock();
             if (b.getType() == Material.RESPAWN_ANCHOR) {
+                e.setCancelled(true);
                 new BukkitRunnable() {
                     @Override
                     public void run() {
@@ -35,10 +36,38 @@ public class InteractEvent implements Listener {
                     }
                 }.runTaskLater(Tazpvp.getInstance(), 2L);
             }
-        } else {
-            if (runCustomItem(e.getPlayer())) {
-                e.setCancelled(true);
+            return;
+        }
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            switch (e.getMaterial()) {
+                case WOODEN_AXE:
+                case DIAMOND_AXE:
+                case IRON_AXE:
+                case GOLDEN_AXE:
+                case STONE_AXE:
+                    break;
+                default:
+                    return;
             }
+            switch (e.getClickedBlock().getType()) {
+                case ACACIA_LOG:
+                case SPRUCE_LOG:
+                case OAK_LOG:
+                case JUNGLE_LOG:
+                case DARK_OAK_LOG:
+                case BIRCH_LOG:
+                    break;
+                default:
+                    return;
+            }
+            if (!e.getPlayer().isOp()) {
+                e.setCancelled(true);
+                return;
+            }
+        }
+
+        if (runCustomItem(e.getPlayer())) {
+            e.setCancelled(true);
         }
     }
     @EventHandler
