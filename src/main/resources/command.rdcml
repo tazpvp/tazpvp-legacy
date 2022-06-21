@@ -447,9 +447,6 @@ guild,g {
     kick player:target {
         hook guild_kick
     }
-    disband {
-        hook guild_disband
-    }
     hijack player:target {
         hook guild_hijack
         permission tazpvp.staff.guild
