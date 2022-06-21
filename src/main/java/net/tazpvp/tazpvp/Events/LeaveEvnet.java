@@ -30,7 +30,7 @@ public class LeaveEvnet implements Listener {
         if (CombatTag.isInCombat(e.getPlayer())) {
             Player p = e.getPlayer();
             UUID k = Tazpvp.lastDamage.get(p.getUniqueId());
-            Player h = Bukkit.getOfflinePlayer(k).getPlayer();
+            Player h = Bukkit.getPlayer(k);
             DeathUtils deathUtils = new DeathUtils(p, h);
 
             CombatTag.combatLog.remove(p.getUniqueId());
