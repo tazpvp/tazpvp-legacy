@@ -36,8 +36,10 @@ public class ItemBuilder {
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+//        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+//
+//        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
         itemz.setItemMeta(meta);
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();
