@@ -54,21 +54,6 @@ public class DeathEvent implements Listener {
                 }
             }
             double fd = e.getFinalDamage();
-            if (e instanceof EntityDamageByEntityEvent) {
-                if (((EntityDamageByEntityEvent) e).getDamager() instanceof Player d) {
-                    ItemStack item = d.getInventory().getItemInMainHand();
-                    if (item.hasItemMeta()) {
-                        NamespacedKey key = PdcUtils.key;
-                        ItemMeta meta = item.getItemMeta();
-                        PersistentDataContainer container = meta.getPersistentDataContainer();
-
-                        if (container.has(key, PersistentDataType.DOUBLE)){
-                            fd = container.get(key, PersistentDataType.DOUBLE);
-                        }
-                    }
-                }
-            }
-            fd = e.getFinalDamage();
             if (p.getHealth() - fd <= 0) {
                 e.setCancelled(true);
                 if (e instanceof EntityDamageByEntityEvent) { // Code that requires a damager should4 go here{
@@ -134,14 +119,13 @@ public class DeathEvent implements Listener {
                         CombatTag.putInCombat(p);
 
                         ItemStack item = d.getInventory().getItemInMainHand();
+
+                        // Now just a check if item is a sword - but overkill
                         if (item.hasItemMeta()) {
                             NamespacedKey key = PdcUtils.key;
                             ItemMeta meta = item.getItemMeta();
                             PersistentDataContainer container = meta.getPersistentDataContainer();
-
                             if (container.has(key, PersistentDataType.DOUBLE)){
-                                double foundValue = container.get(key, PersistentDataType.DOUBLE);
-                                itemDamage(foundValue, (EntityDamageByEntityEvent) e);
                                 return;
                             }
                         }
@@ -191,7 +175,7 @@ public class DeathEvent implements Listener {
         }
     }
 
-    public void itemDamage(Double id, EntityDamageByEntityEvent e) {
+    public void itemDamage(Double id, EntityDamageByEntityEvent e) { // sadness :'(
         for (Items item : Items.values()) {
             if (item.getStoredID() == id) {
                 Player d = (Player) e.getDamager();
@@ -200,7 +184,7 @@ public class DeathEvent implements Listener {
                     double secondsLeft = (((double)cooldowns.get(d))+cooldownTime) - ((double)System.currentTimeMillis());
                     if(secondsLeft>0) {
                         e.setDamage((double) item.getDamage()/4);
-                        cooldowns.put(d, System.currentTimeMillis());
+                        cooldowns.put(d, System.currentTimeMillis()); // Ntdi no longer is sad bc this is ass code
                         return;
                     }
                 }
@@ -209,7 +193,7 @@ public class DeathEvent implements Listener {
                 // Do Command Here
                 e.setDamage(item.getDamage());
                 if (d.getVelocity().getY() < 0) {
-                    e.setDamage(item.getDamage() * 1.5F);
+                    e.setDamage(item.getDamage() * 1.5F); // lol nice check too bad idc
                 }
                 return;
             }
@@ -226,7 +210,7 @@ public class DeathEvent implements Listener {
                 public void run() {
                     new CZombie().createZombie();
                 }
-            }.runTaskLater(Tazpvp.getInstance(), (long) (20 * MobLocations.ZOMBIE.respawnTime()));
+            }.runTaskLater(Tazpvp.getInstance(), (long) (20 * MobLocations.ZOMBIE.respawnTime())); //huh
         }
     }
 
