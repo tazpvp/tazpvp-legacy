@@ -24,6 +24,10 @@ public class BanCMD implements CommandListener {
             sender.sendMessage(ChatColor.RED + "You cannot ban this player!");
             return;
         }
+        if (target == sender) {
+            sender.sendMessage(ChatColor.RED + "You cannot ban yourself!");
+            return;
+        }
         if (!Tazpvp.punishmentManager.isBanned(target)) {
             Tazpvp.punishmentManager.initBan(target, true, reason);
             SendBanNotification.sendBanNotification(target.getUniqueId(), sender, reason);
