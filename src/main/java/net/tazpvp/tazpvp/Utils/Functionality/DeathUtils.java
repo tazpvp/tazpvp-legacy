@@ -113,6 +113,8 @@ public class DeathUtils {
      * Updates all the stats of {@code p killer}
      */
     public void statsUpdate() {
+        if (Tazpvp.statsManager.getExpLeft(p) <= 0) Tazpvp.statsManager.setExpLeft(p, 45);
+        if (Tazpvp.statsManager.getExpLeft(killer) <= 0) Tazpvp.statsManager.setExpLeft(killer, 45);
         Tazpvp.statsManager.addKills(killer, 1);
         Tazpvp.statsManager.addExp(killer, 50);
         Tazpvp.statsManager.addStreak(killer, 1);
