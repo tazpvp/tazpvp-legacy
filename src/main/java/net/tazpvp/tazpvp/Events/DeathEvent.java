@@ -42,8 +42,8 @@ public class DeathEvent implements Listener {
         if (e.getEntity() instanceof Player p) {
             if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 if (Tazpvp.fallDamageImmune.contains(p)) {
-                    e.setCancelled(true);
                     Tazpvp.fallDamageImmune.remove(p);
+                    e.setCancelled(true);
                     return;
                 }
             }

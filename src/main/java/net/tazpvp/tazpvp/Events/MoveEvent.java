@@ -46,7 +46,9 @@ public class MoveEvent implements Listener {
 
     public void Launchpad(Player p) {
         if (p.getGameMode().equals(GameMode.SURVIVAL)){
-            Tazpvp.fallDamageImmune.add(p);
+            if (!Tazpvp.fallDamageImmune.contains(p)) {
+                Tazpvp.fallDamageImmune.add(p);
+            }
             p.playSound(p.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
             p.setVelocity(new Vector(0, 1.5, 3));
         }
