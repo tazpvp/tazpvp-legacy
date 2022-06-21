@@ -12,11 +12,12 @@ public class CommandEvent implements Listener {
         if (Tazpvp.punishmentManager.isBanned(e.getPlayer())) {
             Bukkit.getLogger().info(e.getMessage());
             for (String cmd : Tazpvp.allowedCmds) {
-                Bukkit.getLogger().info(cmd);
-                if (!e.getMessage().startsWith(cmd)) {
-                    e.setCancelled(true);
-                    e.getPlayer().sendMessage(ChatColor.RED + "You cannot use commands while you are banned.");
-                    break;
+                if (!Tazpvp.allowedCmds.contains(cmd)) {
+                    if (!e.getMessage().startsWith(cmd)) {
+                        e.setCancelled(true);
+                        e.getPlayer().sendMessage(ChatColor.RED + "You cannot use commands while you are banned.");
+                        break;
+                    }
                 }
             }
         }
