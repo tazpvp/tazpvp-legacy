@@ -12,6 +12,10 @@ import java.util.UUID;
 public class BountyCMD implements CommandListener {
     @CommandHook("bounty_set")
     public void bounty_set(Player p, Player target, int amount) {
+        if (amount < 1) {
+            p.sendMessage(ChatColor.RED + "You cannot set a bounty of less than 1.");
+            return;
+        }
         if (Tazpvp.statsManager.getCoins(p) > amount) {
             Tazpvp.statsManager.setCoins(p, Tazpvp.statsManager.getCoins(p) - amount);
             //actually putting the bounty
