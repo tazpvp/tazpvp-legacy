@@ -165,10 +165,14 @@ public class LeaderBoardCMD extends SlashCommand {
             }
             int placement = i + 1;
             UUID uuid = data.keySet().stream().toList().get(i);
-            var value = (roundTwoInt) ? Math.ceil(data.get(uuid)) : data.get(uuid);
-            list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            if (roundTwoInt) {
+                int value = (int) Math.ceil(data.get(uuid));
+                list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            } else {
+                double value =  data.get(uuid);
+                list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            }
         }
-
         embed.setDescription("━━━━━━━━━━━━━━\n" + list.toString() + "━━━━━━━━━━━━━━");
 
         e.replyEmbeds(embed.build()).queue();
