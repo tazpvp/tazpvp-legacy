@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Commands.Player;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Duels.DuelLogic;
+import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.ChatColor;
@@ -32,6 +33,9 @@ public class SpawnCMD implements Listener, CommandListener {
                 target.teleport(configUtils.spawn);
             }
         }
+        if (CombatTag.isInCombat(p)) {
+            return;
+        }
         if (target.hasPermission("tazpvp.spawn")){
             target.teleport(configUtils.spawn);
         } else {
@@ -41,7 +45,7 @@ public class SpawnCMD implements Listener, CommandListener {
             new BukkitRunnable(){
                 @Override
                 public void run() {
-                    if (isGoingToSpawn(p)){
+                    if (p.hasMetadata("goingToSpawn")){
                         p.teleport(configUtils.spawn);
                         p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
                         p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
@@ -54,7 +58,7 @@ public class SpawnCMD implements Listener, CommandListener {
 
     @EventHandler
     public void NoMoveNo(PlayerMoveEvent e){
-        if(isGoingToSpawn(e.getPlayer())){
+        if(e.getPlayer().hasMetadata("goingToSpawn")){
             e.getPlayer().setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), false));
             e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
         }
@@ -64,7 +68,7 @@ public class SpawnCMD implements Listener, CommandListener {
     public void Damage(EntityDamageEvent e){
         if (e.getEntity() instanceof Player) {
             Player p = (Player) e.getEntity();
-            if (isGoingToSpawn(p)) {
+            if (p.hasMetadata("goingToSpawn")) {
                 p.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), false));
                 p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
             }
