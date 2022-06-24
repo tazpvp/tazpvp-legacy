@@ -9,10 +9,7 @@ import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -115,9 +112,10 @@ public class DeathEvent implements Listener {
                     }
                     DeathFunction(p, null, false);
                 }
-            } else {
+            } else if (p.getWorld() == Bukkit.getWorld("arena")) {
                 if (e instanceof EntityDamageByEntityEvent ee) {
                     if ((ee).getDamager() instanceof Player d) {
+
                         Tazpvp.lastDamage.put(p.getUniqueId(), d.getUniqueId());
 
                         CombatTag.putInCombat(d);
