@@ -66,7 +66,7 @@ public class SpawnCMD implements Listener, CommandListener {
             Player p = (Player) e.getEntity();
             if (isGoingToSpawn(p)) {
                 p.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), false));
-                p.sendMessage(ChatColor.GREEN + "Detected Damage! Canceling teleportation!");
+                p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
             }
         }
     }
