@@ -95,10 +95,10 @@ public class MineGUI {
     }
 
     public ItemStack getPickaxe(Player p) {
-        for (ItemStack item : p.getInventory().getContents()) {
-            if (item.getType().name().toLowerCase().endsWith("_pickaxe")) {
-                return item;
-            }
+        ItemStack i = p.getInventory().getItemInMainHand();
+        Material m = i.getType();
+        if (m.name().toLowerCase().endsWith("_pickaxe")) {
+            return i;
         }
         return null;
     }
