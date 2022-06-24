@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Commands.Admin;
 
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.Tazpvp;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import redempt.redlib.commandmanager.CommandHook;
@@ -11,10 +12,10 @@ public class MutechatCMD implements CommandListener {
     public void muteChat(CommandSender sender) {
         if (Tazpvp.chatMuted) {
             Tazpvp.chatMuted = false;
-            sender.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " unmuted " + ChatColor.GOLD + "chat!");
+            Bukkit.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "Chat has been UN-MUTED");
         } else {
             Tazpvp.chatMuted = true;
-            sender.sendMessage(ChatColor.GOLD + "Successfully" + ChatColor.RED + " muted " + ChatColor.GOLD + "chat!");
+            Bukkit.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "Chat has been MUTED");
         }
     }
 }
