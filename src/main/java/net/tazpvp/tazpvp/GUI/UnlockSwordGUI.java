@@ -92,16 +92,17 @@ public class UnlockSwordGUI {
                     p.sendMessage("");
                     p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
                     p.sendMessage("");
-                    if (!Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-                        List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
-                        swords.add(unlockedItem);
-                        Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
-                        net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
-                        List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
-                        if (swordUnlocked.size() >= Items.values().length) {
-                            Achieve(p, "Hoarder", "hoarder", 5, 220);
-                        }
+                    List<Items> swords = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
+                    swords.add(unlockedItem);
+                    Tazpvp.playerWrapperMap.get(p.getUniqueId()).setSwords(swords);
+                    net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.giveItem(p, unlockedItem, 1);
+                    List<Items> swordUnlocked = Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords();
+                    if (swordUnlocked.size() >= Items.values().length) {
+                        Achieve(p, "Hoarder", "hoarder", 5, 220);
                     }
+//                    if (!Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
+//
+//                    }
                     p.closeInventory();
                     cancel();
                 } else {
