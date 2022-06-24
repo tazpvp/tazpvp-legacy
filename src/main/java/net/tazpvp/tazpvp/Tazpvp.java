@@ -29,6 +29,7 @@ import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import net.tazpvp.tazpvp.unused.ConfigGetter;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -241,6 +242,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
                 new MoveEvent(),
                 new NPCEvent(),
                 new WorldChangeEvent(),
+                new ItemDropEvent(),
                 new WorldLoadEvent());
 
         listeners.forEach(this::regList);
