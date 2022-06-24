@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.Duels.DuelLogic;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -22,27 +23,47 @@ import java.util.List;
 public class SpawnCMD implements Listener, CommandListener {
     @CommandHook("spawn")
     public void spawn(Player p, Player target){
-        if (Tazpvp.punishmentManager.isBanned(p)) return;
-        if (Tazpvp.duelLogic.isInDuel(target)) return;
-        if (Tazpvp.duelLogic.isInDuel(p)) return;
         if (!target.equals(p)) {
             if (!p.hasPermission("tazpvp.spawn")) {
                 p.sendMessage(ChatColor.RED + "You don't have permission to use this command!");
-                return;
             } else {
-                target.teleport(configUtils.spawn);
+                spawnPlayer(target);
+            }
+        } else {
+            spawnPlayer(p);
+        }
+    }
+
+    @EventHandler
+    public void NoMoveNo(PlayerMoveEvent e){
+        Player p = e.getPlayer();
+        if(p.hasMetadata("goingToSpawn")){
+            Bukkit.broadcastMessage("ggerg");
+            p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
+            e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
+        }
+    }
+
+    @EventHandler
+    public void Damage(EntityDamageEvent e){
+        if (e.getEntity() instanceof Player p) {
+            if (p.hasMetadata("goingToSpawn")) {
+                Bukkit.broadcastMessage("ggerg2");
+                p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
+                p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
             }
         }
-        if (CombatTag.isInCombat(p)) {
-            p.sendMessage(ChatColor.RED + "You cannot go to spawn while in combat.");
-            return;
-        }
-        if (target.hasPermission("tazpvp.spawn")){
-            target.teleport(configUtils.spawn);
-        } else {
-            target.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + "5 Seconds" + ChatColor.DARK_AQUA + " Do not move.");
-            target.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), true));
+    }
 
+    public void spawnPlayer(Player p){
+        if (Tazpvp.punishmentManager.isBanned(p)) return;
+        if (Tazpvp.duelLogic.isInDuel(p)) return;
+        if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You cannot go to spawn while in combat."); return; }
+        if (p.hasPermission("tazpvp.spawn")){
+            p.teleport(configUtils.spawn);
+        } else {
+            p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + "5 Seconds" + ChatColor.DARK_AQUA + " Do not move.");
+            p.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), true));
             new BukkitRunnable(){
                 @Override
                 public void run() {
@@ -54,25 +75,6 @@ public class SpawnCMD implements Listener, CommandListener {
                     }
                 }
             }.runTaskLater(Tazpvp.getInstance(), 5 * 20);
-        }
-    }
-
-    @EventHandler
-    public void NoMoveNo(PlayerMoveEvent e){
-        Player p = e.getPlayer();
-        if(p.hasMetadata("goingToSpawn")){
-            p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
-            e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
-        }
-    }
-
-    @EventHandler
-    public void Damage(EntityDamageEvent e){
-        if (e.getEntity() instanceof Player p) {
-            if (p.hasMetadata("goingToSpawn")) {
-                p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
-                p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
-            }
         }
     }
 //
