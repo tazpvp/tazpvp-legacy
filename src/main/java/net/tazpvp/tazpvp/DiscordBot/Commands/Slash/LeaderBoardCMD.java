@@ -5,11 +5,11 @@ import com.jagrosh.jdautilities.command.SlashCommand;
 import com.jagrosh.jdautilities.command.SlashCommandEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.MathUtils;
 import net.tazpvp.tazpvp.Utils.Functionality.Sortation;
 import org.bukkit.Bukkit;
 
 import java.awt.*;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
@@ -140,11 +140,11 @@ public class LeaderBoardCMD extends SlashCommand {
         public void execute(SlashCommandEvent event) {
             HashMap<UUID, Double> playerKDR = new HashMap<>();
             DecimalFormat df = new DecimalFormat("#.##");
-            df.setRoundingMode(RoundingMode.CEILING);
             for (UUID player : playerUUIDS()) {
                 if (Tazpvp.statsManager.getDeaths(player) != 0 && Tazpvp.statsManager.getKills(player) != 0) {
                     double d = Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player);
-                    playerKDR.put(player, Double.valueOf(df.format(d)));
+                    double d2 = MathUtils.round((float) d, 2);
+                    playerKDR.put(player, d2);
                 }
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKDR);
@@ -165,10 +165,14 @@ public class LeaderBoardCMD extends SlashCommand {
             }
             int placement = i + 1;
             UUID uuid = data.keySet().stream().toList().get(i);
-            var value = (roundTwoInt) ? Math.ceil(data.get(uuid)) : data.get(uuid);
-            list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            if (roundTwoInt) {
+                int value = (int) Math.ceil(data.get(uuid));
+                list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            } else {
+                double value =  data.get(uuid);
+                list.append("**" + placement + "〉**" + Bukkit.getOfflinePlayer(uuid).getName() + " - " + value + "\n");
+            }
         }
-
         embed.setDescription("━━━━━━━━━━━━━━\n" + list.toString() + "━━━━━━━━━━━━━━");
 
         e.replyEmbeds(embed.build()).queue();
