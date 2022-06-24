@@ -41,6 +41,10 @@ public class MoveEvent implements Listener {
                 Tazpvp.duelLogic.duelEnd(p);
             }
         }
+        if(p.hasMetadata("goingToSpawn")){
+            p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
+            e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
+        }
 
     }
 

@@ -10,6 +10,7 @@ import net.tazpvp.tazpvp.Utils.Functionality.DeathUtils;
 import net.tazpvp.tazpvp.Utils.Variables.PdcUtils;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Arrow;
@@ -52,6 +53,10 @@ public class DeathEvent implements Listener {
                     e.setCancelled(true);
                     return;
                 }
+            }
+            if (p.hasMetadata("goingToSpawn")) {
+                p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
+                p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
             }
             double fd = e.getFinalDamage();
             if (p.getHealth() - fd <= 0) {

@@ -34,27 +34,6 @@ public class SpawnCMD implements Listener, CommandListener {
         }
     }
 
-    @EventHandler
-    public void NoMoveNo(PlayerMoveEvent e){
-        Player p = e.getPlayer();
-        if(p.hasMetadata("goingToSpawn")){
-            Bukkit.broadcastMessage("ggerg");
-            p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
-            e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
-        }
-    }
-
-    @EventHandler
-    public void Damage(EntityDamageEvent e){
-        if (e.getEntity() instanceof Player p) {
-            if (p.hasMetadata("goingToSpawn")) {
-                Bukkit.broadcastMessage("ggerg2");
-                p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
-                p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
-            }
-        }
-    }
-
     public void spawnPlayer(Player p){
         if (Tazpvp.punishmentManager.isBanned(p)) return;
         if (Tazpvp.duelLogic.isInDuel(p)) return;
@@ -67,6 +46,9 @@ public class SpawnCMD implements Listener, CommandListener {
             new BukkitRunnable(){
                 @Override
                 public void run() {
+                    if (p.hasMetadata("goingToSpawn")) {
+                        Bukkit.broadcastMessage("ggerg3");
+                    }
                     if (p.hasMetadata("goingToSpawn")){
                         p.teleport(configUtils.spawn);
                         p.removeMetadata("goingToSpawn", Tazpvp.getInstance());

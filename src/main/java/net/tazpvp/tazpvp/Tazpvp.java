@@ -223,7 +223,26 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     }
 
     public void tempRegisterEvents() {
-        List<Listener> listeners = List.of(new BlockBreakEvent(), new BlockFireEvent(), new BlockPlaceEvent(), new BowShootEvent(), new ChatEvent(), new CommandEvent(), new DamageEvent(), new DeathEvent(), new DrinkMilkEvent(), new EatEvent(), new InteractEvent(), new ItemPickUpEvent(), new JoinEvent(), new LeaveEvnet(), new MoveEvent(), new NPCEvent(), new WorldChangeEvent(), new WorldLoadEvent());
+        List<Listener> listeners = List.of(
+                new BlockBreakEvent(),
+                new BlockFireEvent(),
+                new BlockPlaceEvent(),
+                new BowShootEvent(),
+                new ChatEvent(),
+                new CommandEvent(),
+                new DamageEvent(),
+                new DeathEvent(),
+                new DrinkMilkEvent(),
+                new EatEvent(),
+                new InteractEvent(),
+                new ItemPickUpEvent(),
+                new JoinEvent(),
+                new LeaveEvnet(),
+                new MoveEvent(),
+                new NPCEvent(),
+                new SpawnCMD(),
+                new WorldChangeEvent(),
+                new WorldLoadEvent());
 
         listeners.forEach(this::regList);
     }
