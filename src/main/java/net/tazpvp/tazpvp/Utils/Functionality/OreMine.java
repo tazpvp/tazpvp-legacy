@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Utils.Functionality;
 
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -33,8 +34,10 @@ public class OreMine implements Listener {
             } else {
                 p.getInventory().addItem(new ItemStack(block, 1));
             }
+            p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1, 1);
         } else {
             p.getInventory().addItem(new ItemStack(block));
+            p.playSound(p.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1, 1);
         }
 
 

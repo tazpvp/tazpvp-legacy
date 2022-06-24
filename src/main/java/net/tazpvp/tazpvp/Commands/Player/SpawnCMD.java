@@ -56,12 +56,4 @@ public class SpawnCMD implements CommandListener {
             }.runTaskLater(Tazpvp.getInstance(), 5 * 20);
         }
     }
-//
-//    public boolean isGoingToSpawn(Player p){
-//        List<MetadataValue> metaDataValues = p.getMetadata("goingToSpawn");
-//        for (MetadataValue metaDataValue : metaDataValues) {
-//            return metaDataValue.asBoolean();
-//        }
-//        return false;
-//    }
 }
