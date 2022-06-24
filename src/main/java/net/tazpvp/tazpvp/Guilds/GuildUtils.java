@@ -252,8 +252,8 @@ public class GuildUtils {
         }
 
 
-        guild.getKillsMap().remove(p.getUniqueId());
-        guild.getDeathsMap().remove(p.getUniqueId());
+        guild.getKillsMap().remove(target.getUniqueId());
+        guild.getDeathsMap().remove(target.getUniqueId());
         guild.sendAlL(target.getName() + wasKicked);
         guild.removeFromGuild(target.getUniqueId());
         Tazpvp.guildManager.removePlayerGuild(target);
