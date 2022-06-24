@@ -34,6 +34,7 @@ public class SpawnCMD implements Listener, CommandListener {
             }
         }
         if (CombatTag.isInCombat(p)) {
+            p.sendMessage(ChatColor.RED + "You cannot go to spawn while in combat.");
             return;
         }
         if (target.hasPermission("tazpvp.spawn")){
@@ -58,28 +59,28 @@ public class SpawnCMD implements Listener, CommandListener {
 
     @EventHandler
     public void NoMoveNo(PlayerMoveEvent e){
-        if(e.getPlayer().hasMetadata("goingToSpawn")){
-            e.getPlayer().setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), false));
+        Player p = e.getPlayer();
+        if(p.hasMetadata("goingToSpawn")){
+            p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
             e.getPlayer().sendMessage(ChatColor.RED + "Teleportation cancelled, you moved.");
         }
     }
 
     @EventHandler
     public void Damage(EntityDamageEvent e){
-        if (e.getEntity() instanceof Player) {
-            Player p = (Player) e.getEntity();
+        if (e.getEntity() instanceof Player p) {
             if (p.hasMetadata("goingToSpawn")) {
-                p.setMetadata("goingToSpawn", new FixedMetadataValue(Tazpvp.getInstance(), false));
+                p.removeMetadata("goingToSpawn", Tazpvp.getInstance());
                 p.sendMessage(ChatColor.GREEN + "Teleportation cancelled, damage taken.");
             }
         }
     }
-
-    public boolean isGoingToSpawn(Player p){
-        List<MetadataValue> metaDataValues = p.getMetadata("goingToSpawn");
-        for (MetadataValue metaDataValue : metaDataValues) {
-            return metaDataValue.asBoolean();
-        }
-        return false;
-    }
+//
+//    public boolean isGoingToSpawn(Player p){
+//        List<MetadataValue> metaDataValues = p.getMetadata("goingToSpawn");
+//        for (MetadataValue metaDataValue : metaDataValues) {
+//            return metaDataValue.asBoolean();
+//        }
+//        return false;
+//    }
 }
