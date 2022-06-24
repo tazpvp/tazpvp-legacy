@@ -37,7 +37,7 @@ public class MoveEvent implements Listener {
         }
 
         if (Tazpvp.duelLogic.isInDuel(p)) {
-            if (p.getLocation().getY() < -1) {
+            if (p.getLocation().getY() < 50) {
                 Tazpvp.duelLogic.duelEnd(p);
             }
         }

@@ -46,9 +46,6 @@ public class SpawnCMD implements CommandListener {
             new BukkitRunnable(){
                 @Override
                 public void run() {
-                    if (p.hasMetadata("goingToSpawn")) {
-                        Bukkit.broadcastMessage("ggerg3");
-                    }
                     if (p.hasMetadata("goingToSpawn")){
                         p.teleport(configUtils.spawn);
                         p.removeMetadata("goingToSpawn", Tazpvp.getInstance());

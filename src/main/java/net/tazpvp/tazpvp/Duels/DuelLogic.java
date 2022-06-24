@@ -96,6 +96,8 @@ public class DuelLogic implements Listener {
 
         p.setGameMode(GameMode.SPECTATOR);
 
+        p.teleport(d.getSpawn1());
+
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
         Bukkit.broadcastMessage(ChatColor.AQUA + opponent.getName() + ChatColor.DARK_AQUA + " won the duel against " + ChatColor.AQUA + p.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
