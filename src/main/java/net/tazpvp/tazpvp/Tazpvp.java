@@ -240,7 +240,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
                 new LeaveEvnet(),
                 new MoveEvent(),
                 new NPCEvent(),
-                new SpawnCMD(),
                 new WorldChangeEvent(),
                 new WorldLoadEvent());
 

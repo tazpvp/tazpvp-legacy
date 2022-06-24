@@ -20,7 +20,7 @@ import redempt.redlib.commandmanager.CommandHook;
 
 import java.util.List;
 
-public class SpawnCMD implements Listener, CommandListener {
+public class SpawnCMD implements CommandListener {
     @CommandHook("spawn")
     public void spawn(Player p, Player target){
         if (!target.equals(p)) {
