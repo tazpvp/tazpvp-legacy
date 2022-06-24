@@ -27,6 +27,10 @@ public class BlockBreakEvent implements Listener {
                 else if (block == Material.DEEPSLATE_IRON_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
                 else if (block == Material.DEEPSLATE_LAPIS_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
                 else if (block == Material.DEEPSLATE_EMERALD_ORE) oreRespawn(p, block, smeltedForm, 350L, b, e);
+            } else if(p.getWorld().getName().equals("arena") || p.getWorld().getName().equals("ban")) {
+                if (!b.hasMetadata("PlayerPlaced")) {
+                    e.setCancelled(true);
+                }
             }
         }
     }

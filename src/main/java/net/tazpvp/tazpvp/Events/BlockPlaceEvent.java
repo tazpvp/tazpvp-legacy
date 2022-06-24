@@ -26,6 +26,7 @@ public class BlockPlaceEvent implements Listener {
             if (p.getWorld().getName().equals("arena")) {
                 if (event.getBlock().getLocation().distance(radius) > 50 || event.getBlock().getLocation().getY() <= 95) {
                     event.setCancelled(true);
+                    return;
                 }
             }
             Block b = event.getBlock();
@@ -33,7 +34,10 @@ public class BlockPlaceEvent implements Listener {
                 Material blockType = event.getBlockPlaced().getType();
                 ItemStack blockItem = new ItemStack(blockType, 1);
 
+                b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
+
                 builderPerk(p, blockItem);
+
 
                 if (Tazpvp.blocks.containsKey(blockType)) {
                     event.setCancelled(true);
