@@ -43,8 +43,7 @@ public class InteractEvent implements Listener {
                 case GOLDEN_AXE:
                 case STONE_AXE:
                     break;
-                default:
-                    return;
+                default: return;
             }
             switch (e.getClickedBlock().getType()) {
                 case ACACIA_LOG:
@@ -54,8 +53,7 @@ public class InteractEvent implements Listener {
                 case DARK_OAK_LOG:
                 case BIRCH_LOG:
                     break;
-                default:
-                    return;
+                default: return;
             }
             if (!e.getPlayer().isOp()) {
                 e.setCancelled(true);
