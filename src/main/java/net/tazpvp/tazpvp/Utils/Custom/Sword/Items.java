@@ -12,7 +12,7 @@ import java.util.Map;
 
 public enum Items {
     // common swords
-    WooKni(ChatColor.WHITE + "Kitchen Knife", Material.STONE_SWORD, 7, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 0.5, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Simple but effective."),
+    WooKni(ChatColor.WHITE + "Kitchen Knife", Material.STONE_SWORD, 7, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 32, PdcUtils.key, PersistentDataType.DOUBLE, 1, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Simple but effective."),
     SteCut(ChatColor.WHITE + "Steel Cutlass", Material.STONE_SWORD, 7, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 0.5, PdcUtils.key, PersistentDataType.DOUBLE, 2, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); }}, ChatColor.GRAY + "Looking for something durable?.", ChatColor.GRAY + "Sweeping Edge I"),
     KeeDag(ChatColor.WHITE + "Keen Dagger", Material.STONE_SWORD, 7, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 0.5, PdcUtils.key, PersistentDataType.DOUBLE, 3, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); }}, ChatColor.GRAY + "Basic but precise.", ChatColor.GRAY + "Sweeping Edge I"),
     PriSha(ChatColor.WHITE + "Prison Shank", Material.STONE_SWORD, 6, ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 0.5, PdcUtils.key, PersistentDataType.DOUBLE, 4, new HashMap<Enchantment, Integer>(), ChatColor.GRAY + "Usually utilized by gang members."),

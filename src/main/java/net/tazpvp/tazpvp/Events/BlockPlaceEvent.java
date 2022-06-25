@@ -36,6 +36,12 @@ public class BlockPlaceEvent implements Listener {
 
                 b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
+                if (blockType.equals(Material.PLAYER_HEAD) || blockType.equals(Material.PLAYER_WALL_HEAD)) {
+                    event.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + "Trade heads for shards at Bub's shop.");
+                    return;
+                }
+
                 builderPerk(p, blockItem);
 
 
