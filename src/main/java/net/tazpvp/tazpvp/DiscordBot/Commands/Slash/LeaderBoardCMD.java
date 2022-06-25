@@ -10,7 +10,6 @@ import net.tazpvp.tazpvp.Utils.Functionality.Sortation;
 import org.bukkit.Bukkit;
 
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
@@ -139,12 +138,9 @@ public class LeaderBoardCMD extends SlashCommand {
         @Override
         public void execute(SlashCommandEvent event) {
             HashMap<UUID, Double> playerKDR = new HashMap<>();
-            DecimalFormat df = new DecimalFormat("#.##");
             for (UUID player : playerUUIDS()) {
                 if (Tazpvp.statsManager.getDeaths(player) != 0 && Tazpvp.statsManager.getKills(player) != 0) {
-                    double d = Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player);
-                    double d2 = MathUtils.round((float) d, 2);
-                    playerKDR.put(player, d2);
+                    playerKDR.put(player, (double) MathUtils.round((float) Tazpvp.statsManager.getKills(player) / Tazpvp.statsManager.getDeaths(player), 2));
                 }
             }
             LinkedHashMap<UUID, Double> sorted = Sortation.sortByValue(playerKDR);
