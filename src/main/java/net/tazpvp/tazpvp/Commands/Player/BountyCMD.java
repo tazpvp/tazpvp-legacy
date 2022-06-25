@@ -25,7 +25,7 @@ public class BountyCMD implements CommandListener {
                 Tazpvp.bounty.put(target.getUniqueId(), amount);
             }
             Bukkit.broadcastMessage(ChatColor.AQUA + p.getName() + ChatColor.DARK_AQUA + " set a bounty of " + ChatColor.AQUA + "$" + amount + ChatColor.DARK_AQUA + " on " + ChatColor.AQUA + target.getName());
-            Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "Their total bounty is now:" + ChatColor.AQUA + " $" +Tazpvp.bounty.get(p.getUniqueId()));
+            Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "Total bounty:" + ChatColor.AQUA + " $" + Tazpvp.bounty.get(target.getUniqueId()));
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money");
         }
