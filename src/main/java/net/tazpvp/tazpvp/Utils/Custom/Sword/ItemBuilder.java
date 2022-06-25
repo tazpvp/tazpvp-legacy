@@ -41,9 +41,11 @@ public class ItemBuilder {
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modDamage = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier modSpeed = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", 1.6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
 
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modDamage);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modSpeed);
         itemz.setItemMeta(meta);
 
         Map<Enchantment, Integer> enchantments = item.getEnchantments();

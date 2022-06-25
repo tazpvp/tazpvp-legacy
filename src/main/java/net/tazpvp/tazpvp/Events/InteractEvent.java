@@ -36,7 +36,16 @@ public class InteractEvent implements Listener {
                     }
                 }.runTaskLater(Tazpvp.getInstance(), 2L);
             }
-            switch (e.getMaterial()) {
+            switch (p.getInventory().getItemInMainHand().getType()) {
+                case WOODEN_AXE:
+                case DIAMOND_AXE:
+                case IRON_AXE:
+                case GOLDEN_AXE:
+                case STONE_AXE:
+                    break;
+                default: return;
+            }
+            switch (p.getInventory().getItemInOffHand().getType()) {
                 case WOODEN_AXE:
                 case DIAMOND_AXE:
                 case IRON_AXE:

@@ -87,7 +87,7 @@ public enum Items {
         return this.rarity;
     }
 
-    public double getCooldownMilis() {
+    public double getCooldown() {
     	return this.cooldown * 1000;
     }
 

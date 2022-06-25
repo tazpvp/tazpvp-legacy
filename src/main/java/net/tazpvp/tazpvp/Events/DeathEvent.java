@@ -182,7 +182,7 @@ public class DeathEvent implements Listener {
         for (Items item : Items.values()) {
             if (item.getStoredID() == id) {
                 Player d = (Player) e.getDamager();
-                double cooldownTime = item.getCooldownMilis(); // Get number of milis from wherever you want
+                double cooldownTime = item.getCooldown(); // Get number of milis from wherever you want
                 if(cooldowns.containsKey(d)) {
                     double secondsLeft = (((double)cooldowns.get(d))+cooldownTime) - ((double)System.currentTimeMillis());
                     if(secondsLeft>0) {
