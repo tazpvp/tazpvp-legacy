@@ -36,9 +36,6 @@ public class InteractEvent implements Listener {
                     }
                 }.runTaskLater(Tazpvp.getInstance(), 2L);
             }
-            return;
-        }
-        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             switch (e.getMaterial()) {
                 case WOODEN_AXE:
                 case DIAMOND_AXE:
@@ -64,6 +61,7 @@ public class InteractEvent implements Listener {
                 e.setCancelled(true);
                 return;
             }
+            return;
         }
 
         if (runCustomItem(e.getPlayer())) {
