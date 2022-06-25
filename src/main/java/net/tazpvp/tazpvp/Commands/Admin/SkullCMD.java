@@ -7,6 +7,6 @@ import redempt.redlib.commandmanager.CommandHook;
 public class SkullCMD {
     @CommandHook("skull")
     public void skullCMD(Player p, Player target) {
-        PlayerUtils.skullPlayer(target);
+        PlayerUtils.skullPlayer(p, target);
     }
 }

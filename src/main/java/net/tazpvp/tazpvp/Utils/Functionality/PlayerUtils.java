@@ -149,8 +149,8 @@ public class PlayerUtils {
         }
     }
 
-    public static void skullPlayer(Player p) {
-        ItemStack head = new ItemBuilder(ItemUtils.skull(p)).setName(ChatColor.YELLOW + p.getName() + "'s head");
+    public static void skullPlayer(Player p, Player target) {
+        ItemStack head = new ItemBuilder(ItemUtils.skull(target)).setName(ChatColor.YELLOW + target.getName() + "'s head");
         p.getInventory().addItem(head);
     }
 
