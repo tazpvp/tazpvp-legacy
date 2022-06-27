@@ -42,14 +42,13 @@ public class BlockPlaceEvent implements Listener {
                     return;
                 }
 
-                builderPerk(p, blockItem);
-
-
                 if (Tazpvp.blocks.containsKey(blockType)) {
                     event.setCancelled(true);
                     p.sendMessage(ChatColor.RED + "You cannot place ores, sell them to Caesar.");
                     return;
                 }
+
+                builderPerk(p, blockItem);
 
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
