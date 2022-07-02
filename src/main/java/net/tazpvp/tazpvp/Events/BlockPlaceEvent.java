@@ -41,10 +41,6 @@ public class BlockPlaceEvent implements Listener {
                         return;
                     }
                 }
-                if (!p.isOp()) {
-                    event.setCancelled(true);
-                    return;
-                }
             }
             Block b = event.getBlock();
             if (!Tazpvp.isRestarting) {
