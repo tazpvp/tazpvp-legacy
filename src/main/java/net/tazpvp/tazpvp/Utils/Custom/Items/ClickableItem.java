@@ -19,11 +19,11 @@ public class ClickableItem extends Item{
     public boolean execute(Player p, ItemStack itemStack, double cID) {
         if(cooldown.containsKey(p.getUniqueId())){
             long secondsLeft = cooldown.get(p.getUniqueId())-System.currentTimeMillis();
-        if(secondsLeft>0) {
-            return true;
-        } else {
-            cooldown.remove(p.getUniqueId());
-        }
+            if(secondsLeft>0) {
+                return true;
+            } else {
+                cooldown.remove(p.getUniqueId());
+            }
         }
         cooldown.put(p.getUniqueId(), System.currentTimeMillis() + (cooldownTime * 1000L));
         return false;

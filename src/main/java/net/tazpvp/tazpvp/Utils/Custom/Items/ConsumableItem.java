@@ -17,17 +17,18 @@ public class ConsumableItem extends Item{
     public boolean execute(Player p, ItemStack itemStack, double cID) {
         if(cooldown.containsKey(p.getUniqueId())){
         long secondsLeft = cooldown.get(p.getUniqueId())-System.currentTimeMillis();
-        if(secondsLeft>0) {
-            return true;
-        } else {
-            cooldown.remove(p.getUniqueId());
-        }
+            if(secondsLeft>0) {
+                return true;
+            } else {
+                cooldown.remove(p.getUniqueId());
+            }
         }
         cooldown.put(p.getUniqueId(), System.currentTimeMillis() + (cooldownTime * 1000L));
         if(p.getInventory().getItemInMainHand().getAmount() == 1) {
             p.getInventory().setItemInMainHand( new ItemStack(Material.AIR));
+        } else {
+            itemStack.setAmount(itemStack.getAmount() - 1);
         }
-        itemStack.setAmount(itemStack.getAmount()-1);
         return false;
     }
 }
