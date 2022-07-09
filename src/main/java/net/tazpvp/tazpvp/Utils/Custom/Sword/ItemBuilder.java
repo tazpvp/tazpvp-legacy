@@ -41,11 +41,15 @@ public class ItemBuilder {
         meta.setUnbreakable(true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-        AttributeModifier modDamage = new AttributeModifier(UUID.randomUUID(), "damage.cool", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        AttributeModifier modSpeed = new AttributeModifier(UUID.randomUUID(), "speed.cool", 20, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+
+
+        AttributeModifier modDamage = new AttributeModifier(UUID.fromString("f42c1399-5e51-49b0-9e2f-7c187e3d1dfe"), "damage.cool", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
 
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modDamage);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modSpeed);
+
+
+        AttributeModifier modifier = new AttributeModifier(UUID.fromString("3fa75ab4-ff99-11ec-b939-0242ac120002"), "generic.attackSpeed", -2.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
 
         itemz.setItemMeta(meta);
 
