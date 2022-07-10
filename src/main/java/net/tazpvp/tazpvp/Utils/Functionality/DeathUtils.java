@@ -5,6 +5,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -17,6 +18,8 @@ import redempt.redlib.itemutils.ItemUtils;
 import javax.annotation.Nullable;
 import java.util.Random;
 
+import static net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword.getRandomSword;
+import static net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.maekItem;
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
 
 public class DeathUtils {
@@ -126,6 +129,14 @@ public class DeathUtils {
 
         if (Tazpvp.statsManager.checkLevelUp(killer)) {
             Tazpvp.statsManager.levelUp(killer, 1);
+            if ((Tazpvp.statsManager.getLevel(killer) % 10) == 0) {
+                Items unlockedItem = getRandomSword();
+                p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 100, 10);
+                p.sendMessage("");
+                p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                p.sendMessage("");
+                p.getInventory().addItem(maekItem(unlockedItem));
+            }
         }
 
         Tazpvp.statsManager.initScoreboard(p);

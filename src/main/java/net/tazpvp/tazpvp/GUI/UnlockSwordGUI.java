@@ -16,6 +16,7 @@ import redempt.redlib.itemutils.ItemBuilder;
 import java.util.List;
 import java.util.Random;
 
+import static net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword.getRandomSword;
 import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 
 public class UnlockSwordGUI {
@@ -84,7 +85,7 @@ public class UnlockSwordGUI {
             public void run() {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
-                    Items unlockedItem = GetRandomSword.getRandomSword();
+                    Items unlockedItem = getRandomSword();
                     p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
@@ -100,9 +101,6 @@ public class UnlockSwordGUI {
                     if (swordUnlocked.size() >= Items.values().length) {
                         Achieve(p, "Hoarder", "hoarder", 5, 220);
                     }
-//                    if (!Tazpvp.playerWrapperMap.get(p.getUniqueId()).getSwords().contains(unlockedItem)) {
-//
-//                    }
                     p.closeInventory();
                     cancel();
                 } else {
