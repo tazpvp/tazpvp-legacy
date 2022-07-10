@@ -185,5 +185,4 @@ public class DeathUtils {
             }
         }.runTaskLater(Tazpvp.getInstance(), 60L);
     }
-
 }

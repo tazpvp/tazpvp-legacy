@@ -463,6 +463,9 @@ guild,g {
         hook guild_reload
         permission tazpvp.staff.guild
     }
+    disband {
+        hook guild_disband
+    }
     test string...:msg {
         hook guild_test
         permission tazpvp.staff.guild
