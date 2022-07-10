@@ -28,6 +28,7 @@ public class BlockPlaceEvent implements Listener {
             if (p.getWorld().getName().equals("arena")) {
                 if (event.getBlock().getLocation().distance(radius) > 50 || event.getBlock().getLocation().getY() <= 95) {
                     event.setCancelled(true);
+                    return;
                 }
                 switch (mainhand) {
                     case WOODEN_AXE, DIAMOND_AXE, IRON_AXE, GOLDEN_AXE, STONE_AXE -> {
