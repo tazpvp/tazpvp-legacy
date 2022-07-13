@@ -38,11 +38,11 @@ public class Achievements {
         gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
         createShopButton(10,"Hoarder","Collect every sword","from the wheel.","hoarder");
-        createShopButton(11,"Businessman","Trade with Caesar","at the mines.","businessman");
+        createShopButton(11,"Business","Trade with Caesar","at the mines.","business");
         createShopButton(12,"Bowling","Get a kill streak","of 100.","bowling");
         createShopButton(13,"Legend","Get to level","100.","legend");
         createShopButton(14,"Risk","Kill a player while","at low health.","risk");
         createShopButton(15,"Sneaky","Grab the shard","from the generator.","sneaky");
-        createShopButton(16,"Brave","Enter a duel for","the first time.","brave");
+        createShopButton(16,"Brave","Win your first","duel.","brave");
     }
 }

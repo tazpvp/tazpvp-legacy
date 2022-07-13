@@ -55,13 +55,6 @@ public class DuelLogic implements Listener {
         p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
         p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
 
-        if (!Tazpvp.achievementManager.statsFile.getBoolean(p1.getUniqueId() + ".brave")) {
-            Achieve(p1, "Brave", "brave", 1, 32);
-        }
-        if (!Tazpvp.achievementManager.statsFile.getBoolean(p2.getUniqueId() + ".brave")) {
-            Achieve(p2, "Brave", "brave", 1, 32);
-        }
-
         Tazpvp.particleUtil.save(p1);
         Tazpvp.particleUtil.save(p2);
 
@@ -110,6 +103,10 @@ public class DuelLogic implements Listener {
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
         Bukkit.broadcastMessage(ChatColor.AQUA + opponent.getName() + ChatColor.DARK_AQUA + " won the duel against " + ChatColor.AQUA + p.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
+
+        if (!Tazpvp.achievementManager.statsFile.getBoolean(opponent.getUniqueId() + ".brave")) {
+            Achieve(opponent, "Brave", "brave", 2, 32);
+        }
 
         new BukkitRunnable() {
             @Override

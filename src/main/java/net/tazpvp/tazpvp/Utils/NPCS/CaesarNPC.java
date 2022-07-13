@@ -30,8 +30,8 @@ public class CaesarNPC {
         p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
         Tazpvp.statsManager.addCoins(p, (int) (amount * price));
         p.sendMessage(prefix + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
-        if (!Tazpvp.achievementManager.statsFile.getBoolean(p.getUniqueId() + ".businessman")) {
-            Achieve(p, "Businessman", "businessman", 2, 57);
+        if (!Tazpvp.achievementManager.statsFile.getBoolean(p.getUniqueId() + ".business")) {
+            Achieve(p, "Business", "business", 1, 20);
         }
     }
 }
