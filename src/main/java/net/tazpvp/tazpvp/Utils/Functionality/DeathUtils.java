@@ -131,11 +131,12 @@ public class DeathUtils {
             Tazpvp.statsManager.levelUp(killer, 1);
             if ((Tazpvp.statsManager.getLevel(killer) % 10) == 0) {
                 Items unlockedItem = getRandomSword();
-                p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 100, 10);
-                p.sendMessage("");
-                p.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                p.sendMessage("");
-                p.getInventory().addItem(maekItem(unlockedItem));
+                killer.playSound(killer.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
+                killer.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 20*1, 10);
+                killer.sendMessage("");
+                killer.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
+                killer.sendMessage("");
+                killer.getInventory().addItem(maekItem(unlockedItem));
             }
         }
 
