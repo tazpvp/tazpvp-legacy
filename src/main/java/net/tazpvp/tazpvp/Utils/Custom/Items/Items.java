@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 
 public enum Items {
-    AGILITY(ChatColor.AQUA + "Agility", Material.ENDER_EYE, 1, "Gives you a speed boost for a short time."),
+    AGILITY(ChatColor.AQUA + "Agility", Material.DRAGON_BREATH, 1, "Gives you a speed boost for a short time."),
     EXTINGUISH(ChatColor.AQUA + "Extinguish Flower", Material.BLUE_ORCHID, 2, "Extinguishes yourself."),
     JOESTICK(ChatColor.RED + "Joe Stick", Material.STICK, 3, "Get joey annoyed"),
     RIDEPEARL(ChatColor.AQUA + "Ride Pearl", Material.ENDER_PEARL, 4, "Rideable ender-pearl.");

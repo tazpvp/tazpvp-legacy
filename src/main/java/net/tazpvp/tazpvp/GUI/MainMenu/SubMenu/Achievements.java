@@ -22,12 +22,12 @@ public class Achievements {
     }
 
     public void createButton(int slot, int shards, int coins, String name, String description, String description2, String statsFileName) {
-        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.AQUA + "Completed!" : ChatColor.RED + "Incomplete!";
+        String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.AQUA + "Complete" : ChatColor.RED + "Incomplete";
         Material isComplete2 = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? Material.CHEST_MINECART : Material.MINECART;
         ItemStack item = new ItemStack(isComplete2, 1);
         ItemButton icon = ItemButton.create(new ItemBuilder(item)
             .setName(ChatColor.DARK_AQUA + name)
-            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", ChatColor.YELLOW + "Prize: " + ChatColor.GOLD + shards + " Shards, " + coins + " Coins", isComplete)
+            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", ChatColor.YELLOW + "Prize: " + ChatColor.GOLD + coins + " Coins" + ChatColor.DARK_AQUA + shards + " Shards ", "", isComplete)
             , e -> {
             e.setCancelled(true);
         });

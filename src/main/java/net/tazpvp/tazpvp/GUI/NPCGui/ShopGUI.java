@@ -65,7 +65,7 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 9*4, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10, 34, new ItemStack(Material.ENDER_EYE, 5),"Agility", "Speed Boost", false, true, 1.0);
+        createShopButton(10, 34, new ItemStack(Material.DRAGON_BREATH, 5),"Agility", "Speed Boost", false, true, 1.0);
         createShopButton(11, 8, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", false, true, 2.0);
         createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
         createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, false, null);
