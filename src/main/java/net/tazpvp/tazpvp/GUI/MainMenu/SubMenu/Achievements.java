@@ -21,13 +21,13 @@ public class Achievements {
         gui.open(p);
     }
 
-    public void createShopButton(int slot, String name, String description, String description2, String statsFileName) {
+    public void createButton(int slot, int shards, int coins, String name, String description, String description2, String statsFileName) {
         String isComplete = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? ChatColor.AQUA + "Completed!" : ChatColor.RED + "Incomplete!";
         Material isComplete2 = Tazpvp.achievementManager.getAchievement(p, statsFileName) ? Material.CHEST_MINECART : Material.MINECART;
         ItemStack item = new ItemStack(isComplete2, 1);
         ItemButton icon = ItemButton.create(new ItemBuilder(item)
             .setName(ChatColor.DARK_AQUA + name)
-            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", isComplete)
+            .setLore(ChatColor.GRAY + description, ChatColor.GRAY + description2, " ", ChatColor.YELLOW + "Prize: " + ChatColor.GOLD + shards + " Shards, " + coins + " Coins", isComplete)
             , e -> {
             e.setCancelled(true);
         });
@@ -37,12 +37,12 @@ public class Achievements {
     public void addItems() {
         gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10,"Hoarder","Collect every sword","from the wheel.","hoarder");
-        createShopButton(11,"Business","Trade with Caesar","at the mines.","business");
-        createShopButton(12,"Bowling","Get a kill streak","of 100.","bowling");
-        createShopButton(13,"Legend","Get to level","100.","legend");
-        createShopButton(14,"Risk","Kill a player while","at low health.","risk");
-        createShopButton(15,"Sneaky","Grab the shard","from the generator.","sneaky");
-        createShopButton(16,"Brave","Win your first","duel.","brave");
+        createButton(10, 5, 220, "Hoarder","Collect every sword","from the wheel.","hoarder");
+        createButton(11, 1, 20, "Business","Trade with Caesar","at the mines.","business");
+        createButton(12, 5, 380, "Bowling","Get a kill streak","of 100.","bowling");
+        createButton(13, 8, 235, "Legend","Get to level","100.","legend");
+        createButton(14, 1, 12, "Risk","Kill a player while","at low health.","risk");
+        createButton(15, 1, 20, "Sneaky","Grab the shard","from the generator.","sneaky");
+        createButton(16, 1, 32, "Brave","Win your first","duel.","brave");
     }
 }
