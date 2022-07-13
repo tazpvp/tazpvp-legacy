@@ -17,10 +17,10 @@ public class BalCMD implements CommandListener {
     @CommandHook("pay")
     public void payCMD(Player p, Player target, int amount) {
         if (Tazpvp.statsManager.getCoins(p) >= amount && amount > 0) {
-            p.sendMessage(ChatColor.YELLOW + "You paid " + ChatColor.GOLD + amount + "$ " + ChatColor.YELLOW + "to " + ChatColor.GOLD + target.getName());
+            p.sendMessage(ChatColor.YELLOW + "You paid " + ChatColor.GOLD + " $"  + amount + ChatColor.YELLOW + " to " + ChatColor.GOLD + target.getName());
             Tazpvp.statsManager.addCoins(p, -amount);
             Tazpvp.statsManager.addCoins(target, amount);
-            target.sendMessage(ChatColor.YELLOW + "You received " + ChatColor.GOLD + amount + "$ " + ChatColor.YELLOW + "from " + ChatColor.GOLD + p.getName());
+            target.sendMessage(ChatColor.YELLOW + "You received " + ChatColor.GOLD + " $" + amount + ChatColor.YELLOW + " from " + ChatColor.GOLD + p.getName());
         } else {
             p.sendMessage(ChatColor.RED + "You don't have enough money!");
         }
