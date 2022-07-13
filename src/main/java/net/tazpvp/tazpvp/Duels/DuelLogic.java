@@ -15,6 +15,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.*;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
+
 public class DuelLogic implements Listener {
 
     public HashMap<List<UUID>, DW> duels = new HashMap<>();
@@ -50,8 +52,15 @@ public class DuelLogic implements Listener {
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA +"Type " + ChatColor.GRAY + "/spectate " + p1.getName());
         Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "" + ChatColor.STRIKETHROUGH + "                                                             ");
 
-        p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 40, 20);
-        p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 40, 20);
+        p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
+        p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
+
+        if (!Tazpvp.achievementManager.statsFile.getBoolean(p1.getUniqueId() + ".brave")) {
+            Achieve(p1, "Brave", "brave", 1, 32);
+        }
+        if (!Tazpvp.achievementManager.statsFile.getBoolean(p2.getUniqueId() + ".brave")) {
+            Achieve(p2, "Brave", "brave", 1, 32);
+        }
 
         Tazpvp.particleUtil.save(p1);
         Tazpvp.particleUtil.save(p2);
@@ -63,8 +72,8 @@ public class DuelLogic implements Listener {
                 p2.teleport(d.getSpawn2());
                 p1.sendTitle(ChatColor.RED + "Begin!", ChatColor.BLUE + "", 10, 40, 20);
                 p2.sendTitle(ChatColor.RED + "Begin!", ChatColor.BLUE + "", 10, 40, 20);
-                p1.playSound(p1.getLocation(), Sound.BLOCK_ANVIL_FALL, 1, 1);
-                p2.playSound(p2.getLocation(), Sound.BLOCK_ANVIL_FALL, 1, 1);
+                p1.playSound(p1.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1, 1);
+                p2.playSound(p2.getLocation(), Sound.BLOCK_NOTE_BLOCK_HARP, 1, 1);
             }
         }.runTaskLater(Tazpvp.getInstance(), 20L * 5);
     }
