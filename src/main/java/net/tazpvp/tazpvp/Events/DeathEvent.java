@@ -30,6 +30,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.WeakHashMap;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.*;
 
 public class DeathEvent implements Listener {
@@ -250,6 +251,10 @@ public class DeathEvent implements Listener {
             } else {
                 deathUtils.sendDeadDeathMessage();
                 deathUtils.sendDeathMessage(d);
+            }
+
+            if (d.getHealth() <= 1) {
+                Achieve(d, "Risk", "risk", 1, 12);
             }
 
             deathUtils.bountyCheck();

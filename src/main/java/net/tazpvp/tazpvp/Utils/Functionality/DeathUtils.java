@@ -20,6 +20,7 @@ import java.util.Random;
 
 import static net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword.getRandomSword;
 import static net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.maekItem;
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
 
@@ -147,12 +148,18 @@ public class DeathUtils {
                 killer.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 80, 10);
                 sendSurround(killer, ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
                 killer.getInventory().addItem(maekItem(unlockedItem));
+                if (Tazpvp.statsManager.getLevel(killer) == 100) {
+                    Achieve(killer, "Legend", "legend", 8, 235);
+                }
             }
         }
 
         Tazpvp.statsManager.initScoreboard(p);
         Tazpvp.statsManager.initScoreboard(killer);
 
+        if (Tazpvp.statsManager.getStreak(killer) == 100) {
+            Achieve(killer, "Bowling", "bowling", 5, 380);
+        }
         if ((Tazpvp.statsManager.getStreak(killer) % 5) == 0) {
             if (Tazpvp.bounty.containsKey(killer.getUniqueId())) {
                 Tazpvp.bounty.put(killer.getUniqueId(), Tazpvp.bounty.get(killer.getUniqueId()) + 32);
