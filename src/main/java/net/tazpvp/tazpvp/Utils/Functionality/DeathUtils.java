@@ -20,6 +20,7 @@ import java.util.Random;
 
 import static net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword.getRandomSword;
 import static net.tazpvp.tazpvp.Utils.Custom.Sword.ItemBuilder.maekItem;
+import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
 
 public class DeathUtils {
@@ -130,12 +131,21 @@ public class DeathUtils {
         if (Tazpvp.statsManager.checkLevelUp(killer)) {
             Tazpvp.statsManager.levelUp(killer, 1);
             if ((Tazpvp.statsManager.getLevel(killer) % 10) == 0) {
-                Items unlockedItem = getRandomSword(null);
+                Items unlockedItem;
+                if (Tazpvp.statsManager.getLevel(killer) <= 30) {
+                    unlockedItem = getRandomSword(ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON");
+                } else if (Tazpvp.statsManager.getLevel(killer) <= 50) {
+                    unlockedItem = getRandomSword(ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON");
+                } else if (Tazpvp.statsManager.getLevel(killer) <= 80) {
+                    unlockedItem = getRandomSword(ChatColor.AQUA + "" + ChatColor.BOLD + "RARE");
+                } else if (Tazpvp.statsManager.getLevel(killer) <= 100) {
+                    unlockedItem = getRandomSword(ChatColor.RED + "" + ChatColor.BOLD + "EPIC");
+                } else {
+                    unlockedItem = getRandomSword(ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY");
+                }
                 killer.playSound(killer.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
-                killer.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 20*1, 10);
-                killer.sendMessage("");
-                killer.sendMessage(ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
-                killer.sendMessage("");
+                killer.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 80, 10);
+                sendSurround(killer, ChatColor.DARK_AQUA + " You unlocked: " + ChatColor.BOLD + unlockedItem.getName());
                 killer.getInventory().addItem(maekItem(unlockedItem));
             }
         }
