@@ -1,13 +1,16 @@
 package net.tazpvp.tazpvp.Utils.NPCS;
 
 import net.tazpvp.tazpvp.GUI.NPCGui.MineGUI;
+import net.tazpvp.tazpvp.Managers.PlayerStats.AchievementManager;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import static net.tazpvp.tazpvp.Tazpvp.sellables;
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 
 public class CaesarNPC {
     public static void clickMiner(Player p) {
@@ -27,5 +30,8 @@ public class CaesarNPC {
         p.getInventory().setItemInMainHand(new ItemStack(Material.AIR));
         Tazpvp.statsManager.addCoins(p, (int) (amount * price));
         p.sendMessage(prefix + "Great doing business! Here, take " + ChatColor.GRAY + (amount * price));
+        if (!Tazpvp.achievementManager.statsFile.getBoolean(p.getUniqueId() + ".businessman")) {
+            Achieve(p, "Businessman", "businessman", 2, 57);
+        }
     }
 }

@@ -26,12 +26,8 @@ public class AchievementManager {
         }
     }
 
-    public void initPlayer(OfflinePlayer player){
-        statsFile.set(player.getUniqueId().toString()+".hasSentChat", false);
-    }
-
-    public void setAchievement(Player p, String s, boolean value) { statsFile.set(p.getUniqueId().toString()+"."+s, value); }
+    public void setAchievement(Player p, String s, boolean value) { statsFile.set(p.getUniqueId() + "." + s, value); }
     public boolean getAchievement(Player p, String s) {
-        return statsFile.getBoolean(p.getUniqueId().toString()+"."+s);
+        return statsFile.getBoolean(p.getUniqueId() + "." + s);
     }
 }
