@@ -13,6 +13,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
+
 public class ItemPickUpEvent implements Listener {
     @EventHandler
     public void onItemPickUp(EntityPickupItemEvent e) {
@@ -26,6 +28,9 @@ public class ItemPickUpEvent implements Listener {
                             p.sendMessage(ChatColor.DARK_AQUA + "You picked up a shard. " + ChatColor.AQUA + "+1 Shard");
                             p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1, 1);
                             Tazpvp.statsManager.addShards(p, 1);
+                            if (!Tazpvp.achievementManager.statsFile.getBoolean(p.getUniqueId() + ".sneaky")) {
+                                Achieve(p, "Sneaky", "sneaky", 1, 20);
+                            }
                         }
                     }
                 }.runTaskLater(Tazpvp.getInstance(), 1);
