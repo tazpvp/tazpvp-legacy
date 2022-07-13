@@ -43,5 +43,6 @@ public class Achievements {
         createShopButton(13,"Legend","Get to level","100.","legend");
         createShopButton(14,"Risk","Kill a player while","at low health.","risk");
         createShopButton(15,"Sneaky","Grab the shard","from the generator.","sneaky");
+        createShopButton(16,"Brave","Enter a duel for","the first time.","brave");
     }
 }
