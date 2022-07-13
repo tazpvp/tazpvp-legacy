@@ -30,9 +30,10 @@ public class ShopGUI {
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.statsManager.getCoins(p) >= price){
-                Tazpvp.statsManager.addCoins(p, -price);
                 if (item.getType() == Material.BLUE_WOOL) {
-                    if (p.hasPermission("tazpvp.mvp+")){
+                    if (p.hasPermission("tazpvp.staff")) {
+                        item.setType(Material.MAGENTA_WOOL);
+                    } else if (p.hasPermission("tazpvp.mvp+")){
                         item.setType(Material.YELLOW_WOOL);
                     } else if (p.hasPermission("tazpvp.mvp")) {
                         item.setType(Material.GREEN_WOOL);
@@ -43,6 +44,7 @@ public class ShopGUI {
                         return;
                     }
                 }
+                Tazpvp.statsManager.addCoins(p, -price);
                 ItemStack itemstack = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(ChatColor.BLUE + description);
                 if (cIDRequired){
                     ItemMeta meta = itemstack.getItemMeta();
