@@ -2,6 +2,7 @@ package net.tazpvp.tazpvp.Utils.Custom.Sword;
 
 import org.bukkit.ChatColor;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,8 +23,10 @@ public class GetRandomSword {
         }
     }
 
-    public static Items getRandomSword() {
-        String rarity = whichRarity();
+    public static Items getRandomSword(@Nullable String rarity) {
+        if (rarity == null) {
+            rarity = whichRarity();
+        }
         List<Items> swords = new ArrayList<>();
         for (Items i : Items.values()) {
             if (i.getRarity().equals(rarity)) {

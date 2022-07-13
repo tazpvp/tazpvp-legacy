@@ -37,7 +37,7 @@ public class ItemsCMD implements CommandListener {
     }
     @CommandHook("items_getRandom")
     public void itemsGetRandom(Player p) {
-        p.sendMessage(new GetRandomSword().getRandomSword().getName());
+        p.sendMessage(new GetRandomSword().getRandomSword(null).getName());
     }
     @CommandHook("items_unlocked")
     public void itemsUnlocked(Player p) {

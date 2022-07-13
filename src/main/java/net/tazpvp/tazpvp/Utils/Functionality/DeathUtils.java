@@ -130,7 +130,7 @@ public class DeathUtils {
         if (Tazpvp.statsManager.checkLevelUp(killer)) {
             Tazpvp.statsManager.levelUp(killer, 1);
             if ((Tazpvp.statsManager.getLevel(killer) % 10) == 0) {
-                Items unlockedItem = getRandomSword();
+                Items unlockedItem = getRandomSword(null);
                 killer.playSound(killer.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
                 killer.sendTitle(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 20*1, 10);
                 killer.sendMessage("");

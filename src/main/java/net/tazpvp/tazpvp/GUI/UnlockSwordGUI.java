@@ -1,7 +1,6 @@
 package net.tazpvp.tazpvp.GUI;
 
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Sword.GetRandomSword;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -85,7 +84,7 @@ public class UnlockSwordGUI {
             public void run() {
                 runs[0]++;
                 if (runs[0] >= maxRuns) {
-                    Items unlockedItem = getRandomSword();
+                    Items unlockedItem = getRandomSword(null);
                     p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
                     sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
                     gui.update();
