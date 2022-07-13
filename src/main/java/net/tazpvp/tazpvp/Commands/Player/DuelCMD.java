@@ -34,7 +34,7 @@ public class DuelCMD {
         }
         if (sentDuel(p).equals(target.getName())) {
             if (CombatTag.isInCombat(target)) {
-                target.sendMessage(ChatColor.RED + "You accept duels in combat.");
+                target.sendMessage(ChatColor.RED + "You cannot accept duels while in combat.");
                 return;
             }
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
@@ -67,12 +67,5 @@ public class DuelCMD {
             return metaDataValue.asString();
         }
         return "";
-    }
-    public boolean requesting(Player p){
-        List<MetadataValue> metaDataValues = p.getMetadata("requesting");
-        for (MetadataValue metaDataValue : metaDataValues) {
-            return metaDataValue.asBoolean();
-        }
-        return false;
     }
 }
