@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.setHealth;
+
 public class DW {
     private Player p1;
     private Player p2;
@@ -83,8 +85,8 @@ public class DW {
         this.p2.teleport(this.spawn2);
         this.kit.giveKit(this.p1);
         this.kit.giveKit(this.p2);
-        this.p1.setHealth(20);
-        this.p2.setHealth(20);
+        setHealth(this.p1, 20, 20);
+        setHealth(this.p2, 20, 20);
         this.p1.setFoodLevel(20);
         this.p2.setFoodLevel(20);
         this.p1.setSaturation(20);
@@ -98,8 +100,8 @@ public class DW {
     public void end() {
         this.p1.teleport(configUtils.spawn);
         this.p2.teleport(configUtils.spawn);
-        this.p1.setHealth(20);
-        this.p2.setHealth(20);
+        setHealth(this.p1, 20, 20);
+        setHealth(this.p2, 20, 20);
         this.p1.setFoodLevel(20);
         this.p2.setFoodLevel(20);
         this.p1.setSaturation(20);

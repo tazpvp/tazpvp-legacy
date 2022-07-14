@@ -54,6 +54,7 @@ public class DuelLogic implements Listener {
 
         p1.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
         p2.sendTitle(ChatColor.AQUA + "Get Ready", ChatColor.DARK_AQUA + "The duel will start in 5 seconds.", 10, 60, 20);
+        
 
         Tazpvp.particleUtil.save(p1);
         Tazpvp.particleUtil.save(p2);
