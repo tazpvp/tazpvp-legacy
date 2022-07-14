@@ -12,6 +12,8 @@ import org.bukkit.util.Vector;
 
 import java.util.Objects;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
+
 public class Generator {
     public void generator(Plugin plugin){
         ItemStack shard = new ItemStack(Material.AMETHYST_SHARD);
@@ -21,19 +23,13 @@ public class Generator {
                 if (Bukkit.getOnlinePlayers().size() >= 5) {
                     Item i = Objects.requireNonNull(Bukkit.getWorld("arena")).dropItem(new Location(Bukkit.getWorld("arena"), 0.5, 80.5, 94.5), shard);
                     i.setVelocity(new Vector(0, 0, 0));
-                    new BukkitRunnable(){
-                        public void run() {
-                            Bukkit.broadcastMessage("");
-                            Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + " A shard will generate underground in " + ChatColor.DARK_PURPLE + "30 " + ChatColor.LIGHT_PURPLE + "seconds.");
-                            Bukkit.broadcastMessage("");
-                            for (Player p : Bukkit.getOnlinePlayers()) {
-                                p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
-                            }
-                        }
-                    }.runTaskLater(plugin, 3600); //3 mins
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        sendSurround(p, ChatColor.LIGHT_PURPLE + " A shard has generated on the underground platform.");
+                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 1);
+                    }
                 }
             }
-        }.runTaskTimer(plugin, 20*60, 4200); //3.5 mins
+        }.runTaskTimer(plugin, 20*60, 3600); //3 mins
 
         new BukkitRunnable(){
             @Override
