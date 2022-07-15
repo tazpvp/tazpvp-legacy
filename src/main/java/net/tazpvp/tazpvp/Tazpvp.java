@@ -29,7 +29,6 @@ import net.tazpvp.tazpvp.Utils.Scoreboard.SbUtil;
 import net.tazpvp.tazpvp.unused.ConfigGetter;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -76,7 +75,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static WeakHashMap<UUID, Integer> bounty = new WeakHashMap<>();
     public static WeakHashMap<UUID, UUID> lastDamage = new WeakHashMap<>();
     public static List<UUID> returnItems = new ArrayList<>();
-
+    public static List<UUID> hidden = new ArrayList<>();
     public static HashMap<Material, Material> blocks = new HashMap<Material, Material>();
     public static HashMap<Material, Integer> sellables = new HashMap<Material, Integer>();
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
@@ -212,7 +211,8 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new GuildCMD(),
                 new MobsCMD(),
                 new VotekickCMD(),
-                new ChatCMD());
+                new ChatCMD(),
+                new HideCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }
@@ -401,7 +401,14 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
             team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
 
-            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+
+            if (hidden.contains(onlinePlayer.getUniqueId())) {
+                team.setPrefix(ChatColor.GRAY + "");
+                team.setDisplayName(onlinePlayer.getName());
+
+            } else {
+                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+            }
             if (GuildUtils.isInGuild(onlinePlayer) && GuildUtils.getGuild(onlinePlayer).tag() != null) {
                 team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(onlinePlayer).tag() + "]");
             }
@@ -422,7 +429,13 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
             team = scoreboard.registerNewTeam(player.getUniqueId().toString());
 
-            team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            if (hidden.contains(player.getUniqueId())) {
+                team.setPrefix(ChatColor.GRAY + "");
+                team.setDisplayName(player.getName());
+
+            } else {
+                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+            }
             if (GuildUtils.isInGuild(player) && GuildUtils.getGuild(player).tag() != null) {
                 team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(player).tag() + "]");
             }

@@ -259,6 +259,9 @@ public class StatsManager {
     }
 
     public ChatColor getColor(Player p) {
+        if (Tazpvp.hidden.contains(p.getUniqueId())) {
+            return ChatColor.GRAY;
+        }
         return switch (Tazpvp.permissions.getPrimaryGroup(p).toLowerCase()) {
             case "owner", "media", "vip" -> ChatColor.RED;
             case "admin", "mvp+" -> ChatColor.GOLD;

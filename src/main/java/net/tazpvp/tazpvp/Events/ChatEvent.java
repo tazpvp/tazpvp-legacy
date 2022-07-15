@@ -31,7 +31,12 @@ public class ChatEvent implements Listener {
         String lvltxt = ChatColor.GRAY + "[" + lvl + Tazpvp.statsManager.getLevel(p) + ChatColor.GRAY + "] ";
         String tag = (GuildUtils.isInGuild(p) && GuildUtils.getGuild(p).tag() != null)
                 ? ChatColor.YELLOW + "[" + GuildUtils.getGuild(p).tag() + ChatColor.YELLOW + "] " : "";
-        String fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + tag;
+        String fmsg;
+        if (Tazpvp.hidden.contains(e.getPlayer().getUniqueId())) {
+            fmsg = lvltxt + ChatColor.GRAY + "%s " + tag;
+        } else {
+            fmsg = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + tag;
+        }
 
 
         if (p.hasMetadata("staffchat")) {
@@ -113,9 +118,16 @@ public class ChatEvent implements Listener {
         }
 
 
-        String format = p.hasPermission("tazpvp.chat")
+        String format = (p.hasPermission("tazpvp.chat") && !(Tazpvp.hidden.contains(p.getUniqueId())))
                 ? fmsg + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', "%s")
                 : fmsg + ChatColor.GRAY + "%s";
+//        if (!Tazpvp.hidden.contains(p.getUniqueId())) {
+//            format = p.hasPermission("tazpvp.chat")
+//                    ? fmsg + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', "%s")
+//                    : fmsg + ChatColor.GRAY + "%s";
+//        } else {
+//            format = ChatColor.GRAY + "%s";
+//        }
         e.setFormat(format);
 
 //        String format = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + ChatColor.WHITE + "%s";

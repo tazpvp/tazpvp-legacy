@@ -542,3 +542,17 @@ gc {
     user player
     hook guildchat
 }
+
+hide {
+    help /hide
+    user player
+    hook hide
+    permission tazpvp.hide
+}
+
+unhide {
+    help /unhide
+    user player
+    hook unhide
+    permission tazpvp.hide
+}
