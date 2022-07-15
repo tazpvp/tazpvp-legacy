@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp;
 
+import net.dv8tion.jda.api.JDA;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.permission.Permission;
 import net.tazpvp.tazpvp.Commands.Admin.*;
@@ -61,7 +62,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static GuildManager guildManager;
 
     public static boolean isRestarting = false;
-
+    public static JDA jda;
     public static Permission permissions;
     public static Chat chat;
 

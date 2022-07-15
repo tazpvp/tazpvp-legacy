@@ -6,11 +6,16 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.requests.restaction.CommandListUpdateAction;
+import net.dv8tion.jda.api.utils.ChunkingFilter;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.LeaderBoardCMD;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.StatsSCMD;
 import net.tazpvp.tazpvp.DiscordBot.Commands.Slash.ping;
+import net.tazpvp.tazpvp.DiscordBot.Events.MessageListenerAdapter;
+import net.tazpvp.tazpvp.Tazpvp;
 
 import javax.security.auth.login.LoginException;
 
@@ -30,15 +35,18 @@ public class TazBot {
         CommandClient commandClient = builder.build();
 
         JDA jda = JDABuilder.createDefault("OTgwMjMwNjcyMzczNDA3ODI1.Gziehr.HtY1OSHTegKla5EdmbjRhEUhzx7V2dAL50OzQE")
-                .disableCache(CacheFlag.MEMBER_OVERRIDES, CacheFlag.VOICE_STATE)
+                .disableCache(CacheFlag.VOICE_STATE)
                 .setBulkDeleteSplittingEnabled(false)
+                .setChunkingFilter(ChunkingFilter.ALL)
+                .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .addEventListeners(
-                        commandClient)
+                        commandClient,
+                        new MessageListenerAdapter())
                 .build();
-
+        Tazpvp.jda = jda;
         jda.awaitReady();
         CommandListUpdateAction commandListUpdateAction = jda.updateCommands();
         commandListUpdateAction.queue();
-
     }
 }

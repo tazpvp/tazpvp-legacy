@@ -6,6 +6,7 @@ import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Functionality.ChatEnum;
 import net.tazpvp.tazpvp.Utils.Functionality.ChatUtils;
+import net.tazpvp.tazpvp.Utils.Functionality.DiscordMCUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -129,6 +130,7 @@ public class ChatEvent implements Listener {
 //            format = ChatColor.GRAY + "%s";
 //        }
         e.setFormat(format);
+        DiscordMCUtils.sendMessageToDiscord(e.getMessage(), p);
 
 //        String format = lvltxt + ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)) + "%s " + ChatColor.WHITE + "%s";
 //        e.setFormat(format);
