@@ -52,7 +52,7 @@ public class PerkGUI {
     public void addItems(){
         gui.fill(0, 27, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(ChatColor.YELLOW + "Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Gain an extra heart on kill.", "fatPerk");
+        createShopButton(ChatColor.YELLOW + "Fat", 10, new ItemStack(Material.SLIME_BALL), 5, ChatColor.GRAY + "Gain a permanent extra heart slot.", "fatPerk");
         createShopButton(ChatColor.BLUE + "Excavator", 11, new ItemStack(Material.GOLDEN_PICKAXE), 7, ChatColor.GRAY + "Gain Exp for mining.", "excavatorPerk");
         createShopButton(ChatColor.LIGHT_PURPLE + "Builder", 12, new ItemStack(Material.SCAFFOLDING), 4, ChatColor.GRAY + "Chance to duplicate your placed block.", "builderPerk");
         createShopButton( ChatColor.GREEN + "Archer", 13, new ItemStack(Material.BOW), 6, ChatColor.GRAY + "Chance to duplicate arrow on shoot.", "archerPerk");
