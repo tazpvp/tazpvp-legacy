@@ -29,7 +29,6 @@ public class ItemBuilder {
         Material material = item.getMaterial();
 
         lore.add("");
-        lore.add(ChatColor.DARK_AQUA + "Damage: " + ChatColor.AQUA + item.getDamage());
         String[] split = lore.toString().split(", ");
         split[0] = split[0].replace("[", "");
         split[split.length - 1] = split[split.length - 1].replace("]", "");
@@ -43,13 +42,11 @@ public class ItemBuilder {
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 
 
-        AttributeModifier modDamage = new AttributeModifier(UUID.fromString("f42c1399-5e51-49b0-9e2f-7c187e3d1dfe"), "damage.cool", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modDamage);
-
-
-        AttributeModifier modifier = new AttributeModifier(UUID.fromString("3fa75ab4-ff99-11ec-b939-0242ac120002"), "generic.attackSpeed", -2.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
+//        AttributeModifier modDamage = new AttributeModifier(UUID.fromString("f42c1399-5e51-49b0-9e2f-7c187e3d1dfe"), "damage.cool", item.getDamage(), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+//        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modDamage);
+//
+//        AttributeModifier modifier = new AttributeModifier(UUID.fromString("3fa75ab4-ff99-11ec-b939-0242ac120002"), "generic.attackSpeed", -2.3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+//        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
 
         itemz.setItemMeta(meta);
 
