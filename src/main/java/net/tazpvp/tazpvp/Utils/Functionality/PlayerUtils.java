@@ -170,21 +170,23 @@ public class PlayerUtils {
     }
 
     public static void checkArmor(Player p) {
-        ItemStack helm = p.getInventory().getHelmet();
-        ItemStack chest = p.getInventory().getChestplate();
-        ItemStack leg = p.getInventory().getLeggings();
-        ItemStack boot = p.getInventory().getBoots();
-        if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
-            helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-            chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-            leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-            boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-        }
-        if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) > 1) {
-            helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
-            chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
-            leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
-            boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+        if (p.getInventory().getHelmet() != null) {
+            ItemStack helm = p.getInventory().getHelmet();
+            ItemStack chest = p.getInventory().getChestplate();
+            ItemStack leg = p.getInventory().getLeggings();
+            ItemStack boot = p.getInventory().getBoots();
+            if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
+                helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+                chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+                leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+                boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+            }
+            if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) > 1) {
+                helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+                chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+                leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+                boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            }
         }
     }
 //
