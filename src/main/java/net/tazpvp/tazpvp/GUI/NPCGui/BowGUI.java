@@ -46,8 +46,8 @@ public class BowGUI {
             doChecksR(p, Enchantment.THORNS, 1, 4);
         });
 
-        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection III").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
-            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 3, 5);
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection II").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2, 5);
         });
 
         ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling IV").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
@@ -94,7 +94,7 @@ public class BowGUI {
                 p.sendMessage(prefix + " You do not have any armor!");
                 p.closeInventory();
                 return;
-            } else if (p.getInventory().getHelmet().getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) >= 3) {
+            } else if (p.getInventory().getHelmet().getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) >= 2) {
                 p.sendMessage(prefix + " You already have this enchantment!");
                 p.closeInventory();
                 return;
