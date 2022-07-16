@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
@@ -14,6 +15,7 @@ import redempt.redlib.inventorygui.ItemButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SwordCollection {
     private final InventoryGUI gui;
@@ -41,7 +43,13 @@ public class SwordCollection {
             split[0] = split[0].replace("[", "");
             split[split.length - 1] = split[split.length - 1].replace("]", "");
 
-            ItemButton tool = ItemButton.create(new redempt.redlib.itemutils.ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(split), e -> {
+            ItemStack thing = new ItemStack(new redempt.redlib.itemutils.ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(split));
+            Map<Enchantment, Integer> enchantments = item.getEnchantments();
+            for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+                thing.addUnsafeEnchantment(entry.getKey(), entry.getValue());
+            }
+
+            ItemButton tool = ItemButton.create(thing, e -> {
                 e.setCancelled(true);
             });
             gui.addButton(i, tool);
