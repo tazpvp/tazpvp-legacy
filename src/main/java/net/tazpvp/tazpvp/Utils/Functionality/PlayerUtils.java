@@ -179,7 +179,8 @@ public class PlayerUtils {
             chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
             leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
             boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
-        } else {
+        }
+        if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) == 1) {
             helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
             chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
             leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
