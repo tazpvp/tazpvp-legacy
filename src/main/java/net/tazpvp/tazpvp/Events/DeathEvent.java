@@ -179,30 +179,30 @@ public class DeathEvent implements Listener {
         }
     }
 
-    public void itemDamage(Double id, EntityDamageByEntityEvent e) { // sadness :'(
-        for (Items item : Items.values()) {
-            if (item.getStoredID() == id) {
-                Player d = (Player) e.getDamager();
-                double cooldownTime = item.getCooldown(); // Get number of milis from wherever you want
-                if(cooldowns.containsKey(d)) {
-                    double secondsLeft = (((double)cooldowns.get(d))+cooldownTime) - ((double)System.currentTimeMillis());
-                    if(secondsLeft>0) {
-                        e.setDamage((double) item.getDamage()/4);
-                        cooldowns.put(d, System.currentTimeMillis()); // Ntdi no longer is sad bc this is ass code
-                        return;
-                    }
-                }
-                // No cooldown found or cooldown has expired, save new cooldown
-                cooldowns.put(d, System.currentTimeMillis());
-                // Do Command Here
-                e.setDamage(item.getDamage());
-                if (d.getVelocity().getY() < 0) {
-                    e.setDamage(item.getDamage() * 1.5F); // lol nice check too bad idc
-                }
-                return;
-            }
-        }
-    }
+//    public void itemDamage(Double id, EntityDamageByEntityEvent e) { // sadness :'(
+//        for (Items item : Items.values()) {
+//            if (item.getStoredID() == id) {
+//                Player d = (Player) e.getDamager();
+//                double cooldownTime = item.getCooldown(); // Get number of milis from wherever you want
+//                if(cooldowns.containsKey(d)) {
+//                    double secondsLeft = (((double)cooldowns.get(d))+cooldownTime) - ((double)System.currentTimeMillis());
+//                    if(secondsLeft>0) {
+//                        e.setDamage((double) item.getDamage()/4);
+//                        cooldowns.put(d, System.currentTimeMillis()); // Ntdi no longer is sad bc this is ass code
+//                        return;
+//                    }
+//                }
+//                // No cooldown found or cooldown has expired, save new cooldown
+//                cooldowns.put(d, System.currentTimeMillis());
+//                // Do Command Here
+//                e.setDamage(item.getDamage());
+//                if (d.getVelocity().getY() < 0) {
+//                    e.setDamage(item.getDamage() * 1.5F); // lol nice check too bad idc
+//                }
+//                return;
+//            }
+//        }
+//    }
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent e) {
