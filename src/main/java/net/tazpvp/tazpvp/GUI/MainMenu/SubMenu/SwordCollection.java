@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SwordCollection {
@@ -29,7 +30,7 @@ public class SwordCollection {
             PlayerWrapper pw = Tazpvp.playerWrapperMap.get(p.getUniqueId());
             List<Items> items = pw.getSwords();
             ItemStack itemStack = ItemBuilder.maekItem(item);;
-            List<String> lore = new java.util.ArrayList<>(List.of(item.getLore()));
+            List<String> lore = new ArrayList<>();
             String addtxt = items.contains(item) ? ChatColor.GREEN + "Unlocked" : ChatColor.RED + "Locked";
 
             lore.add("");

@@ -25,20 +25,11 @@ public class ItemBuilder {
 
     public static ItemStack maekItem(Items item) {
         String name = item.getName();
-        List<String> lore = new ArrayList<>(List.of(item.getLore()));
         Material material = item.getMaterial();
-
-        lore.add("");
-        String[] split = lore.toString().split(", ");
-        split[0] = split[0].replace("[", "");
-        split[split.length - 1] = split[split.length - 1].replace("]", "");
-
-
-        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name).setLore(split);
+        ItemStack itemz = new redempt.redlib.itemutils.ItemBuilder(material).setName(name);
         ItemMeta meta = itemz.getItemMeta();
         meta.getPersistentDataContainer().set(item.getKey(), item.getType(), item.getStoredID());
         meta.setUnbreakable(true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
 
 
