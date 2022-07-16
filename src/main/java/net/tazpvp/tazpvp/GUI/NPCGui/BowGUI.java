@@ -46,7 +46,7 @@ public class BowGUI {
             doChecksR(p, Enchantment.THORNS, 1, 4);
         });
 
-        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection III").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 3, 5);
         });
 
@@ -72,7 +72,7 @@ public class BowGUI {
             p.closeInventory();
             return;
         }
-        if (checkIfAlreadyHasEnchatn(BowUtils.getBow(p), ench)) {
+        if (BowUtils.getBow(p).getEnchantments().containsKey(ench)) {
             p.sendMessage(prefix + " You already have this enchantment!");
             p.closeInventory();
             return;
@@ -94,7 +94,7 @@ public class BowGUI {
                 p.sendMessage(prefix + " You do not have any armor!");
                 p.closeInventory();
                 return;
-            } else if (checkIfAlreadyHasEnchatn(i, ench)) {
+            } else if (p.getInventory().getHelmet().getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) >= 3) {
                 p.sendMessage(prefix + " You already have this enchantment!");
                 p.closeInventory();
                 return;
@@ -110,9 +110,5 @@ public class BowGUI {
         BowUtils.apllyEnchant(BowUtils.getArmor(p), ench, level);
         p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
         p.closeInventory();
-    }
-
-    private boolean checkIfAlreadyHasEnchatn(final ItemStack i, final Enchantment ench) {
-        return (i.getEnchantments().containsKey(ench));
     }
 }
