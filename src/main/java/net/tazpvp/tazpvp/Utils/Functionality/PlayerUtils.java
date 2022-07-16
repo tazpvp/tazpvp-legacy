@@ -59,20 +59,20 @@ public class PlayerUtils {
         
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.setUnbreakable(true);
-        helmet.setItemMeta(helmetMeta);
         helmetMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        helmet.setItemMeta(helmetMeta);
         ItemMeta chestplateMeta = chestplate.getItemMeta();
         chestplateMeta.setUnbreakable(true);
-        chestplate.setItemMeta(chestplateMeta);
         chestplateMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        chestplate.setItemMeta(chestplateMeta);
         ItemMeta leggingsMeta = leggings.getItemMeta();
         leggingsMeta.setUnbreakable(true);
-        leggings.setItemMeta(leggingsMeta);
         leggingsMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        leggings.setItemMeta(leggingsMeta);
         ItemMeta bootsMeta = boots.getItemMeta();
         bootsMeta.setUnbreakable(true);
-        boots.setItemMeta(bootsMeta);
         bootsMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 1, true);
+        boots.setItemMeta(bootsMeta);
         ItemMeta swordMeta = sword.getItemMeta();
         swordMeta.setUnbreakable(true);
         swordMeta.setDisplayName(ChatColor.GRAY + "Rookie Sword");
