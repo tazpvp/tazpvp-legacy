@@ -86,7 +86,7 @@ public class UnlockSwordGUI {
                 if (runs[0] >= maxRuns) {
                     Items unlockedItem = getRandomSword(null);
                     p.playSound(p.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1, 1);
-                    sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()).setLore(unlockedItem.getLore()));
+                    sword.setItem(new ItemBuilder(unlockedItem.getMaterial()).setName(unlockedItem.getName()));
                     gui.update();
                     p.sendTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "UNLOCKED", unlockedItem.getName(), 10, 100, 10);
                     p.sendMessage("");
@@ -104,7 +104,7 @@ public class UnlockSwordGUI {
                     cancel();
                 } else {
                     Items item = Items.values()[new Random().nextInt(Items.values().length)];
-                    sword.setItem(new ItemBuilder(item.getMaterial()).setName(item.getName()).setLore(item.getLore()));
+                    sword.setItem(new ItemBuilder(item.getMaterial()).setName(item.getName()));
                     p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 3, 1);
                     gui.update();
                 }
