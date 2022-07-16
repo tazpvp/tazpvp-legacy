@@ -104,9 +104,9 @@ public class MineGUI {
     }
 
     public void updatePickaxeType(Player p, Material newPIckaxe) {
-        getPickaxe(p).setType(newPIckaxe);
-        List<String> Lore = new ArrayList<>();
+        List<String> Lore = getPickaxe(p).getLore();
         ItemMeta meta = getPickaxe(p).getItemMeta();
+        getPickaxe(p).setType(newPIckaxe);
         meta.setLore(Lore);
         getPickaxe(p).setItemMeta(meta);
         p.closeInventory();
