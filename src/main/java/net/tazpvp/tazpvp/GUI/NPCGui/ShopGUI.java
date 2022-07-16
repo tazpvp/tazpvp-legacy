@@ -24,9 +24,9 @@ public class ShopGUI {
         gui.open(p);
     }
 
-    public void createShopButton(int slot, int price, ItemStack item, String name, String description, boolean rankRequired, boolean cIDRequired, Double cID){
+    public void createShopButton(int slot, int price, ItemStack item, String name, String description, boolean cIDRequired, Double cID){
         ItemBuilder b = new ItemBuilder(item).setName(ChatColor.GRAY + name).setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price);
-        if(rankRequired) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Colored based on your rank.");
+        if(item.getType() == Material.BLUE_WOOL) b.setLore(ChatColor.BLUE + description, ChatColor.GOLD + "Cost: " + ChatColor.GRAY + "$" + price, "", ChatColor.GREEN + "Colored based on your rank.");
         ItemButton button = ItemButton.create(b, e -> {
             Player p = (Player) e.getWhoClicked();
             if (Tazpvp.statsManager.getCoins(p) >= price){
@@ -65,21 +65,21 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 9*4, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10, 34, new ItemStack(Material.DRAGON_BREATH, 5),"Agility", "Speed Boost", false, true, 1.0);
-        createShopButton(11, 8, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", false, true, 2.0);
-        createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, false, null);
-        createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, false, null);
-        createShopButton(14, 27, new ItemBuilder(Material.FLINT_AND_STEEL, 1).setDurability(60),"Lighter","Burn!", false, false, null);
-        createShopButton(15, 9, new ItemBuilder(Material.SHIELD, 1).setDurability(335),"Rusty shield","One time use", false, false, null);
-        createShopButton(16, 28, new ItemStack(Material.OAK_PLANKS, 64),"Planks","Placeable Blocks", false, false, null);
+        createShopButton(10, 16, new ItemStack(Material.DRAGON_BREATH, 1),"Agility", "Speed Boost", true, 1.0);
+        createShopButton(11, 10, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", true, 2.0);
+        createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, null);
+        createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, null);
+        createShopButton(14, 27, new ItemBuilder(Material.FLINT_AND_STEEL, 1).setDurability(60),"Lighter","Burn!", false, null);
+        createShopButton(15, 10, new ItemBuilder(Material.SHIELD, 1).setDurability(335),"Rusty shield","One time use", false, null);
+        createShopButton(16, 28, new ItemStack(Material.OAK_PLANKS, 64),"Planks","Placeable Blocks", false, null);
 
-        createShopButton(19, 33, new ItemStack(Material.GOLDEN_AXE, 1),"Axe","Break Wood", false, false, null);
-        createShopButton(20, 26, new ItemStack(Material.SHEARS, 1),"Scissors","Break Wool", false, false, null);
-        createShopButton(21, 13, new ItemStack(Material.ARROW, 5),"Arrow","Bow Projectiles", false, false, null);
-        createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, false, null);
-        createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 3),"Gold Carrot","Healthy Choice", false, false, null);
-        createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, false, null);
-        createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"RGB Blocks","Drip", true, false, null);
+        createShopButton(19, 33, new ItemStack(Material.GOLDEN_AXE, 1),"Axe","Break Wood", false, null);
+        createShopButton(20, 26, new ItemStack(Material.SHEARS, 1),"Scissors","Break Wool", false, null);
+        createShopButton(21, 13, new ItemStack(Material.ARROW, 5),"Arrow","Bow Projectiles", false, null);
+        createShopButton(22, 15, new ItemStack(Material.COOKED_BEEF, 5),"Steak","Arbies", false, null);
+        createShopButton(23, 15, new ItemStack(Material.GOLDEN_CARROT, 3),"Gold Carrot","Healthy Choice", false, null);
+        createShopButton(24, 29, new ItemStack(Material.GOLDEN_APPLE, 1),"Gold Apple","Not Steroids", false, null);
+        createShopButton(25, 17, new ItemStack(Material.BLUE_WOOL, 64),"RGB Blocks","Drip", false, null);
 
         gui.update();
     }
