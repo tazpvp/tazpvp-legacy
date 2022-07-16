@@ -18,9 +18,10 @@ public class DiscordMCUtils {
     }
 
     public static void sendMessageToDiscord(String message, Player p) {
-        String prefix = ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p));
+        String prefix = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(p)));
+        prefix = prefix.length() > 0 ? "***" + prefix + "***" : "";
         JDA jda = Tazpvp.jda;
         TextChannel channel  = jda.getTextChannelById(997521265478864916L);
-        channel.sendMessage("***" + prefix + "*** **" + p.getName() + "** " + message).queue();
+        channel.sendMessage(prefix + " **" + p.getName() + "** " + message).queue();
     }
 }
