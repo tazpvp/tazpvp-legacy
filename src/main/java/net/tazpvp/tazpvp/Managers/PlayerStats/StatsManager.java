@@ -28,30 +28,33 @@ public class StatsManager {
 
     public void initScoreboard(Player player) {
         Scoreboard sb = Bukkit.getScoreboardManager().getNewScoreboard();
-        sb.registerNewTeam("a");
-        sb.registerNewTeam("b");
-        sb.registerNewTeam("c");
-        sb.registerNewTeam("d");
-        sb.registerNewTeam("e");
-        sb.registerNewTeam("f");
-        sb.registerNewTeam("g");
-        sb.registerNewTeam("h");
-        sb.registerNewTeam("i");
-        sb.registerNewTeam("j");
-        sb.registerNewTeam("k");
-        sb.registerNewTeam("l");
-        sb.registerNewTeam("m");
-        sb.registerNewTeam("n");
-        sb.registerNewTeam("o");
-        sb.registerNewTeam("z");
+        teamReg(sb, "a", "owner");
+        teamReg(sb, "b", "admin");
+        teamReg(sb, "c", "developer");
+        teamReg(sb, "d", "sr.mod");
+        teamReg(sb, "e", "mod");
+        teamReg(sb, "f", "helper");
+        teamReg(sb, "g", "media");
+        teamReg(sb, "h", "mvp+");
+        teamReg(sb, "i", "mvp");
+        teamReg(sb, "j", "vip");
+        teamReg(sb, "k", "default");
+        teamReg(sb, "l", "banned");
         sb.registerNewTeam(player.getUniqueId().toString());
-        sb.registerNewObjective("sb", "dummy");
+        sb.registerNewObjective("sb", "dummy", ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "TAZPVP.NET");
         scoreboards.put(player.getUniqueId(), sb);
         Tazpvp.getInstance().initScoreboard(player);
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             Tazpvp.getInstance().addPlayerToOnlinePlayersSB(onlinePlayer);
             Tazpvp.getInstance().addOnlinePlayersToSB(onlinePlayer);
         }
+    }
+
+    public void teamReg(Scoreboard sb, String id, String teamName) {
+        Team team = sb.registerNewTeam(id);
+        String prefix = getPrefix(teamName);
+        team.setPrefix(ChatColor.translateAlternateColorCodes('&', prefix) + " ");
+        team.setColor(getColor(teamName));
     }
 
     public void saveStats(){
@@ -62,19 +65,19 @@ public class StatsManager {
         }
     }
     public void initPlayer(OfflinePlayer player){
-        statsFile.set(player.getUniqueId().toString()+".shards", 0);
-        statsFile.set(player.getUniqueId().toString()+".exp", 0);
-        statsFile.set(player.getUniqueId().toString()+".expLeft", 45);
-        statsFile.set(player.getUniqueId().toString()+".level", 0);
-        statsFile.set(player.getUniqueId().toString()+".coins", 0);
-        statsFile.set(player.getUniqueId().toString()+".deaths", 0);
-        statsFile.set(player.getUniqueId().toString()+".kills", 0);
-        statsFile.set(player.getUniqueId().toString()+".streak", 0);
-        statsFile.set(player.getUniqueId().toString()+".rank", Tazpvp.permissions.getPrimaryGroup((Player) player));
-        statsFile.set(player.getUniqueId().toString()+".bowType", 0);
-        statsFile.set(player.getUniqueId().toString()+".rebirth", 0);
-        statsFile.set(player.getUniqueId().toString()+".spins", 0);
-        statsFile.set(player.getUniqueId().toString()+".credits", 0);
+        statsFile.set(player.getUniqueId() +".shards", 0);
+        statsFile.set(player.getUniqueId() +".exp", 0);
+        statsFile.set(player.getUniqueId() +".expLeft", 45);
+        statsFile.set(player.getUniqueId() +".level", 0);
+        statsFile.set(player.getUniqueId() +".coins", 0);
+        statsFile.set(player.getUniqueId() +".deaths", 0);
+        statsFile.set(player.getUniqueId() +".kills", 0);
+        statsFile.set(player.getUniqueId() +".streak", 0);
+        statsFile.set(player.getUniqueId() +".rank", Tazpvp.permissions.getPrimaryGroup((Player) player));
+        statsFile.set(player.getUniqueId() +".bowType", 0);
+        statsFile.set(player.getUniqueId() +".rebirth", 0);
+        statsFile.set(player.getUniqueId() +".spins", 0);
+        statsFile.set(player.getUniqueId() +".credits", 0);
     }
 
     public int getCoins(OfflinePlayer player) {
@@ -249,12 +252,12 @@ public class StatsManager {
             case "mod" -> sb.getTeam("e");
             case "helper" -> sb.getTeam("f");
             case "media" -> sb.getTeam("g");
-            case "vip" -> sb.getTeam("h");
+            case "mvp+" -> sb.getTeam("h");
             case "mvp" -> sb.getTeam("i");
-            case "mvp+" -> sb.getTeam("j");
-            case "mvp++" -> sb.getTeam("k");
+            case "vip" -> sb.getTeam("j");
+            // yes yes switch aroubnd bc ykykykk
             case "banned" -> sb.getTeam("l");
-            default -> sb.getTeam("m");
+            default -> sb.getTeam("k");
         };
     }
 
@@ -274,6 +277,37 @@ public class StatsManager {
             default -> ChatColor.GRAY;
         };
     }
+    public ChatColor getColor(String teamName) {
+        return switch (teamName.toLowerCase()) {
+            case "owner", "media", "vip" -> ChatColor.RED;
+            case "admin", "mvp+" -> ChatColor.GOLD;
+            case "developer" -> ChatColor.YELLOW;
+            case "sr.mod" -> ChatColor.BLUE;
+            case "mod" -> ChatColor.DARK_AQUA;
+            case "helper" -> ChatColor.AQUA;
+            case "mvp" -> ChatColor.GREEN;
+            case "banned" -> ChatColor.DARK_GRAY;
+            default -> ChatColor.GRAY;
+        };
+    }
+
+    public String getPrefix(String teamName) {
+        return switch (teamName) {
+            case "owner" -> "&c&lOWNER";
+            case "admin" -> "&6&lADMIN";
+            case "developer" -> "&e&lDEV";
+            case "sr.mod" -> "&9&lSR.MOD";
+            case "mod" -> "&3MOD";
+            case "helper" -> "&b&lHELPER";
+            case "media" -> "&c&lMEDIA";
+            case "mvp+" -> "&6&lMVP+";
+            case "mvp" -> "&a&lMVP";
+            case "vip" -> "&c&lVIP";
+            // yes yes switch aroubnd bc ykykykk
+            case "banned" -> "";
+            default -> "";
+        };
+    }
 
     public void updateXPBar(final Player p) {
         p.setExp(getXpBar((float) getExp(p), (float) getExpLeft(p)));
@@ -287,5 +321,9 @@ public class StatsManager {
             return (T) file.get(path);
         }
         return defaultReturn;
+    }
+
+    public Scoreboard scoreboards(UUID uniqueId) {
+        return scoreboards.get(uniqueId);
     }
 }

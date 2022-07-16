@@ -12,7 +12,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -93,6 +92,8 @@ public class JoinEvent implements Listener {
             Tazpvp.statsManager.getTeam(p, sb).addEntry(p.getName());
         }
         Tazpvp.statsManager.initScoreboard(p);
+
+        Bukkit.getLogger().info(Tazpvp.permissions.getPrimaryGroup(p).toLowerCase());
 
         for (Player plr : Bukkit.getOnlinePlayers()) {
             Tazpvp.sendBaseTablist(plr);

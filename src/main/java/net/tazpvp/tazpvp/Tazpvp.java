@@ -391,58 +391,58 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     }
 
     public void addOnlinePlayersToSB(Player player) {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            if (player.equals(onlinePlayer))
-                continue;
-
-            Team team = player.getScoreboard().getTeam(onlinePlayer.getUniqueId().toString());
-            if (team != null) {
-                team.unregister();
-            }
-
-            team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
-
-
-            if (hidden.contains(onlinePlayer.getUniqueId())) {
-                team.setPrefix(ChatColor.GRAY + "");
-                team.setDisplayName(onlinePlayer.getName());
-
-            } else {
-                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
-            }
-            if (GuildUtils.isInGuild(onlinePlayer) && GuildUtils.getGuild(onlinePlayer).tag() != null) {
-                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(onlinePlayer).tag() + "]");
-            }
-            team.setColor(statsManager.getColor(onlinePlayer));
-            team.addPlayer(onlinePlayer);
-
-        }
+//        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+//            if (player.equals(onlinePlayer))
+//                continue;
+//
+//            Team team = player.getScoreboard().getTeam(onlinePlayer.getUniqueId().toString());
+//            if (team != null) {
+//                team.unregister();
+//            }
+//
+//            team = player.getScoreboard().registerNewTeam(onlinePlayer.getUniqueId().toString());
+//
+//
+//            if (hidden.contains(onlinePlayer.getUniqueId())) {
+//                team.setPrefix(ChatColor.GRAY + "");
+//                team.setDisplayName(onlinePlayer.getName());
+//
+//            } else {
+//                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(onlinePlayer)));
+//            }
+//            if (GuildUtils.isInGuild(onlinePlayer) && GuildUtils.getGuild(onlinePlayer).tag() != null) {
+//                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(onlinePlayer).tag() + "]");
+//            }
+//            team.setColor(statsManager.getColor(onlinePlayer));
+//            team.addPlayer(onlinePlayer);
+//
+//        }
     }
 
     public void addPlayerToOnlinePlayersSB(Player player) {
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-            Scoreboard scoreboard = onlinePlayer.getScoreboard();
-
-            Team team = scoreboard.getTeam(player.getUniqueId().toString());
-
-            if (team != null)
-                team.unregister();
-
-            team = scoreboard.registerNewTeam(player.getUniqueId().toString());
-
-            if (hidden.contains(player.getUniqueId())) {
-                team.setPrefix(ChatColor.GRAY + "");
-                team.setDisplayName(player.getName());
-
-            } else {
-                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
-            }
-            if (GuildUtils.isInGuild(player) && GuildUtils.getGuild(player).tag() != null) {
-                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(player).tag() + "]");
-            }
-            team.setColor(statsManager.getColor(player));
-            team.addPlayer(player);
-        }
+//        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+//            Scoreboard scoreboard = onlinePlayer.getScoreboard();
+//
+//            Team team = scoreboard.getTeam(player.getUniqueId().toString());
+//
+//            if (team != null)
+//                team.unregister();
+//
+//            team = scoreboard.registerNewTeam(player.getUniqueId().toString());
+//
+//            if (hidden.contains(player.getUniqueId())) {
+//                team.setPrefix(ChatColor.GRAY + "");
+//                team.setDisplayName(player.getName());
+//
+//            } else {
+//                team.setPrefix(ChatColor.translateAlternateColorCodes('&', Tazpvp.chat.getPlayerPrefix(player)));
+//            }
+//            if (GuildUtils.isInGuild(player) && GuildUtils.getGuild(player).tag() != null) {
+//                team.setSuffix(ChatColor.YELLOW + " [" + GuildUtils.getGuild(player).tag() + "]");
+//            }
+//            team.setColor(statsManager.getColor(player));
+//            team.addPlayer(player);
+//        }
     }
 
     public static Tazpvp getInstance(){
