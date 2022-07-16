@@ -87,6 +87,7 @@ public class JoinEvent implements Listener {
             }
         }
 
+        Tazpvp.chatEnum.put(p.getUniqueId(), ChatEnum.ALL);
 
         for(Scoreboard sb : Tazpvp.statsManager.scoreboards.values()) {
             Tazpvp.statsManager.getTeam(p, sb).addEntry(p.getName());

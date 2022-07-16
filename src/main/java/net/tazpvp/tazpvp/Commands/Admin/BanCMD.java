@@ -3,11 +3,13 @@ package net.tazpvp.tazpvp.Commands.Admin;
 import net.tazpvp.tazpvp.Commands.CommandListener;
 import net.tazpvp.tazpvp.DiscordBot.Events.SendBanNotification;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import redempt.redlib.commandmanager.CommandHook;
@@ -42,6 +44,8 @@ public class BanCMD implements CommandListener {
                     target.sendMessage(ChatColor.DARK_RED + " You've been banned for " + ChatColor.GRAY + rs);
                     target.sendMessage(ChatColor.DARK_RED + " If you wish to be unbanned, do not log out. Type " + ChatColor.GRAY + "/appeal");
                     target.sendMessage(ChatColor.DARK_GRAY + "");
+                    ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+                    Bukkit.dispatchCommand(console, PlayerUtils.setLPRankCommand(target, "banned"));
 
                     for (Player p : Bukkit.getOnlinePlayers()){
                         p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);

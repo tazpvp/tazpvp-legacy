@@ -112,7 +112,7 @@ public class ChatEvent implements Listener {
                 }
             }
             return;
-        } else if (Tazpvp.chatEnum.get(p.getUniqueId()) == ChatEnum.GUILD) {
+        } else if (Tazpvp.chatEnum.get(p.getUniqueId()) == ChatEnum.GUILD && GuildUtils.isInGuild(p)) {
             GuildUtils.guildChatMessage(p, e.getMessage().replaceFirst("@", ""), GuildUtils.getGuild(p));
             e.setCancelled(true);
             return;
