@@ -12,11 +12,11 @@ import java.util.Map;
 
 public enum Items {
     // common swords
-    WooKni(Material.STONE_SWORD, ChatColor.WHITE + "Kitchen Knife", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 1, new HashMap<Enchantment, Integer>()),
-    SteCut(Material.STONE_SWORD, ChatColor.WHITE + "Steel Cutlass", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 2, new HashMap<Enchantment, Integer>() {{put(Enchantment.DAMAGE_ALL, 5);}}),
-    KeeDag(Material.STONE_SWORD, ChatColor.WHITE + "Keen Dagger", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 3, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); put(Enchantment.DAMAGE_ALL, 4);}}),
-    PriSha(Material.STONE_SWORD, ChatColor.WHITE + "Prison Shank", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 4, new HashMap<Enchantment, Integer>() {{put(Enchantment.DAMAGE_ALL, 4);}}),
-    ShaCle(Material.STONE_SWORD, ChatColor.WHITE + "Sharp Cleaver", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 5, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); put(Enchantment.DAMAGE_ALL, 5);}}),
+    WooKni(Material.STONE_SWORD, ChatColor.WHITE + "Kitchen Knife", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 1, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 4); }} ),
+    SteCut(Material.STONE_SWORD, ChatColor.WHITE + "Steel Cutlass", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 2, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 5); }} ),
+    KeeDag(Material.STONE_SWORD, ChatColor.WHITE + "Keen Dagger", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 3, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); put(Enchantment.DAMAGE_ALL, 4); }} ),
+    PriSha(Material.STONE_SWORD, ChatColor.WHITE + "Prison Shank", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 4, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 4); }}),
+    ShaCle(Material.STONE_SWORD, ChatColor.WHITE + "Sharp Cleaver", ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON", 5, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 1); put(Enchantment.DAMAGE_ALL, 5); }} ),
     // uncommon swords
     HeaDulKni(Material.IRON_SWORD, ChatColor.GREEN + "Heavenly Dull Knife", ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 6, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); put(Enchantment.DAMAGE_ALL, 2);}}),
     LigSteMac(Material.IRON_SWORD, ChatColor.GREEN + "Light Steel Machete", ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 7, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 3); }}),
@@ -25,18 +25,18 @@ public enum Items {
     ThoSti(Material.IRON_SWORD, ChatColor.GREEN + "Thorn Striker", ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 10, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.FIRE_ASPECT, 1); put(Enchantment.DAMAGE_ALL, 1);}}),
     CopJac(Material.IRON_SWORD, ChatColor.GREEN + "Copper Jackknife", ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 11, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 3); }}),
     // rare swords
-    WinRip(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wind Ripper", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 12, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}),
-    WitBla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Withering Blade", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 13, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}),
-    ThuShoSwo(Material.GOLDEN_SWORD, ChatColor.AQUA + "Thunderfury Short Sword", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 14, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}),
-    StiCla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Stinger Claw", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 15, new HashMap<Enchantment, Integer>()  {{ put(Enchantment.SWEEPING_EDGE, 3); }}),
+    WinRip(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wind Ripper", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 12, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.DAMAGE_ALL, 2); }}),
+    WitBla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wither Blade", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 13, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 3); }}),
+    ThuShoSwo(Material.GOLDEN_SWORD, ChatColor.AQUA + "Thunderfury Short Sword", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 14, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 4); }}),
+    StiCla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Stinger Claw", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 15, new HashMap<Enchantment, Integer>()  {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.DAMAGE_ALL, 3); }}),
     // epic swords
-    BlaRaz(Material.DIAMOND_SWORD, ChatColor.LIGHT_PURPLE + "Blackiron Razor", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 16, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}),
-    BlaOfVig(Material.DIAMOND_SWORD, ChatColor.LIGHT_PURPLE + "Blade of Vigor", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 17, new HashMap<Enchantment, Integer>() {{put(Enchantment.SWEEPING_EDGE, 2);}}),
+    BlaRaz(Material.DIAMOND_SWORD, ChatColor.LIGHT_PURPLE + "Blackiron Razor", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 16, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); put(Enchantment.DAMAGE_ALL, 1); }}),
+    BlaOfVig(Material.DIAMOND_SWORD, ChatColor.LIGHT_PURPLE + "Blade of Vigor", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 17, new HashMap<Enchantment, Integer>() {{put(Enchantment.SWEEPING_EDGE, 2); put(Enchantment.DAMAGE_ALL, 2); }}),
     InfGamDag(Material.DIAMOND_SWORD, ChatColor.LIGHT_PURPLE + "Inferno Gambit Dagger", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "EPIC", 18, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 1); }}),
     // legendary swords
-    IvoDraKat(Material.NETHERITE_SWORD, ChatColor.GOLD + "Ivory Dragon Katana", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 19, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); }}),
-    BalCen(Material.NETHERITE_SWORD, ChatColor.GOLD + "Balisik Centurion", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 20, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 1); }}),
-    AtoEdgSwo(Material.NETHERITE_SWORD, ChatColor.GOLD + "Atomic Edge", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 21, new HashMap<Enchantment, Integer>())
+    IvoDraKat(Material.NETHERITE_SWORD, ChatColor.GOLD + "Ivory Dragon Katana", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 19, new HashMap<Enchantment, Integer>() {{ put(Enchantment.FIRE_ASPECT, 1); }}),
+    BalCen(Material.NETHERITE_SWORD, ChatColor.GOLD + "Balisik Centurion", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 20, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 2); }}),
+    AtoEdgSwo(Material.NETHERITE_SWORD, ChatColor.GOLD + "Atomic Edge", ChatColor.GOLD + "" + ChatColor.BOLD + "LEGENDARY", 21, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 1); }} )
     ;
 
     private final String name;
