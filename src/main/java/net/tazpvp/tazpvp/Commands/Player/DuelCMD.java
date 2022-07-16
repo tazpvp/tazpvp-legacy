@@ -40,7 +40,6 @@ public class DuelCMD {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             p.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), ""));
             Tazpvp.duelLogic.duelStart(p, target, null);
-            return;
         } else {
             target.setMetadata("sentDuel", new FixedMetadataValue(Tazpvp.getInstance(), p.getName()));
             TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
