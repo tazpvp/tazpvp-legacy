@@ -47,7 +47,7 @@ public class BowGUI {
         });
 
         ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
-            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 1, 5);
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 3, 5);
         });
 
         ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling IV").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
