@@ -31,26 +31,26 @@ public class BowGUI {
         ItemStack armorMat = new ItemStack(Material.DIAMOND_CHESTPLATE); hideFlag(armorMat);
         ItemButton Armor = ItemButton.create(new ItemBuilder(armorMat).setName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "ARMOR UPGRADES"), e -> {});
 
-        ItemButton power = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Power").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton power = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Power I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecks(p, Enchantment.ARROW_DAMAGE, 6);
         });
 
-        ItemButton punch = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Punch").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton punch = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Punch I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "6 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecks(p, Enchantment.ARROW_KNOCKBACK, 6);
         });
 
-        ItemButton flame = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Flame").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton flame = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Flame I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecks(p, Enchantment.ARROW_FIRE, 5);
         });
-        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Thorns").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton thorns = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Thorns I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecksR(p, Enchantment.THORNS, 1, 4);
         });
 
-        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 1, 5);
         });
 
-        ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
+        ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling IV").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
             doChecksR(p, Enchantment.PROTECTION_FALL, 4, 2);
         });
 
