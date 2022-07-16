@@ -11,6 +11,8 @@ import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +20,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+
+import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.checkArmor;
 
 public class JoinEvent implements Listener {
     @EventHandler
@@ -41,10 +45,11 @@ public class JoinEvent implements Listener {
         p.sendMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "  ┃  " + ChatColor.GRAY + "IP: tazpvp.net");
         p.sendMessage("");
 
-        p.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+        p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
 
         if (p.hasPlayedBefore()) {
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] " + p.getName());
+            checkArmor(p);
         } else {
             Tazpvp.statsManager.initPlayer(p);
             e.setJoinMessage(ChatColor.GRAY + "[" + ChatColor.GOLD + "+" + ChatColor.GRAY + "] " + p.getName());

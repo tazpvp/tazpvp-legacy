@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.EnderChest;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -59,15 +60,19 @@ public class PlayerUtils {
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.setUnbreakable(true);
         helmet.setItemMeta(helmetMeta);
+        helmetMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
         ItemMeta chestplateMeta = chestplate.getItemMeta();
         chestplateMeta.setUnbreakable(true);
         chestplate.setItemMeta(chestplateMeta);
+        chestplateMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
         ItemMeta leggingsMeta = leggings.getItemMeta();
         leggingsMeta.setUnbreakable(true);
         leggings.setItemMeta(leggingsMeta);
+        leggingsMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
         ItemMeta bootsMeta = boots.getItemMeta();
         bootsMeta.setUnbreakable(true);
         boots.setItemMeta(bootsMeta);
+        bootsMeta.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2, true);
         ItemMeta swordMeta = sword.getItemMeta();
         swordMeta.setUnbreakable(true);
         swordMeta.setDisplayName(ChatColor.GRAY + "Rookie Sword");
@@ -161,6 +166,24 @@ public class PlayerUtils {
             p.setHealth(MaxHealth);
         } else {
             p.setHealth(health + Amount);
+        }
+    }
+
+    public static void checkArmor(Player p) {
+        ItemStack helm = p.getInventory().getHelmet();
+        ItemStack chest = p.getInventory().getChestplate();
+        ItemStack leg = p.getInventory().getLeggings();
+        ItemStack boot = p.getInventory().getBoots();
+        if (helm.getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) < 1) {
+            helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+        } else {
+            helm.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+            chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+            leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+            boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
         }
     }
 //
