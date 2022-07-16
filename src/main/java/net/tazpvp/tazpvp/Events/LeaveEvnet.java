@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
+import net.tazpvp.tazpvp.Duels.DW;
 import net.tazpvp.tazpvp.Guilds.Guild;
 import net.tazpvp.tazpvp.Guilds.GuildUtils;
 import net.tazpvp.tazpvp.Managers.CombatTag;
@@ -27,8 +28,13 @@ public class LeaveEvnet implements Listener {
             Tazpvp.duelLogic.duelEnd(e.getPlayer());
         }
 
+        Player p = e.getPlayer();
+
+        for (DW dw : Tazpvp.duelLogic.duels.values()) {
+            dw.spectators().remove(p.getUniqueId());
+        }
+
         if (CombatTag.isInCombat(e.getPlayer())) {
-            Player p = e.getPlayer();
             UUID k = Tazpvp.lastDamage.get(p.getUniqueId());
             Player h = Bukkit.getPlayer(k);
             DeathUtils deathUtils = new DeathUtils(p, h);
