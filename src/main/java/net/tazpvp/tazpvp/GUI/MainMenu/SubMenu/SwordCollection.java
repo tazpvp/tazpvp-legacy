@@ -32,7 +32,6 @@ public class SwordCollection {
             List<String> lore = new java.util.ArrayList<>(List.of(item.getLore()));
             String addtxt = items.contains(item) ? ChatColor.GREEN + "Unlocked" : ChatColor.RED + "Locked";
 
-            lore.add(ChatColor.DARK_AQUA + "Damage: " + ChatColor.AQUA + item.getDamage());
             lore.add("");
             lore.add(item.getRarity());
             lore.add("");
