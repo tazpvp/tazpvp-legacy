@@ -19,8 +19,6 @@ public class BlockPlaceEvent implements Listener {
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {
         Player p = event.getPlayer();
-        Material mainhand = p.getInventory().getItemInMainHand().getType();
-        Material offhand = p.getInventory().getItemInOffHand().getType();
         int timer = 0;
         Location radius = new Location(Bukkit.getWorld("arena"), 0, 96, 94);
 
@@ -29,18 +27,6 @@ public class BlockPlaceEvent implements Listener {
                 if (event.getBlock().getLocation().distance(radius) > 50 || event.getBlock().getLocation().getY() <= 95) {
                     event.setCancelled(true);
                     return;
-                }
-                switch (mainhand) {
-                    case WOODEN_AXE, DIAMOND_AXE, IRON_AXE, GOLDEN_AXE, STONE_AXE -> {
-                        event.setCancelled(true);
-                        return;
-                    }
-                }
-                switch (offhand) {
-                    case WOODEN_AXE, DIAMOND_AXE, IRON_AXE, GOLDEN_AXE, STONE_AXE -> {
-                        event.setCancelled(true);
-                        return;
-                    }
                 }
             }
             Block b = event.getBlock();
