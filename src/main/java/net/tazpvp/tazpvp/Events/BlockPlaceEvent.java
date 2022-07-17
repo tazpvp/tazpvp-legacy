@@ -62,6 +62,12 @@ public class BlockPlaceEvent implements Listener {
                     return;
                 }
 
+                if (!Tazpvp.allowedBlocks.contains(blockType)) {
+                    event.setCancelled(true);
+                    p.sendMessage(ChatColor.RED + "You cannot place this block.");
+                    return;
+                }
+
                 builderPerk(p, blockItem);
 
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));

@@ -32,7 +32,7 @@ public class ShopGUI {
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 if (item.getType() == Material.BLUE_WOOL) {
                     if (p.hasPermission("tazpvp.staff")) {
-                        item.setType(Material.MAGENTA_WOOL);
+                        item.setType(Material.PURPLE_WOOL);
                     } else if (p.hasPermission("tazpvp.mvp+")){
                         item.setType(Material.YELLOW_WOOL);
                     } else if (p.hasPermission("tazpvp.mvp")) {

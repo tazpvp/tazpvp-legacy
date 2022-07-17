@@ -83,6 +83,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static WeakHashMap<UUID, Long> hasBeenReported = new WeakHashMap<>();
     public static List<Player> fallDamageImmune = new ArrayList<>();
     public static List<String> allowedCmds = new ArrayList<>();
+    public static List<Material> allowedBlocks = new ArrayList<>();
     public static List<Player> afkPlayers = new ArrayList<>();
 
     public static Player toBeKicked;
@@ -306,6 +307,12 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         allowedCmds.add("/playtime");
         allowedCmds.add("/rules");
         allowedCmds.add("/store");
+
+        allowedBlocks.add(Material.OAK_PLANKS);
+        allowedBlocks.add(Material.PURPLE_WOOL);
+        allowedBlocks.add(Material.YELLOW_WOOL);
+        allowedBlocks.add(Material.GREEN_WOOL);
+        allowedBlocks.add(Material.RED_WOOL);
     }
 
     @Override
