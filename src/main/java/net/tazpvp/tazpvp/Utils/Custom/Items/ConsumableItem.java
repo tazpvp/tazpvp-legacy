@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.Utils.Custom.Items;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,6 +19,7 @@ public class ConsumableItem extends Item{
         if(cooldown.containsKey(p.getUniqueId())){
         long secondsLeft = cooldown.get(p.getUniqueId())-System.currentTimeMillis();
             if(secondsLeft>0) {
+                p.sendMessage(ChatColor.RED + "Please wait before using this.");
                 return true;
             } else {
                 cooldown.remove(p.getUniqueId());
