@@ -53,9 +53,9 @@ public class BlockPlaceEvent implements Listener {
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
                 if (event.getBlock().getType() == Material.COBWEB) {
-                    timer = 20 * 2;
+                    timer = 30;
                 } else if (event.getPlayer().hasPermission("tazpvp.rank")) {
-                    timer = 20 * 50;
+                    timer = 20 * 40;
                 } else {
                     timer = 20 * 20;
                 }
