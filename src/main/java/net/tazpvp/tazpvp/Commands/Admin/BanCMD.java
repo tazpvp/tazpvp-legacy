@@ -48,7 +48,7 @@ public class BanCMD implements CommandListener {
                     Bukkit.dispatchCommand(console, PlayerUtils.setLPRankCommand(target, "banned"));
 
                     for (Player p : Bukkit.getOnlinePlayers()){
-                        p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
+                        p.playSound(p.getLocation(), Sound.BLOCK_GRINDSTONE_USE, 1, 1);
                         if (!p.getName().equals(target.getName())){
                             p.sendMessage(ChatColor.DARK_GRAY + "");
                             p.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "BAN " + ChatColor.WHITE + target.getName() + ChatColor.GRAY + " has been banned for " + ChatColor.WHITE + rs);
@@ -56,7 +56,7 @@ public class BanCMD implements CommandListener {
                         }
                     }
                 }
-            }.runTaskLater(Tazpvp.getInstance(), 30);
+            }.runTaskLater(Tazpvp.getInstance(), 20);
         } else {
             sender.sendMessage(ChatColor.RED + target.getName() + " is already banned");
         }
