@@ -19,8 +19,6 @@ public class BlockPlaceEvent implements Listener {
     @SuppressWarnings("deprecation")
     public void onPlaceBlock(org.bukkit.event.block.BlockPlaceEvent event) {
         Player p = event.getPlayer();
-        Material mainhand = p.getInventory().getItemInMainHand().getType();
-        Material offhand = p.getInventory().getItemInOffHand().getType();
         int timer = 0;
         Location radius = new Location(Bukkit.getWorld("arena"), 0, 96, 94);
 
@@ -29,18 +27,6 @@ public class BlockPlaceEvent implements Listener {
                 if (event.getBlock().getLocation().distance(radius) > 50 || event.getBlock().getLocation().getY() <= 95) {
                     event.setCancelled(true);
                     return;
-                }
-                switch (mainhand) {
-                    case WOODEN_AXE, DIAMOND_AXE, IRON_AXE, GOLDEN_AXE, STONE_AXE -> {
-                        event.setCancelled(true);
-                        return;
-                    }
-                }
-                switch (offhand) {
-                    case WOODEN_AXE, DIAMOND_AXE, IRON_AXE, GOLDEN_AXE, STONE_AXE -> {
-                        event.setCancelled(true);
-                        return;
-                    }
                 }
             }
             Block b = event.getBlock();
@@ -56,9 +42,9 @@ public class BlockPlaceEvent implements Listener {
                     return;
                 }
 
-                if (Tazpvp.blocks.containsKey(blockType)) {
+                if (!Tazpvp.allowedBlocks.contains(blockType)) {
                     event.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + "You cannot place ores, sell them to Caesar.");
+                    p.sendMessage(ChatColor.RED + "You cannot place this, if it's an ore, sell it to Caesar at the mine.");
                     return;
                 }
 
@@ -67,9 +53,9 @@ public class BlockPlaceEvent implements Listener {
                 event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
                 if (event.getBlock().getType() == Material.COBWEB) {
-                    timer = 20 * 2;
+                    timer = 30;
                 } else if (event.getPlayer().hasPermission("tazpvp.rank")) {
-                    timer = 20 * 50;
+                    timer = 20 * 40;
                 } else {
                     timer = 20 * 20;
                 }

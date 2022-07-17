@@ -32,7 +32,7 @@ public class ShopGUI {
             if (Tazpvp.statsManager.getCoins(p) >= price){
                 if (item.getType() == Material.BLUE_WOOL) {
                     if (p.hasPermission("tazpvp.staff")) {
-                        item.setType(Material.MAGENTA_WOOL);
+                        item.setType(Material.PURPLE_WOOL);
                     } else if (p.hasPermission("tazpvp.mvp+")){
                         item.setType(Material.YELLOW_WOOL);
                     } else if (p.hasPermission("tazpvp.mvp")) {
@@ -65,7 +65,7 @@ public class ShopGUI {
     public void addItems(){
         gui.fill(0, 9*4, new ItemBuilder(Material.BLACK_STAINED_GLASS_PANE).setName(" "));
 
-        createShopButton(10, 16, new ItemStack(Material.DRAGON_BREATH, 1),"Agility", "Speed Boost", true, 1.0);
+        createShopButton(10, 32, new ItemStack(Material.DRAGON_BREATH, 3),"Agility", "Speed Boost", true, 1.0);
         createShopButton(11, 10, new ItemStack(Material.BLUE_ORCHID, 1),"Extinguisher","Feel the mist", true, 2.0);
         createShopButton(12, 28, new ItemStack(Material.COBWEB, 5),"Insta-Web","Slow down enemies.", false, null);
         createShopButton(13, 18, new ItemStack(Material.INK_SAC, 3),"Inker","Morb people", false, null);
