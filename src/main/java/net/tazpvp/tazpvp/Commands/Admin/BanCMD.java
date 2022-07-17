@@ -74,13 +74,13 @@ public class BanCMD implements CommandListener {
                     p.sendMessage("");
                 }
             }
+            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+            Bukkit.dispatchCommand(console, "lp user " + target.getName() + " group remove " + "banned");
             target.sendMessage("");
             target.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "UNBAN" + ChatColor.GRAY + " Congratulations! You have been unbanned.");
             target.sendMessage("");
             target.teleport(new Location(Bukkit.getWorld("arena"), 0.5, 101, -1.5, 0, 0));
             SendBanNotification.sendUnBanNotification(target.getUniqueId(), sender);
-            ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-            Bukkit.dispatchCommand(console, PlayerUtils.setLPRankCommand(target, "default"));
         } else {
             sender.sendMessage(ChatColor.RED + target.getName() + " is not banned.");
         }
