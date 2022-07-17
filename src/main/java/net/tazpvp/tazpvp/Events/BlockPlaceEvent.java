@@ -42,15 +42,9 @@ public class BlockPlaceEvent implements Listener {
                     return;
                 }
 
-                if (Tazpvp.blocks.containsKey(blockType)) {
-                    event.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + "You cannot place ores, sell them to Caesar.");
-                    return;
-                }
-
                 if (!Tazpvp.allowedBlocks.contains(blockType)) {
                     event.setCancelled(true);
-                    p.sendMessage(ChatColor.RED + "You cannot place this block.");
+                    p.sendMessage(ChatColor.RED + "You cannot place this, if it's an ore, sell it to Caesar at the mine.");
                     return;
                 }
 

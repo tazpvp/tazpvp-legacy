@@ -285,7 +285,6 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         blocks.put(Material.DEEPSLATE_REDSTONE_ORE, Material.REDSTONE);
         blocks.put(Material.DEEPSLATE_LAPIS_ORE, Material.LAPIS_LAZULI);
         blocks.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
-        blocks.put(Material.REDSTONE, Material.REDSTONE);
 
         sellables.put(Material.DEEPSLATE_GOLD_ORE, 1);
         sellables.put(Material.DEEPSLATE_IRON_ORE, 2);
