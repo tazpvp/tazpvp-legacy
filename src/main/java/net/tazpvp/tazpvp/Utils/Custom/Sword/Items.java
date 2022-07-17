@@ -26,7 +26,7 @@ public enum Items {
     CopJac(Material.IRON_SWORD, ChatColor.GREEN + "Copper Jackknife", ChatColor.GREEN + "" + ChatColor.BOLD + "UNCOMMON", 11, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 2); }}),
     // rare swords
     WinRip(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wind Ripper", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 12, new HashMap<Enchantment, Integer>() {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.DAMAGE_ALL, 5); }}),
-    WitBla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wither Blade", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 13, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 6); }}),
+    WitBla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Wither Blade", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 13, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 5); put(Enchantment.FIRE_ASPECT, 1); }}),
     ThuShoSwo(Material.GOLDEN_SWORD, ChatColor.AQUA + "Thunderfury Short Sword", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 14, new HashMap<Enchantment, Integer>() {{ put(Enchantment.DAMAGE_ALL, 6); }}),
     StiCla(Material.GOLDEN_SWORD, ChatColor.AQUA + "Stinger Claw", ChatColor.AQUA + "" + ChatColor.BOLD + "RARE", 15, new HashMap<Enchantment, Integer>()  {{ put(Enchantment.SWEEPING_EDGE, 3); put(Enchantment.DAMAGE_ALL, 5); }}),
     // epic swords
