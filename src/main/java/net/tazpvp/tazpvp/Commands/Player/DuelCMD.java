@@ -43,9 +43,7 @@ public class DuelCMD {
             TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
             Accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/duel " + p.getName()));
             Accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.GREEN + "ACCEPT").create()));
-
             Tazpvp.dueling.put(p.getUniqueId(), target.getUniqueId());
-
             target.sendMessage(ChatColor.DARK_GRAY + "");
             target.sendMessage(" " + ChatColor.GOLD + p.getName() + ChatColor.YELLOW + " has challenged you to a duel.");
             target.spigot().sendMessage(Accept);
