@@ -90,6 +90,8 @@ public class DeathEvent implements Listener {
                             Tazpvp.duelLogic.duelEnd(p);
                             e.setCancelled(true);
                             return;
+                        } else if (p.getWorld().getName().equals("arena")) {
+                            p.teleport(configUtils.spawn);
                         }
                     }
 
