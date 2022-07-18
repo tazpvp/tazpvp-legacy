@@ -21,6 +21,7 @@ public class DW {
     private Location spawn1;
     private Location spawn2;
     private KitManager kit;
+    private boolean ended;
 
     public DW(final Player p1, final Player p2, final World duelMap, final KitManager kit) {
         this.p1 = p1;
@@ -30,6 +31,7 @@ public class DW {
         this.spawn1 = new Location(duelMap, 0.5, 65, 0.5, 90, 0);
         this.spawn2 = new Location(duelMap, -48.5, 65, 0.5, -90, 0);
         this.kit = kit;
+        this.ended = false;
     }
 
     public Player getPlayer1() {
@@ -78,6 +80,14 @@ public class DW {
 
     public KitManager getKit() {
         return this.kit;
+    }
+
+    public void setEnded(boolean ended) {
+        this.ended = ended;
+    }
+
+    public boolean isEnded() {
+        return this.ended;
     }
 
     public void start() {

@@ -22,6 +22,21 @@ public class DiscordMCUtils {
         prefix = prefix.length() > 0 ? "***" + prefix + "***" : "";
         JDA jda = Tazpvp.jda;
         TextChannel channel  = jda.getTextChannelById(997521265478864916L);
-        channel.sendMessage(prefix + " **" + p.getName() + "** " + message).queue();
+        message = discordFilter(message);
+        String name = discordNameFilter(p.getName());
+        channel.sendMessage(prefix + " **" + name + "** " + message).queue();
+    }
+
+    private static String discordFilter(final String message) {
+        return message
+                .replace("@","")
+                .replace("<","")
+                .replace(">","");
+    }
+    private static String discordNameFilter(final String message) {
+        return message
+                .replace("*","\\*")
+                .replace("_","\\_")
+                .replace("|","\\|");
     }
 }
