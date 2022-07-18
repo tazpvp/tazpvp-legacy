@@ -38,6 +38,7 @@ public class DuelCMD {
         }
         if (Tazpvp.dueling.containsValue(p.getUniqueId())) {
             Tazpvp.dueling.remove(target.getUniqueId());
+            Tazpvp.dueling.remove(p.getUniqueId());
             Tazpvp.duelLogic.duelStart(p, target, null);
         } else {
             TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
