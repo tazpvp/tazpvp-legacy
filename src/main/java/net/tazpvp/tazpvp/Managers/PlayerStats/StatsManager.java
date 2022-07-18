@@ -53,7 +53,8 @@ public class StatsManager {
     public void teamReg(Scoreboard sb, String id, String teamName) {
         Team team = sb.registerNewTeam(id);
         String prefix = getPrefix(teamName);
-        team.setPrefix(ChatColor.translateAlternateColorCodes('&', prefix) + " ");
+        prefix = prefix.length() > 0 ? ChatColor.translateAlternateColorCodes('&', prefix) : "";
+        team.setPrefix(prefix);
         team.setColor(getColor(teamName));
     }
 
