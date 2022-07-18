@@ -186,7 +186,7 @@ public class GuildUtils {
      * @return {@code true} if player is in a guild, {@code false} if not
      */
     public static boolean isInGuild(Player p) {
-        return Tazpvp.guildManager.getPlayerGuild(p) != null;
+        return Tazpvp.guildManager.getPlayerGuild(p) != null && getGuild(p) != null;
     }
 
     /**
