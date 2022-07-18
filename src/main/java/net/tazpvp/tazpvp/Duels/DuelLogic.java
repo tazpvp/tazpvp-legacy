@@ -79,6 +79,10 @@ public class DuelLogic implements Listener {
     public void duelEnd(final Player p) {
 
         DW d = this.getDuel(p);
+
+        if (d.isEnded()) return;
+        d.setEnded(true);
+
         Player opponent;
         if (p.equals(d.getPlayer1())) {
             opponent = d.getPlayer2();
