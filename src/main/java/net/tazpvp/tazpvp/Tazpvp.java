@@ -313,6 +313,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
         allowedBlocks.add(Material.GREEN_WOOL);
         allowedBlocks.add(Material.RED_WOOL);
         allowedBlocks.add(Material.COBWEB);
+        allowedBlocks.add(Material.FIRE);
     }
 
     @Override
