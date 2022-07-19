@@ -7,6 +7,7 @@ import net.tazpvp.tazpvp.GUI.NPCGui.PerkGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
 import net.tazpvp.tazpvp.GUI.Template.MutliGuiPrototype.TestOne;
 import net.tazpvp.tazpvp.GUI.Template.OpenSlotGUI;
+import net.tazpvp.tazpvp.GUI.Template.OpenSlotTesting.OSGUI;
 import net.tazpvp.tazpvp.GUI.Template.TestGUI;
 import net.tazpvp.tazpvp.unused.FlameVilGUI;
 import org.bukkit.entity.Player;
@@ -31,6 +32,8 @@ public class GuiCMD implements CommandListener {
             new TestOne(p);
         } else if (gui.equalsIgnoreCase("bow")) {
             new BowGUI(p);
+        } else if (gui.equalsIgnoreCase("ops")) {
+            new OSGUI(p);
         }
     }
 }
