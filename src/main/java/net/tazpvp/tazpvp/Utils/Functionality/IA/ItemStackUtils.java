@@ -6,7 +6,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
-import redempt.redlib.inventorygui.ItemButton;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

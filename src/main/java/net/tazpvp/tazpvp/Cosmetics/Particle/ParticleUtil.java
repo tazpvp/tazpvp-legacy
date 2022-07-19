@@ -2,7 +2,10 @@ package net.tazpvp.tazpvp.Cosmetics.Particle;
 
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.WeakHashMap;
 
 public class ParticleUtil {
     public WeakHashMap<UUID, ParticleEffect> savd = new WeakHashMap<>();

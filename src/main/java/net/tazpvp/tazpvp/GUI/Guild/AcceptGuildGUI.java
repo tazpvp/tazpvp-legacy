@@ -10,8 +10,6 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;

@@ -1,7 +1,6 @@
 package net.tazpvp.tazpvp.Cosmetics.Particle.Particles;
 
 import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
-import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 

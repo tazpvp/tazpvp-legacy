@@ -16,7 +16,6 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MineGUI {

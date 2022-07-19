@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.Utils.Passive;
 
-import net.tazpvp.tazpvp.Managers.PlayerStats.StatsManager;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.*;
 import org.bukkit.entity.Item;

@@ -4,7 +4,6 @@ import net.tazpvp.tazpvp.Cosmetics.Particle.ParticleEffect;
 import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.*;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Ranks.RankUtils;
-import net.tazpvp.tazpvp.Utils.Ranks.RankWeight;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;

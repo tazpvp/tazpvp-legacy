@@ -1,9 +1,6 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
-import net.tazpvp.tazpvp.Cosmetics.Particle.Particles.WideCircleParticle;
 import net.tazpvp.tazpvp.GUI.MainMenu.SubMenu.ParticlesGUI;
-import net.tazpvp.tazpvp.Tazpvp;
-import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 

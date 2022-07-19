@@ -1,9 +1,7 @@
 package net.tazpvp.tazpvp.Utils.NPCS;
 
 import net.tazpvp.tazpvp.GUI.NPCGui.MineGUI;
-import net.tazpvp.tazpvp.Managers.PlayerStats.AchievementManager;
 import net.tazpvp.tazpvp.Tazpvp;
-import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

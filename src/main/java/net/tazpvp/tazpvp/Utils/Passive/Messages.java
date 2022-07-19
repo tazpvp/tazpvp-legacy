@@ -2,11 +2,8 @@ package net.tazpvp.tazpvp.Utils.Passive;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
 
 public class Messages {
     int num = 1;

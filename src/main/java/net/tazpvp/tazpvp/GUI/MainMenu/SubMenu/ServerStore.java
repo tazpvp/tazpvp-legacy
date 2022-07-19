@@ -15,7 +15,6 @@ import redempt.redlib.inventorygui.InventoryGUI;
 import redempt.redlib.inventorygui.ItemButton;
 import redempt.redlib.itemutils.ItemBuilder;
 
-
 import static net.tazpvp.tazpvp.Utils.Functionality.IA.ItemStackUtils.hideFlag;
 
 public class ServerStore {

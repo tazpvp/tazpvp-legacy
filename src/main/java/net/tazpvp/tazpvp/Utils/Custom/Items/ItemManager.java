@@ -3,7 +3,6 @@ package net.tazpvp.tazpvp.Utils.Custom.Items;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Items.items.Agility;
 import net.tazpvp.tazpvp.Utils.Custom.Items.items.Extinguish;
-import net.tazpvp.tazpvp.Utils.Custom.Items.items.Ridepearl;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -17,7 +16,7 @@ import java.util.Arrays;
 
 public class ItemManager {
     public static final ArrayList<Item> items = new ArrayList<>(Arrays.asList(
-            new Agility(), new Extinguish(), new Ridepearl()
+            new Agility(), new Extinguish()
     ));
 
     public static void givePlayerItem(Player player, Items item, int count) {

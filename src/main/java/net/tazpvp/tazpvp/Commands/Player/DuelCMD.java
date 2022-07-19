@@ -9,11 +9,7 @@ import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
 import redempt.redlib.commandmanager.CommandHook;
-
-import java.util.List;
 
 public class DuelCMD {
     @CommandHook("duel")

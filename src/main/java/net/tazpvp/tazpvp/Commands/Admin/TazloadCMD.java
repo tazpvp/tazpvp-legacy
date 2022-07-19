@@ -1,6 +1,5 @@
 package net.tazpvp.tazpvp.Commands.Admin;
 
-import net.tazpvp.tazpvp.Duels.DW;
 import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

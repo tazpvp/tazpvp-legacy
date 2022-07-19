@@ -2,7 +2,6 @@ package net.tazpvp.tazpvp.Utils.Custom.Items.items;
 
 import net.tazpvp.tazpvp.Utils.Custom.Items.ConsumableItem;
 import net.tazpvp.tazpvp.Utils.Custom.Items.Items;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

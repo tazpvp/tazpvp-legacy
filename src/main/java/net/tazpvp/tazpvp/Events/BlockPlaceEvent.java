@@ -10,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.builderPerk;
 
 public class BlockPlaceEvent implements Listener {

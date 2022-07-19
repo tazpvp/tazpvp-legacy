@@ -1,8 +1,6 @@
 package net.tazpvp.tazpvp.Events;
 
-import net.tazpvp.tazpvp.Tazpvp;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
