@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import static net.tazpvp.tazpvp.Tazpvp.vanished;
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.checkArmor;
 
 public class JoinEvent implements Listener {
@@ -60,6 +61,10 @@ public class JoinEvent implements Listener {
 
         if (CombatTag.isInCombat(p)) {
             CombatTag.combatLog.remove(p.getUniqueId());
+        }
+
+        for(Player vanished : vanished){
+            p.hidePlayer(Tazpvp.getInstance(), vanished);
         }
 
         if (Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p) == null) {

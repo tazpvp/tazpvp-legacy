@@ -16,6 +16,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.UUID;
 
+import static net.tazpvp.tazpvp.Tazpvp.vanished;
+
 public class LeaveEvnet implements Listener {
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
@@ -69,6 +71,8 @@ public class LeaveEvnet implements Listener {
                 Tazpvp.guildManager.setGuild(g.getID(), g);
             }
         }
+
+        vanished.remove(p);
 
         Tazpvp.particleUtil.inUse.remove(e.getPlayer());
     }

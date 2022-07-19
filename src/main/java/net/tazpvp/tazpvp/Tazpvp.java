@@ -85,6 +85,7 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
     public static List<String> allowedCmds = new ArrayList<>();
     public static List<Material> allowedBlocks = new ArrayList<>();
     public static List<Player> afkPlayers = new ArrayList<>();
+    public static List<Player> vanished = new ArrayList<>();
 
     public static Player toBeKicked;
     public static List<UUID> votedYes = new ArrayList<>();
@@ -212,10 +213,11 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             new StaffchatCMD(),
             new AfkCMD(),
             new GuildCMD(),
-                new MobsCMD(),
-                new VotekickCMD(),
-                new ChatCMD(),
-                new HideCMD());
+            new MobsCMD(),
+            new VotekickCMD(),
+            new ChatCMD(),
+            new VanishCMD(),
+            new HideCMD());
 
         ConfigManager configManager = ConfigManager.create(this).target(ConfigGetter.class).saveDefaults().load();
     }

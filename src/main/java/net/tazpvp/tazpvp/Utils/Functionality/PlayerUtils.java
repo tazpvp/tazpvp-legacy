@@ -23,6 +23,7 @@ import redempt.redlib.itemutils.ItemUtils;
 import java.io.IOException;
 import java.net.URL;
 
+import static net.tazpvp.tazpvp.Tazpvp.vanished;
 import static net.tazpvp.tazpvp.Utils.Functionality.ChatUtils.sendSurround;
 
 public class PlayerUtils {
@@ -186,6 +187,28 @@ public class PlayerUtils {
                 chest.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
                 leg.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
                 boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+            }
+        }
+    }
+
+    public static void vanish(Player target) {
+        if (!vanished.contains(target)) {
+            for(Player p : Bukkit.getOnlinePlayers()){
+                p.hidePlayer(Tazpvp.getInstance(), target);
+                target.setInvulnerable(true);
+                if (p.hasPermission("tazpvp.staff")) {
+                    p.sendMessage(ChatColor.YELLOW + "" + target + " is now vanished.");
+                }
+            }
+        } else {
+            for(Player p : Bukkit.getOnlinePlayers()){
+                if(!p.hasPermission("staff.vanish")) {
+                    p.showPlayer(Tazpvp.getInstance(), target);
+                    target.setInvulnerable(false);
+                    if (p.hasPermission("tazpvp.staff")) {
+                        p.sendMessage(ChatColor.YELLOW + "" + target + " is no longer vanished.");
+                    }
+                }
             }
         }
     }
