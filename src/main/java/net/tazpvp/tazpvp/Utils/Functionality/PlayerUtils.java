@@ -1,6 +1,7 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -204,6 +205,7 @@ public class PlayerUtils {
                 if(!p.hasPermission("staff.vanish")) {
                     p.showPlayer(Tazpvp.getInstance(), target);
                     target.setInvulnerable(false);
+                    target.teleport(configUtils.spawn);
                     if (p.hasPermission("tazpvp.staff")) {
                         p.sendMessage(ChatColor.YELLOW + "" + target + " is no longer vanished.");
                     }
