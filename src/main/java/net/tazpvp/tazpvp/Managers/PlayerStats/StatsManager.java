@@ -294,16 +294,16 @@ public class StatsManager {
 
     public String getPrefix(String teamName) {
         return switch (teamName) {
-            case "owner" -> "&c&lOWNER";
-            case "admin" -> "&6&lADMIN";
-            case "developer" -> "&e&lDEV";
-            case "sr.mod" -> "&9&lSR.MOD";
-            case "mod" -> "&3MOD";
-            case "helper" -> "&b&lHELPER";
-            case "media" -> "&c&lMEDIA";
-            case "mvp+" -> "&6&lMVP+";
-            case "mvp" -> "&a&lMVP";
-            case "vip" -> "&c&lVIP";
+            case "owner" -> "&c&lOWNER ";
+            case "admin" -> "&6&lADMIN ";
+            case "developer" -> "&e&lDEV ";
+            case "sr.mod" -> "&9&lSR.MOD ";
+            case "mod" -> "&3MOD ";
+            case "helper" -> "&b&lHELPER ";
+            case "media" -> "&c&lMEDIA ";
+            case "mvp+" -> "&6&lMVP+ ";
+            case "mvp" -> "&a&lMVP ";
+            case "vip" -> "&c&lVIP ";
             // yes yes switch aroubnd bc ykykykk
             case "banned" -> "";
             default -> "";
