@@ -560,5 +560,6 @@ unhide {
 vanish player:target{
     help /vanish <user>
     user player
+    hook vanish
     permission tazpvp.vanish
 }
