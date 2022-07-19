@@ -354,6 +354,11 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
             h.setDisplaySlot(DisplaySlot.BELOW_NAME);
             h.setDisplayName(ChatColor.RED + "❤");
         }
+//        if (sb.getObjective("showguild") == null) {
+//            Objective h = sb.registerNewObjective("showguild", "dummy");
+//            h.setDisplaySlot(DisplaySlot.BELOW_NAME);
+//            h.setDisplayName(ChatColor.RED + player.getUniqueId().toString());
+//        }
         Score blank = objective.getScore(ChatColor.DARK_AQUA + "                         ");
         blank.setScore(14);
         Score blank1 = objective.getScore(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "WEALTH");
