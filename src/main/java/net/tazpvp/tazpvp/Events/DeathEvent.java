@@ -32,6 +32,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.WeakHashMap;
 
+import static net.tazpvp.tazpvp.Tazpvp.vanished;
 import static net.tazpvp.tazpvp.Utils.Functionality.AchieveUtils.Achieve;
 import static net.tazpvp.tazpvp.Utils.Functionality.PerkUtils.*;
 
@@ -52,6 +53,13 @@ public class DeathEvent implements Listener {
                 if (p.getLocation().distance(configUtils.spawn) < 25) {
                     e.setCancelled(true);
                     return;
+                }
+            }
+            if (e instanceof EntityDamageByEntityEvent h) {
+                if (h.getDamager() instanceof Player damager) {
+                    if (vanished.contains(damager)) {
+                        e.setCancelled(true);
+                    }
                 }
             }
             if (p.hasMetadata("goingToSpawn")) {
