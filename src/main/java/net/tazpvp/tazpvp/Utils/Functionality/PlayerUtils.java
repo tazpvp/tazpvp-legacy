@@ -1,5 +1,9 @@
 package net.tazpvp.tazpvp.Utils.Functionality;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Variables.configUtils;
 import org.apache.commons.io.IOUtils;
@@ -189,6 +193,18 @@ public class PlayerUtils {
                 boot.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 2);
             }
         }
+    }
+
+    public static void sendDuel(Player target, Player p) {
+        TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
+        Accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/duel " + p.getName()));
+        Accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.GREEN + "ACCEPT").create()));
+        Tazpvp.dueling.put(p.getUniqueId(), target.getUniqueId());
+        target.sendMessage(ChatColor.DARK_GRAY + "");
+        target.sendMessage(" " + ChatColor.GOLD + p.getName() + ChatColor.YELLOW + " has challenged you to a duel.");
+        target.spigot().sendMessage(Accept);
+        target.sendMessage(ChatColor.DARK_GRAY + "");
+        p.sendMessage(ChatColor.GRAY + "Your duel request was sent.");
     }
 //
 //    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/

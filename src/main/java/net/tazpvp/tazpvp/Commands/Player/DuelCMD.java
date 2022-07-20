@@ -6,16 +6,25 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.tazpvp.tazpvp.Managers.CombatTag;
 import net.tazpvp.tazpvp.Tazpvp;
+import net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
+import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.sendDuel;
+
 public class DuelCMD {
     @CommandHook("duel")
     public void duel(Player p, Player target) {
-        if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) { p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin."); return; }
-        if (CombatTag.isInCombat(p)) { p.sendMessage(ChatColor.RED + "You must be out of combat to begin."); return;}
+        if (Tazpvp.duelLogic.isInDuel(p) || Tazpvp.duelLogic.isInDuel(target)) {
+            p.sendMessage(ChatColor.RED + "Both users must be out of a duel to begin.");
+            return;
+        }
+        if (CombatTag.isInCombat(p)) {
+            p.sendMessage(ChatColor.RED + "You must be out of combat to begin.");
+            return;
+        }
         if (Tazpvp.isRestarting) {
             p.sendMessage(ChatColor.RED + "You cannot duel while the server is restarting.");
             return;
@@ -33,21 +42,22 @@ public class DuelCMD {
             return;
         }
         if (Tazpvp.dueling.containsValue(p.getUniqueId())) {
-            Tazpvp.dueling.remove(target.getUniqueId());
-            Tazpvp.dueling.remove(p.getUniqueId());
-            Tazpvp.duelLogic.duelStart(p, target, null);
+            if (Tazpvp.dueling.containsKey(target.getUniqueId())) {
+                if (Tazpvp.dueling.get(target.getUniqueId()).equals(p.getUniqueId())) {
+                    Tazpvp.dueling.remove(target.getUniqueId());
+                    Tazpvp.dueling.remove(p.getUniqueId());
+                    Tazpvp.duelLogic.duelStart(p, target, null);
+                } else {
+                    sendDuel(target, p);
+                }
+            } else {
+                sendDuel(target, p);
+            }
         } else {
-            TextComponent Accept = new TextComponent(ChatColor.GRAY + " " + ChatColor.BOLD + "CLICK HERE " + ChatColor.GRAY + "to accept.");
-            Accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/duel " + p.getName()));
-            Accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(ChatColor.GREEN + "ACCEPT").create()));
-            Tazpvp.dueling.put(p.getUniqueId(), target.getUniqueId());
-            target.sendMessage(ChatColor.DARK_GRAY + "");
-            target.sendMessage(" " + ChatColor.GOLD + p.getName() + ChatColor.YELLOW + " has challenged you to a duel.");
-            target.spigot().sendMessage(Accept);
-            target.sendMessage(ChatColor.DARK_GRAY + "");
-            p.sendMessage(ChatColor.GRAY + "Your duel request was sent.");
+            sendDuel(target, p);
         }
     }
+
 
     @CommandHook("spectate")
     public void onSpectate(Player p, Player target) {
