@@ -190,29 +190,6 @@ public class PlayerUtils {
             }
         }
     }
-
-    public static void vanish(Player target) {
-        if (!vanished.contains(target)) {
-            for(Player p : Bukkit.getOnlinePlayers()){
-                p.hidePlayer(Tazpvp.getInstance(), target);
-                target.setInvulnerable(true);
-                if (p.hasPermission("tazpvp.staff")) {
-                    p.sendMessage(ChatColor.YELLOW + "" + target + " is now vanished.");
-                }
-            }
-        } else {
-            for(Player p : Bukkit.getOnlinePlayers()){
-                if(!p.hasPermission("staff.vanish")) {
-                    p.showPlayer(Tazpvp.getInstance(), target);
-                    target.setInvulnerable(false);
-                    target.teleport(configUtils.spawn);
-                    if (p.hasPermission("tazpvp.staff")) {
-                        p.sendMessage(ChatColor.YELLOW + "" + target + " is no longer vanished.");
-                    }
-                }
-            }
-        }
-    }
 //
 //    // https://www.geeksforgeeks.org/insert-a-string-into-another-string-in-java/
 //    public static String insertString(String originalString, String stringToBeInserted, int index) {
