@@ -59,6 +59,8 @@ public class JoinEvent implements Listener {
             Tazpvp.playerWrapperStatsManager.setPlayerWrapper(p, new PlayerWrapper(p));
         }
 
+        p.setInvulnerable(false);
+
         if (CombatTag.isInCombat(p)) {
             CombatTag.combatLog.remove(p.getUniqueId());
         }

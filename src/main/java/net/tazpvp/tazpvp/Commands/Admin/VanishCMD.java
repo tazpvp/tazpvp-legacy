@@ -23,6 +23,7 @@ public class VanishCMD {
                     ol.sendMessage(ChatColor.YELLOW + "" + p.getName() + " is now vanished.");
                 } else {
                     ol.hidePlayer(Tazpvp.getInstance(), p);
+                    ol.sendMessage(ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] " + p.getName());
                 }
                 Tazpvp.sendBaseTablist(ol);
             }
@@ -34,6 +35,8 @@ public class VanishCMD {
                 ol.showPlayer(Tazpvp.getInstance(), p);
                 if (ol.hasPermission("tazpvp.staff")) {
                     ol.sendMessage(ChatColor.YELLOW + "" + p.getName() + " is no longer vanished.");
+                } else {
+                    ol.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] " + p.getName());
                 }
                 Tazpvp.sendBaseTablist(ol);
             }

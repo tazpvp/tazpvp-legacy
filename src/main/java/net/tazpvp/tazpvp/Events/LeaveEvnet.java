@@ -21,7 +21,12 @@ import static net.tazpvp.tazpvp.Tazpvp.vanished;
 public class LeaveEvnet implements Listener {
     @EventHandler
     public void onLeave(PlayerQuitEvent e) {
-        e.setQuitMessage(ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] " + e.getPlayer().getName());
+        Player p = e.getPlayer();
+        if (vanished.contains(p)) {
+            e.setQuitMessage("");
+        } else {
+            e.setQuitMessage(ChatColor.GRAY + "[" + ChatColor.RED + "-" + ChatColor.GRAY + "] " + e.getPlayer().getName());
+        }
         Tazpvp.playerWrapperStatsManager.setPlayerWrapper(e.getPlayer(), Tazpvp.playerWrapperMap.get(e.getPlayer().getUniqueId()));
         Tazpvp.playerWrapperMap.remove(e.getPlayer().getUniqueId());
 
@@ -30,7 +35,7 @@ public class LeaveEvnet implements Listener {
             Tazpvp.duelLogic.duelEnd(e.getPlayer());
         }
 
-        Player p = e.getPlayer();
+
 
         for (DW dw : Tazpvp.duelLogic.duels.values()) {
             dw.spectators().remove(p.getUniqueId());

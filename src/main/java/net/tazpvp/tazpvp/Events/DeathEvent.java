@@ -58,7 +58,9 @@ public class DeathEvent implements Listener {
             if (e instanceof EntityDamageByEntityEvent h) {
                 if (h.getDamager() instanceof Player damager) {
                     if (vanished.contains(damager)) {
+                        damager.sendMessage(ChatColor.RED + "You cannot hit people while in vanish.");
                         e.setCancelled(true);
+                        return;
                     }
                 }
             }
