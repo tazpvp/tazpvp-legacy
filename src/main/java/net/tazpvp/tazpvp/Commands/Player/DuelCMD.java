@@ -28,7 +28,7 @@ public class DuelCMD {
             p.sendMessage(ChatColor.RED + "You cannot duel as a spectator.");
             return;
         }
-        if (Tazpvp.dueling.containsValue(target.getUniqueId()) && !(Tazpvp.dueling.containsValue(p.getUniqueId()))) {
+        if (Tazpvp.dueling.containsKey(p.getUniqueId())) {
             p.sendMessage(ChatColor.RED + "You have already sent a duel request to " + target.getName() + ".");
             return;
         }
