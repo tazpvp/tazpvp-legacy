@@ -43,15 +43,16 @@ public class BowGUI {
             doChecks(p, Enchantment.ARROW_FIRE, 5);
         });
         ItemButton thorns = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Thorns I").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "4 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
-            doChecksR(p, Enchantment.THORNS, 1, 4);
+            doChecksR(p, Enchantment.THORNS, 1, 4, 1);
         });
 
         ItemButton prot = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Protection II").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "5 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
-            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2, 5);
+            doChecksR(p, Enchantment.PROTECTION_ENVIRONMENTAL, 2, 5, 2);
+
         });
 
         ItemButton ff = ItemButton.create(new ItemBuilder(Material.ENCHANTED_BOOK).setName(ChatColor.BLUE + "Feather Falling IV").setLore(ChatColor.GRAY + "Cost: " + ChatColor.AQUA + "2 Shards", "", ChatColor.RED + "Only 1 upgrade can be", ChatColor.RED + "selected at a time."), e -> {
-            doChecksR(p, Enchantment.PROTECTION_FALL, 4, 2);
+            doChecksR(p, Enchantment.PROTECTION_FALL, 4, 2, 1);
         });
 
         gui.addButton(11, Bow);
@@ -88,16 +89,24 @@ public class BowGUI {
         p.closeInventory();
     }
 
-    public void doChecksR(Player p, Enchantment ench, int level, int price) {
+    public void doChecksR(Player p, Enchantment ench, int level, int price, int type) {
         for (ItemStack i : BowUtils.getArmor(p)) {
             if (i.getType().equals(Material.AIR)) {
                 p.sendMessage(prefix + " You do not have any armor!");
                 p.closeInventory();
                 return;
-            } else if (p.getInventory().getHelmet().getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) >= 2) {
-                p.sendMessage(prefix + " You already have this enchantment!");
-                p.closeInventory();
-                return;
+            } else if (type == 1) {
+                if (i.getEnchantments().containsKey(ench)) {
+                    p.sendMessage(prefix + " You already have this enchantment!");
+                    p.closeInventory();
+                    return;
+                }
+            } else if (type == 2) {
+                if (p.getInventory().getHelmet().getEnchantmentLevel(Enchantment.PROTECTION_ENVIRONMENTAL) >= 2) {
+                    p.sendMessage(prefix + " You already have this enchantment!");
+                    p.closeInventory();
+                    return;
+                }
             }
         }
         if (Tazpvp.statsManager.getShards(p) < price) {
