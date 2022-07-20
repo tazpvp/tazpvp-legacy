@@ -31,11 +31,9 @@ public abstract class Event {
     public void removePlayer(Player p) {
         this.playercount.remove(p.getUniqueId());
     }
-
     public void saveInv(Player p) {
         ArmorManager.storeAndClearInventory(p);
     }
-
     public void loadInv(Player p) {
         ArmorManager.setPlayerContents(p, true);
     }

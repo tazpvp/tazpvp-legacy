@@ -557,8 +557,8 @@ unhide {
     permission tazpvp.hide
 }
 
-vanish player:target?(context self){
-    help /vanish <user>
+vanish {
+    help /vanish
     user player
     hook vanish
     permission tazpvp.vanish
