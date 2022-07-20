@@ -12,6 +12,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import redempt.redlib.commandmanager.CommandHook;
 
+import static net.tazpvp.tazpvp.Tazpvp.vanished;
 import static net.tazpvp.tazpvp.Utils.Functionality.PlayerUtils.sendDuel;
 
 public class DuelCMD {
@@ -23,6 +24,10 @@ public class DuelCMD {
         }
         if (CombatTag.isInCombat(p)) {
             p.sendMessage(ChatColor.RED + "You must be out of combat to begin.");
+            return;
+        }
+        if (vanished.contains(p)) {
+            p.sendMessage(ChatColor.RED + "You cannot duel while in vanish.");
             return;
         }
         if (Tazpvp.isRestarting) {
