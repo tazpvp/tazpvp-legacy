@@ -43,12 +43,14 @@ public class DuelCMD {
             return;
         }
         if (Tazpvp.dueling.containsKey(p.getUniqueId())) {
-            p.sendMessage(ChatColor.RED + "You have already sent a duel request to " + target.getName() + ".");
-            return;
+            if (Tazpvp.dueling.get(p.getUniqueId()).equals(target.getUniqueId())) {
+                p.sendMessage(ChatColor.RED + "You have already sent a duel request to " + target.getName() + ".");
+                return;
+            }
         }
-        if (Tazpvp.dueling.containsValue(p.getUniqueId())) {
-            if (Tazpvp.dueling.containsKey(target.getUniqueId())) {
-                if (Tazpvp.dueling.get(target.getUniqueId()).equals(p.getUniqueId())) {
+        if (Tazpvp.dueling.containsValue(p.getUniqueId())) { //if you were sent a duel
+            if (Tazpvp.dueling.containsKey(target.getUniqueId())) { //if the person you want to duel already sent a request to someone
+                if (Tazpvp.dueling.get(target.getUniqueId()).equals(p.getUniqueId())) { //if that request was sent to you
                     Tazpvp.dueling.remove(target.getUniqueId());
                     Tazpvp.dueling.remove(p.getUniqueId());
                     Tazpvp.duelLogic.duelStart(p, target, null);

@@ -11,7 +11,7 @@ public class Messages {
         new BukkitRunnable(){
             @Override
             public void run() {
-                num = (num + 1) % 5;
+                num = (num + 1) % 6;
                 Bukkit.broadcastMessage("");
                 switch(num){
                     case 0:
@@ -30,11 +30,11 @@ public class Messages {
                         Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Think they're hacking? Report them with " + ChatColor.DARK_AQUA + "/report");
                         break;
                     case 5:
-                        Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Win prizes every 10 minutes for being AFK " + ChatColor.DARK_AQUA + "/afk");
+                        Bukkit.broadcastMessage(ChatColor.RED + "" + ChatColor.BOLD + " TIP " + ChatColor.GRAY +  "Win prizes every 5 minutes for being AFK " + ChatColor.DARK_AQUA + "/afk");
                         break;
                 }
                 Bukkit.broadcastMessage("");
             }
-        }.runTaskTimer(plugin, 20*4*60, 20*4*60);
+        }.runTaskTimer(plugin, 20*2*60, 20*2*60);
     }
 }
