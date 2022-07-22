@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.GUI;
 
+import net.tazpvp.tazpvp.GUI.Template.ClickInvGUI;
 import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Custom.Sword.Items;
 import org.bukkit.Bukkit;
@@ -72,6 +73,12 @@ public class UnlockSwordGUI {
             }
         });
         gui.addButton(12, spinSword);
+
+        ItemButton recycle = ItemButton.create(new ItemBuilder(Material.CAULDRON).setName(ChatColor.AQUA + "Recycle your unused swords!"), e -> {
+            p.closeInventory();
+            new ClickInvGUI(p);
+        });
+        gui.addButton(27-1, recycle);
 
         gui.update();
     }

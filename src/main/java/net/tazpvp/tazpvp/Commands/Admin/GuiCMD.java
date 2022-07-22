@@ -5,6 +5,7 @@ import net.tazpvp.tazpvp.GUI.MainMenu.MainGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.BowGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.PerkGUI;
 import net.tazpvp.tazpvp.GUI.NPCGui.ShopGUI;
+import net.tazpvp.tazpvp.GUI.Template.ClickInvGUI;
 import net.tazpvp.tazpvp.GUI.Template.MutliGuiPrototype.TestOne;
 import net.tazpvp.tazpvp.GUI.Template.OpenSlotGUI;
 import net.tazpvp.tazpvp.GUI.Template.OpenSlotTesting.OSGUI;
@@ -34,6 +35,8 @@ public class GuiCMD implements CommandListener {
             new BowGUI(p);
         } else if (gui.equalsIgnoreCase("ops")) {
             new OSGUI(p);
+        } else if (gui.equalsIgnoreCase("ci")) {
+            new ClickInvGUI(p);
         }
     }
 }

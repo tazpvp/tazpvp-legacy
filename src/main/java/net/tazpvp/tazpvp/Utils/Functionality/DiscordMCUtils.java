@@ -31,7 +31,10 @@ public class DiscordMCUtils {
         return message
                 .replace("@","")
                 .replace("<","")
-                .replace(">","");
+                .replace(">","")
+                .replace("https://", "")
+                .replace("http://", "")
+                .replace(".", "");
     }
     private static String discordNameFilter(final String message) {
         return message
