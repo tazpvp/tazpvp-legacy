@@ -32,8 +32,6 @@ public class BlockPlaceEvent implements Listener {
                 Material blockType = event.getBlockPlaced().getType();
                 ItemStack blockItem = new ItemStack(blockType, 1);
 
-                b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
-
                 if (blockType.equals(Material.PLAYER_HEAD) || blockType.equals(Material.PLAYER_WALL_HEAD)) {
                     event.setCancelled(true);
                     p.sendMessage(ChatColor.RED + "Trade heads for shards at Bub's shop.");
@@ -48,7 +46,8 @@ public class BlockPlaceEvent implements Listener {
 
                 builderPerk(p, blockItem);
 
-                event.getBlock().setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
+                b.setMetadata("breakable", new FixedMetadataValue(Tazpvp.getInstance(), true));
+                b.setMetadata("PlayerPlaced", new FixedMetadataValue(Tazpvp.getInstance(), true));
 
                 if (event.getBlock().getType() == Material.COBWEB) {
                     timer = 30;
