@@ -24,13 +24,8 @@ public class BoolManager {
             e.printStackTrace();
         }
     }
-
-    public void initPlayer(OfflinePlayer p){
-        statsFile.set(p.getUniqueId().toString()+".hasRebirthed", false);
-    }
-
-    public boolean getHasRebirthed(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId().toString()+".hasRebirthed"); }
-    public void setHasRebirthed(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId().toString()+".hasRebirthed", type); }
+    public boolean getHasRebirthed(OfflinePlayer p){ return statsFile.getBoolean(p.getUniqueId() + ".hasRebirthed"); }
+    public void setHasRebirthed(OfflinePlayer p, boolean type){ statsFile.set(p.getUniqueId() + ".hasRebirthed", type); }
 
 
 
