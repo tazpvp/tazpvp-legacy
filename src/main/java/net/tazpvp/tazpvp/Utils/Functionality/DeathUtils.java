@@ -58,7 +58,11 @@ public class DeathUtils {
         final String between = ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName();
         String end = "";
         if (receiver == killer) {
-            end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 25 Exp";
+            if (Tazpvp.boolManager.getHasRebirthed(killer)) {
+                end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 35 Exp";
+            } else {
+                end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 30 Exp";
+            }
         } else {
             if (killer.getInventory().getItemInMainHand().hasItemMeta() && killer.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                 hover.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName())));
