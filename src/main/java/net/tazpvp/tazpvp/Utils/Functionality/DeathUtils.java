@@ -121,7 +121,7 @@ public class DeathUtils {
         if (Tazpvp.statsManager.getExpLeft(p) <= 0) Tazpvp.statsManager.setExpLeft(p, 45);
         if (Tazpvp.statsManager.getExpLeft(killer) <= 0) Tazpvp.statsManager.setExpLeft(killer, 45);
         Tazpvp.statsManager.addKills(killer, 1);
-        Tazpvp.statsManager.addExp(killer, 25);
+        Tazpvp.statsManager.addExp(killer, 30);
         Tazpvp.statsManager.addStreak(killer, 1);
         if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
         Tazpvp.statsManager.addCoins(killer, 5);
