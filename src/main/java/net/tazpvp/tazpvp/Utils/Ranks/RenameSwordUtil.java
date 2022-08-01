@@ -40,7 +40,7 @@ public class RenameSwordUtil {
             renameSword(p, sword);
         } else {
             TextComponent nocred = new TextComponent(ChatColor.RED + "Insufficient Credits! " + ChatColor.WHITE + "[CLICK HERE]");
-            nocred.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://tazpvp.tebex.io/"));
+            nocred.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://taznet.tebex.io/"));
             p.spigot().sendMessage(nocred);
         }
     }
