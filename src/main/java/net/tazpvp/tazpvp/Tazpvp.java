@@ -111,6 +111,9 @@ public final class Tazpvp extends JavaPlugin { //ntdi branmch test
 
         managers(true);
 
+
+        config.set("bot-token", "token");
+        config.set("webhook-ban", "ban-webhook");
         config.options().copyDefaults(true);
         saveConfig();
 

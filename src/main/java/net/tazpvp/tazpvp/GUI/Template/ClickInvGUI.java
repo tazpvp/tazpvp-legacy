@@ -18,7 +18,6 @@ import java.util.Locale;
 public class ClickInvGUI {
     private InventoryGUI gui;
     private Inventory inv;
-
     public ClickInvGUI(Player p) {
         inv = Bukkit.createInventory(null, 9 * 5, "Recycle Guiad");
         gui = new InventoryGUI(inv);

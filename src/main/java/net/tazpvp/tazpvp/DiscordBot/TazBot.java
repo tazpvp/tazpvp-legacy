@@ -34,7 +34,7 @@ public class TazBot {
         builder.setActivity(Activity.watching("idiots play block games"));
         CommandClient commandClient = builder.build();
 
-        JDA jda = JDABuilder.createDefault("OTgwMjMwNjcyMzczNDA3ODI1.Gziehr.HtY1OSHTegKla5EdmbjRhEUhzx7V2dAL50OzQE")
+        JDA jda = JDABuilder.createDefault(Tazpvp.getInstance().config.getString("bot-token"))
                 .disableCache(CacheFlag.VOICE_STATE)
                 .setBulkDeleteSplittingEnabled(false)
                 .setChunkingFilter(ChunkingFilter.ALL)

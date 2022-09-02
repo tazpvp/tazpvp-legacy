@@ -1,5 +1,6 @@
 package net.tazpvp.tazpvp.DiscordBot.Events;
 
+import net.tazpvp.tazpvp.Tazpvp;
 import net.tazpvp.tazpvp.Utils.Fun.DiscordWebhook;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -18,13 +19,13 @@ public class SendBanNotification {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
-        DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/981287942448382042/kwIJJAQ7_c3t4HCZcf_I_RrmzoqHqxei2wkoH0ncO7Quq4ZI5SFdw6wkC5lFcW_olCQj");
+        DiscordWebhook webhook = new DiscordWebhook(Tazpvp.getInstance().config.getString("webhook-ban"));
 
         webhook.addEmbed(new DiscordWebhook.EmbedObject()
                 .setTitle("**" + p.getName() + "** has been banned!")
                 .setDescription("**Time:** " + dtf.format(now))
                 .setColor(Color.RED)
-                .setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64")
+                .setThumbnail("https://mc-heads.net/avatar/" + uuid + "/64")
                 .setFooter("they better have been hacking", null)
                 .addField("**Reason**", reason + "", true)
                 .addField("**Banned By**", plr.getName(), true));
@@ -38,13 +39,13 @@ public class SendBanNotification {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
-        DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/981287942448382042/kwIJJAQ7_c3t4HCZcf_I_RrmzoqHqxei2wkoH0ncO7Quq4ZI5SFdw6wkC5lFcW_olCQj");
+        DiscordWebhook webhook = new DiscordWebhook(Tazpvp.getInstance().config.getString("webhook-ban"));
 
         webhook.addEmbed(new DiscordWebhook.EmbedObject()
                 .setTitle("**" + p.getName() + "** has been unbanned!")
                 .setDescription("**Time:** " + dtf.format(now))
                 .setColor(Color.YELLOW)
-                .setThumbnail("https://mc-heads.net/avatar/" + uuid.toString() + "/64")
+                .setThumbnail("https://mc-heads.net/avatar/" + uuid + "/64")
                 .setFooter("here we go again", null)
                 .addField("**Unbanned By**", plr.getName(), true));
 
