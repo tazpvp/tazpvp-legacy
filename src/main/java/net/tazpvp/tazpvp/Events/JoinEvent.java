@@ -66,7 +66,7 @@ public class JoinEvent implements Listener {
         }
 
         for(Player vanished : vanished){
-            p.hidePlayer(Tazpvp.getInstance(), vanished);
+            if (!p.hasPermission("tazpvp.vanish")) p.hidePlayer(Tazpvp.getInstance(), vanished);
         }
 
         if (Tazpvp.playerWrapperStatsManager.getPlayerWrapper(p) == null) {

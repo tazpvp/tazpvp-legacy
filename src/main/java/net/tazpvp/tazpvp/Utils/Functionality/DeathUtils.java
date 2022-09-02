@@ -58,7 +58,11 @@ public class DeathUtils {
         final String between = ChatColor.DARK_GRAY + " killed " + ChatColor.GRAY + p.getName();
         String end = "";
         if (receiver == killer) {
-            end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 25 Exp";
+            if (Tazpvp.boolManager.getHasRebirthed(killer)) {
+                end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 35 Exp";
+            } else {
+                end = ChatColor.GOLD + " + 5 Coins " + ChatColor.DARK_AQUA + "+ 30 Exp";
+            }
         } else {
             if (killer.getInventory().getItemInMainHand().hasItemMeta() && killer.getInventory().getItemInMainHand().getItemMeta().hasDisplayName()) {
                 hover.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(killer.getInventory().getItemInMainHand().getItemMeta().getDisplayName())));
@@ -121,9 +125,9 @@ public class DeathUtils {
         if (Tazpvp.statsManager.getExpLeft(p) <= 0) Tazpvp.statsManager.setExpLeft(p, 45);
         if (Tazpvp.statsManager.getExpLeft(killer) <= 0) Tazpvp.statsManager.setExpLeft(killer, 45);
         Tazpvp.statsManager.addKills(killer, 1);
-        Tazpvp.statsManager.addExp(killer, 25);
+        Tazpvp.statsManager.addExp(killer, 30);
         Tazpvp.statsManager.addStreak(killer, 1);
-        if (Tazpvp.boolManager.getHasRebirthed(p)) Tazpvp.statsManager.addExp(killer, 5);
+        if (Tazpvp.boolManager.getHasRebirthed(killer)) Tazpvp.statsManager.addExp(killer, 5);
         Tazpvp.statsManager.addCoins(killer, 5);
         Tazpvp.statsManager.addDeaths(p, 1);
         Tazpvp.statsManager.setStreak(p, 0);

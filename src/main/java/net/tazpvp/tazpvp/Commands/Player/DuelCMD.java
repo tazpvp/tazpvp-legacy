@@ -26,6 +26,10 @@ public class DuelCMD {
             p.sendMessage(ChatColor.RED + "You must be out of combat to begin.");
             return;
         }
+        if (Tazpvp.punishmentManager.isBanned(p)) {
+            p.sendMessage(ChatColor.RED + "You're banned, lol");
+            return;
+        }
         if (vanished.contains(p)) {
             p.sendMessage(ChatColor.RED + "You cannot duel while in vanish.");
             return;
